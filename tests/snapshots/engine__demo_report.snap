@@ -1,0 +1,140 @@
+---
+source: tests/engine.rs
+expression: redacted(r)
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "demo.tst",
+    "stem": "demo",
+    "extension": "tst"
+  },
+  "identification": {
+    "format": "demo",
+    "name": "Test format",
+    "mime": "application/x-test",
+    "family": "test",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "test.demo"
+  },
+  "system": {
+    "kind": "memory",
+    "size_bytes": 4
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-01-02T03:04:05+02:00",
+        "source": "demo.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-03-01T00:00:00Z",
+        "source": "test.demo",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-01-02T01:04:05Z",
+    "latest": "2026-03-01T00:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "macros"
+    ],
+    "risks": [
+      {
+        "kind": "demo_risk",
+        "detail": "just a test",
+        "source": "test.demo"
+      }
+    ]
+  },
+  "rights": {
+    "copyright": "© 2026 Ada",
+    "license": {
+      "name": "CC BY 4.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 4,
+    "entropy": 2.0,
+    "entropy_scope": "file",
+    "image": {
+      "width": 640,
+      "height": 480,
+      "bit_depth": 8,
+      "channels": 3,
+      "color_space": "sRGB"
+    }
+  },
+  "integrity": {
+    "sha256": "4ff006ca6b88e752f08cb7881714505ceb3d2079eea432acfda8e158e0d1d82e",
+    "blake3": "d93dccc4b0ffed7e8a9811cd4cf14498ab7b787c4853a7b59bb838cbc5f2583b"
+  },
+  "content": {
+    "title": "Demo title",
+    "authors": [
+      "Ada"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.9
+    },
+    "keywords": [
+      "demo"
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Intro"
+      }
+    ]
+  },
+  "metadata": {
+    "demo": {
+      "key": "value"
+    }
+  },
+  "format": {
+    "demo": {
+      "header_bytes": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "test.demo",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.demo",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "undecoded_blocks": [
+      "nobody_decodes_this"
+    ],
+    "elapsed_ms": 0.0
+  }
+}

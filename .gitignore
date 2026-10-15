@@ -1,2 +1,9 @@
 /target
 /baoulo/
+/fuzz/target/
+/fuzz/corpus/
+/fuzz/artifacts/
+/fuzz/coverage/
+/fuzz/Cargo.lock
+*.snap.new
+*.pending-snap

@@ -1,0 +1,1005 @@
+# tier	family	name	extensions	mime	note
+1	text.plain	Plain text	txt text	text/plain	
+1	text.plain	Log file	log	text/plain	timestamp range, log-level histogram, top sources (impl detector for syslog/JSON-lines/Apache/CLF)
+2	text.plain	NFO / DIZ info file	nfo diz	text/plain	CP437 detection
+2	text.plain	README / LICENSE (extensionless)	README LICENSE COPYING AUTHORS CHANGELOG		licence identification via SPDX text matching
+3	text.plain	Text with ANSI escapes	ans asc	text/plain	strip ANSI before stats
+2	text.plain	Unix diff / patch	diff patch	text/x-diff	files changed, hunks, +/- lines
+3	text.plain	Git commit message / mbox patch	eml-patch		author, subject, files changed
+1	text.markdown	Markdown	md markdown mdown mkd	text/markdown	
+2	text.markdown	MDX	mdx	text/mdx	JSX component names
+3	text.markdown	R Markdown	rmd	text/x-r-markdown	code chunk languages
+3	text.markdown	Quarto	qmd	text/x-quarto	
+2	text.lightmarkup	reStructuredText	rst rest	text/x-rst	
+2	text.lightmarkup	AsciiDoc	adoc asciidoc asc	text/asciidoc	document header attributes
+3	text.lightmarkup	Org-mode	org	text/org	#+TITLE/#+AUTHOR, TODO states
+3	text.lightmarkup	Textile	textile	text/x-textile	
+3	text.lightmarkup	MediaWiki markup	wiki mediawiki	text/x-wiki	
+3	text.lightmarkup	Perl POD	pod	text/x-pod	
+3	text.lightmarkup	troff / man page	1 2 3 4 5 6 7 8 man ms me	text/troff	.TH name/section, NAME/SYNOPSIS
+3	text.lightmarkup	Texinfo	texi texinfo	application/x-texinfo	
+3	text.lightmarkup	Creole / DokuWiki	creole dokuwiki		
+3	text.lightmarkup	Djot	dj djot		
+3	text.lightmarkup	Gemtext	gmi gemini	text/gemini	
+1	text.html	HTML	html htm	text/html	
+2	text.html	XHTML	xhtml xht	application/xhtml+xml	
+2	text.html	MHTML web archive	mht mhtml	multipart/related	MIME parts -> email parser, then HTML
+3	text.html	Server-side templates (PHP/ERB/JSP/ASP mixed HTML)	jsp asp aspx erb ejs hbs mustache njk jinja j2 twig liquid		template engine detection, HTML part analysed
+3	text.html	Web archive (Safari)	webarchive	application/x-webarchive	binary plist with WebMainResource
+2	text.html	Internet shortcut HTML redirect	shtml	text/html	
+1	text.xml	XML	xml	application/xml	
+2	text.xml	XML Schema	xsd	application/xml	target namespace, element/type counts
+2	text.xml	XSLT	xsl xslt	application/xslt+xml	templates, output method
+3	text.xml	DTD	dtd	application/xml-dtd	element declarations
+3	text.xml	RELAX NG	rng rnc	application/xml	
+3	text.xml	DocBook	dbk docbook	application/docbook+xml	title, chapters
+3	text.xml	TEI XML	tei	application/tei+xml	teiHeader fileDesc
+3	text.xml	JATS article XML	nxml	application/xml	article-meta: title, authors, DOI
+2	text.xml	XAML	xaml	application/xaml+xml	
+2	text.xml	Android layout / resources XML	xml		
+3	text.xml	WSDL	wsdl	application/wsdl+xml	services, operations
+3	text.xml	XLIFF translation	xlf xliff	application/xliff+xml	source/target languages, unit count
+3	text.xml	Android strings / .resx	resx	text/microsoft-resx	key count
+3	text.xml	Qt translation	ts	application/x-linguist	
+3	text.xml	SAML / XML-DSig	saml	application/samlmetadata+xml	entity ids, certs
+3	text.xml	MathML	mml	application/mathml+xml	
+3	text.xml	SMIL	smil smi	application/smil+xml	
+3	text.xml	XBRL financial report	xbrl	application/xbrl+xml	entity, period, concept count
+3	text.xml	ONIX book metadata	onix		
+3	text.xml	METS / MODS / EAD library XML	mets mods ead		
+3	text.xml	Dublin Core XML / OAI-PMH	dc		
+2	text.feed	RSS	rss	application/rss+xml	
+2	text.feed	Atom feed	atom	application/atom+xml	
+3	text.feed	JSON Feed	json	application/feed+json	
+3	text.feed	OPML outline	opml	text/x-opml	outline titles, feed URLs
+2	text.feed	Sitemap XML	xml	application/xml	URL count, lastmod range
+1	data.json	JSON	json	application/json	
+1	data.json	NDJSON / JSON Lines	ndjson jsonl ldjson	application/x-ndjson	
+2	data.json	JSON with comments	jsonc	application/json	
+3	data.json	JSON5	json5	application/json5	
+2	data.json	JSON Schema	schema.json	application/schema+json	title, $id, properties
+2	data.json	OpenAPI / Swagger (JSON)	openapi.json swagger.json	application/vnd.oai.openapi+json	title, version, servers, paths/operations count
+3	data.json	JSON-LD	jsonld	application/ld+json	@context, @type
+3	data.json	HAR archive	har	application/json	-> forensic
+3	data.json	Postman collection	postman_collection.json	application/json	requests count, folders
+3	data.json	VS Code workspace / settings	code-workspace	application/json	
+3	data.json	Chrome extension manifest	manifest.json	application/manifest+json	name, version, permissions (risk)
+3	data.json	Web app manifest	webmanifest	application/manifest+json	
+3	data.json	Lottie animation	lottie	application/json	fps, frames, size, layers
+3	data.json	Excalidraw drawing	excalidraw	application/json	element counts, text
+3	data.json	TopoJSON	topojson	application/json	-> geo
+1	data.yaml	YAML	yaml yml	application/yaml	
+2	data.yaml	Kubernetes manifest	yaml		kinds, names, namespaces, images
+2	data.yaml	Docker Compose	compose.yaml docker-compose.yml		services, images, ports, volumes
+2	data.yaml	GitHub Actions workflow	.github/workflows/*.yml		triggers, jobs, actions used
+3	data.yaml	OpenAPI (YAML)	openapi.yaml		
+3	data.yaml	Ansible playbook	yml		hosts, roles, modules
+3	data.yaml	Helm chart	Chart.yaml		
+3	data.yaml	CloudFormation / SAM	template.yaml		resources by type
+3	data.yaml	GitLab CI	.gitlab-ci.yml		stages, jobs
+3	data.yaml	conda environment	environment.yml		channels, deps
+1	data.toml	TOML	toml	application/toml	
+1	data.ini	INI	ini cfg conf	text/plain	
+2	data.ini	Java properties	properties	text/x-java-properties	
+2	data.ini	dotenv	env .env	text/plain	values redacted
+3	data.ini	Windows .reg export	reg	text/plain	keys, value counts
+3	data.ini	Desktop entry	desktop	application/x-desktop	Name, Exec, Categories
+3	data.ini	EditorConfig	editorconfig		
+3	data.ini	Git config	gitconfig .gitmodules		remotes, submodules
+3	data.ini	systemd unit	service socket timer mount target		-> code.infra
+3	data.ini	Windows INF	inf	text/plain	driver class, provider, hardware ids
+1	data.csv	CSV	csv	text/csv	
+1	data.csv	TSV	tsv tab	text/tab-separated-values	
+3	data.csv	PSV / pipe separated	psv		
+3	data.csv	Fixed-width text table	fwf prn		column boundaries guess
+3	data.csv	vCalendar-like CSV exports (Outlook/Google contacts)	csv		
+1	data.sql	SQL script / dump	sql	application/sql	
+3	data.sql	PRQL	prql		
+3	data.sql	Cypher / GQL	cypher cql		
+2	data.binser	MessagePack	msgpack mpk	application/vnd.msgpack	
+2	data.binser	CBOR	cbor	application/cbor	
+2	data.binser	BSON	bson	application/bson	
+2	data.binser	Protocol Buffers binary	pb bin binpb	application/x-protobuf	
+2	data.binser	Protocol Buffers schema	proto	text/x-protobuf	package, messages, services (impl or protobuf-parse)
+3	data.binser	Protobuf text format	textproto pbtxt txtpb		
+2	data.binser	Apache Avro container	avro	application/avro	writer schema embedded
+3	data.binser	Avro schema	avsc	application/json	
+3	data.binser	Apache Thrift schema	thrift		
+3	data.binser	Cap'n Proto schema	capnp		
+3	data.binser	FlatBuffers schema / binary	fbs bfbs		
+3	data.binser	Bencode	bencode		
+3	data.binser	Python pickle	pkl pickle	application/x-python-pickle	opcode walk only (never unpickle!), referenced globals (risk)
+3	data.binser	Java serialized object	ser	application/x-java-serialized-object	class names (gadget risk flag)
+3	data.binser	PHP serialized	phpser		
+3	data.binser	Ion (Amazon)	ion	application/ion	
+3	data.binser	Smile / UBJSON	sml ubj		
+3	data.binser	RON	ron		
+3	data.binser	KDL	kdl		
+3	data.binser	HOCON	conf hocon		
+3	data.binser	Dhall / Jsonnet / CUE	dhall jsonnet libsonnet cue		
+3	data.binser	EDN	edn	application/edn	
+3	data.binser	S-expressions data	sexp		
+3	data.binser	ASN.1 BER/DER blob	der ber	application/octet-stream	tag tree (asn1-rs)
+3	data.binser	XDR	xdr		
+1	data.binser	Apple plist (XML)	plist	application/x-plist	-> apple
+1	data.binser	Apple plist (binary)	plist	application/x-bplist	-> apple
+3	data.binser	NBT (Minecraft)	nbt dat	application/x-minecraft-nbt	
+3	data.binser	Godot resource	tres res		
+3	data.binser	Unity YAML asset	unity prefab asset meta		GUIDs, component types
+1	code.source	Python source	py pyw pyi	text/x-python	imports, defs/classes, docstring, __main__ guard
+1	code.source	JavaScript source	js mjs cjs	text/javascript	oxc_parser: imports/exports, minified detection, source map ref
+1	code.source	TypeScript source	ts mts cts	application/typescript	oxc_parser
+2	code.source	JSX / TSX	jsx tsx	text/jsx	components exported
+1	code.source	Java source	java	text/x-java	package, imports, classes
+1	code.source	C source	c	text/x-c	#includes, functions
+1	code.source	C/C++ header	h hh hpp hxx h++	text/x-c-header	
+1	code.source	C++ source	cpp cc cxx c++ ipp	text/x-c++	
+1	code.source	C# source	cs	text/x-csharp	namespace, usings, types
+1	code.source	Go source	go	text/x-go	package, imports, funcs, build tags
+1	code.source	Rust source	rs	text/rust	syn: items, uses, attributes, unsafe count
+1	code.source	PHP source	php phtml php3 php4 php5 phps	application/x-httpd-php	
+1	code.source	Ruby source	rb rbw rake gemspec	text/x-ruby	
+1	code.source	Shell script	sh bash zsh ksh	application/x-sh	shebang, commands used, set -e
+1	code.source	Swift source	swift	text/x-swift	
+1	code.source	Kotlin source	kt kts	text/x-kotlin	
+2	code.source	Objective-C / Objective-C++	m mm	text/x-objective-c	disambiguate from MATLAB
+2	code.source	Scala	scala sc	text/x-scala	
+2	code.source	R script	r R	text/x-r	library() calls
+2	code.source	Dart	dart	application/dart	
+2	code.source	Lua	lua	text/x-lua	
+2	code.source	Perl	pl pm t	text/x-perl	
+1	code.source	PowerShell	ps1 psm1 psd1	text/x-powershell	
+1	code.source	Windows batch	bat cmd	application/x-bat	
+2	code.source	Visual Basic / VB.NET	vb bas cls frm	text/x-vb	
+2	code.source	VBScript	vbs vbe	text/vbscript	
+2	code.source	Haskell	hs lhs	text/x-haskell	
+2	code.source	Elixir	ex exs	text/x-elixir	
+2	code.source	Erlang	erl hrl	text/x-erlang	
+2	code.source	Clojure	clj cljs cljc edn	text/x-clojure	
+2	code.source	F#	fs fsi fsx	text/x-fsharp	
+2	code.source	OCaml	ml mli	text/x-ocaml	
+2	code.source	Julia	jl	text/x-julia	
+2	code.source	MATLAB / Octave script	m	text/x-matlab	
+2	code.source	Groovy / Gradle	groovy gradle gvy	text/x-groovy	
+2	code.source	Assembly	asm s S nasm	text/x-asm	
+1	code.source	SCSS / Sass	scss sass	text/x-scss	
+1	code.source	CSS	css	text/css	selectors, @imports, custom properties, @font-face, media queries
+2	code.source	Less / Stylus	less styl		
+2	code.source	Vue single-file component	vue		template/script/style blocks
+2	code.source	Svelte component	svelte		
+3	code.source	Astro component	astro		
+2	code.source	Zig	zig	text/x-zig	
+3	code.source	Nim	nim nims		
+3	code.source	Crystal	cr		
+3	code.source	D	d di	text/x-d	
+3	code.source	V / Vlang	v vsh		
+3	code.source	Odin	odin		
+3	code.source	Fortran	f f77 f90 f95 f03 f08 for	text/x-fortran	
+3	code.source	COBOL	cob cbl cpy	text/x-cobol	
+3	code.source	Pascal / Delphi	pas pp dpr lpr	text/x-pascal	
+3	code.source	Ada	adb ads	text/x-ada	
+3	code.source	Common Lisp / Emacs Lisp	lisp lsp el cl	text/x-lisp	
+3	code.source	Scheme / Racket	scm ss rkt	text/x-scheme	
+3	code.source	Prolog	pro P	text/x-prolog	
+3	code.source	Elm	elm		
+3	code.source	PureScript	purs		
+3	code.source	ReScript / ReasonML	res resi re rei		
+3	code.source	CoffeeScript	coffee litcoffee	text/coffeescript	
+3	code.source	Haxe	hx		
+3	code.source	Tcl	tcl tk	text/x-tcl	
+3	code.source	AWK / sed	awk sed		
+3	code.source	fish shell	fish		
+3	code.source	Solidity	sol		contract names, pragma version
+3	code.source	Move / Cairo / Vyper	move cairo vy		
+2	code.source	GraphQL	graphql gql	application/graphql	types, queries
+3	code.source	Verilog / SystemVerilog	v sv svh	text/x-verilog	modules
+3	code.source	VHDL	vhd vhdl	text/x-vhdl	entities
+2	code.source	CUDA	cu cuh		kernels
+3	code.source	OpenCL	cl		
+3	code.source	GLSL shader	glsl vert frag geom comp tesc tese		
+3	code.source	HLSL shader	hlsl fx		
+3	code.source	WGSL shader	wgsl		
+3	code.source	Metal shader	metal		
+3	code.source	SPIR-V binary	spv		-> bytecode-like header
+3	code.source	Apex / Salesforce	cls trigger		
+3	code.source	ABAP	abap		
+3	code.source	Smalltalk	st		
+3	code.source	Raku	raku rakumod p6		
+3	code.source	Hack	hack hh		
+3	code.source	Starlark / Bazel	bzl star BUILD WORKSPACE		rules, load()
+2	code.source	CMake	cmake CMakeLists.txt		project(), targets
+3	code.source	Meson / Ninja	meson.build ninja		
+2	code.source	Nix	nix		
+2	code.source	LaTeX source	tex ltx sty cls	application/x-tex	-> doc.other
+3	code.source	AutoHotkey / AutoIt	ahk au3		
+3	code.source	Jupyter-less IPython script	ipy		
+3	code.source	Gleam / Roc / Unison	gleam roc u		
+3	code.source	Mojo	mojo 🔥		
+3	code.source	Q# / OpenQASM	qs qasm		
+3	code.source	Arduino sketch	ino pde		
+3	code.source	LLVM IR	ll		target triple, functions
+3	code.source	WebAssembly text	wat wast	text/wasm	
+3	code.source	Regex / grammar files (ANTLR, PEG, Bison/Yacc, Lex)	g4 peg y yy l lex		
+3	code.source	Puppet / Chef	pp		
+3	code.source	PL/SQL / T-SQL	pls plsql pck tsql		
+3	code.source	Template: Go/Handlebars/Pug	tmpl gotmpl pug jade		
+1	code.manifest	npm package.json	package.json	application/json	
+2	code.manifest	npm/yarn/pnpm lockfile	package-lock.json yarn.lock pnpm-lock.yaml		
+2	code.manifest	Cargo manifest / lock	Cargo.toml Cargo.lock		
+2	code.manifest	Python pyproject	pyproject.toml		
+2	code.manifest	pip requirements	requirements.txt		
+3	code.manifest	Pipfile / poetry.lock / uv.lock	Pipfile Pipfile.lock poetry.lock uv.lock		
+3	code.manifest	setup.py / setup.cfg	setup.py setup.cfg		
+2	code.manifest	Go modules	go.mod go.sum		
+1	code.manifest	Maven POM	pom.xml		groupId/artifactId/version, deps
+3	code.manifest	Gradle build	build.gradle build.gradle.kts settings.gradle		
+3	code.manifest	Ruby Gemfile / lock	Gemfile Gemfile.lock		
+3	code.manifest	Composer	composer.json composer.lock		
+3	code.manifest	.NET project	csproj fsproj vbproj sln props targets		target frameworks, PackageReferences
+3	code.manifest	NuGet packages.config / Directory.Packages.props	packages.config		
+3	code.manifest	CocoaPods / SwiftPM	Podfile Podfile.lock Package.swift Package.resolved		
+3	code.manifest	Dart pubspec	pubspec.yaml pubspec.lock		
+3	code.manifest	Elixir mix / Hex	mix.exs mix.lock		
+3	code.manifest	Haskell cabal / stack	cabal stack.yaml		
+3	code.manifest	R DESCRIPTION	DESCRIPTION		
+3	code.manifest	Conan / vcpkg	conanfile.txt conanfile.py vcpkg.json		
+3	code.manifest	Deno config	deno.json deno.jsonc		
+3	code.manifest	Julia Project.toml / Manifest.toml	Project.toml Manifest.toml		
+3	code.manifest	CITATION.cff	cff		title, authors, DOI
+3	code.manifest	SBOM (SPDX / CycloneDX)	spdx spdx.json cdx.json bom.xml		component count, licences
+1	code.notebook	Jupyter notebook	ipynb	application/x-ipynb+json	
+3	code.notebook	Zeppelin / Databricks notebook	zpln dbc		
+3	code.notebook	Observable / Livebook	livemd		
+3	code.notebook	Mathematica notebook	nb cdf	application/mathematica	
+1	code.infra	Dockerfile / Containerfile	Dockerfile Containerfile dockerfile		
+1	code.infra	Makefile	Makefile makefile mk GNUmakefile		
+2	code.infra	Terraform / HCL	tf tfvars hcl		
+3	code.infra	nginx / Apache config	nginx.conf httpd.conf .htaccess		
+3	code.infra	crontab	crontab cron		
+2	code.infra	.gitignore / .dockerignore	gitignore dockerignore npmignore		
+3	code.infra	Vagrantfile / Procfile / Justfile	Vagrantfile Procfile justfile Taskfile.yml		
+3	code.infra	SSH config / known_hosts	ssh_config known_hosts authorized_keys		host count; keys -> crypto
+3	code.infra	Caddyfile / HAProxy / Envoy	Caddyfile haproxy.cfg envoy.yaml		
+1	doc.pdf	PDF	pdf	application/pdf	
+3	doc.pdf	PDF/A, PDF/X, PDF/UA variants	pdf	application/pdf	conformance from XMP pdfaid/pdfx/pdfuaid
+3	doc.pdf	Adobe Illustrator (PDF-based)	ai	application/illustrator	AI private data present, artboards
+3	doc.pdf	Forms Data Format	fdf xfdf	application/vnd.fdf	field names/values
+1	doc.ooxml	Word document (OOXML)	docx	application/vnd.openxmlformats-officedocument.wordprocessingml.document	
+1	doc.ooxml	Excel workbook (OOXML)	xlsx	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet	
+1	doc.ooxml	PowerPoint presentation (OOXML)	pptx	application/vnd.openxmlformats-officedocument.presentationml.presentation	
+2	doc.ooxml	Word macro-enabled / template	docm dotx dotm	application/vnd.ms-word.document.macroEnabled.12	macros flag
+1	doc.ooxml	Excel macro-enabled / template / add-in	xlsm xltx xltm xlam	application/vnd.ms-excel.sheet.macroEnabled.12	macros flag
+2	doc.ooxml	Excel binary workbook	xlsb	application/vnd.ms-excel.sheet.binary.macroEnabled.12	calamine
+2	doc.ooxml	PowerPoint macro-enabled / template / show	pptm potx potm ppsx ppsm	application/vnd.ms-powerpoint.presentation.macroEnabled.12	
+3	doc.ooxml	Visio drawing (OOXML)	vsdx vsdm vstx	application/vnd.ms-visio.drawing	page names, shape text
+3	doc.ooxml	Word XML 2003 / Flat OPC	xml fodt		
+3	doc.ooxml	XPS / OpenXPS	xps oxps	application/oxps	pages, fonts, docProps
+3	doc.ooxml	3D Manufacturing Format (OPC)	3mf	model/3mf	-> 3d
+1	doc.odf	OpenDocument Text	odt ott	application/vnd.oasis.opendocument.text	
+2	doc.odf	OpenDocument Spreadsheet	ods ots	application/vnd.oasis.opendocument.spreadsheet	
+2	doc.odf	OpenDocument Presentation	odp otp	application/vnd.oasis.opendocument.presentation	
+3	doc.odf	OpenDocument Drawing / Graphics	odg otg	application/vnd.oasis.opendocument.graphics	
+3	doc.odf	OpenDocument Formula / Database / Chart	odf odb odc		
+3	doc.odf	Flat OpenDocument XML	fodt fods fodp fodg		
+3	doc.odf	Apple Pages / Numbers / Keynote	pages numbers key	application/vnd.apple.pages	zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview
+3	doc.odf	Hancom HWPX	hwpx		
+1	doc.ole	Word 97-2003	doc dot	application/msword	
+1	doc.ole	Excel 97-2003	xls xlt xla	application/vnd.ms-excel	
+1	doc.ole	PowerPoint 97-2003	ppt pot pps	application/vnd.ms-powerpoint	
+3	doc.ole	Visio legacy	vsd vss vst	application/vnd.visio	
+3	doc.ole	Microsoft Publisher	pub	application/x-mspublisher	
+3	doc.ole	Microsoft Project	mpp	application/vnd.ms-project	
+3	doc.ole	Outlook template / item	oft	application/vnd.ms-outlook	-> email
+3	doc.ole	Thumbs.db	db		thumbnail count
+3	doc.ole	Hangul HWP 5	hwp	application/x-hwp	
+3	doc.ole	Generic OLE2 Compound File	cfb ole		storage tree
+3	doc.ole	SolidWorks / Inventor (OLE-based)	sldprt sldasm slddrw ipt iam idw		-> cad, summary info
+3	doc.ole	Microsoft Works / WordPerfect	wps wks wpd wp	application/vnd.wordperfect	header + prefix packet
+1	doc.rtf	Rich Text Format	rtf	application/rtf	
+3	doc.rtf	WordPad / RTFD bundle	rtfd		
+1	doc.ebook	EPUB	epub	application/epub+zip	
+2	doc.ebook	Kindle MOBI / AZW / AZW3	mobi azw azw3 prc	application/x-mobipocket-ebook	EXTH records
+3	doc.ebook	Kindle KFX	kfx		header only; DRM flag
+3	doc.ebook	FictionBook	fb2 fbz	application/x-fictionbook+xml	
+2	doc.ebook	Comic book archive	cbz cbr cb7 cbt	application/vnd.comicbook+zip	page count, ComicInfo.xml
+3	doc.ebook	Apple iBooks	ibooks		
+3	doc.ebook	Microsoft Reader / eReader	lit pdb		
+3	doc.ebook	DAISY / Open eBook	opf ncx		
+1	doc.other	PostScript	ps	application/postscript	DSC comments
+1	doc.other	Encapsulated PostScript	eps epsf epsi	application/postscript	DSC + embedded preview TIFF/WMF + XMP
+3	doc.other	DjVu	djvu djv	image/vnd.djvu	
+3	doc.other	Compiled HTML Help	chm	application/vnd.ms-htmlhelp	ITSF header, topics list (impl)
+3	doc.other	WinHelp	hlp		
+1	doc.other	LaTeX document	tex	application/x-tex	
+2	doc.other	BibTeX / BibLaTeX	bib	application/x-bibtex	
+3	doc.other	RIS / EndNote / CSL-JSON citations	ris enw nbib csl		entry count, titles, DOIs
+3	doc.other	Typst	typ		
+3	doc.other	Groff/Scribus/LyX	lyx sla		
+3	doc.other	Microsoft OneNote	one onetoc2	application/onenote	section/page titles (impl, revision store)
+3	doc.other	Evernote export	enex	application/enex+xml	note titles, tags, dates
+3	doc.other	Obsidian canvas	canvas		nodes, text
+3	doc.other	Scrivener / Final Draft / Fountain	scriv fdx fountain		title page, scene headings
+3	doc.other	Lotus 1-2-3 / Quattro	wk1 wk3 wk4 123 qpw		
+3	doc.other	Apple ClarisWorks / AppleWorks	cwk		
+3	doc.other	PDF-like: Adobe FrameMaker / InDesign	fm mif indd idml		IDML (zip+xml): stories text
+3	doc.other	XML Paper / StarOffice legacy	sxw sxc sxi sdw		-> doc.odf mapping
+3	doc.other	Mailing labels / Mail merge data	mdb-merge		
+1	email	Email message (RFC 5322 / MIME)	eml	message/rfc822	
+1	email	Mailbox	mbox mbx	application/mbox	
+1	email	Outlook message	msg	application/vnd.ms-outlook	
+3	email	Outlook data file	pst ost	application/vnd.ms-outlook-pst	folder tree, item counts, date range
+3	email	Maildir message	(maildir file)		
+3	email	Thunderbird / EMLX	emlx		Apple Mail plist trailer
+3	email	Usenet / NNTP article	nws		
+3	email	TNEF winmail.dat	dat	application/ms-tnef	attachments (impl)
+1	text.calendar	iCalendar	ics ifb ical	text/calendar	
+3	text.calendar	vCalendar 1.0	vcs	text/x-vcalendar	
+3	text.calendar	JSCalendar	json		
+1	text.contact	vCard	vcf vcard	text/vcard	
+3	text.contact	JSContact / LDIF	ldif	text/directory	
+1	text.subtitle	SubRip	srt	application/x-subrip	
+2	text.subtitle	WebVTT	vtt	text/vtt	
+2	text.subtitle	Advanced SubStation / SSA	ass ssa	text/x-ssa	
+3	text.subtitle	TTML / DFXP	ttml dfxp xml	application/ttml+xml	
+3	text.subtitle	MicroDVD / SubViewer	sub sbv		
+3	text.subtitle	SAMI	smi sami		
+3	text.subtitle	LRC lyrics	lrc		ti/ar/al tags
+3	text.subtitle	VobSub	idx sub		languages, cue count (vobsub)
+3	text.subtitle	PGS Blu-ray subtitles	sup		cue count, timings
+3	text.subtitle	Scenarist / SCC / STL captions	scc stl cap		
+3	text.subtitle	YouTube timed text / JSON3	srv3 json3		
+1	image.raster	JPEG	jpg jpeg jpe jfif	image/jpeg	APP0 JFIF / APP1 EXIF+XMP / APP2 ICC+MPF / APP13 IPTC / APP14 Adobe; quality from DQT
+1	image.raster	PNG	png	image/png	tEXt/iTXt/zTXt (incl. AI-generation 'parameters'), eXIf, iCCP, pHYs, tIME, APNG acTL
+1	image.raster	GIF	gif	image/gif	frames, loop (NETSCAPE2.0), comments, XMP app ext
+1	image.raster	WebP	webp	image/webp	VP8/VP8L/VP8X, EXIF/XMP/ICCP chunks, animation
+1	image.raster	HEIF / HEIC	heic heif heics hif	image/heic	ISOBMFF meta box: ispe, colr, irot, Exif/XMP items, depth/alpha aux, burst/live photo
+1	image.raster	AVIF	avif avifs	image/avif	avif-parse + mp4-atom
+1	image.raster	SVG	svg svgz	image/svg+xml	-> image.vector
+1	image.raster	TIFF	tif tiff	image/tiff	all IFDs, pages, compression, GeoKeys -> geo
+1	image.raster	BMP	bmp dib	image/bmp	header version, compression
+1	image.raster	ICO / CUR	ico cur	image/vnd.microsoft.icon	sizes list
+2	image.raster	JPEG XL	jxl	image/jxl	jxl-oxide; container boxes Exif/xml/jumb
+2	image.raster	JPEG 2000	jp2 j2k jpf jpx jpm mj2	image/jp2	hayro-jpeg2000; boxes, XMP uuid box
+1	image.raster	Animated PNG	apng	image/apng	
+2	image.raster	TGA	tga tpic	image/x-tga	
+2	image.raster	PCX	pcx	image/vnd.zbrush.pcx	
+2	image.raster	Netpbm PBM/PGM/PPM/PAM/PFM	pbm pgm ppm pnm pam pfm	image/x-portable-anymap	
+3	image.raster	QOI	qoi	image/qoi	
+3	image.raster	Farbfeld	ff		
+3	image.raster	JPEG-XR / HD Photo	jxr wdp hdp	image/jxr	TIFF-like IFD (impl)
+3	image.raster	JPEG-LS / Lossless JPEG	jls		
+3	image.raster	MPO (multi-picture)	mpo	image/mpo	MPF index, stereo pairs
+3	image.raster	Radiance HDR	hdr pic	image/vnd.radiance	
+3	image.raster	SGI / RGB	sgi rgb rgba bw	image/sgi	
+3	image.raster	Sun Raster / XBM / XPM	ras xbm xpm	image/x-xpixmap	
+3	image.raster	WBMP	wbmp	image/vnd.wap.wbmp	
+3	image.raster	FLIF / BPG	flif bpg		
+3	image.raster	Apple ICNS	icns	image/icns	icon sizes
+3	image.raster	Windows animated cursor	ani	application/x-navi-animation	RIFF
+3	image.raster	PICT	pict pct	image/x-pict	
+3	image.raster	Amiga IFF ILBM	iff ilbm lbm	image/x-ilbm	
+3	image.raster	DCX / multi-page PCX	dcx		
+3	image.raster	FITS image	fits fit fts	image/fits	-> sci
+3	image.raster	Cineon / DPX film scan	cin dpx	image/x-dpx	film/TV header: timecode, frame, creator
+3	image.raster	WebP2 / AVCI / HEJ2 (ISOBMFF variants)	avci hej2		
+3	image.raster	Google Ultra HDR / gain-map JPEG	jpg		MPF + XMP hdrgm namespace
+3	image.raster	CompuServe RLE / Mac Paint	rle mac pntg		
+3	image.raster	OpenRaster	ora	image/openraster	-> image.layered
+3	image.raster	Krita / Procreate	kra procreate		-> image.layered
+3	image.raster	DjVu single page	djvu	image/vnd.djvu	-> doc.other
+3	image.raster	Windows Imaging Component (CR in WIC)	wmp		
+1	image.raw	Adobe DNG	dng	image/x-adobe-dng	
+1	image.raw	Canon CR2 / CR3 / CRW	cr2 cr3 crw	image/x-canon-cr2	CR3 = ISOBMFF CMT boxes
+1	image.raw	Nikon NEF / NRW	nef nrw	image/x-nikon-nef	
+1	image.raw	Sony ARW / SRF / SR2	arw srf sr2	image/x-sony-arw	
+3	image.raw	Fujifilm RAF	raf	image/x-fuji-raf	
+3	image.raw	Olympus / OM ORF	orf	image/x-olympus-orf	
+3	image.raw	Panasonic RW2 / RAW	rw2 raw	image/x-panasonic-rw2	
+3	image.raw	Pentax PEF	pef	image/x-pentax-pef	
+3	image.raw	Samsung SRW	srw	image/x-samsung-srw	
+3	image.raw	Leica RWL / Hasselblad 3FR/FFF	rwl 3fr fff		
+3	image.raw	Phase One IIQ / Leaf MOS	iiq mos		
+3	image.raw	Mamiya MEF / Minolta MRW	mef mrw		
+3	image.raw	Sigma X3F	x3f		
+3	image.raw	Kodak DCR/KDC/K25 / Epson ERF	dcr kdc k25 erf		
+3	image.raw	GoPro GPR	gpr		
+3	image.raw	Apple ProRAW (DNG)	dng		
+1	image.layered	Adobe Photoshop	psd psb	image/vnd.adobe.photoshop	
+3	image.layered	GIMP XCF	xcf	image/x-xcf	
+3	image.layered	Krita	kra	application/x-krita	
+3	image.layered	OpenRaster	ora	image/openraster	
+3	image.layered	Procreate	procreate		
+3	image.layered	Affinity Photo/Designer/Publisher	afphoto afdesign afpub		header, embedded thumbnail
+3	image.layered	Sketch	sketch		pages, artboards (zip+json)
+3	image.layered	Figma export	fig		header only
+3	image.layered	Paint.NET	pdn		
+3	image.layered	Corel Painter / PaintShop Pro	rif pspimage		
+2	image.vector	SVG / SVGZ	svg svgz	image/svg+xml	
+2	image.vector	Windows Metafile / Enhanced Metafile	wmf emf emz wmz	image/emf	
+3	image.vector	CorelDRAW	cdr cdt	application/vnd.corel-draw	RIFF chunks, version
+3	image.vector	Adobe Illustrator legacy (PS-based)	ai	application/postscript	-> doc.other DSC
+3	image.vector	Xfig / Graphviz DOT	fig dot gv	text/vnd.graphviz	graph name, node/edge count
+3	image.vector	Mermaid / PlantUML	mmd mermaid puml plantuml		diagram type, nodes
+3	image.vector	draw.io / diagrams.net	drawio dio		pages, labels
+3	image.vector	Visio stencil XML	vdx		
+3	image.vector	Inkscape / Sodipodi SVG	svg		inkscape:version, layers
+3	image.vector	Lottie / Bodymovin	json		-> data.json
+3	image.vector	Macromedia FreeHand	fh fh11		
+3	image.vector	CGM	cgm	image/cgm	
+2	image.texture	DirectDraw Surface	dds	image/vnd-ms.dds	
+3	image.texture	KTX / KTX2	ktx ktx2	image/ktx2	
+3	image.texture	Basis Universal	basis		
+2	image.texture	OpenEXR	exr	image/x-exr	
+3	image.texture	Valve VTF	vtf		
+3	image.texture	PVR texture	pvr		
+3	image.texture	ASTC	astc		
+3	image.texture	Unreal / Unity textures (raw headers)	utx tex		
+1	audio	MP3	mp3	audio/mpeg	ID3v1/ID3v2.3/2.4, APE, Xing/Info/VBRI (VBR, frames), LAME tag
+1	audio	AAC / M4A	m4a aac m4b m4p	audio/mp4	iTunes ilst atoms, chapters (m4b), DRM (m4p)
+1	audio	WAV	wav wave	audio/wav	fmt/fact/LIST INFO/bext (BWF)/iXML/ID3 chunks
+1	audio	FLAC	flac	audio/flac	STREAMINFO, Vorbis comments, PICTURE, CUESHEET
+1	audio	Ogg Vorbis	ogg oga	audio/ogg	
+1	audio	Opus	opus	audio/opus	OpusHead/OpusTags
+1	audio	AIFF / AIFF-C	aif aiff aifc	audio/aiff	COMM, NAME/AUTH/ANNO, ID3 chunk
+1	audio	Windows Media Audio	wma	audio/x-ms-wma	ASF header objects (impl)
+2	audio	Apple Lossless	m4a caf	audio/mp4	
+2	audio	Core Audio Format	caf	audio/x-caf	
+2	audio	WavPack	wv wvc	audio/wavpack	
+2	audio	Monkey's Audio	ape	audio/ape	
+3	audio	Musepack	mpc mp+ mpp	audio/musepack	
+3	audio	Speex / Ogg FLAC	spx	audio/ogg	
+3	audio	AMR / AMR-WB / 3GA	amr awb 3ga	audio/amr	
+3	audio	AC-3 / E-AC-3 / DTS / TrueHD raw	ac3 ec3 eac3 dts thd mlp	audio/ac3	sync frame header: channels, rate, bitrate
+3	audio	MPEG-1/2 Layer I/II	mp1 mp2 mpa	audio/mpeg	
+3	audio	ADTS AAC raw	aac adts	audio/aac	
+3	audio	DSD (DSF / DFF)	dsf dff	audio/dsd	
+3	audio	TTA / OptimFROG / TAK	tta ofr tak		
+3	audio	AU / SND	au snd	audio/basic	
+3	audio	RealAudio	ra ram	audio/vnd.rn-realaudio	
+3	audio	VOC / 8SVX / IFF audio	voc 8svx		
+3	audio	Broadcast Wave / RF64 / W64	bwf rf64 w64		bext originator, time reference
+3	audio	Matroska audio	mka	audio/x-matroska	-> video
+3	audio	WebM audio	weba	audio/webm	
+3	audio	Audible AA / AAX	aa aax		chapters, title, narrator (header only, DRM flag)
+3	audio	GSM / VOX telephony	gsm vox		
+3	audio	SoundFont / DLS	sf2 sf3 dls	audio/x-soundfont	bank name, presets, samples
+3	audio	Sampler / instrument (SFZ, EXS)	sfz exs		
+3	audio	Audio project: Audacity / Ableton / FL / Logic / Reaper	aup3 aup als flp logicx rpp		tracks, tempo, plugins (sqlite/xml/gzip-xml)
+1	audio.score	MIDI	mid midi kar rmi	audio/midi	
+3	audio.score	MusicXML	musicxml mxl xml	application/vnd.recordare.musicxml+xml	
+3	audio.score	MEI / ABC / LilyPond / Guitar Pro / MuseScore	mei abc ly gp gp5 gpx mscz		
+3	audio.score	Tracker modules MOD/XM/IT/S3M	mod xm it s3m mptm	audio/x-mod	
+2	audio.playlist	M3U / M3U8 (HLS)	m3u m3u8	application/vnd.apple.mpegurl	
+3	audio.playlist	PLS / XSPF / ASX / WPL	pls xspf asx wpl	audio/x-scpls	
+3	audio.playlist	CUE sheet	cue	application/x-cue	
+3	audio.playlist	DASH manifest	mpd	application/dash+xml	periods, adaptation sets, codecs
+3	audio.playlist	Smooth Streaming manifest	ism ismc		
+1	video	MP4	mp4 m4v	video/mp4	ftyp brands, moov/mvhd/tkhd/mdia, udta/meta/ilst, ©xyz GPS, Apple keys, sidx/moof (fragmented)
+1	video	QuickTime MOV	mov qt	video/quicktime	com.apple.quicktime.* keys (make, model, location, creationdate)
+1	video	Matroska	mkv mk3d	video/x-matroska	EBML DocType, Info, Tracks, Tags, Chapters, Attachments (fonts)
+1	video	WebM	webm	video/webm	
+1	video	AVI	avi	video/x-msvideo	RIFF hdrl/strl/INFO, OpenDML
+1	video	MPEG transport stream	ts m2ts mts tsv	video/mp2t	PAT/PMT programs, stream types, PCR duration, AVCHD
+1	video	Windows Media Video / ASF	wmv asf	video/x-ms-wmv	ASF content description objects
+2	video	Flash Video	flv f4v	video/x-flv	onMetaData AMF0 (impl)
+1	video	3GPP / 3GPP2	3gp 3g2	video/3gpp	
+1	video	MPEG-1/2 program stream	mpg mpeg m1v m2v vob mpe	video/mpeg	pack/system headers, sequence header
+3	video	Ogg Theora / OGM	ogv ogm	video/ogg	
+3	video	RealMedia	rm rmvb	application/vnd.rn-realmedia	
+3	video	DV	dv dif	video/dv	
+3	video	MXF broadcast	mxf	application/mxf	partition pack, operational pattern, essence descriptors (impl KLV)
+3	video	Apple ProRes / HEVC in MOV	mov		codec profile from sample entry
+3	video	H.264 / H.265 / AV1 / VVC elementary stream	h264 264 h265 265 hevc obu ivf vvc	video/h264	SPS/VPS/sequence header: profile, level, size, fps, bit depth
+3	video	Motion JPEG / AVCHD / XAVC	mjpg mjpeg mts		
+3	video	Blackmagic RAW / RED R3D / ARRIRAW	braw r3d ari		camera, lens, timecode (header)
+3	video	DivX / Xvid	divx xvid		-> AVI
+3	video	Nullsoft NSV / Bink / Smacker	nsv bik smk		
+3	video	AMV / MTV / FLIC	amv mtv flc fli		
+3	video	Video project: Premiere / Final Cut / DaVinci / Kdenlive	prproj fcpxml drp kdenlive mlt		clips, timeline length (gzip-xml/xml)
+3	video	EDL / AAF / OTIO edit lists	edl aaf otio		events, reel names, timecodes
+3	video	Apple Live Photo / Motion Photo	mov jpg		paired-asset XMP (GCamera/Container)
+3	video	360 / spatial video metadata	mp4 mov		sv3d/st3d boxes, Spherical XMP
+3	video	Dashcam / drone telemetry tracks	mp4 mov		GPMF (GoPro), DJI SRT/klv -> GPS track
+3	video	Animated GIF video replacement (GIFV)	gifv		-> MP4
+3	video	Screen recording (asciinema)	cast		width, height, duration, command
+3	video	Video subtitles container	mks		-> video
+1	archive	ZIP	zip zipx	application/zip	central directory, extra fields (Unix/NTFS times, AES), comment, Zip64
+1	archive	TAR	tar	application/x-tar	ustar/pax/GNU headers, pax keywords
+1	archive	7-Zip	7z	application/x-7z-compressed	
+1	archive	RAR	rar	application/vnd.rar	RAR4/RAR5 block headers, encrypted headers flag, recovery record, solid
+1	archive	tar.gz / tgz	tgz tar.gz	application/gzip	compress -> archive chain
+2	archive	tar.bz2 / tar.xz / tar.zst	tbz2 txz tzst tar.bz2 tar.xz tar.zst		
+1	archive	Microsoft Cabinet	cab	application/vnd.ms-cab-compressed	
+3	archive	LHA / LZH	lzh lha	application/x-lzh-compressed	
+3	archive	ARJ	arj	application/x-arj	
+3	archive	CPIO	cpio	application/x-cpio	newc/odc/bin
+3	archive	Unix ar	a ar	application/x-archive	-> also static libraries (exec members)
+3	archive	ACE / ZOO / ARC / PAK (DOS)	ace zoo arc pak		headers only
+3	archive	StuffIt	sit sitx	application/x-stuffit	header only
+3	archive	WIM Windows imaging	wim swm esd	application/x-ms-wim	images + XML metadata
+3	archive	XAR	xar pkg	application/x-xar	TOC XML
+3	archive	Split / multipart archives	001 z01 r00 part1.rar		volume detection
+3	archive	Shell archive (shar) / makeself	shar run		
+3	archive	Java/Android archive (generic zip)	jar war ear aar	application/java-archive	-> package
+3	archive	Squashfs	squashfs sqsh sfs	application/vnd.squashfs	-> disk
+3	archive	PEA / ZPAQ / KGB	pea zpaq kgb		headers only
+3	archive	Apple Archive / AAR	aar		
+3	archive	Bundle formats: .app/.framework zipped	ipa		-> package
+1	compress	gzip	gz gzip	application/gzip	
+1	compress	bzip2	bz2 bzip2	application/x-bzip2	
+1	compress	xz	xz	application/x-xz	
+1	compress	Zstandard	zst zstd	application/zstd	
+3	compress	LZMA (alone)	lzma	application/x-lzma	
+3	compress	LZ4	lz4	application/x-lz4	
+3	compress	Brotli	br	application/x-brotli	
+3	compress	Unix compress (.Z)	Z taz	application/x-compress	
+3	compress	lzip / lzop	lz lzo	application/x-lzip	
+3	compress	Snappy framed	sz snappy		
+3	compress	LZFSE / Apple	lzfse		
+3	compress	zlib raw stream	zz zlib		
+3	compress	pack / compact / freeze (legacy)	z		
+1	package	Debian package	deb udeb	application/vnd.debian.binary-package	
+2	package	RPM package	rpm	application/x-rpm	
+1	package	Android APK / AAB	apk aab apks xapk	application/vnd.android.package-archive	manifest, permissions, signing scheme v1-v4, dex count, native ABIs
+2	package	iOS app archive	ipa	application/octet-stream	Info.plist, provisioning, executable -> exec
+1	package	Java JAR / WAR / EAR	jar war ear	application/java-archive	MANIFEST.MF, Maven pom.properties, signed (META-INF/*.SF)
+1	package	Python wheel	whl	application/zip	METADATA (core metadata), WHEEL tags, entry points
+2	package	Python sdist / egg	tar.gz egg	application/gzip	PKG-INFO
+2	package	npm package tarball	tgz	application/gzip	package/package.json
+1	package	Windows Installer	msi msp msm	application/x-msi	SummaryInformation + Property table (ProductName, Version, Manufacturer, UpgradeCode)
+1	package	macOS disk image	dmg	application/x-apple-diskimage	koly trailer, plist, partitions
+2	package	macOS installer package	pkg mpkg	application/vnd.apple.installer+xml	xar TOC, Distribution, PackageInfo, signed
+2	package	Windows MSIX / APPX	msix appx msixbundle appxbundle	application/msix	AppxManifest.xml identity, capabilities
+3	package	NuGet package	nupkg snupkg	application/zip	.nuspec
+3	package	Ruby gem	gem	application/x-tar	metadata.gz (YAML)
+3	package	Rust crate	crate	application/gzip	Cargo.toml inside
+3	package	Snap / Flatpak / AppImage	snap flatpak flatpakref AppImage		snap.yaml, flatpak metadata, ELF + squashfs desktop file
+3	package	Arch / Alpine packages	pkg.tar.zst apk	application/x-tar	.PKGINFO
+3	package	Conda package	conda tar.bz2	application/zip	info/index.json
+3	package	Chrome / Firefox extension	crx xpi	application/x-chrome-extension	manifest.json permissions
+3	package	VS Code extension / JetBrains plugin	vsix	application/zip	package.json / plugin.xml
+3	package	Helm chart archive	tgz		Chart.yaml
+3	package	Docker / OCI image tarball	tar		manifest.json, config: layers, env, entrypoint, labels
+3	package	OCI layout / ORAS artifact	oci-layout		
+3	package	Windows CAB update / MSU	msu		
+3	package	Solaris / BSD / Slackware packages	pkg txz tgz		
+3	package	Haiku / Homebrew bottle	hpkg bottle.tar.gz		
+3	package	Unity package	unitypackage		asset paths
+3	package	Office add-in / VBA add-in	xla ppa		-> doc.ole
+3	package	Electron asar	asar		header JSON file list
+1	disk	ISO 9660 / UDF	iso udf	application/x-iso9660-image	
+3	disk	Raw disk image	img raw dd bin	application/octet-stream	MBR/GPT
+3	disk	VirtualBox VDI	vdi	application/x-virtualbox-vdi	
+3	disk	VMware VMDK	vmdk	application/x-vmdk	descriptor, extents
+3	disk	Hyper-V VHD / VHDX	vhd vhdx	application/x-vhd	
+3	disk	QEMU QCOW2 / QED	qcow qcow2 qed	application/x-qemu-disk	
+3	disk	Apple sparsebundle / sparseimage	sparseimage sparsebundle		
+3	disk	Expert Witness (E01) / AFF	e01 ex01 aff		case metadata, acquisition hashes
+3	disk	CD images BIN/CUE, NRG, MDF, CCD	bin nrg mdf mds ccd		tracks
+3	disk	Floppy images	ima dsk adf d64 st		filesystem label
+3	disk	Filesystem images ext/FAT/NTFS/APFS/HFS+	ext4 fat hfs apfs		superblock
+3	disk	Android sparse / boot image	simg boot.img		kernel cmdline, os version
+3	disk	Firmware images (UEFI capsule, U-Boot uImage, FIT, Intel HEX, S-record)	cap uimg itb hex srec s19		header fields
+3	disk	OVA / OVF virtual appliance	ova ovf		product, vendor, disks
+1	exec	Windows PE executable / DLL	exe dll sys scr ocx cpl efi	application/vnd.microsoft.portable-executable	
+1	exec	ELF executable / shared object	elf so (no ext) o ko axf	application/x-elf	
+1	exec	Mach-O / universal binary	(no ext) dylib bundle o	application/x-mach-binary	fat archs, load commands, LC_BUILD_VERSION, codesign
+1	exec	WebAssembly module	wasm	application/wasm	imports/exports, custom sections (name, producers), target features
+2	exec	Static library / COFF object	lib a obj o	application/x-archive	members, symbols
+3	exec	ELF core dump	core	application/x-coredump	signal, process name, threads
+3	exec	Windows minidump	dmp mdmp	application/x-dmp	-> forensic
+3	exec	MS-DOS / NE / LE executables	com exe		header only
+3	exec	PDB debug database	pdb	application/x-ms-pdb	GUID, age, modules
+3	exec	DWARF split / dSYM	dwo dwp dSYM		compile units, producers
+3	exec	Linux kernel image / initramfs	vmlinuz bzImage initrd		version string
+3	exec	eBPF object	bpf.o		programs, maps
+3	exec	Android ART / OAT / ODEX	oat odex vdex art		
+3	exec	Windows driver package / CAT	cat		signed catalog hashes count
+3	exec	Rust rlib / rmeta	rlib rmeta		crate name, rustc version (rustc metadata header)
+3	exec	Go binary buildinfo	(ELF/PE/Mach-O)		module path, deps, Go version (impl buildinfo parser)
+1	bytecode	Java class	class	application/java-vm	
+2	bytecode	Android DEX	dex	application/vnd.android.dex	
+2	bytecode	Python bytecode	pyc pyo	application/x-python-code	
+2	bytecode	.NET assembly (CLI)	exe dll winmd		CLR header, assembly name/version/culture, references, target framework attribute
+3	bytecode	Lua bytecode / LuaJIT	luac		
+3	bytecode	Erlang BEAM	beam		module, exports, attributes
+3	bytecode	Hermes / V8 snapshot / QuickJS	hbc bin		
+3	bytecode	Emacs / Guile compiled	elc go		
+3	bytecode	Ruby YARV / mruby	mrb		
+3	bytecode	OCaml / Haskell interface	cmi cmo hi		
+3	bytecode	Smalltalk image / Pharo	image changes		
+3	bytecode	Flash ActionScript ABC	abc		-> web.misc SWF
+1	crypto	X.509 certificate	crt cer der pem	application/pkix-cert	
+1	crypto	PEM bundle / chain	pem	application/x-pem-file	
+2	crypto	Private key (PKCS#1/#8, SEC1)	key pem p8	application/pkcs8	type + bits + encrypted only
+1	crypto	SSH public / private key	pub id_rsa id_ed25519 ppk		OpenSSH + PuTTY PPK
+2	crypto	PKCS#12 / PFX	p12 pfx	application/x-pkcs12	bag types (MAC/encrypted)
+2	crypto	OpenPGP key / message / signature	asc gpg pgp sig kbx	application/pgp-keys	
+3	crypto	PKCS#7 / CMS signed data	p7b p7c p7s p7m	application/pkcs7-mime	signers, certs
+3	crypto	Certificate signing request	csr req	application/pkcs10	
+3	crypto	Certificate revocation list	crl	application/pkix-crl	issuer, entries, next update
+3	crypto	Java KeyStore / BKS	jks bks keystore	application/x-java-keystore	aliases, entry types
+3	crypto	JSON Web Key / JWT / JWS	jwk jwks jwt		header + claims, sig unverified
+3	crypto	age / minisign / signify	age minisig sig		recipients/key ids
+3	crypto	KeePass / password vault	kdbx kdb 1pif		header only: cipher, KDF (never decrypt)
+3	crypto	TPM / FIDO / misc keys	tss		
+3	crypto	Encrypted container (VeraCrypt/LUKS/BitLocker header)	hc luks bek		header: cipher, version, UUID (LUKS)
+3	crypto	S/MIME email	p7m		-> email
+3	crypto	Apple signed artifacts (.mobileprovision)	mobileprovision provisionprofile		-> apple
+3	crypto	Authenticode detached signature / catalog	cat		
+1	db	SQLite database	sqlite sqlite3 db db3 s3db	application/vnd.sqlite3	application_id routing (GeoPackage, MBTiles, Core Data...)
+3	db	SQLite WAL / journal	db-wal db-shm db-journal		frames, salts
+3	db	Microsoft Access	mdb accdb	application/vnd.ms-access	Jet/ACE version, table names (impl)
+3	db	dBase / FoxPro DBF	dbf	application/dbase	
+3	db	DuckDB database	duckdb ddb		header version
+3	db	LMDB / Berkeley DB	mdb db		page size, entries
+3	db	LevelDB / RocksDB SST & logs	ldb sst log		table properties (RocksDB properties block)
+3	db	Realm / Firebird / H2 / HSQLDB	realm fdb gdb mv.db		header
+3	db	Microsoft SQL Server backup / MDF	bak mdf ldf		header: database name, version
+3	db	PostgreSQL custom dump	dump backup	application/octet-stream	pg_dump header: db name, version, TOC entries
+3	db	MySQL / MariaDB table files	frm ibd myd myi		
+3	db	Browser profile databases (History, Cookies, Places)	sqlite		known schema -> summary (counts, date range; no URLs by default)
+3	db	Apple Core Data / Photos library	sqlite photoslibrary		
+3	db	Redis RDB / AOF	rdb aof		version, key count estimate
+3	db	MongoDB dump (BSON dir)	bson		-> data.binser
+3	db	Mobile backups (iTunes Manifest.db / Android .ab)	db ab		
+1	forensic	PCAP	pcap cap dmp	application/vnd.tcpdump.pcap	
+2	forensic	PCAPNG	pcapng	application/x-pcapng	
+3	forensic	Windows Event Log	evtx evt	application/x-ms-evtx	
+3	forensic	Windows Registry hive	dat hiv NTUSER.DAT SYSTEM SOFTWARE SAM		
+1	forensic	Windows shortcut	lnk	application/x-ms-shortcut	
+3	forensic	Windows Prefetch	pf		exe name, run count, last run times
+3	forensic	NTFS $MFT / $UsnJrnl	mft		
+3	forensic	Windows minidump	dmp mdmp		
+3	forensic	Linux utmp/wtmp/btmp / journal	wtmp btmp journal		
+3	forensic	macOS unified log / ASL	tracev3 asl		
+3	forensic	Jump lists / recycle bin ($I)	automaticDestinations-ms customDestinations-ms		
+3	forensic	Zeek / Suricata / Whiff logs	log json		
+3	forensic	NetFlow / IPFIX dumps	nfcapd ipfix		
+3	forensic	Syslog / journal export	log		-> text.plain log detector
+3	forensic	Crash reports (.ips, .crash, Breakpad)	ips crash dmp		app, version, exception, frames
+1	columnar	Apache Parquet	parquet pq	application/vnd.apache.parquet	
+2	columnar	Apache Arrow IPC / Feather	arrow feather ipc arrows	application/vnd.apache.arrow.file	
+3	columnar	Apache ORC	orc	application/x-orc	
+3	columnar	Lance	lance		feature-gated
+3	columnar	Vortex	vortex vtx		feature-gated
+3	columnar	Delta Lake / Iceberg table metadata	_delta_log/*.json metadata.json		
+3	columnar	GeoParquet	parquet		geo metadata -> geo
+3	columnar	Apache Hudi / Kudu / CarbonData	hoodie		
+3	columnar	Spark / Hadoop SequenceFile / RCFile	seq rc		key/value classes, codec
+3	columnar	Excel-like DataFrame pickles (pandas .pkl)	pkl		-> data.binser (never unpickle)
+3	columnar	Feather v1 / R fst / qs	fst qs		header
+3	columnar	TFRecord / RecordIO	tfrecord tfrec rec		record count, feature keys (protobuf Example)
+3	columnar	Safetensors	safetensors		tensor names, dtypes, shapes, __metadata__ (header JSON)
+3	columnar	GGUF / GGML model	gguf ggml bin		architecture, params, quantisation, context length, tokenizer, tensor count
+3	columnar	ONNX model	onnx		opset, producer, graph inputs/outputs, op histogram (protobuf)
+3	columnar	PyTorch checkpoint	pt pth ckpt		zip + pickle opcode walk (no unpickle), tensor list
+3	columnar	Keras / TensorFlow SavedModel / TFLite	keras h5 pb tflite		-> sci (HDF5) / protobuf / flatbuffer
+3	columnar	Core ML / MLX / NumPy-weights	mlmodel mlpackage npz		
+1	sci	HDF5	h5 hdf5 he5	application/x-hdf5	
+2	sci	NetCDF (3 / 4)	nc nc4 cdf	application/x-netcdf	NetCDF4 = HDF5 + CF
+3	sci	FITS	fits fit fts	application/fits	
+1	sci	MATLAB MAT	mat	application/x-matlab-data	v5 header text, v7.3 -> HDF5
+1	sci	NumPy NPY / NPZ	npy npz	application/x-npy	
+3	sci	Zarr	zarr .zarray .zattrs zarr.json		
+3	sci	GRIB 1/2	grb grib grb2 grib2	application/x-grib	
+3	sci	HDF4 / HDF-EOS	hdf hdf4 he4		header
+3	sci	SPSS data	sav zsav por	application/x-spss-sav	
+3	sci	Stata data	dta	application/x-stata-dta	
+3	sci	SAS dataset / transport	sas7bdat xpt	application/x-sas	
+3	sci	R data	rds rdata rda		serialization version, object type
+3	sci	Excel-free stats: JMP / Minitab	jmp mtw		
+3	sci	ROOT (CERN)	root		keys/trees
+3	sci	PDB / mmCIF / MOL / SDF chemistry	pdb cif mmcif mol sdf mol2 xyz	chemical/x-pdb	title, compound, atom counts, formula
+3	sci	FASTA / FASTQ / SAM / BAM / VCF / BED / GFF genomics	fa fasta fq fastq sam bam cram vcf bcf bed gff gtf	text/x-fasta	sequence count, lengths, read count, reference, samples
+3	sci	mzML / mzXML mass spectrometry	mzml mzxml		instrument, spectra count
+3	sci	EDF / BDF / BrainVision (EEG)	edf bdf vhdr		channels, sampling rate, duration (patient REDACTED)
+3	sci	Gaussian / ORCA / CP2K outputs	log out		
+3	sci	SPICE / Touchstone / LTspice	cir sp s2p asc		
+3	sci	Origin / Igor / LabVIEW / TDMS	opj ibw pxp tdms vi		
+3	sci	ENVI / ERDAS / PCIDSK rasters	hdr img pix		-> geo
+3	sci	Wolfram / Maple / Mathcad files	mx mw xmcd		
+3	sci	Bruker / Varian NMR / microscopy (CZI, ND2, LIF, OME-TIFF)	czi nd2 lif ome.tif		instrument, channels, dims
+1	medical	DICOM	dcm dicom (no ext)	application/dicom	
+3	medical	NIfTI-1 / NIfTI-2	nii nii.gz	application/x-nifti	
+3	medical	Analyze 7.5	hdr img		
+3	medical	MINC / NRRD / MetaImage	mnc nrrd nhdr mha mhd		
+3	medical	HL7 v2 message / FHIR JSON	hl7 fhir.json		message type, segments (PHI REDACTED)
+3	medical	SCP-ECG / aECG	scp		
+1	geo	GeoJSON	geojson	application/geo+json	
+2	geo	ESRI Shapefile	shp shx dbf prj cpg	application/vnd.shp	sidecar files grouped
+1	geo	KML / KMZ	kml kmz	application/vnd.google-earth.kml+xml	
+1	geo	GPX	gpx	application/gpx+xml	
+2	geo	GeoTIFF / COG	tif tiff	image/tiff; application=geotiff	
+2	geo	GeoPackage	gpkg	application/geopackage+sqlite3	
+3	geo	FlatGeobuf	fgb	application/vnd.flatgeobuf	
+3	geo	GeoParquet	parquet		
+3	geo	LAS / LAZ point cloud	las laz	application/vnd.las	
+3	geo	E57 point cloud	e57	model/e57	
+3	geo	OpenStreetMap PBF / XML	osm.pbf osm	application/x-osm+xml	
+3	geo	MBTiles / PMTiles	mbtiles pmtiles	application/vnd.mapbox-vector-tile	tileset name, bounds, zoom range, format
+3	geo	Mapbox Vector Tile	mvt pbf	application/vnd.mapbox-vector-tile	layers, feature counts
+3	geo	TopoJSON	topojson		
+3	geo	WKT / WKB / EWKB	wkt wkb		geometry type, SRID
+3	geo	GML / CityGML	gml	application/gml+xml	
+3	geo	MapInfo TAB / MIF	tab mif mid		
+3	geo	Esri File Geodatabase / Personal GDB	gdb mdb		header / table list
+3	geo	DTED / SRTM HGT / ASC grid	dt0 dt1 dt2 hgt asc		tile extent, resolution
+3	geo	Garmin FIT	fit	application/vnd.ant.fit	sport, start time, distance, device (GPS track bbox)
+3	geo	TCX / IGC / NMEA logs	tcx igc nmea		
+3	geo	GeoJSON-seq / NDGeoJSON	geojsons geojsonl		
+3	geo	CSV with coordinates (WKT/lat-lon columns)	csv		-> data.csv + geo detection
+3	geo	ESRI ASCII / Grid / ArcInfo coverage	adf e00		
+3	geo	QGIS / ArcGIS project	qgs qgz aprx mxd		layers, CRS
+3	geo	COPC / EPT point cloud index	copc.laz ept.json		
+3	geo	S-57 / S-101 nautical charts	000 s57		
+3	geo	NetCDF-CF / Zarr geodata	nc zarr		-> sci
+3	geo	OGC 3D Tiles / I3S	b3dm i3dm pnts slpk		
+1	3d	glTF / GLB	gltf glb	model/gltf+json	
+1	3d	Wavefront OBJ / MTL	obj mtl	model/obj	
+1	3d	STL	stl	model/stl	
+2	3d	FBX	fbx	application/vnd.autodesk.fbx	
+3	3d	PLY	ply	model/ply	
+3	3d	Collada DAE	dae	model/vnd.collada+xml	
+3	3d	Blender	blend	application/x-blender	
+3	3d	USD / USDZ / USDA / USDC	usd usda usdc usdz	model/vnd.usdz+zip	
+3	3d	3D Manufacturing Format	3mf	model/3mf	
+3	3d	Autodesk 3DS / MAX	3ds max		chunks; MAX = OLE summary
+3	3d	X3D / VRML	x3d wrl vrml	model/x3d+xml	
+3	3d	Alembic	abc		
+3	3d	MagicaVoxel / Qubicle	vox qb		
+3	3d	Point cloud PCD / XYZ / PTS	pcd xyz pts		
+3	3d	OFF / AMF / Stanford	off amf	application/x-amf	
+3	3d	Maya / Cinema 4D / Houdini / Modo	ma mb c4d hip lxo		ma (text): requires, scene info
+3	3d	SketchUp	skp		version, thumbnail
+3	3d	Unreal / Unity scene & package	umap uasset unity		-> game
+3	3d	MikuMikuDance / Valve models	pmx pmd mdl smd		
+3	3d	Gaussian splat	splat ksplat spz		point count
+3	3d	3D printing G-code	gcode gco nc	text/x-gcode	slicer, print time, filament, layer count
+1	cad	AutoCAD DXF	dxf	image/vnd.dxf	
+1	cad	AutoCAD DWG	dwg	image/vnd.dwg	
+2	cad	STEP	step stp p21	model/step	
+3	cad	IGES	igs iges	model/iges	
+2	cad	IFC (BIM)	ifc ifczip ifcxml	application/x-step	
+3	cad	Parasolid / ACIS	x_t x_b sat sab		header
+3	cad	SolidWorks / Inventor / Creo / CATIA / NX	sldprt sldasm ipt iam prt asm catpart catproduct		OLE/zip summary info, version
+3	cad	Fusion 360 / Onshape exports	f3d f3z		
+3	cad	Revit	rvt rfa		OLE BasicFileInfo stream: version, path
+3	cad	MicroStation DGN	dgn		
+3	cad	Gerber / Excellon PCB	gbr ger gtl gbl drl xln		
+3	cad	KiCad / Eagle / Altium	kicad_pcb kicad_sch brd sch pcbdoc schdoc		title block, nets, components count
+3	cad	OpenSCAD / FreeCAD	scad fcstd		
+3	cad	JT / 3D PDF (PRC/U3D)	jt prc u3d		
+3	cad	DWF / DWFx	dwf dwfx		
+3	cad	CNC / ISO G-code	nc tap ngc		
+1	font	TrueType font	ttf	font/ttf	
+1	font	OpenType font	otf	font/otf	
+1	font	WOFF / WOFF2	woff woff2	font/woff2	
+2	font	TrueType / OpenType collection	ttc otc	font/collection	
+3	font	PostScript Type 1	pfb pfa afm pfm	application/x-font-type1	
+3	font	Bitmap fonts BDF / PCF / FNT	bdf pcf fon fnt		
+3	font	EOT embedded OpenType	eot	application/vnd.ms-fontobject	
+3	font	Apple dfont / suitcase	dfont		
+3	font	Glyphs / UFO / FontForge sources	glyphs ufo sfd		family name, masters
+2	web.misc	Shockwave Flash	swf	application/x-shockwave-flash	
+3	web.misc	WARC web archive	warc warc.gz	application/warc	
+2	web.misc	BitTorrent metainfo	torrent	application/x-bittorrent	
+2	web.misc	Internet shortcut / webloc	url webloc website		
+3	web.misc	robots.txt / security.txt / humans.txt	txt		
+3	web.misc	Sitemap index / sitemap text	xml txt		
+3	web.misc	Magnet / metalink	metalink meta4	application/metalink4+xml	
+3	web.misc	Browser bookmarks HTML / JSON	html json		folder tree, bookmark count, top domains
+3	web.misc	Cookie jar (Netscape)	cookies.txt		domains count (values redacted)
+3	web.misc	HTTP Archive (HAR)	har		-> forensic
+3	web.misc	Wget / curl config, .netrc	wgetrc curlrc netrc		credentials redacted
+3	web.misc	PAC proxy auto-config	pac	application/x-ns-proxy-autoconfig	
+3	web.misc	Web bundle / signed exchange	wbn sxg		
+2	apple	macOS app bundle Info.plist	plist		
+3	apple	Apple .strings / .stringsdict / .xcstrings	strings stringsdict xcstrings		
+3	apple	.DS_Store	DS_Store		
+3	apple	Xcode project / workspace	pbxproj xcworkspacedata		targets, build settings
+3	apple	Apple asset catalog compiled	car		
+3	apple	Apple Shortcuts / Automator	shortcut workflow		actions
+3	apple	macOS alias / bookmark data	alias		target path
+3	apple	Apple configuration profile	mobileconfig		payload types (CMS-signed)
+3	apple	Apple Watch face / Siri / misc plists	watchface		
+3	apple	iOS backup Info.plist / Manifest.plist	plist		device, iOS version
+3	game	NES / SNES / GB / GBA / N64 ROMs	nes sfc smc gb gbc gba n64 z64		header title, mapper, region
+3	game	Sega / PlayStation / Switch images	md gen iso nsp xci cia		header ids
+3	game	Doom WAD / Quake PAK / BSP	wad pak bsp		lump/entry counts, map names
+3	game	Valve VPK / GCF	vpk		file count
+3	game	Unity asset bundle (UnityFS)	unity3d assets bundle		engine version, asset count
+3	game	Unreal package / pak	uasset umap pak		engine version, package name
+3	game	Godot packed scene / pck	tscn pck		nodes count
+3	game	Minecraft world / schematic	mca schem schematic litematic		NBT root
+3	game	RPG Maker / Ren'Py archives	rgssad rpa		
+3	game	Save games / emulator states	sav state srm		size + header only
+3	game	Tiled map	tmx tsx tmj		map size, layers, tilesets
+3	game	Aseprite / Pyxel sprite	aseprite ase		frames, layers, tags
+3	game	Godot / GameMaker projects	godot yyp		
+3	game	Steam app manifest / VDF	acf vdf		appid, name
+3	game	Chip-tune / emulated music (NSF, SPC, VGM, SID)	nsf spc vgm vgz sid	audio/prs.sid	title, author, copyright
+1	binary.unknown	Unknown / generic binary	bin dat (any)	application/octet-stream	
+2	binary.unknown	Encrypted / random-looking blob	enc bin		high-entropy classification
+3	binary.unknown	Memory / swap dumps	mem raw vmem swap		strings + embedded signatures only
+3	binary.unknown	Firmware blob	fw bin rom		binwalk-style signature scan
+3	binary.unknown	Temporary / partial download	part crdownload tmp download		underlying format re-detected
+3	binary.unknown	Backup copies	bak old orig swp		detect underlying format; Vim swap -> original filename
+1	text.plain	Web server access log (CLF / combined)	log access.log	text/plain	status histogram, methods, top paths, client count (IPs hashed), time range
+3	text.plain	Hosts file	hosts		entries count, blocked domains
+3	text.plain	CODEOWNERS / MAINTAINERS	CODEOWNERS MAINTAINERS		owners, paths
+3	text.plain	Chat export (WhatsApp / Signal text)	txt		participants count, message count, date range
+3	text.plain	Kindle clippings	My Clippings.txt		books, highlight count
+3	text.plain	UTF-16 / UTF-32 text	txt	text/plain	BOM-driven decode
+3	text.plain	GNU info	info	application/x-info	nodes
+3	text.plain	Fortune / quote databases	dat fortune		
+3	text.plain	Vim / Emacs swap & backup	swp swo ~		original filename, host, user (Vim swap header)
+3	data.json	Terraform state	tfstate tfstate.backup	application/json	resources by type, providers, serial; all attribute values redacted
+3	data.json	SARIF static-analysis log	sarif	application/sarif+json	tool, rules, result count by level
+3	data.json	AWS CloudTrail / cloud audit logs	json json.gz		event names histogram, principals count, time range, regions
+3	data.json	Grafana / Kibana dashboards	json ndjson		title, panels, datasources
+3	data.json	Frictionless datapackage / CSVW	datapackage.json csv-metadata.json		resources, schemas
+3	data.json	dbt manifest / catalog	manifest.json catalog.json		models, sources, tests count
+3	data.json	ESLint / Prettier / Babel / tsconfig	eslintrc prettierrc babelrc tsconfig.json		extends, plugins, compiler target
+3	data.json	Social / takeout exports (Twitter, Facebook, Slack, Discord, Telegram, Spotify)	json js		export kind, record count, date range
+3	data.json	Google Takeout location history	Records.json Timeline.json		point count, date range, bbox -> geo
+3	data.json	Google Drive shortcuts	gdoc gsheet gslides gdraw		doc id, URL
+3	data.json	STIX 2 / MISP threat intel	json		object types, indicator count
+3	data.json	CSAF / OpenVEX / OSV advisories	json		CVE ids, products, severity
+3	data.json	Scratch project	sb3 sb2		sprites, block counts, extensions
+3	data.json	Spine / DragonBones / Rive animations	json skel riv		skeleton, animations
+3	data.yaml	Sigma detection rule	yml		title, logsource, level, tags (ATT&CK)
+3	data.yaml	Kustomize / Argo / Tekton / Serverless	kustomization.yaml serverless.yml		resources, functions
+3	data.yaml	Dependabot / Renovate / pre-commit configs	dependabot.yml renovate.json .pre-commit-config.yaml		ecosystems, hooks
+3	data.yaml	winget / Scoop manifests	yaml json		package id, version, installer URL
+3	data.ini	WireGuard / OpenVPN config	conf ovpn		peers/remotes count, keys redacted, embedded certs -> crypto
+3	data.ini	Windows theme / desktop.ini	theme desktop.ini		
+3	data.ini	Kerberos krb5.conf / Samba smb.conf	conf		realms, shares
+3	text.xml	JUnit / xUnit test report	xml		suites, tests, failures, errors, time
+3	text.xml	Cobertura / JaCoCo / Clover coverage	xml		line/branch coverage %
+3	text.xml	Checkstyle / PMD / SpotBugs reports	xml		violations by severity
+3	text.xml	Apple Health export	export.xml		record types histogram, date range, sources
+3	text.xml	Android manifest (text)	AndroidManifest.xml		package, permissions, components
+3	text.xml	SVG sprite / icon sets	svg		symbol count
+3	text.xml	Office custom XML / content types	xml		
+3	text.xml	ClickOnce / app manifests	application manifest		identity, dependencies
+3	text.xml	Nmap XML / Nessus reports	xml nessus		hosts, open ports, findings by severity
+3	text.xml	OpenSCENARIO / OpenDRIVE	xosc xodr		roads, junctions
+3	text.xml	GPX-like Garmin TCX	tcx		-> geo
+3	data.csv	LCOV coverage	info lcov		files, line coverage
+3	data.csv	GTFS transit feed (zip of CSV)	zip		agency, routes, stops, service date range
+3	data.csv	Bank statements OFX / QFX / QIF / MT940 / CAMT	ofx qfx qif sta 940 camt.053		account (masked), transaction count, date range, currency
+3	data.csv	Ledger / Beancount / hledger journals	ledger beancount journal		accounts, transaction count, commodities
+3	data.csv	EDI X12 / EDIFACT	edi x12 edifact		message types, sender/receiver ids
+3	data.csv	GEDCOM genealogy	ged gedcom		individuals, families, date range, source software
+3	data.csv	Prometheus / OpenMetrics exposition	prom metrics		metric names, types, label keys
+3	data.csv	TAP test output	tap		plan, pass/fail
+3	data.sql	Database migration files (Flyway/Liquibase/Alembic)	sql xml py		version ordering, tables touched
+3	code.source	Vim script	vim vimrc		
+3	code.source	Shell rc / profile	bashrc zshrc profile bash_profile		aliases, exports (values redacted)
+3	code.source	Nushell / Elvish	nu elv		
+3	code.source	Rego (OPA) policy	rego		package, rules
+3	code.source	Bicep / ARM templates	bicep		resources
+3	code.source	Jenkinsfile / Earthfile / Tiltfile	Jenkinsfile Earthfile Tiltfile		stages
+3	code.source	Proof assistants (Lean, Coq, Agda, Idris, Isabelle)	lean v agda idr thy		theorems/defs count
+3	code.source	Formal specs (TLA+, Alloy)	tla als		
+3	code.source	Ballerina / Pony / Janet / Fennel / Hy	bal pony janet fnl hy		
+3	code.source	Forth / APL / J / K / Q	fth 4th apl ijs k q		
+3	code.source	GDScript (Godot)	gd		extends, signals, funcs
+3	code.source	Unity ShaderLab	shader		
+3	code.source	PLC IEC 61131 Structured Text	st scl		programs, function blocks
+3	code.source	Max/MSP / Pure Data patches	maxpat pd		object counts
+3	code.source	YARA rules	yar yara		rule names, tags, meta, strings count
+3	code.source	Snort / Suricata rules	rules		rule count, actions, protocols, sids, msg list, classtypes
+3	code.source	Smithy / Avro IDL	smithy avdl		services, shapes
+3	code.source	AppleScript (text) / JXA	applescript		
+3	code.manifest	Homebrew formula / Brewfile	rb Brewfile		
+3	code.manifest	Arch PKGBUILD	PKGBUILD		pkgname, pkgver, depends, source URLs
+3	code.manifest	RPM spec	spec		Name, Version, Release, License, Requires
+3	code.manifest	Debian source control files	control changelog copyright		Source, Maintainer, Build-Depends
+3	code.manifest	Nix flake	flake.nix flake.lock		inputs, outputs
+3	code.manifest	Bazel MODULE / Terraform lock	MODULE.bazel .terraform.lock.hcl		
+3	code.manifest	Snapcraft / Flatpak manifests	snapcraft.yaml flatpak.json		
+3	code.manifest	opam / CPAN META / rebar.config	opam META.json rebar.config		
+3	code.manifest	elm.json / gleam.toml / build.zig.zon	elm.json gleam.toml build.zig.zon		
+3	doc.other	PCL / PJL print job	pcl prn pjl	application/vnd.hp-pcl	PJL JOB NAME, user, page count
+3	doc.other	Windows spool files	spl shd		document name, user, printer, submit time
+3	doc.other	AbiWord / Gnumeric / Calligra	abw gnumeric kwd		
+3	doc.other	Microsoft Write / Ami Pro / Ichitaro	wri sam jtd		
+3	doc.other	Marp / reveal.js slide markdown	md		slide count, titles
+3	doc.other	Notion / Confluence export bundles	zip		page tree, titles
+3	email	Lotus Notes database	nsf		title, replica id (header)
+3	email	Outlook for Mac archive / Outlook Express DBX	olm dbx		folders, message count
+3	email	Mork address book / mail summary	mab msf		
+3	image.raster	BigTIFF	tif tiff btf	image/tiff	
+3	image.raster	Kodak Photo CD / FlashPix	pcd fpx		FPX = OLE property sets
+3	image.raster	XISF astronomy image	xisf		XML header: observation keywords
+3	image.raster	Thumbnails cache (Windows thumbcache)	db		entry count -> forensic
+3	image.raster	Colour LUTs	cube 3dl lut		size, title, domain
+3	image.raster	Photoshop assets (actions, brushes, swatches)	atn abr aco ase grd pat		names list
+3	image.raster	Raw editor sidecars	xmp pp3 dop arp		-> meta.xmp; develop settings
+3	image.raster	Whole-slide images	svs ndpi scn mrxs vms		scanner, magnification, levels -> medical
+3	meta.xmp	XMP sidecar	xmp	application/rdf+xml	
+3	meta.icc	ICC colour profile	icc icm	application/vnd.iccprofile	
+3	meta.vra	VRA Core 4 XML record	xml		
+3	meta.exif	EXIF raw dump	exif exv		exiv2 .exv container
+3	db	Adobe Lightroom catalog	lrcat lrdata		image count, collections, keywords (SQLite)
+3	db	Anki deck	apkg colpkg		decks, note/card counts
+3	db	Windows ESE database	edb dat		tables (SRUM, WebCache, Windows Search) -> forensic
+3	db	Kafka log segment	log index timeindex		base offset, record batches
+3	db	Prometheus TSDB block	meta.json chunks		time range, series count
+3	forensic	Snort unified2 alerts	u2 unified2	application/octet-stream	alert count, sig ids, time range
+3	forensic	Windows ETW trace	etl		provider GUIDs, events count
+3	forensic	macOS FSEvents	fseventsd		records, path count
+3	forensic	Memory image (LiME / crash dump / hiberfil)	lime dmp hiberfil.sys		OS hints, size, profile
+3	forensic	Browser cache entries	data_0 cache2 f_000001		URLs count, content types
+3	forensic	Windows Timeline / SRUM / Amcache	db hve dat		-> db / registry
+3	forensic	Kubernetes / cloud audit logs	jsonl log		verbs, resources, users count
+3	forensic	Sysmon / auditd logs	log evtx		event types histogram
+3	exec	PyInstaller / py2exe bundle	exe (ELF)		archive cookie, Python version, bundled modules
+3	exec	Windows script hosts (HTA, WSF, SCT, WSC)	hta wsf sct wsc	application/hta	script languages, external refs (risk)
+3	exec	AppleScript compiled	scpt scptd		
+3	exec	AIX XCOFF	xcoff		
+3	exec	Device tree blob / source	dtb dtbo dts		model, compatible, nodes
+3	exec	FPGA bitstream (Xilinx .bit)	bit bin		design name, part, date, time
+3	crypto	Kerberos keytab	keytab		principals, enctypes, kvno (no keys)
+3	crypto	TLS key log	keylog sslkeylog		line count only (secrets never output)
+3	archive	Self-extracting archives (SFX)	exe		embedded zip/rar/7z offset, then archive listing
+3	archive	Windows installers (NSIS / Inno Setup / InstallShield / WiX burn)	exe		installer type, product name, version, files (NSIS/Inno headers)
+3	archive	Python zipapp / PEX	pyz pex		__main__, PEX-INFO
+3	archive	Java JMOD / JIMAGE	jmod		module-info
+3	archive	Android OBB	obb		
+3	archive	ALZip / EGG	alz egg		
+3	archive	Unix dump / restore	dump		
+3	archive	BinHex / MacBinary / AppleSingle / AppleDouble	hqx bin as ._*		finder info, resource fork types, xattrs
+3	archive	uuencode / base64 / yEnc wrappers	uue b64 yenc		decoded filename, recurse
+3	archive	Backup repositories (restic / borg / duplicity)	config README		repo version, encryption
+3	archive	Android backup	ab		version, compressed, encrypted
+3	video	Windows Media Center / TiVo recordings	wtv dvr-ms tivo		program title, channel, air date
+3	video	360 camera native (INSV / OSV)	insv osv		camera, GPS
+3	video	Raw video Y4M / YUV	y4m yuv		WxH, fps, colourspace (Y4M header)
+3	video	CMAF / fragmented segments	cmfv cmfa m4s		track ids, fragments
+3	audio	Qualcomm PureVoice / ATRAC / Shorten / VQF	qcp oma aa3 shn vqf		
+3	audio	DAW sessions (Pro Tools, Cubase, GarageBand)	ptx cpr band		tracks, tempo
+3	geo	CZML / world file / .prj	czml tfw jgw pgw wld prj		CRS WKT, affine transform
+3	geo	MrSID / ECW rasters	sid ecw jp2		header: size, bands, CRS
+3	geo	OSM change / diff	osc osc.gz		create/modify/delete counts
+3	geo	Map styles (Mapbox style JSON / SLD / lyrx)	style.json sld lyrx		layers, sources
+3	geo	Geocaching LOC / GeoRSS	loc georss		
+3	3d	Draco compressed mesh	drc		points, faces, attributes
+3	3d	OpenVDB volume	vdb		grids, voxel counts, bbox
+3	3d	Houdini bgeo / Substance / MaterialX	bgeo sbsar sbs mtlx		
+3	3d	LDraw brick models	ldr mpd		parts count, author
+3	3d	VRM avatar	vrm		glTF + VRM meta: title, author, licence, allowed usage (rights)
+3	3d	Motion capture BVH / C3D	bvh c3d		joints, frames, frame rate
+3	3d	IES photometric	ies ldt		manufacturer, luminaire, lumens
+3	cad	GDSII / OASIS chip layout	gds gds2 oas		library name, structures, units, dates
+3	sci	VCD waveform	vcd fst		timescale, signals, end time, scope tree
+3	sci	Sigrok session	sr		channels, samplerate
+3	sci	IBIS / Liberty / LEF/DEF	ibs lib lef def		component/cell names
+3	font	PC Screen Font / Metafont	psf mf		
+3	apple	AppleDouble resource forks / xattr dumps	._*		-> archive
+3	web.misc	Google Earth / Maps link files	kmz url		-> geo
+3	web.misc	Shortcut-like: .desktop / .lnk / .website	desktop website		target
+3	web.misc	Proxy lists / Adblock filter lists	txt		rule count
+3	game	Game mod archives (Bethesda BSA/BA2, Paradox mod)	bsa ba2 mod		file count, version
+3	game	Twine / Ink interactive fiction	twee ink z5 z8 ulx		title, passages / IFID
+3	binary.unknown	Sparse / zero-filled files	*		hole detection (SEEK_DATA), zero ratio
+3	binary.unknown	Core Foundation / NSKeyedArchiver blobs	plist		-> apple
+2	text.plain	Subtitle-free transcript / meeting notes (VTT-less TXT)	txt		speaker turns, timestamps detected
+3	data.json	OpenAI / Anthropic chat transcript exports	json jsonl		conversation count, message roles, date range
+3	data.json	Jupyter-adjacent: VS Code .code-snippets / launch.json	code-snippets launch.json		configurations
+3	data.json	Composer / npm audit reports	json		vulnerabilities by severity
+3	data.yaml	OpenAPI 3.1 / AsyncAPI	asyncapi.yaml		channels, messages
+3	data.binser	Java .properties-like binary: Android resources.arsc	arsc		packages, string pool size
+3	data.binser	Android binary XML	xml (binary)		decoded via axmldecoder -> text.xml
+3	code.source	Kotlin Multiplatform / Compose scripts	main.kts		
+3	code.source	SQL notebooks / dbt models	sql		refs, sources (Jinja)
+3	doc.pdf	PDF portfolio / collection	pdf		embedded file list
+3	image.raster	HEIF image sequence / Live Photo HEIC	heics		frame count
+3	audio	Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC)	mp3		chapters with titles + URLs
+3	video	Video with embedded captions (CEA-608/708 in SEI)	mp4 ts		caption presence + language
+3	archive	ZIP-based OCI / Docker save archive	tar		-> package
+3	disk	Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW)	dmg		compression type, partition names
+3	columnar	LanceDB / Chroma vector stores	lance sqlite3		collections, embedding dims
+3	forensic	Wireshark dissector-free: Bluetooth btsnoop / USB pcap	btsnoop log		packet count, time range

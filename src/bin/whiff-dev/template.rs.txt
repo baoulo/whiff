@@ -1,0 +1,53 @@
+//! {{name}} (`{{family}}`).
+//!
+//! Specification: <add a link to the format specification>
+
+use crate::plugin::{{{imports}}};
+
+/// Extractor for {{name}}.
+pub struct {{struct}};
+
+static META: ExtractorMeta = ExtractorMeta {
+    id: "{{id}}",
+    version: 1,
+    cost: Cost::Header,
+    priority: 0,
+    formats: &[FormatSpec {
+        id: "{{format}}",
+        name: "{{name}}",
+        family: "{{family}}",
+        mimes: &[{{mimes}}],
+        extensions: &[{{extensions}}],
+        magic: &[{{magic}}],
+        parent: None,
+    }],
+};
+
+impl Extractor for {{struct}} {
+    fn meta(&self) -> &'static ExtractorMeta {
+        &META
+    }
+
+    fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+        // The first 64 KiB are pre-read in `src.head()`; use `src.read_vec(offset, len)?`
+        // for anything else. `ByteReader` never panics: short input becomes `Truncated`.
+        let r = ByteReader::new(src.head());
+        // TODO: parse the header and write what you find through `cx`, for example:
+        //   let mut r = r.skip(4)?;                 // the magic
+        //   let (w, h) = (r.be_u32()?, r.be_u32()?);
+        //   cx.physical().image(w, h).bit_depth(8);
+        //   cx.content().title(title);
+        //   cx.format_set("version", version);    // snake_case keys, unit suffixes
+        //   cx.emit_block(BlockKind::XMP, xmp);    // shared decoders handle EXIF/XMP/IPTC/ICC
+        let _ = (r, cx);
+        Ok(())
+    }
+}
+
+crate::register_extractor!({{struct}});
+
+#[cfg(test)]
+mod tests {
+    // Snapshots every file in tests/fixtures/{{format}}/ into tests/snapshots/.
+    crate::fixture_tests!("{{format}}");
+}

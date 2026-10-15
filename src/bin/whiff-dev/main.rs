@@ -1,0 +1,139 @@
+//! `whiff-dev`: contributor tooling. Run with
+//! `cargo run --features dev --bin whiff-dev -- <command>`.
+//! The `dev` feature implies `full`, so every extractor is visible.
+
+mod catalogue;
+mod checks;
+mod new_extractor;
+
+use std::path::{Path, PathBuf};
+use std::process::{Command, ExitCode};
+
+use clap::{Parser, Subcommand};
+use whiff::Registry;
+
+#[derive(Parser)]
+#[command(name = "whiff-dev", about = "whiff contributor tooling")]
+struct Cli {
+    #[command(subcommand)]
+    command: Cmd,
+}
+
+#[derive(Subcommand)]
+enum Cmd {
+    /// Scaffold a new extractor: source file, module lines, fixture folder.
+    NewExtractor {
+        /// `<group>.<format>`, e.g. `image.qoi` (group = directory under src/formats/).
+        id: String,
+        /// Parser family from data/families.tsv, e.g. `image.raster`; decides the cargo feature.
+        #[arg(long)]
+        family: String,
+        /// Human-readable format name.
+        #[arg(long)]
+        name: String,
+        /// Extension without the dot (repeatable).
+        #[arg(long = "ext")]
+        extensions: Vec<String>,
+        /// MIME type (repeatable, preferred first).
+        #[arg(long = "mime")]
+        mimes: Vec<String>,
+        /// Magic as hex, optionally `offset:hex`, e.g. `716f6966` or `4:66747970` (repeatable).
+        #[arg(long)]
+        magic: Vec<String>,
+        /// Print what would change without writing.
+        #[arg(long)]
+        dry_run: bool,
+        /// Overwrite an existing extractor file.
+        #[arg(long)]
+        force: bool,
+    },
+    /// Regenerate docs/metadata-extracted.md from data/ and the registry.
+    Catalogue {
+        /// Fail if the committed file is out of date instead of writing it.
+        #[arg(long)]
+        check: bool,
+    },
+    /// Fuzz one extractor (needs nightly and cargo-fuzz).
+    Fuzz {
+        /// Extractor id, e.g. `image.qoi`; omit to fuzz the whole engine.
+        extractor: Option<String>,
+        /// Run time in seconds.
+        #[arg(long, default_value_t = 60)]
+        seconds: u64,
+    },
+    /// Check transitive dependency counts against the budgets.
+    CheckDeps,
+    /// Check that format modules use only the plugin API.
+    CheckBoundary,
+}
+
+fn root() -> &'static Path {
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+}
+
+fn main() -> ExitCode {
+    let result = match Cli::parse().command {
+        Cmd::NewExtractor { id, family, name, extensions, mimes, magic, dry_run, force } => {
+            let extensions = extensions.into_iter().map(|e| e.trim_start_matches('.').to_ascii_lowercase()).collect();
+            new_extractor::run(
+                root(),
+                &new_extractor::Request { id, family, name, extensions, mimes, magic, dry_run, force },
+            )
+        }
+        Cmd::Catalogue { check } => catalogue_cmd(check),
+        Cmd::Fuzz { extractor, seconds } => fuzz(extractor.as_deref(), seconds),
+        Cmd::CheckDeps => checks::deps(root()),
+        Cmd::CheckBoundary => checks::boundary(root()),
+    };
+    match result {
+        Ok(()) => ExitCode::SUCCESS,
+        Err(e) => {
+            eprintln!("whiff-dev: {e}");
+            ExitCode::FAILURE
+        }
+    }
+}
+
+fn catalogue_cmd(check: bool) -> Result<(), String> {
+    let registry = Registry::builtin();
+    let rendered = catalogue::render(root(), &registry)?;
+    let path = root().join("docs/metadata-extracted.md");
+    if check {
+        let current = std::fs::read_to_string(&path).unwrap_or_default();
+        if current != rendered {
+            return Err("docs/metadata-extracted.md is out of date; run `cargo run --features dev --bin whiff-dev -- catalogue`".into());
+        }
+        println!("catalogue: up to date");
+        return Ok(());
+    }
+    std::fs::write(&path, rendered).map_err(|e| format!("{}: {e}", path.display()))?;
+    println!("wrote {}", path.display());
+    Ok(())
+}
+
+fn fuzz(extractor: Option<&str>, seconds: u64) -> Result<(), String> {
+    let registry = Registry::builtin();
+    let mut corpora: Vec<PathBuf> = vec![root().join("fuzz/corpus").join(extractor.unwrap_or("engine"))];
+    if let Some(id) = extractor {
+        let e = registry.extractor(id).ok_or_else(|| format!("no extractor `{id}` in this build"))?;
+        for f in e.meta().formats {
+            let dir = root().join("tests/fixtures").join(f.id);
+            if dir.is_dir() {
+                corpora.push(dir);
+            }
+        }
+    }
+    std::fs::create_dir_all(&corpora[0]).map_err(|e| e.to_string())?;
+    let mut cmd = Command::new("cargo");
+    cmd.current_dir(root().join("fuzz")).args(["+nightly", "fuzz", "run", "extract"]).args(&corpora);
+    cmd.arg("--").arg(format!("-max_total_time={seconds}"));
+    if let Some(id) = extractor {
+        cmd.env("WHIFF_FUZZ_EXTRACTOR", id);
+    }
+    let status = cmd.status().map_err(|e| format!("cannot run cargo-fuzz ({e}); install with `cargo install cargo-fuzz` and `rustup toolchain install nightly`"))?;
+    if status.success() {
+        Ok(())
+    } else {
+        Err(format!("fuzzing failed ({status}); crashes are in fuzz/artifacts/extract/"))
+    }
+}

@@ -1,0 +1,271 @@
+//! Sections every input gets: system, filesystem times, permissions,
+//! size, entropy, hashes.
+
+use std::fs::Metadata;
+use std::io::Read;
+use std::path::Path;
+use std::time::SystemTime;
+
+use sha2::Digest;
+
+use super::Options;
+use crate::report::{EntropyScope, FileKind, Integrity, Report};
+
+pub(crate) fn rfc3339(t: SystemTime) -> Option<String> {
+    jiff::Timestamp::try_from(t).ok().map(|ts| ts.to_string())
+}
+
+pub(crate) fn file_kind(meta: &Metadata) -> FileKind {
+    let ft = meta.file_type();
+    if ft.is_symlink() {
+        return FileKind::Symlink;
+    }
+    if ft.is_dir() {
+        return FileKind::Directory;
+    }
+    if ft.is_file() {
+        return FileKind::Regular;
+    }
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::FileTypeExt;
+        if ft.is_fifo() {
+            return FileKind::Fifo;
+        }
+        if ft.is_socket() {
+            return FileKind::Socket;
+        }
+        if ft.is_block_device() {
+            return FileKind::BlockDevice;
+        }
+        if ft.is_char_device() {
+            return FileKind::CharDevice;
+        }
+    }
+    FileKind::Other
+}
+
+/// Fill `system`, `temporal.filesystem` and `security` from file metadata.
+pub(crate) fn fill_from_metadata(report: &mut Report, meta: &Metadata, path: &Path) {
+    let sys = &mut report.system;
+    if sys.kind != FileKind::Symlink {
+        sys.kind = file_kind(meta);
+    }
+    if meta.is_file() {
+        sys.size_bytes = Some(meta.len());
+        report.physical.size_bytes = Some(meta.len());
+    }
+    sys.readonly = Some(meta.permissions().readonly());
+    let name = path.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
+
+    let times = &mut report.temporal.filesystem;
+    times.modified = meta.modified().ok().and_then(rfc3339);
+    times.accessed = meta.accessed().ok().and_then(rfc3339);
+    times.created = meta.created().ok().and_then(rfc3339);
+
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::MetadataExt;
+        sys.device = Some(meta.dev());
+        sys.inode = Some(meta.ino());
+        sys.links = Some(meta.nlink());
+        sys.allocated_bytes = Some(meta.blocks().saturating_mul(512));
+        sys.hidden = Some(name.starts_with('.'));
+        times.changed = u32::try_from(meta.ctime_nsec())
+            .ok()
+            .and_then(|ns| jiff::Timestamp::new(meta.ctime(), i32::try_from(ns).unwrap_or(0)).ok())
+            .map(|t| t.to_string());
+
+        let mode = meta.mode();
+        let sec = &mut report.security;
+        sec.mode = Some(format!("{:04o}", mode & 0o7777));
+        sec.permissions = Some(permission_string(mode));
+        sec.setuid = Some(mode & 0o4000 != 0);
+        sec.setgid = Some(mode & 0o2000 != 0);
+        sec.sticky = Some(mode & 0o1000 != 0);
+        sec.owner = Some(crate::report::Owner { uid: Some(meta.uid()), gid: Some(meta.gid()), ..Default::default() });
+    }
+    #[cfg(windows)]
+    {
+        use std::os::windows::fs::MetadataExt;
+        const FILE_ATTRIBUTE_HIDDEN: u32 = 0x2;
+        sys.hidden = Some(meta.file_attributes() & FILE_ATTRIBUTE_HIDDEN != 0 || name.starts_with('.'));
+    }
+    #[cfg(not(any(unix, windows)))]
+    {
+        sys.hidden = Some(name.starts_with('.'));
+    }
+}
+
+/// `ls -l` style permission string for the low 12 mode bits.
+#[cfg(unix)]
+fn permission_string(mode: u32) -> String {
+    let bit = |m: u32, c: char| if mode & m != 0 { c } else { '-' };
+    let special = |x: u32, s: u32, lower: char, upper: char| match (mode & x != 0, mode & s != 0) {
+        (true, true) => lower,
+        (false, true) => upper,
+        (true, false) => 'x',
+        (false, false) => '-',
+    };
+    [
+        bit(0o400, 'r'),
+        bit(0o200, 'w'),
+        special(0o100, 0o4000, 's', 'S'),
+        bit(0o040, 'r'),
+        bit(0o020, 'w'),
+        special(0o010, 0o2000, 's', 'S'),
+        bit(0o004, 'r'),
+        bit(0o002, 'w'),
+        special(0o001, 0o1000, 't', 'T'),
+    ]
+    .iter()
+    .collect()
+}
+
+/// Streaming hasher + byte histogram.
+struct Digester {
+    sha256: Option<sha2::Sha256>,
+    blake3: Option<blake3::Hasher>,
+    histogram: [u64; 256],
+    total: u64,
+}
+
+impl Digester {
+    fn new(options: &Options, hash: bool) -> Self {
+        Self {
+            sha256: (hash && options.hashes.sha256).then(sha2::Sha256::new),
+            blake3: (hash && options.hashes.blake3).then(blake3::Hasher::new),
+            histogram: [0; 256],
+            total: 0,
+        }
+    }
+
+    fn update(&mut self, data: &[u8]) {
+        if let Some(h) = &mut self.sha256 {
+            h.update(data);
+        }
+        if let Some(h) = &mut self.blake3 {
+            h.update(data);
+        }
+        for &b in data {
+            self.histogram[b as usize] += 1;
+        }
+        self.total += data.len() as u64;
+    }
+
+    fn finish(self, report: &mut Report, scope: EntropyScope) {
+        if let Some(h) = self.sha256 {
+            report.integrity.sha256 = Some(hex(&h.finalize()));
+        }
+        if let Some(h) = self.blake3 {
+            report.integrity.blake3 = Some(h.finalize().to_hex().to_string());
+        }
+        if self.total > 0 {
+            report.physical.entropy = Some(entropy(&self.histogram, self.total));
+            report.physical.entropy_scope = Some(scope);
+        }
+    }
+}
+
+fn hex(bytes: &[u8]) -> String {
+    use std::fmt::Write;
+    bytes.iter().fold(String::with_capacity(bytes.len() * 2), |mut s, b| {
+        let _ = write!(s, "{b:02x}");
+        s
+    })
+}
+
+/// Shannon entropy in bits per byte, rounded to 3 decimals.
+pub(crate) fn entropy(histogram: &[u64; 256], total: u64) -> f64 {
+    let total = total as f64;
+    let h: f64 = histogram
+        .iter()
+        .filter(|&&c| c > 0)
+        .map(|&c| {
+            let p = c as f64 / total;
+            -p * p.log2()
+        })
+        .sum();
+    (h * 1000.0).round() / 1000.0
+}
+
+fn hashing_wanted(options: &Options, size: u64) -> Result<(), String> {
+    if !options.hashes.any() {
+        return Err("disabled".into());
+    }
+    if options.limits.hash_max_bytes == 0 {
+        return Err("profile".into());
+    }
+    if size > options.limits.hash_max_bytes {
+        return Err(format!("larger than hash_max_bytes ({})", options.limits.hash_max_bytes));
+    }
+    Ok(())
+}
+
+/// Hash and measure entropy of a file by streaming it once. When hashing is
+/// off, entropy covers `head` only.
+pub(crate) fn integrity_for_file(report: &mut Report, path: &Path, size: u64, head: &[u8], options: &Options) {
+    if let Err(reason) = hashing_wanted(options, size) {
+        report.integrity = Integrity { skipped: Some(reason), ..Integrity::default() };
+        let mut d = Digester::new(options, false);
+        d.update(head);
+        let scope = if head.len() as u64 == size { EntropyScope::File } else { EntropyScope::Head };
+        d.finish(report, scope);
+        return;
+    }
+    let mut d = Digester::new(options, true);
+    let result = std::fs::File::open(path).and_then(|mut f| {
+        let mut buf = vec![0u8; 256 * 1024];
+        loop {
+            let n = f.read(&mut buf)?;
+            if n == 0 {
+                return Ok(());
+            }
+            d.update(&buf[..n]);
+        }
+    });
+    match result {
+        Ok(()) => d.finish(report, EntropyScope::File),
+        Err(e) => {
+            report.integrity.skipped = Some(format!("read error: {e}"));
+            report.diagnostics.warnings.push(format!("integrity: {e}"));
+        }
+    }
+}
+
+/// Hash and measure entropy of in-memory bytes.
+pub(crate) fn integrity_for_bytes(report: &mut Report, data: &[u8], options: &Options) {
+    let hash = match hashing_wanted(options, data.len() as u64) {
+        Ok(()) => true,
+        Err(reason) => {
+            report.integrity.skipped = Some(reason);
+            false
+        }
+    };
+    let mut d = Digester::new(options, hash);
+    d.update(data);
+    d.finish(report, EntropyScope::File);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn entropy_bounds() {
+        let mut h = [0u64; 256];
+        h[b'a' as usize] = 10;
+        assert!(entropy(&h, 10).abs() < f64::EPSILON);
+        let all = [1u64; 256];
+        assert!((entropy(&all, 256) - 8.0).abs() < 1e-9);
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn permissions() {
+        assert_eq!(permission_string(0o644), "rw-r--r--");
+        assert_eq!(permission_string(0o4755), "rwsr-xr-x");
+        assert_eq!(permission_string(0o1777), "rwxrwxrwt");
+        assert_eq!(permission_string(0o2644), "rw-r-Sr--");
+    }
+}

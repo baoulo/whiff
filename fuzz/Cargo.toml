@@ -1,0 +1,22 @@
+[package]
+name = "whiff-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+# Standalone: not part of the `whiff` package or any workspace.
+[workspace]
+
+[dependencies]
+libfuzzer-sys = "0.4"
+whiff = { path = "..", default-features = false, features = ["full"] }
+
+[[bin]]
+name = "extract"
+path = "fuzz_targets/extract.rs"
+test = false
+doc = false
+bench = false
