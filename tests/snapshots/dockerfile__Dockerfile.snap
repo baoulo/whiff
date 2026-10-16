@@ -1,0 +1,178 @@
+---
+source: src/formats/code/infra.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Dockerfile",
+    "stem": "Dockerfile"
+  },
+  "identification": {
+    "format": "dockerfile",
+    "name": "Dockerfile",
+    "mime": "text/x-dockerfile",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.infra"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 581
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "runs_as_root",
+        "detail": "no USER, or USER root, in the final stage",
+        "source": "code.infra"
+      },
+      {
+        "kind": "secret_in_env",
+        "detail": "ENV sets API_TOKEN",
+        "source": "code.infra"
+      },
+      {
+        "kind": "embedded_secret",
+        "detail": "credential_assignment",
+        "source": "privacy.scan"
+      }
+    ],
+    "secrets": {
+      "credential_assignment": 1
+    }
+  },
+  "rights": {
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 581,
+    "entropy": 5.44,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 581,
+      "chars": 581,
+      "words": 50,
+      "lines": 18,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "4e8a7718127278f15a068aae33c89ba2dd87fba4508c93019bd9af4b90e8db40",
+    "blake3": "783bf2b37a3f297e2d541427e36b96293c83f2d8055d349acbc41519dce7b823"
+  },
+  "content": {
+    "title": "harbourd",
+    "description": "Harbour berth daemon"
+  },
+  "metadata": {},
+  "format": {
+    "dockerfile": {
+      "base_image": "debian:bookworm-slim",
+      "stages": [
+        {
+          "image": "rust:${RUST_VERSION}-slim",
+          "name": "build"
+        },
+        {
+          "image": "debian:bookworm-slim",
+          "name": null
+        }
+      ],
+      "instructions": {
+        "ARG": 1,
+        "CMD": 1,
+        "COPY": 2,
+        "ENTRYPOINT": 1,
+        "ENV": 1,
+        "EXPOSE": 1,
+        "FROM": 2,
+        "HEALTHCHECK": 1,
+        "LABEL": 1,
+        "RUN": 1,
+        "WORKDIR": 1
+      },
+      "exposed_ports": [
+        "8080",
+        "9090/udp"
+      ],
+      "args": [
+        "RUST_VERSION"
+      ],
+      "env": [
+        "RUST_LOG",
+        "API_TOKEN"
+      ],
+      "entrypoint": "[\"harbourd\"]",
+      "cmd": "[\"--port\", \"8080\"]",
+      "healthcheck": true,
+      "labels": {
+        "org.opencontainers.image.title": "harbourd",
+        "org.opencontainers.image.description": "Harbour berth daemon",
+        "org.opencontainers.image.licenses": "MIT"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.infra",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

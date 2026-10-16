@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+<!-- A small product catalogue -->
+<catalog xmlns="https://example.org/ns/catalog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://example.org/ns/catalog catalog.xsd" version="2">
+  <product id="p1" currency="EUR"><name>Fishing net</name><price>49.90</price></product>
+  <product id="p2" currency="EUR"><name>Rope &amp; cleat set</name><price>19.50</price></product>
+  <product id="p3" currency="EUR"><name><![CDATA[Lantern <LED>]]></name><price>12.00</price></product>
+</catalog>

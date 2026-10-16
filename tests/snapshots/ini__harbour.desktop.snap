@@ -1,0 +1,134 @@
+---
+source: src/formats/data/ini.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.desktop",
+    "stem": "harbour",
+    "extension": "desktop"
+  },
+  "identification": {
+    "format": "ini",
+    "name": "INI configuration",
+    "mime": "text/plain",
+    "family": "data.ini",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.ini"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 149
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "exec_command"
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 149,
+    "entropy": 4.765,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 149,
+      "chars": 149,
+      "words": 15,
+      "lines": 7,
+      "max_line_length": 39,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "51fb6cc875d7b8613ae8c7087ac631dce0cc679f1dc6997b7c640f3e41ad6082",
+    "blake3": "2d47caae1291ed205c759e05109154967e6c43d1b4388bf804daff1301f7427c"
+  },
+  "content": {
+    "title": "Harbour Viewer",
+    "description": "Browse the boats in the harbour"
+  },
+  "metadata": {},
+  "format": {
+    "ini": {
+      "dialect": "desktop_entry",
+      "sections": [
+        {
+          "name": "Desktop Entry",
+          "keys": 6
+        }
+      ],
+      "keys": 6,
+      "values": {
+        "Desktop Entry": {
+          "Type": "Application",
+          "Name": "Harbour Viewer",
+          "Comment": "Browse the boats in the harbour",
+          "Exec": "harbour-viewer %U",
+          "Icon": "harbour",
+          "Categories": "Utility;"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.ini",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

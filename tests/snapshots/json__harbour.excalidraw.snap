@@ -1,0 +1,195 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.excalidraw",
+    "stem": "harbour",
+    "extension": "excalidraw"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 262
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 262,
+    "entropy": 3.759,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 262,
+      "chars": 262,
+      "words": 30,
+      "lines": 20,
+      "max_line_length": 27,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "84163e4bd02884e2d2c1784d50bc98cf36dc7a2b47e5e00c6e5927f8a9525c0d",
+    "blake3": "3523e06e07affe263753ef162d049eb891b08fe5d4c01698355021b42bd0e3a1"
+  },
+  "content": {
+    "excerpt": "Lighthouse Fish market"
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "type",
+        "version",
+        "elements"
+      ],
+      "key_count": 3,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "excalidraw"
+            ]
+          },
+          "$.version": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.elements": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              4,
+              4
+            ]
+          },
+          "$.elements[]": {
+            "types": [
+              "object"
+            ],
+            "count": 4
+          },
+          "$.elements[].type": {
+            "types": [
+              "string"
+            ],
+            "count": 4,
+            "examples": [
+              "rectangle",
+              "arrow",
+              "text"
+            ]
+          },
+          "$.elements[].text": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "Lighthouse",
+              "Fish market"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "excalidraw",
+        "name": "Excalidraw drawing",
+        "elements": {
+          "arrow": 1,
+          "rectangle": 1,
+          "text": 2
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

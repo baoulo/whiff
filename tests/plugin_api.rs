@@ -295,7 +295,7 @@ fn every_writer_and_registry_accessor() {
     assert_eq!(p.document.as_ref().map(|d| (d.pages, d.sheets)), Some((Some(3), Some(2))));
     assert_eq!(p.container.as_ref().and_then(|c| c.ratio), Some(10.0));
     assert_eq!(p.image.as_ref().map(|i| (i.orientation, i.frames)), Some((Some(6), Some(1))));
-    assert_eq!(r.temporal.content.len(), 2, "blank dates ignored");
+    assert_eq!(r.temporal.content.len(), 1, "blank dates ignored, repeats merged");
     assert!(r.temporal.earliest.is_none(), "zone-less dates are not ranged");
     assert_eq!(r.format["everything"]["children_accepted"], 50);
     assert_eq!(r.embedded.len(), 50);

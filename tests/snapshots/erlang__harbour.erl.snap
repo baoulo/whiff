@@ -1,0 +1,137 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.erl",
+    "stem": "harbour",
+    "extension": "erl"
+  },
+  "identification": {
+    "format": "erlang",
+    "name": "Erlang source",
+    "mime": "text/x-erlang",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 184
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 184,
+    "entropy": 4.825,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 184,
+      "chars": 184,
+      "words": 15,
+      "lines": 10,
+      "max_line_length": 42,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "aaadd255806ffffd97658e315ff97efafbd4d51342345fbdb2a81934eb584c6d",
+    "blake3": "d67975ae509d5f137ae75d263aa1fdba58305433a1a5bc8ccbdd23f698bf903c"
+  },
+  "content": {
+    "description": "Harbour server",
+    "excerpt": "Harbour server"
+  },
+  "metadata": {},
+  "format": {
+    "erlang": {
+      "language": "Erlang",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 2,
+        "total": 10
+      },
+      "package": "harbour",
+      "imports": [
+        "kernel/include/logger.hrl"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "start",
+          "count"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2
+      },
+      "module_doc": "Harbour server",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 42
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,127 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "rename.diff",
+    "stem": "rename",
+    "extension": "diff"
+  },
+  "identification": {
+    "format": "diff",
+    "name": "Unified diff / patch",
+    "mime": "text/x-diff",
+    "family": "text.plain",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 457
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 457,
+    "entropy": 4.989,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 457,
+      "chars": 457,
+      "words": 61,
+      "lines": 20,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "726d8cfc0dc9edbd16f688dcbb3492ed1577e66f6a8b60d607f9cf849295c198",
+    "blake3": "5d7077118b899cf6e5bd0903d0e81f1d3e953fb3d0fe601e25b4406fa85b2122"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "diff": {
+      "files_changed": 2,
+      "hunks": 2,
+      "additions": 5,
+      "deletions": 2,
+      "files": [
+        {
+          "path": "src/greet.py",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 2
+        },
+        {
+          "path": "docs/notes.sql",
+          "status": "added",
+          "additions": 2,
+          "deletions": 0
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

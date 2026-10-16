@@ -1,0 +1,138 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "schema.graphql",
+    "stem": "schema",
+    "extension": "graphql"
+  },
+  "identification": {
+    "format": "graphql",
+    "name": "GraphQL schema / query",
+    "mime": "application/graphql",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 217
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 217,
+    "entropy": 4.66,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 217,
+      "chars": 217,
+      "words": 43,
+      "lines": 16,
+      "max_line_length": 37,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "1399bde55f6908805a3a84bca54ab4aba21b09e13af997ec2def364ae99efc72",
+    "blake3": "26876794e45838dde39756f6c413cb0b681bc3e875ec7efdea43a000f0ff614c"
+  },
+  "content": {
+    "description": "Harbour GraphQL schema",
+    "excerpt": "Harbour GraphQL schema"
+  },
+  "metadata": {},
+  "format": {
+    "graphql": {
+      "language": "GraphQL schema / query",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 4,
+        "total": 16
+      },
+      "symbols": {
+        "operation": [
+          "ListBoats"
+        ],
+        "type": [
+          "Boat",
+          "Berth",
+          "Size",
+          "Query"
+        ]
+      },
+      "symbol_counts": {
+        "operation": 1,
+        "type": 4
+      },
+      "module_doc": "Harbour GraphQL schema",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 37
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

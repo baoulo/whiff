@@ -1,0 +1,117 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Cargo.lock",
+    "stem": "Cargo",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "cargo_lockfile",
+    "name": "Cargo lockfile",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 554
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 554,
+    "entropy": 5.116,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 554,
+      "chars": 554,
+      "words": 59,
+      "lines": 23,
+      "max_line_length": 77,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "dc8b44777a4294781e3d10fcc550f5f118c0376d517680d4e59395114e6a21ae",
+    "blake3": "cb7550c9929c311d8704fb92b8ad1a0fe67349fa432d440b8e21eb2363fc39ef"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cargo_lockfile": {
+      "ecosystem": "cargo",
+      "lockfile_version": 4,
+      "resolved_packages": 4,
+      "sources": {
+        "git": 1,
+        "local": 1,
+        "registry": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

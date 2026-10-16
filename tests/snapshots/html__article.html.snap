@@ -1,0 +1,322 @@
+---
+source: src/formats/text/html.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "article.html",
+    "stem": "article",
+    "extension": "html"
+  },
+  "identification": {
+    "format": "html",
+    "name": "HTML document",
+    "mime": "text/html",
+    "family": "text.html",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "text.html"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2789
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2026-09-14T17:03:22+02:00",
+        "source": "html.article:published_time",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-09-14T15:03:22Z",
+    "latest": "2026-09-14T15:03:22Z"
+  },
+  "security": {
+    "active_content": [
+      "javascript",
+      "iframes"
+    ],
+    "external_references": 4,
+    "risks": [
+      {
+        "kind": "inline_event_handlers",
+        "detail": "1 handler attributes",
+        "source": "text.html"
+      },
+      {
+        "kind": "javascript_urls",
+        "detail": "1 javascript: links",
+        "source": "text.html"
+      },
+      {
+        "kind": "hidden_iframe",
+        "detail": "1 hidden iframe(s)",
+        "source": "text.html"
+      },
+      {
+        "kind": "external_form_action",
+        "detail": "form posts to forms.example.net",
+        "source": "text.html"
+      }
+    ]
+  },
+  "rights": {
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "physical": {
+    "size_bytes": 2789,
+    "entropy": 4.93,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2789,
+      "chars": 2788,
+      "words": 220,
+      "lines": 52,
+      "max_line_length": 113,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "64e018e936f6320795bc7f520f60f273fdf8f1d07a5886b122c30a5b3a5d4192",
+    "blake3": "9c72f4626bbafe0104aa49d7abee84b76eb33456549a3864fd90846fa255f33e"
+  },
+  "content": {
+    "title": "Fishing boats return at dusk",
+    "description": "Each evening the fishing fleet returns to the old harbour.",
+    "authors": [
+      "Ada Example"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "fishing",
+      "boats",
+      "Fishing boats return",
+      "fishing fleet returns",
+      "return at dusk",
+      "evening the fishing",
+      "dusk",
+      "Harbour Times",
+      "return"
+    ],
+    "keyword_frequency": [
+      [
+        "boats",
+        4
+      ],
+      [
+        "fishing",
+        4
+      ],
+      [
+        "harbour",
+        4
+      ],
+      [
+        "return",
+        3
+      ],
+      [
+        "dusk",
+        2
+      ],
+      [
+        "prices",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Fishing boats return at dusk"
+      },
+      {
+        "level": 2,
+        "text": "The catch"
+      },
+      {
+        "level": 3,
+        "text": "Prices"
+      },
+      {
+        "level": 2,
+        "text": "Getting there"
+      }
+    ],
+    "excerpt": "Each evening the fishing fleet returns to the old harbour, and the quay fills with people. Most boats bring in mackerel and sardines. Read about the fish. Prices at the market rose this week. Take the tram to the harbour stop. Open the map",
+    "tags": [
+      "harbour",
+      "boats",
+      "fishing",
+      "Fishing boats return",
+      "fishing fleet returns"
+    ]
+  },
+  "metadata": {
+    "json_ld": {
+      "items": [
+        {
+          "@type": "NewsArticle",
+          "headline": "Fishing boats return at dusk",
+          "datePublished": "2026-09-14T17:03:22+02:00",
+          "author": [
+            "Ada Example"
+          ]
+        }
+      ]
+    },
+    "html_meta": {
+      "charset": "utf-8",
+      "description": "Each evening the fishing fleet returns to the old harbour.",
+      "keywords": "harbour, fishing, boats",
+      "author": "Ada Example",
+      "generator": "Handwritten",
+      "robots": "index, follow",
+      "viewport": "width=device-width, initial-scale=1",
+      "article:published_time": "2026-09-14T17:03:22+02:00",
+      "article:tag": [
+        "harbour",
+        "boats"
+      ]
+    },
+    "opengraph": {
+      "title": "Fishing boats return at dusk",
+      "type": "article",
+      "image": "https://example.org/img/boats.jpg"
+    },
+    "twitter": {
+      "card": "summary_large_image"
+    }
+  },
+  "format": {
+    "html": {
+      "declared_charset": "utf-8",
+      "title_tag": "Fishing boats return at dusk | Harbour Times",
+      "lang": "en-GB",
+      "schema_types": {
+        "NewsArticle": 2
+      },
+      "doctype": "html",
+      "generator": "Handwritten",
+      "robots": "index, follow",
+      "viewport": "width=device-width, initial-scale=1",
+      "canonical": "https://news.example.org/harbour/boats",
+      "alternates": [
+        {
+          "hreflang": "fr",
+          "href": "https://news.example.org/fr/harbour/boats"
+        }
+      ],
+      "feeds": [
+        {
+          "type": "application/rss+xml",
+          "href": "/feed.rss",
+          "title": "Harbour Times"
+        }
+      ],
+      "elements": 48,
+      "max_depth": 5,
+      "links": {
+        "internal": 2,
+        "external": 1,
+        "mailto": 0
+      },
+      "top_link_hosts": {
+        "example.com": 1
+      },
+      "images": {
+        "count": 2,
+        "with_alt": 1
+      },
+      "scripts": {
+        "inline": 1,
+        "external": 1,
+        "hosts": {
+          "analytics.example.net": 1
+        }
+      },
+      "stylesheets": 1,
+      "icons": 1,
+      "forms": {
+        "count": 1,
+        "inputs": {
+          "email": 1,
+          "password": 1,
+          "submit": 1
+        },
+        "password_fields": 1
+      },
+      "iframes": {
+        "count": 1,
+        "hosts": {
+          "ads.example.net": 1
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.html",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

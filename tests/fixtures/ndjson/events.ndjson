@@ -1,0 +1,4 @@
+{"ts": "2026-10-14T08:00:00Z", "level": "info", "event": "boat_arrived", "boat": "Marie"}
+{"ts": "2026-10-14T08:05:00Z", "level": "info", "event": "boat_arrived", "boat": "Swift", "berth": 12}
+{"ts": "2026-10-14T09:00:00Z", "level": "warn", "event": "berth_full", "berth": 12}
+{"ts": "2026-10-14T09:30:00Z", "level": "info", "event": "boat_left", "boat": "Marie"}

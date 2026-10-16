@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "BoatService.cs",
+    "stem": "BoatService",
+    "extension": "cs"
+  },
+  "identification": {
+    "format": "csharp",
+    "name": "C# source",
+    "mime": "text/x-csharp",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 514
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2026 Harbour Systems"
+  },
+  "physical": {
+    "size_bytes": 514,
+    "entropy": 4.786,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 514,
+      "chars": 514,
+      "words": 62,
+      "lines": 22,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "b42121c0be6604dd78e8b42f0c197994a6727caf88961315628a87b46e2a4a91",
+    "blake3": "2706eb2960d664497403891742173d6496a1f3bd3d9a753a2ffd61a30f825a74"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "csharp": {
+      "language": "C#",
+      "loc": {
+        "code": 14,
+        "comment": 3,
+        "blank": 5,
+        "total": 22
+      },
+      "package": "Harbour.Services",
+      "imports": [
+        "System",
+        "System.Collections.Generic",
+        "System.Math"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "type": [
+          "BoatService",
+          "Berth",
+          "TideKind"
+        ]
+      },
+      "symbol_counts": {
+        "type": 3
+      },
+      "todo_markers": {
+        "FIXME": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 57
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

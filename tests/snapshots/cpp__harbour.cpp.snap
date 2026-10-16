@@ -1,0 +1,147 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.cpp",
+    "stem": "harbour",
+    "extension": "cpp"
+  },
+  "identification": {
+    "format": "cpp",
+    "name": "C++ source",
+    "mime": "text/x-c++",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 533
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 533,
+    "entropy": 4.733,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 533,
+      "chars": 533,
+      "words": 59,
+      "lines": 27,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "936342cde567d2fa1b455e7168bcbdd25a59a5d417a6c436afd20f2ec18c21cf",
+    "blake3": "d2d2cd0bcaf41e5609e49c9efa490f874cb219d1a487a69ef5d73c05a88bae3a"
+  },
+  "content": {
+    "description": "Harbour registry in C++.",
+    "excerpt": "Harbour registry in C++."
+  },
+  "metadata": {},
+  "format": {
+    "cpp": {
+      "language": "C++",
+      "loc": {
+        "code": 21,
+        "comment": 1,
+        "blank": 5,
+        "total": 27
+      },
+      "package": "harbour",
+      "imports": [
+        "iostream",
+        "vector",
+        "string"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "class": [
+          "Boat"
+        ],
+        "function": [
+          "count_boats",
+          "main"
+        ],
+        "namespace": [
+          "harbour"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 2,
+        "namespace": 1
+      },
+      "module_doc": "Harbour registry in C++.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 63
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

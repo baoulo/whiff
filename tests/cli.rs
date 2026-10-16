@@ -102,6 +102,22 @@ fn schema_and_formats_subcommands() {
 }
 
 #[test]
+fn llm_profile_prints_the_compact_view() {
+    let dir = tempfile::tempdir().unwrap();
+    let p = dir.path().join("guide.md");
+    let body = "The harbour is where the fishing boats come home at dusk every evening. ".repeat(20);
+    std::fs::write(&p, format!("# Harbour guide\n\n{body}\n\n## Boats\n\nMore about boats.\n")).unwrap();
+    let out = whiff().args(["--profile", "llm", "--max-tokens", "300"]).arg(&p).output().unwrap();
+    assert!(out.status.success());
+    let v = json(&out.stdout);
+    assert_eq!(v["title"], "Harbour guide");
+    assert_eq!(v["format"], "Markdown (markdown)");
+    assert_eq!(v["language"], "en");
+    assert!(v.get("whiff").is_none(), "not the full report");
+    assert!(out.stdout.len() <= 300 * 4 + 64, "{} bytes", out.stdout.len());
+}
+
+#[test]
 fn bad_arguments_are_usage_errors() {
     let out = whiff().args(["--profile", "huge", "x"]).output().unwrap();
     assert_eq!(out.status.code(), Some(2));

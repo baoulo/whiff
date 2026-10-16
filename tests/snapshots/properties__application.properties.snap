@@ -1,0 +1,140 @@
+---
+source: src/formats/data/ini.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "application.properties",
+    "stem": "application",
+    "extension": "properties"
+  },
+  "identification": {
+    "format": "properties",
+    "name": "Java properties",
+    "mime": "text/x-java-properties",
+    "family": "data.ini",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.ini"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 291
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "detail": "credential_assignment",
+        "source": "privacy.scan"
+      }
+    ],
+    "secrets": {
+      "credential_assignment": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 291,
+    "entropy": 4.707,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 291,
+      "chars": 291,
+      "words": 24,
+      "lines": 9,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e38c8c4f4f9ca1729d6d2694cbb098618eb6c8f00fa8a1076a3b49c7198f5358",
+    "blake3": "2ece4e2ca40ae9f949af0ca673a193b54f1098c90da050223ad48ac978866188"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "properties": {
+      "redacted_values": 1,
+      "dialect": "java_properties",
+      "sections": [
+        {
+          "name": "",
+          "keys": 6
+        }
+      ],
+      "keys": 6,
+      "comment_lines": 2,
+      "values": {
+        "(global)": {
+          "server.port": "8080",
+          "spring.datasource.url": "jdbc:postgresql://db.internal:5432/harbour",
+          "spring.datasource.username": "harbour",
+          "spring.datasource.password": "[redacted]",
+          "app.description": "A long description continued on the next line",
+          "app.name": "Harbour"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.ini",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

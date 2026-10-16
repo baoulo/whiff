@@ -69,6 +69,15 @@ expression: redacted(r)
     "size_bytes": 4,
     "entropy": 2.0,
     "entropy_scope": "file",
+    "text": {
+      "bytes": 4,
+      "chars": 4,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 4,
+      "bom": false,
+      "blank_lines": 0
+    },
     "image": {
       "width": 640,
       "height": 480,
@@ -98,6 +107,10 @@ expression: redacted(r)
         "level": 1,
         "text": "Intro"
       }
+    ],
+    "excerpt": "Some body text.",
+    "tags": [
+      "demo"
     ]
   },
   "metadata": {
@@ -125,7 +138,37 @@ expression: redacted(r)
         "status": "ok"
       },
       {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
         "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
         "version": 1,
         "ms": 0.0,
         "status": "ok"

@@ -1,0 +1,20 @@
+diff --git a/src/greet.py b/src/greet.py
+index 3b18e51..a1c2d3e 100644
+--- a/src/greet.py
++++ b/src/greet.py
+@@ -1,4 +1,5 @@
+-def hello(name):
+-    return "Hello " + name
++def hello(name: str) -> str:
++    """Greet someone."""
++    return f"Hello {name}"
+ 
+ print(hello("world"))
+diff --git a/docs/notes.sql b/docs/notes.sql
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/docs/notes.sql
+@@ -0,0 +1,2 @@
++-- schema notes
++--- keep this line

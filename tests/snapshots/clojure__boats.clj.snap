@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "boats.clj",
+    "stem": "boats",
+    "extension": "clj"
+  },
+  "identification": {
+    "format": "clojure",
+    "name": "Clojure source",
+    "mime": "text/x-clojure",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 220
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 220,
+    "entropy": 4.631,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 220,
+      "chars": 220,
+      "words": 26,
+      "lines": 11,
+      "max_line_length": 39,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "d68454c97b103c075f9428cf314ea230084f7cd0b71f933e2f456491213f6bc1",
+    "blake3": "a07a2c469f63acc4267cb75d4cbc9426a194b911233f0b83e2060dca3873ef92"
+  },
+  "content": {
+    "description": "Boat registry",
+    "excerpt": "Boat registry"
+  },
+  "metadata": {},
+  "format": {
+    "clojure": {
+      "language": "Clojure",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 3,
+        "total": 11
+      },
+      "package": "harbour.boats",
+      "imports": [
+        "clojure.string",
+        "harbour.db"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "function": [
+          "register",
+          "secret-helper"
+        ],
+        "var": [
+          "max-boats"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "var": 1
+      },
+      "module_doc": "Boat registry",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 39
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

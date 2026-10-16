@@ -1,0 +1,142 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "0001-fix-typo.patch",
+    "stem": "0001-fix-typo",
+    "extension": "patch"
+  },
+  "identification": {
+    "format": "diff",
+    "name": "Unified diff / patch",
+    "mime": "text/x-diff",
+    "family": "text.plain",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 566
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-13T18:20:00+02:00",
+        "source": "diff.Date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-13T16:20:00Z",
+    "latest": "2026-10-13T16:20:00Z"
+  },
+  "security": {
+    "personal_data": {
+      "email": 1,
+      "payment_card": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 566,
+    "entropy": 5.265,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 566,
+      "chars": 566,
+      "words": 85,
+      "lines": 24,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "57c11cc6c29340bbf86a8dfd490eb8c48a18daef2027b9be79e81f64786b914e",
+    "blake3": "be382b7444e54bf4bd13f4f47ef9d5c90e3c9df2aec964091a731941ead85657"
+  },
+  "content": {
+    "title": "Fix a typo in the README",
+    "authors": [
+      "Ada Example"
+    ],
+    "excerpt": "The word \"recieve\" was misspelled in two places."
+  },
+  "metadata": {},
+  "format": {
+    "diff": {
+      "files_changed": 1,
+      "hunks": 1,
+      "additions": 2,
+      "deletions": 3,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 3
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

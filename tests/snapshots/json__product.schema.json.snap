@@ -1,0 +1,252 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "product.schema.json",
+    "stem": "product.schema",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 350
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 350,
+    "entropy": 4.517,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 350,
+      "chars": 350,
+      "words": 34,
+      "lines": 18,
+      "max_line_length": 60,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "550116bdc00f675110dc7ce050408fdaa621ff1548ce934984d423905ee42183",
+    "blake3": "72f002c7027d49e5dced21632dff7620847433ed851503ccc303b1b44c43ba2e"
+  },
+  "content": {
+    "title": "Boat",
+    "description": "A boat in the harbour registry.",
+    "excerpt": "A boat in the harbour registry."
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "properties",
+        "required"
+      ],
+      "key_count": 7,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"$schema\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://json-schema.org/draft/2020-12/schema"
+            ]
+          },
+          "$.[\"$id\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://example.org/boat.schema.json"
+            ]
+          },
+          "$.title": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Boat"
+            ]
+          },
+          "$.description": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "A boat in the harbour registry."
+            ]
+          },
+          "$.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "object"
+            ]
+          },
+          "$.properties": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.properties.name": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.properties.name.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "string"
+            ]
+          },
+          "$.properties.length_m": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.properties.length_m.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "number"
+            ]
+          },
+          "$.required": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.required[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "name"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "json_schema",
+        "name": "JSON Schema",
+        "draft": "https://json-schema.org/draft/2020-12/schema",
+        "schema_id": "https://example.org/boat.schema.json",
+        "type": "object",
+        "properties": [
+          "name",
+          "length_m"
+        ],
+        "required": [
+          "name"
+        ],
+        "definitions": 0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

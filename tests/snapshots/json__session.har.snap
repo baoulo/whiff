@@ -1,0 +1,336 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "session.har",
+    "stem": "session",
+    "extension": "har"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1017
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-14T10:00:00+00:00",
+        "source": "har.startedDateTime",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-14T10:00:00Z",
+    "latest": "2026-10-14T10:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1017,
+    "entropy": 4.031,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1017,
+      "chars": 1017,
+      "words": 81,
+      "lines": 51,
+      "max_line_length": 54,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ff07f7fd4dd62a302be0a7c67c4526164e697adf89ebe6999036b8c63a35a55e",
+    "blake3": "42ef24f1934c525b1faef2eda1e4f923a55561e5d0b30e7eaea2d5c6c0f50920"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "log"
+      ],
+      "key_count": 1,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.log": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.log.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1.2"
+            ]
+          },
+          "$.log.creator": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.log.creator.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "WebInspector"
+            ]
+          },
+          "$.log.creator.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "537.36"
+            ]
+          },
+          "$.log.browser": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.log.browser.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Firefox"
+            ]
+          },
+          "$.log.browser.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "131.0"
+            ]
+          },
+          "$.log.pages": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.log.pages[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.log.pages[].id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "page_1"
+            ]
+          },
+          "$.log.pages[].title": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Harbour"
+            ]
+          },
+          "$.log.entries": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.log.entries[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.log.entries[].startedDateTime": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "2026-10-14T10:00:00.000Z",
+              "2026-10-14T10:00:01.200Z",
+              "2026-10-14T10:00:02.500Z"
+            ]
+          },
+          "$.log.entries[].request": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.log.entries[].request.method": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "GET",
+              "POST"
+            ]
+          },
+          "$.log.entries[].request.url": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "https://news.example.org/",
+              "https://cdn.example.com/site.css",
+              "https://api.example.org/v2/boats"
+            ]
+          },
+          "$.log.entries[].response": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.log.entries[].response.status": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              200,
+              201
+            ]
+          }
+        },
+        "max_depth": 5
+      },
+      "known_schema": {
+        "id": "har",
+        "name": "HTTP Archive",
+        "creator": "WebInspector",
+        "browser": "Firefox",
+        "pages": 1,
+        "entries": 3,
+        "methods": {
+          "GET": 2,
+          "POST": 1
+        },
+        "status": {
+          "200": 2,
+          "201": 1
+        },
+        "top_hosts": [
+          {
+            "host": "api.example.org",
+            "requests": 1
+          },
+          {
+            "host": "cdn.example.com",
+            "requests": 1
+          },
+          {
+            "host": "news.example.org",
+            "requests": 1
+          }
+        ],
+        "first_request": "2026-10-14T10:00:00+00:00",
+        "last_request": "2026-10-14T10:00:02+00:00"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

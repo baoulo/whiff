@@ -1,0 +1,215 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "site.webmanifest",
+    "stem": "site",
+    "extension": "webmanifest"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 268
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 268,
+    "entropy": 4.418,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 268,
+      "chars": 268,
+      "words": 26,
+      "lines": 16,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a52f259d7cac1fc644c19df42585dba2de97f098a711d11294c3f23414555c73",
+    "blake3": "13faaeac4aac45d576fb11f87df9cc41772661426117362c730b108af2cfff02"
+  },
+  "content": {
+    "title": "Harbour Times",
+    "excerpt": "Harbour Times"
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "name",
+        "short_name",
+        "start_url",
+        "display",
+        "icons"
+      ],
+      "key_count": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Harbour Times"
+            ]
+          },
+          "$.short_name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Harbour"
+            ]
+          },
+          "$.start_url": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "/?source=pwa"
+            ]
+          },
+          "$.display": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "standalone"
+            ]
+          },
+          "$.icons": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.icons[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.icons[].src": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "/icon-192.png",
+              "/icon-512.png"
+            ]
+          },
+          "$.icons[].sizes": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "192x192",
+              "512x512"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "web_manifest",
+        "name": "Web app manifest",
+        "app_name": "Harbour Times",
+        "short_name": "Harbour",
+        "start_url": "/?source=pwa",
+        "display": "standalone",
+        "icons": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

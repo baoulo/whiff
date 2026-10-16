@@ -1,0 +1,131 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "build.bat",
+    "stem": "build",
+    "extension": "bat"
+  },
+  "identification": {
+    "format": "batch",
+    "name": "Windows batch file",
+    "mime": "application/x-bat",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 138
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 138,
+    "entropy": 4.639,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 138,
+      "chars": 138,
+      "words": 22,
+      "lines": 8,
+      "max_line_length": 27,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a15a4523c9dd8f70ceb39941b500bfab6298a05c8255f418b2d6a47bb23c80b0",
+    "blake3": "a813d2a01b8d7d1da88747fb6eb491cee789c5b6f90b1c82f53549a595eb1cce"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "batch": {
+      "language": "Windows batch file",
+      "loc": {
+        "code": 6,
+        "comment": 2,
+        "blank": 0,
+        "total": 8
+      },
+      "imports": [
+        "scripts\\clean.bat"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "label": [
+          "build"
+        ]
+      },
+      "symbol_counts": {
+        "label": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 27
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

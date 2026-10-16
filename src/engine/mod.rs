@@ -4,11 +4,13 @@
 pub(crate) mod analyzers;
 mod options;
 mod pipeline;
-mod universal;
+pub(crate) mod universal;
+mod xattrs;
 
 use std::io::Read;
 use std::path::Path;
 use std::sync::Arc;
+use std::time::Duration;
 
 pub use options::{Hashes, Limits, Options, Profile};
 
@@ -21,6 +23,8 @@ use crate::report::Report;
 pub struct Engine {
     registry: Registry,
     options: Options,
+    /// Stop after detection (the report of an abandoned extraction).
+    detect_only: bool,
 }
 
 impl Default for Engine {
@@ -54,13 +58,79 @@ impl Engine {
     ///
     /// Fails only when `path` cannot be inspected at all; every problem inside
     /// the file is recorded in `diagnostics` instead.
+    ///
+    /// With a file deadline (`limits.file_timeout`), the work runs on a worker
+    /// thread. Deadlines are checked on every read, but a parser that loops
+    /// without reading cannot see them; if the worker overruns, the caller
+    /// gets a detection-only report with `limits_hit: ["timeout"]` and the
+    /// worker is abandoned.
     pub fn extract_path(&self, path: impl AsRef<Path>) -> Result<Report, Error> {
-        pipeline::extract_path(self, path.as_ref())
+        let path = path.as_ref();
+        let size = std::fs::metadata(path).map_or(0, |m| m.len());
+        let owned = path.to_path_buf();
+        self.guarded(size, move |e| pipeline::extract_path(e, &owned), |e| pipeline::extract_path(e, path))
     }
 
-    /// Describe in-memory bytes. `name` (a file name) helps detection.
+    /// Describe in-memory bytes. `name` (a file name) helps detection. Runs
+    /// under the same watchdog as [`extract_path`](Self::extract_path).
     pub fn extract_bytes(&self, name: Option<&str>, bytes: impl Into<Arc<[u8]>>) -> Report {
-        pipeline::extract_bytes(self, name, &bytes.into())
+        let data: Arc<[u8]> = bytes.into();
+        let (owned_name, owned_data) = (name.map(str::to_string), Arc::clone(&data));
+        let report = self.guarded(
+            data.len() as u64,
+            move |e| Ok(pipeline::extract_bytes(e, owned_name.as_deref(), &owned_data)),
+            |e| Ok(pipeline::extract_bytes(e, name, &data)),
+        );
+        report.unwrap_or_else(|_: Error| unreachable!("in-memory extraction cannot fail"))
+    }
+
+    /// Run `work` on a worker thread with a hard deadline; on overrun, run
+    /// `fallback` with detection only. Without threads (WASM) or without a
+    /// file deadline, `work` runs here.
+    fn guarded(
+        &self,
+        size: u64,
+        work: impl FnOnce(&Engine) -> Result<Report, Error> + Send + 'static,
+        fallback: impl FnOnce(&Engine) -> Result<Report, Error>,
+    ) -> Result<Report, Error> {
+        let threads = !cfg!(all(target_arch = "wasm32", target_os = "unknown"));
+        let Some(timeout) = self.options.limits.file_timeout.filter(|_| threads && !self.detect_only) else {
+            return work(self);
+        };
+        // Cooperative deadlines stop extractors; hashing a large file is not
+        // bounded by them, so allow for it at ~100 MiB/s.
+        let deadline = timeout + Duration::from_secs(2) + Duration::from_secs(size / (100 << 20));
+        let (tx, rx) = std::sync::mpsc::sync_channel(1);
+        let engine = self.clone();
+        let spawned =
+            std::thread::Builder::new().name("whiff-extract".into()).stack_size(WORKER_STACK).spawn(move || {
+                let _ = tx.send(work(&engine));
+            });
+        if spawned.is_err() {
+            // No thread available: detection and extraction run here, cooperatively bounded.
+            return fallback(self);
+        }
+        let failure = match rx.recv_timeout(deadline) {
+            Ok(result) => return result,
+            Err(std::sync::mpsc::RecvTimeoutError::Timeout) => format!(
+                "extraction abandoned after {:.1} s: an extractor did not stop at the deadline",
+                deadline.as_secs_f64()
+            ),
+            // Stages contain their own panics; this is a bug in the engine.
+            Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => {
+                "extraction failed: the worker thread panicked".into()
+            }
+        };
+        let mut quick = self.clone();
+        quick.detect_only = true;
+        quick.options.limits.file_timeout = None;
+        let mut report = fallback(&quick)?;
+        if failure.contains("abandoned") {
+            report.diagnostics.limits_hit.push("timeout".into());
+        }
+        report.diagnostics.truncated = true;
+        report.diagnostics.warnings.push(failure);
+        Ok(report)
     }
 
     /// Read `reader` into memory (up to `max_read_bytes`) and describe it.
@@ -80,6 +150,9 @@ impl Engine {
         Ok(report)
     }
 }
+
+/// Stack of the extraction worker thread.
+const WORKER_STACK: usize = 16 * 1024 * 1024;
 
 /// Builder for [`Engine`].
 #[derive(Debug, Default)]
@@ -160,6 +233,6 @@ impl EngineBuilder {
         if !self.limits_set {
             self.options.limits = self.options.profile.limits();
         }
-        Engine { registry: self.registry.unwrap_or_else(Registry::builtin), options: self.options }
+        Engine { registry: self.registry.unwrap_or_else(Registry::builtin), options: self.options, detect_only: false }
     }
 }

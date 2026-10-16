@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>Harbour Times</title>
+  <link>https://news.example.org/</link>
+  <description>News from the old harbour.</description>
+  <language>en-gb</language>
+  <copyright>© 2026 Harbour Times</copyright>
+  <lastBuildDate>Wed, 14 Oct 2026 08:00:00 GMT</lastBuildDate>
+  <generator>Handwritten 1.0</generator>
+  <item><title>Fishing boats return at dusk</title><link>https://news.example.org/boats</link>
+    <description>&lt;p&gt;Each evening the &lt;b&gt;fleet&lt;/b&gt; returns.&lt;/p&gt;</description>
+    <pubDate>Mon, 14 Sep 2026 17:03:22 +0200</pubDate><dc:creator>Ada Example</dc:creator><category>harbour</category></item>
+  <item><title>New ferry timetable</title><link>https://news.example.org/ferry</link>
+    <description>The ferry runs every hour from October.</description>
+    <pubDate>Thu, 01 Oct 2026 09:00:00 +0200</pubDate><category>transport</category><category>harbour</category></item>
+</channel>
+</rss>

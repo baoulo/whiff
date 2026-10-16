@@ -1,0 +1,17 @@
+// Gradle build for the harbour app
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+}
+
+group = 'org.example'
+version = '2.3.0'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+def greet(name) {
+    println "Hello ${name}"
+}

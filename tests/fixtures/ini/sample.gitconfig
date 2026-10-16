@@ -1,0 +1,8 @@
+[user]
+	name = Ada Example
+	email = ada@example.org
+[remote "origin"]
+	url = https://ada:s3cretpass@git.example.org/harbour.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[core]
+	autocrlf = input

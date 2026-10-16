@@ -1,0 +1,184 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "package.json",
+    "stem": "package",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "npm_package",
+    "name": "npm package.json",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "npm_package",
+        "confidence": 0.95
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 813
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "detail": "postinstall",
+        "source": "code.manifest"
+      }
+    ],
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ada Example",
+      "Ben Sample"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 813,
+    "entropy": 4.66,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 813,
+      "chars": 813,
+      "words": 79,
+      "lines": 40,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7e35e4366ff4a11267831921eee04a1936e6af0482b00c19f544d1382c80973b",
+    "blake3": "a0335e525bde552f7d69d10f2607c453e3e445eac0fd1c0676933fc3368dcdc2"
+  },
+  "content": {
+    "title": "@example/harbour-web 2.3.0",
+    "description": "Web front end for the harbour registry.",
+    "authors": [
+      "Ada Example",
+      "Ben Sample"
+    ],
+    "keywords": [
+      "harbour",
+      "boats"
+    ],
+    "excerpt": "Web front end for the harbour registry.",
+    "tags": [
+      "harbour",
+      "boats"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "npm_package": {
+      "ecosystem": "npm",
+      "name": "@example/harbour-web",
+      "version": "2.3.0",
+      "license": "MIT",
+      "repository": "https://git.example.org/harbour-web.git",
+      "dependencies": {
+        "vue": "^3.5.0",
+        "zod": "^3.23.8"
+      },
+      "dependencies_count": 2,
+      "dev_dependencies": {
+        "vite": "^5.4.0",
+        "vitest": "^2.1.0",
+        "typescript": "~5.6.0"
+      },
+      "dev_dependencies_count": 3,
+      "scripts": [
+        "build",
+        "test",
+        "postinstall"
+      ],
+      "main": "dist/index.js",
+      "types": "dist/index.d.ts",
+      "type": "module",
+      "engines": {
+        "node": ">=20"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

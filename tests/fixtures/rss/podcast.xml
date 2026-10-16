@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<channel>
+  <title>Harbour Stories</title><link>https://pod.example.org/</link>
+  <description>Stories told on the quay.</description>
+  <itunes:author>Ben Sample</itunes:author>
+  <item><title>Episode 1: The Lighthouse</title><enclosure url="https://pod.example.org/ep1.mp3" type="audio/mpeg" length="1234567"/>
+    <pubDate>Sat, 03 Oct 2026 06:00:00 GMT</pubDate></item>
+</channel>
+</rss>

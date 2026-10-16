@@ -1,0 +1,167 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.rs",
+    "stem": "tides",
+    "extension": "rs"
+  },
+  "identification": {
+    "format": "rust",
+    "name": "Rust source",
+    "mime": "text/rust",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 848
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "MIT OR Apache-2.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 848,
+    "entropy": 5.005,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 848,
+      "chars": 848,
+      "words": 123,
+      "lines": 49,
+      "max_line_length": 89,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 9
+    }
+  },
+  "integrity": {
+    "sha256": "c581a48c889b0d92ea777cba654dfb9b79b04eb7d63f344216c4a441782af0b9",
+    "blake3": "445d50b5f4a902cade37a8c773492fe178a364a78bbd4030837ca12140defe79"
+  },
+  "content": {
+    "description": "Tide predictions for the old harbour.",
+    "excerpt": "Tide predictions for the old harbour. Uses a simple harmonic model."
+  },
+  "metadata": {},
+  "format": {
+    "rust": {
+      "spdx": "MIT OR Apache-2.0",
+      "language": "Rust",
+      "loc": {
+        "code": 34,
+        "comment": 6,
+        "blank": 9,
+        "total": 49
+      },
+      "imports": [
+        "std"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "enum": [
+          "Kind"
+        ],
+        "function": [
+          "table"
+        ],
+        "impl": [
+          "Tide"
+        ],
+        "macro": [
+          "metres"
+        ],
+        "module": [
+          "tests"
+        ],
+        "struct": [
+          "Tide"
+        ],
+        "trait": [
+          "Predict"
+        ]
+      },
+      "symbol_counts": {
+        "enum": 1,
+        "function": 1,
+        "impl": 1,
+        "macro": 1,
+        "module": 1,
+        "struct": 1,
+        "trait": 1
+      },
+      "module_doc": "Tide predictions for the old harbour.\n\nUses a simple harmonic model.",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": true,
+      "generated": false,
+      "longest_line": 89
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

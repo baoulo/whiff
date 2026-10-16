@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Harbour Viewer
+Comment=Browse the boats in the harbour
+Exec=harbour-viewer %U
+Icon=harbour
+Categories=Utility;

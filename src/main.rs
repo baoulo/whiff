@@ -41,9 +41,13 @@ struct RunArgs {
     /// Files or directories (walked recursively); `-` reads stdin.
     #[arg(required = true, value_name = "PATH")]
     paths: Vec<PathBuf>,
-    /// How much work to do per file.
+    /// How much work to do per file: `minimal`, `standard`, `full`, or `llm`
+    /// (standard plus a summary, printed as the compact LLM view).
     #[arg(short, long, default_value = "standard", value_parser = parse_profile)]
     profile: Profile,
+    /// Token budget of the LLM view (`--profile llm`).
+    #[arg(long, value_name = "N", default_value_t = 800)]
+    max_tokens: usize,
     /// One compact report per line (the default for several files).
     #[arg(long)]
     jsonl: bool,
@@ -176,7 +180,9 @@ fn formats(json: bool) -> ExitCode {
         println!("Every file still gets identification, system, temporal, security, physical and integrity sections.");
     } else {
         for (f, e) in registry.formats() {
-            println!("{:<16} {:<32} {:<18} {}", f.id, f.name, e.meta().id, f.extensions.join(" "));
+            let exts =
+                if f.extensions.is_empty() { "(by name or content)".to_string() } else { f.extensions.join(" ") };
+            println!("{:<16} {:<32} {:<18} {exts}", f.id, f.name, e.meta().id);
         }
     }
     ExitCode::SUCCESS
@@ -236,11 +242,17 @@ fn collect_inputs(a: &RunArgs) -> (Vec<Input>, bool) {
     (inputs, walked)
 }
 
+/// Stack for worker threads. Parsers are bounded, but a generous stack keeps
+/// deep (legitimate) documents well clear of the limit.
+const WORKER_STACK: usize = 16 * 1024 * 1024;
+
 fn run(a: &RunArgs) -> ExitCode {
+    let mut pool = rayon::ThreadPoolBuilder::new().stack_size(WORKER_STACK);
     if let Some(n) = a.jobs {
-        // Only fails if a global pool already exists, which cannot happen here.
-        let _ = rayon::ThreadPoolBuilder::new().num_threads(n).build_global();
+        pool = pool.num_threads(n);
     }
+    // Only fails if a global pool already exists, which cannot happen here.
+    let _ = pool.build_global();
     let engine = build_engine(a);
     let (inputs, walked) = collect_inputs(a);
     let single = inputs.len() == 1 && !walked;
@@ -259,7 +271,14 @@ fn run(a: &RunArgs) -> ExitCode {
     for result in results {
         match result {
             Ok(report) => {
-                let json = if pretty { serde_json::to_string_pretty(&report) } else { serde_json::to_string(&report) };
+                let json = if a.profile == Profile::Llm {
+                    let view = report.llm_view(a.max_tokens);
+                    if pretty { serde_json::to_string_pretty(&view) } else { serde_json::to_string(&view) }
+                } else if pretty {
+                    serde_json::to_string_pretty(&report)
+                } else {
+                    serde_json::to_string(&report)
+                };
                 if writeln!(out, "{}", json.expect("reports serialise")).is_err() {
                     return ExitCode::FAILURE; // stdout closed (e.g. piped into `head`)
                 }

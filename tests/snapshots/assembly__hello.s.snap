@@ -1,0 +1,137 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "hello.s",
+    "stem": "hello",
+    "extension": "s"
+  },
+  "identification": {
+    "format": "assembly",
+    "name": "Assembly source",
+    "mime": "text/x-asm",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 288
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 288,
+    "entropy": 4.437,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 288,
+      "chars": 288,
+      "words": 40,
+      "lines": 15,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "aea69826686cb544f462cbb57eb45b9829976f1c703a923996e1d9dd1e033216",
+    "blake3": "a8ba1b575523da24e7ae6efd866f0bf3b90052bb7b40661cf64a04d39f9ff4da"
+  },
+  "content": {
+    "description": "Hello world, x86-64 Linux (GNU as)",
+    "excerpt": "Hello world, x86-64 Linux (GNU as)"
+  },
+  "metadata": {},
+  "format": {
+    "assembly": {
+      "language": "Assembly",
+      "loc": {
+        "code": 14,
+        "comment": 1,
+        "blank": 0,
+        "total": 15
+      },
+      "symbols": {
+        "label": [
+          "msg",
+          "_start"
+        ],
+        "section": [
+          ".data",
+          ".text"
+        ]
+      },
+      "symbol_counts": {
+        "label": 2,
+        "section": 2
+      },
+      "module_doc": "Hello world, x86-64 Linux (GNU as)",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 36
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

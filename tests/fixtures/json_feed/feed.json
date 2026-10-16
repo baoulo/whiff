@@ -1,0 +1,15 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Harbour Podcast",
+  "home_page_url": "https://pod.example.org/",
+  "description": "Weekly stories from the quay.",
+  "language": "en",
+  "authors": [{"name": "Ben Sample"}],
+  "items": [
+    {"id": "2", "title": "The storm of 1987", "url": "https://pod.example.org/2", "date_published": "2026-10-08T06:00:00Z",
+     "summary": "Old sailors remember the great storm.", "tags": ["history"],
+     "attachments": [{"url": "https://pod.example.org/2.mp3", "mime_type": "audio/mpeg"}]},
+    {"id": "1", "title": "Welcome", "url": "https://pod.example.org/1", "date_published": "2026-10-01T06:00:00Z",
+     "content_text": "An introduction to the show."}
+  ]
+}

@@ -1,0 +1,272 @@
+---
+source: src/formats/text/markdown.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-guide.md",
+    "stem": "harbour-guide",
+    "extension": "md"
+  },
+  "identification": {
+    "format": "markdown",
+    "name": "Markdown",
+    "mime": "text/markdown",
+    "family": "text.markdown",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.markdown"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 951
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2026-09-14",
+        "source": "front_matter.date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-01T09:30:00+02:00",
+        "source": "front_matter.lastmod",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-01T07:30:00Z",
+    "latest": "2026-10-01T07:30:00Z"
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "Ada Example",
+      "Ben Sample"
+    ],
+    "license": {
+      "name": "CC-BY-4.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 951,
+    "entropy": 5.025,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 951,
+      "chars": 951,
+      "words": 158,
+      "lines": 48,
+      "max_line_length": 75,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 13
+    }
+  },
+  "integrity": {
+    "sha256": "b6f313b0dfa72549d9fdc3cec722ba0770edaedaad992f5308307c17416085cd",
+    "blake3": "f34f051321002263a068d71dd92947d5895ebe4ffb54ded3e0f03668b0497af0"
+  },
+  "content": {
+    "title": "A Guide to the Old Harbour",
+    "description": "Walks, boats and food around the old harbour.",
+    "authors": [
+      "Ada Example",
+      "Ben Sample"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "boats",
+      "quay",
+      "harbour cafe",
+      "fishing boats",
+      "Walking the quay",
+      "lighthouse",
+      "follow the quay",
+      "ferry",
+      "fish"
+    ],
+    "keyword_frequency": [
+      [
+        "boats",
+        4
+      ],
+      [
+        "fish",
+        3
+      ],
+      [
+        "harbour",
+        3
+      ],
+      [
+        "quay",
+        3
+      ],
+      [
+        "ferry",
+        2
+      ],
+      [
+        "lighthouse",
+        2
+      ],
+      [
+        "walk",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "The Old Harbour"
+      },
+      {
+        "level": 2,
+        "text": "Walking the quay"
+      },
+      {
+        "level": 3,
+        "text": "Things to bring"
+      },
+      {
+        "level": 2,
+        "text": "Boats"
+      },
+      {
+        "level": 2,
+        "text": "Food"
+      }
+    ],
+    "excerpt": "The old harbour is where the fishing boats come home. This guide covers the walk along the quay, the boats you will see and where to eat. Start at the lighthouse and follow the quay to the fish market. See the town map and the timetable. Comfortable shoes A camera Coins for the ferry Boat Type Marie Trawler Swift Ferry Fish soup at the harbour cafe is the local favourite. Ask for extra bread.",
+    "tags": [
+      "travel",
+      "harbour",
+      "boats",
+      "quay",
+      "harbour cafe",
+      "fishing boats"
+    ]
+  },
+  "metadata": {
+    "front_matter": {
+      "title": "A Guide to the Old Harbour",
+      "description": "Walks, boats and food around the old harbour.",
+      "author": [
+        {
+          "name": "Ada Example"
+        },
+        "Ben Sample"
+      ],
+      "date": "2026-09-14",
+      "lastmod": "2026-10-01T09:30:00+02:00",
+      "tags": [
+        "travel",
+        "harbour",
+        "boats"
+      ],
+      "license": "CC-BY-4.0",
+      "lang": "en"
+    }
+  },
+  "format": {
+    "markdown": {
+      "front_matter": "yaml",
+      "front_matter_keys": [
+        "title",
+        "description",
+        "author",
+        "date",
+        "lastmod",
+        "tags",
+        "license",
+        "lang"
+      ],
+      "headings": 5,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "example.org": 1
+      },
+      "images": {
+        "count": 1,
+        "with_alt": 1
+      },
+      "code_blocks": 1,
+      "code_languages": {
+        "python": 1
+      },
+      "tables": 1,
+      "tasks": {
+        "total": 3,
+        "done": 1
+      },
+      "footnotes": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.markdown",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

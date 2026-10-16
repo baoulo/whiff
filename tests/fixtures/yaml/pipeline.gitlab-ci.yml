@@ -1,0 +1,14 @@
+stages: [build, test, deploy]
+variables:
+  CARGO_HOME: .cargo
+build:
+  stage: build
+  script: [cargo build --release]
+test:
+  stage: test
+  script: [cargo test]
+.hidden-template:
+  script: [echo hidden]
+deploy:
+  stage: deploy
+  script: [./deploy.sh]

@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.proto",
+    "stem": "harbour",
+    "extension": "proto"
+  },
+  "identification": {
+    "format": "protobuf",
+    "name": "Protocol Buffers schema",
+    "mime": "text/x-protobuf",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 304
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 304,
+    "entropy": 5.049,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 304,
+      "chars": 304,
+      "words": 45,
+      "lines": 17,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "9eefbba4a04df21548364848b0df73e7dfafbcfa55f25b31b326a13ce66da9ed",
+    "blake3": "5c6bd2469548db6e3ce34396d1db63794656a39adda77521704fbe8a4837819f"
+  },
+  "content": {
+    "description": "Harbour service API",
+    "excerpt": "Harbour service API"
+  },
+  "metadata": {},
+  "format": {
+    "protobuf": {
+      "language": "Protocol Buffers schema",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 5,
+        "total": 17
+      },
+      "package": "harbour.v1",
+      "imports": [
+        "google/protobuf/timestamp.proto"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "enum": [
+          "Size"
+        ],
+        "message": [
+          "Boat"
+        ],
+        "rpc": [
+          "Allocate"
+        ],
+        "service": [
+          "Berths"
+        ]
+      },
+      "symbol_counts": {
+        "enum": 1,
+        "message": 1,
+        "rpc": 1,
+        "service": 1
+      },
+      "module_doc": "Harbour service API",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 57
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

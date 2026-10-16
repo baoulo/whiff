@@ -1,0 +1,168 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Cargo.toml",
+    "stem": "Cargo",
+    "extension": "toml"
+  },
+  "identification": {
+    "format": "cargo_manifest",
+    "name": "Cargo manifest",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "cargo_manifest",
+        "confidence": 0.95
+      },
+      {
+        "format": "toml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 531
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ada Example"
+    ],
+    "license": {
+      "name": "MIT OR Apache-2.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 531,
+    "entropy": 4.912,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 531,
+      "chars": 531,
+      "words": 77,
+      "lines": 26,
+      "max_line_length": 53,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "7ae8948ce217f487d0a3663f0a250fd5fa36d05c4a6f8e44d35ea1fded19d110",
+    "blake3": "7c988739f566d33d8ec420d13b455582a9032717e1813151e82d23231fd53c21"
+  },
+  "content": {
+    "title": "harbour 2.3.0",
+    "description": "Berth allocation for the old harbour.",
+    "authors": [
+      "Ada Example"
+    ],
+    "keywords": [
+      "harbour",
+      "boats"
+    ],
+    "excerpt": "Berth allocation for the old harbour.",
+    "tags": [
+      "harbour",
+      "boats"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "cargo_manifest": {
+      "ecosystem": "cargo",
+      "name": "harbour",
+      "version": "2.3.0",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://git.example.org/harbour",
+      "edition": "2024",
+      "rust_version": "1.85",
+      "dependencies": {
+        "local-model": "path: ../model",
+        "serde": "1",
+        "tokio": "1.41"
+      },
+      "dependencies_count": 3,
+      "dev_dependencies": {
+        "insta": "1.40"
+      },
+      "dev_dependencies_count": 1,
+      "features": [
+        "default",
+        "tides"
+      ],
+      "bin_targets": 1,
+      "build_script": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "report.pl",
+    "stem": "report",
+    "extension": "pl"
+  },
+  "identification": {
+    "format": "perl",
+    "name": "Perl source",
+    "mime": "text/x-perl",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 330
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 330,
+    "entropy": 4.974,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 330,
+      "chars": 330,
+      "words": 47,
+      "lines": 23,
+      "max_line_length": 54,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 7
+    }
+  },
+  "integrity": {
+    "sha256": "c2b6992abab0168bdc2645d399643d75cde635cdedba8a6d253dbcbebb3b6201",
+    "blake3": "965bab33848efa5195d6daa97056f63b52e30bb840a4b7745907eca9f40f1113"
+  },
+  "content": {
+    "description": "Daily harbour report",
+    "excerpt": "Daily harbour report"
+  },
+  "metadata": {},
+  "format": {
+    "perl": {
+      "language": "Perl",
+      "loc": {
+        "code": 12,
+        "comment": 6,
+        "blank": 5,
+        "total": 23
+      },
+      "interpreter": "perl",
+      "package": "Harbour::Report",
+      "imports": [
+        "strict",
+        "warnings",
+        "POSIX",
+        "Harbour::Boats"
+      ],
+      "import_count": 4,
+      "symbols": {
+        "function": [
+          "new",
+          "print_report"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2
+      },
+      "module_doc": "Daily harbour report",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 54
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

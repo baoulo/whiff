@@ -1,0 +1,202 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "config.json5",
+    "stem": "config",
+    "extension": "json5"
+  },
+  "identification": {
+    "format": "json5",
+    "name": "JSON5",
+    "mime": "application/json5",
+    "family": "data.json",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 164
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 164,
+    "entropy": 4.768,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 164,
+      "chars": 164,
+      "words": 20,
+      "lines": 8,
+      "max_line_length": 42,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "066d9891beac91568699115509804500bea0e38750e1a4d4e4c1f0b82fe860e1",
+    "blake3": "3fd59977e9832ed4c7915564de942b1c97fccf3194f0622e06556ead49de8af5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json5": {
+      "valid": true,
+      "dialect": "json5",
+      "top_level": "object",
+      "keys": [
+        "name",
+        "port",
+        "hex",
+        "features",
+        "limits"
+      ],
+      "key_count": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "harbour-api"
+            ]
+          },
+          "$.port": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              8080
+            ]
+          },
+          "$.hex": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              31
+            ]
+          },
+          "$.features": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.features[]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "tides",
+              "berths"
+            ]
+          },
+          "$.limits": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.limits.maxBoats": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              500
+            ]
+          },
+          "$.limits.timeout": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              30.5
+            ]
+          }
+        },
+        "max_depth": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

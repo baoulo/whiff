@@ -1,0 +1,159 @@
+---
+source: src/formats/data/sql.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dump-mysql.sql",
+    "stem": "dump-mysql",
+    "extension": "sql"
+  },
+  "identification": {
+    "format": "sql",
+    "name": "SQL script",
+    "mime": "application/sql",
+    "family": "data.sql",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.sql"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 636
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "destructive_statements",
+        "detail": "DROP / DELETE / TRUNCATE present",
+        "source": "data.sql"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 636,
+    "entropy": 5.53,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 636,
+      "chars": 636,
+      "words": 80,
+      "lines": 21,
+      "max_line_length": 101,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "cd4d07295411d9d57e6f5dd5f4328399c9cbbb2f645af92e314d929281ce27c7",
+    "blake3": "49a9a76b296245ce99896683dede1f256ef34181fd2eba90ffa4ce1cb8f68511"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sql": {
+      "host": "localhost",
+      "server_version": "8.0.36",
+      "dialect": "mysql",
+      "statements": 7,
+      "statement_kinds": {
+        "create_procedure": 1,
+        "create_table": 1,
+        "drop": 1,
+        "insert": 1,
+        "lock": 1,
+        "mysql_directive": 1,
+        "unlock": 1
+      },
+      "table_count": 1,
+      "tables": [
+        {
+          "name": "crew",
+          "references": [],
+          "columns": [
+            {
+              "name": "id",
+              "type": "INT"
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR(100)"
+            },
+            {
+              "name": "rank",
+              "type": "ENUM('captain', 'mate', 'deckhand')"
+            }
+          ],
+          "column_count": 3
+        }
+      ],
+      "rows_by_table": {
+        "crew": 3
+      },
+      "rows": 3,
+      "routines": [
+        "crew_count"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.sql",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

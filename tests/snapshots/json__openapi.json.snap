@@ -1,0 +1,502 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "openapi.json",
+    "stem": "openapi",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 724
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 724,
+    "entropy": 4.576,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 724,
+      "chars": 724,
+      "words": 67,
+      "lines": 13,
+      "max_line_length": 127,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f1e28be92d98bd648af92809f89360e06478e0804c71e9ebb655421c1a2fd91d",
+    "blake3": "20d24664931263fd5d6febcb43554a33c126cf5a20a69855bf1ce72543618c42"
+  },
+  "content": {
+    "title": "Harbour API",
+    "description": "Berths, boats and tides.",
+    "excerpt": "Berths, boats and tides."
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "openapi",
+        "info",
+        "servers",
+        "paths",
+        "components"
+      ],
+      "key_count": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.openapi": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "3.1.0"
+            ]
+          },
+          "$.info": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.info.title": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Harbour API"
+            ]
+          },
+          "$.info.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2.3.0"
+            ]
+          },
+          "$.info.description": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Berths, boats and tides."
+            ]
+          },
+          "$.info.license": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.info.license.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "MIT"
+            ]
+          },
+          "$.info.license.url": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://opensource.org/licenses/MIT"
+            ]
+          },
+          "$.servers": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.servers[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.servers[].url": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://api.example.org/v2"
+            ]
+          },
+          "$.paths": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats\"].get": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats\"].get.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.paths.[\"/boats\"].get.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "boats"
+            ]
+          },
+          "$.paths.[\"/boats\"].get.summary": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "List boats"
+            ]
+          },
+          "$.paths.[\"/boats\"].post": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats\"].post.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.paths.[\"/boats\"].post.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "boats"
+            ]
+          },
+          "$.paths.[\"/boats\"].post.summary": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Register a boat"
+            ]
+          },
+          "$.paths.[\"/boats/{id}\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats/{id}\"].get": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats/{id}\"].get.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.paths.[\"/boats/{id}\"].get.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "boats"
+            ]
+          },
+          "$.paths.[\"/boats/{id}\"].delete": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/boats/{id}\"].delete.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.paths.[\"/boats/{id}\"].delete.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "boats"
+            ]
+          },
+          "$.paths.[\"/tides\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/tides\"].get": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.paths.[\"/tides\"].get.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.paths.[\"/tides\"].get.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "tides"
+            ]
+          },
+          "$.components": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.schemas": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.schemas.Boat": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.schemas.Boat.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "object"
+            ]
+          },
+          "$.components.schemas.Tide": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.schemas.Tide.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "object"
+            ]
+          },
+          "$.components.securitySchemes": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.securitySchemes.apiKey": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.components.securitySchemes.apiKey.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "apiKey"
+            ]
+          },
+          "$.components.securitySchemes.apiKey.in": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "header"
+            ]
+          },
+          "$.components.securitySchemes.apiKey.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "X-API-Key"
+            ]
+          }
+        },
+        "max_depth": 5
+      },
+      "known_schema": {
+        "id": "openapi",
+        "name": "OpenAPI",
+        "spec_version": "3.1.0",
+        "api_version": "2.3.0",
+        "servers": [
+          "https://api.example.org/v2"
+        ],
+        "paths": 3,
+        "operations": {
+          "delete": 1,
+          "get": 3,
+          "post": 1
+        },
+        "schemas": 2,
+        "security_schemes": [
+          "apiKey"
+        ],
+        "tags": [
+          "boats",
+          "tides"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

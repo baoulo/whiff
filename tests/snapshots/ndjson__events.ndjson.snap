@@ -1,0 +1,175 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "events.ndjson",
+    "stem": "events",
+    "extension": "ndjson"
+  },
+  "identification": {
+    "format": "ndjson",
+    "name": "Newline-delimited JSON",
+    "mime": "application/x-ndjson",
+    "family": "data.json",
+    "confidence": 0.65,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 364
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 364,
+    "entropy": 4.528,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 364,
+      "chars": 364,
+      "words": 34,
+      "lines": 4,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d7cc29f8dc4151066f604ab62d5fed8b40f551cfd783bf635073e70b63813514",
+    "blake3": "fab4c5624eceba7d4b008e1a91e57279d0499ed13bd24212a900008ce1e3cfa4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ndjson": {
+      "records": 4,
+      "records_examined": 4,
+      "invalid_records": 0,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 4
+          },
+          "$.ts": {
+            "types": [
+              "string"
+            ],
+            "count": 4,
+            "examples": [
+              "2026-10-14T08:00:00Z",
+              "2026-10-14T08:05:00Z",
+              "2026-10-14T09:00:00Z"
+            ]
+          },
+          "$.level": {
+            "types": [
+              "string"
+            ],
+            "count": 4,
+            "examples": [
+              "info",
+              "warn"
+            ]
+          },
+          "$.event": {
+            "types": [
+              "string"
+            ],
+            "count": 4,
+            "examples": [
+              "boat_arrived",
+              "berth_full",
+              "boat_left"
+            ]
+          },
+          "$.boat": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "Marie",
+              "Swift"
+            ]
+          },
+          "$.berth": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              12
+            ]
+          }
+        },
+        "max_depth": 1,
+        "documents": 4
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

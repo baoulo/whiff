@@ -1,0 +1,140 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "scale.cu",
+    "stem": "scale",
+    "extension": "cu"
+  },
+  "identification": {
+    "format": "cuda",
+    "name": "CUDA source",
+    "mime": "text/x-cuda",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 286
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 286,
+    "entropy": 4.89,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 286,
+      "chars": 286,
+      "words": 51,
+      "lines": 14,
+      "max_line_length": 50,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "5f1a07fd0fb5ec098bcd423e9052094f844074934f3a5f293e7e170a50b591b9",
+    "blake3": "fa638c493118cfd78b9723e428779addafea6829d18d36904bbc471c3ff574a3"
+  },
+  "content": {
+    "description": "Scale tide heights on the GPU.",
+    "excerpt": "Scale tide heights on the GPU."
+  },
+  "metadata": {},
+  "format": {
+    "cuda": {
+      "language": "CUDA",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 2,
+        "total": 14
+      },
+      "imports": [
+        "cuda_runtime.h"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "scale",
+          "launch"
+        ],
+        "kernel": [
+          "scale"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "kernel": 1
+      },
+      "module_doc": "Scale tide heights on the GPU.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 50
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

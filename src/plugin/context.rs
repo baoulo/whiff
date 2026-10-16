@@ -9,6 +9,9 @@ use crate::report::{
     Rights, Risk, Security, Temporal,
 };
 
+/// Headings kept in `content.outline`.
+pub const MAX_OUTLINE: usize = 500;
+
 pub(crate) struct PendingBlock {
     pub kind: BlockKind,
     pub data: Vec<u8>,
@@ -149,6 +152,21 @@ impl Context<'_> {
         self.text.push(role, text);
     }
 
+    /// Add a heading to `content.outline` and hand its text to the analyzers.
+    /// The outline keeps the first [`MAX_OUTLINE`] headings.
+    pub fn emit_heading(&mut self, level: u8, text: &str) {
+        let text = crate::text::squash_whitespace(text);
+        if text.is_empty() {
+            return;
+        }
+        self.text.push(TextRole::Heading(level), &text);
+        if self.report.content.outline.len() < MAX_OUTLINE {
+            self.content().heading(level, text);
+        } else {
+            self.report.diagnostics.truncated = true;
+        }
+    }
+
     /// Queue an embedded file for recursive extraction (bounded by depth and
     /// child limits). Fails with `LimitExceeded` once the child limit is reached,
     /// so extractors can stop listing early.
@@ -159,6 +177,29 @@ impl Context<'_> {
         }
         self.children.push(PendingChild { name: name.to_string(), data: data.into() });
         Ok(())
+    }
+
+    /// Read the input (up to `limits.max_parse_bytes`) and decode it as text.
+    /// A longer input is cut, which is recorded in `diagnostics`.
+    pub fn read_text(&mut self, src: &mut dyn crate::io::Source) -> Result<crate::text::Decoded, ExtractError> {
+        let (bytes, _) = self.read_bytes(src)?;
+        Ok(crate::text::decode(&bytes))
+    }
+
+    /// Read the input up to `limits.max_parse_bytes`; the flag says it was cut
+    /// (also recorded in `diagnostics`).
+    pub fn read_bytes(&mut self, src: &mut dyn crate::io::Source) -> Result<(Vec<u8>, bool), ExtractError> {
+        let (bytes, cut) = src.read_prefix(self.parse_limit())?;
+        if cut {
+            self.budget.hit("max_parse_bytes");
+            self.report.diagnostics.truncated = true;
+        }
+        Ok((bytes, cut))
+    }
+
+    /// Bytes a structured parser may load (`limits.max_parse_bytes`).
+    pub fn parse_limit(&self) -> usize {
+        usize::try_from(self.options.limits.max_parse_bytes).unwrap_or(usize::MAX)
     }
 
     /// Record a non-fatal problem.
@@ -289,10 +330,12 @@ impl TemporalWriter<'_> {
         self
     }
     /// Add a content date. `value` is RFC 3339 when `tz_known`, otherwise a
-    /// civil date-time such as `2026-09-14T17:03:22`.
+    /// civil date-time such as `2026-09-14T17:03:22`. The same field and value
+    /// from a second source is not repeated.
     pub fn content_date(&mut self, field: DateField, value: impl Into<String>, tz_known: bool) -> &mut Self {
         let value: String = value.into();
-        if !value.trim().is_empty() {
+        let duplicate = self.t.content.iter().any(|d| d.field == field && d.value == value.trim());
+        if !value.trim().is_empty() && !duplicate {
             self.t.content.push(ContentDate {
                 field,
                 value: value.trim().to_string(),

@@ -1,0 +1,11 @@
+//! `data` extractors (feature `common`): JSON, YAML, TOML, INI, CSV and SQL,
+//! with schema inference and known-schema detection shared between them.
+
+pub(crate) mod csv;
+pub(crate) mod ini;
+pub(crate) mod json;
+mod known;
+mod schema;
+pub(crate) mod sql;
+pub(crate) mod toml;
+pub(crate) mod yaml;

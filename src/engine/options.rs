@@ -16,6 +16,9 @@ pub enum Profile {
     Standard,
     /// Everything, including payload decoding and deeper recursion.
     Full,
+    /// `standard` plus a summary; the CLI prints the compact LLM view
+    /// ([`Report::llm_view`](crate::Report::llm_view)) instead of the report.
+    Llm,
 }
 
 impl Profile {
@@ -23,7 +26,7 @@ impl Profile {
     pub fn max_cost(self) -> Cost {
         match self {
             Self::Minimal => Cost::Header,
-            Self::Standard => Cost::Scan,
+            Self::Standard | Self::Llm => Cost::Scan,
             Self::Full => Cost::Decode,
         }
     }
@@ -44,8 +47,9 @@ impl Profile {
                 extractor_timeout: Some(Duration::from_secs(1)),
                 max_text_bytes: 0,
                 hash_max_bytes: 0,
+                max_parse_bytes: 256 * KIB,
             },
-            Self::Standard => Limits {
+            Self::Standard | Self::Llm => Limits {
                 max_read_bytes: 256 * MIB,
                 max_decompressed_bytes: 256 * MIB,
                 max_depth: 1,
@@ -54,6 +58,7 @@ impl Profile {
                 extractor_timeout: Some(Duration::from_secs(5)),
                 max_text_bytes: MIB_USIZE,
                 hash_max_bytes: 2 * GIB,
+                max_parse_bytes: 16 * MIB,
             },
             Self::Full => Limits {
                 max_read_bytes: 4 * GIB,
@@ -64,6 +69,7 @@ impl Profile {
                 extractor_timeout: Some(Duration::from_secs(30)),
                 max_text_bytes: 16 * MIB_USIZE,
                 hash_max_bytes: 16 * GIB,
+                max_parse_bytes: 256 * MIB,
             },
         }
     }
@@ -76,7 +82,8 @@ impl std::str::FromStr for Profile {
             "minimal" => Ok(Self::Minimal),
             "standard" => Ok(Self::Standard),
             "full" => Ok(Self::Full),
-            other => Err(format!("unknown profile `{other}` (expected minimal, standard or full)")),
+            "llm" => Ok(Self::Llm),
+            other => Err(format!("unknown profile `{other}` (expected minimal, standard, full or llm)")),
         }
     }
 }
@@ -100,6 +107,9 @@ pub struct Limits {
     pub max_text_bytes: usize,
     /// Files larger than this are not hashed (0 = never hash).
     pub hash_max_bytes: u64,
+    /// Bytes a structured parser (JSON, YAML, HTML, SQL, …) loads into memory;
+    /// larger inputs are parsed in part or only scanned.
+    pub max_parse_bytes: u64,
 }
 
 impl Default for Limits {

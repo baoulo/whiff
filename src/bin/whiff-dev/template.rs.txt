@@ -31,6 +31,8 @@ impl Extractor for {{struct}} {
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         // The first 64 KiB are pre-read in `src.head()`; use `src.read_vec(offset, len)?`
         // for anything else. `ByteReader` never panics: short input becomes `Truncated`.
+        // Text formats: `let text = cx.read_text(src)?.text;` (bounded and decoded),
+        // then `cx.emit_text(TextRole::Body, ..)` and `cx.emit_heading(level, ..)`.
         let r = ByteReader::new(src.head());
         // TODO: parse the header and write what you find through `cx`, for example:
         //   let mut r = r.skip(4)?;                 // the magic

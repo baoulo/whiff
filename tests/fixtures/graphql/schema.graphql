@@ -1,0 +1,16 @@
+# Harbour GraphQL schema
+type Boat {
+  id: ID!
+  name: String!
+  berth: Berth
+}
+
+type Berth { id: ID! size: String }
+
+enum Size { SMALL LARGE }
+
+type Query {
+  boats: [Boat!]!
+}
+
+query ListBoats { boats { id name } }

@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "app.js",
+    "stem": "app",
+    "extension": "js"
+  },
+  "identification": {
+    "format": "javascript",
+    "name": "JavaScript source",
+    "mime": "text/javascript",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 523
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 523,
+    "entropy": 4.9,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 523,
+      "chars": 523,
+      "words": 73,
+      "lines": 21,
+      "max_line_length": 87,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "b4d4634d577d9d7ec1eec8ff7e7f427c51d0104bab7c71d17c836a34b287adcc",
+    "blake3": "c108c81cd24dbaead45e07939a29d607a529db746c3087f8c518807f7b33c9d0"
+  },
+  "content": {
+    "description": "Harbour web app entry point.",
+    "excerpt": "Harbour web app entry point."
+  },
+  "metadata": {},
+  "format": {
+    "javascript": {
+      "language": "JavaScript",
+      "loc": {
+        "code": 14,
+        "comment": 3,
+        "blank": 4,
+        "total": 21
+      },
+      "imports": [
+        "express",
+        "node:fs/promises",
+        "path"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "class": [
+          "BoatStore"
+        ],
+        "function": [
+          "loadBoats",
+          "greet"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 2
+      },
+      "module_doc": "Harbour web app entry point.",
+      "is_test": false,
+      "generated": false,
+      "minified": false,
+      "longest_line": 87
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

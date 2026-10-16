@@ -1,0 +1,8 @@
+# Production requirements
+--index-url https://pypi.example.org/simple
+numpy==2.1.2
+pandas>=2.2,<3  # data frames
+httpx[http2]==0.27.2 --hash=sha256:0f1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f80
+-r requirements-base.txt
+-e git+https://git.example.org/model.git#egg=model
+requests ; python_version < "3.12"

@@ -1,0 +1,316 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ci-workflow.yml",
+    "stem": "ci-workflow",
+    "extension": "yml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 348
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 348,
+    "entropy": 4.193,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 348,
+      "chars": 348,
+      "words": 36,
+      "lines": 19,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0d5df7ed2c993a6b2463211cdb0890bac65334f9f0b26785c9ae774c9108643b",
+    "blake3": "affb56640eed47487650e227ca12ffec870cc7b9b0654ca1c084dd7cfc9e0e08"
+  },
+  "content": {
+    "title": "CI"
+  },
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "CI"
+            ]
+          },
+          "$.on": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.on.push": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.on.push.branches": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.on.push.branches[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "main"
+            ]
+          },
+          "$.on.pull_request": {
+            "types": [
+              "null"
+            ],
+            "count": 1
+          },
+          "$.permissions": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.permissions.contents": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "read"
+            ]
+          },
+          "$.jobs": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.jobs.test": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.jobs.test.runs-on": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "ubuntu-latest"
+            ]
+          },
+          "$.jobs.test.steps": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.jobs.test.steps[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.jobs.test.steps[].uses": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "actions/checkout@v4",
+              "dtolnay/rust-toolchain@stable"
+            ]
+          },
+          "$.jobs.test.steps[].run": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "cargo test"
+            ]
+          },
+          "$.jobs.lint": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.jobs.lint.runs-on": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "ubuntu-latest"
+            ]
+          },
+          "$.jobs.lint.steps": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.jobs.lint.steps[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.jobs.lint.steps[].uses": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "actions/checkout@v4"
+            ]
+          },
+          "$.jobs.lint.steps[].run": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "cargo clippy"
+            ]
+          }
+        },
+        "max_depth": 5
+      },
+      "known_schema": {
+        "id": "github_actions",
+        "name": "GitHub Actions workflow",
+        "workflow": "CI",
+        "triggers": [
+          "push",
+          "pull_request"
+        ],
+        "jobs": [
+          "test",
+          "lint"
+        ],
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "actions": [
+          "actions/checkout@v4",
+          "dtolnay/rust-toolchain@stable"
+        ],
+        "permissions": {
+          "contents": "read"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

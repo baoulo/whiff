@@ -1,0 +1,253 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "api.postman_collection.json",
+    "stem": "api.postman_collection",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 541
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 541,
+    "entropy": 3.796,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 541,
+      "chars": 541,
+      "words": 49,
+      "lines": 32,
+      "max_line_length": 84,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "58fb3920af72ac4848eeb0c979807e7958b46768b9ea6b624c3b7bee2a17c15e",
+    "blake3": "233c6f5e61b6c1c8ba0148fadc76e1c0329732787d2627e242a3144a64c81da9"
+  },
+  "content": {
+    "title": "Harbour API",
+    "excerpt": "Harbour API"
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "info",
+        "item"
+      ],
+      "key_count": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.info": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.info.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Harbour API"
+            ]
+          },
+          "$.info._postman_id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1"
+            ]
+          },
+          "$.info.schema": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://schema.getpostman.com/json/collection/v2.1.0/collect…"
+            ]
+          },
+          "$.item": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.item[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.item[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "Boats",
+              "Tides"
+            ]
+          },
+          "$.item[].item": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.item[].item[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.item[].item[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "List",
+              "Create"
+            ]
+          },
+          "$.item[].item[].request": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.item[].item[].request.method": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "GET",
+              "POST"
+            ]
+          },
+          "$.item[].request": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.item[].request.method": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "GET"
+            ]
+          }
+        },
+        "max_depth": 6
+      },
+      "known_schema": {
+        "id": "postman",
+        "name": "Postman collection",
+        "requests": 3,
+        "folders": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

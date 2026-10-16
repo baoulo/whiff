@@ -1,0 +1,40 @@
+{
+  "name": "@example/harbour-web",
+  "version": "2.3.0",
+  "description": "Web front end for the harbour registry.",
+  "license": "MIT",
+  "author": "Ada Example <ada@example.org> (https://ada.example.org)",
+  "contributors": [
+    {
+      "name": "Ben Sample"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.example.org/harbour-web.git"
+  },
+  "keywords": [
+    "harbour",
+    "boats"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest",
+    "postinstall": "node scripts/setup.js"
+  },
+  "dependencies": {
+    "vue": "^3.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "vitest": "^2.1.0",
+    "typescript": "~5.6.0"
+  }
+}

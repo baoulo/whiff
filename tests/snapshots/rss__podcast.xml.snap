@@ -1,0 +1,164 @@
+---
+source: src/formats/text/feed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "podcast.xml",
+    "stem": "podcast",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "rss",
+    "name": "RSS feed",
+    "mime": "application/rss+xml",
+    "family": "text.feed",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "rss",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.feed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 508
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-03T06:00:00+00:00",
+        "source": "feed.oldest_item",
+        "tz_known": true
+      },
+      {
+        "field": "published",
+        "value": "2026-10-03T06:00:00+00:00",
+        "source": "feed.newest_item",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-03T06:00:00Z",
+    "latest": "2026-10-03T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 508,
+    "entropy": 5.075,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 508,
+      "chars": 508,
+      "words": 31,
+      "lines": 10,
+      "max_line_length": 133,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "add859e5bb81312d4b044c51f040bc0ebc3f988ef126ac5240919c3a5e0a0960",
+    "blake3": "0b4e78fc6970c8db530f669b7460749f9e0544b8be4b61ab04c4365235d98a67"
+  },
+  "content": {
+    "title": "Harbour Stories",
+    "description": "Stories told on the quay.",
+    "authors": [
+      "Ben Sample"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.763
+    },
+    "excerpt": "Stories told on the quay."
+  },
+  "metadata": {},
+  "format": {
+    "rss": {
+      "dialect": "rss",
+      "version": "2.0",
+      "link": "https://pod.example.org/",
+      "items": 1,
+      "newest_item": "2026-10-03T06:00:00+00:00",
+      "oldest_item": "2026-10-03T06:00:00+00:00",
+      "item_authors": 0,
+      "enclosure_types": {
+        "audio/mpeg": 1
+      },
+      "podcast": true,
+      "latest": [
+        {
+          "title": "Episode 1: The Lighthouse",
+          "link": null,
+          "date": "2026-10-03T06:00:00+00:00"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.feed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

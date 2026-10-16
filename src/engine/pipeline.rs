@@ -4,7 +4,7 @@ use std::path::Path;
 use std::sync::Arc;
 
 use super::Engine;
-use super::universal::{file_kind, fill_from_metadata, integrity_for_bytes, integrity_for_file};
+use super::universal::{file_kind, fill_from_metadata, integrity_for_bytes, integrity_for_file, text_encoding};
 use crate::Error;
 use crate::detect;
 use crate::io::{Budget, BytesSource, FileSource, Source};
@@ -74,6 +74,7 @@ pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error
         }
     }
     fill_from_metadata(&mut report, &meta, path);
+    super::xattrs::fill(&mut report, path);
 
     let special = match file_kind(&meta) {
         FileKind::Regular => None,
@@ -96,7 +97,12 @@ pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error
     let text = match FileSource::open(path, budget.clone()) {
         Ok(mut src) => {
             let text = extract_source(engine, &mut report, &mut src, 0);
-            integrity_for_file(&mut report, path, meta.len(), src.head(), &engine.options);
+            if engine.detect_only {
+                report.integrity.skipped = Some("extraction abandoned".into());
+            } else {
+                let encoding = text_encoding(&report, &engine.options, meta.len());
+                integrity_for_file(&mut report, path, meta.len(), src.head(), &engine.options, encoding);
+            }
             text
         }
         Err(e) => {
@@ -129,7 +135,12 @@ fn bytes_report(engine: &Engine, source: SourceInfo, data: &Arc<[u8]>, depth: u3
     report.physical.size_bytes = Some(data.len() as u64);
     let mut src = BytesSource::new(report.source.name.clone(), Arc::clone(data), budget.clone());
     let text = extract_source(engine, &mut report, &mut src, depth);
-    integrity_for_bytes(&mut report, data, &engine.options);
+    if engine.detect_only {
+        report.integrity.skipped = Some("extraction abandoned".into());
+    } else {
+        let encoding = text_encoding(&report, &engine.options, data.len() as u64);
+        integrity_for_bytes(&mut report, data, &engine.options, encoding);
+    }
     run_analyzers(engine, &mut report, &text, budget);
     finish(&mut report, budget, &text, &clock);
     report
@@ -158,7 +169,7 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, de
     {
         report.diagnostics.warnings.push(format!("--format {forced}: no extractor declares this format"));
     }
-    let Some(spec) = detection.spec else { return text };
+    let Some(spec) = detection.spec.filter(|_| !engine.detect_only) else { return text };
     let budget = src.budget().clone();
 
     let mut blocks: VecDeque<PendingBlock> = VecDeque::new();

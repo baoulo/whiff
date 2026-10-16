@@ -15,6 +15,16 @@ pub enum TextRole {
     Metadata,
     /// Source code.
     Code,
+    /// Raw structured data (configuration values, CSV cells, log lines):
+    /// scanned for secrets and personal data, but not treated as prose.
+    Data,
+}
+
+impl TextRole {
+    /// Whether the language, keyword and summary analyzers read this role.
+    pub fn is_prose(self) -> bool {
+        matches!(self, Self::Body | Self::Title | Self::Heading(_) | Self::Caption)
+    }
 }
 
 /// One emitted piece of text.
@@ -71,6 +81,23 @@ impl TextStore {
     /// Chunks with the given role.
     pub fn by_role(&self, role: TextRole) -> impl Iterator<Item = &str> {
         self.chunks.iter().filter(move |c| c.role == role).map(|c| c.text.as_str())
+    }
+
+    /// Prose chunks (see [`TextRole::is_prose`]) joined by blank lines.
+    pub fn prose(&self) -> String {
+        let mut out = String::new();
+        for c in self.chunks.iter().filter(|c| c.role.is_prose()) {
+            if !out.is_empty() {
+                out.push_str("\n\n");
+            }
+            out.push_str(&c.text);
+        }
+        out
+    }
+
+    /// Body chunks only, joined by blank lines.
+    pub fn body(&self) -> String {
+        self.by_role(TextRole::Body).collect::<Vec<_>>().join("\n\n")
     }
 
     /// Total bytes stored.

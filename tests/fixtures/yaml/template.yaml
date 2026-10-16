@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Harbour tide service
+Parameters:
+  Stage: {Type: String}
+Resources:
+  TideFunction:
+    Type: AWS::Serverless::Function
+    Properties: {Handler: app.handler, Runtime: python3.12}
+  TideTable:
+    Type: AWS::DynamoDB::Table
+Outputs:
+  Endpoint: {Value: !GetAtt TideFunction.Arn}

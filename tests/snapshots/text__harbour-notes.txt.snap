@@ -1,0 +1,159 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-notes.txt",
+    "stem": "harbour-notes",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "text",
+    "name": "Plain text",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 440
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 440,
+    "entropy": 4.381,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 440,
+      "chars": 440,
+      "words": 71,
+      "lines": 10,
+      "max_line_length": 79,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "31dbdc753cb90739f947440226c278498b5dbfbebc1cfcbf86745d9fd4ba9379",
+    "blake3": "3572410fda217c053054d1fc71112ffa55ac1b00162f1859959f877520abd752"
+  },
+  "content": {
+    "title": "Harbour Notes",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Notes",
+      "harbour",
+      "Notes",
+      "boats",
+      "fishing boats return",
+      "harbour at dusk",
+      "harbour master counts",
+      "harbour and https",
+      "example.org",
+      "harbour cafe"
+    ],
+    "keyword_frequency": [
+      [
+        "boats",
+        6
+      ],
+      [
+        "harbour",
+        6
+      ],
+      [
+        "example.org",
+        2
+      ],
+      [
+        "fish",
+        2
+      ],
+      [
+        "https",
+        2
+      ]
+    ],
+    "excerpt": "Harbour Notes The fishing boats return to the harbour at dusk. The harbour master counts the boats as they pass the breakwater, and the gulls follow the boats in. In the morning the fleet leaves again. Tourists walk along the quay, photograph the boats and buy fish soup at the harbour cafe. The harbour stays quiet until the boats come back in the evening. More about the town:…",
+    "tags": [
+      "Harbour Notes",
+      "harbour",
+      "Notes",
+      "boats",
+      "fishing boats return"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "text": {
+      "paragraphs": 4,
+      "urls": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

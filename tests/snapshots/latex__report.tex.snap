@@ -1,0 +1,161 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "report.tex",
+    "stem": "report",
+    "extension": "tex"
+  },
+  "identification": {
+    "format": "latex",
+    "name": "LaTeX source",
+    "mime": "application/x-tex",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 481
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 481,
+    "entropy": 4.849,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 481,
+      "chars": 481,
+      "words": 46,
+      "lines": 23,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "7d1143a642c2d3aaf546ff4437b2c9366bdffd965752395c4d1af59be0151f39",
+    "blake3": "420929b74d56efd59a2269c95b80a33cb637a0f7c26ca9ab242601ebaa047b42"
+  },
+  "content": {
+    "title": "Harbour Annual Report 2026",
+    "description": "Harbour annual report",
+    "authors": [
+      "Ada Example",
+      "Ben Sample"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.698
+    },
+    "outline": [
+      {
+        "level": 2,
+        "text": "Introduction"
+      },
+      {
+        "level": 3,
+        "text": "Method"
+      },
+      {
+        "level": 2,
+        "text": "Results"
+      }
+    ],
+    "excerpt": "Harbour annual report"
+  },
+  "metadata": {},
+  "format": {
+    "latex": {
+      "language": "LaTeX",
+      "loc": {
+        "code": 16,
+        "comment": 1,
+        "blank": 6,
+        "total": 23
+      },
+      "imports": [
+        "inputenc",
+        "graphicx",
+        "hyperref"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "command": [
+          "harbour"
+        ]
+      },
+      "symbol_counts": {
+        "command": 1
+      },
+      "module_doc": "Harbour annual report",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 56,
+      "document_class": "article"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

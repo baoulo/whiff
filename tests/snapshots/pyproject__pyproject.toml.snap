@@ -1,0 +1,169 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pyproject.toml",
+    "stem": "pyproject",
+    "extension": "toml"
+  },
+  "identification": {
+    "format": "pyproject",
+    "name": "Python pyproject.toml",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pyproject",
+        "confidence": 0.95
+      },
+      {
+        "format": "toml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 692
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ada Example"
+    ],
+    "license": {
+      "name": "BSD-3-Clause"
+    }
+  },
+  "physical": {
+    "size_bytes": 692,
+    "entropy": 4.999,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 692,
+      "chars": 692,
+      "words": 78,
+      "lines": 30,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "a4d98eda2bb36ca149716af703b4aaf388f6108e84bd60eb3e11c1fc96a3b6ea",
+    "blake3": "05a5fb3fcde152699c6e44fccfcfd43fc339589d6b2b76f0172e686292fb642e"
+  },
+  "content": {
+    "title": "harbour-tides 0.4.1",
+    "description": "Tide predictions for small harbours.",
+    "authors": [
+      "Ada Example"
+    ],
+    "keywords": [
+      "tides",
+      "oceanography"
+    ],
+    "excerpt": "Tide predictions for small harbours.",
+    "tags": [
+      "tides",
+      "oceanography"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "pyproject": {
+      "ecosystem": "python",
+      "name": "harbour-tides",
+      "version": "0.4.1",
+      "license": "BSD-3-Clause",
+      "repository": "https://git.example.org/harbour-tides",
+      "requires_python": ">=3.11",
+      "dependencies": [
+        "numpy>=2.0",
+        "pandas>=2.2",
+        "httpx"
+      ],
+      "dependencies_count": 3,
+      "optional_dependency_groups": [
+        "dev",
+        "plot"
+      ],
+      "scripts": [
+        "tides"
+      ],
+      "build_backend": "hatchling.build",
+      "tools": [
+        "pytest",
+        "ruff"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

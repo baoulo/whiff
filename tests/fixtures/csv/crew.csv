@@ -1,0 +1,6 @@
+id,name,email,joined,rank,salary,active
+1,Ada Example,ada@example.org,2021-03-04,captain,52000,true
+2,Ben Sample,ben@example.com,2022-07-19,mate,41000.50,true
+3,Cleo Placeholder,cleo@example.org,2023-01-02,deckhand,30500,false
+4,Dan Dummy,,2024-11-30,deckhand,NA,true
+5,"Eve, the cook",eve@example.com,2025-05-05,cook,33000,true

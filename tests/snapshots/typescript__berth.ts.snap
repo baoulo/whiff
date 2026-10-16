@@ -1,0 +1,154 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth.ts",
+    "stem": "berth",
+    "extension": "ts"
+  },
+  "identification": {
+    "format": "typescript",
+    "name": "TypeScript source",
+    "mime": "application/typescript",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 434
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 434,
+    "entropy": 4.743,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 434,
+      "chars": 434,
+      "words": 76,
+      "lines": 20,
+      "max_line_length": 66,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "4cf89d19d01282ed07ddff05c1f4070495b0b8f380ed5dfd1685dc44e7201760",
+    "blake3": "ed14b6338f164e218c9dc9bab7be87d77b4bfdbe89f2304828bbfc769814042a"
+  },
+  "content": {
+    "description": "Berth allocation types",
+    "excerpt": "Berth allocation types"
+  },
+  "metadata": {},
+  "format": {
+    "typescript": {
+      "language": "TypeScript",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 6,
+        "total": 20
+      },
+      "imports": [
+        "./boat",
+        "zod"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "Allocator"
+        ],
+        "enum": [
+          "Status"
+        ],
+        "function": [
+          "schema",
+          "isFree"
+        ],
+        "interface": [
+          "Berth"
+        ],
+        "type": [
+          "Size"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "enum": 1,
+        "function": 2,
+        "interface": 1,
+        "type": 1
+      },
+      "module_doc": "Berth allocation types",
+      "is_test": false,
+      "generated": false,
+      "minified": false,
+      "longest_line": 66
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

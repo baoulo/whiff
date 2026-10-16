@@ -1,0 +1,152 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "CMakeLists.txt",
+    "stem": "CMakeLists",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "cmake",
+    "name": "CMake script",
+    "mime": "text/x-cmake",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "cmake",
+        "confidence": 0.9
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 384,
+    "entropy": 5.259,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 384,
+      "chars": 384,
+      "words": 31,
+      "lines": 14,
+      "max_line_length": 61,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "1ef4d53ac526e623511300c0d980cf635dc1da5c198bba9290b4befcdebfbc44",
+    "blake3": "d7a552aef495efc3c2d67ba93d43c09c8468b1b652df756cbdc5a06a0894021a"
+  },
+  "content": {
+    "description": "Harbour tools build",
+    "excerpt": "Harbour tools build"
+  },
+  "metadata": {},
+  "format": {
+    "cmake": {
+      "language": "CMake script",
+      "loc": {
+        "code": 10,
+        "comment": 1,
+        "blank": 3,
+        "total": 14
+      },
+      "package": "harbour",
+      "imports": [
+        "Threads",
+        "GNUInstallDirs"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "harbour_option"
+        ],
+        "target": [
+          "tides",
+          "harbour"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "target": 2
+      },
+      "module_doc": "Harbour tools build",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 61
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,175 @@
+---
+source: src/formats/data/csv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.tsv",
+    "stem": "tides",
+    "extension": "tsv"
+  },
+  "identification": {
+    "format": "tsv",
+    "name": "TSV table",
+    "mime": "text/tab-separated-values",
+    "family": "data.csv",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.csv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 126
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 126,
+    "entropy": 4.368,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 126,
+      "chars": 126,
+      "words": 20,
+      "lines": 5,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "17125761623345edb7eb002739b9c47aa46853740d496a337dc829114b85d068",
+    "blake3": "897a4eb5683a8b92f6a26a68dec676a160033ae928018e52c29acfa998bb99b4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tsv": {
+      "dialect": {
+        "delimiter": "tab",
+        "quote": "\"",
+        "header": true
+      },
+      "rows": 4,
+      "columns": 4,
+      "column_profile": [
+        {
+          "name": "date",
+          "type": "date",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "min": "2026-10-14",
+          "max": "2026-10-15"
+        },
+        {
+          "name": "time",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 4,
+          "max_length": 5
+        },
+        {
+          "name": "height_m",
+          "type": "number",
+          "null_ratio": 0.0,
+          "distinct": 4,
+          "min": 0.7,
+          "max": 4.3,
+          "mean": 2.5
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "max_length": 4
+        }
+      ],
+      "sample_rows": [
+        [
+          "2026-10-14",
+          "06:12",
+          "4.1",
+          "high"
+        ],
+        [
+          "2026-10-14",
+          "12:25",
+          "0.9",
+          "low"
+        ],
+        [
+          "2026-10-14",
+          "18:37",
+          "4.3",
+          "high"
+        ],
+        [
+          "2026-10-15",
+          "00:51",
+          "0.7",
+          "low"
+        ]
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.csv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

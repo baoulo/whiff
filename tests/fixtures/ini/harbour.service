@@ -1,0 +1,11 @@
+[Unit]
+Description=Harbour API service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/harbour-api --port 8080
+User=harbour
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,153 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.py",
+    "stem": "tides",
+    "extension": "py"
+  },
+  "identification": {
+    "format": "python",
+    "name": "Python source",
+    "mime": "text/x-python",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 647
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2026 Ada Example"
+  },
+  "physical": {
+    "size_bytes": 647,
+    "entropy": 4.719,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 647,
+      "chars": 647,
+      "words": 73,
+      "lines": 33,
+      "max_line_length": 51,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 11
+    }
+  },
+  "integrity": {
+    "sha256": "ea644cd65c2d164b089a7baf76f7b8e995cdaada195a66f3bec8a2b005b05e7b",
+    "blake3": "79a13a9ec79ca38e1ddcf5d0e4abda4488db10268f5e13129015cd89abf6da6a"
+  },
+  "content": {
+    "description": "Tide predictions for the old harbour.",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Tide predictions for the old harbour. Reads observations and prints the next high water."
+  },
+  "metadata": {},
+  "format": {
+    "python": {
+      "language": "Python",
+      "loc": {
+        "code": 16,
+        "comment": 7,
+        "blank": 10,
+        "total": 33
+      },
+      "interpreter": "python3",
+      "imports": [
+        "math",
+        "os.path",
+        "datetime",
+        ".model"
+      ],
+      "import_count": 4,
+      "symbols": {
+        "class": [
+          "Predictor"
+        ],
+        "function": [
+          "fetch",
+          "main"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 2
+      },
+      "module_doc": "Tide predictions for the old harbour.\n\nReads observations and prints the next high water.",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 51
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
