@@ -1,0 +1,169 @@
+---
+source: src/formats/data/csv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "catches-semicolon.csv",
+    "stem": "catches-semicolon",
+    "extension": "csv"
+  },
+  "identification": {
+    "format": "csv",
+    "name": "CSV table",
+    "mime": "text/csv",
+    "family": "data.csv",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.csv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 109
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 109,
+    "entropy": 4.459,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 109,
+      "chars": 109,
+      "words": 4,
+      "lines": 4,
+      "max_line_length": 31,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "db2219f10f685607a1dc55babb89250ff0798c6c0f9f48314999f5e0ac991c94",
+    "blake3": "60c2e5742a57a0ceda497f87dbf4d801f7d472981843c1adedc2b1a67c292c12"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "csv": {
+      "dialect": {
+        "delimiter": "semicolon",
+        "quote": "\"",
+        "header": true
+      },
+      "rows": 3,
+      "columns": 4,
+      "column_profile": [
+        {
+          "name": "date",
+          "type": "date",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "min": "2026-10-01",
+          "max": "2026-10-02"
+        },
+        {
+          "name": "boat",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "max_length": 5
+        },
+        {
+          "name": "species",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "max_length": 8
+        },
+        {
+          "name": "kg",
+          "type": "integer",
+          "null_ratio": 0.0,
+          "distinct": 3,
+          "min": 80.0,
+          "max": 1205.0,
+          "mean": 460.0
+        }
+      ],
+      "sample_rows": [
+        [
+          "2026-10-01",
+          "Marie",
+          "mackerel",
+          "120,5"
+        ],
+        [
+          "2026-10-01",
+          "Swift",
+          "sardine",
+          "80"
+        ],
+        [
+          "2026-10-02",
+          "Marie",
+          "sardine",
+          "95"
+        ]
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.csv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,143 @@
+---
+source: src/formats/text/feed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sitemap.xml",
+    "stem": "sitemap",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "sitemap",
+    "name": "XML sitemap",
+    "mime": "application/xml",
+    "family": "text.feed",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sitemap",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.feed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 523
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-14",
+        "source": "sitemap.lastmod",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "external_references": 3
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 523,
+    "entropy": 4.956,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 523,
+      "chars": 523,
+      "words": 9,
+      "lines": 6,
+      "max_line_length": 139,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e5e07f43999448384b1f9c8340599e03cc42418e94ee8b6f575ece669ef174ca",
+    "blake3": "49fb1f6171ef24c4f0bf8e703d671e7626b4df35ba5be73e936869b5331aa109"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sitemap": {
+      "lastmod_range": [
+        "2026-09-14",
+        "2026-10-14"
+      ],
+      "kind": "urlset",
+      "urls": 3,
+      "hosts": {
+        "news.example.org": 3
+      },
+      "changefreq": {
+        "daily": 1,
+        "monthly": 2
+      },
+      "mean_priority": 0.8
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.feed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

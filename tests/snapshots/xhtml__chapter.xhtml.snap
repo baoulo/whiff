@@ -1,0 +1,198 @@
+---
+source: src/formats/text/html.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "chapter.xhtml",
+    "stem": "chapter",
+    "extension": "xhtml"
+  },
+  "identification": {
+    "format": "xhtml",
+    "name": "XHTML document",
+    "mime": "application/xhtml+xml",
+    "family": "text.html",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xhtml",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.html"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 457
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 457,
+    "entropy": 5.053,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 457,
+      "chars": 457,
+      "words": 50,
+      "lines": 12,
+      "max_line_length": 97,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7e9c2894048dcf55c1f440d6e8564c1f61dfe7e2707263df5d615f6fc7a95016",
+    "blake3": "4fe4e7bc50c09bb375d469bca9cd8bbb7193b3f72f2353cbce97e02958f15871"
+  },
+  "content": {
+    "title": "Chapter One: The Harbour",
+    "authors": [
+      "Ada Example"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "boats rocked gently",
+      "Chapter",
+      "morning",
+      "harbour was quiet",
+      "harbour",
+      "moorings",
+      "fishermen arrived",
+      "Gulls circled",
+      "boats",
+      "gently"
+    ],
+    "keyword_frequency": [
+      [
+        "chapter",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "morning",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Chapter One"
+      },
+      {
+        "level": 2,
+        "text": "Morning"
+      }
+    ],
+    "excerpt": "The harbour was quiet in the early morning, and the boats rocked gently at their moorings. Gulls circled above the fish market while the first fishermen arrived.",
+    "tags": [
+      "boats rocked gently",
+      "Chapter",
+      "morning",
+      "harbour was quiet",
+      "harbour"
+    ]
+  },
+  "metadata": {
+    "html_meta": {
+      "author": "Ada Example"
+    }
+  },
+  "format": {
+    "xhtml": {
+      "title_tag": "Chapter One: The Harbour",
+      "lang": "en",
+      "doctype": "html",
+      "elements": 9,
+      "max_depth": 3,
+      "links": {
+        "internal": 0,
+        "external": 0,
+        "mailto": 0
+      },
+      "images": {
+        "count": 0,
+        "with_alt": 0
+      },
+      "scripts": {
+        "inline": 0,
+        "external": 0,
+        "hosts": {}
+      },
+      "stylesheets": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.html",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,156 @@
+---
+source: src/formats/text/html.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "legacy-latin1.htm",
+    "stem": "legacy-latin1",
+    "extension": "htm"
+  },
+  "identification": {
+    "format": "html",
+    "name": "HTML document",
+    "mime": "text/html",
+    "family": "text.html",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "windows-1252",
+    "extractor": "text.html"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 298
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0,
+    "risks": [
+      {
+        "kind": "meta_refresh_redirect",
+        "detail": "redirects to elsewhere.example.com",
+        "source": "text.html"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 298,
+    "entropy": 4.918,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 298,
+      "chars": 298,
+      "words": 23,
+      "lines": 4,
+      "max_line_length": 107,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b03f8c24c2eec7d51fb4271388c0db510dac09c4ff652365ee8705c7b213c9ff",
+    "blake3": "e94ed569b1187bf9bc8828b6281a8843fc9b444400f3fa424282b3b5b83603ed"
+  },
+  "content": {
+    "title": "Café du port",
+    "language": {
+      "code": "fr",
+      "confidence": 1.0
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "Café du port"
+      }
+    ],
+    "excerpt": "Le café est ouvert tous les jours, même le dimanche."
+  },
+  "metadata": {
+    "html_meta": {
+      "http-equiv:content-type": "text/html; charset=iso-8859-1",
+      "http-equiv:refresh": "30; url=https://elsewhere.example.com/"
+    }
+  },
+  "format": {
+    "html": {
+      "declared_charset": "iso-8859-1",
+      "title_tag": "Café du port",
+      "refresh": "30; url=https://elsewhere.example.com/",
+      "elements": 8,
+      "max_depth": 3,
+      "links": {
+        "internal": 0,
+        "external": 0,
+        "mailto": 0
+      },
+      "images": {
+        "count": 0,
+        "with_alt": 0
+      },
+      "scripts": {
+        "inline": 0,
+        "external": 0,
+        "hosts": {}
+      },
+      "stylesheets": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.html",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

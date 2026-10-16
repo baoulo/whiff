@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ENTITY harbour "the old harbour">
+]>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Harbour Handbook</title>
+  <chapter><title>Arrival</title>
+    <para>Ships enter &harbour; from the north.</para>
+    <section><title>Pilots</title><para>A pilot boards every ship over 50 metres.</para></section>
+  </chapter>
+  <chapter><title>Departure</title><para>Ships leave on the morning tide.</para></chapter>
+</book>

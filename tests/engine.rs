@@ -183,7 +183,19 @@ fn writers_fill_normalised_sections() {
     assert_eq!(r.physical.image.as_ref().map(|i| (i.width, i.height)), Some((640, 480)));
     assert!(r.integrity.sha256.is_some() && r.integrity.blake3.is_some());
     let ids: Vec<_> = r.diagnostics.extractors.iter().map(|x| x.id.as_str()).collect();
-    assert_eq!(ids, ["test.demo", "meta.demo", "temporal.range"]);
+    assert_eq!(
+        ids,
+        [
+            "test.demo",
+            "meta.demo",
+            "text.language",
+            "text.excerpt",
+            "text.keywords",
+            "text.summary",
+            "temporal.range",
+            "privacy.scan"
+        ]
+    );
 }
 
 #[test]
@@ -215,6 +227,59 @@ fn deadline_stops_spinning_extractors() {
     assert!(start.elapsed() < Duration::from_secs(5));
     assert_eq!(r.diagnostics.extractors[0].error_kind.as_deref(), Some("timeout"));
     assert!(r.diagnostics.limits_hit.contains(&"timeout".to_string()));
+}
+
+/// Spins without reading or checking the deadline (like a parser stuck in a
+/// pathological input) for a bounded time, so the abandoned thread ends.
+struct Stuck;
+impl Extractor for Stuck {
+    fn meta(&self) -> &'static ExtractorMeta {
+        static META: ExtractorMeta = ExtractorMeta {
+            id: "test.stuck",
+            version: 1,
+            cost: Cost::Header,
+            priority: 0,
+            formats: &[FormatSpec {
+                id: "stuck",
+                name: "Stuck",
+                family: "test",
+                mimes: &["application/x-stuck"],
+                extensions: &["stuck"],
+                magic: &[Magic::prefix(b"STCK")],
+                parent: None,
+            }],
+        };
+        &META
+    }
+    fn extract(&self, _: &mut dyn Source, _: &mut Context<'_>) -> Result<(), ExtractError> {
+        let start = Instant::now();
+        while start.elapsed() < Duration::from_secs(6) {
+            std::hint::spin_loop();
+        }
+        Ok(())
+    }
+}
+
+#[test]
+fn watchdog_abandons_extractors_that_ignore_deadlines() {
+    let limits = Limits::default().file_timeout(Some(Duration::from_millis(200)));
+    let engine = Engine::builder().registry(Registry::builtin_analyzers().with(Stuck)).limits(limits).build();
+    let start = Instant::now();
+    let r = engine.extract_bytes(Some("x.stuck"), b"STCK".to_vec());
+    let waited = start.elapsed();
+    assert!(waited < Duration::from_secs(5), "returned after {waited:?}");
+    assert_eq!(r.identification.format, "stuck", "detection still reported");
+    assert!(r.diagnostics.limits_hit.contains(&"timeout".to_string()));
+    assert!(r.diagnostics.warnings.iter().any(|w| w.contains("abandoned")));
+    assert!(r.diagnostics.extractors.iter().all(|e| e.id != "test.stuck"), "the stuck extractor is not re-run");
+
+    // Files go through the same watchdog.
+    let dir = tempfile::tempdir().unwrap();
+    let p = dir.path().join("y.stuck");
+    std::fs::write(&p, b"STCK").unwrap();
+    let r = engine.extract_path(&p).unwrap();
+    assert!(r.diagnostics.limits_hit.contains(&"timeout".to_string()));
+    assert_eq!(r.system.size_bytes, Some(4));
 }
 
 #[test]

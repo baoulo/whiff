@@ -1,0 +1,11 @@
+defaults: &defaults
+  adapter: postgres
+  host: localhost
+development:
+  <<: *defaults
+  database: dev
+test:
+  <<: *defaults
+  database: test
+1: numeric key
+[a, b]: complex key

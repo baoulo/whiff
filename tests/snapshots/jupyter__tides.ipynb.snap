@@ -1,0 +1,190 @@
+---
+source: src/formats/code/notebook.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.ipynb",
+    "stem": "tides",
+    "extension": "ipynb"
+  },
+  "identification": {
+    "format": "jupyter",
+    "name": "Jupyter notebook",
+    "mime": "application/x-ipynb+json",
+    "family": "code.notebook",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "jupyter",
+        "confidence": 0.95
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.notebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1473
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1473,
+    "entropy": 4.496,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1473,
+      "chars": 1473,
+      "words": 163,
+      "lines": 81,
+      "max_line_length": 79,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5b633162db0accc27cf0b78b2215d85420d3c949ff1c717a30c992ab9b5c4e59",
+    "blake3": "c3d668f593d7a0cd6abc45d7d1ea7470d8811af740cc90fdc7981951b9ac0491"
+  },
+  "content": {
+    "title": "Tide analysis",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Tide analysis",
+      "analysis",
+      "tide",
+      "tide heights",
+      "week of tide",
+      "harbour",
+      "Loading the data",
+      "harbour gauge",
+      "heights",
+      "week"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Tide analysis"
+      },
+      {
+        "level": 2,
+        "text": "Loading the data"
+      }
+    ],
+    "excerpt": "We look at a week of tide heights in the harbour. The readings come from the harbour gauge.",
+    "tags": [
+      "Tide analysis",
+      "analysis",
+      "tide",
+      "tide heights",
+      "week of tide"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "jupyter": {
+      "nbformat": "4.5",
+      "language": "python",
+      "kernel": "Python 3",
+      "cells": 6,
+      "cell_types": {
+        "code": 4,
+        "markdown": 2
+      },
+      "executed_cells": {
+        "executed": 3,
+        "code_cells": 4,
+        "in_order": true
+      },
+      "imports": [
+        "pandas",
+        "numpy",
+        "matplotlib"
+      ],
+      "output_types": {
+        "error": 1,
+        "execute_result": 1
+      },
+      "errors": [
+        "KeyError: 'height'"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.notebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

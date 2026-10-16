@@ -1,6 +1,8 @@
 //! Generic fuzz target. With `WHIFF_FUZZ_EXTRACTOR=<id>` only that extractor
 //! runs, with its format forced; otherwise the whole engine (detection
-//! included) is fuzzed. Run via `whiff-dev fuzz [<id>]`.
+//! included) is fuzzed, and the first input byte picks the file extension of
+//! one registered format so every extractor gets reached. Run via
+//! `whiff-dev fuzz [<id>]`.
 #![no_main]
 
 use std::sync::LazyLock;
@@ -11,10 +13,10 @@ use whiff::report::RunStatus;
 use whiff::{Engine, Hashes, Limits, Registry};
 
 static ENGINE: LazyLock<Engine> = LazyLock::new(|| {
-    let limits = Limits::default()
-        .max_read_bytes(16 << 20)
-        .file_timeout(Some(Duration::from_secs(5)))
-        .extractor_timeout(Some(Duration::from_secs(2)));
+    // No file deadline: the watchdog would hide a hang from libFuzzer, whose
+    // own `-timeout` should report it instead. Extractor deadlines stay on.
+    let limits =
+        Limits::default().max_read_bytes(16 << 20).file_timeout(None).extractor_timeout(Some(Duration::from_secs(2)));
     let mut builder = Engine::builder().limits(limits).hashes(Hashes::NONE);
     if let Ok(id) = std::env::var("WHIFF_FUZZ_EXTRACTOR") {
         let registry = Registry::builtin().retain_extractors(|e| e == id);
@@ -29,8 +31,21 @@ static ENGINE: LazyLock<Engine> = LazyLock::new(|| {
     builder.build()
 });
 
+/// One file extension per registered format, so the extension tie-break and
+/// extension-only formats (CSV, INI, source code) are reached.
+static EXTENSIONS: LazyLock<Vec<&'static str>> = LazyLock::new(|| {
+    let mut v: Vec<&'static str> =
+        ENGINE.registry().formats().filter_map(|(f, _)| f.extensions.first().copied()).collect();
+    v.sort_unstable();
+    v.dedup();
+    v.push("bin");
+    v
+});
+
 fuzz_target!(|data: &[u8]| {
-    let report = ENGINE.extract_bytes(Some("fuzz.bin"), data.to_vec());
+    let Some((&pick, body)) = data.split_first() else { return };
+    let name = format!("fuzz.{}", EXTENSIONS[usize::from(pick) % EXTENSIONS.len()]);
+    let report = ENGINE.extract_bytes(Some(&name), body.to_vec());
     // The engine contains panics; turn them back into crashes for libFuzzer.
     for run in &report.diagnostics.extractors {
         assert!(run.status != RunStatus::Internal, "{}: {:?}", run.id, run.error);

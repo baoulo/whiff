@@ -1,0 +1,228 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Chart.yaml",
+    "stem": "Chart",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 210
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 210,
+    "entropy": 4.687,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 210,
+      "chars": 210,
+      "words": 23,
+      "lines": 9,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0665bd0d84b10820894c897999bd7e125f0e3d583822f8ff702b56a748343c58",
+    "blake3": "e29f9a2f1d3cd08abcbf3ded8c4b038bc0c8f8c64d8693015ae661e6c6d77475"
+  },
+  "content": {
+    "title": "harbour-api",
+    "description": "Helm chart for the harbour API",
+    "excerpt": "Helm chart for the harbour API"
+  },
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.apiVersion": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "v2"
+            ]
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "harbour-api"
+            ]
+          },
+          "$.description": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Helm chart for the harbour API"
+            ]
+          },
+          "$.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1.2.0"
+            ]
+          },
+          "$.appVersion": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2.3.0"
+            ]
+          },
+          "$.dependencies": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.dependencies[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.dependencies[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgresql"
+            ]
+          },
+          "$.dependencies[].version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "15.x.x"
+            ]
+          },
+          "$.dependencies[].repository": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://charts.example.org"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "helm_chart",
+        "name": "Helm chart",
+        "chart": "harbour-api",
+        "version": "1.2.0",
+        "app_version": "2.3.0",
+        "api_version": "v2",
+        "dependencies": [
+          "postgresql"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

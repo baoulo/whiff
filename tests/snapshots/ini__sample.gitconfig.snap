@@ -1,0 +1,152 @@
+---
+source: src/formats/data/ini.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.gitconfig",
+    "stem": "sample",
+    "extension": "gitconfig"
+  },
+  "identification": {
+    "format": "ini",
+    "name": "INI configuration",
+    "mime": "text/plain",
+    "family": "data.ini",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.ini"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 198
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "detail": "url_credentials",
+        "source": "privacy.scan"
+      }
+    ],
+    "secrets": {
+      "url_credentials": 1
+    },
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 198,
+    "entropy": 4.769,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 198,
+      "chars": 198,
+      "words": 20,
+      "lines": 8,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d1eee8b0057dc68297cb194eb88597a8800fc265299cb2b1c7db627da2cc6e75",
+    "blake3": "0902b95a0d229fd93d18d7160192ae4c7a3f97862ded1ec0a219b3586ba43739"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ini": {
+      "dialect": "git_config",
+      "sections": [
+        {
+          "name": "user",
+          "keys": 2
+        },
+        {
+          "name": "remote \"origin\"",
+          "keys": 2
+        },
+        {
+          "name": "core",
+          "keys": 1
+        }
+      ],
+      "keys": 5,
+      "values": {
+        "user": {
+          "name": "Ada Example",
+          "email": "[redacted:email]"
+        },
+        "remote \"origin\"": {
+          "url": "[redacted:url_credentials]/harbour.git",
+          "fetch": "+refs/heads/*:refs/remotes/origin/*"
+        },
+        "core": {
+          "autocrlf": "input"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.ini",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

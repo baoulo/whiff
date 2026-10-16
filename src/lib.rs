@@ -22,6 +22,7 @@ pub mod formats;
 pub mod io;
 pub mod plugin;
 pub mod report;
+pub mod text;
 
 pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Profile};
 pub use error::{Error, ExtractError};

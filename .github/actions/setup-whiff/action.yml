@@ -1,0 +1,22 @@
+name: Setup whiff
+description: Install whiff from GitHub Releases (no Rust toolchain)
+inputs:
+  version:
+    description: Release version without leading v (default latest)
+    required: false
+    default: ""
+runs:
+  using: composite
+  steps:
+    - name: Install whiff
+      shell: bash
+      env:
+        WHIFF_VERSION: ${{ inputs.version }}
+        WHIFF_REPO: baoulo/whiff
+        WHIFF_INSTALL_DIR: ${{ runner.temp }}/bin
+      run: |
+        set -euo pipefail
+        mkdir -p "${WHIFF_INSTALL_DIR}"
+        curl -fsSL "https://raw.githubusercontent.com/baoulo/whiff/main/scripts/install.sh" | bash
+        echo "${WHIFF_INSTALL_DIR}" >> "$GITHUB_PATH"
+        "whiff" --version

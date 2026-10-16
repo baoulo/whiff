@@ -1,0 +1,26 @@
+[package]
+name = "harbour"
+version = "2.3.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Berth allocation for the old harbour."
+license = "MIT OR Apache-2.0"
+authors = ["Ada Example <ada@example.org>"]
+repository = "https://git.example.org/harbour"
+keywords = ["harbour", "boats"]
+build = "build.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+tokio = "1.41"
+local-model = { path = "../model" }
+
+[dev-dependencies]
+insta = "1.40"
+
+[features]
+default = ["tides"]
+tides = []
+
+[[bin]]
+name = "harbourd"

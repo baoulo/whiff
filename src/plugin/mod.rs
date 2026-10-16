@@ -17,13 +17,39 @@ mod spec;
 #[doc(hidden)]
 pub mod testing;
 mod text;
+mod values;
 
-pub use context::{ContentWriter, Context, ImageWriter, PhysicalWriter, RightsWriter, SecurityWriter, TemporalWriter};
+pub use context::{
+    ContentWriter, Context, ImageWriter, MAX_OUTLINE, PhysicalWriter, RightsWriter, SecurityWriter, TemporalWriter,
+};
 pub use registry::Registry;
 pub use spec::{BlockKind, Cost, ExtractorMeta, FormatSpec, Magic, Probe, Sniff};
 pub use text::{TextChunk, TextRole, TextStore};
+pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
-pub use crate::engine::Options;
+pub use crate::engine::{Options, Profile};
+pub use crate::text::decode::decode as decode_text;
+pub use crate::text::license::{find_copyright, identify_license, spdx_identifier};
+pub use crate::text::sensitive::is_secret_key;
+pub use crate::text::{Decoded, parse_date, squash_whitespace, truncate_chars};
+
+/// Replace secrets (keys, tokens, credentials in URLs) in `text` with
+/// `[redacted:<kind>]`. Use it for values written to `format` or `metadata`
+/// that may hold credentials; the privacy analyzer also runs over the report.
+pub fn redact_secrets(text: &str) -> std::borrow::Cow<'_, str> {
+    crate::text::sensitive::redact(text, crate::text::sensitive::Category::Secret)
+}
+
+/// Replace secrets **and** personal data (e-mail addresses, phone numbers,
+/// card numbers, IBANs) in `text`. Use it for sample values (CSV rows, schema
+/// examples) that would otherwise list personal data.
+pub fn redact_sensitive(text: &str) -> std::borrow::Cow<'_, str> {
+    use crate::text::sensitive::{Category, redact};
+    match redact(text, Category::Secret) {
+        std::borrow::Cow::Borrowed(t) => redact(t, Category::Personal),
+        std::borrow::Cow::Owned(t) => std::borrow::Cow::Owned(redact(&t, Category::Personal).into_owned()),
+    }
+}
 pub use crate::error::ExtractError;
 pub use crate::io::{BoundedReader, ByteReader, Source, SourceError};
 pub use crate::report::{DateField, Map, Report};
@@ -66,7 +92,9 @@ pub trait BlockDecoder: Send + Sync + 'static {
 /// When an analyzer runs relative to the others.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum AnalyzerStage {
-    /// Text statistics, language, keywords, outline, summary.
+    /// Language identification (the text analyzers depend on it).
+    Language,
+    /// Keywords, keyword frequency, summary, excerpt.
     Text,
     /// Merging values from different sources into the normalised sections.
     Reconcile,

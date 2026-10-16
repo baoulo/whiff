@@ -1,0 +1,11 @@
+{
+  "type": "Topology",
+  "objects": {
+    "countries": {
+      "type": "GeometryCollection",
+      "geometries": []
+    },
+    "lakes": {}
+  },
+  "arcs": []
+}

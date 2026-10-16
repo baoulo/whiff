@@ -1,0 +1,222 @@
+---
+source: src/formats/data/csv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "crew.csv",
+    "stem": "crew",
+    "extension": "csv"
+  },
+  "identification": {
+    "format": "csv",
+    "name": "CSV table",
+    "mime": "text/csv",
+    "family": "data.csv",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.csv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 329
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 4
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 329,
+    "entropy": 4.842,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 329,
+      "chars": 329,
+      "words": 12,
+      "lines": 6,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f7d91074f8b8a181505d7686997bc534675378c37efb84d42d77b76db34e70ff",
+    "blake3": "c6cf7e744ef66d24f846b27a5cef690407ec8161e0804ecbcb1ecddf7e03a2d6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "csv": {
+      "dialect": {
+        "delimiter": "comma",
+        "quote": "\"",
+        "header": true
+      },
+      "rows": 5,
+      "columns": 7,
+      "column_profile": [
+        {
+          "name": "id",
+          "type": "integer",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "min": 1.0,
+          "max": 5.0,
+          "mean": 3.0
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "max_length": 16
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "null_ratio": 0.2,
+          "distinct": 4,
+          "max_length": 16
+        },
+        {
+          "name": "joined",
+          "type": "date",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "min": "2021-03-04",
+          "max": "2025-05-05"
+        },
+        {
+          "name": "rank",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 4,
+          "max_length": 8
+        },
+        {
+          "name": "salary",
+          "type": "number",
+          "null_ratio": 0.2,
+          "distinct": 4,
+          "min": 30500.0,
+          "max": 52000.0,
+          "mean": 39125.125
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "null_ratio": 0.0,
+          "distinct": 2
+        }
+      ],
+      "sample_rows": [
+        [
+          "1",
+          "Ada Example",
+          "[redacted:email]",
+          "2021-03-04",
+          "captain",
+          "52000",
+          "true"
+        ],
+        [
+          "2",
+          "Ben Sample",
+          "[redacted:email]",
+          "2022-07-19",
+          "mate",
+          "41000.50",
+          "true"
+        ],
+        [
+          "3",
+          "Cleo Placeholder",
+          "[redacted:email]",
+          "2023-01-02",
+          "deckhand",
+          "30500",
+          "false"
+        ],
+        [
+          "4",
+          "Dan Dummy",
+          "",
+          "2024-11-30",
+          "deckhand",
+          "NA",
+          "true"
+        ],
+        [
+          "5",
+          "Eve, the cook",
+          "[redacted:email]",
+          "2025-05-05",
+          "cook",
+          "33000",
+          "true"
+        ]
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.csv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

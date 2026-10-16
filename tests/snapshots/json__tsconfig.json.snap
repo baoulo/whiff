@@ -1,0 +1,198 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tsconfig.json",
+    "stem": "tsconfig",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 167
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 167,
+    "entropy": 4.423,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 167,
+      "chars": 167,
+      "words": 17,
+      "lines": 11,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "94fbcb4ddafd97b8cac54ebfa012760ae893525a3f5e1d3c187db0724d8c2223",
+    "blake3": "55f9043215c04f441f28f95f2a1d1f72a143223f27362fff8f0fad85018bf226"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "extends",
+        "compilerOptions",
+        "include"
+      ],
+      "key_count": 3,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.extends": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "./tsconfig.base.json"
+            ]
+          },
+          "$.compilerOptions": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.compilerOptions.target": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "ES2022"
+            ]
+          },
+          "$.compilerOptions.module": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "NodeNext"
+            ]
+          },
+          "$.compilerOptions.strict": {
+            "types": [
+              "boolean"
+            ],
+            "count": 1,
+            "examples": [
+              true
+            ]
+          },
+          "$.include": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.include[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "src"
+            ]
+          }
+        },
+        "max_depth": 2
+      },
+      "known_schema": {
+        "id": "tsconfig",
+        "name": "TypeScript project config",
+        "target": "ES2022",
+        "module": "NodeNext",
+        "strict": true,
+        "extends": "./tsconfig.base.json"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

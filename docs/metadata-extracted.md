@@ -127,7 +127,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **0** of 1004.
+* Formats with an extractor in this build: **142** of 1004.
 * Formats by family status: crate = 264, mixed = 632, impl = 108.
 * Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 61, S3/S8 = 20, S4 = 74, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 157.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
@@ -139,43 +139,43 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 
 | # | Format | Extensions | MIME | Tier | Family | Feature | Extractor | Library | Stage | Format-specific extras |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Plain text | `txt` `text` | text/plain | 1 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | — |
-| 2 | Log file | `log` | text/plain | 1 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | timestamp range, log-level histogram, top sources (impl detector for syslog/JSON-lines/Apache/CLF) |
-| 3 | Web server access log (CLF / combined) | `log` `access.log` | text/plain | 1 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | status histogram, methods, top paths, client count (IPs hashed), time range |
-| 4 | Markdown | `md` `markdown` `mdown` `mkd` | text/markdown | 1 | `text.markdown` | `common` | — | pulldown-cmark, gray_matter | S1 | — |
-| 5 | HTML | `html` `htm` | text/html | 1 | `text.html` | `common` | — | html5ever + scraper | S1 | — |
-| 6 | XML | `xml` | application/xml | 1 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 7 | JSON | `json` | application/json | 1 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
-| 8 | NDJSON / JSON Lines | `ndjson` `jsonl` `ldjson` | application/x-ndjson | 1 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
-| 9 | YAML | `yaml` `yml` | application/yaml | 1 | `data.yaml` | `common` | — | serde-saphyr | S1 | — |
-| 10 | TOML | `toml` | application/toml | 1 | `data.toml` | `common` | — | toml | S1 | — |
-| 11 | INI | `ini` `cfg` `conf` | text/plain | 1 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | — |
-| 12 | CSV | `csv` | text/csv | 1 | `data.csv` | `common` | — | csv | S1 | — |
-| 13 | TSV | `tsv` `tab` | text/tab-separated-values | 1 | `data.csv` | `common` | — | csv | S1 | — |
-| 14 | SQL script / dump | `sql` | application/sql | 1 | `data.sql` | `common` | — | sqlparser | S1 | — |
-| 15 | Python source | `py` `pyw` `pyi` | text/x-python | 1 | `code.source` | `common` | — | tokei | S1 | imports, defs/classes, docstring, __main__ guard |
-| 16 | JavaScript source | `js` `mjs` `cjs` | text/javascript | 1 | `code.source` | `common` | — | tokei | S1 | oxc_parser: imports/exports, minified detection, source map ref |
-| 17 | TypeScript source | `ts` `mts` `cts` | application/typescript | 1 | `code.source` | `common` | — | tokei | S1 | oxc_parser |
-| 18 | Java source | `java` | text/x-java | 1 | `code.source` | `common` | — | tokei | S1 | package, imports, classes |
-| 19 | C source | `c` | text/x-c | 1 | `code.source` | `common` | — | tokei | S1 | #includes, functions |
-| 20 | C/C++ header | `h` `hh` `hpp` `hxx` `h++` | text/x-c-header | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 21 | C++ source | `cpp` `cc` `cxx` `c++` `ipp` | text/x-c++ | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 22 | C# source | `cs` | text/x-csharp | 1 | `code.source` | `common` | — | tokei | S1 | namespace, usings, types |
-| 23 | Go source | `go` | text/x-go | 1 | `code.source` | `common` | — | tokei | S1 | package, imports, funcs, build tags |
-| 24 | Rust source | `rs` | text/rust | 1 | `code.source` | `common` | — | tokei | S1 | syn: items, uses, attributes, unsafe count |
-| 25 | PHP source | `php` `phtml` `php3` `php4` `php5` `phps` | application/x-httpd-php | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 26 | Ruby source | `rb` `rbw` `rake` `gemspec` | text/x-ruby | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 27 | Shell script | `sh` `bash` `zsh` `ksh` | application/x-sh | 1 | `code.source` | `common` | — | tokei | S1 | shebang, commands used, set -e |
-| 28 | Swift source | `swift` | text/x-swift | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 29 | Kotlin source | `kt` `kts` | text/x-kotlin | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 30 | PowerShell | `ps1` `psm1` `psd1` | text/x-powershell | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 31 | Windows batch | `bat` `cmd` | application/x-bat | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 32 | SCSS / Sass | `scss` `sass` | text/x-scss | 1 | `code.source` | `common` | — | tokei | S1 | — |
-| 33 | CSS | `css` | text/css | 1 | `code.source` | `common` | — | tokei | S1 | selectors, @imports, custom properties, @font-face, media queries |
-| 34 | npm package.json | `package.json` | application/json | 1 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 35 | Maven POM | `pom.xml` | — | 1 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | groupId/artifactId/version, deps |
-| 36 | Jupyter notebook | `ipynb` | application/x-ipynb+json | 1 | `code.notebook` | `common` | — | serde_json | S1 | — |
-| 37 | Unknown / generic binary | `bin` `dat` `(any)` | application/octet-stream | 1 | `binary.unknown` | `common` | — | aho-corasick + impl | S1 | — |
+| 1 | Plain text | `txt` `text` | text/plain | 1 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | — |
+| 2 | Log file | `log` | text/plain | 1 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | timestamp range, log-level histogram, top sources (impl detector for syslog/JSON-lines/Apache/CLF) |
+| 3 | Web server access log (CLF / combined) | `log` `access.log` | text/plain | 1 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | status histogram, methods, top paths, client count (IPs hashed), time range |
+| 4 | Markdown | `md` `markdown` `mdown` `mkd` | text/markdown | 1 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | — |
+| 5 | HTML | `html` `htm` | text/html | 1 | `text.html` | `common` | `text.html` | html5ever + scraper | S1 | — |
+| 6 | XML | `xml` | application/xml | 1 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 7 | JSON | `json` | application/json | 1 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
+| 8 | NDJSON / JSON Lines | `ndjson` `jsonl` `ldjson` | application/x-ndjson | 1 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
+| 9 | YAML | `yaml` `yml` | application/yaml | 1 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | — |
+| 10 | TOML | `toml` | application/toml | 1 | `data.toml` | `common` | `data.toml` | toml | S1 | — |
+| 11 | INI | `ini` `cfg` `conf` | text/plain | 1 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
+| 12 | CSV | `csv` | text/csv | 1 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
+| 13 | TSV | `tsv` `tab` | text/tab-separated-values | 1 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
+| 14 | SQL script / dump | `sql` | application/sql | 1 | `data.sql` | `common` | `data.sql` | sqlparser | S1 | — |
+| 15 | Python source | `py` `pyw` `pyi` | text/x-python | 1 | `code.source` | `common` | `code.source` | tokei | S1 | imports, defs/classes, docstring, __main__ guard |
+| 16 | JavaScript source | `js` `mjs` `cjs` | text/javascript | 1 | `code.source` | `common` | `code.source` | tokei | S1 | oxc_parser: imports/exports, minified detection, source map ref |
+| 17 | TypeScript source | `ts` `mts` `cts` | application/typescript | 1 | `code.source` | `common` | `code.source` | tokei | S1 | oxc_parser |
+| 18 | Java source | `java` | text/x-java | 1 | `code.source` | `common` | `code.source` | tokei | S1 | package, imports, classes |
+| 19 | C source | `c` | text/x-c | 1 | `code.source` | `common` | `code.source` | tokei | S1 | #includes, functions |
+| 20 | C/C++ header | `h` `hh` `hpp` `hxx` `h++` | text/x-c-header | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 21 | C++ source | `cpp` `cc` `cxx` `c++` `ipp` | text/x-c++ | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 22 | C# source | `cs` | text/x-csharp | 1 | `code.source` | `common` | `code.source` | tokei | S1 | namespace, usings, types |
+| 23 | Go source | `go` | text/x-go | 1 | `code.source` | `common` | `code.source` | tokei | S1 | package, imports, funcs, build tags |
+| 24 | Rust source | `rs` | text/rust | 1 | `code.source` | `common` | `code.source` | tokei | S1 | syn: items, uses, attributes, unsafe count |
+| 25 | PHP source | `php` `phtml` `php3` `php4` `php5` `phps` | application/x-httpd-php | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 26 | Ruby source | `rb` `rbw` `rake` `gemspec` | text/x-ruby | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 27 | Shell script | `sh` `bash` `zsh` `ksh` | application/x-sh | 1 | `code.source` | `common` | `code.source` | tokei | S1 | shebang, commands used, set -e |
+| 28 | Swift source | `swift` | text/x-swift | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 29 | Kotlin source | `kt` `kts` | text/x-kotlin | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 30 | PowerShell | `ps1` `psm1` `psd1` | text/x-powershell | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 31 | Windows batch | `bat` `cmd` | application/x-bat | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 32 | SCSS / Sass | `scss` `sass` | text/x-scss | 1 | `code.source` | `common` | `code.source` | tokei | S1 | — |
+| 33 | CSS | `css` | text/css | 1 | `code.source` | `common` | `code.source` | tokei | S1 | selectors, @imports, custom properties, @font-face, media queries |
+| 34 | npm package.json | `package.json` | application/json | 1 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 35 | Maven POM | `pom.xml` | — | 1 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | groupId/artifactId/version, deps |
+| 36 | Jupyter notebook | `ipynb` | application/x-ipynb+json | 1 | `code.notebook` | `common` | `code.notebook` | serde_json | S1 | — |
+| 37 | Unknown / generic binary | `bin` `dat` `(any)` | application/octet-stream | 1 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | — |
 | 38 | JPEG | `jpg` `jpeg` `jpe` `jfif` | image/jpeg | 1 | `image.raster` | `common` | — | imagesize | S2 | APP0 JFIF / APP1 EXIF+XMP / APP2 ICC+MPF / APP13 IPTC / APP14 Adobe; quality from DQT |
 | 39 | PNG | `png` | image/png | 1 | `image.raster` | `common` | — | imagesize | S2 | tEXt/iTXt/zTXt (incl. AI-generation 'parameters'), eXIf, iCCP, pHYs, tIME, APNG acTL |
 | 40 | GIF | `gif` | image/gif | 1 | `image.raster` | `common` | — | imagesize | S2 | frames, loop (NETSCAPE2.0), comments, XMP app ext |
@@ -276,65 +276,65 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 135 | TrueType font | `ttf` | font/ttf | 1 | `font` | `common` | — | read-fonts / skrifa, allsorts | S7 | — |
 | 136 | OpenType font | `otf` | font/otf | 1 | `font` | `common` | — | read-fonts / skrifa, allsorts | S7 | — |
 | 137 | WOFF / WOFF2 | `woff` `woff2` | font/woff2 | 1 | `font` | `common` | — | read-fonts / skrifa, allsorts | S7 | — |
-| 138 | Dockerfile / Containerfile | `Dockerfile` `Containerfile` `dockerfile` | — | 1 | `code.infra` | `common` | — | hcl-rs + impl line scanners | S8 | — |
-| 139 | Makefile | `Makefile` `makefile` `mk` `GNUmakefile` | — | 1 | `code.infra` | `common` | — | hcl-rs + impl line scanners | S8 | — |
+| 138 | Dockerfile / Containerfile | `Dockerfile` `Containerfile` `dockerfile` | — | 1 | `code.infra` | `common` | `code.infra` | hcl-rs + impl line scanners | S8 | — |
+| 139 | Makefile | `Makefile` `makefile` `mk` `GNUmakefile` | — | 1 | `code.infra` | `common` | `code.infra` | hcl-rs + impl line scanners | S8 | — |
 | 140 | NFO / DIZ info file | `nfo` `diz` | text/plain | 2 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | CP437 detection |
 | 141 | README / LICENSE (extensionless) | `README` `LICENSE` `COPYING` `AUTHORS` `CHANGELOG` | — | 2 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | licence identification via SPDX text matching |
-| 142 | Unix diff / patch | `diff` `patch` | text/x-diff | 2 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | files changed, hunks, +/- lines |
-| 143 | Subtitle-free transcript / meeting notes (VTT-less TXT) | `txt` | — | 2 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | speaker turns, timestamps detected |
-| 144 | MDX | `mdx` | text/mdx | 2 | `text.markdown` | `common` | — | pulldown-cmark, gray_matter | S1 | JSX component names |
-| 145 | XHTML | `xhtml` `xht` | application/xhtml+xml | 2 | `text.html` | `common` | — | html5ever + scraper | S1 | — |
+| 142 | Unix diff / patch | `diff` `patch` | text/x-diff | 2 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | files changed, hunks, +/- lines |
+| 143 | Subtitle-free transcript / meeting notes (VTT-less TXT) | `txt` | — | 2 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | speaker turns, timestamps detected |
+| 144 | MDX | `mdx` | text/mdx | 2 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | JSX component names |
+| 145 | XHTML | `xhtml` `xht` | application/xhtml+xml | 2 | `text.html` | `common` | `text.html` | html5ever + scraper | S1 | — |
 | 146 | MHTML web archive | `mht` `mhtml` | multipart/related | 2 | `text.html` | `common` | — | html5ever + scraper | S1 | MIME parts -&gt; email parser, then HTML |
-| 147 | Internet shortcut HTML redirect | `shtml` | text/html | 2 | `text.html` | `common` | — | html5ever + scraper | S1 | — |
-| 148 | XML Schema | `xsd` | application/xml | 2 | `text.xml` | `common` | — | quick-xml | S1 | target namespace, element/type counts |
-| 149 | XSLT | `xsl` `xslt` | application/xslt+xml | 2 | `text.xml` | `common` | — | quick-xml | S1 | templates, output method |
-| 150 | XAML | `xaml` | application/xaml+xml | 2 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 151 | Android layout / resources XML | `xml` | — | 2 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 152 | RSS | `rss` | application/rss+xml | 2 | `text.feed` | `common` | — | feed-rs | S1 | — |
-| 153 | Atom feed | `atom` | application/atom+xml | 2 | `text.feed` | `common` | — | feed-rs | S1 | — |
+| 147 | Internet shortcut HTML redirect | `shtml` | text/html | 2 | `text.html` | `common` | `text.html` | html5ever + scraper | S1 | — |
+| 148 | XML Schema | `xsd` | application/xml | 2 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | target namespace, element/type counts |
+| 149 | XSLT | `xsl` `xslt` | application/xslt+xml | 2 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | templates, output method |
+| 150 | XAML | `xaml` | application/xaml+xml | 2 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 151 | Android layout / resources XML | `xml` | — | 2 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 152 | RSS | `rss` | application/rss+xml | 2 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | — |
+| 153 | Atom feed | `atom` | application/atom+xml | 2 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | — |
 | 154 | Sitemap XML | `xml` | application/xml | 2 | `text.feed` | `common` | — | feed-rs | S1 | URL count, lastmod range |
-| 155 | JSON with comments | `jsonc` | application/json | 2 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
+| 155 | JSON with comments | `jsonc` | application/json | 2 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
 | 156 | JSON Schema | `schema.json` | application/schema+json | 2 | `data.json` | `common` | — | serde_json, json5 | S1 | title, $id, properties |
 | 157 | OpenAPI / Swagger (JSON) | `openapi.json` `swagger.json` | application/vnd.oai.openapi+json | 2 | `data.json` | `common` | — | serde_json, json5 | S1 | title, version, servers, paths/operations count |
-| 158 | Kubernetes manifest | `yaml` | — | 2 | `data.yaml` | `common` | — | serde-saphyr | S1 | kinds, names, namespaces, images |
+| 158 | Kubernetes manifest | `yaml` | — | 2 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | kinds, names, namespaces, images |
 | 159 | Docker Compose | `compose.yaml` `docker-compose.yml` | — | 2 | `data.yaml` | `common` | — | serde-saphyr | S1 | services, images, ports, volumes |
 | 160 | GitHub Actions workflow | `.github/workflows/*.yml` | — | 2 | `data.yaml` | `common` | — | serde-saphyr | S1 | triggers, jobs, actions used |
-| 161 | Java properties | `properties` | text/x-java-properties | 2 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | — |
-| 162 | dotenv | `env` `.env` | text/plain | 2 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | values redacted |
-| 163 | JSX / TSX | `jsx` `tsx` | text/jsx | 2 | `code.source` | `common` | — | tokei | S1/S6 | components exported |
-| 164 | Objective-C / Objective-C++ | `m` `mm` | text/x-objective-c | 2 | `code.source` | `common` | — | tokei | S1/S6 | disambiguate from MATLAB |
-| 165 | Scala | `scala` `sc` | text/x-scala | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 166 | R script | `r` `R` | text/x-r | 2 | `code.source` | `common` | — | tokei | S1/S6 | library() calls |
-| 167 | Dart | `dart` | application/dart | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 168 | Lua | `lua` | text/x-lua | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 169 | Perl | `pl` `pm` `t` | text/x-perl | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 170 | Visual Basic / VB.NET | `vb` `bas` `cls` `frm` | text/x-vb | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 171 | VBScript | `vbs` `vbe` | text/vbscript | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 172 | Haskell | `hs` `lhs` | text/x-haskell | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 173 | Elixir | `ex` `exs` | text/x-elixir | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 174 | Erlang | `erl` `hrl` | text/x-erlang | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 175 | Clojure | `clj` `cljs` `cljc` `edn` | text/x-clojure | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 176 | F# | `fs` `fsi` `fsx` | text/x-fsharp | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 177 | OCaml | `ml` `mli` | text/x-ocaml | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 178 | Julia | `jl` | text/x-julia | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 161 | Java properties | `properties` | text/x-java-properties | 2 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
+| 162 | dotenv | `env` `.env` | text/plain | 2 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | values redacted |
+| 163 | JSX / TSX | `jsx` `tsx` | text/jsx | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | components exported |
+| 164 | Objective-C / Objective-C++ | `m` `mm` | text/x-objective-c | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | disambiguate from MATLAB |
+| 165 | Scala | `scala` `sc` | text/x-scala | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 166 | R script | `r` `R` | text/x-r | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | library() calls |
+| 167 | Dart | `dart` | application/dart | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 168 | Lua | `lua` | text/x-lua | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 169 | Perl | `pl` `pm` `t` | text/x-perl | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 170 | Visual Basic / VB.NET | `vb` `bas` `cls` `frm` | text/x-vb | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 171 | VBScript | `vbs` `vbe` | text/vbscript | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 172 | Haskell | `hs` `lhs` | text/x-haskell | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 173 | Elixir | `ex` `exs` | text/x-elixir | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 174 | Erlang | `erl` `hrl` | text/x-erlang | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 175 | Clojure | `clj` `cljs` `cljc` `edn` | text/x-clojure | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 176 | F# | `fs` `fsi` `fsx` | text/x-fsharp | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 177 | OCaml | `ml` `mli` | text/x-ocaml | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 178 | Julia | `jl` | text/x-julia | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 179 | MATLAB / Octave script | `m` | text/x-matlab | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 180 | Groovy / Gradle | `groovy` `gradle` `gvy` | text/x-groovy | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 181 | Assembly | `asm` `s` `S` `nasm` | text/x-asm | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 182 | Less / Stylus | `less` `styl` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 183 | Vue single-file component | `vue` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | template/script/style blocks |
-| 184 | Svelte component | `svelte` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 185 | Zig | `zig` | text/x-zig | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 186 | GraphQL | `graphql` `gql` | application/graphql | 2 | `code.source` | `common` | — | tokei | S1/S6 | types, queries |
-| 187 | CUDA | `cu` `cuh` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | kernels |
-| 188 | CMake | `cmake` `CMakeLists.txt` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | project(), targets |
-| 189 | Nix | `nix` | — | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 190 | LaTeX source | `tex` `ltx` `sty` `cls` | application/x-tex | 2 | `code.source` | `common` | — | tokei | S1/S6 | -&gt; doc.other |
-| 191 | npm/yarn/pnpm lockfile | `package-lock.json` `yarn.lock` `pnpm-lock.yaml` | — | 2 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 192 | Cargo manifest / lock | `Cargo.toml` `Cargo.lock` | — | 2 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 193 | Python pyproject | `pyproject.toml` | — | 2 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 194 | pip requirements | `requirements.txt` | — | 2 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 195 | Go modules | `go.mod` `go.sum` | — | 2 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 196 | Encrypted / random-looking blob | `enc` `bin` | — | 2 | `binary.unknown` | `common` | — | aho-corasick + impl | S1 | high-entropy classification |
+| 180 | Groovy / Gradle | `groovy` `gradle` `gvy` | text/x-groovy | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 181 | Assembly | `asm` `s` `S` `nasm` | text/x-asm | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 182 | Less / Stylus | `less` `styl` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 183 | Vue single-file component | `vue` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | template/script/style blocks |
+| 184 | Svelte component | `svelte` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 185 | Zig | `zig` | text/x-zig | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 186 | GraphQL | `graphql` `gql` | application/graphql | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | types, queries |
+| 187 | CUDA | `cu` `cuh` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | kernels |
+| 188 | CMake | `cmake` `CMakeLists.txt` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | project(), targets |
+| 189 | Nix | `nix` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 190 | LaTeX source | `tex` `ltx` `sty` `cls` | application/x-tex | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | -&gt; doc.other |
+| 191 | npm/yarn/pnpm lockfile | `package-lock.json` `yarn.lock` `pnpm-lock.yaml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 192 | Cargo manifest / lock | `Cargo.toml` `Cargo.lock` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 193 | Python pyproject | `pyproject.toml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 194 | pip requirements | `requirements.txt` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 195 | Go modules | `go.mod` `go.sum` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 196 | Encrypted / random-looking blob | `enc` `bin` | — | 2 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | high-entropy classification |
 | 197 | JPEG XL | `jxl` | image/jxl | 2 | `image.raster` | `common` | — | imagesize | S2 | jxl-oxide; container boxes Exif/xml/jumb |
 | 198 | JPEG 2000 | `jp2` `j2k` `jpf` `jpx` `jpm` `mj2` | image/jp2 | 2 | `image.raster` | `common` | — | imagesize | S2 | hayro-jpeg2000; boxes, XMP uuid box |
 | 199 | TGA | `tga` `tpic` | image/x-tga | 2 | `image.raster` | `common` | — | imagesize | S2 | — |
@@ -402,95 +402,95 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 261 | Git commit message / mbox patch | `eml-patch` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | author, subject, files changed |
 | 262 | Hosts file | `hosts` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | entries count, blocked domains |
 | 263 | CODEOWNERS / MAINTAINERS | `CODEOWNERS` `MAINTAINERS` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | owners, paths |
-| 264 | Chat export (WhatsApp / Signal text) | `txt` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | participants count, message count, date range |
+| 264 | Chat export (WhatsApp / Signal text) | `txt` | — | 3 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | participants count, message count, date range |
 | 265 | Kindle clippings | `My` `Clippings.txt` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | books, highlight count |
-| 266 | UTF-16 / UTF-32 text | `txt` | text/plain | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | BOM-driven decode |
+| 266 | UTF-16 / UTF-32 text | `txt` | text/plain | 3 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | BOM-driven decode |
 | 267 | GNU info | `info` | application/x-info | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | nodes |
 | 268 | Fortune / quote databases | `dat` `fortune` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | — |
 | 269 | Vim / Emacs swap & backup | `swp` `swo` `~` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S8 | original filename, host, user (Vim swap header) |
-| 270 | R Markdown | `rmd` | text/x-r-markdown | 3 | `text.markdown` | `common` | — | pulldown-cmark, gray_matter | S1 | code chunk languages |
-| 271 | Quarto | `qmd` | text/x-quarto | 3 | `text.markdown` | `common` | — | pulldown-cmark, gray_matter | S1 | — |
+| 270 | R Markdown | `rmd` | text/x-r-markdown | 3 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | code chunk languages |
+| 271 | Quarto | `qmd` | text/x-quarto | 3 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | — |
 | 272 | Server-side templates (PHP/ERB/JSP/ASP mixed HTML) | `jsp` `asp` `aspx` `erb` `ejs` `hbs` `mustache` `njk` `jinja` `j2` `twig` `liquid` | — | 3 | `text.html` | `common` | — | html5ever + scraper | S1 | template engine detection, HTML part analysed |
 | 273 | Web archive (Safari) | `webarchive` | application/x-webarchive | 3 | `text.html` | `common` | — | html5ever + scraper | S1 | binary plist with WebMainResource |
 | 274 | DTD | `dtd` | application/xml-dtd | 3 | `text.xml` | `common` | — | quick-xml | S1 | element declarations |
-| 275 | RELAX NG | `rng` `rnc` | application/xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 276 | DocBook | `dbk` `docbook` | application/docbook+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | title, chapters |
-| 277 | TEI XML | `tei` | application/tei+xml | 3 | `text.xml` | `common` | — | quick-xml | S8 | teiHeader fileDesc |
-| 278 | JATS article XML | `nxml` | application/xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | article-meta: title, authors, DOI |
-| 279 | WSDL | `wsdl` | application/wsdl+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | services, operations |
-| 280 | XLIFF translation | `xlf` `xliff` | application/xliff+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | source/target languages, unit count |
-| 281 | Android strings / .resx | `resx` | text/microsoft-resx | 3 | `text.xml` | `common` | — | quick-xml | S1 | key count |
+| 275 | RELAX NG | `rng` `rnc` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 276 | DocBook | `dbk` `docbook` | application/docbook+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | title, chapters |
+| 277 | TEI XML | `tei` | application/tei+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S8 | teiHeader fileDesc |
+| 278 | JATS article XML | `nxml` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | article-meta: title, authors, DOI |
+| 279 | WSDL | `wsdl` | application/wsdl+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | services, operations |
+| 280 | XLIFF translation | `xlf` `xliff` | application/xliff+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | source/target languages, unit count |
+| 281 | Android strings / .resx | `resx` | text/microsoft-resx | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | key count |
 | 282 | Qt translation | `ts` | application/x-linguist | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
 | 283 | SAML / XML-DSig | `saml` | application/samlmetadata+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | entity ids, certs |
-| 284 | MathML | `mml` | application/mathml+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 285 | SMIL | `smil` `smi` | application/smil+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 286 | XBRL financial report | `xbrl` | application/xbrl+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | entity, period, concept count |
+| 284 | MathML | `mml` | application/mathml+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 285 | SMIL | `smil` `smi` | application/smil+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
+| 286 | XBRL financial report | `xbrl` | application/xbrl+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | entity, period, concept count |
 | 287 | ONIX book metadata | `onix` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
 | 288 | METS / MODS / EAD library XML | `mets` `mods` `ead` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
 | 289 | Dublin Core XML / OAI-PMH | `dc` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 290 | JUnit / xUnit test report | `xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | suites, tests, failures, errors, time |
-| 291 | Cobertura / JaCoCo / Clover coverage | `xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | line/branch coverage % |
-| 292 | Checkstyle / PMD / SpotBugs reports | `xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | violations by severity |
+| 290 | JUnit / xUnit test report | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | suites, tests, failures, errors, time |
+| 291 | Cobertura / JaCoCo / Clover coverage | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | line/branch coverage % |
+| 292 | Checkstyle / PMD / SpotBugs reports | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | violations by severity |
 | 293 | Apple Health export | `export.xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | record types histogram, date range, sources |
 | 294 | Android manifest (text) | `AndroidManifest.xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | package, permissions, components |
 | 295 | SVG sprite / icon sets | `svg` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | symbol count |
-| 296 | Office custom XML / content types | `xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
+| 296 | Office custom XML / content types | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 297 | ClickOnce / app manifests | `application` `manifest` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | identity, dependencies |
-| 298 | Nmap XML / Nessus reports | `xml` `nessus` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | hosts, open ports, findings by severity |
+| 298 | Nmap XML / Nessus reports | `xml` `nessus` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | hosts, open ports, findings by severity |
 | 299 | OpenSCENARIO / OpenDRIVE | `xosc` `xodr` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | roads, junctions |
 | 300 | GPX-like Garmin TCX | `tcx` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | -&gt; geo |
 | 301 | JSON Feed | `json` | application/feed+json | 3 | `text.feed` | `common` | — | feed-rs | S1 | — |
-| 302 | OPML outline | `opml` | text/x-opml | 3 | `text.feed` | `common` | — | feed-rs | S1 | outline titles, feed URLs |
-| 303 | JSON5 | `json5` | application/json5 | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
-| 304 | JSON-LD | `jsonld` | application/ld+json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | @context, @type |
-| 305 | HAR archive | `har` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | -&gt; forensic |
+| 302 | OPML outline | `opml` | text/x-opml | 3 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | outline titles, feed URLs |
+| 303 | JSON5 | `json5` | application/json5 | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
+| 304 | JSON-LD | `jsonld` | application/ld+json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | @context, @type |
+| 305 | HAR archive | `har` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | -&gt; forensic |
 | 306 | Postman collection | `postman_collection.json` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | requests count, folders |
-| 307 | VS Code workspace / settings | `code-workspace` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
+| 307 | VS Code workspace / settings | `code-workspace` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
 | 308 | Chrome extension manifest | `manifest.json` | application/manifest+json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | name, version, permissions (risk) |
-| 309 | Web app manifest | `webmanifest` | application/manifest+json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | — |
-| 310 | Lottie animation | `lottie` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | fps, frames, size, layers |
-| 311 | Excalidraw drawing | `excalidraw` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | element counts, text |
-| 312 | TopoJSON | `topojson` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | -&gt; geo |
+| 309 | Web app manifest | `webmanifest` | application/manifest+json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
+| 310 | Lottie animation | `lottie` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | fps, frames, size, layers |
+| 311 | Excalidraw drawing | `excalidraw` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | element counts, text |
+| 312 | TopoJSON | `topojson` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | -&gt; geo |
 | 313 | Terraform state | `tfstate` `tfstate.backup` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | resources by type, providers, serial; all attribute values redacted |
-| 314 | SARIF static-analysis log | `sarif` | application/sarif+json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | tool, rules, result count by level |
-| 315 | AWS CloudTrail / cloud audit logs | `json` `json.gz` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | event names histogram, principals count, time range, regions |
-| 316 | Grafana / Kibana dashboards | `json` `ndjson` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | title, panels, datasources |
+| 314 | SARIF static-analysis log | `sarif` | application/sarif+json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | tool, rules, result count by level |
+| 315 | AWS CloudTrail / cloud audit logs | `json` `json.gz` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | event names histogram, principals count, time range, regions |
+| 316 | Grafana / Kibana dashboards | `json` `ndjson` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | title, panels, datasources |
 | 317 | Frictionless datapackage / CSVW | `datapackage.json` `csv-metadata.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | resources, schemas |
 | 318 | dbt manifest / catalog | `manifest.json` `catalog.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | models, sources, tests count |
 | 319 | ESLint / Prettier / Babel / tsconfig | `eslintrc` `prettierrc` `babelrc` `tsconfig.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | extends, plugins, compiler target |
-| 320 | Social / takeout exports (Twitter, Facebook, Slack, Discord, Telegram, Spotify) | `json` `js` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | export kind, record count, date range |
+| 320 | Social / takeout exports (Twitter, Facebook, Slack, Discord, Telegram, Spotify) | `json` `js` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | export kind, record count, date range |
 | 321 | Google Takeout location history | `Records.json` `Timeline.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | point count, date range, bbox -&gt; geo |
 | 322 | Google Drive shortcuts | `gdoc` `gsheet` `gslides` `gdraw` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | doc id, URL |
-| 323 | STIX 2 / MISP threat intel | `json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | object types, indicator count |
-| 324 | CSAF / OpenVEX / OSV advisories | `json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | CVE ids, products, severity |
+| 323 | STIX 2 / MISP threat intel | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | object types, indicator count |
+| 324 | CSAF / OpenVEX / OSV advisories | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | CVE ids, products, severity |
 | 325 | Scratch project | `sb3` `sb2` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | sprites, block counts, extensions |
-| 326 | Spine / DragonBones / Rive animations | `json` `skel` `riv` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | skeleton, animations |
-| 327 | OpenAI / Anthropic chat transcript exports | `json` `jsonl` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | conversation count, message roles, date range |
+| 326 | Spine / DragonBones / Rive animations | `json` `skel` `riv` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | skeleton, animations |
+| 327 | OpenAI / Anthropic chat transcript exports | `json` `jsonl` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | conversation count, message roles, date range |
 | 328 | Jupyter-adjacent: VS Code .code-snippets / launch.json | `code-snippets` `launch.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | configurations |
-| 329 | Composer / npm audit reports | `json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | vulnerabilities by severity |
+| 329 | Composer / npm audit reports | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | vulnerabilities by severity |
 | 330 | OpenAPI (YAML) | `openapi.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | — |
-| 331 | Ansible playbook | `yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | hosts, roles, modules |
+| 331 | Ansible playbook | `yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | hosts, roles, modules |
 | 332 | Helm chart | `Chart.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | — |
 | 333 | CloudFormation / SAM | `template.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | resources by type |
 | 334 | GitLab CI | `.gitlab-ci.yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | stages, jobs |
 | 335 | conda environment | `environment.yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | channels, deps |
-| 336 | Sigma detection rule | `yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | title, logsource, level, tags (ATT&CK) |
+| 336 | Sigma detection rule | `yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | title, logsource, level, tags (ATT&CK) |
 | 337 | Kustomize / Argo / Tekton / Serverless | `kustomization.yaml` `serverless.yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | resources, functions |
 | 338 | Dependabot / Renovate / pre-commit configs | `dependabot.yml` `renovate.json` `.pre-commit-config.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | ecosystems, hooks |
-| 339 | winget / Scoop manifests | `yaml` `json` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | package id, version, installer URL |
+| 339 | winget / Scoop manifests | `yaml` `json` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | package id, version, installer URL |
 | 340 | OpenAPI 3.1 / AsyncAPI | `asyncapi.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | channels, messages |
-| 341 | Windows .reg export | `reg` | text/plain | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | keys, value counts |
-| 342 | Desktop entry | `desktop` | application/x-desktop | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | Name, Exec, Categories |
-| 343 | EditorConfig | `editorconfig` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | — |
-| 344 | Git config | `gitconfig` `.gitmodules` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | remotes, submodules |
-| 345 | systemd unit | `service` `socket` `timer` `mount` `target` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | -&gt; code.infra |
-| 346 | Windows INF | `inf` | text/plain | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | driver class, provider, hardware ids |
-| 347 | WireGuard / OpenVPN config | `conf` `ovpn` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | peers/remotes count, keys redacted, embedded certs -&gt; crypto |
+| 341 | Windows .reg export | `reg` | text/plain | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | keys, value counts |
+| 342 | Desktop entry | `desktop` | application/x-desktop | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | Name, Exec, Categories |
+| 343 | EditorConfig | `editorconfig` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
+| 344 | Git config | `gitconfig` `.gitmodules` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | remotes, submodules |
+| 345 | systemd unit | `service` `socket` `timer` `mount` `target` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | -&gt; code.infra |
+| 346 | Windows INF | `inf` | text/plain | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | driver class, provider, hardware ids |
+| 347 | WireGuard / OpenVPN config | `conf` `ovpn` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | peers/remotes count, keys redacted, embedded certs -&gt; crypto |
 | 348 | Windows theme / desktop.ini | `theme` `desktop.ini` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | — |
-| 349 | Kerberos krb5.conf / Samba smb.conf | `conf` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | realms, shares |
-| 350 | PSV / pipe separated | `psv` | — | 3 | `data.csv` | `common` | — | csv | S1 | — |
+| 349 | Kerberos krb5.conf / Samba smb.conf | `conf` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | realms, shares |
+| 350 | PSV / pipe separated | `psv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
 | 351 | Fixed-width text table | `fwf` `prn` | — | 3 | `data.csv` | `common` | — | csv | S1 | column boundaries guess |
-| 352 | vCalendar-like CSV exports (Outlook/Google contacts) | `csv` | — | 3 | `data.csv` | `common` | — | csv | S1 | — |
+| 352 | vCalendar-like CSV exports (Outlook/Google contacts) | `csv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
 | 353 | LCOV coverage | `info` `lcov` | — | 3 | `data.csv` | `common` | — | csv | S1 | files, line coverage |
 | 354 | GTFS transit feed (zip of CSV) | `zip` | — | 3 | `data.csv` | `common` | — | csv | S1 | agency, routes, stops, service date range |
 | 355 | Bank statements OFX / QFX / QIF / MT940 / CAMT | `ofx` `qfx` `qif` `sta` `940` `camt.053` | — | 3 | `data.csv` | `common` | — | csv | S1 | account (masked), transaction count, date range, currency |
@@ -501,7 +501,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 360 | TAP test output | `tap` | — | 3 | `data.csv` | `common` | — | csv | S1 | plan, pass/fail |
 | 361 | PRQL | `prql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
 | 362 | Cypher / GQL | `cypher` `cql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
-| 363 | Database migration files (Flyway/Liquibase/Alembic) | `sql` `xml` `py` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | version ordering, tables touched |
+| 363 | Database migration files (Flyway/Liquibase/Alembic) | `sql` `xml` `py` | — | 3 | `data.sql` | `common` | `data.sql` | sqlparser | S1 | version ordering, tables touched |
 | 364 | Astro component | `astro` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 365 | Nim | `nim` `nims` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 366 | Crystal | `cr` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
@@ -522,7 +522,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 381 | Haxe | `hx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 382 | Tcl | `tcl` `tk` | text/x-tcl | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 383 | AWK / sed | `awk` `sed` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 384 | fish shell | `fish` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 384 | fish shell | `fish` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 385 | Solidity | `sol` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | contract names, pragma version |
 | 386 | Move / Cairo / Vyper | `move` `cairo` `vy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 387 | Verilog / SystemVerilog | `v` `sv` `svh` | text/x-verilog | 3 | `code.source` | `common` | — | tokei | S1/S6 | modules |
@@ -537,7 +537,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 396 | ABAP | `abap` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 397 | Smalltalk | `st` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 398 | Raku | `raku` `rakumod` `p6` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 399 | Hack | `hack` `hh` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 399 | Hack | `hack` `hh` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 400 | Starlark / Bazel | `bzl` `star` `BUILD` `WORKSPACE` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rules, load() |
 | 401 | Meson / Ninja | `meson.build` `ninja` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 402 | AutoHotkey / AutoIt | `ahk` `au3` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
@@ -557,7 +557,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 416 | Nushell / Elvish | `nu` `elv` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 417 | Rego (OPA) policy | `rego` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | package, rules |
 | 418 | Bicep / ARM templates | `bicep` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | resources |
-| 419 | Jenkinsfile / Earthfile / Tiltfile | `Jenkinsfile` `Earthfile` `Tiltfile` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | stages |
+| 419 | Jenkinsfile / Earthfile / Tiltfile | `Jenkinsfile` `Earthfile` `Tiltfile` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | stages |
 | 420 | Proof assistants (Lean, Coq, Agda, Idris, Isabelle) | `lean` `v` `agda` `idr` `thy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | theorems/defs count |
 | 421 | Formal specs (TLA+, Alloy) | `tla` `als` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
 | 422 | Ballerina / Pony / Janet / Fennel / Hy | `bal` `pony` `janet` `fnl` `hy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
@@ -602,7 +602,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 461 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 462 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 463 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | strings + embedded signatures only |
-| 464 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | binwalk-style signature scan |
+| 464 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S8 | binwalk-style signature scan |
 | 465 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
 | 466 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
 | 467 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |

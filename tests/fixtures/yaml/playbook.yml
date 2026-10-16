@@ -1,0 +1,13 @@
+- hosts: webservers
+  become: true
+  roles:
+    - common
+    - role: nginx
+  tasks:
+    - name: Install packages
+      apt:
+        name: [nginx, curl]
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started

@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "deploy.sh",
+    "stem": "deploy",
+    "extension": "sh"
+  },
+  "identification": {
+    "format": "shell",
+    "name": "Shell script",
+    "mime": "application/x-sh",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 281
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 281,
+    "entropy": 4.99,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 281,
+      "chars": 281,
+      "words": 40,
+      "lines": 16,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "e4a9767bcdb5fe7de49e1c7c545e54bddf6888e6279e69710055662efad3d834",
+    "blake3": "06b98aada13db6acc62168eb51c78a4322a665746c737ab2d0b7ddc93d4276ce"
+  },
+  "content": {
+    "description": "Deploy the harbour API. Usage: deploy.sh <env>",
+    "excerpt": "Deploy the harbour API. Usage: deploy.sh <env>"
+  },
+  "metadata": {},
+  "format": {
+    "shell": {
+      "language": "Shell script",
+      "loc": {
+        "code": 10,
+        "comment": 2,
+        "blank": 4,
+        "total": 16
+      },
+      "interpreter": "bash",
+      "imports": [
+        "./lib/common.sh",
+        "./lib/colors.sh"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "log",
+          "deploy_env"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2
+      },
+      "module_doc": "Deploy the harbour API.\nUsage: deploy.sh <env>",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 48
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

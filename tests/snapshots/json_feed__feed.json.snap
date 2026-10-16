@@ -1,0 +1,198 @@
+---
+source: src/formats/text/feed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "feed.json",
+    "stem": "feed",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json_feed",
+    "name": "JSON Feed",
+    "mime": "application/feed+json",
+    "family": "text.feed",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "json_feed",
+        "confidence": 0.95
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.feed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 717
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-01T06:00:00+00:00",
+        "source": "feed.oldest_item",
+        "tz_known": true
+      },
+      {
+        "field": "published",
+        "value": "2026-10-08T06:00:00+00:00",
+        "source": "feed.newest_item",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-01T06:00:00Z",
+    "latest": "2026-10-08T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 717,
+    "entropy": 4.848,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 717,
+      "chars": 717,
+      "words": 63,
+      "lines": 15,
+      "max_line_length": 123,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5a368f06ac69be6cfb120b0119c20d8101cc80d48e3b3e82e75544fe4fa74acd",
+    "blake3": "1de0ba45695a7fef95af939fc220763e02ed2a955bed7f6514ca1bce1bdca0e1"
+  },
+  "content": {
+    "title": "Harbour Podcast",
+    "description": "Weekly stories from the quay.",
+    "authors": [
+      "Ben Sample"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Podcast",
+      "Podcast",
+      "Harbour",
+      "Weekly stories",
+      "storm",
+      "quay",
+      "Weekly",
+      "stories",
+      "sailors remember",
+      "remember"
+    ],
+    "keyword_frequency": [
+      [
+        "storm",
+        2
+      ]
+    ],
+    "excerpt": "Weekly stories from the quay. Old sailors remember the great storm. An introduction to the show.",
+    "tags": [
+      "history",
+      "Harbour Podcast",
+      "Podcast",
+      "Harbour",
+      "Weekly stories",
+      "storm"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "json_feed": {
+      "dialect": "json_feed",
+      "version": "1.1",
+      "link": "https://pod.example.org/",
+      "items": 2,
+      "newest_item": "2026-10-08T06:00:00+00:00",
+      "oldest_item": "2026-10-01T06:00:00+00:00",
+      "item_authors": 0,
+      "top_categories": {
+        "history": 1
+      },
+      "enclosure_types": {
+        "audio/mpeg": 1
+      },
+      "podcast": true,
+      "latest": [
+        {
+          "title": "The storm of 1987",
+          "link": "https://pod.example.org/2",
+          "date": "2026-10-08T06:00:00+00:00"
+        },
+        {
+          "title": "Welcome",
+          "link": "https://pod.example.org/1",
+          "date": "2026-10-01T06:00:00+00:00"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.feed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

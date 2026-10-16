@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.svelte",
+    "stem": "Tides",
+    "extension": "svelte"
+  },
+  "identification": {
+    "format": "svelte",
+    "name": "Svelte component",
+    "mime": "text/x-svelte",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svelte",
+        "confidence": 0.35
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 278
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 278,
+    "entropy": 4.876,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 278,
+      "chars": 278,
+      "words": 40,
+      "lines": 13,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "1c4e649190d9048eb480dc4117690c50f1307f173a9e28933262d8faa22ed2d3",
+    "blake3": "76da63d6ce173d9b5331ade165c6cb815195511e0a4add35c663cb5964d1af9d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "svelte": {
+      "language": "Svelte component",
+      "loc": {
+        "code": 10,
+        "comment": 1,
+        "blank": 2,
+        "total": 13
+      },
+      "imports": [
+        "svelte",
+        "./Chart.svelte"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "section": [
+          "script",
+          "style"
+        ]
+      },
+      "symbol_counts": {
+        "section": 2
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 73
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

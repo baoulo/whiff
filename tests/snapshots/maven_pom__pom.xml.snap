@@ -1,0 +1,152 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pom.xml",
+    "stem": "pom",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "maven_pom",
+    "name": "Maven POM",
+    "mime": "application/xml",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "maven_pom",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1234
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "Apache-2.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 1234,
+    "entropy": 4.999,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1234,
+      "chars": 1234,
+      "words": 30,
+      "lines": 19,
+      "max_line_length": 147,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "52899f0412f64d4a6c8af50764ed457b939666b5a79903bf7260c7b0e2cf872b",
+    "blake3": "3ed0aedba166314926c4ac4affe34a381835094e0f08b316ec91dc7a923db519"
+  },
+  "content": {
+    "title": "org.example:harbour-api 2.3.0",
+    "description": "REST API for the harbour registry.",
+    "excerpt": "REST API for the harbour registry."
+  },
+  "metadata": {},
+  "format": {
+    "maven_pom": {
+      "ecosystem": "maven",
+      "name": "org.example:harbour-api",
+      "version": "2.3.0",
+      "license": "Apache-2.0",
+      "packaging": "jar",
+      "parent": "org.springframework.boot:spring-boot-starter-parent",
+      "properties": {
+        "java.version": "21"
+      },
+      "dependencies_count": 2,
+      "dependencies": [
+        {
+          "coordinate": "org.springframework.boot:spring-boot-starter-web",
+          "version": null,
+          "scope": null
+        },
+        {
+          "coordinate": "org.junit.jupiter:junit-jupiter",
+          "version": "5.11.2",
+          "scope": "test"
+        }
+      ],
+      "plugins": [
+        "spring-boot-maven-plugin"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

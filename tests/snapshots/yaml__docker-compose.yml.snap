@@ -1,0 +1,282 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "docker-compose.yml",
+    "stem": "docker-compose",
+    "extension": "yml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 278
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 278,
+    "entropy": 4.775,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 278,
+      "chars": 278,
+      "words": 23,
+      "lines": 14,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9b4827c80cffc3cc57766098aea1f4e96b6d3369dbd8863435b66f85f171827c",
+    "blake3": "81d5a49847a5346d42f06db027ff6aa0de410e727169bc59e67aafe8aa52e220"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services.web": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services.web.image": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "nginx:1.27"
+            ]
+          },
+          "$.services.web.ports": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.services.web.ports[]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "80:80",
+              "443:443"
+            ]
+          },
+          "$.services.web.depends_on": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.services.web.depends_on[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "api"
+            ]
+          },
+          "$.services.api": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services.api.build": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "./api"
+            ]
+          },
+          "$.services.api.environment": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services.api.environment.DATABASE_URL": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgres://app@db/harbour"
+            ]
+          },
+          "$.services.db": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.services.db.image": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgres:17"
+            ]
+          },
+          "$.services.db.volumes": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.services.db.volumes[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "dbdata:/var/lib/postgresql/data"
+            ]
+          },
+          "$.volumes": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.volumes.dbdata": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "docker_compose",
+        "name": "Docker Compose",
+        "services": [
+          "web",
+          "api",
+          "db"
+        ],
+        "images": [
+          "nginx:1.27",
+          "postgres:17"
+        ],
+        "ports": [
+          "80:80",
+          "443:443"
+        ],
+        "volumes": [
+          "dbdata"
+        ],
+        "networks": []
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

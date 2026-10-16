@@ -1,0 +1,111 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "go.sum",
+    "stem": "go",
+    "extension": "sum"
+  },
+  "identification": {
+    "format": "go_sum",
+    "name": "Go checksum database",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 398
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 398,
+    "entropy": 5.793,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 398,
+      "chars": 398,
+      "words": 15,
+      "lines": 5,
+      "max_line_length": 86,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6affd5a1d4a46a5d542d72340463687f9a5adcd0ec80f57e6f3117d09b9445b4",
+    "blake3": "6cbaad6bec2e32678b995c273656cbc980e209af1cad663f7a094423a7a5b7e2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "go_sum": {
+      "ecosystem": "go",
+      "resolved_packages": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

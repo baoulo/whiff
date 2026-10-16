@@ -1,0 +1,180 @@
+---
+source: src/formats/data/sql.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "schema.sql",
+    "stem": "schema",
+    "extension": "sql"
+  },
+  "identification": {
+    "format": "sql",
+    "name": "SQL script",
+    "mime": "application/sql",
+    "family": "data.sql",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.sql"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 914
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 914,
+    "entropy": 5.333,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 914,
+      "chars": 914,
+      "words": 124,
+      "lines": 32,
+      "max_line_length": 112,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "1215b05ab2f86a3d5cdbd520defa3f8d445c85d9e6656fee4ba06d4cf000c8af",
+    "blake3": "0a8a260b64ec69592fbca18add7563d3fca72e9b6b03f19ae62b7522cbf25346"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sql": {
+      "server_version": "17.2",
+      "dialect": "postgresql",
+      "statements": 8,
+      "statement_kinds": {
+        "copy": 1,
+        "create_extension": 1,
+        "create_function": 1,
+        "create_index": 1,
+        "create_table": 2,
+        "create_view": 1,
+        "insert": 1
+      },
+      "table_count": 2,
+      "tables": [
+        {
+          "name": "public.boats",
+          "references": [],
+          "columns": [
+            {
+              "name": "id",
+              "type": "serial"
+            },
+            {
+              "name": "name",
+              "type": "TEXT"
+            },
+            {
+              "name": "length_m",
+              "type": "NUMERIC(5,2)"
+            },
+            {
+              "name": "registered_at",
+              "type": "TIMESTAMPTZ"
+            }
+          ],
+          "column_count": 4
+        },
+        {
+          "name": "public.berths",
+          "references": [
+            "public.boats"
+          ],
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER"
+            },
+            {
+              "name": "boat_id",
+              "type": "INTEGER"
+            },
+            {
+              "name": "size",
+              "type": "TEXT"
+            }
+          ],
+          "column_count": 3
+        }
+      ],
+      "rows_by_table": {
+        "public.berths": 2,
+        "public.boats": 2
+      },
+      "rows": 4,
+      "views": [
+        "public.occupied"
+      ],
+      "indexes": 1,
+      "routines": [
+        "public.boat_count"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.sql",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

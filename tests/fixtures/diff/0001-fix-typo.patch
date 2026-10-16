@@ -1,0 +1,24 @@
+From 5c2f7e4d9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d Mon Sep 17 00:00:00 2001
+From: Ada Example <ada@example.org>
+Date: Tue, 13 Oct 2026 18:20:00 +0200
+Subject: [PATCH] Fix a typo in the README
+
+The word "recieve" was misspelled in two places.
+---
+ README.md | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index 1111111..2222222 100644
+--- a/README.md
++++ b/README.md
+@@ -3,7 +3,7 @@
+ Some intro text.
+-You will recieve a mail.
++You will receive a mail.
+ More text.
+-Please recieve this.
++Please receive this.
+ End.
+--
+2.47.0

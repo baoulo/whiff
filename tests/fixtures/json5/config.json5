@@ -1,0 +1,8 @@
+// Harbour service configuration
+{
+  name: 'harbour-api',
+  port: 8080,
+  hex: 0x1F,
+  features: ['tides', 'berths',],
+  limits: {maxBoats: 500, timeout: 30.5,},
+}

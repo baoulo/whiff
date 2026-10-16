@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.c",
+    "stem": "tides",
+    "extension": "c"
+  },
+  "identification": {
+    "format": "c",
+    "name": "C source",
+    "mime": "text/x-c",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 539
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright (c) 2026 Ada Example",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 539,
+    "entropy": 4.973,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 539,
+      "chars": 539,
+      "words": 93,
+      "lines": 25,
+      "max_line_length": 51,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "2252169e71bc84662b83b7efc87cde7d8dd83a72ae706d2e6aaf37b53101aa81",
+    "blake3": "cb45b07d747e7e2593865fe564472a6c28b942f81c6847071f4d4659ed607d7e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "c": {
+      "spdx": "MIT",
+      "language": "C",
+      "loc": {
+        "code": 16,
+        "comment": 5,
+        "blank": 4,
+        "total": 25
+      },
+      "imports": [
+        "stdio.h",
+        "tides.h"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "average",
+          "main"
+        ],
+        "macro": [
+          "MAX_TIDES"
+        ],
+        "struct": [
+          "tide"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "macro": 1,
+        "struct": 1
+      },
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 51
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

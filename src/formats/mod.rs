@@ -15,6 +15,14 @@
 //!
 //! Format modules import only `crate::plugin::*`. Add a format with
 //! `cargo run --features dev --bin whiff-dev -- new-extractor …`, which also
-//! adds the `mod` line here. No extractors exist yet: they arrive from Stage 1.
+//! adds the `mod` line here.
 
 // whiff-dev: group modules below this line
+#[cfg(feature = "common")]
+pub(crate) mod binary;
+#[cfg(feature = "common")]
+pub(crate) mod code;
+#[cfg(feature = "common")]
+pub(crate) mod data;
+#[cfg(feature = "common")]
+pub(crate) mod text;

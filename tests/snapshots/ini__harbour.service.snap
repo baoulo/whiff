@@ -1,0 +1,141 @@
+---
+source: src/formats/data/ini.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.service",
+    "stem": "harbour",
+    "extension": "service"
+  },
+  "identification": {
+    "format": "ini",
+    "name": "INI configuration",
+    "mime": "text/plain",
+    "family": "data.ini",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.ini"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 190
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 190,
+    "entropy": 4.854,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 190,
+      "chars": 190,
+      "words": 13,
+      "lines": 11,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "b0e56b286483cd65c592b3ea1623060368df40167932cbfef9f97c5a2e50d71f",
+    "blake3": "72d44c1e6963b4cc6fa6a70c00e924e8225741f9fdfa93ee23e38ebe217eeb45"
+  },
+  "content": {
+    "description": "Harbour API service"
+  },
+  "metadata": {},
+  "format": {
+    "ini": {
+      "dialect": "systemd_unit",
+      "sections": [
+        {
+          "name": "Unit",
+          "keys": 2
+        },
+        {
+          "name": "Service",
+          "keys": 3
+        },
+        {
+          "name": "Install",
+          "keys": 1
+        }
+      ],
+      "keys": 6,
+      "values": {
+        "Unit": {
+          "Description": "Harbour API service",
+          "After": "network.target"
+        },
+        "Service": {
+          "ExecStart": "/usr/local/bin/harbour-api --port 8080",
+          "User": "harbour",
+          "Restart": "on-failure"
+        },
+        "Install": {
+          "WantedBy": "multi-user.target"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.ini",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,259 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lint.sarif",
+    "stem": "lint",
+    "extension": "sarif"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 699
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 699,
+    "entropy": 3.671,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 699,
+      "chars": 699,
+      "words": 57,
+      "lines": 36,
+      "max_line_length": 61,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "22a6af189fe72d97b3460c3ff3ce0908ebbc475a0d6c2767c644aea8e1fb26fa",
+    "blake3": "6429d553354699520c4918be74888253812cf32b8d61bd29289918995f785896"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "$schema",
+        "version",
+        "runs"
+      ],
+      "key_count": 3,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"$schema\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://json.schemastore.org/sarif-2.1.0.json"
+            ]
+          },
+          "$.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2.1.0"
+            ]
+          },
+          "$.runs": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.runs[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.runs[].tool": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.runs[].tool.driver": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.runs[].tool.driver.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "clippy"
+            ]
+          },
+          "$.runs[].results": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.runs[].results[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.runs[].results[].ruleId": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "clippy::unwrap_used",
+              "clippy::panic"
+            ]
+          },
+          "$.runs[].results[].level": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "warning",
+              "error"
+            ]
+          },
+          "$.runs[].results[].message": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.runs[].results[].message.text": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "used unwrap",
+              "panic"
+            ]
+          }
+        },
+        "max_depth": 6
+      },
+      "known_schema": {
+        "id": "sarif",
+        "name": "SARIF static-analysis results",
+        "version": "2.1.0",
+        "tools": [
+          "clippy"
+        ],
+        "results": 3,
+        "levels": {
+          "error": 1,
+          "warning": 2
+        },
+        "top_rules": [
+          {
+            "rule": "clippy::unwrap_used",
+            "results": 2
+          },
+          {
+            "rule": "clippy::panic",
+            "results": 1
+          }
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

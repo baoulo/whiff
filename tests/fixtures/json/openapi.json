@@ -1,0 +1,13 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "Harbour API", "version": "2.3.0", "description": "Berths, boats and tides.",
+           "license": {"name": "MIT", "url": "https://opensource.org/licenses/MIT"}},
+  "servers": [{"url": "https://api.example.org/v2"}],
+  "paths": {
+    "/boats": {"get": {"tags": ["boats"], "summary": "List boats"}, "post": {"tags": ["boats"], "summary": "Register a boat"}},
+    "/boats/{id}": {"get": {"tags": ["boats"]}, "delete": {"tags": ["boats"]}},
+    "/tides": {"get": {"tags": ["tides"]}}
+  },
+  "components": {"schemas": {"Boat": {"type": "object"}, "Tide": {"type": "object"}},
+                 "securitySchemes": {"apiKey": {"type": "apiKey", "in": "header", "name": "X-API-Key"}}}
+}

@@ -1,0 +1,229 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "boats.json",
+    "stem": "boats",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 392
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 2
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 392,
+    "entropy": 4.555,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 392,
+      "chars": 392,
+      "words": 47,
+      "lines": 5,
+      "max_line_length": 146,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9abdee96912bb631adb75dbe2c9b3bcbe2653944119c51461d17016253c1d381",
+    "blake3": "932fa00bf14b174ab346617cf79d90d7e83828c1bf7fea4904008832adf4e702"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "array",
+      "length": 3,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$[].id": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              1,
+              2,
+              3
+            ]
+          },
+          "$[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "Marie",
+              "Swift",
+              "Gull"
+            ]
+          },
+          "$[].length_m": {
+            "types": [
+              "integer",
+              "null",
+              "number"
+            ],
+            "count": 3,
+            "examples": [
+              12.5,
+              30
+            ]
+          },
+          "$[].owner": {
+            "types": [
+              "null",
+              "object"
+            ],
+            "count": 3
+          },
+          "$[].owner.name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "Ada Example",
+              "Ben Sample"
+            ]
+          },
+          "$[].owner.email": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "[redacted:email]"
+            ]
+          },
+          "$[].active": {
+            "types": [
+              "boolean"
+            ],
+            "count": 3,
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "$[].tags": {
+            "types": [
+              "array"
+            ],
+            "count": 3,
+            "items": [
+              0,
+              2
+            ]
+          },
+          "$[].tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "trawler",
+              "dinghy",
+              "club"
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

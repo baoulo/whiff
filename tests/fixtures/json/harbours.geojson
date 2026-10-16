@@ -1,0 +1,5 @@
+{"type": "FeatureCollection", "features": [
+  {"type": "Feature", "geometry": {"type": "Point", "coordinates": [5.3698, 43.2965]}, "properties": {"name": "Vieux-Port", "berths": 3200}},
+  {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-9.139, 38.707]}, "properties": {"name": "Lisbon", "berths": 1800}},
+  {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[0,0],[1,0],[1,1],[0,0]]]}, "properties": {"name": "Zone A"}}
+]}

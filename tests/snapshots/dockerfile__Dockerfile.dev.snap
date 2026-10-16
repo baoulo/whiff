@@ -1,0 +1,145 @@
+---
+source: src/formats/code/infra.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Dockerfile.dev",
+    "stem": "Dockerfile",
+    "extension": "dev"
+  },
+  "identification": {
+    "format": "dockerfile",
+    "name": "Dockerfile",
+    "mime": "text/x-dockerfile",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "code.infra"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 121
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "remote_add",
+        "detail": "ADD fetches a URL",
+        "source": "code.infra"
+      }
+    ],
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 121,
+    "entropy": 5.001,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 121,
+      "chars": 121,
+      "words": 15,
+      "lines": 5,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "03aa141c5758f83f4f7b7a42e3022c2c95b9033e31bb644868e8d22f1969878a",
+    "blake3": "8e9b99c8a6b2dd9135f8570ee4c1f64bb3c353e260546438dd8a3af87b66a8fb"
+  },
+  "content": {
+    "authors": [
+      "Ben Sample"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "dockerfile": {
+      "base_image": "node:22",
+      "stages": [
+        {
+          "image": "node:22",
+          "name": null
+        }
+      ],
+      "instructions": {
+        "ADD": 1,
+        "CMD": 1,
+        "FROM": 1,
+        "MAINTAINER": 1,
+        "USER": 1
+      },
+      "cmd": "npm run dev",
+      "user": "node",
+      "healthcheck": false,
+      "labels": {
+        "maintainer": "Ben Sample <ben@example.com>",
+        "Ben": "Sample <ben@example.com>"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.infra",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

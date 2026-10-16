@@ -13,15 +13,17 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 
    This creates `src/formats/image/qoi.rs`, adds `pub(crate) mod qoi;` (and the group's feature-gated `mod` line if needed), and creates `tests/fixtures/qoi/SOURCE.md`. `--magic` takes hex, optionally with an offset: `4:66747970`. Use `--dry-run` to preview.
 
-2. **Implement `extract`.** Read with `src.head()` (first 64 KiB, pre-read), `src.read_vec(offset, len)?` or `src.reader()`, and parse with the bounds-checked `ByteReader`. Write only through the `Context`:
+2. **Implement `extract`.** Binary formats: read with `src.head()` (first 64 KiB, pre-read), `src.read_vec(offset, len)?` or `src.reader()`, and parse with the bounds-checked `ByteReader`. Text formats: `cx.read_text(src)?` reads up to the profile's `max_parse_bytes` and decodes it (BOM, UTF-8, legacy encodings). Write only through the `Context`:
    * normalised fields: `cx.content().title(..)`, `cx.temporal().content_date(..)`, `cx.rights().copyright(..)`, `cx.security().risk(..)`, `cx.physical().image(w, h)`;
    * raw metadata in a standard's own names: `cx.metadata_set("id3", "TIT2", title)`;
    * technical details: `cx.format_set("quality_estimate", 92)`. Keys are `snake_case` with unit suffixes (`_bytes`, `_s`, `_px`, `_hz`);
    * embedded metadata goes to the shared decoders: `cx.emit_block(BlockKind::XMP, bytes)`. Don't parse EXIF/XMP/IPTC/ICC yourself;
-   * text goes to the text analyzers: `cx.emit_text(TextRole::Body, text)`. Don't count words yourself;
+   * text goes to the text analyzers: `cx.emit_text(TextRole::Body, text)` for prose, `TextRole::Code` / `TextRole::Data` for code and values (scanned for secrets, not treated as prose), `cx.emit_heading(level, text)` for headings (it also fills the outline). Don't count words, detect languages or extract keywords yourself; `wc` statistics are computed for every text file by the engine;
    * embedded files: `cx.emit_child(name, bytes)?`.
 
    Scalar fields are first-write-wins. Never panic, print or allocate based on unchecked lengths from the file.
+
+   Helpers in `crate::plugin`: `parse_date` (RFC 3339, RFC 2822, log and civil formats), `identify_license` / `spdx_identifier` / `find_copyright`, `is_secret_key`, `redact_secrets` / `redact_sensitive` (for values that may hold credentials or personal data), `AnyValue` (any serde input as JSON, for YAML/TOML/JSON5), `squash_whitespace`, `truncate_chars`. Formats recognised by file name rather than content (`package.json`, `Dockerfile`) return a `Sniff` from `sniff` based on `probe.name`.
 
 3. **Add 2–5 small sample files** to `tests/fixtures/<format>/` and list each in `SOURCE.md` with its origin and licence. Files must be ≤ 256 KiB and redistributable: self-made, CC0 or permissively licensed.
 
@@ -31,7 +33,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
    INSTA_UPDATE=always cargo test --features full
    ```
 
-   Review the new `tests/snapshots/<format>__*.snap` files: they are the extractor's output contract. The **conformance suite** (`tests/conformance.rs`) then checks your extractor automatically: detection, schema round-trip, determinism, `snake_case` keys, and that empty, truncated, bit-flipped and random inputs, plus a 4 KiB read budget, never cause a panic.
+   An extractor handling several formats lists them all: `fixture_tests!("json", "ndjson")`. Review the new `tests/snapshots/<format>__*.snap` files: they are the extractor's output contract. The **conformance suite** (`tests/conformance.rs`) then checks your extractor automatically: detection, schema round-trip, determinism, `snake_case` keys, and that empty, truncated, bit-flipped, random and deeply nested inputs, plus a 4 KiB read budget, never cause a panic or hit a deadline.
 
 5. **Regenerate the catalogue** so the "Extractor" column shows your work:
 
@@ -48,6 +50,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 * **Dependency budget.** CI counts transitive dependencies (`whiff-dev check-deps`). Exceeding a budget needs a justification in the PR.
 * **Privacy.** Never output secret material (keys, passwords, cookie values). Count personal data such as e-mail addresses or patient fields; don't list it.
 * **`unsafe` is forbidden** crate-wide.
+* **Bounded work.** A stack overflow aborts the process (`catch_unwind` cannot contain it), so never recurse on input-controlled depth. Before a recursive third-party parser, check `nesting_depth(text) <= MAX_NESTING`. Avoid work that is quadratic in the input; call `cx.checkpoint()?` in long loops that do not read from the source. The conformance suite feeds every extractor deeply nested input and fails it if it overflows or hits a deadline; a watchdog abandons extractors that ignore deadlines, but that is a last resort, not a budget.
 
 ## Before opening a PR
 

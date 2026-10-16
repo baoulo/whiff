@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Boats.vb",
+    "stem": "Boats",
+    "extension": "vb"
+  },
+  "identification": {
+    "format": "visual_basic",
+    "name": "Visual Basic source",
+    "mime": "text/x-vb",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 390
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 390,
+    "entropy": 4.423,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 390,
+      "chars": 390,
+      "words": 43,
+      "lines": 17,
+      "max_line_length": 53,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "0e9cf3894a6daad1a95f5c15b494cf9a74bd91b609aad1480afaae95701a4aba",
+    "blake3": "0840ce3efecb68945cadf4e1e281d09802e01fe9cc9b906792a2541d09d5384b"
+  },
+  "content": {
+    "description": "Boat registry",
+    "excerpt": "Boat registry"
+  },
+  "metadata": {},
+  "format": {
+    "visual_basic": {
+      "language": "Visual Basic",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 3,
+        "total": 17
+      },
+      "package": "Harbour",
+      "imports": [
+        "System",
+        "System.Collections.Generic"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "procedure": [
+          "Add",
+          "Count"
+        ],
+        "type": [
+          "Registry"
+        ]
+      },
+      "symbol_counts": {
+        "procedure": 2,
+        "type": 1
+      },
+      "module_doc": "Boat registry",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 53
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

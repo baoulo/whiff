@@ -57,6 +57,14 @@ impl<'s> dyn Source + 's {
         Ok(v)
     }
 
+    /// The first `max` bytes (or all of a shorter input), and whether the
+    /// input was longer than that.
+    pub fn read_prefix(&mut self, max: usize) -> Result<(Vec<u8>, bool), SourceError> {
+        let len = usize::try_from(self.len()).unwrap_or(usize::MAX);
+        let n = len.min(max);
+        Ok((self.read_vec(0, n)?, len > n))
+    }
+
     /// A [`std::io::Read`] + [`std::io::Seek`] adapter, for crates that want one.
     pub fn reader(&mut self) -> BoundedReader<'_, 's> {
         BoundedReader { src: self, pos: 0 }

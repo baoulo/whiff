@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "clippy"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "clippy::unwrap_used",
+          "level": "warning",
+          "message": {
+            "text": "used unwrap"
+          }
+        },
+        {
+          "ruleId": "clippy::unwrap_used",
+          "level": "warning",
+          "message": {
+            "text": "used unwrap"
+          }
+        },
+        {
+          "ruleId": "clippy::panic",
+          "level": "error",
+          "message": {
+            "text": "panic"
+          }
+        }
+      ]
+    }
+  ]
+}

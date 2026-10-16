@@ -69,26 +69,29 @@ pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Repo
         .collect()
 }
 
-/// Snapshot-test every fixture of a format:
-/// `whiff::fixture_tests!("qoi");` inside a `#[cfg(test)] mod tests`.
+/// Snapshot-test every fixture of one or more formats:
+/// `whiff::fixture_tests!("qoi");` or `fixture_tests!("json", "ndjson");`
+/// inside a `#[cfg(test)] mod tests`.
 ///
 /// Fixtures live in `tests/fixtures/<format>/`, snapshots in
 /// `tests/snapshots/`. Requires `insta` as a dev-dependency.
 #[macro_export]
 macro_rules! fixture_tests {
-    ($format_id:literal) => {
+    ($($format_id:literal),+ $(,)?) => {
         #[test]
         fn fixtures() {
-            let reports = $crate::plugin::testing::fixture_reports(env!("CARGO_MANIFEST_DIR"), $format_id);
-            assert!(!reports.is_empty(), "no fixtures in tests/fixtures/{}/", $format_id);
             let mut settings = ::insta::Settings::clone_current();
             settings.set_snapshot_path(concat!(env!("CARGO_MANIFEST_DIR"), "/tests/snapshots"));
             settings.set_prepend_module_to_snapshot(false);
-            settings.bind(|| {
-                for (name, report) in reports {
-                    ::insta::assert_json_snapshot!(format!("{}__{}", $format_id, name), report);
-                }
-            });
+            $(
+                let reports = $crate::plugin::testing::fixture_reports(env!("CARGO_MANIFEST_DIR"), $format_id);
+                assert!(!reports.is_empty(), "no fixtures in tests/fixtures/{}/", $format_id);
+                settings.bind(|| {
+                    for (name, report) in reports {
+                        ::insta::assert_json_snapshot!(format!("{}__{}", $format_id, name), report);
+                    }
+                });
+            )+
         }
     };
 }

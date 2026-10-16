@@ -1,0 +1,15 @@
+/* Harbour site styles */
+@import url("fonts.css");
+
+:root {
+  --sea: #0a3d62;
+  --sand: #f6e58d;
+}
+
+@font-face { font-family: "Harbour"; src: url(harbour.woff2); }
+
+body { color: var(--sea); background: var(--sand); }
+
+@media (max-width: 600px) { body { font-size: 14px; } }
+
+@keyframes wave { from { transform: translateY(0); } to { transform: translateY(4px); } }

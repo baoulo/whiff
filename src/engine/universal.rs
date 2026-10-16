@@ -6,10 +6,12 @@ use std::io::Read;
 use std::path::Path;
 use std::time::SystemTime;
 
+use encoding_rs::Encoding;
 use sha2::Digest;
 
-use super::Options;
+use super::{Options, Profile};
 use crate::report::{EntropyScope, FileKind, Integrity, Report};
+use crate::text::WcCounter;
 
 pub(crate) fn rfc3339(t: SystemTime) -> Option<String> {
     jiff::Timestamp::try_from(t).ok().map(|ts| ts.to_string())
@@ -83,7 +85,12 @@ pub(crate) fn fill_from_metadata(report: &mut Report, meta: &Metadata, path: &Pa
         sec.setuid = Some(mode & 0o4000 != 0);
         sec.setgid = Some(mode & 0o2000 != 0);
         sec.sticky = Some(mode & 0o1000 != 0);
-        sec.owner = Some(crate::report::Owner { uid: Some(meta.uid()), gid: Some(meta.gid()), ..Default::default() });
+        sec.owner = Some(crate::report::Owner {
+            uid: Some(meta.uid()),
+            user: names::user(meta.uid()),
+            gid: Some(meta.gid()),
+            group: names::group(meta.gid()),
+        });
     }
     #[cfg(windows)]
     {
@@ -94,6 +101,30 @@ pub(crate) fn fill_from_metadata(report: &mut Report, meta: &Metadata, path: &Pa
     #[cfg(not(any(unix, windows)))]
     {
         sys.hidden = Some(name.starts_with('.'));
+    }
+}
+
+/// User and group names, looked up once per id.
+#[cfg(unix)]
+mod names {
+    use std::collections::HashMap;
+    use std::sync::{LazyLock, Mutex};
+
+    type Cache = LazyLock<Mutex<HashMap<u32, Option<String>>>>;
+    static USERS: Cache = LazyLock::new(Mutex::default);
+    static GROUPS: Cache = LazyLock::new(Mutex::default);
+
+    fn cached(cache: &Cache, id: u32, lookup: impl FnOnce() -> Option<String>) -> Option<String> {
+        let mut c = cache.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
+        c.entry(id).or_insert_with(lookup).clone()
+    }
+
+    pub(super) fn user(uid: u32) -> Option<String> {
+        cached(&USERS, uid, || uzers::get_user_by_uid(uid).map(|u| u.name().to_string_lossy().into_owned()))
+    }
+
+    pub(super) fn group(gid: u32) -> Option<String> {
+        cached(&GROUPS, gid, || uzers::get_group_by_gid(gid).map(|g| g.name().to_string_lossy().into_owned()))
     }
 }
 
@@ -122,25 +153,30 @@ fn permission_string(mode: u32) -> String {
     .collect()
 }
 
-/// Streaming hasher + byte histogram.
+/// Streaming hasher + byte histogram + `wc`.
 struct Digester {
     sha256: Option<sha2::Sha256>,
     blake3: Option<blake3::Hasher>,
+    wc: Option<WcCounter>,
     histogram: [u64; 256],
     total: u64,
 }
 
 impl Digester {
-    fn new(options: &Options, hash: bool) -> Self {
+    fn new(options: &Options, hash: bool, text: Option<&'static Encoding>) -> Self {
         Self {
             sha256: (hash && options.hashes.sha256).then(sha2::Sha256::new),
             blake3: (hash && options.hashes.blake3).then(blake3::Hasher::new),
+            wc: text.map(WcCounter::new),
             histogram: [0; 256],
             total: 0,
         }
     }
 
     fn update(&mut self, data: &[u8]) {
+        if let Some(wc) = &mut self.wc {
+            wc.feed(data, false);
+        }
         if let Some(h) = &mut self.sha256 {
             h.update(data);
         }
@@ -154,6 +190,10 @@ impl Digester {
     }
 
     fn finish(self, report: &mut Report, scope: EntropyScope) {
+        if let Some(mut wc) = self.wc {
+            wc.feed(&[], true);
+            report.physical.text = Some(wc.finish());
+        }
         if let Some(h) = self.sha256 {
             report.integrity.sha256 = Some(hex(&h.finalize()));
         }
@@ -202,18 +242,42 @@ fn hashing_wanted(options: &Options, size: u64) -> Result<(), String> {
     Ok(())
 }
 
-/// Hash and measure entropy of a file by streaming it once. When hashing is
-/// off, entropy covers `head` only.
-pub(crate) fn integrity_for_file(report: &mut Report, path: &Path, size: u64, head: &[u8], options: &Options) {
-    if let Err(reason) = hashing_wanted(options, size) {
-        report.integrity = Integrity { skipped: Some(reason), ..Integrity::default() };
-        let mut d = Digester::new(options, false);
-        d.update(head);
-        let scope = if head.len() as u64 == size { EntropyScope::File } else { EntropyScope::Head };
-        d.finish(report, scope);
-        return;
+/// The encoding to count `wc` statistics in, for text input outside the
+/// minimal profile.
+pub(crate) fn text_encoding(report: &Report, options: &Options, size: u64) -> Option<&'static Encoding> {
+    if options.profile == Profile::Minimal || size > options.limits.max_read_bytes {
+        return None;
     }
-    let mut d = Digester::new(options, true);
+    let name = report.identification.encoding.as_deref()?;
+    match name {
+        "us-ascii" | "utf-8" => Some(encoding_rs::UTF_8),
+        other => Encoding::for_label(other.as_bytes()),
+    }
+}
+
+/// Hash, measure entropy and (for text) count `wc` statistics of a file by
+/// streaming it once. With neither hashing nor counting, entropy covers
+/// `head` only.
+pub(crate) fn integrity_for_file(
+    report: &mut Report,
+    path: &Path,
+    size: u64,
+    head: &[u8],
+    options: &Options,
+    text: Option<&'static Encoding>,
+) {
+    let hash = hashing_wanted(options, size);
+    if let Err(reason) = &hash {
+        report.integrity = Integrity { skipped: Some(reason.clone()), ..Integrity::default() };
+        if text.is_none() {
+            let mut d = Digester::new(options, false, None);
+            d.update(head);
+            let scope = if head.len() as u64 == size { EntropyScope::File } else { EntropyScope::Head };
+            d.finish(report, scope);
+            return;
+        }
+    }
+    let mut d = Digester::new(options, hash.is_ok(), text);
     let result = std::fs::File::open(path).and_then(|mut f| {
         let mut buf = vec![0u8; 256 * 1024];
         loop {
@@ -233,8 +297,13 @@ pub(crate) fn integrity_for_file(report: &mut Report, path: &Path, size: u64, he
     }
 }
 
-/// Hash and measure entropy of in-memory bytes.
-pub(crate) fn integrity_for_bytes(report: &mut Report, data: &[u8], options: &Options) {
+/// Hash, measure entropy and (for text) count `wc` statistics of in-memory bytes.
+pub(crate) fn integrity_for_bytes(
+    report: &mut Report,
+    data: &[u8],
+    options: &Options,
+    text: Option<&'static Encoding>,
+) {
     let hash = match hashing_wanted(options, data.len() as u64) {
         Ok(()) => true,
         Err(reason) => {
@@ -242,7 +311,7 @@ pub(crate) fn integrity_for_bytes(report: &mut Report, data: &[u8], options: &Op
             false
         }
     };
-    let mut d = Digester::new(options, hash);
+    let mut d = Digester::new(options, hash, text);
     d.update(data);
     d.finish(report, EntropyScope::File);
 }

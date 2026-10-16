@@ -1,0 +1,178 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "LICENSE",
+    "stem": "LICENSE"
+  },
+  "identification": {
+    "format": "text",
+    "name": "Plain text",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.3,
+    "detected_by": "heuristic",
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 809
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright (c) 2026 Ada Example",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 809,
+    "entropy": 5.028,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 809,
+      "chars": 809,
+      "words": 123,
+      "lines": 17,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "f930b94f1d851841a596dffea451eaf6b7b7f1f4ac660c5f06e1e198677f93d7",
+    "blake3": "fed723bcf8401e8e0bd6236f25ada99993c5185dfeea9de56075d3d758ec39dd"
+  },
+  "content": {
+    "title": "MIT License",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "MIT License",
+      "software",
+      "License",
+      "MIT",
+      "Software without restriction",
+      "including",
+      "Ada",
+      "WARRANTIES OF MERCHANTABILITY",
+      "PURPOSE AND NONINFRINGEMENT",
+      "copies"
+    ],
+    "keyword_frequency": [
+      [
+        "software",
+        7
+      ],
+      [
+        "including",
+        3
+      ],
+      [
+        "copies",
+        2
+      ],
+      [
+        "copyright",
+        2
+      ],
+      [
+        "limitation",
+        2
+      ],
+      [
+        "notice",
+        2
+      ],
+      [
+        "permission",
+        2
+      ],
+      [
+        "person",
+        2
+      ],
+      [
+        "warranties",
+        2
+      ]
+    ],
+    "excerpt": "MIT License Copyright (c) 2026 Ada Example Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to…",
+    "tags": [
+      "MIT License",
+      "software",
+      "License",
+      "MIT",
+      "Software without restriction"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "text": {
+      "license": "MIT",
+      "paragraphs": 5
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

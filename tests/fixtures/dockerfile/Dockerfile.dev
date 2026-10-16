@@ -1,0 +1,5 @@
+FROM node:22
+MAINTAINER Ben Sample <ben@example.com>
+ADD https://example.org/tool.tar.gz /opt/
+USER node
+CMD npm run dev

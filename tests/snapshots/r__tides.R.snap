@@ -1,0 +1,140 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.R",
+    "stem": "tides",
+    "extension": "R"
+  },
+  "identification": {
+    "format": "r",
+    "name": "R script",
+    "mime": "text/x-r",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 178
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 178,
+    "entropy": 4.887,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 178,
+      "chars": 178,
+      "words": 21,
+      "lines": 9,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "4f6c0dcf8caa70344cc157201ad05ca55309e5c174902bffad74a3a44b1b9606",
+    "blake3": "b47f6370095b0defda1f7ec1bac0d6da936ad908196cdc502cecdf34e356ee12"
+  },
+  "content": {
+    "description": "Tide analysis in R",
+    "excerpt": "Tide analysis in R"
+  },
+  "metadata": {},
+  "format": {
+    "r": {
+      "language": "R script",
+      "loc": {
+        "code": 6,
+        "comment": 1,
+        "blank": 2,
+        "total": 9
+      },
+      "imports": [
+        "ggplot2",
+        "dplyr"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "load_tides",
+          "mean_height"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2
+      },
+      "module_doc": "Tide analysis in R",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 44
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -7,7 +7,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-MSRV="1.88"
+MSRV="1.89"
 SKIPPED=()
 
 run() {
@@ -58,23 +58,54 @@ run cargo run -q --features dev --bin whiff-dev -- catalogue --check
 run cargo run -q --features dev --bin whiff-dev -- check-deps
 run cargo run -q --features dev --bin whiff-dev -- check-boundary
 
+# --- fixtures: what git stores must be what the tests read -------------------
+# Line-ending conversion would silently change test inputs (CRLF fixtures).
+echo ""
+echo "==> fixtures stored byte-exact by git"
+changed=()
+while IFS= read -r f; do
+  [[ -f "$f" ]] || continue
+  cmp -s <(git show ":$f") "$f" || changed+=("$f")
+done < <(git ls-files tests/fixtures)
+if [ ${#changed[@]} -gt 0 ]; then
+  echo "error: git would store these fixtures differently from the working tree:" >&2
+  printf '  %s\n' "${changed[@]}" >&2
+  echo "run: git add --renormalize tests/fixtures" >&2
+  exit 1
+fi
+
 # --- each feature on its own -------------------------------------------------
 if cargo hack --version >/dev/null 2>&1; then
-  run cargo hack check --each-feature --no-dev-deps
+  CARGO_TARGET_DIR=target/hack RUSTFLAGS="-D warnings" run cargo hack check --each-feature --no-dev-deps
 else
   skip "cargo hack check --each-feature" "install with: cargo install cargo-hack"
 fi
 
 # --- MSRV ------------------------------------------------------------------
 if has_toolchain "$MSRV"; then
-  run rustup run "$MSRV" cargo check --features full,cli
+  # Call the toolchain's own cargo: version-manager shims (asdf, mise) on PATH
+  # would otherwise intercept `rustc` under `rustup run`.
+  MSRV_BIN="$(dirname "$(rustup which --toolchain "$MSRV" cargo)")"
+  PATH="$MSRV_BIN:$PATH" CARGO_TARGET_DIR=target/msrv RUSTFLAGS="-D warnings" \
+    run "$MSRV_BIN/cargo" check --features full,cli
 else
   skip "MSRV $MSRV check" "install with: rustup toolchain install $MSRV --profile minimal"
 fi
 
 # --- wasm --------------------------------------------------------------------
-if rustup target list --installed 2>/dev/null | grep -q '^wasm32-unknown-unknown$'; then
-  run cargo build --lib --target wasm32-unknown-unknown --no-default-features --features full
+# Any rustup toolchain with the target will do; its own cargo is called so a
+# version-manager shim on PATH cannot pick a toolchain without it.
+WASM_TC=""
+for tc in $(rustup toolchain list 2>/dev/null | awk '{print $1}'); do
+  if rustup target list --installed --toolchain "$tc" 2>/dev/null | grep -q '^wasm32-unknown-unknown$'; then
+    WASM_TC="$tc"
+    break
+  fi
+done
+if [ -n "$WASM_TC" ]; then
+  WASM_BIN="$(dirname "$(rustup which --toolchain "$WASM_TC" cargo)")"
+  PATH="$WASM_BIN:$PATH" CARGO_TARGET_DIR=target/wasm RUSTFLAGS="-D warnings" \
+    run "$WASM_BIN/cargo" build --lib --target wasm32-unknown-unknown --no-default-features --features full
 else
   skip "wasm32 build" "install with: rustup target add wasm32-unknown-unknown"
 fi
@@ -90,7 +121,9 @@ fi
 
 # --- fuzz smoke ------------------------------------------------------------------
 if has_toolchain nightly && cargo fuzz --version >/dev/null 2>&1; then
-  (cd fuzz && RUSTFLAGS="" run cargo +nightly fuzz run extract -- -max_total_time="${FUZZ_SECONDS:-60}")
+  NIGHTLY_BIN="$(dirname "$(rustup which --toolchain nightly cargo)")"
+  (cd fuzz && PATH="$NIGHTLY_BIN:$PATH" RUSTFLAGS="" \
+    run "$NIGHTLY_BIN/cargo" fuzz run extract -- -max_total_time="${FUZZ_SECONDS:-60}")
 else
   skip "fuzz smoke" "install with: rustup toolchain install nightly && cargo install cargo-fuzz"
 fi

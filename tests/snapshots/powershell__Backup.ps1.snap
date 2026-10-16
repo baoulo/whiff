@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Backup.ps1",
+    "stem": "Backup",
+    "extension": "ps1"
+  },
+  "identification": {
+    "format": "powershell",
+    "name": "PowerShell script",
+    "mime": "text/x-powershell",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 290
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 290,
+    "entropy": 5.006,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 290,
+      "chars": 290,
+      "words": 36,
+      "lines": 16,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "e9ba641d72590eba704800118fa0da9ff8518e516888cb9700cf0096690bff19",
+    "blake3": "1da4f8449e0d5a0740e448a4900e050a756c53003a6646de6f32f8e7f6978d6a"
+  },
+  "content": {
+    "description": "<# .SYNOPSIS Back up the harbour database. >",
+    "excerpt": "<# .SYNOPSIS Back up the harbour database. >"
+  },
+  "metadata": {},
+  "format": {
+    "powershell": {
+      "language": "PowerShell script",
+      "loc": {
+        "code": 8,
+        "comment": 5,
+        "blank": 3,
+        "total": 16
+      },
+      "imports": [
+        "SqlServer",
+        "./Harbour.psm1"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "Snapshot"
+        ],
+        "function": [
+          "Backup-Harbour"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 1
+      },
+      "module_doc": "<#\n.SYNOPSIS\nBack up the harbour database.\n>",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 36
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

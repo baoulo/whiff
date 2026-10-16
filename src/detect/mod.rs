@@ -8,17 +8,31 @@
 //! 2. extractor sniffers ([`Extractor::sniff`](crate::plugin::Extractor::sniff));
 //! 3. extension: a small boost for a candidate it agrees with, or a weak
 //!    candidate for magic-less formats such as CSV;
-//! 4. built-in fallbacks: `empty`, `text` (with encoding), `binary`.
-//!
-//! Stage 1 adds the `file-format` fallback database and container refinement.
+//! 4. the `file-format` signature database, which names formats this build
+//!    has no extractor for (`extractor: null`, plus `available_with_feature`
+//!    when an opt-in feature would add one);
+//! 5. built-in fallbacks: `empty`, `text` (with encoding), `binary`. A
+//!    registered extractor declaring the fallback id (`text.plain` declares
+//!    `text`) handles it.
+
+use std::panic::{AssertUnwindSafe, catch_unwind};
 
 use crate::plugin::{FormatSpec, Probe, Registry};
 use crate::report::{Candidate, DetectedBy, Identification};
 
+/// Formats in the catalogue (`data/formats.tsv`), by extension and MIME type.
+mod catalogue {
+    include!(concat!(env!("OUT_DIR"), "/catalogue.rs"));
+}
+
+/// Confidence given to a `file-format` database match: above extension-only
+/// candidates and the text fallback, below registered magic and sniffers.
+const DATABASE_CONFIDENCE: f64 = 0.5;
+
 /// Detection result before it is written into the report.
 #[derive(Debug, Clone)]
 pub struct Detection {
-    /// The chosen format; `None` means a built-in fallback (`empty`/`text`/`binary`).
+    /// The chosen format; `None` when no registered extractor handles it.
     pub spec: Option<&'static FormatSpec>,
     /// Identification to write into the report.
     pub identification: Identification,
@@ -50,9 +64,9 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
             }
         }
         for e in registry.extractors() {
-            if let Some(sniff) = e.sniff(probe)
-                && let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format)
-            {
+            // A sniffer is contributor code: contain its panics like the extractor's.
+            let Ok(Some(sniff)) = catch_unwind(AssertUnwindSafe(|| e.sniff(probe))) else { continue };
+            if let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format) {
                 upsert(&mut scored, spec, sniff.confidence.clamp(0.0, 1.0), DetectedBy::Sniff);
             }
         }
@@ -71,14 +85,27 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
     }
 
     scored.sort_by(|a, b| b.confidence.total_cmp(&a.confidence).then_with(|| a.spec.id.cmp(b.spec.id)));
-    let candidates: Vec<Candidate> = scored
+    let mut candidates: Vec<Candidate> = scored
         .iter()
         .take(5)
         .map(|s| Candidate { format: s.spec.id.to_string(), confidence: round3(s.confidence) })
         .collect();
 
     let fallback = fallback(probe);
-    if let Some(top) = scored.first().filter(|s| s.confidence > fallback.confidence) {
+    // Magic databases are unreliable on text, so for text content any
+    // registered candidate (even extension-only) is preferred over them.
+    let registered_wins = scored.first().is_some_and(|s| s.confidence > DATABASE_CONFIDENCE)
+        || (fallback.format == "text" && !scored.is_empty());
+    let mut database = if registered_wins { None } else { database(probe, fallback.encoding.clone()) };
+    // The database named a format a registered extractor declares: use it.
+    if let Some(db) = &database
+        && let Some((spec, _)) = registry.formats().find(|(f, _)| f.mimes.contains(&db.mime.as_str()))
+    {
+        scored.retain(|s| s.spec.id != spec.id);
+        scored.insert(0, Scored { spec, confidence: DATABASE_CONFIDENCE + 0.01, by: DetectedBy::Magic });
+        database = None;
+    }
+    if let Some(top) = scored.first().filter(|s| s.confidence > fallback.confidence && database.is_none()) {
         let spec = top.spec;
         let extension_matches =
             ext.map(|e| spec.extensions.is_empty() || spec.extensions.iter().any(|x| x.eq_ignore_ascii_case(e)));
@@ -99,7 +126,72 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
             },
         };
     }
-    Detection { spec: None, identification: Identification { candidates, ..fallback } }
+    if let Some(mut id) = database {
+        candidates.insert(0, Candidate { format: id.format.clone(), confidence: DATABASE_CONFIDENCE });
+        candidates.truncate(5);
+        id.candidates = if candidates.len() > 1 { candidates } else { Vec::new() };
+        id.extension_matches = ext.map(|e| {
+            let listed = file_format::FileFormat::from_extension(e);
+            listed.is_empty() || listed.iter().any(|f| f.media_type() == id.mime)
+        });
+        return Detection { spec: None, identification: id };
+    }
+    // The built-in fallback, handed to the extractor that declares its id.
+    let spec = registry.formats().map(|(f, _)| f).find(|f| f.id == fallback.format);
+    let identification = match spec {
+        Some(spec) => Identification {
+            name: spec.name.to_string(),
+            family: Some(spec.family.to_string()),
+            candidates,
+            ..fallback
+        },
+        None => Identification { candidates, ..fallback },
+    };
+    Detection { spec, identification }
+}
+
+/// The `file-format` database's verdict, unless it only says text or binary.
+fn database(probe: &Probe<'_>, encoding: Option<String>) -> Option<Identification> {
+    if probe.head.is_empty() {
+        return None;
+    }
+    let ff = catch_unwind(|| file_format::FileFormat::from_bytes(probe.head)).ok()?;
+    if matches!(
+        ff,
+        file_format::FileFormat::ArbitraryBinaryData
+            | file_format::FileFormat::PlainText
+            | file_format::FileFormat::Empty
+    ) {
+        return None;
+    }
+    let id = ff
+        .short_name()
+        .map(str::to_ascii_lowercase)
+        .filter(|s| s.chars().all(|c| c.is_ascii_alphanumeric()))
+        .unwrap_or_else(|| ff.extension().to_string());
+    let (family, feature) = catalogue_entry(ff.media_type(), ff.extension()).unzip();
+    let available_with_feature = feature.filter(|f| !crate::enabled_features().contains(f)).map(str::to_string);
+    Some(Identification {
+        format: id,
+        name: ff.name().to_string(),
+        mime: ff.media_type().to_string(),
+        family: family.map(str::to_string),
+        confidence: DATABASE_CONFIDENCE,
+        detected_by: DetectedBy::Magic,
+        encoding,
+        extractor: None,
+        available_with_feature,
+        ..Identification::default()
+    })
+}
+
+/// `(family, feature)` of a catalogue format, by MIME type, then extension.
+pub(crate) fn catalogue_entry(mime: &str, extension: &str) -> Option<(&'static str, &'static str)> {
+    let find = |table: &'static [(&'static str, &'static str, &'static str)], key: &str| {
+        let key = key.to_ascii_lowercase();
+        table.binary_search_by(|(k, _, _)| (*k).cmp(key.as_str())).ok().map(|i| (table[i].1, table[i].2))
+    };
+    find(catalogue::BY_MIME, mime).or_else(|| find(catalogue::BY_EXTENSION, extension))
 }
 
 fn upsert(scored: &mut Vec<Scored>, spec: &'static FormatSpec, confidence: f64, by: DetectedBy) {
@@ -149,7 +241,7 @@ fn fallback(probe: &Probe<'_>) -> Identification {
             family: Some("text.plain".into()),
             confidence: 0.3,
             detected_by: DetectedBy::Heuristic,
-            encoding: Some(encoding.into()),
+            encoding: Some(encoding),
             ..Identification::default()
         },
         None => Identification {
@@ -164,17 +256,19 @@ fn fallback(probe: &Probe<'_>) -> Identification {
     }
 }
 
-/// Guess whether `head` is text, and in which encoding. `complete` says whether
-/// `head` is the whole input (otherwise a multi-byte character may be cut).
-pub fn text_encoding(head: &[u8], complete: bool) -> Option<&'static str> {
+/// Guess whether `head` is text, and in which encoding (a lowercase WHATWG
+/// name such as `utf-8`, `us-ascii`, `utf-16le` or `windows-1252`).
+/// `complete` says whether `head` is the whole input (otherwise a multi-byte
+/// character may be cut).
+pub fn text_encoding(head: &[u8], complete: bool) -> Option<String> {
     if head.starts_with(&[0xEF, 0xBB, 0xBF]) {
-        return Some("utf-8");
+        return Some("utf-8".into());
     }
     if head.starts_with(&[0xFF, 0xFE]) {
-        return Some("utf-16le");
+        return Some("utf-16le".into());
     }
     if head.starts_with(&[0xFE, 0xFF]) {
-        return Some("utf-16be");
+        return Some("utf-16be".into());
     }
     if head.contains(&0) {
         return None;
@@ -189,11 +283,11 @@ pub fn text_encoding(head: &[u8], complete: bool) -> Option<&'static str> {
         Err(e) => !complete && e.error_len().is_none() && head.len() - e.valid_up_to() < 4,
     };
     if utf8_ok {
-        return Some(if head.is_ascii() { "us-ascii" } else { "utf-8" });
+        return Some(if head.is_ascii() { "us-ascii" } else { "utf-8" }.into());
     }
     // Legacy 8-bit text: mostly printable ASCII with some high bytes.
     let printable = head.iter().filter(|&&b| (0x20..0x7f).contains(&b) || matches!(b, b'\t' | b'\n' | b'\r')).count();
-    (printable * 100 >= head.len() * 90).then_some("unknown-8bit")
+    (printable * 100 >= head.len() * 90).then(|| crate::text::decode::guess_legacy(head).name().to_ascii_lowercase())
 }
 
 #[cfg(test)]
@@ -202,12 +296,32 @@ mod tests {
 
     #[test]
     fn encodings() {
-        assert_eq!(text_encoding(b"hello\n", true), Some("us-ascii"));
-        assert_eq!(text_encoding("héllo".as_bytes(), true), Some("utf-8"));
-        assert_eq!(text_encoding(&[0xFF, 0xFE, b'h', 0], true), Some("utf-16le"));
-        assert_eq!(text_encoding(&[0x7f, b'E', b'L', b'F', 0, 1], true), None);
+        let enc = |b: &[u8], complete| text_encoding(b, complete);
+        assert_eq!(enc(b"hello\n", true).as_deref(), Some("us-ascii"));
+        assert_eq!(enc("héllo".as_bytes(), true).as_deref(), Some("utf-8"));
+        assert_eq!(enc(&[0xFF, 0xFE, b'h', 0], true).as_deref(), Some("utf-16le"));
+        assert_eq!(enc(&[0x7f, b'E', b'L', b'F', 0, 1], true), None);
         // Cut multi-byte char at the end of a partial head is still text.
-        assert_eq!(text_encoding(&"é".as_bytes()[..1], false), Some("utf-8"));
-        assert_eq!(text_encoding(b"caf\xe9 au lait", true), Some("unknown-8bit"));
+        assert_eq!(enc(&"é".as_bytes()[..1], false).as_deref(), Some("utf-8"));
+        assert_eq!(enc(b"caf\xe9 au lait", true).as_deref(), Some("windows-1252"));
+    }
+
+    #[test]
+    fn catalogue_lookup() {
+        assert_eq!(catalogue_entry("image/png", "png").map(|e| e.0), Some("image.raster"));
+        assert_eq!(catalogue_entry("application/x-unknown", "shp").map(|e| e.1), Some("geo"));
+        assert_eq!(catalogue_entry("application/x-unknown", "nope"), None);
+    }
+
+    #[test]
+    fn database_names_formats_without_extractors() {
+        let png = b"\x89PNG\r\n\x1a\n\0\0\0\rIHDR\0\0\0\x01\0\0\0\x01\x08\x06\0\0\0\x1f\x15\xc4\x89";
+        let probe = Probe { head: png, tail: png, len: png.len() as u64, name: Some("a.png"), extension: Some("png") };
+        let d = detect(&Registry::empty(), &probe, None);
+        assert!(d.spec.is_none());
+        assert_eq!(d.identification.format, "png");
+        assert_eq!(d.identification.mime, "image/png");
+        assert_eq!(d.identification.family.as_deref(), Some("image.raster"));
+        assert_eq!(d.identification.extension_matches, Some(true));
     }
 }

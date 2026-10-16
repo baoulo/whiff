@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.ex",
+    "stem": "berths",
+    "extension": "ex"
+  },
+  "identification": {
+    "format": "elixir",
+    "name": "Elixir source",
+    "mime": "text/x-elixir",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 206
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 206,
+    "entropy": 4.628,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 206,
+      "chars": 206,
+      "words": 25,
+      "lines": 10,
+      "max_line_length": 47,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "4100bec71f2560f9051f7cf54ae393ed14d9b50f4893add8786da90dea56ff72",
+    "blake3": "5d682bf75d91e3b5c0d362960de795293fe00bc8eaad3385b662f400e3ce1861"
+  },
+  "content": {
+    "description": "Berth allocation",
+    "excerpt": "Berth allocation"
+  },
+  "metadata": {},
+  "format": {
+    "elixir": {
+      "language": "Elixir",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 2,
+        "total": 10
+      },
+      "imports": [
+        "Harbour.Boat",
+        "Ecto.Query"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "allocate",
+          "free?"
+        ],
+        "module": [
+          "Harbour.Berths"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "module": 1
+      },
+      "module_doc": "Berth allocation",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 47
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,141 @@
+---
+source: src/formats/code/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "requirements.txt",
+    "stem": "requirements",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "pip_requirements",
+    "name": "pip requirements file",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pip_requirements",
+        "confidence": 0.95
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 325
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "custom_package_index",
+        "detail": "https://pypi.example.org/simple",
+        "source": "code.manifest"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 325,
+    "entropy": 5.252,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 325,
+      "chars": 325,
+      "words": 21,
+      "lines": 8,
+      "max_line_length": 100,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e3b8dc25090247f81a481455f5b03db3347b35dc4610a7903c4fec5f0e5b9944",
+    "blake3": "4b93a7680c87a12d640496e9fd71b3b3195f3d9dd106ac7860b5b6d3664a5196"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pip_requirements": {
+      "ecosystem": "python",
+      "requirements": [
+        "numpy==2.1.2",
+        "pandas>=2.2,<3",
+        "httpx[http2]==0.27.2",
+        "requests"
+      ],
+      "dependencies_count": 4,
+      "pinned": 2,
+      "editable": 1,
+      "hash_checking": true,
+      "includes": [
+        "requirements-base.txt"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

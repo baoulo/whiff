@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Ada's Harbour Blog</title>
+  <subtitle>Notes on boats and the sea.</subtitle>
+  <link href="https://blog.example.org/" rel="alternate"/>
+  <link href="https://blog.example.org/atom.xml" rel="self"/>
+  <updated>2026-10-12T10:00:00Z</updated>
+  <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+  <author><name>Ada Example</name></author>
+  <rights>CC BY 4.0</rights>
+  <entry><title>Knots every sailor knows</title><link href="https://blog.example.org/knots"/>
+    <id>urn:uuid:1</id><published>2026-10-12T10:00:00Z</published>
+    <summary>The bowline, the clove hitch and the reef knot.</summary><category term="sailing"/></entry>
+  <entry><title>Reading the tide tables</title><link href="https://blog.example.org/tides"/>
+    <id>urn:uuid:2</id><updated>2026-09-20T08:30:00+01:00</updated><summary>High water, low water and springs.</summary></entry>
+</feed>

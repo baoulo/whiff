@@ -1,0 +1,153 @@
+---
+source: src/formats/data/ini.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "settings.ini",
+    "stem": "settings",
+    "extension": "ini"
+  },
+  "identification": {
+    "format": "ini",
+    "name": "INI configuration",
+    "mime": "text/plain",
+    "family": "data.ini",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.ini"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 189
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "detail": "credential_assignment",
+        "source": "privacy.scan"
+      }
+    ],
+    "secrets": {
+      "credential_assignment": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 189,
+    "entropy": 4.518,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 189,
+      "chars": 189,
+      "words": 29,
+      "lines": 13,
+      "max_line_length": 25,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "87e91f84d9f744aedbc35c22f8773a1aff096d8a3e75b16230029536b47420d3",
+    "blake3": "d60d0cfbe8646bb8309f8ad8f813871f6e80d9e6326823f1e8c379ac76cd4f17"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ini": {
+      "redacted_values": 1,
+      "dialect": "ini",
+      "sections": [
+        {
+          "name": "general",
+          "keys": 2
+        },
+        {
+          "name": "database",
+          "keys": 4
+        },
+        {
+          "name": "paths",
+          "keys": 1
+        }
+      ],
+      "keys": 7,
+      "comment_lines": 1,
+      "values": {
+        "general": {
+          "name": "Harbour Client",
+          "language": "en"
+        },
+        "database": {
+          "host": "db.internal",
+          "port": "5432",
+          "user": "harbour",
+          "password": "[redacted]"
+        },
+        "paths": {
+          "logs": "/var/log/harbour"
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.ini",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

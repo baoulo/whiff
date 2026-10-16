@@ -1,0 +1,14 @@
+services:
+  web:
+    image: nginx:1.27
+    ports: ["80:80", "443:443"]
+    depends_on: [api]
+  api:
+    build: ./api
+    environment:
+      DATABASE_URL: postgres://app@db/harbour
+  db:
+    image: postgres:17
+    volumes: [dbdata:/var/lib/postgresql/data]
+volumes:
+  dbdata: {}

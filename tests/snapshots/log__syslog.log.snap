@@ -1,0 +1,139 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "syslog.log",
+    "stem": "syslog",
+    "extension": "log"
+  },
+  "identification": {
+    "format": "log",
+    "name": "Log file",
+    "mime": "text/x-log",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 360
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 360,
+    "entropy": 4.984,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 360,
+      "chars": 360,
+      "words": 49,
+      "lines": 5,
+      "max_line_length": 91,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8f0cfa6a500efd2ddd783717433b368a67dbbf40b206c669a08da20fc5fcd2e4",
+    "blake3": "e525e05816c3591a476d01e2789948c69371c581f5c949365a6b3c1928d816c5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "log": {
+      "dialect": "syslog",
+      "lines": 5,
+      "levels": {
+        "ERROR": 1
+      },
+      "top_sources": [
+        {
+          "source": "sshd",
+          "lines": 2
+        },
+        {
+          "source": "CRON",
+          "lines": 1
+        },
+        {
+          "source": "kernel",
+          "lines": 1
+        },
+        {
+          "source": "nginx",
+          "lines": 1
+        }
+      ],
+      "sample_errors": [
+        "Oct 14 06:31:44 web01 sshd[1250]: error: maximum authentication attempts exceeded"
+      ],
+      "time_range_without_year": [
+        "Oct 14 06:25:01",
+        "Oct 14 06:31:44"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,138 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Harbour.swift",
+    "stem": "Harbour",
+    "extension": "swift"
+  },
+  "identification": {
+    "format": "swift",
+    "name": "Swift source",
+    "mime": "text/x-swift",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 309
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 309,
+    "entropy": 4.634,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 309,
+      "chars": 309,
+      "words": 50,
+      "lines": 17,
+      "max_line_length": 49,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "e970498ef24b111ffd09cfb4d6160949061b1fcee5920a4a54957801d321f0c0",
+    "blake3": "9c03144a383901851bd4c24a407e2c011e130006a047c46c53f0ba05c75f005f"
+  },
+  "content": {
+    "description": "Harbour model",
+    "excerpt": "Harbour model"
+  },
+  "metadata": {},
+  "format": {
+    "swift": {
+      "language": "Swift",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 3,
+        "total": 17
+      },
+      "imports": [
+        "Foundation",
+        "SwiftUI"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "type": [
+          "Boat",
+          "Registry",
+          "Moorable"
+        ]
+      },
+      "symbol_counts": {
+        "type": 3
+      },
+      "module_doc": "Harbour model",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 49
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

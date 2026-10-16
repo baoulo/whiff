@@ -1,0 +1,233 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "anchors.yaml",
+    "stem": "anchors",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 177
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 177,
+    "entropy": 4.356,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 177,
+      "chars": 177,
+      "words": 23,
+      "lines": 11,
+      "max_line_length": 19,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "aa0bd8fa0c7dd75e33f59c58313467f412c057cf93027e213141d7ab19901194",
+    "blake3": "aacdc919a13e6cf9a9e5f7bda9548b2dccec13ad82f38502ca0975f23afe61d6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 1,
+      "aliases": 2,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.defaults": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.defaults.adapter": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgres"
+            ]
+          },
+          "$.defaults.host": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "localhost"
+            ]
+          },
+          "$.development": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.development.database": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "dev"
+            ]
+          },
+          "$.development.adapter": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgres"
+            ]
+          },
+          "$.development.host": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "localhost"
+            ]
+          },
+          "$.test": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.test.database": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "test"
+            ]
+          },
+          "$.test.adapter": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "postgres"
+            ]
+          },
+          "$.test.host": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "localhost"
+            ]
+          },
+          "$.1": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "numeric key"
+            ]
+          },
+          "$.[\"[\\\"a\\\",\\\"b\\\"]\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "complex key"
+            ]
+          }
+        },
+        "max_depth": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

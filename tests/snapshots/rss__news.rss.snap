@@ -1,0 +1,210 @@
+---
+source: src/formats/text/feed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "news.rss",
+    "stem": "news",
+    "extension": "rss"
+  },
+  "identification": {
+    "format": "rss",
+    "name": "RSS feed",
+    "mime": "application/rss+xml",
+    "family": "text.feed",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "rss",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "text.feed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1038
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-14T08:00:00+00:00",
+        "source": "feed.updated",
+        "tz_known": true
+      },
+      {
+        "field": "created",
+        "value": "2026-09-14T17:03:22+02:00",
+        "source": "feed.oldest_item",
+        "tz_known": true
+      },
+      {
+        "field": "published",
+        "value": "2026-10-01T09:00:00+02:00",
+        "source": "feed.newest_item",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-09-14T15:03:22Z",
+    "latest": "2026-10-14T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "© 2026 Harbour Times"
+  },
+  "physical": {
+    "size_bytes": 1038,
+    "entropy": 5.076,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1038,
+      "chars": 1037,
+      "words": 63,
+      "lines": 18,
+      "max_line_length": 125,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "89c777460a152018f084d5326ca4805fbc2f7285407a187b1e6b986f32e148a5",
+    "blake3": "7414e8858efbba94e5f101a6867f9cd493a7554d5fc6a3601fea37ec751858c6"
+  },
+  "content": {
+    "title": "Harbour Times",
+    "description": "News from the old harbour.",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Times",
+      "Times",
+      "harbour",
+      "ferry",
+      "hour from october",
+      "October",
+      "News",
+      "Fishing boats",
+      "return at dusk",
+      "dusk"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "return",
+        2
+      ]
+    ],
+    "excerpt": "News from the old harbour. Each evening the fleet returns. The ferry runs every hour from October.",
+    "tags": [
+      "harbour",
+      "transport",
+      "Harbour Times",
+      "Times",
+      "ferry",
+      "hour from october"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "rss": {
+      "dialect": "rss",
+      "version": "2.0",
+      "link": "https://news.example.org/",
+      "generator": "Handwritten 1.0",
+      "items": 2,
+      "newest_item": "2026-10-01T09:00:00+02:00",
+      "oldest_item": "2026-09-14T17:03:22+02:00",
+      "item_authors": 1,
+      "top_categories": {
+        "harbour": 2,
+        "transport": 1
+      },
+      "podcast": false,
+      "latest": [
+        {
+          "title": "New ferry timetable",
+          "link": "https://news.example.org/ferry",
+          "date": "2026-10-01T09:00:00+02:00"
+        },
+        {
+          "title": "Fishing boats return at dusk",
+          "link": "https://news.example.org/boats",
+          "date": "2026-09-14T17:03:22+02:00"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.feed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

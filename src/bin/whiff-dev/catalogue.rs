@@ -7,6 +7,7 @@ use std::fmt::Write as _;
 use std::path::Path;
 
 use whiff::Registry;
+use whiff::plugin::Probe;
 
 pub struct Family {
     pub id: String,
@@ -133,13 +134,28 @@ fn most_common<'a>(items: impl Iterator<Item = &'a str>) -> Vec<(&'a str, usize)
     counts
 }
 
-/// Extractor covering a catalogue row: same family and a shared extension.
+/// Extractor covering a catalogue row: same family and a shared extension,
+/// or an extractor whose sniffer claims one of the row's file names
+/// (`package.json`, `Dockerfile`) from the name alone.
 fn coverage(registry: &Registry, f: &Format) -> Option<&'static str> {
     let exts: Vec<String> = f.extensions.split_whitespace().map(str::to_ascii_lowercase).collect();
-    registry
+    let by_extension = registry
         .formats()
         .find(|(spec, _)| spec.family == f.family && spec.extensions.iter().any(|e| exts.iter().any(|x| x == e)))
-        .map(|(_, e)| e.meta().id)
+        .map(|(_, e)| e.meta().id);
+    by_extension.or_else(|| {
+        registry
+            .extractors()
+            .find(|e| {
+                f.extensions.split_whitespace().any(|name| {
+                    let probe = Probe { head: &[], tail: &[], len: 0, name: Some(name), extension: None };
+                    e.sniff(&probe).is_some_and(|s| {
+                        e.meta().formats.iter().any(|spec| spec.id == s.format && spec.family == f.family)
+                    })
+                })
+            })
+            .map(|e| e.meta().id)
+    })
 }
 
 pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {

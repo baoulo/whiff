@@ -1,0 +1,150 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "latin1-recipe.txt",
+    "stem": "latin1-recipe",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "text",
+    "name": "Plain text",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "windows-1252",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 209
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 209,
+    "entropy": 4.279,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 209,
+      "chars": 209,
+      "words": 36,
+      "lines": 4,
+      "max_line_length": 105,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "85264614de6f45f190eedc24dc63a3f81ec0a566919f85ee09dd78fedaceb8e5",
+    "blake3": "c9373263a1236771c86e1ee5c44500818b5593b8776503f1bd91dd305c4c9525"
+  },
+  "content": {
+    "title": "Crème brûlée",
+    "language": {
+      "code": "fr",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Crème brûlée",
+      "brûlée",
+      "crème",
+      "chauffer le lait",
+      "lait",
+      "sucre",
+      "lait chaud",
+      "verser le lait",
+      "Mélanger les jaunes",
+      "chauffer"
+    ],
+    "keyword_frequency": [
+      [
+        "crème",
+        2
+      ],
+      [
+        "lait",
+        2
+      ],
+      [
+        "sucre",
+        2
+      ]
+    ],
+    "excerpt": "Crème brûlée Pour la crème, chauffer le lait avec la vanille. Mélanger les jaunes d'œufs et le sucre, verser le lait chaud, puis cuire au four à basse température. Caraméliser le sucre juste avant de servir.",
+    "tags": [
+      "Crème brûlée",
+      "brûlée",
+      "crème",
+      "chauffer le lait",
+      "lait"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "text": {
+      "paragraphs": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

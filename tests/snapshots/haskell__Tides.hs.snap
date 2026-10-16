@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.hs",
+    "stem": "Tides",
+    "extension": "hs"
+  },
+  "identification": {
+    "format": "haskell",
+    "name": "Haskell source",
+    "mime": "text/x-haskell",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 270
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 270,
+    "entropy": 4.855,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 270,
+      "chars": 270,
+      "words": 44,
+      "lines": 14,
+      "max_line_length": 38,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "1b20e80c63772aac0b77d66f94c45922896e58551eceb7daf924df90e5a87ae1",
+    "blake3": "998566f9bd6314c3c8c04282842a26b7eee27e279b961a9fca776ac2fb851252"
+  },
+  "content": {
+    "description": "| Tide predictions.",
+    "excerpt": "| Tide predictions."
+  },
+  "metadata": {},
+  "format": {
+    "haskell": {
+      "language": "Haskell",
+      "loc": {
+        "code": 7,
+        "comment": 3,
+        "blank": 4,
+        "total": 14
+      },
+      "package": "Harbour.Tides",
+      "imports": [
+        "Data.List",
+        "Data.Map"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "predict"
+        ],
+        "type": [
+          "Tide",
+          "Height"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "type": 2
+      },
+      "module_doc": "| Tide predictions.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 38
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

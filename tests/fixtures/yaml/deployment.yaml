@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harbour-api
+  namespace: harbour
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: api
+          image: registry.example.org/harbour-api:2.3.0
+        - name: sidecar
+          image: envoyproxy/envoy:v1.31
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: harbour-api
+  namespace: harbour
+spec:
+  ports:
+    - port: 80

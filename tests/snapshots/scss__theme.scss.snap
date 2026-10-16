@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "theme.scss",
+    "stem": "theme",
+    "extension": "scss"
+  },
+  "identification": {
+    "format": "scss",
+    "name": "Sass / Less stylesheet",
+    "mime": "text/x-scss",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 240
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 240,
+    "entropy": 4.915,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 240,
+      "chars": 240,
+      "words": 36,
+      "lines": 12,
+      "max_line_length": 76,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "108eac6bb28261c94f5c2cf0c97fd37e5cf99e01e9bdca0474b1a2b2182d9a58",
+    "blake3": "da1211227cfbba7000b12fb875fa2652af4c60a916c40a60b1ed996c150ac04e"
+  },
+  "content": {
+    "description": "Theme variables",
+    "excerpt": "Theme variables"
+  },
+  "metadata": {},
+  "format": {
+    "scss": {
+      "language": "Sass / Less stylesheet",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 4,
+        "total": 12
+      },
+      "imports": [
+        "sass:math",
+        "reset"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "double"
+        ],
+        "mixin": [
+          "card"
+        ],
+        "variable": [
+          "sea",
+          "gap"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "mixin": 1,
+        "variable": 2
+      },
+      "module_doc": "Theme variables",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 76
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

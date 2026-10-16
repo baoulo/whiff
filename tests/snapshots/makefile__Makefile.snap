@@ -1,0 +1,130 @@
+---
+source: src/formats/code/infra.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Makefile",
+    "stem": "Makefile"
+  },
+  "identification": {
+    "format": "makefile",
+    "name": "Makefile",
+    "mime": "text/x-makefile",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.infra"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 322
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 322,
+    "entropy": 5.118,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 322,
+      "chars": 322,
+      "words": 48,
+      "lines": 25,
+      "max_line_length": 61,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "5b849319eb7afc6fa814f3b3574501d5687d5c9c1c5075db5439c9af5d7c5577",
+    "blake3": "7c322ecf9c192eb02f60b86e569d9874beb0feedb323c58776b662000b770b49"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "makefile": {
+      "default_target": "all",
+      "targets": [
+        "all",
+        "build",
+        "test",
+        "install",
+        "clean"
+      ],
+      "phony": [
+        "all",
+        "build",
+        "test",
+        "install",
+        "clean"
+      ],
+      "variables": [
+        "PREFIX",
+        "CARGO",
+        "VERSION"
+      ],
+      "includes": [
+        "config.mk"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.infra",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,203 @@
+---
+source: src/formats/text/markdown.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "release-notes.md",
+    "stem": "release-notes",
+    "extension": "md"
+  },
+  "identification": {
+    "format": "markdown",
+    "name": "Markdown",
+    "mime": "text/markdown",
+    "family": "text.markdown",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.markdown"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 336
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 336,
+    "entropy": 4.985,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 336,
+      "chars": 336,
+      "words": 50,
+      "lines": 19,
+      "max_line_length": 59,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "6b889576252873c964710ffca05fab12378a83938904148cf204268cfc1b48e3",
+    "blake3": "dc6083111c92add774ec9a68bea424010fb15bfc8de9fefd8fc407f6c2c05b44"
+  },
+  "content": {
+    "title": "Release 2.0",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "plugin api",
+      "Release 2.0 brings",
+      "API",
+      "Release",
+      "brings faster",
+      "Highlights",
+      "plugin",
+      "builds",
+      "faster",
+      "brings"
+    ],
+    "keyword_frequency": [
+      [
+        "api",
+        2
+      ],
+      [
+        "builds",
+        2
+      ],
+      [
+        "faster",
+        2
+      ],
+      [
+        "plugin",
+        2
+      ],
+      [
+        "upgrade",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 2,
+        "text": "Highlights"
+      },
+      {
+        "level": 2,
+        "text": "Breaking changes"
+      }
+    ],
+    "excerpt": "Release 2.0 brings faster builds and a new plugin API. Faster incremental builds A stable plugin API Upgrade with tool upgrade. The old --legacy flag is gone.",
+    "tags": [
+      "releases",
+      "plugin api",
+      "Release 2.0 brings",
+      "API",
+      "brings faster"
+    ]
+  },
+  "metadata": {
+    "front_matter": {
+      "categories": [
+        "releases"
+      ],
+      "date": {
+        "$__toml_private_datetime": "2026-10-10T12:00:00Z"
+      },
+      "draft": false,
+      "title": "Release 2.0"
+    }
+  },
+  "format": {
+    "markdown": {
+      "front_matter": "toml",
+      "draft": false,
+      "front_matter_keys": [
+        "categories",
+        "date",
+        "draft",
+        "title"
+      ],
+      "headings": 2,
+      "links": {
+        "internal": 0,
+        "external": 0
+      },
+      "images": {
+        "count": 0,
+        "with_alt": 0
+      },
+      "code_blocks": 0,
+      "tables": 0,
+      "html_fragments": 2,
+      "components": {
+        "Callout": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.markdown",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

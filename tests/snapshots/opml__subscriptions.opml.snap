@@ -1,0 +1,153 @@
+---
+source: src/formats/text/feed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "subscriptions.opml",
+    "stem": "subscriptions",
+    "extension": "opml"
+  },
+  "identification": {
+    "format": "opml",
+    "name": "OPML outline",
+    "mime": "text/x-opml",
+    "family": "text.feed",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "opml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.feed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 585
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-05T12:00:00+00:00",
+        "source": "opml.dateCreated",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-05T12:00:00Z",
+    "latest": "2026-10-05T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 585,
+    "entropy": 4.962,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 585,
+      "chars": 585,
+      "words": 38,
+      "lines": 13,
+      "max_line_length": 139,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "671b9d4000ebfdadf36c3a4e3251a0e6ef4a01adb09c4ded56bcb9e78aecc318",
+    "blake3": "5f5be80e75ebe4e217dd78dd3d2e4c8df7b2f3edb4c12a997f39eaaa1bef24ad"
+  },
+  "content": {
+    "title": "Ada's subscriptions",
+    "authors": [
+      "Ada Example"
+    ],
+    "language": {
+      "code": "et",
+      "confidence": 0.683
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "Sea"
+      },
+      {
+        "level": 1,
+        "text": "Tech"
+      }
+    ],
+    "excerpt": "Sea Harbour Times Ada's Harbour Blog Tech Rust Blog"
+  },
+  "metadata": {},
+  "format": {
+    "opml": {
+      "outlines": 5,
+      "feeds": 3,
+      "max_depth": 2,
+      "feed_hosts": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.feed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

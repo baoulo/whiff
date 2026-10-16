@@ -1,0 +1,5 @@
+Oct 14 06:25:01 web01 CRON[1201]: (root) CMD (run-parts /etc/cron.daily)
+Oct 14 06:25:03 web01 sshd[1210]: Accepted publickey for deploy from 203.0.113.5 port 52114
+Oct 14 06:26:10 web01 kernel: [12345.678] eth0: link up
+Oct 14 06:30:00 web01 nginx[880]: worker process started
+Oct 14 06:31:44 web01 sshd[1250]: error: maximum authentication attempts exceeded

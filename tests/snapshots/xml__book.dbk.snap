@@ -1,0 +1,202 @@
+---
+source: src/formats/text/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "book.dbk",
+    "stem": "book",
+    "extension": "dbk"
+  },
+  "identification": {
+    "format": "xml",
+    "name": "XML document",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.65,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 490
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "xml_entities",
+        "detail": "1 entity declaration(s) in the DOCTYPE",
+        "source": "text.xml"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 490,
+    "entropy": 4.903,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 490,
+      "chars": 490,
+      "words": 40,
+      "lines": 12,
+      "max_line_length": 98,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "aef80c78e703bf0089238d2cbf2da0b2a031a0fd43196e1452085594f2052722",
+    "blake3": "46e1a22838fe93ffe32cb9ac9dd59b4687aa2c56bbc03f59adc24dd536d63494"
+  },
+  "content": {
+    "title": "Harbour Handbook",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Handbook",
+      "Handbook",
+      "Arrival",
+      "Pilots",
+      "Departure",
+      "Harbour",
+      "Ships",
+      "north",
+      "metres",
+      "tide"
+    ],
+    "keyword_frequency": [
+      [
+        "pilots",
+        3
+      ],
+      [
+        "ships",
+        3
+      ],
+      [
+        "arrival",
+        2
+      ],
+      [
+        "departure",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Arrival"
+      },
+      {
+        "level": 2,
+        "text": "Pilots"
+      },
+      {
+        "level": 1,
+        "text": "Departure"
+      }
+    ],
+    "excerpt": "Harbour Handbook Arrival Ships enter from the north. Pilots A pilot boards every ship over 50 metres. Departure Ships leave on the morning tide.",
+    "tags": [
+      "Harbour Handbook",
+      "Handbook",
+      "Arrival",
+      "Pilots",
+      "Departure"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "xml": {
+      "declaration": {
+        "version": "1.0",
+        "encoding": "UTF-8"
+      },
+      "doctype": "book",
+      "root": "book",
+      "namespace": "http://docbook.org/ns/docbook",
+      "root_attributes": {
+        "version": "5.0"
+      },
+      "vocabulary": {
+        "id": "docbook",
+        "name": "DocBook"
+      },
+      "well_formed": true,
+      "elements": 11,
+      "attributes": 2,
+      "max_depth": 4,
+      "distinct_elements": 5,
+      "top_elements": {
+        "title": 4,
+        "para": 3,
+        "chapter": 2,
+        "book": 1,
+        "section": 1
+      },
+      "text_bytes": 165
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

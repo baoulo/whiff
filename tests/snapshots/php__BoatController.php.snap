@@ -1,0 +1,140 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "BoatController.php",
+    "stem": "BoatController",
+    "extension": "php"
+  },
+  "identification": {
+    "format": "php",
+    "name": "PHP source",
+    "mime": "application/x-httpd-php",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 429
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 429,
+    "entropy": 4.635,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 429,
+      "chars": 429,
+      "words": 45,
+      "lines": 23,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "7a92848b02b315d53e1ad256dfb57813dc131fa2e185bc7a334e4ef34016e78c",
+    "blake3": "2bbf93a2e5ecbba7709774c8d6ca4c69037aabcd7126e37ca93f0c9319a3697f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "php": {
+      "language": "PHP",
+      "loc": {
+        "code": 17,
+        "comment": 2,
+        "blank": 4,
+        "total": 23
+      },
+      "package": "App\\Http\\Controllers",
+      "imports": [
+        "App\\Models\\Boat",
+        "Illuminate\\Http\\Request",
+        "helpers.php"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "function": [
+          "index",
+          "validateBoat",
+          "helper"
+        ],
+        "type": [
+          "BoatController"
+        ]
+      },
+      "symbol_counts": {
+        "function": 3,
+        "type": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 52
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

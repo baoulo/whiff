@@ -1,0 +1,19 @@
+# Harbour service configuration
+title = "Harbour API"
+
+[server]
+host = "0.0.0.0"
+port = 8080
+started = 2026-10-14T08:00:00Z
+
+[database]
+url = "postgres://app@db.internal/harbour"
+pool = { min = 2, max = 10 }
+
+[[berths]]
+id = 1
+size = "large"
+
+[[berths]]
+id = 2
+size = "small"

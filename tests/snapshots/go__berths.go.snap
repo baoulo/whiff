@@ -1,0 +1,152 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.go",
+    "stem": "berths",
+    "extension": "go"
+  },
+  "identification": {
+    "format": "go",
+    "name": "Go source",
+    "mime": "text/x-go",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 579
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 579,
+    "entropy": 4.923,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 579,
+      "chars": 579,
+      "words": 83,
+      "lines": 31,
+      "max_line_length": 94,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 7
+    }
+  },
+  "integrity": {
+    "sha256": "9774cf11132a642829d2cebe6bc17db1e2125d2c6178e489a7e2eac7b189d686",
+    "blake3": "ec7aab697af12528b10b3e5d0cf3bf532ce1179a240b345c254561c1716276d2"
+  },
+  "content": {
+    "description": "Package berths allocates berths in the harbour.",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Package berths allocates berths in the harbour. It keeps a simple in-memory table."
+  },
+  "metadata": {},
+  "format": {
+    "go": {
+      "language": "Go",
+      "loc": {
+        "code": 20,
+        "comment": 4,
+        "blank": 7,
+        "total": 31
+      },
+      "package": "berths",
+      "imports": [
+        "strings",
+        "errors",
+        "fmt",
+        "github.com/example/harbour/log"
+      ],
+      "import_count": 4,
+      "symbols": {
+        "function": [
+          "String",
+          "New"
+        ],
+        "type": [
+          "Berth",
+          "Allocator"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "type": 2
+      },
+      "module_doc": "Package berths allocates berths in the harbour.\n\nIt keeps a simple in-memory table.",
+      "todo_markers": {
+        "TODO": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 94
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

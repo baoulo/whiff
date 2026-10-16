@@ -1,0 +1,133 @@
+---
+source: src/formats/binary/unknown.rs
+assertion_line: 273
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "firmware.bin",
+    "stem": "firmware",
+    "extension": "bin"
+  },
+  "identification": {
+    "format": "binary",
+    "name": "Binary data",
+    "mime": "application/octet-stream",
+    "family": "binary.unknown",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "binary.unknown"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6106
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6106,
+    "entropy": 7.968,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8e0221ab0155be150975b469421e6d811bf509080a6b99de7fc4c117242678e2",
+    "blake3": "0164f58885960b2b75506e2339694cd1a7f249d92aba2b25b2879cf8204162ce"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "binary": {
+      "bytes_examined": 6106,
+      "strings": {
+        "ascii": 18,
+        "utf16le": 1
+      },
+      "strings_sample": [
+        "])harbour-config-v2",
+        "HxzpW/",
+        "see https://update.example.org/latest for updates",
+        "Wide string"
+      ],
+      "url_hosts": [
+        {
+          "host": "update.example.org",
+          "count": 1
+        }
+      ],
+      "embedded_signatures": {
+        "png": {
+          "count": 1,
+          "first_offsets": [
+            900
+          ]
+        }
+      },
+      "entropy_profile": {
+        "block_bytes": 65536,
+        "blocks": 1,
+        "min": 7.968,
+        "max": 7.968,
+        "mean": 7.968,
+        "high_entropy_blocks": 1,
+        "likely_compressed_or_encrypted": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "binary.unknown",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

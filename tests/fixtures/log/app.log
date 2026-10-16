@@ -1,0 +1,8 @@
+2026-10-14T08:00:01Z INFO  server starting on port 8080
+2026-10-14T08:00:02Z INFO  connected to database
+2026-10-14T08:05:17Z WARN  slow query took 1200 ms
+2026-10-14T08:07:44Z ERROR payment service timeout after 30s (order 1042)
+2026-10-14T08:07:45Z INFO  retrying order 1042
+2026-10-14T08:07:46Z ERROR retry failed: connection refused
+2026-10-14T09:12:00Z DEBUG cache hit ratio 0.93
+2026-10-14T09:30:00Z INFO  shutting down

@@ -1,0 +1,5 @@
+[
+  {"id": 1, "name": "Marie", "length_m": 12.5, "owner": {"name": "Ada Example", "email": "ada@example.org"}, "active": true, "tags": ["trawler"]},
+  {"id": 2, "name": "Swift", "length_m": 30, "owner": {"name": "Ben Sample", "email": "ben@example.com"}, "active": false, "tags": []},
+  {"id": 3, "name": "Gull", "length_m": null, "owner": null, "active": true, "tags": ["dinghy", "club"]}
+]

@@ -5,6 +5,8 @@
 //! Free-form data is only allowed in [`Report::metadata`] (per standard, e.g.
 //! `exif`, `xmp`) and [`Report::format`] (per format id).
 
+use std::collections::BTreeMap;
+
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
@@ -61,6 +63,8 @@ impl Report {
 }
 
 pub use crate::engine::Profile;
+
+mod llm;
 
 /// `whiff` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
@@ -370,6 +374,13 @@ pub struct Security {
     /// Risk signals.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub risks: Vec<Risk>,
+    /// Secrets found in the content, by kind (`aws_access_key_id`, `private_key`, …).
+    /// Only counts: values are redacted from the report.
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    pub secrets: BTreeMap<String, u64>,
+    /// Personal data found in the content, by kind (`email`, `phone`, `iban`, …). Only counts.
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    pub personal_data: BTreeMap<String, u64>,
 }
 
 /// A licence.
@@ -447,6 +458,9 @@ pub struct TextPhysical {
     /// Byte-order mark present.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bom: Option<bool>,
+    /// Lines containing only whitespace.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub blank_lines: Option<u64>,
 }
 
 /// Image physical properties.

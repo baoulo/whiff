@@ -136,6 +136,11 @@
           "description": "Everything, including payload decoding and deeper recursion.",
           "type": "string",
           "const": "full"
+        },
+        {
+          "description": "`standard` plus a summary; the CLI prints the compact LLM view\n([`Report::llm_view`](crate::Report::llm_view)) instead of the report.",
+          "type": "string",
+          "const": "llm"
         }
       ]
     },
@@ -657,6 +662,24 @@
           "items": {
             "$ref": "#/$defs/Risk"
           }
+        },
+        "secrets": {
+          "description": "Secrets found in the content, by kind (`aws_access_key_id`, `private_key`, …).\nOnly counts: values are redacted from the report.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0
+          }
+        },
+        "personal_data": {
+          "description": "Personal data found in the content, by kind (`email`, `phone`, `iban`, …). Only counts.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0
+          }
         }
       }
     },
@@ -966,6 +989,15 @@
             "boolean",
             "null"
           ]
+        },
+        "blank_lines": {
+          "description": "Lines containing only whitespace.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
         }
       }
     },

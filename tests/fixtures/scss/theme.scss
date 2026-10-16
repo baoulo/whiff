@@ -1,0 +1,12 @@
+// Theme variables
+@use 'sass:math';
+@import 'reset';
+
+$sea: #0a3d62;
+$gap: 8px;
+
+@mixin card($pad: $gap) { padding: $pad; border-radius: math.div($gap, 2); }
+
+@function double($x) { @return $x * 2; }
+
+.boat { @include card; color: $sea; }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head><title>Ada's subscriptions</title><dateCreated>Mon, 05 Oct 2026 12:00:00 GMT</dateCreated><ownerName>Ada Example</ownerName></head>
+  <body>
+    <outline text="Sea">
+      <outline text="Harbour Times" type="rss" xmlUrl="https://news.example.org/feed.rss"/>
+      <outline text="Ada's Harbour Blog" type="rss" xmlUrl="https://blog.example.org/atom.xml"/>
+    </outline>
+    <outline text="Tech">
+      <outline text="Rust Blog" type="rss" xmlUrl="https://rust.example.org/feed.xml"/>
+    </outline>
+  </body>
+</opml>

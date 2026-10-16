@@ -1,0 +1,17 @@
+// Harbour service API
+syntax = "proto3";
+
+package harbour.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Boat {
+  string name = 1;
+  google.protobuf.Timestamp registered = 2;
+}
+
+enum Size { SIZE_UNSPECIFIED = 0; SMALL = 1; LARGE = 2; }
+
+service Berths {
+  rpc Allocate (Boat) returns (Boat);
+}
