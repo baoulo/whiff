@@ -58,6 +58,22 @@ run cargo run -q --features dev --bin whiff-dev -- catalogue --check
 run cargo run -q --features dev --bin whiff-dev -- check-deps
 run cargo run -q --features dev --bin whiff-dev -- check-boundary
 
+# --- fixtures: what git stores must be what the tests read -------------------
+# Line-ending conversion would silently change test inputs (CRLF fixtures).
+echo ""
+echo "==> fixtures stored byte-exact by git"
+changed=()
+while IFS= read -r f; do
+  [[ -f "$f" ]] || continue
+  cmp -s <(git show ":$f") "$f" || changed+=("$f")
+done < <(git ls-files tests/fixtures)
+if [ ${#changed[@]} -gt 0 ]; then
+  echo "error: git would store these fixtures differently from the working tree:" >&2
+  printf '  %s\n' "${changed[@]}" >&2
+  echo "run: git add --renormalize tests/fixtures" >&2
+  exit 1
+fi
+
 # --- each feature on its own -------------------------------------------------
 if cargo hack --version >/dev/null 2>&1; then
   CARGO_TARGET_DIR=target/hack RUSTFLAGS="-D warnings" run cargo hack check --each-feature --no-dev-deps
