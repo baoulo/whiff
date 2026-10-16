@@ -4,13 +4,19 @@ version = "0.1.0"
 edition = "2024"
 rust-version = "1.89"
 license = "MIT"
+repository = "https://github.com/baoulo/whiff"
+homepage = "https://github.com/baoulo/whiff"
+documentation = "https://docs.rs/whiff"
 description = "Sniff any file and get one JSON document describing it: identity, provenance, rights, physical properties and an LLM-ready view of its content."
 readme = "README.md"
 keywords = ["metadata", "file-format", "exif", "detection", "llm"]
 categories = ["parser-implementations", "filesystem", "command-line-utilities"]
-exclude = ["/baoulo", "/fuzz", "/tests/fixtures", "/.github"]
+exclude = ["/baoulo", "/fuzz", "/tests", "/.github", "/packaging", "/scripts", "/Sastri.toml"]
 autobins = false
 build = "build.rs"
+
+[package.metadata.docs.rs]
+features = ["full"]
 
 [lib]
 path = "src/lib.rs"
