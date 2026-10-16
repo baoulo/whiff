@@ -1,0 +1,120 @@
+---
+source: src/formats/image/emf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.wmf",
+    "stem": "sample",
+    "extension": "wmf"
+  },
+  "identification": {
+    "format": "wmf",
+    "name": "Windows Metafile",
+    "mime": "image/wmf",
+    "family": "image.vector",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.emf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 46
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 46,
+    "entropy": 2.407,
+    "entropy_scope": "file",
+    "image": {
+      "width": 192,
+      "height": 96
+    }
+  },
+  "integrity": {
+    "sha256": "3d7cc116aa6bf8c0b2b6ad600b976757a8c0315d7cd7427089e88f0f6e5524af",
+    "blake3": "6aa1bd95927b9dc3264cc4184a1c935b73e365e5542ee51f0bfcb149af24faa9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wmf": {
+      "units_per_inch": 1440,
+      "bounds": [
+        0,
+        0,
+        2880,
+        1440
+      ],
+      "placeable": true,
+      "storage": "memory",
+      "version": "3.0",
+      "declared_size": 24,
+      "objects": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.emf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

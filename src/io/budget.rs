@@ -96,6 +96,11 @@ impl Budget {
         Ok(())
     }
 
+    /// Bytes decompression may still produce.
+    pub fn remaining_decompressed(&self) -> u64 {
+        self.inner.decompressed_limit.saturating_sub(self.inner.decompressed.load(Ordering::Relaxed))
+    }
+
     /// Fail with [`SourceError::Timeout`] once the deadline has passed.
     pub fn check_deadline(&self) -> Result<(), SourceError> {
         let deadline = *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner);

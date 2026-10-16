@@ -1,0 +1,167 @@
+---
+source: src/formats/image/png.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "comfyui-workflow.png",
+    "stem": "comfyui-workflow",
+    "extension": "png"
+  },
+  "identification": {
+    "format": "png",
+    "name": "PNG image",
+    "mime": "image/png",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.png"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 456
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-03-09T14:05:00+00:00",
+        "source": "png.tIME",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-03-09T14:05:00Z",
+    "latest": "2024-03-09T14:05:00Z"
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "ai_generated",
+        "detail": "generation parameters from ComfyUI",
+        "source": "image.png"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 456,
+    "entropy": 7.116,
+    "entropy_scope": "file",
+    "image": {
+      "width": 48,
+      "height": 32,
+      "bit_depth": 8,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "8167ff355eb272855e279975f0e87d5a0665898d34a14aa8b055000e7dfd909b",
+    "blake3": "09b84e2aa9d072b3675b0c10f24194258c7a26eaea9c09b64046361e3c847871"
+  },
+  "content": {
+    "description": "Generated for the whiff test-suite; not a photograph.",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Generated for the whiff test-suite; not a photograph. a quiet harbour with fishing boats, morning fog"
+  },
+  "metadata": {
+    "ai_generation": {
+      "tool": "ComfyUI",
+      "prompt": "a quiet harbour with fishing boats, morning fog",
+      "prompts": [
+        "a quiet harbour with fishing boats, morning fog",
+        "low quality"
+      ],
+      "models": [
+        "example_xl.safetensors"
+      ],
+      "nodes": 4,
+      "node_types": {
+        "CLIPTextEncode": 2,
+        "CheckpointLoaderSimple": 1,
+        "KSampler": 1
+      }
+    },
+    "png_text": {
+      "prompt": "{\"3\": {\"class_type\": \"KSampler\", \"inputs\": {\"cfg\": 7, \"model\": [\"4\", 0], \"seed\": 42, \"steps\": 20}}, \"4\": {\"class_type\": \"CheckpointLoaderSimple\", \"inputs\": {\"ckpt_name\": \"example_xl.safetensors\"}}, \"6\": {\"class_type\": \"CLIPTextEncode\", \"inputs\": {\"clip\": [\"4\", 1], \"text\": \"a quiet harbour with fishing boats, morning fog\"}}, \"7\": {\"class_type\": \"CLIPTextEncode\", \"inputs\": {\"clip\": [\"4\", 1], \"text\": \"low quality\"}}}",
+      "Description": "Generated for the whiff test-suite; not a photograph."
+    }
+  },
+  "format": {
+    "png": {
+      "color_type": 2,
+      "color_model": "RGB",
+      "alpha": false,
+      "interlaced": false,
+      "transparency": false,
+      "chunks": 6,
+      "idat": {
+        "chunks": 1,
+        "bytes": 49
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.png",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -72,7 +72,7 @@ impl From<&Report> for Parts {
             .content
             .iter()
             .take(4)
-            .map(|d| json!(format!("{:?}: {}", d.field, d.value).to_lowercase()))
+            .map(|d| json!(format!("{}: {}", format!("{:?}", d.field).to_lowercase(), d.value)))
             .collect();
         put(&mut head, "dates", Value::Array(dates));
 

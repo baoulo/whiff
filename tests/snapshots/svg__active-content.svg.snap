@@ -1,0 +1,177 @@
+---
+source: src/formats/image/svg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "active-content.svg",
+    "stem": "active-content",
+    "extension": "svg"
+  },
+  "identification": {
+    "format": "svg",
+    "name": "SVG image",
+    "mime": "image/svg+xml",
+    "family": "image.vector",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svg",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.svg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 688
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "script",
+        "detail": "1 <script> element(s)",
+        "source": "image.svg"
+      },
+      {
+        "kind": "script",
+        "detail": "3 event handler / javascript: attribute(s)",
+        "source": "image.svg"
+      },
+      {
+        "kind": "active_content",
+        "detail": "1 <foreignObject> element(s)",
+        "source": "image.svg"
+      },
+      {
+        "kind": "external_reference",
+        "detail": "1 external link(s)",
+        "source": "image.svg"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 688,
+    "entropy": 5.189,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 688,
+      "chars": 688,
+      "words": 46,
+      "lines": 9,
+      "max_line_length": 123,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 120,
+      "height": 80
+    }
+  },
+  "integrity": {
+    "sha256": "41c55ea9d72925a30edac7236e70c5f937a6159b847a21678b582f09957116b2",
+    "blake3": "c91cb96983f8e81913d5c50350bc8dc2bf893ee8dc6e4e36ec7cf094c0125608"
+  },
+  "content": {
+    "title": "Badge with script",
+    "excerpt": "click"
+  },
+  "metadata": {},
+  "format": {
+    "svg": {
+      "width": "120",
+      "height": "80",
+      "elements": 10,
+      "element_counts": {
+        "image": 2,
+        "a": 1,
+        "div": 1,
+        "foreignObject": 1,
+        "rect": 1,
+        "script": 1,
+        "svg": 1,
+        "text": 1,
+        "title": 1
+      },
+      "embedded_images": 1,
+      "image_elements": 2,
+      "scripts": 1,
+      "event_handlers": 3,
+      "foreign_objects": 1,
+      "external_references": [
+        "https://example.org/tracker.png"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.svg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,133 @@
+---
+source: src/formats/image/xcf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.xcf",
+    "stem": "sample",
+    "extension": "xcf"
+  },
+  "identification": {
+    "format": "xcf",
+    "name": "GIMP image",
+    "mime": "image/x-xcf",
+    "family": "image.layered",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.xcf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 305
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 305,
+    "entropy": 3.309,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3,
+      "color_space": "RGB",
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "7897d0f586ad7afe4b9cd7820c5cf335ebbebf8a38ed9a541ea8f57d2cfa9219",
+    "blake3": "7f66a0b27115232b530bfe11d6c4151cab65b99d4bfd7034d96798b0003d657c"
+  },
+  "content": {
+    "description": "Harbour at dusk, painted for the whiff tests"
+  },
+  "metadata": {},
+  "format": {
+    "xcf": {
+      "version": 11,
+      "base_type": "RGB",
+      "precision": {
+        "bits": 8,
+        "linear": false
+      },
+      "compression": "zlib",
+      "parasites": [
+        "gimp-comment",
+        "gimp-image-grid"
+      ],
+      "layers": 2,
+      "layer_names": [
+        "Sky",
+        "Boats"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.xcf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

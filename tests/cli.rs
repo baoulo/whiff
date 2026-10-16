@@ -77,6 +77,7 @@ fn stdin_and_options() {
     let v = json(&out.stdout);
     assert_eq!(v["whiff"]["profile"], "minimal");
     assert_eq!(v["system"]["kind"], "memory");
+    assert!(v["source"].get("name").is_none(), "stdin has no name");
     assert!(v["integrity"]["sha256"].is_null());
 }
 

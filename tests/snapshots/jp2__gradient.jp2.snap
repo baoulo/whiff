@@ -1,0 +1,151 @@
+---
+source: src/formats/image/jp2.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gradient.jp2",
+    "stem": "gradient",
+    "extension": "jp2"
+  },
+  "identification": {
+    "format": "jp2",
+    "name": "JPEG 2000 image",
+    "mime": "image/jp2",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.jp2"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3512
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Jonas Wren"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3512,
+    "entropy": 2.822,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 16,
+      "channels": 3,
+      "color_space": "sRGB"
+    }
+  },
+  "integrity": {
+    "sha256": "32cfea0384211acaa5c412b8b3adfcf2cd4d8ccf22aacbe897369042ffd20fed",
+    "blake3": "502aa059d97898b3033799fd38b7f974c05d9e727594a8937a6207adc52d0db5"
+  },
+  "content": {
+    "title": "Moss gradient",
+    "authors": [
+      "Jonas Wren"
+    ],
+    "excerpt": "Moss gradient"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "creator": [
+          "Jonas Wren"
+        ],
+        "title": "Moss gradient"
+      }
+    }
+  },
+  "format": {
+    "jp2": {
+      "brand": "jp2",
+      "compatible_brands": [
+        "jp2"
+      ],
+      "progression_order": "LRCP",
+      "quality_layers": 1,
+      "decomposition_levels": 5,
+      "reversible": true,
+      "boxes": [
+        "jP",
+        "ftyp",
+        "jp2h",
+        "jp2c",
+        "uuid"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.jp2",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,117 @@
+---
+source: src/formats/image/hdr.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sky.hdr",
+    "stem": "sky",
+    "extension": "hdr"
+  },
+  "identification": {
+    "format": "hdr",
+    "name": "Radiance HDR image",
+    "mime": "image/vnd.radiance",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.hdr"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 369
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 369,
+    "entropy": 4.751,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 24,
+      "bit_depth": 32,
+      "channels": 3,
+      "color_space": "linear RGB"
+    }
+  },
+  "integrity": {
+    "sha256": "6f99427c6d848a5ee46858e5be748501ba51cd3215958fe4e8c5b0bb8f5b031f",
+    "blake3": "6fddd6f670c7bdad0730fcbceae6280a0d4227271974cd6879ba2aa944a86874"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hdr": {
+      "orientation": "-Y 24 +X 32",
+      "header": {
+        "gamma": "1",
+        "primaries": "0 0 0 0 0 0 0 0",
+        "format": "32-bit_rle_rgbe"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.hdr",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

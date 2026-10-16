@@ -127,7 +127,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **142** of 1004.
+* Formats with an extractor in this build: **182** of 1004.
 * Formats by family status: crate = 264, mixed = 632, impl = 108.
 * Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 61, S3/S8 = 20, S4 = 74, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 157.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
@@ -176,22 +176,22 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 35 | Maven POM | `pom.xml` | — | 1 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | groupId/artifactId/version, deps |
 | 36 | Jupyter notebook | `ipynb` | application/x-ipynb+json | 1 | `code.notebook` | `common` | `code.notebook` | serde_json | S1 | — |
 | 37 | Unknown / generic binary | `bin` `dat` `(any)` | application/octet-stream | 1 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | — |
-| 38 | JPEG | `jpg` `jpeg` `jpe` `jfif` | image/jpeg | 1 | `image.raster` | `common` | — | imagesize | S2 | APP0 JFIF / APP1 EXIF+XMP / APP2 ICC+MPF / APP13 IPTC / APP14 Adobe; quality from DQT |
-| 39 | PNG | `png` | image/png | 1 | `image.raster` | `common` | — | imagesize | S2 | tEXt/iTXt/zTXt (incl. AI-generation 'parameters'), eXIf, iCCP, pHYs, tIME, APNG acTL |
-| 40 | GIF | `gif` | image/gif | 1 | `image.raster` | `common` | — | imagesize | S2 | frames, loop (NETSCAPE2.0), comments, XMP app ext |
-| 41 | WebP | `webp` | image/webp | 1 | `image.raster` | `common` | — | imagesize | S2 | VP8/VP8L/VP8X, EXIF/XMP/ICCP chunks, animation |
-| 42 | HEIF / HEIC | `heic` `heif` `heics` `hif` | image/heic | 1 | `image.raster` | `common` | — | imagesize | S2 | ISOBMFF meta box: ispe, colr, irot, Exif/XMP items, depth/alpha aux, burst/live photo |
-| 43 | AVIF | `avif` `avifs` | image/avif | 1 | `image.raster` | `common` | — | imagesize | S2 | avif-parse + mp4-atom |
+| 38 | JPEG | `jpg` `jpeg` `jpe` `jfif` | image/jpeg | 1 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | APP0 JFIF / APP1 EXIF+XMP / APP2 ICC+MPF / APP13 IPTC / APP14 Adobe; quality from DQT |
+| 39 | PNG | `png` | image/png | 1 | `image.raster` | `common` | `image.png` | imagesize | S2 | tEXt/iTXt/zTXt (incl. AI-generation 'parameters'), eXIf, iCCP, pHYs, tIME, APNG acTL |
+| 40 | GIF | `gif` | image/gif | 1 | `image.raster` | `common` | `image.gif` | imagesize | S2 | frames, loop (NETSCAPE2.0), comments, XMP app ext |
+| 41 | WebP | `webp` | image/webp | 1 | `image.raster` | `common` | `image.webp` | imagesize | S2 | VP8/VP8L/VP8X, EXIF/XMP/ICCP chunks, animation |
+| 42 | HEIF / HEIC | `heic` `heif` `heics` `hif` | image/heic | 1 | `image.raster` | `common` | `image.heif` | imagesize | S2 | ISOBMFF meta box: ispe, colr, irot, Exif/XMP items, depth/alpha aux, burst/live photo |
+| 43 | AVIF | `avif` `avifs` | image/avif | 1 | `image.raster` | `common` | `image.heif` | imagesize | S2 | avif-parse + mp4-atom |
 | 44 | SVG | `svg` `svgz` | image/svg+xml | 1 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.vector |
-| 45 | TIFF | `tif` `tiff` | image/tiff | 1 | `image.raster` | `common` | — | imagesize | S2 | all IFDs, pages, compression, GeoKeys -&gt; geo |
-| 46 | BMP | `bmp` `dib` | image/bmp | 1 | `image.raster` | `common` | — | imagesize | S2 | header version, compression |
-| 47 | ICO / CUR | `ico` `cur` | image/vnd.microsoft.icon | 1 | `image.raster` | `common` | — | imagesize | S2 | sizes list |
-| 48 | Animated PNG | `apng` | image/apng | 1 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 49 | Adobe DNG | `dng` | image/x-adobe-dng | 1 | `image.raw` | `common` | — | rawler | S2 | — |
-| 50 | Canon CR2 / CR3 / CRW | `cr2` `cr3` `crw` | image/x-canon-cr2 | 1 | `image.raw` | `common` | — | rawler | S2 | CR3 = ISOBMFF CMT boxes |
-| 51 | Nikon NEF / NRW | `nef` `nrw` | image/x-nikon-nef | 1 | `image.raw` | `common` | — | rawler | S2 | — |
-| 52 | Sony ARW / SRF / SR2 | `arw` `srf` `sr2` | image/x-sony-arw | 1 | `image.raw` | `common` | — | rawler | S2 | — |
-| 53 | Adobe Photoshop | `psd` `psb` | image/vnd.adobe.photoshop | 1 | `image.layered` | `common` | — | psd | S2 | — |
+| 45 | TIFF | `tif` `tiff` | image/tiff | 1 | `image.raster` | `common` | `image.tiff` | imagesize | S2 | all IFDs, pages, compression, GeoKeys -&gt; geo |
+| 46 | BMP | `bmp` `dib` | image/bmp | 1 | `image.raster` | `common` | `image.bmp` | imagesize | S2 | header version, compression |
+| 47 | ICO / CUR | `ico` `cur` | image/vnd.microsoft.icon | 1 | `image.raster` | `common` | `image.ico` | imagesize | S2 | sizes list |
+| 48 | Animated PNG | `apng` | image/apng | 1 | `image.raster` | `common` | `image.png` | imagesize | S2 | — |
+| 49 | Adobe DNG | `dng` | image/x-adobe-dng | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 50 | Canon CR2 / CR3 / CRW | `cr2` `cr3` `crw` | image/x-canon-cr2 | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | CR3 = ISOBMFF CMT boxes |
+| 51 | Nikon NEF / NRW | `nef` `nrw` | image/x-nikon-nef | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 52 | Sony ARW / SRF / SR2 | `arw` `srf` `sr2` | image/x-sony-arw | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 53 | Adobe Photoshop | `psd` `psb` | image/vnd.adobe.photoshop | 1 | `image.layered` | `common` | `image.psd` | psd | S2 | — |
 | 54 | iCalendar | `ics` `ifb` `ical` | text/calendar | 1 | `text.calendar` | `common` | — | calcard | S3 | — |
 | 55 | vCard | `vcf` `vcard` | text/vcard | 1 | `text.contact` | `common` | — | calcard | S3 | — |
 | 56 | Email message (RFC 5322 / MIME) | `eml` | message/rfc822 | 1 | `email` | `common` | — | mail-parser | S3 | — |
@@ -335,15 +335,15 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 194 | pip requirements | `requirements.txt` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
 | 195 | Go modules | `go.mod` `go.sum` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
 | 196 | Encrypted / random-looking blob | `enc` `bin` | — | 2 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | high-entropy classification |
-| 197 | JPEG XL | `jxl` | image/jxl | 2 | `image.raster` | `common` | — | imagesize | S2 | jxl-oxide; container boxes Exif/xml/jumb |
-| 198 | JPEG 2000 | `jp2` `j2k` `jpf` `jpx` `jpm` `mj2` | image/jp2 | 2 | `image.raster` | `common` | — | imagesize | S2 | hayro-jpeg2000; boxes, XMP uuid box |
-| 199 | TGA | `tga` `tpic` | image/x-tga | 2 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 200 | PCX | `pcx` | image/vnd.zbrush.pcx | 2 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 201 | Netpbm PBM/PGM/PPM/PAM/PFM | `pbm` `pgm` `ppm` `pnm` `pam` `pfm` | image/x-portable-anymap | 2 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 202 | SVG / SVGZ | `svg` `svgz` | image/svg+xml | 2 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 203 | Windows Metafile / Enhanced Metafile | `wmf` `emf` `emz` `wmz` | image/emf | 2 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 204 | DirectDraw Surface | `dds` | image/vnd-ms.dds | 2 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 205 | OpenEXR | `exr` | image/x-exr | 2 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 197 | JPEG XL | `jxl` | image/jxl | 2 | `image.raster` | `common` | `image.jxl` | imagesize | S2 | jxl-oxide; container boxes Exif/xml/jumb |
+| 198 | JPEG 2000 | `jp2` `j2k` `jpf` `jpx` `jpm` `mj2` | image/jp2 | 2 | `image.raster` | `common` | `image.jp2` | imagesize | S2 | hayro-jpeg2000; boxes, XMP uuid box |
+| 199 | TGA | `tga` `tpic` | image/x-tga | 2 | `image.raster` | `common` | `image.tga` | imagesize | S2 | — |
+| 200 | PCX | `pcx` | image/vnd.zbrush.pcx | 2 | `image.raster` | `common` | `image.pcx` | imagesize | S2 | — |
+| 201 | Netpbm PBM/PGM/PPM/PAM/PFM | `pbm` `pgm` `ppm` `pnm` `pam` `pfm` | image/x-portable-anymap | 2 | `image.raster` | `common` | `image.pnm` | imagesize | S2 | — |
+| 202 | SVG / SVGZ | `svg` `svgz` | image/svg+xml | 2 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | — |
+| 203 | Windows Metafile / Enhanced Metafile | `wmf` `emf` `emz` `wmz` | image/emf | 2 | `image.vector` | `common` | `image.emf` | quick-xml | S2 | — |
+| 204 | DirectDraw Surface | `dds` | image/vnd-ms.dds | 2 | `image.texture` | `common` | `image.dds` | ddsfile, ktx2 | S2 | — |
+| 205 | OpenEXR | `exr` | image/x-exr | 2 | `image.texture` | `common` | `image.exr` | ddsfile, ktx2 | S2 | — |
 | 206 | Word macro-enabled / template | `docm` `dotx` `dotm` | application/vnd.ms-word.document.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | macros flag |
 | 207 | Excel binary workbook | `xlsb` | application/vnd.ms-excel.sheet.binary.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | calamine |
 | 208 | PowerPoint macro-enabled / template / show | `pptm` `potx` `potm` `ppsx` `ppsm` | application/vnd.ms-powerpoint.presentation.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
@@ -607,12 +607,12 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 466 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
 | 467 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
 | 468 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | -&gt; apple |
-| 469 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 469 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
 | 470 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
 | 471 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | — | imagesize | S8 | TIFF-like IFD (impl) |
 | 472 | JPEG-LS / Lossless JPEG | `jls` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 473 | MPO (multi-picture) | `mpo` | image/mpo | 3 | `image.raster` | `common` | — | imagesize | S2 | MPF index, stereo pairs |
-| 474 | Radiance HDR | `hdr` `pic` | image/vnd.radiance | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 473 | MPO (multi-picture) | `mpo` | image/mpo | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF index, stereo pairs |
+| 474 | Radiance HDR | `hdr` `pic` | image/vnd.radiance | 3 | `image.raster` | `common` | `image.hdr` | imagesize | S2 | — |
 | 475 | SGI / RGB | `sgi` `rgb` `rgba` `bw` | image/sgi | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
 | 476 | Sun Raster / XBM / XPM | `ras` `xbm` `xpm` | image/x-xpixmap | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
 | 477 | WBMP | `wbmp` | image/vnd.wap.wbmp | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
@@ -625,13 +625,13 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 484 | FITS image | `fits` `fit` `fts` | image/fits | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; sci |
 | 485 | Cineon / DPX film scan | `cin` `dpx` | image/x-dpx | 3 | `image.raster` | `common` | — | imagesize | S8 | film/TV header: timecode, frame, creator |
 | 486 | WebP2 / AVCI / HEJ2 (ISOBMFF variants) | `avci` `hej2` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 487 | Google Ultra HDR / gain-map JPEG | `jpg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | MPF + XMP hdrgm namespace |
+| 487 | Google Ultra HDR / gain-map JPEG | `jpg` | — | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF + XMP hdrgm namespace |
 | 488 | CompuServe RLE / Mac Paint | `rle` `mac` `pntg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
 | 489 | OpenRaster | `ora` | image/openraster | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
 | 490 | Krita / Procreate | `kra` `procreate` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
 | 491 | DjVu single page | `djvu` | image/vnd.djvu | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; doc.other |
 | 492 | Windows Imaging Component (CR in WIC) | `wmp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 493 | BigTIFF | `tif` `tiff` `btf` | image/tiff | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 493 | BigTIFF | `tif` `tiff` `btf` | image/tiff | 3 | `image.raster` | `common` | `image.tiff` | imagesize | S2 | — |
 | 494 | Kodak Photo CD / FlashPix | `pcd` `fpx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | FPX = OLE property sets |
 | 495 | XISF astronomy image | `xisf` | — | 3 | `image.raster` | `common` | — | imagesize | S8 | XML header: observation keywords |
 | 496 | Thumbnails cache (Windows thumbcache) | `db` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | entry count -&gt; forensic |
@@ -639,20 +639,20 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 498 | Photoshop assets (actions, brushes, swatches) | `atn` `abr` `aco` `ase` `grd` `pat` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | names list |
 | 499 | Raw editor sidecars | `xmp` `pp3` `dop` `arp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; meta.xmp; develop settings |
 | 500 | Whole-slide images | `svs` `ndpi` `scn` `mrxs` `vms` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | scanner, magnification, levels -&gt; medical |
-| 501 | HEIF image sequence / Live Photo HEIC | `heics` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | frame count |
-| 502 | Fujifilm RAF | `raf` | image/x-fuji-raf | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 503 | Olympus / OM ORF | `orf` | image/x-olympus-orf | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 504 | Panasonic RW2 / RAW | `rw2` `raw` | image/x-panasonic-rw2 | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 505 | Pentax PEF | `pef` | image/x-pentax-pef | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 506 | Samsung SRW | `srw` | image/x-samsung-srw | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 507 | Leica RWL / Hasselblad 3FR/FFF | `rwl` `3fr` `fff` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 501 | HEIF image sequence / Live Photo HEIC | `heics` | — | 3 | `image.raster` | `common` | `image.heif` | imagesize | S2 | frame count |
+| 502 | Fujifilm RAF | `raf` | image/x-fuji-raf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 503 | Olympus / OM ORF | `orf` | image/x-olympus-orf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 504 | Panasonic RW2 / RAW | `rw2` `raw` | image/x-panasonic-rw2 | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 505 | Pentax PEF | `pef` | image/x-pentax-pef | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 506 | Samsung SRW | `srw` | image/x-samsung-srw | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 507 | Leica RWL / Hasselblad 3FR/FFF | `rwl` `3fr` `fff` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 508 | Phase One IIQ / Leaf MOS | `iiq` `mos` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
 | 509 | Mamiya MEF / Minolta MRW | `mef` `mrw` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
 | 510 | Sigma X3F | `x3f` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
 | 511 | Kodak DCR/KDC/K25 / Epson ERF | `dcr` `kdc` `k25` `erf` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
 | 512 | GoPro GPR | `gpr` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 513 | Apple ProRAW (DNG) | `dng` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 514 | GIMP XCF | `xcf` | image/x-xcf | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 513 | Apple ProRAW (DNG) | `dng` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 514 | GIMP XCF | `xcf` | image/x-xcf | 3 | `image.layered` | `common` | `image.xcf` | psd | S2 | — |
 | 515 | Krita | `kra` | application/x-krita | 3 | `image.layered` | `common` | — | psd | S2 | — |
 | 516 | OpenRaster | `ora` | image/openraster | 3 | `image.layered` | `common` | — | psd | S2 | — |
 | 517 | Procreate | `procreate` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
@@ -667,11 +667,11 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 526 | Mermaid / PlantUML | `mmd` `mermaid` `puml` `plantuml` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | diagram type, nodes |
 | 527 | draw.io / diagrams.net | `drawio` `dio` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | pages, labels |
 | 528 | Visio stencil XML | `vdx` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 529 | Inkscape / Sodipodi SVG | `svg` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | inkscape:version, layers |
+| 529 | Inkscape / Sodipodi SVG | `svg` | — | 3 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | inkscape:version, layers |
 | 530 | Lottie / Bodymovin | `json` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; data.json |
 | 531 | Macromedia FreeHand | `fh` `fh11` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
 | 532 | CGM | `cgm` | image/cgm | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 533 | KTX / KTX2 | `ktx` `ktx2` | image/ktx2 | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 533 | KTX / KTX2 | `ktx` `ktx2` | image/ktx2 | 3 | `image.texture` | `common` | `image.ktx` | ddsfile, ktx2 | S2 | — |
 | 534 | Basis Universal | `basis` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
 | 535 | Valve VTF | `vtf` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
 | 536 | PVR texture | `pvr` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |

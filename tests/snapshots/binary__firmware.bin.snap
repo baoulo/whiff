@@ -1,6 +1,5 @@
 ---
 source: src/formats/binary/unknown.rs
-assertion_line: 273
 expression: report
 ---
 {
@@ -86,6 +85,12 @@ expression: report
     "extractors": [
       {
         "id": "binary.unknown",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
         "version": 1,
         "ms": 0.0,
         "status": "ok"

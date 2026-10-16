@@ -5,6 +5,7 @@
 mod catalogue;
 mod checks;
 mod new_extractor;
+mod oracle;
 
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitCode};
@@ -65,6 +66,27 @@ enum Cmd {
     CheckDeps,
     /// Check that format modules use only the plugin API.
     CheckBoundary,
+    /// Compare whiff with a reference tool (dev-time oracle; needs the tool installed).
+    Oracle {
+        #[command(subcommand)]
+        family: OracleFamily,
+    },
+}
+
+#[derive(Subcommand)]
+enum OracleFamily {
+    /// Normalised image metadata against `exiftool -use MWG`.
+    Images {
+        /// Files or directories (default: tests/fixtures). Build a larger corpus with
+        /// `scripts/fixtures/oracle-corpus.sh`.
+        paths: Vec<PathBuf>,
+        /// Minimum agreement on the gated fields, in percent.
+        #[arg(long, default_value_t = 95.0)]
+        min: f64,
+        /// List every disagreement, not the first 25.
+        #[arg(long)]
+        verbose: bool,
+    },
 }
 
 fn root() -> &'static Path {
@@ -84,6 +106,10 @@ fn main() -> ExitCode {
         Cmd::Fuzz { extractor, seconds } => fuzz(extractor.as_deref(), seconds),
         Cmd::CheckDeps => checks::deps(root()),
         Cmd::CheckBoundary => checks::boundary(root()),
+        Cmd::Oracle { family: OracleFamily::Images { paths, min, verbose } } => {
+            let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
+            oracle::images(&paths, min, verbose)
+        }
     };
     match result {
         Ok(()) => ExitCode::SUCCESS,

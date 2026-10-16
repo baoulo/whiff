@@ -1,0 +1,270 @@
+---
+source: src/formats/image/svg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "inkscape-map.svg",
+    "stem": "inkscape-map",
+    "extension": "svg"
+  },
+  "identification": {
+    "format": "svg",
+    "name": "SVG image",
+    "mime": "image/svg+xml",
+    "family": "image.vector",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svg",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.svg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1960
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Ines Halvorsen",
+    "creators": [
+      "Ines Halvorsen"
+    ],
+    "license": {
+      "url": "http://creativecommons.org/licenses/by-sa/4.0/"
+    }
+  },
+  "physical": {
+    "size_bytes": 1960,
+    "entropy": 5.137,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1960,
+      "chars": 1960,
+      "words": 115,
+      "lines": 41,
+      "max_line_length": 116,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 794,
+      "height": 559
+    }
+  },
+  "integrity": {
+    "sha256": "f731b414ac847cc9ca8ac44e0af2455e2710d218270cb2228509f3a90aaa3e61",
+    "blake3": "67bf8aa872a8d04ed7895d539d6dd55354e7f7dfe222039c9ab2b4645a02e7eb"
+  },
+  "content": {
+    "title": "Old harbour map",
+    "description": "Hand-drawn map of the old harbour with the fish market, the lighthouse and the ferry pier.",
+    "authors": [
+      "Ines Halvorsen"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "map",
+      "harbour",
+      "fish market",
+      "ferry pier",
+      "harbour map",
+      "market",
+      "pier",
+      "drawn map",
+      "fish",
+      "ferry"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        2
+      ],
+      [
+        "fish",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "lighthouse",
+        2
+      ],
+      [
+        "map",
+        2
+      ],
+      [
+        "market",
+        2
+      ],
+      [
+        "pier",
+        2
+      ]
+    ],
+    "excerpt": "Fish market Lighthouse Ferry pier & ticket office",
+    "tags": [
+      "map",
+      "harbour",
+      "fish market",
+      "ferry pier",
+      "harbour map",
+      "market"
+    ]
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Old harbour map",
+        "creator": {
+          "Agent": {
+            "title": "Ines Halvorsen"
+          }
+        },
+        "rights": {
+          "Agent": {
+            "title": "(c) 2024 Ines Halvorsen"
+          }
+        },
+        "date": "2024-04-12",
+        "subject": [
+          "map",
+          "harbour"
+        ]
+      },
+      "cc": {
+        "license": "http://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    }
+  },
+  "format": {
+    "svg": {
+      "width": "210mm",
+      "height": "148mm",
+      "view_box": [
+        0.0,
+        0.0,
+        210.0,
+        148.0
+      ],
+      "version": "1.1",
+      "software": "Inkscape 1.3.2",
+      "document_name": "harbour-map.svg",
+      "layers": [
+        "Water",
+        "Labels"
+      ],
+      "elements": 27,
+      "element_counts": {
+        "title": 4,
+        "text": 3,
+        "Agent": 2,
+        "g": 2,
+        "li": 2,
+        "Bag": 1,
+        "RDF": 1,
+        "Work": 1,
+        "creator": 1,
+        "date": 1,
+        "desc": 1,
+        "license": 1,
+        "metadata": 1,
+        "namedview": 1,
+        "rect": 1,
+        "rights": 1,
+        "subject": 1,
+        "svg": 1,
+        "tspan": 1
+      },
+      "embedded_images": 0,
+      "image_elements": 0,
+      "fonts": [
+        "DejaVu Serif"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.svg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

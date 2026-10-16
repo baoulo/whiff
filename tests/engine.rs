@@ -188,6 +188,7 @@ fn writers_fill_normalised_sections() {
         [
             "test.demo",
             "meta.demo",
+            "meta.mwg",
             "text.language",
             "text.excerpt",
             "text.keywords",

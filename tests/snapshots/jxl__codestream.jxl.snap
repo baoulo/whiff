@@ -1,0 +1,109 @@
+---
+source: src/formats/image/jxl.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "codestream.jxl",
+    "stem": "codestream",
+    "extension": "jxl"
+  },
+  "identification": {
+    "format": "jxl",
+    "name": "JPEG XL image",
+    "mime": "image/jxl",
+    "family": "image.raster",
+    "confidence": 0.73,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.jxl"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 159
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 159,
+    "entropy": 6.533,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48
+    }
+  },
+  "integrity": {
+    "sha256": "c4b7d27715cbec2213cc5ec24c58fe5709ef38af14063300c7ab199bc51d58ea",
+    "blake3": "5e4ad2bc91a23a8f1f6ffb17a6a47efcd560371c6c4a61e5bdca6ee16bdab8c4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jxl": {
+      "container": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.jxl",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

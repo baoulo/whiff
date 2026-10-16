@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vra xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <work id="w_0001" source="Example Museum" refid="EM.2024.17">
+    <titleSet>
+      <display>Harbour at Dusk</display>
+      <title type="repository" pref="true">Harbour at Dusk</title>
+    </titleSet>
+    <agentSet>
+      <display>Ines Halvorsen (Norwegian, born 1981)</display>
+      <agent><name type="personal">Halvorsen, Ines</name><role>painter</role></agent>
+    </agentSet>
+    <dateSet>
+      <display>2019</display>
+      <date type="creation"><earliestDate>2019</earliestDate><latestDate>2019</latestDate></date>
+    </dateSet>
+    <rightsSet>
+      <display>(c) Ines Halvorsen; licensed to Example Museum</display>
+    </rightsSet>
+    <materialSet><display>oil on canvas</display></materialSet>
+    <measurementsSet><display>60 x 90 cm</display></measurementsSet>
+  </work>
+</vra>

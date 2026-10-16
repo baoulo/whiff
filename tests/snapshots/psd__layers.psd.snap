@@ -1,0 +1,218 @@
+---
+source: src/formats/image/psd.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "layers.psd",
+    "stem": "layers",
+    "extension": "psd"
+  },
+  "identification": {
+    "format": "psd",
+    "name": "Photoshop document",
+    "mime": "image/vnd.adobe.photoshop",
+    "family": "image.layered",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.psd"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 44670
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Ines Halvorsen",
+    "creators": [
+      "Ines Halvorsen"
+    ]
+  },
+  "physical": {
+    "size_bytes": 44670,
+    "entropy": 7.088,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 16,
+      "channels": 3,
+      "color_space": "RGB"
+    }
+  },
+  "integrity": {
+    "sha256": "811a73624c09e962ad18399a7a3993d4a97252ec1a89b0773c82f744df5c9345",
+    "blake3": "811e350396d4f9d55ce268995af3bb4caf8c5c52a36c51fa019ee1abc72bc64c"
+  },
+  "content": {
+    "title": "Sail study",
+    "authors": [
+      "Ines Halvorsen"
+    ],
+    "keywords": [
+      "sail"
+    ],
+    "excerpt": "Sail study",
+    "tags": [
+      "sail"
+    ]
+  },
+  "metadata": {
+    "photoshop": {
+      "resources": [
+        "iptc_naa",
+        "exif_data_1",
+        "xmp"
+      ]
+    },
+    "iptc": {
+      "Keywords": [
+        "sail"
+      ],
+      "By-line": [
+        "Ines Halvorsen"
+      ],
+      "ApplicationRecordVersion": 4
+    },
+    "exif": {
+      "YCbCrPositioning": "centered",
+      "Copyright": "(c) 2024 Ines Halvorsen"
+    },
+    "xmp": {
+      "dc": {
+        "title": "Sail study"
+      }
+    }
+  },
+  "format": {
+    "psd": {
+      "version": 1,
+      "color_mode": "RGB",
+      "channels": 3,
+      "merged_alpha": false,
+      "layers": 2,
+      "layer_kinds": {
+        "text": 0,
+        "group": 0,
+        "adjustment": 0,
+        "smart_object": 0,
+        "hidden": 0
+      },
+      "layer_list": [
+        {
+          "name": "Background",
+          "kind": "pixel",
+          "visible": true,
+          "opacity": 100.0,
+          "blend_mode": "normal",
+          "bounds": [
+            0,
+            0,
+            64,
+            48
+          ]
+        },
+        {
+          "name": "Sail",
+          "kind": "pixel",
+          "visible": true,
+          "opacity": 100.0,
+          "blend_mode": "mron",
+          "bounds": [
+            16,
+            12,
+            48,
+            36
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.psd",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.photoshop",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.iptc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
