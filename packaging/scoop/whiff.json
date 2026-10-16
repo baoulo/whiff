@@ -6,7 +6,7 @@
   "architecture": {
     "64bit": {
       "url": "https://github.com/baoulo/whiff/releases/download/v0.1.0/whiff-v0.1.0-windows-x86_64.zip",
-      "hash": "REPLACE_AFTER_RELEASE"
+      "hash": "ed948b4504c1f4cf03b27e94de0a6e108cbe407d87d244f400a10bdd5f4accb0"
     }
   },
   "bin": "whiff.exe",
