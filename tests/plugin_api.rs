@@ -130,7 +130,7 @@ fn budgets_and_error_conversions() {
         (ExtractError::Internal("x".into()), "internal"),
     ] {
         assert_eq!(e.kind(), kind);
-        assert!(!e.to_string().is_empty());
+        assert_ne!(e.to_string(), "");
     }
     assert_eq!(ExtractError::from(SourceError::Timeout), ExtractError::Timeout);
     assert_eq!(ExtractError::from(SourceError::Io("x".into())), ExtractError::Io("x".into()));
