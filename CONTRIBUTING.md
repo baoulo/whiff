@@ -53,10 +53,10 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 
 ```sh
 cargo fmt
-cargo clippy --all-targets --features dev
-cargo test --features dev
-cargo run --features dev --bin whiff-dev -- catalogue --check
+scripts/ci.sh
 ```
+
+`scripts/ci.sh` runs the same checks as CI: fmt, clippy, tests, docs, a coverage gate of at least 80% of lines (needs `cargo install cargo-llvm-cov`), catalogue / dependency-budget / plugin-boundary checks, and `cargo deny`. Checks whose tools are missing locally (`cargo-hack`, the MSRV toolchain, the wasm target, nightly fuzzing) are skipped with an install hint; CI still runs them.
 
 ## Extractors in other crates
 

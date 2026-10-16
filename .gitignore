@@ -7,3 +7,4 @@
 /fuzz/Cargo.lock
 *.snap.new
 *.pending-snap
+lcov.info
