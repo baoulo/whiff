@@ -3,8 +3,8 @@
 # the Scoop manifest from the release's SHA256SUMS, ready to copy into
 # baoulo/homebrew-tap and baoulo/scoop-bucket.
 #
-#   scripts/update-packaging.sh 0.1.0
-#   SUMS_FILE=SHA256SUMS scripts/update-packaging.sh 0.1.0   # use a local file
+#   scripts/update-packaging.sh 0.2.0
+#   SUMS_FILE=SHA256SUMS scripts/update-packaging.sh 0.2.0   # use a local file
 set -euo pipefail
 
 VERSION="${1:?usage: $0 <version>}"

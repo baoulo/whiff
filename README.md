@@ -2,7 +2,7 @@
 
 **whiff** (verb): to catch the scent of something. Point `whiff` at any file and it returns one JSON document describing it: what it is, where it came from, who owns it, when it was made, what rights apply, its physical properties, and a compact, LLM-ready view of its content. Pure Rust, safe on untrusted input.
 
-> **Status: Stage 2** (unreleased; 0.1 on crates.io is Stage 1). Every file gets the universal sections (identification, system, temporal, security, physical, integrity), plus `wc` statistics for text, owner names, extended attributes (macOS quarantine and "Where from", Finder tags, Windows `Zone.Identifier`), and a language, keywords, keyword frequency, excerpt and (in `full` / `llm`) a summary for any prose. Extractors cover plain text, logs, diffs, Markdown, HTML, XML, feeds, JSON / NDJSON / JSON5, YAML, TOML, INI / properties / dotenv, CSV / TSV, SQL, ~40 programming languages, package manifests, Jupyter notebooks, Dockerfiles and Makefiles, and 41 image formats: JPEG, PNG, GIF, WebP, TIFF, HEIC / AVIF, JPEG XL, JPEG 2000, PSD, SVG, camera raw (DNG, CR2, CR3, NEF, ARW, ORF, RW2, PEF, RAF, SRW) and more, with EXIF, XMP, IPTC, ICC and Photoshop metadata reconciled the way the Metadata Working Group specifies. Other formats are still identified by signature. [`docs/metadata-extracted.md`](https://github.com/baoulo/whiff/blob/main/docs/metadata-extracted.md) lists the 1004 formats planned, what is extracted from each, and which extractor handles it today.
+> **Status: 0.2 (Stage 2).** Every file gets the universal sections (identification, system, temporal, security, physical, integrity), plus `wc` statistics for text, owner names, extended attributes (macOS quarantine and "Where from", Finder tags, Windows `Zone.Identifier`), and a language, keywords, keyword frequency, excerpt and (in `full` / `llm`) a summary for any prose. Extractors cover plain text, logs, diffs, Markdown, HTML, XML, feeds, JSON / NDJSON / JSON5, YAML, TOML, INI / properties / dotenv, CSV / TSV, SQL, ~40 programming languages, package manifests, Jupyter notebooks, Dockerfiles and Makefiles, and 41 image formats: JPEG, PNG, GIF, WebP, TIFF, HEIC / AVIF, JPEG XL, JPEG 2000, PSD, SVG, camera raw (DNG, CR2, CR3, NEF, ARW, ORF, RW2, PEF, RAF, SRW) and more, with EXIF, XMP, IPTC, ICC and Photoshop metadata reconciled the way the Metadata Working Group specifies. Other formats are still identified by signature. [`docs/metadata-extracted.md`](https://github.com/baoulo/whiff/blob/main/docs/metadata-extracted.md) lists the 1004 formats planned, what is extracted from each, and which extractor handles it today.
 
 ## Install
 
@@ -81,7 +81,7 @@ let compact = report.llm_view(800); // ~800 tokens
 
 ```toml
 # library only, without the CLI's dependencies
-whiff = { version = "0.1", default-features = false, features = ["common"] }
+whiff = { version = "0.2", default-features = false, features = ["common"] }
 ```
 
 ## The report
@@ -98,7 +98,7 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 |---|---|---|
 | `common` | yes | text, logs, diffs, Markdown, HTML, XML, feeds, JSON, YAML, TOML, INI, CSV, SQL, source code, package manifests, notebooks, Dockerfiles, Makefiles, raster / vector / layered images, camera raw and GPU textures; documents, email, media, archives, executables and more in later releases |
 | `cli` | yes | the `whiff` binary |
-| `geo`, `science`, `data`, `cad`, `forensics`, `games` | no | specialist collections (GIS, scientific and medical, columnar data, CAD and 3D, forensics, games); reserved, empty in 0.1 |
+| `geo`, `science`, `data`, `cad`, `forensics`, `games` | no | specialist collections (GIS, scientific and medical, columnar data, CAD and 3D, forensics, games); reserved, empty in 0.2 |
 | `full` | no | all collections |
 
 The minimum supported Rust version is 1.89.

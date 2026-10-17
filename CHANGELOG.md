@@ -4,7 +4,7 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased (0.2.0)
+## 0.2.0 — 2026-10-17
 
 Images and embedded metadata blocks.
 
@@ -33,6 +33,12 @@ Images and embedded metadata blocks.
   fields with `exiftool -use MWG`; `scripts/fixtures/` regenerates the image
   fixtures and a 200-image oracle corpus.
 - MSRV is now Rust 1.89.
+
+Fixes:
+
+- Reports read from stdin no longer carry the source name `-`.
+- The LLM view no longer lowercases date values (`T` and `Z` came out as
+  `t` and `z`).
 
 ## 0.1.0 — 2026-10-16
 
