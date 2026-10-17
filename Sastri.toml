@@ -2,7 +2,9 @@
 # Secrets are never stored here. CI already exists (.github/workflows/ci.yml).
 # The release workflow was generated once by sastri and is now maintained by
 # hand (static musl Linux builds, `--features full`, publish gated on the tag
-# matching Cargo.toml), so `github_releases` stays off: do not regenerate it.
+# matching Cargo.toml, Homebrew tap and Scoop bucket pushed by the
+# `update-packaging` job before crates.io), so `github_releases` stays off:
+# do not regenerate it.
 
 [project]
 name = "whiff"
