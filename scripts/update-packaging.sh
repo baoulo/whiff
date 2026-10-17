@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # After a release: set the version and checksums in the Homebrew formula and
-# the Scoop manifest from the release's SHA256SUMS, ready to copy into
-# baoulo/homebrew-tap and baoulo/scoop-bucket.
+# the Scoop manifest from the release's SHA256SUMS. The release workflow runs
+# this and pushes the results to baoulo/homebrew-tap and baoulo/scoop-bucket;
+# run it by hand only to recover from a failed release.
 #
 #   scripts/update-packaging.sh 0.2.0
 #   SUMS_FILE=SHA256SUMS scripts/update-packaging.sh 0.2.0   # use a local file
