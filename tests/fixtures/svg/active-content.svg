@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="80" onload="init()">
+  <title>Badge with script</title>
+  <script type="text/javascript"><![CDATA[ function init() { document.title = "loaded"; } ]]></script>
+  <rect width="120" height="80" fill="#1d3557" onclick="alert(1)" />
+  <a xlink:href="javascript:void(0)"><text x="10" y="40" fill="#fff">click</text></a>
+  <image href="https://example.org/tracker.png" width="1" height="1" />
+  <image href="data:image/png;base64,iVBORw0KGgo=" width="1" height="1" />
+  <foreignObject width="100" height="20"><div xmlns="http://www.w3.org/1999/xhtml">html inside</div></foreignObject>
+</svg>

@@ -188,6 +188,7 @@ fn writers_fill_normalised_sections() {
         [
             "test.demo",
             "meta.demo",
+            "meta.mwg",
             "text.language",
             "text.excerpt",
             "text.keywords",
@@ -464,4 +465,14 @@ fn random_input_never_breaks_the_engine() {
         let back: whiff::Report = serde_json::from_value(json).unwrap();
         assert_eq!(back, r);
     }
+}
+
+/// Fuzz crash (CA 9A 3B under `image.pnm`): a two-byte character where the
+/// Netpbm magic should be was sliced inside the character.
+#[test]
+fn pnm_rejects_a_non_ascii_header() {
+    let engine = Engine::builder().only(["image.pnm"]).build();
+    let r = engine.extract_bytes(Some("x.pnm"), b"\xca\x9a;".to_vec());
+    let pnm = r.diagnostics.extractors.iter().find(|e| e.id == "image.pnm").expect("image.pnm ran");
+    assert_eq!(pnm.status, RunStatus::Error, "rejected, not a panic");
 }

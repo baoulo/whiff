@@ -1,0 +1,115 @@
+---
+source: src/formats/image/jp2.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "codestream.j2k",
+    "stem": "codestream",
+    "extension": "j2k"
+  },
+  "identification": {
+    "format": "j2k",
+    "name": "JPEG 2000 codestream",
+    "mime": "image/x-jp2-codestream",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.jp2"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 579
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 579,
+    "entropy": 6.989,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 16,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "f72545373f101f2c9747ec0feaf168dd167ee1390d17136ba9a74d54493ba725",
+    "blake3": "9ddf217e052ea76f01565a559c5660e696f956e08a44a8bf05de07f7c41262a1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "j2k": {
+      "tiles": 1,
+      "progression_order": "LRCP",
+      "quality_layers": 1,
+      "decomposition_levels": 3,
+      "reversible": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.jp2",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

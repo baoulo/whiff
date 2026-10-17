@@ -1,0 +1,112 @@
+---
+source: src/formats/image/dds.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dxt5.dds",
+    "stem": "dxt5",
+    "extension": "dds"
+  },
+  "identification": {
+    "format": "dds",
+    "name": "DirectDraw Surface",
+    "mime": "image/vnd-ms.dds",
+    "family": "image.texture",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.dds"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1488
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1488,
+    "entropy": 3.56,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 32
+    }
+  },
+  "integrity": {
+    "sha256": "5c18973a23b9b23a10a77c2bc1ad54d3f10927468e62bdcb8bf022b9ab6eb155",
+    "blake3": "a45e2b94f6539c966a9f2ff78de19a0c9d8101ac960224b1b2d119212da7c7f3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dds": {
+      "pixel_format": "DXT5",
+      "mipmaps": 4,
+      "cubemap": false,
+      "complex": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.dds",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

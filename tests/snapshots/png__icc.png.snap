@@ -1,0 +1,149 @@
+---
+source: src/formats/image/png.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "icc.png",
+    "stem": "icc",
+    "extension": "png"
+  },
+  "identification": {
+    "format": "png",
+    "name": "PNG image",
+    "mime": "image/png",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.png"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 408
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 408,
+    "entropy": 6.944,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 32,
+      "bit_depth": 8,
+      "channels": 3,
+      "color_space": "whiff test sRGB-like profile"
+    }
+  },
+  "integrity": {
+    "sha256": "c197bb2600eefe152d8ffb018f50fb13f3b636e5adc34ab4635830676eaaf205",
+    "blake3": "c26f8843b1cb89b6d12c8a3534ef6038279e34404102035ad2acd279fbf7efe2"
+  },
+  "content": {},
+  "metadata": {
+    "icc": {
+      "version": "4.3.0",
+      "class": "display",
+      "color_space": "RGB",
+      "pcs": "XYZ",
+      "cmm": "none",
+      "platform": "APPL",
+      "manufacturer": "none",
+      "model": "none",
+      "created": "2024-01-01T00:00:00",
+      "rendering_intent": "perceptual",
+      "size_bytes": 440,
+      "description": "whiff test sRGB-like profile",
+      "copyright": "CC0-1.0, whiff project",
+      "white_point": [
+        0.9642,
+        1.0,
+        0.8249
+      ]
+    }
+  },
+  "format": {
+    "png": {
+      "color_type": 2,
+      "color_model": "RGB",
+      "alpha": false,
+      "interlaced": false,
+      "icc_profile_name": "icm",
+      "transparency": false,
+      "chunks": 4,
+      "idat": {
+        "chunks": 1,
+        "bytes": 82
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.png",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.icc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

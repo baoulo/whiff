@@ -1,0 +1,108 @@
+---
+source: src/formats/image/qoi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gradient.qoi",
+    "stem": "gradient",
+    "extension": "qoi"
+  },
+  "identification": {
+    "format": "qoi",
+    "name": "QOI image",
+    "mime": "image/qoi",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.qoi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 142
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 142,
+    "entropy": 5.078,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 24,
+      "bit_depth": 8,
+      "channels": 3,
+      "color_space": "sRGB"
+    }
+  },
+  "integrity": {
+    "sha256": "a9bb23a5fe1085d17106e39ab1c9856940276b5377e703a76f7c7b0d5a117aef",
+    "blake3": "38321a68d37142be5a28ac6c9c4b6a2632e54a183f9a4c1d5c46afd4b9f87f86"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.qoi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

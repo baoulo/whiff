@@ -1,0 +1,119 @@
+---
+source: src/formats/image/bmp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "palette-v3.bmp",
+    "stem": "palette-v3",
+    "extension": "bmp"
+  },
+  "identification": {
+    "format": "bmp",
+    "name": "BMP image",
+    "mime": "image/bmp",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.bmp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 302
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 302,
+    "entropy": 0.418,
+    "entropy_scope": "file",
+    "image": {
+      "width": 40,
+      "height": 30,
+      "bit_depth": 1,
+      "channels": 3,
+      "color_space": "palette"
+    }
+  },
+  "integrity": {
+    "sha256": "53beeb31af3e80ca4d667f007d9c24e7ce1870b60c145e3ba20cdb27b239841e",
+    "blake3": "883d9e7401c0a5fbb97ff5a2947fbe7b637cecacc6f41cacb157925cf9732f42"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bmp": {
+      "header": "BITMAPINFOHEADER",
+      "top_down": false,
+      "planes": 1,
+      "bits_per_pixel": 1,
+      "declared_size": 302,
+      "pixel_data_offset": 62,
+      "compression": "none",
+      "palette_colors": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.bmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

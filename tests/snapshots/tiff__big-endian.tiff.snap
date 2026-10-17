@@ -1,0 +1,166 @@
+---
+source: src/formats/image/tiff.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "big-endian.tiff",
+    "stem": "big-endian",
+    "extension": "tiff"
+  },
+  "identification": {
+    "format": "tiff",
+    "name": "TIFF image",
+    "mime": "image/tiff",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.tiff"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4872
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4872,
+    "entropy": 1.957,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 24,
+      "bit_depth": 16,
+      "channels": 3,
+      "orientation": 1
+    }
+  },
+  "integrity": {
+    "sha256": "31aad4fbc987c9e895bb550eb38f30d4fe31d8d5aadef3f175d973060f05bc20",
+    "blake3": "39f35e4400edd44db71b6643774dd1c5939d3732884debbaf7cbe5f7037cd9f4"
+  },
+  "content": {},
+  "metadata": {
+    "exif": {
+      "ImageWidth": 32,
+      "ImageLength": 24,
+      "BitsPerSample": [
+        16,
+        16,
+        16
+      ],
+      "Compression": "uncompressed",
+      "PhotometricInterpretation": "RGB",
+      "Orientation": 1,
+      "SamplesPerPixel": 3,
+      "RowsPerStrip": 24,
+      "PlanarConfiguration": 1,
+      "WhitePoint": [
+        0.3127,
+        0.329
+      ],
+      "PrimaryChromaticities": [
+        0.64,
+        0.33,
+        0.3,
+        0.6,
+        0.15,
+        0.06
+      ],
+      "unknown_tags": 2
+    }
+  },
+  "format": {
+    "tiff": {
+      "byte_order": "big-endian",
+      "bigtiff": false,
+      "compression": "none",
+      "photometric": "RGB",
+      "tiled": false,
+      "pages": 1,
+      "page_list": [
+        {
+          "width": 32,
+          "height": 24,
+          "samples_per_pixel": 3,
+          "bits_per_sample": [
+            16,
+            16,
+            16
+          ],
+          "compression": "none",
+          "photometric": "RGB"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.tiff",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

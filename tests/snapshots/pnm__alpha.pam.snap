@@ -1,0 +1,113 @@
+---
+source: src/formats/image/pnm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "alpha.pam",
+    "stem": "alpha",
+    "extension": "pam"
+  },
+  "identification": {
+    "format": "pnm",
+    "name": "Netpbm image",
+    "mime": "image/x-portable-anymap",
+    "family": "image.raster",
+    "confidence": 0.8,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.pnm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1605
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1605,
+    "entropy": 1.691,
+    "entropy_scope": "file",
+    "image": {
+      "width": 16,
+      "height": 12,
+      "bit_depth": 16,
+      "channels": 4
+    }
+  },
+  "integrity": {
+    "sha256": "e340f2f6f0ea8ba591717033aa81b080cf4f0150dc1e1e6e70d63f6e7672e3d4",
+    "blake3": "3afd44faac04f196007391972d596478bd9e502a49e354b74d429d34de73d79a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pnm": {
+      "variant": "PAM",
+      "maxval": 65535,
+      "tuple_type": "RGB_ALPHA"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.pnm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

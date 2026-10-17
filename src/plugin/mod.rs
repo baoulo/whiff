@@ -20,7 +20,8 @@ mod text;
 mod values;
 
 pub use context::{
-    ContentWriter, Context, ImageWriter, MAX_OUTLINE, PhysicalWriter, RightsWriter, SecurityWriter, TemporalWriter,
+    Compression, ContentWriter, Context, ImageWriter, MAX_OUTLINE, PhysicalWriter, RightsWriter, SecurityWriter,
+    TemporalWriter,
 };
 pub use registry::Registry;
 pub use spec::{BlockKind, Cost, ExtractorMeta, FormatSpec, Magic, Probe, Sniff};
@@ -28,6 +29,7 @@ pub use text::{TextChunk, TextRole, TextStore};
 pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
 pub use crate::engine::{Options, Profile};
+pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;
 pub use crate::text::license::{find_copyright, identify_license, spdx_identifier};
 pub use crate::text::sensitive::is_secret_key;
@@ -92,6 +94,9 @@ pub trait BlockDecoder: Send + Sync + 'static {
 /// When an analyzer runs relative to the others.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum AnalyzerStage {
+    /// Normalising embedded metadata (EXIF / IPTC / XMP by MWG rules) into
+    /// title, creators, rights and dates, before the text analyzers read them.
+    Metadata,
     /// Language identification (the text analyzers depend on it).
     Language,
     /// Keywords, keyword frequency, summary, excerpt.

@@ -1,0 +1,146 @@
+---
+source: src/formats/image/svg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "illustrator-icon.svg",
+    "stem": "illustrator-icon",
+    "extension": "svg"
+  },
+  "identification": {
+    "format": "svg",
+    "name": "SVG image",
+    "mime": "image/svg+xml",
+    "family": "image.vector",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svg",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.svg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 355
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 355,
+    "entropy": 5.263,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 355,
+      "chars": 355,
+      "words": 44,
+      "lines": 5,
+      "max_line_length": 165,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 24,
+      "height": 24
+    }
+  },
+  "integrity": {
+    "sha256": "a02235bf478a3df536d5e5ce17b37df51b772470e060047228eb12ce0152b540",
+    "blake3": "b8b244473ced14125ba6d2f4bcdc7dfaef4b521522afd2193b97808711ac40a9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "svg": {
+      "width": null,
+      "height": null,
+      "view_box": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "version": "1.1",
+      "software": "Adobe Illustrator 28.0.0",
+      "elements": 2,
+      "element_counts": {
+        "path": 1,
+        "svg": 1
+      },
+      "embedded_images": 0,
+      "image_elements": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.svg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

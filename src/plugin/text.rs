@@ -52,7 +52,14 @@ impl TextStore {
     }
 
     /// Add text; anything beyond the limit is dropped (cut on a char boundary).
+    /// A title, caption or comment identical to one already stored is skipped:
+    /// the same field often arrives from several metadata blocks.
     pub fn push(&mut self, role: TextRole, text: &str) {
+        if matches!(role, TextRole::Title | TextRole::Caption | TextRole::Comment)
+            && self.chunks.iter().any(|c| c.role == role && c.text == text)
+        {
+            return;
+        }
         let room = self.limit.saturating_sub(self.bytes);
         if room == 0 {
             if !text.is_empty() {

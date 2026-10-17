@@ -1,0 +1,183 @@
+---
+source: src/formats/image/png.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tagged.png",
+    "stem": "tagged",
+    "extension": "png"
+  },
+  "identification": {
+    "format": "png",
+    "name": "PNG image",
+    "mime": "image/png",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.png"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1059
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2023-03-20T06:15:00",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2023 Jonas Wren",
+    "creators": [
+      "Jonas Wren"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1059,
+    "entropy": 6.32,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 16,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "865b0e91f870559b85ff2b91c8ec8f2b333af686084696ab3e6b19af37fd1ea2",
+    "blake3": "525980e1ce3efb5dfbb8cef9239a6d0b05a487410719f13b82944b9bd78683a8"
+  },
+  "content": {
+    "title": "Tide chart",
+    "description": "Harbour tide chart, spring tides",
+    "authors": [
+      "Jonas Wren"
+    ],
+    "keywords": [
+      "tides",
+      "chart"
+    ],
+    "excerpt": "Harbour tide chart, spring tides Tide chart",
+    "tags": [
+      "tides",
+      "chart"
+    ]
+  },
+  "metadata": {
+    "png_text": {
+      "Author": "Jonas Wren",
+      "Copyright": "(c) 2023 Jonas Wren",
+      "Description": "Harbour tide chart, spring tides",
+      "Software": "whiff fixtures",
+      "Title": "Tide chart"
+    },
+    "xmp": {
+      "dc": {
+        "subject": [
+          "tides",
+          "chart"
+        ]
+      }
+    },
+    "exif": {
+      "YCbCrPositioning": "centered",
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2023:03:20 06:15:00",
+      "ComponentsConfiguration": "YCbCr_",
+      "ColorSpace": "uncalibrated"
+    }
+  },
+  "format": {
+    "png": {
+      "color_type": 2,
+      "color_model": "RGB",
+      "alpha": false,
+      "interlaced": false,
+      "transparency": false,
+      "chunks": 10,
+      "idat": {
+        "chunks": 1,
+        "bytes": 212
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.png",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

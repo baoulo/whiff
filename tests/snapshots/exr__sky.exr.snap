@@ -1,0 +1,151 @@
+---
+source: src/formats/image/exr.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sky.exr",
+    "stem": "sky",
+    "extension": "exr"
+  },
+  "identification": {
+    "format": "exr",
+    "name": "OpenEXR image",
+    "mime": "image/x-exr",
+    "family": "image.texture",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.exr"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2058
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2058,
+    "entropy": 3.968,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 24,
+      "bit_depth": 16,
+      "channels": 3,
+      "color_space": "linear"
+    }
+  },
+  "integrity": {
+    "sha256": "23385a24e10071a101de3c8596e25a47086f41145186e6f1f3b66b59dd6f368a",
+    "blake3": "350d0baeca3822ff30a132b27d38c2b531f760513b785037318b917d84e06e7f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "exr": {
+      "version": 2,
+      "tiled": false,
+      "deep": false,
+      "multipart": false,
+      "attributes": {
+        "channels": [
+          {
+            "name": "B",
+            "type": "half"
+          },
+          {
+            "name": "G",
+            "type": "half"
+          },
+          {
+            "name": "R",
+            "type": "half"
+          }
+        ],
+        "compression": "PIZ",
+        "dataWindow": [
+          0,
+          0,
+          31,
+          23
+        ],
+        "displayWindow": [
+          0,
+          0,
+          31,
+          23
+        ],
+        "lineOrder": "increasing Y",
+        "pixelAspectRatio": 1.0,
+        "screenWindowCenter": [
+          0.0,
+          0.0
+        ],
+        "screenWindowWidth": 1.0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.exr",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

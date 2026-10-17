@@ -1,0 +1,249 @@
+---
+source: src/formats/image/webp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lossy.webp",
+    "stem": "lossy",
+    "extension": "webp"
+  },
+  "identification": {
+    "format": "webp",
+    "name": "WebP image",
+    "mime": "image/webp",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.webp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4732
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-05-01T19:42:10+02:00",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2024-05-01T19:42:10",
+        "source": "exif.DateTimeDigitized",
+        "tz_known": false
+      }
+    ],
+    "earliest": "2024-05-01T17:42:10Z",
+    "latest": "2024-05-01T17:42:10Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Mira Castell, CC BY 4.0",
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Castell Studio",
+    "license": {
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "marked": true
+  },
+  "physical": {
+    "size_bytes": 4732,
+    "entropy": 3.611,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "6b8897e61cfb78af6a7d741e464fdfc1cefddd562e68834e741a5b323bd31702",
+    "blake3": "e673dd1f2f8fd7d3b21b520986b1e3e993805a7d84c046e076dd975c9c50c14b"
+  },
+  "content": {
+    "title": "Old harbour",
+    "description": "Fishing boats in the old harbour at dusk",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "boats",
+      "dusk"
+    ],
+    "excerpt": "Old harbour Fishing boats in the old harbour at dusk",
+    "tags": [
+      "Marseille",
+      "France",
+      "harbour",
+      "boats",
+      "dusk"
+    ],
+    "location": {
+      "lat": 43.2951,
+      "lon": 5.3739,
+      "alt_m": 12.0,
+      "source": "exif.GPS"
+    }
+  },
+  "metadata": {
+    "exif": {
+      "ImageDescription": "Fishing boats in the old harbour at dusk",
+      "Make": "Example Optics",
+      "Model": "Example X100",
+      "XResolution": 300.0,
+      "YResolution": 300.0,
+      "ResolutionUnit": "inch",
+      "Artist": "Mira Castell",
+      "YCbCrPositioning": "centered",
+      "Copyright": "(c) 2024 Mira Castell, CC BY 4.0",
+      "ExposureTime": "1/250",
+      "FNumber": 5.6,
+      "PhotographicSensitivity": 200,
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:05:01 19:42:10",
+      "DateTimeDigitized": "2024:05:01 19:42:10",
+      "OffsetTimeOriginal": "+02:00",
+      "ComponentsConfiguration": "YCbCr_",
+      "FocalLength": 23.0,
+      "ColorSpace": "uncalibrated",
+      "LensModel": "Example 23mm f/2",
+      "GPSVersionID": "2.3.0.0",
+      "GPSLatitudeRef": "N",
+      "GPSLatitude": [
+        43.0,
+        17.0,
+        42.36
+      ],
+      "GPSLongitudeRef": "E",
+      "GPSLongitude": [
+        5.0,
+        22.0,
+        26.04
+      ],
+      "GPSAltitudeRef": [
+        0
+      ],
+      "GPSAltitude": 12.0
+    },
+    "xmp": {
+      "dc": {
+        "creator": [
+          "Mira Castell"
+        ],
+        "description": "Fishing boats in the old harbour at dusk",
+        "rights": "(c) 2024 Mira Castell, CC BY 4.0",
+        "subject": [
+          "harbour",
+          "boats",
+          "dusk"
+        ],
+        "title": "Old harbour"
+      },
+      "photoshop": {
+        "City": "Marseille",
+        "Country": "France",
+        "Credit": "Castell Studio"
+      },
+      "xmpRights": {
+        "Marked": "True",
+        "WebStatement": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    }
+  },
+  "format": {
+    "webp": {
+      "compression": "lossy",
+      "alpha": false,
+      "chunks": [
+        "VP8X",
+        "VP8",
+        "EXIF",
+        "XMP"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.webp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

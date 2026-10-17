@@ -1,0 +1,185 @@
+---
+source: src/formats/image/jpeg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "progressive.jpg",
+    "stem": "progressive",
+    "extension": "jpg"
+  },
+  "identification": {
+    "format": "jpeg",
+    "name": "JPEG image",
+    "mime": "image/jpeg",
+    "family": "image.raster",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.jpeg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4464
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "ai_generated",
+        "detail": "IPTC digital source type trainedAlgorithmicMedia",
+        "source": "meta.mwg"
+      }
+    ]
+  },
+  "rights": {
+    "creators": [
+      "Example Image Model"
+    ]
+  },
+  "physical": {
+    "size_bytes": 4464,
+    "entropy": 3.977,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3,
+      "color_space": "YCbCr",
+      "orientation": 6
+    }
+  },
+  "integrity": {
+    "sha256": "b31531eb64e266476daca9f7ef59070cd5907a011cbcba7793cbfc186656c2b0",
+    "blake3": "1a382cf14a10a769a7c6176b2a63cd907ab55646a9a9be9195dc10cf4afd7cfe"
+  },
+  "content": {
+    "title": "Lighthouse (generated)",
+    "authors": [
+      "Example Image Model"
+    ],
+    "excerpt": "Lighthouse (generated)"
+  },
+  "metadata": {
+    "exif": {
+      "Orientation": 6,
+      "XResolution": 1.0,
+      "YResolution": 1.0,
+      "ResolutionUnit": "no absolute unit",
+      "YCbCrPositioning": "centered"
+    },
+    "xmp": {
+      "Iptc4xmpExt": {
+        "DigitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
+      },
+      "dc": {
+        "creator": [
+          "Example Image Model"
+        ],
+        "title": "Lighthouse (generated)"
+      }
+    }
+  },
+  "format": {
+    "jpeg": {
+      "process": "progressive",
+      "progressive": true,
+      "chroma_subsampling": "4:2:0",
+      "quality_estimate": 70,
+      "jfif": {
+        "version": "1.01",
+        "units": 0,
+        "density": [
+          1,
+          1
+        ]
+      },
+      "huffman_tables": 2,
+      "segments": [
+        "APP0 JFIF",
+        "APP1 Exif",
+        "APP1 http://ns.adobe.",
+        "DQT",
+        "DQT",
+        "SOF2",
+        "DHT",
+        "DHT",
+        "SOS"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.jpeg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,134 @@
+---
+source: src/formats/image/tga.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "v2-extension.tga",
+    "stem": "v2-extension",
+    "extension": "tga"
+  },
+  "identification": {
+    "format": "tga",
+    "name": "TGA image",
+    "mime": "image/x-tga",
+    "family": "image.raster",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.tga"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 934
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2023-07-14T22:05:30",
+        "source": "tga.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Jonas Wren"
+    ]
+  },
+  "physical": {
+    "size_bytes": 934,
+    "entropy": 2.903,
+    "entropy_scope": "file",
+    "image": {
+      "width": 16,
+      "height": 8,
+      "bit_depth": 24,
+      "channels": 3,
+      "color_space": "RGB"
+    }
+  },
+  "integrity": {
+    "sha256": "a4d93db54aeaf273788c72d88b6685d8459e569d2cf783b2a5b27f7b322cca77",
+    "blake3": "ab2a32bafe93d31a3cf0b85a1a8e06e47e3f64e540921cc16e3680e429b470e0"
+  },
+  "content": {
+    "authors": [
+      "Jonas Wren"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "tga": {
+      "rle": false,
+      "origin": "top-left",
+      "image_id": "harbour-tga",
+      "version": 2,
+      "comments": "Night harbour, long exposure\nSecond line of the comment",
+      "job": "job-17",
+      "software": "whiff fixture generator"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.tga",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

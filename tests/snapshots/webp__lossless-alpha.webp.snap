@@ -1,0 +1,115 @@
+---
+source: src/formats/image/webp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lossless-alpha.webp",
+    "stem": "lossless-alpha",
+    "extension": "webp"
+  },
+  "identification": {
+    "format": "webp",
+    "name": "WebP image",
+    "mime": "image/webp",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.webp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 36
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 36,
+    "entropy": 4.27,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 32,
+      "bit_depth": 8,
+      "channels": 4
+    }
+  },
+  "integrity": {
+    "sha256": "e8840cf6815b818cdfed3bc8d6177d2748963e19ed28ecff19d4c20fcb4b0dee",
+    "blake3": "5b560bd860a16ff292bfc5e9b61edba017e6ae99e1aab2b4ff16ece4c0633ec9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "webp": {
+      "compression": "lossless",
+      "alpha": true,
+      "chunks": [
+        "VP8L"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.webp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

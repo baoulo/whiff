@@ -1,0 +1,134 @@
+---
+source: src/formats/image/ico.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "app.ico",
+    "stem": "app",
+    "extension": "ico"
+  },
+  "identification": {
+    "format": "ico",
+    "name": "Windows icon",
+    "mime": "image/vnd.microsoft.icon",
+    "family": "image.raster",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.ico"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 22382
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 22382,
+    "entropy": 6.493,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 64,
+      "bit_depth": 32,
+      "frames": 3
+    }
+  },
+  "integrity": {
+    "sha256": "60342472f6d0457fcdc27df663cee95ef079c235d0bda37805e69e1d8b37cf3f",
+    "blake3": "117cf87e71b606b6f66ae9704f49cee35a709d954a65ed8b37fdb8a60f3ae706"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ico": {
+      "entries": [
+        {
+          "width": 64,
+          "height": 64,
+          "bytes": 16936,
+          "encoding": "bmp",
+          "bits_per_pixel": 32
+        },
+        {
+          "width": 32,
+          "height": 32,
+          "bytes": 4264,
+          "encoding": "bmp",
+          "bits_per_pixel": 32
+        },
+        {
+          "width": 16,
+          "height": 16,
+          "bytes": 1128,
+          "encoding": "bmp",
+          "bits_per_pixel": 32
+        }
+      ],
+      "count": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.ico",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

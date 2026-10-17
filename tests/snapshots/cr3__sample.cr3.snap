@@ -1,0 +1,206 @@
+---
+source: src/formats/image/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.cr3",
+    "stem": "sample",
+    "extension": "cr3"
+  },
+  "identification": {
+    "format": "cr3",
+    "name": "Canon CR3 raw image",
+    "mime": "image/x-canon-cr3",
+    "family": "image.raw",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 948
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-06-01T09:30:00+02:00",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTimeDigitized",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTime",
+        "tz_known": false
+      }
+    ],
+    "earliest": "2024-06-01T07:30:00Z",
+    "latest": "2024-06-01T07:30:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Jonas Wren",
+    "creators": [
+      "Jonas Wren"
+    ]
+  },
+  "physical": {
+    "size_bytes": 948,
+    "entropy": 3.975,
+    "entropy_scope": "file",
+    "image": {
+      "width": 6000,
+      "height": 4000,
+      "color_space": "raw",
+      "orientation": 1,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "02992c35d14a175e6a2752f022c9158ab0b3949aad451e9f8ec1456d3c92a328",
+    "blake3": "4fb36a2cfbbcd09ab372a8c56df43d80a600303c28aef10ee2f6c7ad66c908d4"
+  },
+  "content": {
+    "authors": [
+      "Jonas Wren"
+    ],
+    "location": {
+      "lat": 35.6586,
+      "lon": 139.7454,
+      "source": "exif.GPS"
+    }
+  },
+  "metadata": {
+    "exif": {
+      "Make": "Canon",
+      "Model": "Canon EOS R-Example",
+      "Orientation": 1,
+      "XResolution": 300.0,
+      "YResolution": 300.0,
+      "ResolutionUnit": "inch",
+      "Software": "whiff fixture generator",
+      "DateTime": "2024:06:01 09:30:00",
+      "Artist": "Jonas Wren",
+      "Copyright": "(c) 2024 Jonas Wren",
+      "ExposureTime": "1/250",
+      "FNumber": 5.6,
+      "PhotographicSensitivity": 200,
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:06:01 09:30:00",
+      "DateTimeDigitized": "2024:06:01 09:30:00",
+      "OffsetTimeOriginal": "+02:00",
+      "FocalLength": 35.0,
+      "PixelXDimension": 6000,
+      "PixelYDimension": 4000,
+      "LensModel": "Canon EOS R-Example lens 24-70mm",
+      "GPSVersionID": "2.3.0.0",
+      "GPSLatitudeRef": "N",
+      "GPSLatitude": [
+        35.0,
+        39.0,
+        30.96
+      ],
+      "GPSLongitudeRef": "E",
+      "GPSLongitude": [
+        139.0,
+        44.0,
+        43.44
+      ]
+    }
+  },
+  "format": {
+    "cr3": {
+      "raw": {
+        "make": "Canon",
+        "model": "Canon EOS R-Example",
+        "boxes": [
+          "ftyp",
+          "moov",
+          "mdat"
+        ],
+        "thumbnail": {
+          "width": 160,
+          "height": 120
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

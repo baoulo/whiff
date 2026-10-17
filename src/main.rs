@@ -261,7 +261,8 @@ fn run(a: &RunArgs) -> ExitCode {
     let results: Vec<Result<Report, String>> = inputs
         .par_iter()
         .map(|input| match input {
-            Input::Stdin => engine.extract_reader(Some("-"), std::io::stdin().lock()).map_err(|e| format!("-: {e}")),
+            // Stdin has no name; detection works from the content alone.
+            Input::Stdin => engine.extract_reader(None, std::io::stdin().lock()).map_err(|e| format!("-: {e}")),
             Input::Path(p) => engine.extract_path(p).map_err(|e| e.to_string()),
         })
         .collect();

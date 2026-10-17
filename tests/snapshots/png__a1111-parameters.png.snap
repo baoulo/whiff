@@ -1,0 +1,154 @@
+---
+source: src/formats/image/png.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "a1111-parameters.png",
+    "stem": "a1111-parameters",
+    "extension": "png"
+  },
+  "identification": {
+    "format": "png",
+    "name": "PNG image",
+    "mime": "image/png",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.png"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 375
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "ai_generated",
+        "detail": "generation parameters from Stable Diffusion web UI",
+        "source": "image.png"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 375,
+    "entropy": 5.605,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "02844a65f0c00ec54402cc980fccbf400e9719a5e6e92c1e0b2e4bccb9c24361",
+    "blake3": "046612e2db3b78b4064a015286ee71635bee7ba84f6cb29c323aaf02eb80efcf"
+  },
+  "content": {
+    "description": "a lighthouse on a rocky coast at dusk, oil painting, warm light",
+    "language": {
+      "code": "en",
+      "confidence": 0.548
+    },
+    "excerpt": "a lighthouse on a rocky coast at dusk, oil painting, warm light"
+  },
+  "metadata": {
+    "ai_generation": {
+      "tool": "Stable Diffusion web UI",
+      "prompt": "a lighthouse on a rocky coast at dusk, oil painting, warm light",
+      "negative_prompt": "blurry, text, watermark",
+      "model": "example-xl-base",
+      "settings": {
+        "Steps": "28",
+        "Sampler": "DPM++ 2M Karras",
+        "CFG scale": "6.5",
+        "Seed": "1234567",
+        "Size": "64x48",
+        "Model hash": "abc123",
+        "Model": "example-xl-base"
+      }
+    },
+    "png_text": {
+      "parameters": "a lighthouse on a rocky coast at dusk, oil painting, warm light\nNegative prompt: blurry, text, watermark\nSteps: 28, Sampler: DPM++ 2M Karras, CFG scale: 6.5, Seed: 1234567, Size: 64x48, Model hash: abc123, Model: example-xl-base"
+    }
+  },
+  "format": {
+    "png": {
+      "color_type": 2,
+      "color_model": "RGB",
+      "alpha": false,
+      "interlaced": false,
+      "transparency": false,
+      "chunks": 4,
+      "idat": {
+        "chunks": 1,
+        "bytes": 67
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.png",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

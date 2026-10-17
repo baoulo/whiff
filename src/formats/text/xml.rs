@@ -62,6 +62,7 @@ const VOCABULARIES: &[(&str, &str, &str, &str)] = &[
     ("gpx", "GPX track", "gpx", ""),
     ("wsdl", "WSDL", "definitions", "schemas.xmlsoap.org/wsdl"),
     ("rdf", "RDF/XML", "RDF", "www.w3.org/1999/02/22-rdf-syntax-ns"),
+    ("vra_core", "VRA Core record", "vra", "vraweb.org"),
     ("mathml", "MathML", "math", "www.w3.org/1998/Math/MathML"),
     ("smil", "SMIL", "smil", ""),
     ("xbrl", "XBRL report", "xbrl", ""),

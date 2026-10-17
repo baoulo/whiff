@@ -9,6 +9,40 @@ use crate::report::{
     Rights, Risk, Security, Temporal,
 };
 
+/// Compressed-data framing understood by [`Context::inflate`].
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Compression {
+    /// zlib (RFC 1950): PNG `zTXt` / `iCCP`, PDF `FlateDecode`.
+    Zlib,
+    /// Raw deflate (RFC 1951): ZIP entries.
+    Deflate,
+    /// gzip (RFC 1952): `.gz`, SVGZ.
+    Gzip,
+}
+
+/// The deflate stream inside a gzip member (header skipped).
+fn gzip_body(data: &[u8]) -> Result<&[u8], ExtractError> {
+    let bad = || ExtractError::malformed("gzip header");
+    if data.len() < 18 || data[0] != 0x1f || data[1] != 0x8b || data[2] != 8 {
+        return Err(bad());
+    }
+    let flags = data[3];
+    let mut i = 10usize;
+    if flags & 4 != 0 {
+        let n = usize::from(u16::from_le_bytes([*data.get(i).ok_or_else(bad)?, *data.get(i + 1).ok_or_else(bad)?]));
+        i += 2 + n;
+    }
+    for bit in [8u8, 16] {
+        if flags & bit != 0 {
+            i += data.get(i..).ok_or_else(bad)?.iter().position(|&b| b == 0).ok_or_else(bad)? + 1;
+        }
+    }
+    if flags & 2 != 0 {
+        i += 2;
+    }
+    data.get(i..).ok_or_else(bad)
+}
+
 /// Headings kept in `content.outline`.
 pub const MAX_OUTLINE: usize = 500;
 
@@ -195,6 +229,34 @@ impl Context<'_> {
             self.report.diagnostics.truncated = true;
         }
         Ok((bytes, cut))
+    }
+
+    /// Decompress `data` (zlib, raw deflate or gzip) into at most `max` bytes,
+    /// charged to the decompression budget (the zip-bomb guard). Output
+    /// beyond `max` or the remaining budget is an error, not a truncation.
+    pub fn inflate(&mut self, data: &[u8], kind: Compression, max: usize) -> Result<Vec<u8>, ExtractError> {
+        let room = usize::try_from(self.budget.remaining_decompressed()).unwrap_or(usize::MAX);
+        let limit = max.min(room);
+        let body = match kind {
+            Compression::Gzip => gzip_body(data)?,
+            _ => data,
+        };
+        let result = match kind {
+            Compression::Zlib => miniz_oxide::inflate::decompress_to_vec_zlib_with_limit(body, limit),
+            Compression::Deflate | Compression::Gzip => miniz_oxide::inflate::decompress_to_vec_with_limit(body, limit),
+        };
+        match result {
+            Ok(out) => {
+                self.budget.charge_decompressed(out.len() as u64)?;
+                Ok(out)
+            }
+            Err(e) if e.status == miniz_oxide::inflate::TINFLStatus::HasMoreOutput => {
+                let what = if limit < max { "decompressed_bytes" } else { "inflate_limit" };
+                self.budget.hit("decompressed_bytes");
+                Err(ExtractError::LimitExceeded(what.into()))
+            }
+            Err(e) => Err(ExtractError::malformed(format!("{kind:?} data: {:?}", e.status))),
+        }
     }
 
     /// Bytes a structured parser may load (`limits.max_parse_bytes`).
@@ -471,6 +533,12 @@ impl<'c> PhysicalWriter<'c> {
         });
         ImageWriter { img }
     }
+    /// The image properties written so far, to add to them (`None` before
+    /// [`image`](Self::image) set the dimensions).
+    pub fn existing_image(self) -> Option<ImageWriter<'c>> {
+        self.p.image.as_mut().map(|img| ImageWriter { img })
+    }
+
     /// Media duration in seconds.
     pub fn duration_s(&mut self, v: f64) -> &mut Self {
         let m = self.p.media.get_or_insert_with(Default::default);

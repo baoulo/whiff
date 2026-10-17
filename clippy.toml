@@ -1,0 +1,7 @@
+# Product and format names that appear in docs as plain words. `..` keeps
+# clippy's default list.
+doc-valid-idents = [
+    "..",
+    "BigTIFF", "GeoTIFF", "OpenEXR", "DirectDraw", "FourCC", "ZSoft", "GeoJP2", "ImageMagick", "ExifTool", "LibRaw",
+    "ComfyUI", "InvokeAI", "NovelAI", "WebUI", "GIF89a", "CompuServe",
+]

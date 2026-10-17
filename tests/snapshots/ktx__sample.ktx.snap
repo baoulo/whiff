@@ -1,0 +1,115 @@
+---
+source: src/formats/image/ktx.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.ktx",
+    "stem": "sample",
+    "extension": "ktx"
+  },
+  "identification": {
+    "format": "ktx",
+    "name": "KTX texture",
+    "mime": "image/ktx",
+    "family": "image.texture",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.ktx"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2116
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2116,
+    "entropy": 0.164,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 16
+    }
+  },
+  "integrity": {
+    "sha256": "0f5da0d8e44fe33293a4fc48d90911a38fcea3c54dd5ccff63af55b85ce4889e",
+    "blake3": "e1f535cd8668ea461c7f163bba3172fa5ec6c416c64c780e58b585cb51c2e52a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ktx": {
+      "gl_type": 5121,
+      "gl_format": 6408,
+      "gl_internal_format": 32856,
+      "compressed": false,
+      "array_elements": 0,
+      "faces": 1,
+      "levels": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.ktx",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

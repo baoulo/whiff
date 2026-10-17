@@ -20,6 +20,7 @@ pub mod engine;
 mod error;
 pub mod formats;
 pub mod io;
+pub mod meta;
 pub mod plugin;
 pub mod report;
 pub mod text;
