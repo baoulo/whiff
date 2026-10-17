@@ -49,7 +49,12 @@ impl Extractor for Pnm {
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let head = src.head().to_vec();
         let text = String::from_utf8_lossy(&head[..head.len().min(8192)]).into_owned();
-        let magic = text.get(..2).ok_or_else(|| ExtractError::malformed("short"))?;
+        // `P` and one ASCII variant byte; anything else is not Netpbm (and
+        // would not be safe to slice by byte below).
+        let magic = text
+            .get(..2)
+            .filter(|m| m.starts_with('P') && m.as_bytes()[1].is_ascii_alphanumeric())
+            .ok_or_else(|| ExtractError::malformed("no P1–P7 / PF magic"))?;
         let mut comments = Vec::new();
         let (w, h, channels, maxval, tuple) = if magic == "P7" {
             let (mut w, mut h, mut depth, mut maxval, mut tuple) = (0, 0, 0, 0u64, String::new());
