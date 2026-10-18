@@ -68,7 +68,7 @@ Images get their embedded metadata decoded (`metadata.exif`, `.xmp`, `.iptc`, `.
 
 The full report adds the GPS location (`content.location`), camera settings, the ICC profile and the raw blocks. AI-generated images are flagged in `security.risks` (Stable Diffusion, ComfyUI and InvokeAI parameters in PNGs, the IPTC digital source type); SVGs with scripts or external references are flagged too.
 
-Documents report their properties, outline and text; PDFs, Office files, RTF and e-mail also report active content (macros, JavaScript, DDE, external templates, launch actions) and phishing signals in `security.risks`, and their attachments and embedded files appear under `embedded`. Addresses are reduced to their domain unless you pass `--privacy off`.
+Documents report their properties, outline and text; PDFs, Office files, RTF and e-mail also report active content (macros, JavaScript, DDE, external templates, launch actions) and phishing signals in `security.risks`, and their attachments and embedded files appear under `embedded`. Each risk carries a `category` (`active_content`, `phishing`, `external_reference`, `exploit`, …) and a `severity` (`info` to `high`); `security.risk_level` is the highest severity in the file or anything embedded in it, and `security.embedded_risks` counts the embedded files' risks. [`docs/risks.md`](https://github.com/baoulo/whiff/blob/main/docs/risks.md) lists every kind. Addresses are reduced to their domain unless you pass `--privacy off`.
 
 Formats without an extractor yet (archives, media, executables, …) are still identified by signature, with every file-level section filled in.
 

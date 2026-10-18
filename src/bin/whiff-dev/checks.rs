@@ -1,4 +1,4 @@
-//! CI checks: dependency budgets and the plugin boundary.
+//! CI checks: dependency budgets, pure Rust, and the plugin boundary.
 
 use std::collections::BTreeSet;
 use std::path::Path;
@@ -42,12 +42,89 @@ pub fn deps(root: &Path) -> Result<(), String> {
         let with = dependencies(root, Some(&format!("common,{f}")))?;
         report(&format!("`{f}` (extra over common)"), with.difference(&common).count(), SPECIALIST_EXTRA_BUDGET);
     }
+    pure_rust(root)?;
     if ok {
         Ok(())
     } else {
         Err("dependency budget exceeded; justify it in the PR and raise the budget in src/bin/whiff-dev/checks.rs"
             .into())
     }
+}
+
+/// Crates that build or link native code. Their presence in the library or
+/// tool's dependency graph breaks the pure-Rust rule.
+const NATIVE_BUILD_CRATES: [&str; 6] = ["cc", "cmake", "bindgen", "pkg-config", "vcpkg", "autotools"];
+
+/// Native-build crates allowed with a reason, if the dependent enables the
+/// listed feature: (dependent, crate, required feature of the dependent).
+const NATIVE_ALLOWED: [(&str, &str, &str); 1] = [
+    // blake3 always declares `cc` for its build script, which compiles C and
+    // assembly only without `pure`.
+    ("blake3", "cc", "pure"),
+];
+
+/// `-sys` crates that are pure-Rust declarations of the operating system's
+/// own interfaces (what `std` itself calls), not bindings to a C library.
+const OS_API_CRATES: [&str; 2] = ["linux-raw-sys", "windows-sys"];
+
+/// whiff as a library or tool must be pure Rust: no `-sys` crates other than
+/// the OS interfaces, and no native build tools (see CONTRIBUTING.md).
+/// Development tooling (scripts/, the fixture generators) may use anything.
+pub fn pure_rust(root: &Path) -> Result<(), String> {
+    use serde_json::Value;
+    let out = Command::new(std::env::var("CARGO").unwrap_or_else(|_| "cargo".into()))
+        .current_dir(root)
+        .args(["metadata", "--format-version", "1", "--all-features", "--locked"])
+        .output()
+        .map_err(|e| format!("cargo metadata: {e}"))?;
+    if !out.status.success() {
+        return Err(format!("cargo metadata failed: {}", String::from_utf8_lossy(&out.stderr)));
+    }
+    let meta: Value = serde_json::from_slice(&out.stdout).map_err(|e| format!("cargo metadata: {e}"))?;
+    let packages: std::collections::BTreeMap<&str, &Value> =
+        meta["packages"].as_array().into_iter().flatten().filter_map(|p| Some((p["id"].as_str()?, p))).collect();
+    let nodes: std::collections::BTreeMap<&str, &Value> = meta["resolve"]["nodes"]
+        .as_array()
+        .into_iter()
+        .flatten()
+        .filter_map(|n| Some((n["id"].as_str()?, n)))
+        .collect();
+    let name = |id: &str| packages.get(id).and_then(|p| p["name"].as_str()).unwrap_or(id).to_string();
+    let root_id = meta["resolve"]["root"].as_str().ok_or("cargo metadata: no root package")?;
+    // Walk normal and build edges only: dev-dependencies never ship.
+    let mut seen = BTreeSet::new();
+    let mut stack = vec![root_id];
+    let mut problems = Vec::new();
+    while let Some(id) = stack.pop() {
+        if !seen.insert(id) {
+            continue;
+        }
+        let Some(node) = nodes.get(id) else { continue };
+        let features: Vec<&str> = node["features"].as_array().into_iter().flatten().filter_map(Value::as_str).collect();
+        for dep in node["deps"].as_array().into_iter().flatten() {
+            let shipped = dep["dep_kinds"].as_array().into_iter().flatten().any(|k| k["kind"].as_str() != Some("dev"));
+            let Some(dep_id) = dep["pkg"].as_str().filter(|_| shipped) else { continue };
+            let (parent, child) = (name(id), name(dep_id));
+            if NATIVE_BUILD_CRATES.contains(&child.as_str()) {
+                let allowed =
+                    NATIVE_ALLOWED.iter().any(|(p, c, f)| *p == parent && *c == child && features.contains(f));
+                if !allowed {
+                    problems.push(format!("{parent} -> {child}: native build tool"));
+                }
+            }
+            stack.push(dep_id);
+        }
+    }
+    // `links =` alone is not native code (pure-Rust crates such as
+    // rayon-core use it to stay unique), so the check is on `-sys` crates.
+    for id in seen.iter().filter(|id| **id != root_id) {
+        let n = name(id);
+        if (n.ends_with("-sys") || n.ends_with("_sys")) && !OS_API_CRATES.contains(&n.as_str()) {
+            problems.push(format!("{n}: bindings to a native library"));
+        }
+    }
+    println!("pure Rust: {} crates checked (all features, normal and build dependencies)", seen.len() - 1);
+    if problems.is_empty() { Ok(()) } else { Err(format!("whiff must stay pure Rust:\n  {}", problems.join("\n  "))) }
 }
 
 /// Paths format modules may use: the plugin API and the crate's exported macros.

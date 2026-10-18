@@ -54,10 +54,13 @@ expression: redacted(r)
     "risks": [
       {
         "kind": "demo_risk",
+        "category": "other",
+        "severity": "medium",
         "detail": "just a test",
         "source": "test.demo"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {
     "copyright": "© 2026 Ada",

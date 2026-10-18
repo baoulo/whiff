@@ -35,10 +35,13 @@ expression: report
     "risks": [
       {
         "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
         "detail": "url_credentials",
         "source": "privacy.scan"
       }
     ],
+    "risk_level": "high",
     "secrets": {
       "url_credentials": 1
     },

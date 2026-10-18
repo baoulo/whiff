@@ -54,10 +54,13 @@ expression: report
     "risks": [
       {
         "kind": "macros",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "1 Basic module(s)",
         "source": "doc.odf"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {
     "creators": [

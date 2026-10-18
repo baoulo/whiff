@@ -598,7 +598,7 @@ impl SecurityWriter<'_> {
     pub fn risk(&mut self, kind: impl Into<String>, detail: Option<String>) -> &mut Self {
         let kind = kind.into();
         if !self.s.risks.iter().any(|r| r.kind == kind && r.detail == detail) {
-            self.s.risks.push(Risk { kind, detail, source: self.prov.source.clone() });
+            self.s.risks.push(Risk::new(kind, detail, self.prov.source.clone()));
             self.prov.record("security.risks");
         }
         self

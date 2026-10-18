@@ -206,11 +206,7 @@ impl Analyzer for Privacy {
         }
         if !sec.secrets.is_empty() && !sec.risks.iter().any(|r| r.kind == "embedded_secret") {
             let kinds: Vec<&str> = sec.secrets.keys().map(String::as_str).collect();
-            sec.risks.push(crate::report::Risk {
-                kind: "embedded_secret".into(),
-                detail: Some(kinds.join(", ")),
-                source: self.id().into(),
-            });
+            sec.risks.push(crate::report::Risk::new("embedded_secret", Some(kinds.join(", ")), self.id()));
         }
 
         redact_value_tree(&mut report.metadata);

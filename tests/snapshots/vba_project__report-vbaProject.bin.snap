@@ -51,10 +51,13 @@ expression: report
     "risks": [
       {
         "kind": "macros",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "2 VBA module(s)",
         "source": "doc.ole"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {},
   "physical": {

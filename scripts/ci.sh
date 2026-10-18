@@ -58,6 +58,21 @@ run cargo run -q --features dev --bin whiff-dev -- catalogue --check
 run cargo run -q --features dev --bin whiff-dev -- check-deps
 run cargo run -q --features dev --bin whiff-dev -- check-boundary
 
+# --- the published crate: Rust only, no development tooling ------------------
+# Development may use any tool (scripts/, the fixture generators, fuzz/);
+# none of it may reach crates.io. check-deps above covers the dependencies.
+echo ""
+echo "==> published crate holds no development tooling"
+packaged=$(cargo package --list --allow-dirty --locked)
+dev_files=$(grep -E '^(scripts|fuzz|tests|baoulo|packaging|\.github)/' <<<"$packaged" || true)
+foreign=$(grep -vE '\.(rs|toml|lock|md|txt|tsv|json)$|^(LICENSE[^/]*|Cargo\.toml\.orig|\.cargo_vcs_info\.json|\.gitattributes|\.gitignore)$' <<<"$packaged" || true)
+if [ -n "$dev_files$foreign" ]; then
+  echo "error: these files would be published:" >&2
+  printf '%s\n' "$dev_files" "$foreign" | sed '/^$/d; s/^/  /' >&2
+  echo "add them to \`exclude\` in Cargo.toml" >&2
+  exit 1
+fi
+
 # --- fixtures: what git stores must be what the tests read -------------------
 # Line-ending conversion would silently change test inputs (CRLF fixtures).
 echo ""

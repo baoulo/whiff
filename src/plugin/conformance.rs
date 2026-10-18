@@ -10,6 +10,8 @@
 //! * **schema** — reports round-trip through the `whiff/1` model;
 //! * **determinism** — two runs give identical (redacted) JSON;
 //! * **field names** — keys in `format.<id>` are `snake_case`;
+//! * **risk kinds** — every reported risk is in the vocabulary
+//!   (`src/report/risk.rs`, listed in `docs/risks.md`);
 //! * **robustness** — empty, 1-byte, magic-only, random, deeply nested,
 //!   truncated and bit-flipped inputs never panic;
 //! * **performance** — none of those inputs makes an extractor hit its
@@ -148,6 +150,9 @@ fn check_format(
         }
         if let Some(run) = panicked(&a) {
             fail("robustness", format!("{name}: {run}"));
+        }
+        for r in a.security.risks.iter().filter(|r| r.category == crate::report::RiskCategory::Other) {
+            fail("risk_kinds", format!("{name}: risk kind `{}` is not in src/report/risk.rs", r.kind));
         }
         if serde_json::to_value(&a).ok().and_then(|v| serde_json::from_value::<Report>(v).ok()).as_ref() != Some(&a) {
             fail("schema", format!("{name}: report does not round-trip through the whiff/1 model"));

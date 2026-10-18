@@ -105,7 +105,16 @@ impl From<&Report> for Parts {
 
         let s = &r.security;
         let mut smap = JsonMap::new();
-        put(&mut smap, "risks", json!(s.risks.iter().map(|r| r.kind.as_str()).collect::<Vec<_>>()));
+        put(&mut smap, "risk_level", json!(s.risk_level.map(super::Severity::as_str)));
+        // Most severe first, as `kind (severity)`.
+        let mut risks: Vec<&super::Risk> = s.risks.iter().collect();
+        risks.sort_by_key(|r| std::cmp::Reverse(r.severity));
+        put(
+            &mut smap,
+            "risks",
+            json!(risks.iter().map(|r| format!("{} ({})", r.kind, r.severity.as_str())).collect::<Vec<_>>()),
+        );
+        put(&mut smap, "embedded_risks", json!(s.embedded_risks.keys().collect::<Vec<_>>()));
         put(&mut smap, "encrypted", json!(s.encrypted.filter(|e| *e)));
         put(&mut smap, "active_content", json!(s.active_content));
         put(&mut smap, "secrets", json!(s.secrets.keys().collect::<Vec<_>>()));

@@ -35,10 +35,13 @@ expression: report
     "risks": [
       {
         "kind": "destructive_statements",
+        "category": "unsafe_operation",
+        "severity": "medium",
         "detail": "DROP / DELETE / TRUNCATE present",
         "source": "data.sql"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {},
   "physical": {

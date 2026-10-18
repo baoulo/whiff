@@ -35,10 +35,13 @@ expression: report
     "risks": [
       {
         "kind": "broad_extension_permissions",
+        "category": "supply_chain",
+        "severity": "medium",
         "detail": "tabs, <all_urls>",
         "source": "data.json"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {},
   "physical": {

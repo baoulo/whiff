@@ -362,7 +362,7 @@ impl Writer<'_> {
     fn risk(&mut self, kind: &str, detail: String) {
         let risks = &mut self.report.security.risks;
         if !risks.iter().any(|r| r.kind == kind) {
-            risks.push(Risk { kind: kind.to_string(), detail: Some(detail), source: "meta.mwg".into() });
+            risks.push(Risk::new(kind, Some(detail), "meta.mwg"));
         }
     }
 }

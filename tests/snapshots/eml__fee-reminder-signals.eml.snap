@@ -52,25 +52,34 @@ expression: report
     "risks": [
       {
         "kind": "reply_to_mismatch",
+        "category": "phishing",
+        "severity": "medium",
         "detail": "From other.example, Reply-To third.example",
         "source": "email.mime"
       },
       {
         "kind": "display_name_spoof",
+        "category": "phishing",
+        "severity": "high",
         "detail": "display name names saltmere.example, address is at other.example",
         "source": "email.mime"
       },
       {
         "kind": "authentication_failure",
+        "category": "phishing",
+        "severity": "medium",
         "detail": "dmarc=fail, spf=fail",
         "source": "email.mime"
       },
       {
         "kind": "link_text_mismatch",
+        "category": "phishing",
+        "severity": "high",
         "detail": "saltmere.example -> other.example",
         "source": "email.mime"
       }
-    ]
+    ],
+    "risk_level": "high"
   },
   "rights": {},
   "physical": {

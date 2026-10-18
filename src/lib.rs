@@ -29,7 +29,7 @@ pub mod text;
 pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Privacy, Profile};
 pub use error::{Error, ExtractError};
 pub use plugin::Registry;
-pub use report::Report;
+pub use report::{RISK_KINDS, Report, Risk, RiskCategory, RiskKind, Severity};
 
 /// The report schema identifier written to `whiff.schema`.
 pub const SCHEMA: &str = "whiff/1";

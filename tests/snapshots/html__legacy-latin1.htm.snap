@@ -36,10 +36,13 @@ expression: report
     "risks": [
       {
         "kind": "meta_refresh_redirect",
+        "category": "phishing",
+        "severity": "low",
         "detail": "redirects to elsewhere.example.com",
         "source": "text.html"
       }
-    ]
+    ],
+    "risk_level": "low"
   },
   "rights": {},
   "physical": {

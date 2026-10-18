@@ -44,10 +44,13 @@ expression: report
     "risks": [
       {
         "kind": "ai_generated",
+        "category": "provenance",
+        "severity": "info",
         "detail": "generation parameters from ComfyUI",
         "source": "image.png"
       }
-    ]
+    ],
+    "risk_level": "info"
   },
   "rights": {},
   "physical": {

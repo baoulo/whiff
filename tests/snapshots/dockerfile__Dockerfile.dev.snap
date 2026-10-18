@@ -35,10 +35,13 @@ expression: report
     "risks": [
       {
         "kind": "remote_add",
+        "category": "supply_chain",
+        "severity": "low",
         "detail": "ADD fetches a URL",
         "source": "code.infra"
       }
     ],
+    "risk_level": "low",
     "personal_data": {
       "email": 1
     }

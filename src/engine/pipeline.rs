@@ -1,3 +1,4 @@
+use std::collections::BTreeMap;
 use std::collections::VecDeque;
 use std::panic::{AssertUnwindSafe, catch_unwind};
 use std::path::Path;
@@ -368,7 +369,28 @@ fn finish(report: &mut Report, budget: &Budget, text: &TextStore, clock: &Stopwa
         }
     }
     report.diagnostics.truncated |= text.truncated() || !report.diagnostics.limits_hit.is_empty();
+    roll_up_risks(report);
     finish_clock(report, clock);
+}
+
+/// `risk_level` and `embedded_risks` from the report's own risks and its
+/// children's (each child is finished first, so its totals cover its own
+/// descendants).
+fn roll_up_risks(report: &mut Report) {
+    let mut level = report.security.risks.iter().map(|r| r.severity).max();
+    let mut nested: BTreeMap<String, u64> = BTreeMap::new();
+    for child in &report.embedded {
+        let s = &child.security;
+        for r in &s.risks {
+            *nested.entry(r.kind.clone()).or_default() += 1;
+        }
+        for (kind, n) in &s.embedded_risks {
+            *nested.entry(kind.clone()).or_default() += n;
+        }
+        level = level.max(s.risk_level);
+    }
+    report.security.risk_level = level;
+    report.security.embedded_risks = nested;
 }
 
 fn finish_clock(report: &mut Report, clock: &Stopwatch) {

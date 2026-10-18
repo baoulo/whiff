@@ -45,10 +45,13 @@ expression: report
     "risks": [
       {
         "kind": "external_template",
+        "category": "external_reference",
+        "severity": "high",
         "detail": "https://intranet.example.org/templates/letterhead.dotx",
         "source": "doc.ooxml"
       }
-    ]
+    ],
+    "risk_level": "high"
   },
   "rights": {},
   "physical": {

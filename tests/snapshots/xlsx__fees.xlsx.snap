@@ -61,10 +61,13 @@ expression: report
     "risks": [
       {
         "kind": "external_workbook_link",
+        "category": "external_reference",
+        "severity": "low",
         "detail": "https://files.example.com/rates/2024.xlsx",
         "source": "doc.ooxml"
       }
-    ]
+    ],
+    "risk_level": "low"
   },
   "rights": {
     "creators": [

@@ -67,8 +67,23 @@ Documents, e-mail, calendars and contacts.
 - **Engine:** a container extractor can hand a file to the format it found
   inside (`detected_by: content`), so compound files are routed to Word,
   Excel, Outlook and the rest by their streams.
+- **Risk categories and severities:** every `security.risks[]` entry now
+  has a `category` (`active_content`, `phishing`, `external_reference`,
+  `exploit`, `obfuscation`, `data_exposure`, `supply_chain`,
+  `unsafe_operation`, `provenance`) and a `severity` (`info`, `low`,
+  `medium`, `high`), both decided by the kind in one vocabulary
+  (`src/report/risk.rs`, listed in the generated `docs/risks.md`).
+  `security.risk_level` is the highest severity of a file and everything
+  embedded in it; `security.embedded_risks` counts embedded files' risks by
+  kind, at any depth. The LLM view shows the level and each risk's
+  severity. Kinds outside the vocabulary (third-party extractors) are
+  `other` / `medium`; the conformance suite fails on any in whiff.
 - **Report schema:** new `DateField` values `printed`, `sent` and
-  `received`, and `DetectedBy::Content` (additive; still `whiff/1`).
+  `received`, `DetectedBy::Content`, and the risk fields above (additive;
+  still `whiff/1`).
+- **Pure-Rust check:** `whiff-dev check-deps` fails on `-sys` crates and
+  native build tools in the library's and CLI's dependency graph, and CI
+  checks that the published crate holds no development tooling.
 - **Developer tools:** `scripts/fixtures/documents.sh` regenerates the
   document fixtures with textutil, Ghostscript, Core Graphics and poppler,
   third-party writers (rust_xlsxwriter, simple_excel_writer, docx-rs and
