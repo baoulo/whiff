@@ -1,0 +1,144 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "plan.otg",
+    "stem": "plan",
+    "extension": "otg"
+  },
+  "identification": {
+    "format": "otg",
+    "name": "OpenDocument drawing template",
+    "mime": "application/vnd.oasis.opendocument.graphics-template",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1515
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1515,
+    "entropy": 7.353,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d886007e98dcf8125b6a43c8be1785407a7d598b8fd8d2dc40b111ebed98083",
+    "blake3": "2105f1be5d1e1f0bd69b81ec4263456a2a4e4b7ad7fe66fa60c812bda3d2abeb"
+  },
+  "content": {
+    "title": "Harbour plan template",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Outer mole"
+  },
+  "metadata": {
+    "odf": {
+      "generator": "LibreOffice/7.6.4.1$Linux_X86_64 LibreOffice_project/fixture",
+      "title": "Harbour plan template",
+      "initial-creator": "Harbour Office",
+      "creation-date": "2024-04-01T08:00:00",
+      "date": "2024-04-01T08:00:00"
+    }
+  },
+  "format": {
+    "otg": {
+      "mimetype": "application/vnd.oasis.opendocument.graphics-template",
+      "parts": 4,
+      "manifest_entries": 3,
+      "odf_version": "1.3",
+      "paragraphs": 1,
+      "pages": [
+        "Plan"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

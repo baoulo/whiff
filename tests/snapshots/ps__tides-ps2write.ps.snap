@@ -1,0 +1,143 @@
+---
+source: src/formats/doc/other.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-ps2write.ps",
+    "stem": "tides-ps2write",
+    "extension": "ps"
+  },
+  "identification": {
+    "format": "ps",
+    "name": "PostScript",
+    "mime": "application/postscript",
+    "family": "doc.other",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.other"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 168385
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-17T15:30:20-04:00",
+        "source": "ps.dsc.CreationDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-17T19:30:20Z",
+    "latest": "2026-10-17T19:30:20Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 168385,
+    "entropy": 5.248,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 168385,
+      "chars": 168385,
+      "words": 19244,
+      "lines": 8475,
+      "max_line_length": 98,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    },
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "daf6de99358e51de1fd9fe16fe06e3264379e186fd543043021b71062b6cf896",
+    "blake3": "dc3d4cad5646a74d5915594c66a80a12073de87b130142b296b637e3162a7d45"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ps": {
+      "dsc_version": "3.0",
+      "creator": "GPL Ghostscript 10040 (ps2write)",
+      "bounding_box": [
+        0.0,
+        0.0,
+        595.0,
+        842.0
+      ],
+      "hires_bounding_box": [
+        0.0,
+        0.0,
+        595.0,
+        842.0
+      ],
+      "language_level": "2"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.other",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

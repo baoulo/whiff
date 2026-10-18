@@ -176,32 +176,46 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, de
     let mut children: Vec<PendingChild> = Vec::new();
     let max_cost = options.profile.max_cost();
     let mut skipped_by_profile = false;
-    for extractor in registry.extractors_for(spec.id) {
-        let meta = extractor.meta();
-        if !options.allows(meta.id) {
-            continue;
+    let mut spec = spec;
+    // A container extractor may redirect once to the format it found inside.
+    for hop in 0..2 {
+        let mut redirect: Option<String> = None;
+        for extractor in registry.extractors_for(spec.id) {
+            let meta = extractor.meta();
+            if !options.allows(meta.id) {
+                continue;
+            }
+            if meta.cost > max_cost {
+                skipped_by_profile = true;
+                continue;
+            }
+            report.identification.extractor.get_or_insert_with(|| meta.id.to_string());
+            let mut pending = Vec::new();
+            let run = run_stage(meta.id, meta.version, options.limits.extractor_timeout, &budget, || {
+                let mut cx = Context {
+                    report: &mut *report,
+                    text: &mut text,
+                    blocks: &mut pending,
+                    children: &mut children,
+                    options,
+                    budget: &budget,
+                    format_id: spec.id,
+                    emitter: meta.id,
+                    redirect: &mut redirect,
+                };
+                extractor.extract(&mut *src, &mut cx)
+            });
+            report.diagnostics.extractors.push(run);
+            blocks.extend(pending);
+            if redirect.is_some() {
+                break;
+            }
         }
-        if meta.cost > max_cost {
-            skipped_by_profile = true;
-            continue;
-        }
-        report.identification.extractor.get_or_insert_with(|| meta.id.to_string());
-        let mut pending = Vec::new();
-        let run = run_stage(meta.id, meta.version, options.limits.extractor_timeout, &budget, || {
-            let mut cx = Context {
-                report: &mut *report,
-                text: &mut text,
-                blocks: &mut pending,
-                children: &mut children,
-                options,
-                budget: &budget,
-                format_id: spec.id,
-                emitter: meta.id,
-            };
-            extractor.extract(&mut *src, &mut cx)
-        });
-        report.diagnostics.extractors.push(run);
-        blocks.extend(pending);
+        let target =
+            redirect.filter(|_| hop == 0).and_then(|id| registry.formats().map(|(f, _)| f).find(|f| f.id == id));
+        let Some(target) = target.filter(|t| t.id != spec.id) else { break };
+        reidentify(report, spec, target);
+        spec = target;
     }
     if skipped_by_profile && report.identification.extractor.is_none() {
         report
@@ -213,6 +227,29 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, de
     decode_blocks(engine, report, &mut text, &mut blocks, &mut children, spec.id, &budget);
     extract_children(engine, report, children, depth, &budget);
     text
+}
+
+/// Identification after an extractor found that `from` (a container) holds `to`.
+fn reidentify(report: &mut Report, from: &crate::plugin::FormatSpec, to: &'static crate::plugin::FormatSpec) {
+    let id = &mut report.identification;
+    id.candidates.retain(|c| c.format != to.id);
+    if !id.candidates.iter().any(|c| c.format == from.id) {
+        id.candidates.insert(0, crate::report::Candidate { format: from.id.to_string(), confidence: id.confidence });
+    }
+    id.format = to.id.to_string();
+    id.name = to.name.to_string();
+    id.mime = to.mimes.first().copied().unwrap_or("application/octet-stream").to_string();
+    id.family = Some(to.family.to_string());
+    id.detected_by = crate::report::DetectedBy::Content;
+    id.extractor = None;
+    if let Some(ext) = report.source.extension.as_deref() {
+        id.extension_matches =
+            Some(to.extensions.is_empty() || to.extensions.iter().any(|e| e.eq_ignore_ascii_case(ext)));
+    }
+    // What the container's extractor wrote under its format id now describes the real format.
+    if let Some(v) = report.format.remove(from.id) {
+        report.format.insert(to.id.to_string(), v);
+    }
 }
 
 fn decode_blocks(
@@ -251,6 +288,7 @@ fn decode_blocks(
                 budget,
                 format_id,
                 emitter: decoder.id(),
+                redirect: &mut None,
             };
             decoder.decode(&block.data, &mut cx)
         });

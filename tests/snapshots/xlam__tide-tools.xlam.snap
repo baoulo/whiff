@@ -1,0 +1,184 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-tools.xlam",
+    "stem": "tide-tools",
+    "extension": "xlam"
+  },
+  "identification": {
+    "format": "xlam",
+    "name": "Excel add-in",
+    "mime": "application/vnd.ms-excel.addin.macroEnabled.12",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2521
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-03-02T08:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-03-09T17:45:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-03-02T08:00:00Z",
+    "latest": "2024-03-09T17:45:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Tomas Lind"
+    ],
+    "credit": "Example Port Authority"
+  },
+  "physical": {
+    "size_bytes": 2521,
+    "entropy": 7.407,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 1
+    }
+  },
+  "integrity": {
+    "sha256": "78f859cca96c9c7b4928e61edd691a4c1cc39e46b486666c4e25f66de639d3d7",
+    "blake3": "6210a1819b197cf6c7d6aeb40b1c8d1398fe7e10752a2ce7dfb14d8e00e4501c"
+  },
+  "content": {
+    "title": "Harbour fees 2024",
+    "authors": [
+      "Tomas Lind"
+    ],
+    "keywords": [
+      "fees",
+      "harbour",
+      "2024"
+    ],
+    "excerpt": "Harbour fees 2024",
+    "tags": [
+      "fees",
+      "harbour",
+      "2024"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour fees 2024",
+        "creator": "Tomas Lind",
+        "lastModifiedBy": "Ana Lima",
+        "keywords": "fees; harbour; 2024",
+        "created": "2024-03-02T08:00:00Z",
+        "modified": "2024-03-09T17:45:00Z"
+      },
+      "app": {
+        "Application": "Microsoft Excel",
+        "AppVersion": "16.0300",
+        "Company": "Example Port Authority",
+        "TitlesOfParts": [
+          "Tools"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xlam": {
+      "content_type": "application/vnd.ms-excel.addin.macroEnabled.main+xml",
+      "main_part": "xl/workbook.xml",
+      "parts": 7,
+      "uncompressed_bytes": 3327,
+      "sheets": [
+        {
+          "name": "Tools",
+          "kind": "worksheet"
+        }
+      ],
+      "sheet_contents": [
+        {
+          "name": "Tools",
+          "cells": 1,
+          "dimension": "A1"
+        }
+      ],
+      "cells": 1,
+      "formulas": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

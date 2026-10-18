@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+  <description>
+    <title-info>
+      <genre>sci_geo</genre>
+      <author><first-name>Ana</first-name><last-name>Lighthouse</last-name></author>
+      <book-title>Pilot Notes for Saltmere</book-title>
+      <annotation><p>Notes for pilots entering the fictitious port of Saltmere.</p></annotation>
+      <keywords>pilotage, harbour</keywords>
+      <date value="2024-05-01">2024</date>
+      <coverpage><image l:href="#cover.png"/></coverpage>
+      <lang>en</lang>
+      <sequence name="Harbour Guides" number="3"/>
+    </title-info>
+    <document-info>
+      <author><nickname>whiff</nickname></author>
+      <program-used>whiff fixtures</program-used>
+      <date value="2024-05-01">1 May 2024</date>
+      <id>0b6c4f1e-saltmere-pilot-notes</id>
+      <version>1.0</version>
+    </document-info>
+    <publish-info><publisher>Saltmere Harbour Press</publisher><year>2024</year><isbn>978-0-306-40615-7</isbn></publish-info>
+  </description>
+  <body>
+    <title><p>Pilot Notes for Saltmere</p></title>
+    <section>
+      <title><p>Approach</p></title>
+      <p>Approach on a bearing of 040 degrees with the lighthouse fine on the starboard bow.</p>
+      <section>
+        <title><p>The bar</p></title>
+        <p>The bar carries 2.1 metres at low water springs.</p>
+      </section>
+    </section>
+    <section>
+      <title><p>Berthing</p></title>
+      <p>Berth 5 takes vessels of up to 4.5 metres draught.</p>
+    </section>
+  </body>
+  <binary id="cover.png" content-type="image/png">iVBORw0KGgoAAAANSUhEUgAAAB4AAAAtCAIAAAA2vEz2AAAALUlEQVR42u3MMQ0AAAgDsCmZMPwLQQUJR5PezbRHolar1Wq1Wq1Wq9VqtfpFvVO8FzK6v6scAAAAAElFTkSuQmCC</binary>
+</FictionBook>

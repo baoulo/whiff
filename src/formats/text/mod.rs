@@ -1,6 +1,9 @@
 //! `text` extractors (feature `common`): plain text, logs, diffs, Markdown,
-//! HTML, XML and feeds.
+//! HTML, XML, feeds, calendars and contacts.
 
+pub(crate) mod calendar;
+pub(crate) mod contact;
+pub(crate) mod contentline;
 pub(crate) mod feed;
 pub(crate) mod html;
 pub(crate) mod markdown;

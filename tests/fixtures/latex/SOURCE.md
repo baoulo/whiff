@@ -6,3 +6,4 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 | File | Origin | Licence |
 |---|---|---|
 | `report.tex` | Written for whiff's test suite | CC0-1.0 |
+| `tides.tex` | Written for whiff's test suite | CC0-1.0 |

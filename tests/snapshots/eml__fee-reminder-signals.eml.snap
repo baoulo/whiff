@@ -1,0 +1,185 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fee-reminder-signals.eml",
+    "stem": "fee-reminder-signals",
+    "extension": "eml"
+  },
+  "identification": {
+    "format": "eml",
+    "name": "Email message",
+    "mime": "message/rfc822",
+    "family": "email",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1008
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-04T22:15:00+00:00",
+        "source": "email.date",
+        "tz_known": true
+      },
+      {
+        "field": "received",
+        "value": "2024-05-04T22:15:05+00:00",
+        "source": "email.received",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-04T22:15:00Z",
+    "latest": "2024-05-04T22:15:05Z"
+  },
+  "security": {
+    "external_references": 1,
+    "risks": [
+      {
+        "kind": "reply_to_mismatch",
+        "detail": "From other.example, Reply-To third.example",
+        "source": "email.mime"
+      },
+      {
+        "kind": "display_name_spoof",
+        "detail": "display name names saltmere.example, address is at other.example",
+        "source": "email.mime"
+      },
+      {
+        "kind": "authentication_failure",
+        "detail": "dmarc=fail, spf=fail",
+        "source": "email.mime"
+      },
+      {
+        "kind": "link_text_mismatch",
+        "detail": "saltmere.example -> other.example",
+        "source": "email.mime"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1008,
+    "entropy": 5.241,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1008,
+      "chars": 1008,
+      "words": 80,
+      "lines": 28,
+      "max_line_length": 78,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "9e4f80f1bf72f8052e6626a3864c8ec1b9c782571b0771ce181bc79f830c822a",
+    "blake3": "7049b0c81f749fe46930c10f4efe67df42ba651c728dfb6a2ea9784d02534e79"
+  },
+  "content": {
+    "title": "Mooring fee reminder",
+    "excerpt": "Your mooring fee for May is due."
+  },
+  "metadata": {},
+  "format": {
+    "eml": {
+      "from": {
+        "name": "[redacted:email]",
+        "domain": "other.example"
+      },
+      "reply_to": [
+        {
+          "domain": "third.example"
+        }
+      ],
+      "to": [
+        {
+          "domain": "example.org"
+        }
+      ],
+      "to_count": 1,
+      "message_id": "reminder.20240504@other.example",
+      "received_hops": 1,
+      "authentication": {
+        "dkim": "none",
+        "dmarc": "fail",
+        "spf": "fail"
+      },
+      "mime_parts": 3,
+      "links": 1,
+      "link_hosts": [
+        "other.example"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

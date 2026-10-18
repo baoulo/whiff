@@ -1,0 +1,203 @@
+---
+source: src/formats/text/contact.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crew.vcf",
+    "stem": "harbour-crew",
+    "extension": "vcf"
+  },
+  "identification": {
+    "format": "vcf",
+    "name": "vCard",
+    "mime": "text/vcard",
+    "family": "text.contact",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.contact"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1139
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1139,
+    "entropy": 5.631,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1139,
+      "chars": 1139,
+      "words": 60,
+      "lines": 42,
+      "max_line_length": 102,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 4
+    }
+  },
+  "integrity": {
+    "sha256": "606970cfe2fb65384cd1dc940b2b6990b21ebb22ae676ebe5594b87e0ac09206",
+    "blake3": "51786f16781622c16d7e6711254bcc2ce175cfc8cd62c0899692fdb3b7755e50"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vcf": {
+      "contacts": 4,
+      "versions": [
+        "2.1",
+        "3.0",
+        "4.0"
+      ],
+      "generators": [
+        "-//Saltmere Harbour//Contacts 1.0//EN"
+      ],
+      "kinds": {
+        "individual": 3,
+        "org": 1
+      },
+      "emails": 4,
+      "phones": 4,
+      "phone_types": {
+        "cell": 1,
+        "fax": 1,
+        "home": 1,
+        "work": 2
+      },
+      "addresses": 1,
+      "photos": 1,
+      "birthdays": 1,
+      "email_domains": [
+        "example.org",
+        "saltmere.example"
+      ],
+      "organizations": 2,
+      "list": [
+        {
+          "name": "Mira Castell",
+          "organization": "Example Ferries, Timetables",
+          "title": "Scheduler",
+          "categories": "Ferries,Crew",
+          "emails": [
+            {
+              "domain": "example.org"
+            }
+          ],
+          "phones": 1,
+          "addresses": [
+            {
+              "locality": "Saltmere",
+              "country": "Freedonia"
+            }
+          ],
+          "url": "https://ferries.example.org/team/mira"
+        },
+        {
+          "name": "Ben Gull",
+          "organization": "Saltmere Harbour Office",
+          "emails": [
+            {
+              "domain": "example.org"
+            }
+          ],
+          "phones": 1,
+          "photo": {
+            "inline": true,
+            "type": "png",
+            "encoded_bytes": 100
+          }
+        },
+        {
+          "name": "Ana Lighthouse",
+          "emails": [
+            {
+              "domain": "saltmere.example"
+            }
+          ],
+          "phones": 1
+        },
+        {
+          "name": "Saltmere Harbour Office",
+          "kind": "org",
+          "organization": "Saltmere Harbour Office",
+          "emails": [
+            {
+              "domain": "saltmere.example"
+            }
+          ],
+          "phones": 1
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.contact",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

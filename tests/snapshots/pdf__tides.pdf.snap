@@ -1,0 +1,300 @@
+---
+source: src/formats/doc/pdf/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.pdf",
+    "stem": "tides",
+    "extension": "pdf"
+  },
+  "identification": {
+    "format": "pdf",
+    "name": "PDF document",
+    "mime": "application/pdf",
+    "family": "doc.pdf",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.pdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4407
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "pdf.info.CreationDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "pdf.info.ModDate",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "xmp.xmp:CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-17T19:05:06Z",
+    "latest": "2026-10-17T19:05:06Z"
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 4407,
+    "entropy": 6.87,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "c0483e81b31f2bbcc020a120ab794fed4b0a151f073f8b54ce88ce38a49eaa24",
+    "blake3": "d27dbc92c90dd0e2503abfd517ebca829f5864a3fe035ef106ce40291066fbb4"
+  },
+  "content": {
+    "title": "Harbour tide notes",
+    "description": "Tide tables and berth notes for the fictitious port of Saltmere",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.866
+    },
+    "keywords": [
+      "tides",
+      "harbour",
+      "berths",
+      "Harbour tide notes",
+      "Saltmere",
+      "notes",
+      "Tide tables",
+      "port of saltmere",
+      "Tides at Saltmere",
+      "metres"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        9
+      ],
+      [
+        "berth",
+        5
+      ],
+      [
+        "metres",
+        3
+      ],
+      [
+        "spring",
+        3
+      ],
+      [
+        "neap",
+        2
+      ],
+      [
+        "notes",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ],
+      [
+        "tables",
+        2
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Tides"
+      },
+      {
+        "level": 2,
+        "text": "Spring tides"
+      },
+      {
+        "level": 2,
+        "text": "Neap tides"
+      },
+      {
+        "level": 1,
+        "text": "Berths"
+      }
+    ],
+    "excerpt": "Tides at Saltmere High water at the outer mole comes about forty minutes after Dover. Spring tides reach 5.2 metres; neap tides 3.9 metres. Tide tables: tides.example.org Berths Berth 3 dries at low water springs; use berth 5 for vessels over 2 metres draught.",
+    "tags": [
+      "tides",
+      "harbour",
+      "berths",
+      "Harbour tide notes",
+      "Saltmere",
+      "notes",
+      "Tide tables"
+    ]
+  },
+  "metadata": {
+    "pdf_info": {
+      "Producer": "GPL Ghostscript 10.04.0",
+      "CreationDate": "D:20261017150506-04'00'",
+      "ModDate": "D:20261017150506-04'00'",
+      "Title": "Harbour tide notes",
+      "Creator": "whiff fixtures",
+      "Author": "Ana Lighthouse",
+      "Subject": "Tide tables and berth notes for the fictitious port of Saltmere",
+      "Keywords": "tides, harbour, berths"
+    },
+    "xmp": {
+      "pdf": {
+        "Producer": "GPL Ghostscript 10.04.0",
+        "Keywords": "tides, harbour, berths"
+      },
+      "xmp": {
+        "ModifyDate": "2026-10-17T15:05:06-04:00",
+        "CreateDate": "2026-10-17T15:05:06-04:00",
+        "CreatorTool": "whiff fixtures"
+      },
+      "xmpMM": {
+        "DocumentID": "uuid:3702d74f-027a-11fd-0000-6a0c500bd18e"
+      },
+      "dc": {
+        "format": "application/pdf",
+        "title": "Harbour tide notes",
+        "creator": [
+          "Ana Lighthouse"
+        ],
+        "description": "Tide tables and berth notes for the fictitious port of Saltmere"
+      }
+    }
+  },
+  "format": {
+    "pdf": {
+      "version": "1.7",
+      "objects": 24,
+      "xref_streams": true,
+      "id": [
+        "3e2a2bee445f10061e048dcf208eef51",
+        "3e2a2bee445f10061e048dcf208eef51"
+      ],
+      "page_sizes": [
+        {
+          "width_pt": 595.0,
+          "height_pt": 842.0,
+          "width_mm": 209.9,
+          "height_mm": 297.0,
+          "paper": "A4",
+          "orientation": "portrait",
+          "pages": 2
+        }
+      ],
+      "outline_items": 4,
+      "pages_with_text": 2,
+      "links": [
+        "https://tides.example.org/saltmere"
+      ],
+      "fonts": {
+        "Helvetica": {
+          "type": "Type1",
+          "embedded": false
+        },
+        "Helvetica-Bold": {
+          "type": "Type1",
+          "embedded": false
+        }
+      },
+      "annotations": {
+        "Link": 1
+      },
+      "creator": "whiff fixtures",
+      "producer": "GPL Ghostscript 10.04.0"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.pdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

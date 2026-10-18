@@ -1,0 +1,205 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-guide-epub2.epub",
+    "stem": "harbour-guide-epub2",
+    "extension": "epub"
+  },
+  "identification": {
+    "format": "epub",
+    "name": "EPUB ebook",
+    "mime": "application/epub+zip",
+    "family": "doc.ebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1940
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2023-11-20",
+        "source": "ebook.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1940,
+    "entropy": 7.303,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e1f730bf5dac0ed0beafc3cf923c545630729f2ebc4e40d701ad76515664c28a",
+    "blake3": "b61b910836c7d580405feb6dad62316438edf236a14142d2ce60093d76cc31b1"
+  },
+  "content": {
+    "title": "Harbour Guide",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Guide",
+      "Guide",
+      "Introduction",
+      "moorings",
+      "harbour",
+      "Visitors",
+      "enter",
+      "flood",
+      "mole",
+      "Saltmere"
+    ],
+    "keyword_frequency": [
+      [
+        "moorings",
+        3
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "introduction",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Introduction"
+      },
+      {
+        "level": 2,
+        "text": "Moorings"
+      }
+    ],
+    "excerpt": "Introduction Saltmere harbour lies behind a stone mole — enter on the flood. Moorings Visitors' moorings are the yellow buoys east of the ferry pier.",
+    "tags": [
+      "Travel",
+      "Harbour Guide",
+      "Guide",
+      "Introduction",
+      "moorings",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "epub": {
+      "entries": 6,
+      "epub_version": "2.0",
+      "manifest": {
+        "documents": 1,
+        "images": 1,
+        "other": 1
+      },
+      "spine_items": 1,
+      "toc_source": "ncx",
+      "creators": [
+        {
+          "name": "Mira Castell",
+          "role": "aut"
+        },
+        {
+          "name": "Ana Lighthouse",
+          "role": "edt"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "uuid",
+          "value": "6f1c2a52-7d4e-4c55-9a43-2b1f0c9e8d11"
+        }
+      ],
+      "series": {
+        "name": "Harbour Guides",
+        "index": "1"
+      },
+      "toc_entries": 2,
+      "cover": {
+        "path": "OEBPS/cover.png",
+        "media_type": "image/png",
+        "size_bytes": 113
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

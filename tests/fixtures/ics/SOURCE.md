@@ -1,0 +1,8 @@
+# Fixtures for `ics` (iCalendar)
+
+Every file here was made for whiff's tests and is released under CC0-1.0. People, places,
+companies and addresses (Saltmere, `example.org`, `*.example`) are fictitious.
+
+| File | Origin | Licence |
+|---|---|---|
+| `harbour-events.ics` | Written by `scripts/fixtures/craft_email.py` | CC0-1.0 |

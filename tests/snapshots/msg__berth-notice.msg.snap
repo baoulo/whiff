@@ -1,0 +1,322 @@
+---
+source: src/formats/email/msg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth-notice.msg",
+    "stem": "berth-notice",
+    "extension": "msg"
+  },
+  "identification": {
+    "format": "msg",
+    "name": "Outlook message",
+    "mime": "application/vnd.ms-outlook",
+    "family": "email",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "msg",
+        "confidence": 0.95
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "email.msg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7168
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-01T06:30:00Z",
+        "source": "email.date",
+        "tz_known": true
+      },
+      {
+        "field": "received",
+        "value": "2024-05-01T06:31:00Z",
+        "source": "email.received",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T06:30:00Z",
+    "latest": "2024-05-01T06:31:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7168,
+    "entropy": 2.426,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d00b78d40cfb0e085898a33c3ba6b31825edeca1e8aa9e2a769292c12fd5106",
+    "blake3": "5da81c0acacbf44035fc9904b9989527a598d241ba4fc8570d62894040f780d0"
+  },
+  "content": {
+    "title": "Berth 5 is free on Friday",
+    "authors": [
+      "Saltmere Harbour Office"
+    ],
+    "excerpt": "Hello, Berth 5 is free from Friday noon until Sunday evening."
+  },
+  "metadata": {},
+  "format": {
+    "msg": {
+      "message_class": "IPM.Note",
+      "conversation_topic": "Berth 5 is free on Friday",
+      "from": {
+        "name": "Saltmere Harbour Office",
+        "domain": "saltmere.example"
+      },
+      "to": [
+        {
+          "name": "Mira Castell",
+          "domain": "example.org"
+        }
+      ],
+      "to_count": 1,
+      "message_id": "berth5.20240501@saltmere.example",
+      "received_hops": 2,
+      "authentication": {
+        "dkim": "pass",
+        "spf": "pass"
+      },
+      "priority": "normal",
+      "mime_parts": 1,
+      "attachments": [
+        {
+          "name": "berths.csv",
+          "content_type": "text/csv",
+          "size_bytes": 48
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "berths.csv",
+        "stem": "berths",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 48
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 48,
+        "entropy": 4.491,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 48,
+          "chars": 48,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 25,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "4631f4101e44aa7543d6f5f1181235aad21392f2f6594b2b6856247a1a75f708",
+        "blake3": "45e5f57566928265097dffeb18ab45bc6cac163b96988e367c787f480f859195"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": 3.0,
+              "max": 5.0,
+              "mean": 4.0
+            },
+            {
+              "name": "max_draught_m",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": 1.8,
+              "max": 4.5,
+              "mean": 3.15
+            },
+            {
+              "name": "dries",
+              "type": "boolean",
+              "null_ratio": 0.0,
+              "distinct": 2
+            }
+          ],
+          "sample_rows": [
+            [
+              "3",
+              "1.8",
+              "yes"
+            ],
+            [
+              "5",
+              "4.5",
+              "no"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.msg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

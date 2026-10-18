@@ -2,7 +2,7 @@
 
 **whiff** (verb): to catch the scent of something. Point `whiff` at any file and it returns one JSON document describing it: what it is, where it came from, who owns it, when it was made, what rights apply, its physical properties, and a compact, LLM-ready view of its content. Pure Rust, safe on untrusted input.
 
-> **Status: 0.2 (Stage 2).** Every file gets the universal sections (identification, system, temporal, security, physical, integrity), plus `wc` statistics for text, owner names, extended attributes (macOS quarantine and "Where from", Finder tags, Windows `Zone.Identifier`), and a language, keywords, keyword frequency, excerpt and (in `full` / `llm`) a summary for any prose. Extractors cover plain text, logs, diffs, Markdown, HTML, XML, feeds, JSON / NDJSON / JSON5, YAML, TOML, INI / properties / dotenv, CSV / TSV, SQL, ~40 programming languages, package manifests, Jupyter notebooks, Dockerfiles and Makefiles, and 41 image formats: JPEG, PNG, GIF, WebP, TIFF, HEIC / AVIF, JPEG XL, JPEG 2000, PSD, SVG, camera raw (DNG, CR2, CR3, NEF, ARW, ORF, RW2, PEF, RAF, SRW) and more, with EXIF, XMP, IPTC, ICC and Photoshop metadata reconciled the way the Metadata Working Group specifies. Other formats are still identified by signature. [`docs/metadata-extracted.md`](https://github.com/baoulo/whiff/blob/main/docs/metadata-extracted.md) lists the 1004 formats planned, what is extracted from each, and which extractor handles it today.
+> **Status: 0.3 (Stage 3).** Every file gets the universal sections (identification, system, temporal, security, physical, integrity), plus `wc` statistics for text, owner names, extended attributes (macOS quarantine and "Where from", Finder tags, Windows `Zone.Identifier`), and a language, keywords, keyword frequency, excerpt and (in `full` / `llm`) a summary for any prose. Extractors cover plain text, logs, diffs, Markdown, HTML, XML, feeds, JSON / NDJSON / JSON5, YAML, TOML, INI / properties / dotenv, CSV / TSV, SQL, ~40 programming languages, package manifests, Jupyter notebooks, Dockerfiles and Makefiles, 41 image formats: JPEG, PNG, GIF, WebP, TIFF, HEIC / AVIF, JPEG XL, JPEG 2000, PSD, SVG, camera raw (DNG, CR2, CR3, NEF, ARW, ORF, RW2, PEF, RAF, SRW) and more, with EXIF, XMP, IPTC, ICC and Photoshop metadata reconciled the way the Metadata Working Group specifies, and documents: PDF, Word / Excel / PowerPoint / Visio (current and 97–2003), OpenDocument, RTF, EPUB, Kindle, FictionBook, comics, PostScript, BibTeX, e-mail (EML, mbox, MHTML, Outlook MSG), iCalendar and vCard, with macros, scripts, risky links and phishing signals flagged. Other formats are still identified by signature. [`docs/metadata-extracted.md`](https://github.com/baoulo/whiff/blob/main/docs/metadata-extracted.md) lists the 1004 formats planned, what is extracted from each, and which extractor handles it today.
 
 ## Install
 
@@ -68,7 +68,9 @@ Images get their embedded metadata decoded (`metadata.exif`, `.xmp`, `.iptc`, `.
 
 The full report adds the GPS location (`content.location`), camera settings, the ICC profile and the raw blocks. AI-generated images are flagged in `security.risks` (Stable Diffusion, ComfyUI and InvokeAI parameters in PNGs, the IPTC digital source type); SVGs with scripts or external references are flagged too.
 
-Formats without an extractor yet (PDFs, archives, media, …) are still identified by signature, with every file-level section filled in.
+Documents report their properties, outline and text; PDFs, Office files, RTF and e-mail also report active content (macros, JavaScript, DDE, external templates, launch actions) and phishing signals in `security.risks`, and their attachments and embedded files appear under `embedded`. Addresses are reduced to their domain unless you pass `--privacy off`.
+
+Formats without an extractor yet (archives, media, executables, …) are still identified by signature, with every file-level section filled in.
 
 As a library:
 
@@ -81,7 +83,7 @@ let compact = report.llm_view(800); // ~800 tokens
 
 ```toml
 # library only, without the CLI's dependencies
-whiff = { version = "0.2", default-features = false, features = ["common"] }
+whiff = { version = "0.3", default-features = false, features = ["common"] }
 ```
 
 ## The report
@@ -96,9 +98,9 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 
 | Feature | Default | Adds |
 |---|---|---|
-| `common` | yes | text, logs, diffs, Markdown, HTML, XML, feeds, JSON, YAML, TOML, INI, CSV, SQL, source code, package manifests, notebooks, Dockerfiles, Makefiles, raster / vector / layered images, camera raw and GPU textures; documents, email, media, archives, executables and more in later releases |
+| `common` | yes | text, logs, diffs, Markdown, HTML, XML, feeds, JSON, YAML, TOML, INI, CSV, SQL, source code, package manifests, notebooks, Dockerfiles, Makefiles, raster / vector / layered images, camera raw, GPU textures, documents (PDF, Office, OpenDocument, RTF, ebooks, PostScript, BibTeX), e-mail, calendars and contacts; media, archives, executables and more in later releases |
 | `cli` | yes | the `whiff` binary |
-| `geo`, `science`, `data`, `cad`, `forensics`, `games` | no | specialist collections (GIS, scientific and medical, columnar data, CAD and 3D, forensics, games); reserved, empty in 0.2 |
+| `geo`, `science`, `data`, `cad`, `forensics`, `games` | no | specialist collections (GIS, scientific and medical, columnar data, CAD and 3D, forensics, games); reserved, empty in 0.3 |
 | `full` | no | all collections |
 
 The minimum supported Rust version is 1.89.

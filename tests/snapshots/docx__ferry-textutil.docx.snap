@@ -1,0 +1,209 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-textutil.docx",
+    "stem": "ferry-textutil",
+    "extension": "docx"
+  },
+  "identification": {
+    "format": "docx",
+    "name": "Word document",
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3737
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T04:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T04:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T04:00:00Z",
+    "latest": "2024-04-01T04:00:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Example Ferries"
+  },
+  "physical": {
+    "size_bytes": 3737,
+    "entropy": 7.609,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "85215729738bddac98f85f20caa4fd24bff6e9dbff15deda99377a7bcd9acd8b",
+    "blake3": "725fcd75063a39cea7314de45b3d5b2edb98cc9c785a841964e18697392f343e"
+  },
+  "content": {
+    "title": "Ferry timetable",
+    "description": "Harbour ferries",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter",
+      "hour",
+      "leave",
+      "Harbour ferries",
+      "Ferries leave",
+      "harbour every hour"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        5
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "leave",
+        2
+      ],
+      [
+        "timetable",
+        2
+      ],
+      [
+        "winter",
+        2
+      ]
+    ],
+    "excerpt": "Ferry timetable Ferries leave the old harbour every hour from 07:00. Winter In winter the last ferry leaves at 19:00.",
+    "tags": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Ferry timetable",
+        "subject": "Harbour ferries",
+        "creator": "Mira Castell",
+        "keywords": "ferry, timetable",
+        "created": "2024-04-01T04:00:00Z",
+        "modified": "2024-04-01T04:00:00Z"
+      },
+      "app": {
+        "Company": "Example Ferries"
+      }
+    }
+  },
+  "format": {
+    "docx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 8,
+      "uncompressed_bytes": 8863,
+      "paragraphs": 4,
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

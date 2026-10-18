@@ -1,0 +1,180 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fees.xls",
+    "stem": "fees",
+    "extension": "xls"
+  },
+  "identification": {
+    "format": "xls",
+    "name": "Excel 97-2003 workbook",
+    "mime": "application/vnd.ms-excel",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xls",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Tomas Lind"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 1.969,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "553457175cad7cb692190e901bfa9ab8664a923c223288d045e6a9f6fec83d67",
+    "blake3": "aaa6db4e14ad75f26d6dd184ff8a405255fb9511d8a79f40d4102fef0f94c3cc"
+  },
+  "content": {
+    "title": "Harbour fees 2024",
+    "authors": [
+      "Tomas Lind"
+    ],
+    "excerpt": "Harbour fees 2024"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour fees 2024",
+      "Author": "Tomas Lind",
+      "Application": "Microsoft Excel",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "xls": {
+      "version": 3,
+      "streams": 2,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 208
+        },
+        {
+          "name": "Workbook",
+          "size_bytes": 279
+        }
+      ],
+      "biff_version": "0x0600",
+      "sheets": [
+        {
+          "name": "Fees",
+          "kind": "worksheet"
+        },
+        {
+          "name": "Rates",
+          "kind": "worksheet",
+          "state": "hidden"
+        }
+      ],
+      "hidden_sheets": 1,
+      "cells": 7,
+      "formulas": 0,
+      "shared_strings": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -25,6 +25,10 @@ pub(crate) mod code;
 #[cfg(feature = "common")]
 pub(crate) mod data;
 #[cfg(feature = "common")]
+pub(crate) mod doc;
+#[cfg(feature = "common")]
+pub(crate) mod email;
+#[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]
 pub(crate) mod text;

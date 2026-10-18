@@ -282,6 +282,11 @@
           "const": "forced"
         },
         {
+          "description": "A container's extractor looked inside (a compound file's streams, a\nZIP's parts) and named the real format.",
+          "type": "string",
+          "const": "content"
+        },
+        {
           "description": "Not applicable (directories, special files).",
           "type": "string",
           "const": "none"
@@ -556,6 +561,21 @@
           "description": "Expiry (certificates, licences).",
           "type": "string",
           "const": "expires"
+        },
+        {
+          "description": "Last printed (office documents).",
+          "type": "string",
+          "const": "printed"
+        },
+        {
+          "description": "Sent (e-mail `Date`, Outlook submit time).",
+          "type": "string",
+          "const": "sent"
+        },
+        {
+          "description": "Received (e-mail delivery, `Received` hops).",
+          "type": "string",
+          "const": "received"
         },
         {
           "description": "Anything else (see `source`).",

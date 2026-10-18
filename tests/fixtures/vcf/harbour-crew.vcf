@@ -1,0 +1,42 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Saltmere Harbour//Contacts 1.0//EN
+KIND:individual
+FN:Mira Castell
+N:Castell;Mira;;;
+ORG:Example Ferries;Timetables
+TITLE:Scheduler
+EMAIL;TYPE=work:mira@example.org
+TEL;TYPE=cell,voice;VALUE=uri:tel:+1-555-0100
+ADR;TYPE=work:;;1 Quay Street;Saltmere;;SM1 1AA;Freedonia
+BDAY:19800203
+URL:https://ferries.example.org/team/mira
+CATEGORIES:Ferries,Crew
+NOTE:Prefers the morning shift.
+REV:20240401T090000Z
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Ben Gull
+N:Gull;Ben;;;
+ORG:Saltmere Harbour Office
+EMAIL;TYPE=INTERNET,HOME:ben@example.org
+TEL;TYPE=HOME:+1-555-0101
+PHOTO;ENCODING=b;TYPE=PNG:iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAEUlEQVR42mOIqliAFTEMLQkAE2Rc
+ gbN3t+AAAAAASUVORK5CYII=
+END:VCARD
+BEGIN:VCARD
+VERSION:2.1
+N;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:Lighthouse;Ana;;;
+FN;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:Ana Lighthouse
+TEL;WORK;FAX:+1-555-0102
+EMAIL;INTERNET:ana@saltmere.example
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+KIND:org
+FN:Saltmere Harbour Office
+ORG:Saltmere Harbour Office
+EMAIL:office@saltmere.example
+TEL;TYPE=work:+1-555-0199
+END:VCARD

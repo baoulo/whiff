@@ -1,0 +1,162 @@
+---
+source: src/formats/doc/other.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "chart.eps",
+    "stem": "chart",
+    "extension": "eps"
+  },
+  "identification": {
+    "format": "eps",
+    "name": "Encapsulated PostScript",
+    "mime": "application/postscript",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "eps",
+        "confidence": 0.99
+      },
+      {
+        "format": "ps",
+        "confidence": 0.76
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.other"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 604
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T08:30:00+02:00",
+        "source": "ps.dsc.CreationDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T06:30:00Z",
+    "latest": "2024-05-01T06:30:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 604,
+    "entropy": 5.098,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 604,
+      "chars": 604,
+      "words": 90,
+      "lines": 22,
+      "max_line_length": 89,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "pages": 1
+    }
+  },
+  "integrity": {
+    "sha256": "597a17e357d38787b372f464d11bfa018ff6c4699844aabff35e4bdc03166445",
+    "blake3": "542611fe0af9c37462489958abb6f96e2a97a02e42105651b417094fe0e8c735"
+  },
+  "content": {
+    "title": "Saltmere tide chart",
+    "excerpt": "High and low water, 1 May 2024"
+  },
+  "metadata": {},
+  "format": {
+    "eps": {
+      "dsc_version": "3.0",
+      "epsf_version": "3.0",
+      "creator": "whiff fixtures",
+      "bounding_box": [
+        0.0,
+        0.0,
+        300.0,
+        150.0
+      ],
+      "hires_bounding_box": [
+        0.0,
+        0.0,
+        300.0,
+        150.0
+      ],
+      "language_level": "2",
+      "fonts": [
+        "Helvetica"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.other",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

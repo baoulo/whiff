@@ -1,0 +1,23 @@
+331
+From: Ben Gull <ben@example.org>
+To: Mira Castell <mira@example.org>
+Subject: Lighthouse open day
+Date: Sun, 05 May 2024 16:45:00 +0200
+Message-ID: <openday.20240505@example.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+The lighthouse is open to visitors on Saturday from 10:00.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-received</key>
+	<real>1714920300</real>
+	<key>flags</key>
+	<integer>8590195713</integer>
+	<key>remote-id</key>
+	<string>4242</string>
+</dict>
+</plist>

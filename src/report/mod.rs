@@ -125,6 +125,9 @@ pub enum DetectedBy {
     Heuristic,
     /// The caller forced the format.
     Forced,
+    /// A container's extractor looked inside (a compound file's streams, a
+    /// ZIP's parts) and named the real format.
+    Content,
     /// Not applicable (directories, special files).
     #[default]
     None,
@@ -247,6 +250,12 @@ pub enum DateField {
     Published,
     /// Expiry (certificates, licences).
     Expires,
+    /// Last printed (office documents).
+    Printed,
+    /// Sent (e-mail `Date`, Outlook submit time).
+    Sent,
+    /// Received (e-mail delivery, `Received` hops).
+    Received,
     /// Anything else (see `source`).
     Other,
 }

@@ -1,0 +1,152 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "4242.emlx",
+    "stem": "4242",
+    "extension": "emlx"
+  },
+  "identification": {
+    "format": "emlx",
+    "name": "Apple Mail message",
+    "mime": "message/x-emlx",
+    "family": "email",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 668
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-05T16:45:00+02:00",
+        "source": "email.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-05T14:45:00Z",
+    "latest": "2024-05-05T14:45:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 668,
+    "entropy": 5.459,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 668,
+      "chars": 668,
+      "words": 60,
+      "lines": 23,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "cfe19d994261d325d1dfd3d6b66042f1633b6ec3e02764d671dd4c35cc0da932",
+    "blake3": "a6ce793372b8ed71b0d4424fc0a1a7c8f2d08f9995ac4f55e224e0f945b764de"
+  },
+  "content": {
+    "title": "Lighthouse open day",
+    "authors": [
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.732
+    },
+    "excerpt": "The lighthouse is open to visitors on Saturday from 10:00."
+  },
+  "metadata": {},
+  "format": {
+    "emlx": {
+      "mail_flags": [
+        "read"
+      ],
+      "date_received_unix": 1714920300,
+      "from": {
+        "name": "Ben Gull",
+        "domain": "example.org"
+      },
+      "to": [
+        {
+          "name": "Mira Castell",
+          "domain": "example.org"
+        }
+      ],
+      "to_count": 1,
+      "message_id": "openday.20240505@example.org",
+      "mime_parts": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

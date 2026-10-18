@@ -7,7 +7,7 @@ use std::time::Duration;
 
 use clap::{Args, Parser, Subcommand};
 use rayon::prelude::*;
-use whiff::{Engine, Hashes, Profile, Registry, Report};
+use whiff::{Engine, Hashes, Privacy, Profile, Registry, Report};
 
 #[derive(Parser)]
 #[command(
@@ -78,6 +78,10 @@ struct RunArgs {
     /// Record which source set each normalised field.
     #[arg(long)]
     provenance: bool,
+    /// Personal data: `strict` counts it and keeps only the domain of e-mail
+    /// addresses; `off` lists addresses and phone numbers as found.
+    #[arg(long, value_name = "MODE", default_value = "strict", value_parser = parse_privacy)]
+    privacy: Privacy,
     /// Include hidden files when walking directories.
     #[arg(long)]
     hidden: bool,
@@ -90,6 +94,10 @@ struct RunArgs {
 }
 
 fn parse_profile(s: &str) -> Result<Profile, String> {
+    s.parse()
+}
+
+fn parse_privacy(s: &str) -> Result<Privacy, String> {
     s.parse()
 }
 
@@ -204,7 +212,8 @@ fn build_engine(a: &RunArgs) -> Engine {
         .limits(limits)
         .only(a.only.clone())
         .skip(a.skip.clone())
-        .provenance(a.provenance);
+        .provenance(a.provenance)
+        .privacy(a.privacy);
     if let Some(h) = a.hash {
         builder = builder.hashes(h);
     }

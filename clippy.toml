@@ -4,4 +4,6 @@ doc-valid-idents = [
     "..",
     "BigTIFF", "GeoTIFF", "OpenEXR", "DirectDraw", "FourCC", "ZSoft", "GeoJP2", "ImageMagick", "ExifTool", "LibRaw",
     "ComfyUI", "InvokeAI", "NovelAI", "WebUI", "GIF89a", "CompuServe",
+    "PowerPoint", "OpenDocument", "PalmDOC", "FictionBook", "MobileRead", "StarBasic", "AcroForm", "WinAnsi",
+    "MacRoman", "FairPlay", "ASCIIHex", "RunLength", "PDFDocEncoding", "CMaps", "CMap", "ActiveX",
 ]

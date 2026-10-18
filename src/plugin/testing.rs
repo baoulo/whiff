@@ -69,6 +69,27 @@ pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Repo
         .collect()
 }
 
+/// The report for in-memory `bytes` named `name`, with embedded files
+/// analysed one level deep: for unit tests over small synthetic inputs.
+pub fn report_for(name: &str, bytes: &[u8]) -> Report {
+    let engine = Engine::builder().limits(crate::engine::Limits::default().max_depth(1)).build();
+    engine.extract_bytes(Some(name), bytes.to_vec())
+}
+
+/// A ZIP archive of `(name, data, deflate?)` entries, for unit tests of
+/// ZIP-based formats.
+#[cfg(test)]
+pub(crate) fn zip(entries: &[(&str, &[u8], bool)]) -> Vec<u8> {
+    crate::container::zip::tests::build(entries)
+}
+
+/// A compound file of `(path, data)` streams at the root or one storage
+/// deep, for unit tests of OLE-based formats.
+#[cfg(test)]
+pub(crate) fn cfb(streams: &[(&str, &[u8])]) -> Vec<u8> {
+    crate::container::cfb::tests::build(streams)
+}
+
 /// Snapshot-test every fixture of one or more formats:
 /// `whiff::fixture_tests!("qoi");` or `fixture_tests!("json", "ndjson");`
 /// inside a `#[cfg(test)] mod tests`.

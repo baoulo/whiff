@@ -1,0 +1,158 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "storage.cfb",
+    "stem": "storage",
+    "extension": "cfb"
+  },
+  "identification": {
+    "format": "cfb",
+    "name": "OLE2 compound file",
+    "mime": "application/x-ole-storage",
+    "family": "doc.ole",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 1.699,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e8ee26218a5d5371cf20b9c18962791a77acf9bebf0bcb2d5d8f22914b76f9f2",
+    "blake3": "db9b18ee837941c290b8bb950f1c5dc8acd6e5859ff1d23dc2ca4d3e374a4316"
+  },
+  "content": {
+    "title": "Harbour storage",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour storage"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour storage",
+      "Author": "Harbour Office",
+      "Application": "whiff fixtures",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "cfb": {
+      "version": 3,
+      "streams": 3,
+      "storages": 1,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 208
+        },
+        {
+          "name": "Contents",
+          "size_bytes": 64
+        },
+        {
+          "name": "Index/"
+        },
+        {
+          "name": "Index/Entries",
+          "size_bytes": 8
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

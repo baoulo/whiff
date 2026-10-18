@@ -22,7 +22,7 @@ The article [*Rust libraries for file formats* (2026-10-13)](https://thanos.gith
 | `xberg` does lightweight magic inference | Actually a document-intelligence (text extraction) library | Not used for detection |
 | `oxiarc` handles ZIP, TAR, GZIP, XZ, CAB and LZH | No crate named `oxiarc`; published as `oxiarc-core` and `oxiarc-archive` 0.4.2 (low adoption) | Prefer `zip`, `tar`, `cab` and `delharc`; evaluate `oxiarc-archive` |
 | `spoor` reads ELF, PE, Mach-O and WASM metadata plus DWARF | `spoor` 0.1.0 (12 downloads) only recovers the crate manifest from Rust binaries | Use `goblin` / `object` + `gimli`. `spoor` is an optional extra for Rust binaries |
-| `turbo-parsepdf-core` speedups | 0.1.1, about 40 downloads | Not used. `lopdf` + `pdf-extract` / `unpdf` instead |
+| `turbo-parsepdf-core` speedups | 0.1.1, about 40 downloads | Not used. whiff reads PDF with an in-house parser |
 | `doc_loader` gives unified extraction | 0.3.2, about 2k downloads | Not used. Per-format crates instead |
 | `oxigdal` / `oxigeo` as a pure-Rust GDAL | 0.1.7 / 0.2.4, about 1k downloads each | Evaluate later (S7). Use mature single-format crates first |
 | `bitframe` for bit-level headers | 0.1.1, 32 downloads | Not used. `binrw` + `zerocopy` instead |
@@ -33,7 +33,7 @@ The article [*Rust libraries for file formats* (2026-10-13)](https://thanos.gith
 | `arrow`, `parquet`, `lance`, `vortex-ipc` | All current | `parquet` / `arrow` footer-only by default. `lance` and `vortex` are feature-gated (heavy) |
 | `monstertruck-io` for STEP/IGES | 0.4.1, about 600 downloads, full B-rep | Feature-gated. The default is an in-house ISO-10303-21 header lexer |
 
-Crates the article missed that whiff relies on: `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `calcard`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
+Crates the article missed that whiff relies on: `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
 
 ## 2. Universal information (every file, every format)
 
@@ -79,16 +79,16 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `code.notebook` | Code | `common` | kernel + language, nbformat, cell counts by type, markdown headings outline, imports, output types, error outputs, executed?, execution order | Outline + imports + errors summarise an analysis notebook | serde_json | impl | S1 | 4 |
 | `code.infra` | Code | `common` | per dialect: base images/stages/ports/entrypoint (Dockerfile), targets (Makefile), providers/resources/modules (Terraform/HCL), server blocks (nginx), unit/exec (systemd), schedules (crontab) | What does this infra file deploy/run | hcl-rs + impl line scanners | mixed | S8 | 9 |
 | `text.subtitle` | Media | `common` | cue count, first/last timestamp (duration covered), language tag, styles/speakers, frame rate (MicroDVD), full transcript text -&gt; text.plain | Transcript text is the content of the video for an LLM | impl (all formats are simple), ass_parser optional | impl | S4 | 11 |
-| `text.calendar` | Personal | `common` | calendar name, prodid, event/todo counts, date range, recurring events, organizers/attendee counts, locations, timezones, event summaries (first N) | Schedules summarised | calcard | crate | S3 | 3 |
-| `text.contact` | Personal | `common` | contact count, versions, names, organisations, titles; emails/phones counted or redacted per privacy policy | Who is in the address book (privacy-aware) | calcard | crate | S3 | 2 |
-| `email` | Personal | `common` | From/To/Cc/Reply-To, Date, Subject, Message-ID, In-Reply-To/References (thread), mailer, Received hop count + first/last hop, SPF/DKIM/DMARC results, list headers, attachments (name, type, size), body text/plain (or html-&gt;text) -&gt; text.plain; mailbox: message count, date range, top senders | Who/when/what + thread linkage + attachment inventory | mail-parser (EML/MBOX/MHTML), msg-parser (MSG), outlook-pst (PST/OST) | crate | S3 | 11 |
-| `doc.pdf` | Document | `common` | Info dict (Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate, Trapped), XMP (dc/xmp/pdf/pdfaid/pdfuaid), version, page count + page sizes, linearized, encrypted + permission bits, tagged, PDF/A/X/UA/E conformance, outline/bookmarks (-&gt; headings), fonts (embedded?), image count, AcroForm/XFA fields, annotations, JavaScript/OpenAction/Launch (security), embedded files, digital signatures, /Lang, per-page text -&gt; text.plain | Bookmarks + metadata + text summary; JS/embedded files flags matter for safety | lopdf (object model) + pdf-extract/unpdf (text) + meta.xmp | mixed | S3 | 5 |
-| `doc.ooxml` | Document | `common` | docProps/core.xml (title, subject, creator, keywords, description, lastModifiedBy, revision, created, modified, category, contentStatus), app.xml (Application, AppVersion, Pages, Words, Characters, Lines, Paragraphs, TotalTime, Company, Manager, Template), custom.xml properties, headings outline (Heading styles), comments + authors, tracked changes count, hyperlinks, macros present (vbaProject.bin), external links, embedded objects, sensitivity labels (MSIP_*); XLSX: sheets + dimensions, defined names, formula count, charts/pivots; PPTX: slide count, slide titles, notes | Authoring history + outline + slide/sheet titles; macro & external-link flags for safety | zip + quick-xml (impl mapping), calamine (XLSX cells), docx-lite / undoc (text) | mixed | S3 | 11 |
-| `doc.odf` | Document | `common` | meta.xml (title, description, subject, keywords, initial-creator, creator, creation-date, date, editing-cycles, editing-duration, generator, document-statistic), headings outline, sheets/slides, macros present (Basic/), text -&gt; text.plain | Same as OOXML | zip + quick-xml (impl), calamine / spreadsheet-ods (ODS) | mixed | S3 | 8 |
-| `doc.ole` | Document | `common` | SummaryInformation (title, subject, author, keywords, comments, template, last author, revision, app name, created/last-saved/last-printed, edit time, pages/words/chars, security flags) + DocumentSummaryInformation (company, manager, category, lines, paragraphs, slides, notes), stream/storage tree, VBA macros present, encrypted, embedded OLE objects; text where feasible | Legacy Office authoring metadata + macro flag | cfb + impl MS-OLEPS property-set parser; calamine (XLS) | mixed | S3 | 12 |
-| `doc.rtf` | Document | `common` | \info group (title, subject, author, operator, keywords, doccomm, company, creatim, revtim, version, nofpages, nofwords), font table, embedded objects (\object, risky), text -&gt; text.plain | Metadata + text | rtf-parser | crate | S3 | 2 |
-| `doc.ebook` | Document | `common` | OPF/EXTH/title-info: title, creators + roles, language, identifiers (ISBN/ASIN/UUID), publisher, date, subjects, rights, description, series; TOC/chapter titles, spine length, cover image, DRM present, ComicInfo.xml for comics | Bibliographic record + chapter list | rbook / epub, mobi, fb2, zip + quick-xml (CBZ/ComicInfo) | mixed | S3 | 8 |
-| `doc.other` | Document | `common` | per format: DSC comments (%%Title %%Creator %%CreationDate %%Pages %%BoundingBox) for PS/EPS; \documentclass, packages, \title/\author, sectioning outline for LaTeX; entry count/types/keys/years for BibTeX; page count + metadata for DjVu/XPS; header metadata for others; text -&gt; text.plain | Outline/bibliography/title for long-tail document formats | djvu, biblatex, typst-syntax, zip+quick-xml (XPS); impl DSC/LaTeX scanners | mixed | S3/S8 | 25 |
+| `text.calendar` | Personal | `common` | calendar name, prodid, event/todo counts, date range, recurring events, organizers/attendee counts, locations, timezones, event summaries (first N) | Schedules summarised | impl (RFC 5545 content lines, vCalendar 1.0) | impl | S3 | 3 |
+| `text.contact` | Personal | `common` | contact count, versions, names, organisations, titles; emails/phones counted or redacted per privacy policy | Who is in the address book (privacy-aware) | impl (RFC 6350 content lines, vCard 2.1/3.0/4.0) | impl | S3 | 2 |
+| `email` | Personal | `common` | From/To/Cc/Reply-To, Date, Subject, Message-ID, In-Reply-To/References (thread), mailer, Received hop count + first/last hop, SPF/DKIM/DMARC results, list headers, attachments (name, type, size), body text/plain (or html-&gt;text) -&gt; text.plain; mailbox: message count, date range, top senders | Who/when/what + thread linkage + attachment inventory | mail-parser (EML, mbox, MHTML, EMLX); impl MSG (MS-OXMSG over the in-house CFB reader, MS-OXRTFCP) | mixed | S3 | 11 |
+| `doc.pdf` | Document | `common` | Info dict (Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate, Trapped), XMP (dc/xmp/pdf/pdfaid/pdfuaid), version, page count + page sizes, linearized, encrypted + permission bits, tagged, PDF/A/X/UA/E conformance, outline/bookmarks (-&gt; headings), fonts (embedded?), image count, AcroForm/XFA fields, annotations, JavaScript/OpenAction/Launch (security), embedded files, digital signatures, /Lang, per-page text -&gt; text.plain | Bookmarks + metadata + text summary; JS/embedded files flags matter for safety | impl (objects, xref tables/streams, object streams, repair, filters, RC4/AES decryption, content-stream text) + meta.xmp | impl | S3 | 5 |
+| `doc.ooxml` | Document | `common` | docProps/core.xml (title, subject, creator, keywords, description, lastModifiedBy, revision, created, modified, category, contentStatus), app.xml (Application, AppVersion, Pages, Words, Characters, Lines, Paragraphs, TotalTime, Company, Manager, Template), custom.xml properties, headings outline (Heading styles), comments + authors, tracked changes count, hyperlinks, macros present (vbaProject.bin), external links, embedded objects, sensitivity labels (MSIP_*); XLSX: sheets + dimensions, defined names, formula count, charts/pivots; PPTX: slide count, slide titles, notes | Authoring history + outline + slide/sheet titles; macro & external-link flags for safety | impl (in-house ZIP reader + quick-xml mapping; BIFF12 workbook not read) | impl | S3 | 11 |
+| `doc.odf` | Document | `common` | meta.xml (title, description, subject, keywords, initial-creator, creator, creation-date, date, editing-cycles, editing-duration, generator, document-statistic), headings outline, sheets/slides, macros present (Basic/), text -&gt; text.plain | Same as OOXML | impl (in-house ZIP reader + quick-xml) | impl | S3 | 8 |
+| `doc.ole` | Document | `common` | SummaryInformation (title, subject, author, keywords, comments, template, last author, revision, app name, created/last-saved/last-printed, edit time, pages/words/chars, security flags) + DocumentSummaryInformation (company, manager, category, lines, paragraphs, slides, notes), stream/storage tree, VBA macros present, encrypted, embedded OLE objects; text where feasible | Legacy Office authoring metadata + macro flag | impl (MS-CFB reader, MS-OLEPS, MS-OVBA, BIFF8, PowerPoint records, Word piece table) | impl | S3 | 12 |
+| `doc.rtf` | Document | `common` | \info group (title, subject, author, operator, keywords, doccomm, company, creatim, revtim, version, nofpages, nofwords), font table, embedded objects (\object, risky), text -&gt; text.plain | Metadata + text | impl (RTF 1.9.1 tokenizer) | impl | S3 | 2 |
+| `doc.ebook` | Document | `common` | OPF/EXTH/title-info: title, creators + roles, language, identifiers (ISBN/ASIN/UUID), publisher, date, subjects, rights, description, series; TOC/chapter titles, spine length, cover image, DRM present, ComicInfo.xml for comics | Bibliographic record + chapter list | impl (OCF/OPF/NCX/nav on the in-house ZIP reader, PalmDB/MOBI/EXTH, FB2, ComicInfo) + quick-xml | impl | S3 | 8 |
+| `doc.other` | Document | `common` | per format: DSC comments (%%Title %%Creator %%CreationDate %%Pages %%BoundingBox) for PS/EPS; \documentclass, packages, \title/\author, sectioning outline for LaTeX; entry count/types/keys/years for BibTeX; page count + metadata for DjVu/XPS; header metadata for others; text -&gt; text.plain | Outline/bibliography/title for long-tail document formats | impl (DSC scanner, BibTeX parser); LaTeX in code.source | impl | S3/S8 | 25 |
 | `image.raster` | Image | `common` | width, height, color type, channels, bit depth, alpha, color space, ICC profile, DPI/physical size, orientation, progressive/interlaced, compression, animation (frames, loop count, total duration), palette size, embedded thumbnails, quality estimate (JPEG), perceptual hash (opt-in), dominant colours (opt-in, decodes), metadata blocks -&gt; meta.exif / meta.xmp / meta.iptc / meta.icc | Dimensions + capture metadata + rights; pHash enables duplicate detection | imagesize (probe), img-parts (block extraction), image / png / gif / tiff / image-webp / zune-jpeg / jxl-oxide / hayro-jpeg2000, avif-parse, mp4-atom (HEIF boxes) | crate | S2 | 49 |
 | `image.raw` | Image | `common` | camera make/model/serial, lens, exposure/aperture/ISO/focal length, capture time, GPS, sensor dimensions, CFA pattern, white balance, embedded preview size, + full meta.exif/meta.xmp | Photographic provenance | rawler (rawloader fallback) + meta.exif | crate | S2 | 16 |
 | `image.layered` | Image | `common` | canvas size, colour mode, bit depth, layer count + names + visibility, groups, text-layer strings, image resources (IPTC/XMP/EXIF/ICC/thumbnail), application version | Layer names and text layers describe a design file's content | psd; impl XCF/KRA/ORA (zip+xml) headers | mixed | S2 | 10 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **182** of 1004.
-* Formats by family status: crate = 264, mixed = 632, impl = 108.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 61, S3/S8 = 20, S4 = 74, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 157.
+* Formats with an extractor in this build: **225** of 1004.
+* Formats by family status: crate = 246, mixed = 574, impl = 184.
+* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 74, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 205.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -192,25 +192,25 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 51 | Nikon NEF / NRW | `nef` `nrw` | image/x-nikon-nef | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 52 | Sony ARW / SRF / SR2 | `arw` `srf` `sr2` | image/x-sony-arw | 1 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 53 | Adobe Photoshop | `psd` `psb` | image/vnd.adobe.photoshop | 1 | `image.layered` | `common` | `image.psd` | psd | S2 | — |
-| 54 | iCalendar | `ics` `ifb` `ical` | text/calendar | 1 | `text.calendar` | `common` | — | calcard | S3 | — |
-| 55 | vCard | `vcf` `vcard` | text/vcard | 1 | `text.contact` | `common` | — | calcard | S3 | — |
-| 56 | Email message (RFC 5322 / MIME) | `eml` | message/rfc822 | 1 | `email` | `common` | — | mail-parser | S3 | — |
-| 57 | Mailbox | `mbox` `mbx` | application/mbox | 1 | `email` | `common` | — | mail-parser | S3 | — |
-| 58 | Outlook message | `msg` | application/vnd.ms-outlook | 1 | `email` | `common` | — | mail-parser | S3 | — |
-| 59 | PDF | `pdf` | application/pdf | 1 | `doc.pdf` | `common` | — | lopdf | S3 | — |
-| 60 | Word document (OOXML) | `docx` | application/vnd.openxmlformats-officedocument.wordprocessingml.document | 1 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
-| 61 | Excel workbook (OOXML) | `xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 1 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
-| 62 | PowerPoint presentation (OOXML) | `pptx` | application/vnd.openxmlformats-officedocument.presentationml.presentation | 1 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
-| 63 | Excel macro-enabled / template / add-in | `xlsm` `xltx` `xltm` `xlam` | application/vnd.ms-excel.sheet.macroEnabled.12 | 1 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | macros flag |
-| 64 | OpenDocument Text | `odt` `ott` | application/vnd.oasis.opendocument.text | 1 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 65 | Word 97-2003 | `doc` `dot` | application/msword | 1 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 66 | Excel 97-2003 | `xls` `xlt` `xla` | application/vnd.ms-excel | 1 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 67 | PowerPoint 97-2003 | `ppt` `pot` `pps` | application/vnd.ms-powerpoint | 1 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 68 | Rich Text Format | `rtf` | application/rtf | 1 | `doc.rtf` | `common` | — | rtf-parser | S3 | — |
-| 69 | EPUB | `epub` | application/epub+zip | 1 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | — |
-| 70 | PostScript | `ps` | application/postscript | 1 | `doc.other` | `common` | — | djvu, biblatex | S3 | DSC comments |
-| 71 | Encapsulated PostScript | `eps` `epsf` `epsi` | application/postscript | 1 | `doc.other` | `common` | — | djvu, biblatex | S3 | DSC + embedded preview TIFF/WMF + XMP |
-| 72 | LaTeX document | `tex` | application/x-tex | 1 | `doc.other` | `common` | — | djvu, biblatex | S3 | — |
+| 54 | iCalendar | `ics` `ifb` `ical` | text/calendar | 1 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
+| 55 | vCard | `vcf` `vcard` | text/vcard | 1 | `text.contact` | `common` | `text.contact` | impl | S3 | — |
+| 56 | Email message (RFC 5322 / MIME) | `eml` | message/rfc822 | 1 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
+| 57 | Mailbox | `mbox` `mbx` | application/mbox | 1 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
+| 58 | Outlook message | `msg` | application/vnd.ms-outlook | 1 | `email` | `common` | `email.msg` | mail-parser | S3 | — |
+| 59 | PDF | `pdf` | application/pdf | 1 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | — |
+| 60 | Word document (OOXML) | `docx` | application/vnd.openxmlformats-officedocument.wordprocessingml.document | 1 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
+| 61 | Excel workbook (OOXML) | `xlsx` | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | 1 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
+| 62 | PowerPoint presentation (OOXML) | `pptx` | application/vnd.openxmlformats-officedocument.presentationml.presentation | 1 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
+| 63 | Excel macro-enabled / template / add-in | `xlsm` `xltx` `xltm` `xlam` | application/vnd.ms-excel.sheet.macroEnabled.12 | 1 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | macros flag |
+| 64 | OpenDocument Text | `odt` `ott` | application/vnd.oasis.opendocument.text | 1 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 65 | Word 97-2003 | `doc` `dot` | application/msword | 1 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 66 | Excel 97-2003 | `xls` `xlt` `xla` | application/vnd.ms-excel | 1 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 67 | PowerPoint 97-2003 | `ppt` `pot` `pps` | application/vnd.ms-powerpoint | 1 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 68 | Rich Text Format | `rtf` | application/rtf | 1 | `doc.rtf` | `common` | `doc.rtf` | impl | S3 | — |
+| 69 | EPUB | `epub` | application/epub+zip | 1 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
+| 70 | PostScript | `ps` | application/postscript | 1 | `doc.other` | `common` | `doc.other` | impl | S3 | DSC comments |
+| 71 | Encapsulated PostScript | `eps` `epsf` `epsi` | application/postscript | 1 | `doc.other` | `common` | `doc.other` | impl | S3 | DSC + embedded preview TIFF/WMF + XMP |
+| 72 | LaTeX document | `tex` | application/x-tex | 1 | `doc.other` | `common` | — | impl | S3 | — |
 | 73 | SubRip | `srt` | application/x-subrip | 1 | `text.subtitle` | `common` | — | impl | S4 | — |
 | 74 | MP3 | `mp3` | audio/mpeg | 1 | `audio` | `common` | — | lofty | S4 | ID3v1/ID3v2.3/2.4, APE, Xing/Info/VBRI (VBR, frames), LAME tag |
 | 75 | AAC / M4A | `m4a` `aac` `m4b` `m4p` | audio/mp4 | 1 | `audio` | `common` | — | lofty | S4 | iTunes ilst atoms, chapters (m4b), DRM (m4p) |
@@ -344,14 +344,14 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 203 | Windows Metafile / Enhanced Metafile | `wmf` `emf` `emz` `wmz` | image/emf | 2 | `image.vector` | `common` | `image.emf` | quick-xml | S2 | — |
 | 204 | DirectDraw Surface | `dds` | image/vnd-ms.dds | 2 | `image.texture` | `common` | `image.dds` | ddsfile, ktx2 | S2 | — |
 | 205 | OpenEXR | `exr` | image/x-exr | 2 | `image.texture` | `common` | `image.exr` | ddsfile, ktx2 | S2 | — |
-| 206 | Word macro-enabled / template | `docm` `dotx` `dotm` | application/vnd.ms-word.document.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | macros flag |
-| 207 | Excel binary workbook | `xlsb` | application/vnd.ms-excel.sheet.binary.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | calamine |
-| 208 | PowerPoint macro-enabled / template / show | `pptm` `potx` `potm` `ppsx` `ppsm` | application/vnd.ms-powerpoint.presentation.macroEnabled.12 | 2 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
-| 209 | OpenDocument Spreadsheet | `ods` `ots` | application/vnd.oasis.opendocument.spreadsheet | 2 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 210 | OpenDocument Presentation | `odp` `otp` | application/vnd.oasis.opendocument.presentation | 2 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 211 | Kindle MOBI / AZW / AZW3 | `mobi` `azw` `azw3` `prc` | application/x-mobipocket-ebook | 2 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | EXTH records |
-| 212 | Comic book archive | `cbz` `cbr` `cb7` `cbt` | application/vnd.comicbook+zip | 2 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | page count, ComicInfo.xml |
-| 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
+| 206 | Word macro-enabled / template | `docm` `dotx` `dotm` | application/vnd.ms-word.document.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | macros flag |
+| 207 | Excel binary workbook | `xlsb` | application/vnd.ms-excel.sheet.binary.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | calamine |
+| 208 | PowerPoint macro-enabled / template / show | `pptm` `potx` `potm` `ppsx` `ppsm` | application/vnd.ms-powerpoint.presentation.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
+| 209 | OpenDocument Spreadsheet | `ods` `ots` | application/vnd.oasis.opendocument.spreadsheet | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 210 | OpenDocument Presentation | `odp` `otp` | application/vnd.oasis.opendocument.presentation | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 211 | Kindle MOBI / AZW / AZW3 | `mobi` `azw` `azw3` `prc` | application/x-mobipocket-ebook | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | EXTH records |
+| 212 | Comic book archive | `cbz` `cbr` `cb7` `cbt` | application/vnd.comicbook+zip | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | page count, ComicInfo.xml |
+| 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
 | 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
 | 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
 | 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | — | lofty | S4 | — |
@@ -681,66 +681,66 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 540 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | — | impl on quick-xml | S8 | — |
 | 541 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | — | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S8 | — |
 | 542 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | — | impl | S8 | — |
-| 543 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | — | calcard | S3 | — |
-| 544 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | calcard | S3 | — |
-| 545 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | calcard | S3 | — |
+| 543 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S8 | — |
+| 544 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
+| 545 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
 | 546 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
 | 547 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 548 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | — | mail-parser | S3 | Apple Mail plist trailer |
+| 548 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | Apple Mail plist trailer |
 | 549 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
 | 550 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | — | mail-parser | S8 | attachments (impl) |
 | 551 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
 | 552 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
 | 553 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 554 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | — | lopdf | S3 | conformance from XMP pdfaid/pdfx/pdfuaid |
-| 555 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | — | lopdf | S3 | AI private data present, artboards |
-| 556 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | — | lopdf | S3 | field names/values |
-| 557 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | — | lopdf | S3 | embedded file list |
-| 558 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | page names, shape text |
-| 559 | Word XML 2003 / Flat OPC | `xml` `fodt` | — | 3 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | — |
-| 560 | XPS / OpenXPS | `xps` `oxps` | application/oxps | 3 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | pages, fonts, docProps |
-| 561 | 3D Manufacturing Format (OPC) | `3mf` | model/3mf | 3 | `doc.ooxml` | `common` | — | zip + quick-xml | S3 | -&gt; 3d |
-| 562 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 563 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 564 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 565 | Apple Pages / Numbers / Keynote | `pages` `numbers` `key` | application/vnd.apple.pages | 3 | `doc.odf` | `common` | — | zip + quick-xml | S3 | zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview |
-| 566 | Hancom HWPX | `hwpx` | — | 3 | `doc.odf` | `common` | — | zip + quick-xml | S3 | — |
-| 567 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 568 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 569 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 570 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | -&gt; email |
-| 571 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | thumbnail count |
-| 572 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | — |
-| 573 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | storage tree |
-| 574 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S3 | -&gt; cad, summary info |
-| 575 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | cfb + impl MS-OLEPS property-set parser | S8 | header + prefix packet |
-| 576 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | rtf-parser | S3 | — |
-| 577 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | rbook / epub, mobi | S8 | header only; DRM flag |
-| 578 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | — |
-| 579 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | — |
-| 580 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | — |
-| 581 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | rbook / epub, mobi | S3 | — |
-| 582 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 583 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | djvu, biblatex | S8 | ITSF header, topics list (impl) |
-| 584 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 585 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | entry count, titles, DOIs |
-| 586 | Typst | `typ` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 587 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 588 | Microsoft OneNote | `one` `onetoc2` | application/onenote | 3 | `doc.other` | `common` | — | djvu, biblatex | S8 | section/page titles (impl, revision store) |
-| 589 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | note titles, tags, dates |
-| 590 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | nodes, text |
-| 591 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | title page, scene headings |
-| 592 | Lotus 1-2-3 / Quattro | `wk1` `wk3` `wk4` `123` `qpw` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 593 | Apple ClarisWorks / AppleWorks | `cwk` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 594 | PDF-like: Adobe FrameMaker / InDesign | `fm` `mif` `indd` `idml` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | IDML (zip+xml): stories text |
-| 595 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | -&gt; doc.odf mapping |
-| 596 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 597 | PCL / PJL print job | `pcl` `prn` `pjl` | application/vnd.hp-pcl | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | PJL JOB NAME, user, page count |
-| 598 | Windows spool files | `spl` `shd` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | document name, user, printer, submit time |
-| 599 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 600 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | — |
-| 601 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | slide count, titles |
-| 602 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | djvu, biblatex | S3/S8 | page tree, titles |
+| 554 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | conformance from XMP pdfaid/pdfx/pdfuaid |
+| 555 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | — | impl | S8 | AI private data present, artboards |
+| 556 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | field names/values |
+| 557 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | embedded file list |
+| 558 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S8 | page names, shape text |
+| 559 | Word XML 2003 / Flat OPC | `xml` `fodt` | — | 3 | `doc.ooxml` | `common` | — | impl | S8 | — |
+| 560 | XPS / OpenXPS | `xps` `oxps` | application/oxps | 3 | `doc.ooxml` | `common` | — | impl | S8 | pages, fonts, docProps |
+| 561 | 3D Manufacturing Format (OPC) | `3mf` | model/3mf | 3 | `doc.ooxml` | `common` | — | impl | S8 | -&gt; 3d |
+| 562 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
+| 563 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
+| 564 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
+| 565 | Apple Pages / Numbers / Keynote | `pages` `numbers` `key` | application/vnd.apple.pages | 3 | `doc.odf` | `common` | — | impl | S8 | zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview |
+| 566 | Hancom HWPX | `hwpx` | — | 3 | `doc.odf` | `common` | — | impl | S8 | — |
+| 567 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
+| 568 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
+| 569 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
+| 570 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; email |
+| 571 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | thumbnail count |
+| 572 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
+| 573 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | storage tree |
+| 574 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; cad, summary info |
+| 575 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | impl | S8 | header + prefix packet |
+| 576 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | impl | S8 | — |
+| 577 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | header only; DRM flag |
+| 578 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S8 | — |
+| 579 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 580 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S8 | — |
+| 581 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 582 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 583 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
+| 584 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 585 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | impl | S8 | entry count, titles, DOIs |
+| 586 | Typst | `typ` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 587 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 588 | Microsoft OneNote | `one` `onetoc2` | application/onenote | 3 | `doc.other` | `common` | — | impl | S8 | section/page titles (impl, revision store) |
+| 589 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | — | impl | S8 | note titles, tags, dates |
+| 590 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | — | impl | S8 | nodes, text |
+| 591 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | — | impl | S8 | title page, scene headings |
+| 592 | Lotus 1-2-3 / Quattro | `wk1` `wk3` `wk4` `123` `qpw` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 593 | Apple ClarisWorks / AppleWorks | `cwk` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 594 | PDF-like: Adobe FrameMaker / InDesign | `fm` `mif` `indd` `idml` | — | 3 | `doc.other` | `common` | — | impl | S8 | IDML (zip+xml): stories text |
+| 595 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | — | impl | S8 | -&gt; doc.odf mapping |
+| 596 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 597 | PCL / PJL print job | `pcl` `prn` `pjl` | application/vnd.hp-pcl | 3 | `doc.other` | `common` | — | impl | S8 | PJL JOB NAME, user, page count |
+| 598 | Windows spool files | `spl` `shd` | — | 3 | `doc.other` | `common` | — | impl | S8 | document name, user, printer, submit time |
+| 599 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 600 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 601 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
+| 602 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
 | 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
 | 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
 | 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |

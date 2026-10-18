@@ -1,0 +1,186 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "report.docm",
+    "stem": "report",
+    "extension": "docm"
+  },
+  "identification": {
+    "format": "docm",
+    "name": "Word macro-enabled document",
+    "mime": "application/vnd.ms-word.document.macroEnabled.12",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docm",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2675
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-06-10T07:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-06-10T07:05:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-06-10T07:00:00Z",
+    "latest": "2024-06-10T07:05:00Z"
+  },
+  "security": {
+    "active_content": [
+      "macros"
+    ],
+    "external_references": 0,
+    "risks": [
+      {
+        "kind": "macros",
+        "detail": "2 VBA module(s)",
+        "source": "doc.ooxml"
+      }
+    ]
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2675,
+    "entropy": 7.554,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d2d24d785e16e0a4465ffbd05441d9cdcc12207efe7f75b304477d42846c6f43",
+    "blake3": "84be3eff44d3bf75d1061f3cfc14b40148c863c4d09237b67b5415b83a52d40b"
+  },
+  "content": {
+    "title": "Berth report",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Berth report Occupancy for June, by quay."
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Berth report",
+        "creator": "Harbour Office",
+        "created": "2024-06-10T07:00:00Z",
+        "modified": "2024-06-10T07:05:00Z"
+      }
+    }
+  },
+  "format": {
+    "docm": {
+      "content_type": "application/vnd.ms-word.document.macroEnabled.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 6,
+      "uncompressed_bytes": 6000,
+      "part_counts": {
+        "vba_projects": 1
+      },
+      "vba": {
+        "modules": [
+          {
+            "name": "ThisDocument",
+            "kind": "document",
+            "lines": 0
+          },
+          {
+            "name": "Module1",
+            "kind": "module",
+            "lines": 6
+          }
+        ],
+        "code_lines": 6,
+        "project": "Project"
+      },
+      "paragraphs": 2,
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

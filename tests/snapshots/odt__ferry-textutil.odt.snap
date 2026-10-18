@@ -1,0 +1,191 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-textutil.odt",
+    "stem": "ferry-textutil",
+    "extension": "odt"
+  },
+  "identification": {
+    "format": "odt",
+    "name": "OpenDocument text",
+    "mime": "application/vnd.oasis.opendocument.text",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2644
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T04:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-02T05:30:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2644,
+    "entropy": 7.656,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "290c213059db52167525cd106cb442fc1adf6a30aa5f7d2dc23d24b97becfc02",
+    "blake3": "0564099cd5cc06e90f30ea6ea98e617a449315b32cfbadb8e6e64965c79a8373"
+  },
+  "content": {
+    "title": "Ferry timetable",
+    "description": "Harbour ferries",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter",
+      "hour",
+      "leave",
+      "Harbour ferries",
+      "Ferries leave",
+      "harbour every hour"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        5
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "leave",
+        2
+      ],
+      [
+        "timetable",
+        2
+      ],
+      [
+        "winter",
+        2
+      ]
+    ],
+    "excerpt": "Ferry timetable Ferries leave the old harbour every hour from 07:00. Winter In winter the last ferry leaves at 19:00.",
+    "tags": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter"
+    ]
+  },
+  "metadata": {
+    "odf": {
+      "generator": "CocoaODFWriter/2685.6",
+      "title": "Ferry timetable",
+      "subject": "Harbour ferries",
+      "initial-creator": "Mira Castell",
+      "creation-date": "2024-04-01T04:00:00",
+      "date": "2024-04-02T05:30:00",
+      "keywords": [
+        "ferry",
+        "timetable"
+      ]
+    }
+  },
+  "format": {
+    "odt": {
+      "mimetype": "application/vnd.oasis.opendocument.text",
+      "parts": 5,
+      "manifest_entries": 4,
+      "paragraphs": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

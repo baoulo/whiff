@@ -23,7 +23,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 
    Scalar fields are first-write-wins. Never panic, print or allocate based on unchecked lengths from the file.
 
-   Helpers in `crate::plugin`: `parse_date` (RFC 3339, RFC 2822, log and civil formats), `identify_license` / `spdx_identifier` / `find_copyright`, `is_secret_key`, `redact_secrets` / `redact_sensitive` (for values that may hold credentials or personal data), `AnyValue` (any serde input as JSON, for YAML/TOML/JSON5), `squash_whitespace`, `truncate_chars`. Formats recognised by file name rather than content (`package.json`, `Dockerfile`) return a `Sniff` from `sniff` based on `probe.name`.
+   Helpers in `crate::plugin`: `parse_date` (RFC 3339, RFC 2822, log and civil formats), `identify_license` / `spdx_identifier` / `find_copyright`, `is_secret_key`, `redact_secrets` / `redact_sensitive` (for values that may hold credentials or personal data), `AnyValue` (any serde input as JSON, for YAML/TOML/JSON5), `squash_whitespace`, `truncate_chars`, `html_text` / `decode_entities` (lenient HTML to text, with headings), `latex_text`, `risky_file_name` (executables, double extensions, macro documents). Containers: `Zip` (ZIP / Zip64 entries, bounded reads), `Cfb` (OLE2 compound files) and `oleps` (property sets); `cx.inflate` / `cx.inflate_prefix` decompress within the zip-bomb budget. A container that finds another format inside (a compound file holding Word streams) calls `cx.redirect("doc")` and returns. People's addresses go through `cx.mailbox(name, address)`, which keeps only the domain under the default strict privacy mode (`cx.privacy_strict()`). Formats recognised by file name rather than content (`package.json`, `Dockerfile`) return a `Sniff` from `sniff` based on `probe.name`.
 
 3. **Add 2–5 small sample files** to `tests/fixtures/<format>/` and list each in `SOURCE.md` with its origin and licence. Files must be ≤ 256 KiB and redistributable: self-made, CC0 or permissively licensed.
 
@@ -33,7 +33,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
    INSTA_UPDATE=always cargo test --features full
    ```
 
-   An extractor handling several formats lists them all: `fixture_tests!("json", "ndjson")`. Review the new `tests/snapshots/<format>__*.snap` files: they are the extractor's output contract. The **conformance suite** (`tests/conformance.rs`) then checks your extractor automatically: detection, schema round-trip, determinism, `snake_case` keys, and that empty, truncated, bit-flipped, random and deeply nested inputs, plus a 4 KiB read budget, never cause a panic or hit a deadline.
+   An extractor handling several formats lists them all: `fixture_tests!("json", "ndjson")`. For behaviour no fixture shows (risk signals, damaged structures), unit-test small synthetic inputs with `crate::plugin::testing::report_for(name, bytes)`; keep them plainly benign (a neutral macro or script is enough to test detection). Review the new `tests/snapshots/<format>__*.snap` files: they are the extractor's output contract. The **conformance suite** (`tests/conformance.rs`) then checks your extractor automatically: detection, schema round-trip, determinism, `snake_case` keys, and that empty, truncated, bit-flipped, random and deeply nested inputs, plus a 4 KiB read budget, never cause a panic or hit a deadline.
 
 5. **Regenerate the catalogue** so the "Extractor" column shows your work:
 
@@ -48,7 +48,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 * **Pure Rust.** No crates that bind C/C++ libraries. Check the "Library" column of the catalogue, and prefer mature crates (a release in the last 18 months or clearly finished). Otherwise write a header parser with `ByteReader`.
 * **Plugin boundary.** Format modules import only `crate::plugin::*` (checked by `whiff-dev check-boundary`).
 * **Dependency budget.** CI counts transitive dependencies (`whiff-dev check-deps`). Exceeding a budget needs a justification in the PR.
-* **Privacy.** Never output secret material (keys, passwords, cookie values). Count personal data such as e-mail addresses or patient fields; don't list it.
+* **Privacy.** Never output secret material (keys, passwords, cookie values). Count personal data such as e-mail addresses or patient fields; don't list it. Where a format is about people (e-mail, calendars, contacts), pass addresses through `cx.mailbox` and list phone numbers, street addresses and birthdays only when `cx.privacy_strict()` is false.
 * **`unsafe` is forbidden** crate-wide.
 * **Bounded work.** A stack overflow aborts the process (`catch_unwind` cannot contain it), so never recurse on input-controlled depth. Before a recursive third-party parser, check `nesting_depth(text) <= MAX_NESTING`. Avoid work that is quadratic in the input; call `cx.checkpoint()?` in long loops that do not read from the source. The conformance suite feeds every extractor deeply nested input and fails it if it overflows or hits a deadline; a watchdog abandons extractors that ignore deadlines, but that is a last resort, not a budget.
 

@@ -1,0 +1,23 @@
+Received: from mail.saltmere.example (mail.saltmere.example [192.0.2.25]) by
+ mx.example.org with ESMTPS id 4Vt1; Wed, 01 May 2024 08:31:00 +0200
+Authentication-Results: mx.example.org; spf=pass
+ smtp.mailfrom=saltmere.example; dkim=pass header.d=saltmere.example;
+ dmarc=pass header.from=saltmere.example
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=saltmere.example;
+ s=mail; h=from:to:subject:date; bh=AAAA; b=BBBB
+From: Saltmere Harbour Office <office@saltmere.example>
+To: Mira Castell <mira@example.org>, Ben Gull <ben@example.org>
+Subject: Berth 5 is free on Friday
+Date: Wed, 01 May 2024 08:30:00 +0200
+Message-ID: <berth5.20240501@saltmere.example>
+X-Mailer: Harbour Mailer 2.1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Hello,
+
+Berth 5 is free from Friday noon until Sunday evening.
+Please confirm by Thursday.
+
+Saltmere Harbour Office

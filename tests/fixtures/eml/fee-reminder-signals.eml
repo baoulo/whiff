@@ -1,0 +1,28 @@
+Received: from relay.other.example (relay.other.example [192.0.2.25]) by
+ mx.example.org with ESMTPS id 4Vt1; Sat, 04 May 2024 22:15:05 +0000
+Authentication-Results: mx.example.org; spf=fail smtp.mailfrom=other.example;
+ dkim=none; dmarc=fail header.from=other.example
+From: "office@saltmere.example" <billing@other.example>
+Reply-To: payments@third.example
+To: mira@example.org
+Subject: Mooring fee reminder
+Date: Sat, 04 May 2024 22:15:00 +0000
+Message-ID: <reminder.20240504@other.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_saltmere_0"
+
+--=_saltmere_0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Your mooring fee for May is due.
+
+--=_saltmere_0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Your mooring fee for May is due.</p><p><a href=3D"https://othe=
+r.example/pay">https://saltmere.example/fees</a></p></body></html>
+
+--=_saltmere_0--

@@ -1,0 +1,227 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-textutil.doc",
+    "stem": "ferry-textutil",
+    "extension": "doc"
+  },
+  "identification": {
+    "format": "doc",
+    "name": "Word 97-2003 document",
+    "mime": "application/msword",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "doc",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 19456
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-02T09:30:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-02T09:30:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Example Ferries"
+  },
+  "physical": {
+    "size_bytes": 19456,
+    "entropy": 0.765,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2f3e44fc985e02800fd956fb6d16d293049650e1f48ae21ebac444bcf3d9778e",
+    "blake3": "b5de8fb48a78d78323352539faa420d670108e5a67700a18157bbf1c23b31008"
+  },
+  "content": {
+    "title": "Ferry timetable",
+    "description": "Harbour ferries",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter",
+      "hour",
+      "leave",
+      "Harbour ferries",
+      "Ferries leave",
+      "harbour every hour"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        5
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "leave",
+        2
+      ],
+      [
+        "timetable",
+        2
+      ],
+      [
+        "winter",
+        2
+      ]
+    ],
+    "excerpt": "Ferry timetable Ferries leave the old harbour every hour from 07:00. Winter In winter the last ferry leaves at 19:00.",
+    "tags": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter"
+    ]
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Ferry timetable",
+      "Subject": "Harbour ferries",
+      "Author": "Mira Castell",
+      "Keywords": "ferry, timetable",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-02T09:30:00Z",
+      "Company": "Example Ferries"
+    }
+  },
+  "format": {
+    "doc": {
+      "clsid": {
+        "id": "00020906-0000-0000-C000-000000000046",
+        "name": "Word.Document.8"
+      },
+      "version": 3,
+      "streams": 4,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "DocumentSummaryInformation",
+          "size_bytes": 4096
+        },
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 4096
+        },
+        {
+          "name": "1Table",
+          "size_bytes": 4096
+        },
+        {
+          "name": "WordDocument",
+          "size_bytes": 4096
+        }
+      ],
+      "nfib": 193,
+      "application": "Word 97",
+      "lid": 0,
+      "quick_saves": 15,
+      "characters": 118
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,175 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lamp.cbz",
+    "stem": "lamp",
+    "extension": "cbz"
+  },
+  "identification": {
+    "format": "cbz",
+    "name": "Comic book archive (ZIP)",
+    "mime": "application/vnd.comicbook+zip",
+    "family": "doc.ebook",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1065
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2024-05-01",
+        "source": "ebook.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1065,
+    "entropy": 6.913,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 3
+    }
+  },
+  "integrity": {
+    "sha256": "791b4d2e993dcf1e0fb0b525c04273c1939a12853996e7d13842dd23f7ab3146",
+    "blake3": "11a78f85a7ff23e04d938eea392d19a310cbf11ec407e36aeb74fb22a117b404"
+  },
+  "content": {
+    "title": "The Lamp",
+    "description": "The keeper repairs the lamp before the winter storms.",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "The Lamp The keeper repairs the lamp before the winter storms.",
+    "tags": [
+      "Adventure",
+      "Maritime"
+    ]
+  },
+  "metadata": {
+    "comicinfo": {
+      "Title": "The Lamp",
+      "Series": "Saltmere Light",
+      "Number": "3",
+      "Count": "6",
+      "Summary": "The keeper repairs the lamp before the winter storms.",
+      "Year": "2024",
+      "Month": "5",
+      "Day": "1",
+      "Writer": "Ana Lighthouse",
+      "Penciller": "Ben Gull",
+      "Colorist": "Mira Castell",
+      "Publisher": "Saltmere Harbour Press",
+      "Genre": "Adventure, Maritime",
+      "PageCount": "3",
+      "LanguageISO": "en",
+      "Manga": "No"
+    }
+  },
+  "format": {
+    "cbz": {
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        },
+        {
+          "name": "Ben Gull",
+          "role": "art"
+        },
+        {
+          "name": "Mira Castell",
+          "role": "clr"
+        }
+      ],
+      "publisher": "Saltmere Harbour Press",
+      "series": {
+        "name": "Saltmere Light",
+        "index": "3"
+      },
+      "cover": {
+        "path": "lamp/001.png"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

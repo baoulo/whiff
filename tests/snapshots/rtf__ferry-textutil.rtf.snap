@@ -1,0 +1,203 @@
+---
+source: src/formats/doc/rtf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-textutil.rtf",
+    "stem": "ferry-textutil",
+    "extension": "rtf"
+  },
+  "identification": {
+    "format": "rtf",
+    "name": "Rich Text Format",
+    "mime": "application/rtf",
+    "family": "doc.rtf",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.rtf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 940
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T04:00:00",
+        "source": "rtf.info.creatim",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-02T05:30:00",
+        "source": "rtf.info.revtim",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 940,
+    "entropy": 4.923,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 940,
+      "chars": 940,
+      "words": 60,
+      "lines": 25,
+      "max_line_length": 108,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "bbe06b88acfc994a3a4d57974f561f88c71ca4a7676f7e9a33a44b9dfee5c93a",
+    "blake3": "bc7e864119898f2558a73b8905dac8dd86a522545806c824d9ae2d875f490198"
+  },
+  "content": {
+    "title": "Ferry timetable",
+    "description": "Harbour ferries",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter",
+      "hour",
+      "leave",
+      "Harbour ferries",
+      "Ferries leave",
+      "harbour every hour"
+    ],
+    "keyword_frequency": [
+      [
+        "ferry",
+        5
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "leave",
+        2
+      ],
+      [
+        "timetable",
+        2
+      ],
+      [
+        "winter",
+        2
+      ]
+    ],
+    "excerpt": "Ferry timetable Ferries leave the old harbour every hour from 07:00. Winter In winter the last ferry leaves at 19:00.",
+    "tags": [
+      "ferry",
+      "timetable",
+      "Ferry timetable",
+      "harbour",
+      "winter"
+    ]
+  },
+  "metadata": {
+    "rtf_info": {
+      "title": "Ferry timetable",
+      "subject": "Harbour ferries",
+      "author": "Mira Castell",
+      "company": "Example Ferries",
+      "creatim": "2024-04-01T04:00:00",
+      "revtim": "2024-04-02T05:30:00",
+      "keywords": "ferry, timetable"
+    }
+  },
+  "format": {
+    "rtf": {
+      "rtf_version": 1,
+      "codepage": 1252,
+      "cocoa_rtf": 2870,
+      "fonts": [
+        "Times-Bold",
+        "Times-Roman"
+      ],
+      "paragraphs": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.rtf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

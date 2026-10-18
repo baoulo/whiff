@@ -1,0 +1,147 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "letterhead.dotx",
+    "stem": "letterhead",
+    "extension": "dotx"
+  },
+  "identification": {
+    "format": "dotx",
+    "name": "Word template",
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1476
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1476,
+    "entropy": 7.345,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e54740e2ecc2b948809ca559983652ff583199505b8373b4a5498c85530758a4",
+    "blake3": "70abbc65e119143bee10bdf84d06a3bab455e089ada7449255ae25664652221f"
+  },
+  "content": {
+    "title": "Harbour Office letterhead",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour Office letterhead Saltmere Harbour Office, 1 Quay Street."
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour Office letterhead",
+        "creator": "Harbour Office",
+        "created": "2024-04-01T08:00:00Z",
+        "modified": "2024-04-01T08:00:00Z"
+      }
+    }
+  },
+  "format": {
+    "dotx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 4,
+      "uncompressed_bytes": 2030,
+      "paragraphs": 2,
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

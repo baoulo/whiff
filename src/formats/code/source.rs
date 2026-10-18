@@ -399,7 +399,7 @@ impl Extractor for SourceCode {
         a.has_tests = looks_like_test(&name, &text);
         report(&a, &text, lang, cx);
         if lang.id == "latex" {
-            latex(&text, cx);
+            super::latex::extract(&text, cx)?;
         }
         Ok(())
     }
@@ -842,45 +842,6 @@ fn todo_counts(comments: &str) -> BTreeMap<&'static str, u64> {
         *m.entry(k).or_default() += 1;
     }
     m
-}
-
-/// LaTeX: title, authors, document class and the sectioning outline.
-fn latex(text: &str, cx: &mut Context<'_>) {
-    static SECTION: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(
-            r"(?m)^[^%\n]*?\\(part|chapter|section|subsection|subsubsection|paragraph)\*?(?:\[[^\]]*\])?\{([^}]*)\}",
-        )
-        .expect("valid")
-    });
-    static FIELD: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r"(?m)^[^%\n]*?\\(title|author|date|documentclass)(?:\[[^\]]*\])?\{([^}]*)\}").expect("valid")
-    });
-    for cap in FIELD.captures_iter(text) {
-        let v = crate::plugin::squash_whitespace(&cap[2].replace("\\\\", " "));
-        match &cap[1] {
-            "title" => {
-                cx.content().source("latex.title").title(v.clone());
-                cx.emit_text(TextRole::Title, &v);
-            }
-            "author" => {
-                for a in v.split("\\and").map(str::trim).filter(|a| !a.is_empty()) {
-                    cx.content().source("latex.author").author(a);
-                }
-            }
-            "documentclass" => cx.format_set("document_class", v),
-            _ => {}
-        }
-    }
-    for cap in SECTION.captures_iter(text) {
-        let level = match &cap[1] {
-            "part" | "chapter" => 1,
-            "section" => 2,
-            "subsection" => 3,
-            "subsubsection" => 4,
-            _ => 5,
-        };
-        cx.emit_heading(level, &cap[2]);
-    }
 }
 
 #[cfg(test)]

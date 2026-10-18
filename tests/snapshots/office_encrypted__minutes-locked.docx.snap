@@ -1,0 +1,149 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "minutes-locked.docx",
+    "stem": "minutes-locked",
+    "extension": "docx"
+  },
+  "identification": {
+    "format": "office_encrypted",
+    "name": "Encrypted Office document",
+    "mime": "application/x-ms-office-encrypted",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "office_encrypted",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      },
+      {
+        "format": "docx",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 6.093,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ed7fd1ec09f2032b246c34e101e158e80ef7104fcea58392f51bf44535847cdc",
+    "blake3": "8f4dfc8d4e13ab474a466ec5324f643fb6d9e26377e2567cc446ca013d063dbd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "office_encrypted": {
+      "version": 3,
+      "streams": 3,
+      "storages": 1,
+      "entries": [
+        {
+          "name": "DataSpaces/"
+        },
+        {
+          "name": "DataSpaces/Version",
+          "size_bytes": 76
+        },
+        {
+          "name": "EncryptedPackage",
+          "size_bytes": 4104
+        },
+        {
+          "name": "EncryptionInfo",
+          "size_bytes": 742
+        }
+      ],
+      "encryption": {
+        "version": "4.4",
+        "method": "agile",
+        "cipher": "AES",
+        "key_bits": 256,
+        "hash": "SHA512",
+        "spin_count": 100000,
+        "package_bytes": 3500
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

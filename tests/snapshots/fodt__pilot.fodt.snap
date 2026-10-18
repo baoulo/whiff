@@ -1,0 +1,160 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pilot.fodt",
+    "stem": "pilot",
+    "extension": "fodt"
+  },
+  "identification": {
+    "format": "fodt",
+    "name": "Flat OpenDocument text",
+    "mime": "application/vnd.oasis.opendocument.text-flat-xml",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fodt",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1147
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-01-05T06:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Jonas Wren"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1147,
+    "entropy": 4.781,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1147,
+      "chars": 1147,
+      "words": 27,
+      "lines": 1,
+      "max_line_length": 1108,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5b390bc31b495a801f84733dd7034946c01e6bb0ca5c1d51d977eb2ac64e200d",
+    "blake3": "99594cd83236660e0179113e9409227f8a477ceb526ef29e7cc15b20b1781520"
+  },
+  "content": {
+    "title": "Pilot boarding notes",
+    "authors": [
+      "Jonas Wren"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.857
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "Boarding"
+      }
+    ],
+    "excerpt": "Pilots board two miles off the breakwater."
+  },
+  "metadata": {
+    "odf": {
+      "title": "Pilot boarding notes",
+      "initial-creator": "Jonas Wren",
+      "creation-date": "2024-01-05T06:00:00"
+    }
+  },
+  "format": {
+    "fodt": {
+      "paragraphs": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

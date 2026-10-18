@@ -1,0 +1,177 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "report-vbaProject.bin",
+    "stem": "report-vbaProject",
+    "extension": "bin"
+  },
+  "identification": {
+    "format": "vba_project",
+    "name": "VBA project",
+    "mime": "application/vnd.ms-office.vbaProject",
+    "family": "doc.ole",
+    "confidence": 0.96,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vba_project",
+        "confidence": 0.96
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      },
+      {
+        "format": "binary",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3584
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "macros"
+    ],
+    "risks": [
+      {
+        "kind": "macros",
+        "detail": "2 VBA module(s)",
+        "source": "doc.ole"
+      }
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 3584,
+    "entropy": 2.695,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8562136d3a5cd2a205ef23af0de6df25d120f39c8f0c3aa774c7a2fed460edb9",
+    "blake3": "02faf0d427ec263fd7bb45c7beb0f8eaf1af4abbadad1bc5fb8d4c40a9528550"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vba_project": {
+      "version": 3,
+      "streams": 6,
+      "storages": 1,
+      "entries": [
+        {
+          "name": "PROJECT",
+          "size_bytes": 163
+        },
+        {
+          "name": "PROJECTwm",
+          "size_bytes": 65
+        },
+        {
+          "name": "VBA/"
+        },
+        {
+          "name": "VBA/_VBA_PROJECT",
+          "size_bytes": 7
+        },
+        {
+          "name": "VBA/dir",
+          "size_bytes": 211
+        },
+        {
+          "name": "VBA/Module1",
+          "size_bytes": 167
+        },
+        {
+          "name": "VBA/ThisDocument",
+          "size_bytes": 44
+        }
+      ],
+      "vba": {
+        "modules": [
+          {
+            "name": "ThisDocument",
+            "kind": "document",
+            "lines": 0
+          },
+          {
+            "name": "Module1",
+            "kind": "module",
+            "lines": 6
+          }
+        ],
+        "code_lines": 6,
+        "project": "Project"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

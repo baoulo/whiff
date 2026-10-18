@@ -1,0 +1,167 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dredging.mpp",
+    "stem": "dredging",
+    "extension": "mpp"
+  },
+  "identification": {
+    "format": "mpp",
+    "name": "Microsoft Project plan",
+    "mime": "application/vnd.ms-project",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mpp",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Tomas Lind"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 1.666,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "37cd7e80c3f38b5d004f699422831fb28fd27c63e07f27f71b61d9270477bbac",
+    "blake3": "6ba0c8560ae7dc97666db7c0135313543dd90a1753adaa22fc79d9d6c9d9a6e3"
+  },
+  "content": {
+    "title": "Dredging schedule",
+    "authors": [
+      "Tomas Lind"
+    ],
+    "excerpt": "Dredging schedule"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Dredging schedule",
+      "Author": "Tomas Lind",
+      "Application": "Microsoft Project",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "mpp": {
+      "version": 3,
+      "streams": 3,
+      "storages": 2,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 212
+        },
+        {
+          "name": "   114/"
+        },
+        {
+          "name": "   114/Props",
+          "size_bytes": 64
+        },
+        {
+          "name": "   114/TBkndTask/"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

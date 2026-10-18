@@ -170,6 +170,30 @@ impl Hashes {
     }
 }
 
+/// How personal data found in a file is reported.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+pub enum Privacy {
+    /// Personal data is counted, not listed: e-mail addresses in message
+    /// headers, contacts and calendars are reduced to their domain, phone
+    /// numbers and birthdays are counted. Names are kept.
+    #[default]
+    Strict,
+    /// Addresses and phone numbers are listed as found. Secrets are
+    /// redacted either way.
+    Off,
+}
+
+impl std::str::FromStr for Privacy {
+    type Err = String;
+    fn from_str(s: &str) -> Result<Self, String> {
+        match s {
+            "strict" => Ok(Self::Strict),
+            "off" => Ok(Self::Off),
+            other => Err(format!("unknown privacy mode `{other}` (expected strict or off)")),
+        }
+    }
+}
+
 /// Everything that controls an extraction.
 #[derive(Debug, Clone, Default)]
 pub struct Options {
@@ -187,6 +211,8 @@ pub struct Options {
     pub format: Option<String>,
     /// Record which source set each normalised field.
     pub provenance: bool,
+    /// How personal data is reported.
+    pub privacy: Privacy,
 }
 
 impl Options {
