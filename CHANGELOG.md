@@ -4,7 +4,7 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased (0.3.0)
+## 0.3.0 — 2026-10-18
 
 Documents, e-mail, calendars and contacts.
 
@@ -98,6 +98,9 @@ Documents, e-mail, calendars and contacts.
   from encrypted BIFF records, and encrypted OOXML whose directory is not
   contiguous left as a plain compound file. Excel cell notes and threaded
   comments are now counted, with their authors.
+- **Release:** the release workflow now pushes the Homebrew formula and
+  Scoop manifest to `baoulo/homebrew-tap` and `baoulo/scoop-bucket`, and
+  publishes to crates.io only once that has succeeded.
 
 ## 0.2.0 — 2026-10-17
 
