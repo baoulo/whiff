@@ -196,7 +196,7 @@ mod tests {
         }
         for e in RISK_KINDS {
             assert!(e.kind.bytes().all(|b| b.is_ascii_lowercase() || b == b'_'), "{}", e.kind);
-            assert!(!e.meaning.is_empty());
+            assert_ne!(e.meaning, "", "{}", e.kind);
         }
     }
 
