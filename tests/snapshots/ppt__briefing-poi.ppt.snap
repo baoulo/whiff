@@ -1,0 +1,278 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "briefing-poi.ppt",
+    "stem": "briefing-poi",
+    "extension": "ppt"
+  },
+  "identification": {
+    "format": "ppt",
+    "name": "PowerPoint 97-2003 presentation",
+    "mime": "application/vnd.ms-powerpoint",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ppt",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12800
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T09:00:00Z",
+    "latest": "2024-04-01T09:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Example Ferries"
+  },
+  "physical": {
+    "size_bytes": 12800,
+    "entropy": 3.688,
+    "entropy_scope": "file",
+    "document": {
+      "slides": 3
+    }
+  },
+  "integrity": {
+    "sha256": "b81cd9405bcf36251baabf4cbfbc33a9601a1b8b815e7763ee0e5e4596261464",
+    "blake3": "1a9f63489b15eb42a17937245d36740c48b044ed399bcbe65275baed4575cd24"
+  },
+  "content": {
+    "title": "Saltmere ferry briefing",
+    "description": "Written by Apache POI for whiff's tests",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "Saltmere",
+      "Saltmere ferry briefing",
+      "Apache POI",
+      "briefing",
+      "Written by Apache",
+      "ferry",
+      "POI for whiff's",
+      "Summer",
+      "Apache",
+      "POI"
+    ],
+    "keyword_frequency": [
+      [
+        "briefing",
+        2
+      ],
+      [
+        "ferry",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ],
+      [
+        "summer",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere ferry briefing"
+      },
+      {
+        "level": 1,
+        "text": "Summer timetable"
+      },
+      {
+        "level": 1,
+        "text": "Contacts"
+      }
+    ],
+    "excerpt": "Summer 2024 First sailing 06:40 Extra evening crossing on Fridays Harbour office: harbour.example",
+    "tags": [
+      "harbour",
+      "Saltmere",
+      "Saltmere ferry briefing",
+      "Apache POI",
+      "briefing",
+      "Written by Apache"
+    ]
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Saltmere ferry briefing",
+      "Author": "Mira Castell",
+      "LastAuthor": "Ana Lighthouse",
+      "RevisionNumber": "0",
+      "Application": "Microsoft PowerPoint",
+      "TotalEditTime_s": 0,
+      "LastPrinted": null,
+      "CreateDate": "2024-04-01T09:00:00Z",
+      "ModifyDate": "2024-04-01T09:00:00Z",
+      "Words": 0,
+      "Thumbnail": {
+        "binary_bytes": 3332
+      },
+      "Subject": "Saltmere harbour",
+      "Keywords": "harbour, Saltmere",
+      "Comments": "Written by Apache POI for whiff's tests",
+      "PresentationFormat": "On-screen Show",
+      "Company": "Example Ferries",
+      "Bytes": 3233,
+      "Paragraphs": 0,
+      "Slides": 0,
+      "Notes": 0,
+      "HiddenSlides": 0,
+      "MultimediaClips": 0,
+      "AppVersion": "10.4219",
+      "ScaleCrop": false,
+      "LinksUpToDate": false,
+      "SharedDocument": false,
+      "HyperlinksChanged": false,
+      "TitlesOfParts": [
+        "Arial",
+        "Default Design"
+      ],
+      "HeadingPairs": [
+        "Fonts Used",
+        1,
+        "Design Template",
+        1,
+        "Slide Titles",
+        0
+      ],
+      "Manager": "Ana Lighthouse",
+      "Category": "Tariffs",
+      "custom": {
+        "Version": 1
+      }
+    }
+  },
+  "format": {
+    "ppt": {
+      "version": 3,
+      "streams": 4,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "DocumentSummaryInformation",
+          "size_bytes": 608
+        },
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 3828
+        },
+        {
+          "name": "Current User",
+          "size_bytes": 68
+        },
+        {
+          "name": "PowerPoint Document",
+          "size_bytes": 5246
+        }
+      ],
+      "slides": 3,
+      "slide_titles": [
+        "Saltmere ferry briefing",
+        "Summer timetable",
+        "Contacts"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

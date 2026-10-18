@@ -6,3 +6,4 @@ companies and addresses (Saltmere, `example.org`, `*.example`) are fictitious.
 | File | Origin | Licence |
 |---|---|---|
 | `expansion.pptx` | Assembled part by part by `scripts/fixtures/craft_documents.py` | CC0-1.0 |
+| `briefing-pptrs.pptx` | Written by the ppt-rs crate (`scripts/fixtures/office_gen`); three slides, speaker notes; dates pinned by `pin_dates.py` | CC0-1.0 |

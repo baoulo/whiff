@@ -16,7 +16,8 @@
 //!   deadline (a sign of super-linear work);
 //! * **budget** — a 4 KiB read budget never causes a panic;
 //! * **magic** — the declared magic matches all own fixtures and at most 5 %
-//!   of other formats' fixtures.
+//!   of other formats' fixtures (formats declaring it as their parent
+//!   excepted).
 
 use std::path::{Path, PathBuf};
 use std::time::Duration;
@@ -190,7 +191,11 @@ fn check_format(
 
     // Magic sanity: not matching (almost) everything else.
     if !spec.magic.is_empty() {
-        let others: Vec<&PathBuf> = all_fixtures.iter().filter(|(f, _)| *f != spec.id).map(|(_, p)| p).collect();
+        // Formats declared as children of this one (xls inside cfb) share its
+        // magic by design.
+        let child = |f: &str| registry.formats().any(|(s, _)| s.id == f && s.parent == Some(spec.id));
+        let others: Vec<&PathBuf> =
+            all_fixtures.iter().filter(|(f, _)| *f != spec.id && !child(f)).map(|(_, p)| p).collect();
         let hits =
             others.iter().filter(|p| std::fs::read(p).is_ok_and(|d| spec.magic.iter().any(|m| m.matches(&d)))).count();
         if !others.is_empty() && hits * 20 > others.len() {

@@ -1,0 +1,147 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths-simple.xlsx",
+    "stem": "berths-simple",
+    "extension": "xlsx"
+  },
+  "identification": {
+    "format": "xlsx",
+    "name": "Excel workbook",
+    "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xlsx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5765
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 5765,
+    "entropy": 7.662,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 1
+    }
+  },
+  "integrity": {
+    "sha256": "7074c892ad90c04359dfcb62d4847e4d6f08e0d90f525806d42a050cd1c59327",
+    "blake3": "a68e4cc01e66f4c76d463f98564f70fe20c1520fd729195d8bfe32cbe45ab9a8"
+  },
+  "content": {},
+  "metadata": {
+    "docprops": {
+      "app": {
+        "Application": "SheetJS",
+        "TitlesOfParts": [
+          "SheetJS"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xlsx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
+      "main_part": "xl/workbook.xml",
+      "parts": 11,
+      "uncompressed_bytes": 20891,
+      "sheets": [
+        {
+          "name": "Berths",
+          "kind": "worksheet"
+        }
+      ],
+      "sheet_contents": [
+        {
+          "name": "Berths",
+          "cells": 12
+        }
+      ],
+      "cells": 12,
+      "formulas": 0,
+      "shared_strings": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,16 @@
+# Writes Office fixtures with third-party Rust writers, so whiff is tested on
+# files it did not assemble itself. Not part of whiff: run through
+# scripts/fixtures/documents.sh.
+[package]
+name = "office_gen"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+docx-rs = "0.4"
+ppt-rs = "0.2"
+rust_xlsxwriter = "0.100"
+simple_excel_writer = "0.2"

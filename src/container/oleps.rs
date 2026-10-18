@@ -155,8 +155,18 @@ impl Reader<'_> {
                     vt & 0xFFF
                 };
                 items.push(self.value(item_vt, r, 1)?);
-                if vt & 0xFFF == 30 || vt & 0xFFF == 31 {
-                    align(r);
+                match vt & 0xFFF {
+                    31 => align(r),
+                    // PowerPoint packs code-page strings back to back;
+                    // other writers pad them to 4 bytes. A padded gap
+                    // reads as an implausible next length.
+                    30 if !r.position().is_multiple_of(4) => {
+                        let next = r.peek(4).map_or(0, |b| u32::from_le_bytes([b[0], b[1], b[2], b[3]]) as usize);
+                        if next == 0 || next > r.remaining().saturating_sub(4) {
+                            align(r);
+                        }
+                    }
+                    _ => {}
                 }
             }
             return Ok(PropValue::List(items));
@@ -436,5 +446,30 @@ pub(crate) mod tests {
         assert_eq!(m["Security"], json!(["read_only_recommended"]));
         assert!(m["CreateDate"].as_str().unwrap().starts_with("2022-"));
         assert!(parse(b"\x00\x00rubbish").is_err());
+    }
+
+    #[test]
+    fn string_vectors_packed_or_padded() {
+        // PowerPoint packs VT_LPSTR vector items; Word and Excel pad each to 4.
+        let vector = |pad: bool| {
+            let mut v = 2u32.to_le_bytes().to_vec();
+            for s in ["Arial", "Default Design"] {
+                v.extend(lpstr(s));
+                while pad && !v.len().is_multiple_of(4) {
+                    v.push(0);
+                }
+            }
+            v
+        };
+        for pad in [false, true] {
+            let stream = build(SUMMARY, &[(1, 2, 1252u16.to_le_bytes().to_vec()), (13, 0x101E, vector(pad))]);
+            let sections = parse(&stream).unwrap();
+            let list = sections[0].values.iter().find(|(id, _)| *id == 13).map(|(_, v)| v.clone());
+            assert_eq!(
+                list,
+                Some(PropValue::List(vec![PropValue::Str("Arial".into()), PropValue::Str("Default Design".into())])),
+                "padded: {pad}"
+            );
+        }
     }
 }

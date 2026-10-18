@@ -8,3 +8,4 @@
 *.snap.new
 *.pending-snap
 lcov.info
+/scripts/fixtures/office_gen/target/

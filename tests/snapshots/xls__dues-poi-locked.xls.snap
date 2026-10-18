@@ -1,0 +1,139 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dues-poi-locked.xls",
+    "stem": "dues-poi-locked",
+    "extension": "xls"
+  },
+  "identification": {
+    "format": "xls",
+    "name": "Excel 97-2003 workbook",
+    "mime": "application/vnd.ms-excel",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xls",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 6144,
+    "entropy": 6.083,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "df52e13d7594ff7de3caa9945ad6e64f93c6578dcebb71d1291ccd278719c6b8",
+    "blake3": "2f33a952bfc98bd0568e7970a94b7f32d14cedb90cb2b54e78d7f56cfd61e6da"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xls": {
+      "version": 3,
+      "streams": 3,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "DocumentSummaryInformation",
+          "size_bytes": 56
+        },
+        {
+          "name": "encryption",
+          "size_bytes": 608
+        },
+        {
+          "name": "Workbook",
+          "size_bytes": 3277
+        }
+      ],
+      "encryption": "cryptoapi",
+      "biff_version": "0x0600",
+      "defined_names": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

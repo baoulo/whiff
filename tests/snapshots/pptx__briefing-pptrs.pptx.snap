@@ -1,0 +1,261 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "briefing-pptrs.pptx",
+    "stem": "briefing-pptrs",
+    "extension": "pptx"
+  },
+  "identification": {
+    "format": "pptx",
+    "name": "PowerPoint presentation",
+    "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pptx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 21916
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T09:00:00Z",
+    "latest": "2024-04-01T09:00:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "pptx-rs"
+    ]
+  },
+  "physical": {
+    "size_bytes": 21916,
+    "entropy": 7.691,
+    "entropy_scope": "file",
+    "document": {
+      "words": 0,
+      "slides": 3
+    }
+  },
+  "integrity": {
+    "sha256": "cded8c8598ce6c1c3375bd466b2f01aca7af63ad048ee17d7d78451e727a0ab9",
+    "blake3": "af82a7c806d941c086128dcac17c5b305fbff3fc1754e77dc10cb6f8d3cc5bb5"
+  },
+  "content": {
+    "title": "Saltmere ferry briefing",
+    "authors": [
+      "pptx-rs"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere ferry briefing",
+      "briefing",
+      "Saltmere",
+      "ferry",
+      "Fridays",
+      "crossing",
+      "June",
+      "crossing on fridays",
+      "Contacts",
+      "Summer timetable"
+    ],
+    "keyword_frequency": [
+      [
+        "briefing",
+        2
+      ],
+      [
+        "crossing",
+        2
+      ],
+      [
+        "ferry",
+        2
+      ],
+      [
+        "friday",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere ferry briefing"
+      },
+      {
+        "level": 1,
+        "text": "Summer timetable"
+      },
+      {
+        "level": 1,
+        "text": "Contacts"
+      }
+    ],
+    "excerpt": "First sailing 06:40 Extra evening crossing on Fridays Berth 3 closed at low water Mention the Friday crossing starts in June. Harbour office: harbour.example",
+    "tags": [
+      "Saltmere ferry briefing",
+      "briefing",
+      "Saltmere",
+      "ferry",
+      "Fridays"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Saltmere ferry briefing",
+        "creator": "pptx-rs",
+        "lastModifiedBy": "pptx-rs",
+        "revision": "1",
+        "created": "2024-04-01T09:00:00Z",
+        "modified": "2024-04-01T09:00:00Z"
+      },
+      "app": {
+        "TotalTime_s": 0,
+        "Words": 0,
+        "Application": "pptx-rs",
+        "PresentationFormat": "On-screen Show (4:3)",
+        "Paragraphs": 0,
+        "Slides": 3,
+        "Notes": 1,
+        "HiddenSlides": 0,
+        "MMClips": 0,
+        "ScaleCrop": "false",
+        "LinksUpToDate": "false",
+        "SharedDoc": "false",
+        "HyperlinksChanged": "false",
+        "AppVersion": "1.0000",
+        "TitlesOfParts": [
+          "Saltmere ferry briefing",
+          "Summer timetable",
+          "Contacts"
+        ]
+      }
+    }
+  },
+  "format": {
+    "pptx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml",
+      "main_part": "ppt/presentation.xml",
+      "parts": 37,
+      "uncompressed_bytes": 59711,
+      "slides": [
+        {
+          "number": 1,
+          "title": "Saltmere ferry briefing"
+        },
+        {
+          "number": 2,
+          "title": "Summer timetable"
+        },
+        {
+          "number": 3,
+          "title": "Contacts"
+        }
+      ],
+      "slides_with_notes": 1,
+      "slide_size": {
+        "width_pt": 720.0,
+        "height_pt": 540.0,
+        "type": "screen4x3"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

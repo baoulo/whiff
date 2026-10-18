@@ -71,7 +71,18 @@ Documents, e-mail, calendars and contacts.
   `received`, and `DetectedBy::Content` (additive; still `whiff/1`).
 - **Developer tools:** `scripts/fixtures/documents.sh` regenerates the
   document fixtures with textutil, Ghostscript, Core Graphics and poppler,
+  third-party writers (rust_xlsxwriter, simple_excel_writer, docx-rs and
+  ppt-rs in `scripts/fixtures/office_gen`; Apache POI for BIFF8 workbooks,
+  PowerPoint 97 slide shows and genuinely encrypted xls, ppt and OOXML),
   plus standard-library generators for the formats no local tool writes.
+  Files from these independent writers showed and fixed: a false macro
+  risk on every PowerPoint-saved `.ppt` (the VBA-info record is present
+  without a project), slides lost after a record whose length overruns its
+  container, master-slide placeholders read as slide text, packed string
+  vectors in property sets (PowerPoint's `TitlesOfParts`), sheet names read
+  from encrypted BIFF records, and encrypted OOXML whose directory is not
+  contiguous left as a plain compound file. Excel cell notes and threaded
+  comments are now counted, with their authors.
 
 ## 0.2.0 — 2026-10-17
 

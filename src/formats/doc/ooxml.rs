@@ -897,6 +897,33 @@ impl Package {
             f.insert("shared_strings".into(), json!(n));
             cx.emit_text(TextRole::Data, &buf);
         }
+        // Cell notes (`xl/commentsN.xml`) and threaded comments.
+        let comment_parts: Vec<String> = self
+            .zip
+            .entries
+            .iter()
+            .map(|e| e.name.clone())
+            .filter(|n| (n.starts_with("xl/comments") || n.starts_with("xl/threadedComments/")) && has_ext(n, "xml"))
+            .take(MAX_PARTS)
+            .collect();
+        let (mut notes, mut threaded, mut authors, mut text) = (0u64, 0u64, Vec::<String>::new(), String::new());
+        for part in &comment_parts {
+            let Some(xml) = self.read(src, cx, part) else { continue };
+            let (n, t) = cell_comments(&xml, cx, &mut authors, &mut text)?;
+            notes += n;
+            threaded += t;
+        }
+        if notes + threaded > 0 {
+            let mut c = json!({ "count": notes + threaded });
+            if threaded > 0 {
+                c["threaded"] = json!(threaded);
+            }
+            if !authors.is_empty() {
+                c["authors"] = json!(authors);
+            }
+            f.insert("comments".into(), c);
+            cx.emit_text(TextRole::Comment, &text);
+        }
         // External workbook links.
         let mut targets = Vec::new();
         for r in rels.iter().filter(|r| r.short() == "externalLink") {
@@ -1270,6 +1297,63 @@ fn comments(xml: &str, cx: &Context<'_>) -> Result<(u64, Vec<String>, String), E
         Flow::Continue
     })?;
     Ok((n, authors, text))
+}
+
+/// One spreadsheet comments part: (notes, threaded comments). Note authors
+/// that a note refers to are added to `authors`, the text to `text`.
+fn cell_comments(
+    xml: &str,
+    cx: &Context<'_>,
+    authors: &mut Vec<String>,
+    text: &mut String,
+) -> Result<(u64, u64), ExtractError> {
+    let (mut notes, mut threaded) = (0u64, 0u64);
+    let mut names: Vec<String> = Vec::new();
+    let mut used: Vec<usize> = Vec::new();
+    let (mut in_author, mut in_text) = (false, false);
+    walk(xml, cx, |ev| {
+        match ev {
+            Ev::Open(t, empty) if t.name == "author" => {
+                in_author = !empty;
+                if in_author && names.len() < 1000 {
+                    names.push(String::new());
+                }
+            }
+            Ev::Close("author") => in_author = false,
+            Ev::Open(t, _) if t.name == "comment" => {
+                notes += 1;
+                if let Some(id) = t.attr("authorId").and_then(|a| a.parse().ok())
+                    && !used.contains(&id)
+                {
+                    used.push(id);
+                }
+            }
+            Ev::Open(t, _) if t.name == "threadedComment" => threaded += 1,
+            Ev::Open(t, false) if t.name == "text" => in_text = true,
+            Ev::Close("text") => {
+                in_text = false;
+                text.push('\n');
+            }
+            Ev::Text(s) if in_author => {
+                if let Some(n) = names.last_mut() {
+                    n.push_str(s);
+                }
+            }
+            Ev::Text(s) if in_text && text.len() < (256 << 10) => text.push_str(s),
+            _ => {}
+        }
+        Flow::Continue
+    })?;
+    for id in used {
+        if let Some(a) = names.get(id).map(|a| a.trim())
+            && !a.is_empty()
+            && !authors.iter().any(|x| x == a)
+            && authors.len() < 50
+        {
+            authors.push(a.to_string());
+        }
+    }
+    Ok((notes, threaded))
 }
 
 #[derive(Default)]

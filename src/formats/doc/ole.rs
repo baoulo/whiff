@@ -129,7 +129,7 @@ fn kind_of(names: &[String]) -> Option<&'static str> {
 }
 
 /// Directory names visible in the head window (for the sniffer only: the
-/// directory chain is not followed).
+/// directory chain is followed while its sectors are in the head).
 fn head_names(head: &[u8]) -> Vec<String> {
     let mut out = Vec::new();
     if head.len() < 512 || !Cfb::is_cfb(head) {
@@ -139,9 +139,31 @@ fn head_names(head: &[u8]) -> Vec<String> {
     if !(9..=12).contains(&shift) {
         return out;
     }
-    let first = u32::from_le_bytes([head[48], head[49], head[50], head[51]]) as usize;
-    let at = (first + 1) << shift;
-    for rec in head.get(at..).unwrap_or(&[]).as_chunks::<128>().0.iter().take(64) {
+    let le32 = |b: &[u8], at: usize| b.get(at..at + 4).map(|v| u32::from_le_bytes([v[0], v[1], v[2], v[3]]));
+    let size = 1usize << shift;
+    let sector = |n: u32| head.get((n as usize + 1) * size..(n as usize + 2) * size);
+    // FAT entry `n`, when the header's first FAT sectors are in the head.
+    let per = size / 4;
+    let fat = |n: u32| {
+        let (index, at) = (n as usize / per, n as usize % per);
+        let fat_sector = le32(head, 76 + 4 * index).filter(|_| index < 109)?;
+        le32(sector(fat_sector)?, 4 * at)
+    };
+    // Directory sectors: the chain from the header's first one, else the
+    // sectors that follow it.
+    let first = le32(head, 48).unwrap_or(0);
+    let mut dir: Vec<&[u8]> = Vec::new();
+    let mut n = first;
+    while dir.len() < 16 && n < 0xFFFF_FFFA {
+        let Some(s) = sector(n) else { break };
+        dir.push(s);
+        let Some(next) = fat(n) else {
+            dir = vec![head.get((first as usize + 1) * size..).unwrap_or(&[])];
+            break;
+        };
+        n = next;
+    }
+    for rec in dir.iter().flat_map(|s| s.as_chunks::<128>().0.iter()).take(64) {
         let n = usize::from(u16::from_le_bytes([rec[64], rec[65]])).min(64);
         if n < 2 || rec[66] == 0 {
             continue;
@@ -670,12 +692,23 @@ fn excel(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), Ex
     let mut sst_parts: Vec<&[u8]> = Vec::new();
     let mut in_sst = false;
     let mut biff = None;
+    let mut locked_sheets = 0u64;
     for (n, (kind, body)) in (Records { data: &book, pos: 0 }).enumerate() {
         if n.is_multiple_of(65_536) {
             cx.checkpoint()?;
         }
         if kind != 0x003C {
             in_sst = false;
+        }
+        // After FILEPASS every record body is encrypted (BoundSheet8 keeps
+        // only its stream offset in clear): count records, read nothing.
+        if encrypted.is_some() {
+            match kind {
+                0x0085 => locked_sheets += 1,
+                0x0018 => names += 1,
+                _ => {}
+            }
+            continue;
         }
         match kind {
             0x0809 if biff.is_none() => biff = body.get(..2).map(|v| u16::from_le_bytes([v[0], v[1]])),
@@ -758,7 +791,7 @@ fn excel(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), Ex
         cx.format_set("biff_version", format!("{v:#06x}"));
     }
     let hidden = sheets.iter().filter(|s| s.get("state").is_some()).count();
-    cx.physical().sheets(sheets.iter().filter(|s| s["kind"] != "vb_module").count() as u64);
+    cx.physical().sheets(sheets.iter().filter(|s| s["kind"] != "vb_module").count() as u64 + locked_sheets);
     if macro_sheets > 0 {
         cx.security()
             .active_content("excel4_macros")
@@ -770,7 +803,9 @@ fn excel(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), Ex
     if auto_open {
         cx.security().risk("auto_exec_macro", Some("Auto_Open".into()));
     }
-    cx.format_set("sheets", sheets);
+    if encrypted.is_none() {
+        cx.format_set("sheets", sheets);
+    }
     if hidden > 0 {
         cx.format_set("hidden_sheets", hidden);
     }
@@ -802,6 +837,7 @@ fn excel(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), Ex
 
 // ---------------------------------------------------------------- PowerPoint
 
+#[allow(clippy::too_many_lines)] // one walk over the record tree
 fn powerpoint(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     let data = read(cfb, src, "PowerPoint Document", MAX_STREAM)
         .ok_or_else(|| ExtractError::malformed("no PowerPoint Document stream"))?;
@@ -810,9 +846,22 @@ fn powerpoint(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(
     let mut titles: Vec<String> = Vec::new();
     let mut body = String::new();
     let mut text_type: Option<u32> = None;
+    // A bounded walk: each container's children stop at its end, so a
+    // child whose length overruns its parent cannot shift the records
+    // after it. `open` holds (record type, end) of the enclosing containers.
+    let mut open: Vec<(u16, usize)> = Vec::new();
     let mut pos = 0usize;
     let mut steps = 0usize;
-    while pos + 8 <= data.len() {
+    loop {
+        while open.last().is_some_and(|&(_, end)| pos + 8 > end) {
+            if let Some((_, end)) = open.pop() {
+                pos = pos.max(end);
+            }
+        }
+        let limit = open.last().map_or(data.len(), |&(_, end)| end);
+        if pos + 8 > limit {
+            break;
+        }
         steps += 1;
         if steps.is_multiple_of(65_536) {
             cx.checkpoint()?;
@@ -821,20 +870,28 @@ fn powerpoint(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(
         let kind = u16::from_le_bytes([data[pos + 2], data[pos + 3]]);
         let len = u32::from_le_bytes([data[pos + 4], data[pos + 5], data[pos + 6], data[pos + 7]]) as usize;
         let start = pos + 8;
+        let end = start.saturating_add(len).min(limit);
         if ver_inst & 0xF == 0xF {
-            // Container: descend.
             match kind {
                 0x03EE => slides += 1,
                 0x03F0 => notes += 1,
                 _ => {}
             }
-            pos = start;
+            if open.len() < 64 {
+                open.push((kind, end));
+                pos = start;
+            } else {
+                pos = end;
+            }
             continue;
         }
-        let atom = data.get(start..start.saturating_add(len).min(data.len())).unwrap_or(&[]);
+        let atom = &data[start..end];
+        // Master and handout placeholders ("Click to edit Master title
+        // style") are not the document's text.
+        let in_master = open.iter().any(|&(k, _)| matches!(k, 0x03F8 | 0x0FC9));
         match kind {
             0x0F9F => text_type = atom.get(..4).map(|b| u32::from_le_bytes([b[0], b[1], b[2], b[3]])),
-            0x0FA0 | 0x0FA8 => {
+            0x0FA0 | 0x0FA8 if !in_master => {
                 let text = if kind == 0x0FA0 {
                     String::from_utf16_lossy(
                         &atom.as_chunks::<2>().0.iter().map(|c| u16::from_le_bytes(*c)).collect::<Vec<_>>(),
@@ -853,15 +910,20 @@ fn powerpoint(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(
             }
             0x2F14 => encrypted = true,
             0x1011 => objects += 1,
-            0x0400 | 0x0401 => vba = true,
+            // VbaInfoAtom: persistIdRef, fHasMacros, version. PowerPoint
+            // writes one with fHasMacros = 0 in files without a project.
+            0x0400 => vba |= atom.get(4..8).is_some_and(|b| b != [0, 0, 0, 0]),
             _ => {}
         }
-        pos = start.saturating_add(len);
+        pos = end;
     }
-    if encrypted || cfb.find("EncryptedSummary").is_some() {
+    let locked = encrypted || cfb.find("EncryptedSummary").is_some();
+    if locked {
         cx.security().encrypted(true);
+        cx.format_set("encryption", "cryptoapi");
+    } else {
+        cx.physical().slides(slides);
     }
-    cx.physical().slides(slides);
     for t in titles.iter().filter(|t| !t.is_empty()) {
         cx.emit_heading(1, t);
     }
@@ -878,11 +940,14 @@ fn powerpoint(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(
     if vba {
         cx.security().active_content("macros").risk("macros", Some("VBA project in the presentation".into()));
     }
-    cx.format_set("slides", slides);
+    // An encrypted document stream hides its slides.
+    if !locked {
+        cx.format_set("slides", slides);
+        cx.format_set("slide_titles", titles);
+    }
     if notes > 0 {
         cx.format_set("notes_pages", notes);
     }
-    cx.format_set("slide_titles", titles);
     Ok(())
 }
 
@@ -973,6 +1038,56 @@ mod tests {
         assert_eq!(n(&["__substg1.0_0037001F"]), Some("msg"));
         assert_eq!(n(&["EncryptionInfo", "EncryptedPackage"]), Some("office_encrypted"));
         assert_eq!(n(&["Other"]), None);
+    }
+
+    /// A PowerPoint record: header, then `body` (an atom) or children.
+    #[allow(clippy::cast_possible_truncation)] // test records are small
+    fn rec(kind: u16, container: bool, body: &[u8]) -> Vec<u8> {
+        let mut v = (if container { 0x000Fu16 } else { 0 }).to_le_bytes().to_vec();
+        v.extend_from_slice(&kind.to_le_bytes());
+        v.extend_from_slice(&(body.len() as u32).to_le_bytes());
+        v.extend_from_slice(body);
+        v
+    }
+
+    fn slide(title: &str) -> Vec<u8> {
+        let text = [rec(0x0F9F, false, &0u32.to_le_bytes()), rec(0x0FA8, false, title.as_bytes())].concat();
+        rec(0x03EE, true, &rec(0x040C, true, &rec(0xF00D, true, &text)))
+    }
+
+    fn ppt_report(stream: &[u8]) -> crate::plugin::Report {
+        let file = crate::plugin::testing::cfb(&[("PowerPoint Document", stream)]);
+        crate::plugin::testing::report_for("deck.ppt", &file)
+    }
+
+    #[test]
+    fn powerpoint_vba_info_needs_macros_flag() {
+        let vba = |has: u8| rec(0x03FF, true, &rec(0x0400, false, &[0, 0, 0, 0, has, 0, 0, 0, 2, 0, 0, 0]));
+        let document = |has| rec(0x03E8, true, &vba(has));
+        let plain = ppt_report(&[document(0), slide("Harbour")].concat());
+        assert!(plain.security.risks.is_empty(), "{:?}", plain.security.risks);
+        let with = ppt_report(&[document(1), slide("Harbour")].concat());
+        assert_eq!(with.security.risks[0].kind, "macros");
+    }
+
+    #[test]
+    fn powerpoint_overrunning_child_and_master_text() {
+        // A container whose last child claims more than the container holds
+        // must not shift the next slide; master placeholders are not text.
+        let mut broken = rec(0x0BC3, false, &[0; 8]);
+        broken.extend_from_slice(&rec(0x0420, false, &[0; 8])[..9]);
+        let master_text = [rec(0x0F9F, false, &0u32.to_le_bytes()), rec(0x0FA8, false, b"Click to edit")].concat();
+        let stream = [
+            rec(0x03F8, true, &rec(0xF00D, true, &master_text)),
+            rec(0x03EE, true, &rec(0xF011, true, &broken)),
+            slide("Tides"),
+            slide("Berths"),
+        ]
+        .concat();
+        let r = ppt_report(&stream);
+        let f = &r.format["ppt"];
+        assert_eq!(f["slides"], 3);
+        assert_eq!(f["slide_titles"], serde_json::json!(["Tides", "Berths"]));
     }
 
     crate::fixture_tests!(
