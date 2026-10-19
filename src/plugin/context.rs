@@ -74,6 +74,7 @@ pub struct Context<'a> {
     pub(crate) budget: &'a Budget,
     pub(crate) format_id: &'a str,
     pub(crate) emitter: &'static str,
+    pub(crate) redirect: &'a mut Option<String>,
 }
 
 /// Records which source set which normalised field (`--provenance`).
@@ -259,6 +260,51 @@ impl Context<'_> {
         }
     }
 
+    /// Like [`inflate`](Self::inflate), but for damaged or truncated input:
+    /// returns whatever decodes before the first error (at least one byte),
+    /// charged to the same budget.
+    pub fn inflate_prefix(&mut self, data: &[u8], kind: Compression, max: usize) -> Result<Vec<u8>, ExtractError> {
+        use miniz_oxide::inflate::TINFLStatus;
+        use miniz_oxide::inflate::core::{DecompressorOxide, decompress, inflate_flags};
+        let room = usize::try_from(self.budget.remaining_decompressed()).unwrap_or(usize::MAX);
+        let limit = max.min(room);
+        let (body, mut flags) = match kind {
+            Compression::Gzip => (gzip_body(data)?, 0),
+            Compression::Zlib => (data, inflate_flags::TINFL_FLAG_PARSE_ZLIB_HEADER),
+            Compression::Deflate => (data, 0),
+        };
+        flags |= inflate_flags::TINFL_FLAG_HAS_MORE_INPUT | inflate_flags::TINFL_FLAG_USING_NON_WRAPPING_OUTPUT_BUF;
+        let mut state = Box::<DecompressorOxide>::default();
+        let mut out = vec![0u8; limit.clamp(1, 1 << 16)];
+        let (mut read, mut written) = (0usize, 0usize);
+        loop {
+            let (status, r, w) = decompress(&mut state, &body[read..], &mut out, written, flags);
+            read += r;
+            written += w;
+            match status {
+                TINFLStatus::HasMoreOutput if out.len() < limit => out.resize((out.len() * 2).min(limit), 0),
+                TINFLStatus::HasMoreOutput => {
+                    self.budget.hit("decompressed_bytes");
+                    return Err(ExtractError::LimitExceeded("decompressed_bytes".into()));
+                }
+                TINFLStatus::NeedsMoreInput if r > 0 || w > 0 => {}
+                _ => break,
+            }
+        }
+        if written == 0 {
+            return Err(ExtractError::malformed(format!("{kind:?} data")));
+        }
+        out.truncate(written);
+        self.budget.charge_decompressed(written as u64)?;
+        Ok(out)
+    }
+
+    /// An in-memory [`Source`](crate::io::Source) over `data` (a decompressed
+    /// part, an embedded stream), charged to the same budget as the input.
+    pub fn memory_source(&self, name: &str, data: Vec<u8>) -> crate::io::BytesSource {
+        crate::io::BytesSource::new(Some(name.to_string()), data, self.budget.clone())
+    }
+
     /// Bytes a structured parser may load (`limits.max_parse_bytes`).
     pub fn parse_limit(&self) -> usize {
         usize::try_from(self.options.limits.max_parse_bytes).unwrap_or(usize::MAX)
@@ -278,6 +324,48 @@ impl Context<'_> {
     /// The options in effect.
     pub fn options(&self) -> &Options {
         self.options
+    }
+
+    /// Whether personal data must be counted rather than listed
+    /// ([`Privacy::Strict`](crate::engine::Privacy::Strict), the default).
+    pub fn privacy_strict(&self) -> bool {
+        self.options.privacy == crate::engine::Privacy::Strict
+    }
+
+    /// A mailbox (display name and e-mail address) for the report:
+    /// `{"name", "address"}`, or `{"name", "domain"}` under strict privacy.
+    /// The name is kept either way; an address without a domain is dropped.
+    pub fn mailbox(&self, name: Option<&str>, address: Option<&str>) -> Value {
+        let mut m = Map::new();
+        if let Some(n) = name.map(str::trim).filter(|n| !n.is_empty()) {
+            // A display name that is itself an address is personal data too.
+            let n = if self.privacy_strict() && n.contains('@') {
+                crate::text::sensitive::redact(n, crate::text::sensitive::Category::Personal).into_owned()
+            } else {
+                n.to_string()
+            };
+            m.insert("name".into(), Value::String(n));
+        }
+        if let Some(a) = address.map(str::trim).filter(|a| !a.is_empty()) {
+            if self.privacy_strict() {
+                if let Some((_, domain)) = a.rsplit_once('@') {
+                    m.insert("domain".into(), Value::String(domain.to_ascii_lowercase()));
+                }
+            } else {
+                m.insert("address".into(), Value::String(a.to_string()));
+            }
+        }
+        Value::Object(m)
+    }
+
+    /// Say that the input is really `format_id`, which this extractor found
+    /// by looking inside a container (a compound file whose streams make it
+    /// an Outlook message, a ZIP whose parts make it a Word document). The
+    /// engine re-identifies the input and runs that format's extractors
+    /// instead; return right after calling this. Honoured once per input,
+    /// and only for a registered format.
+    pub fn redirect(&mut self, format_id: &str) {
+        *self.redirect = Some(format_id.to_string());
     }
 
     /// The format currently being extracted.
@@ -510,7 +598,7 @@ impl SecurityWriter<'_> {
     pub fn risk(&mut self, kind: impl Into<String>, detail: Option<String>) -> &mut Self {
         let kind = kind.into();
         if !self.s.risks.iter().any(|r| r.kind == kind && r.detail == detail) {
-            self.s.risks.push(Risk { kind, detail, source: self.prov.source.clone() });
+            self.s.risks.push(Risk::new(kind, detail, self.prov.source.clone()));
             self.prov.record("security.risks");
         }
         self

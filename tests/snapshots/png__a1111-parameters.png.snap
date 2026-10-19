@@ -34,10 +34,13 @@ expression: report
     "risks": [
       {
         "kind": "ai_generated",
+        "category": "provenance",
+        "severity": "info",
         "detail": "generation parameters from Stable Diffusion web UI",
         "source": "image.png"
       }
-    ]
+    ],
+    "risk_level": "info"
   },
   "rights": {},
   "physical": {

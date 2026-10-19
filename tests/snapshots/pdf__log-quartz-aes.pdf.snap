@@ -1,0 +1,235 @@
+---
+source: src/formats/doc/pdf/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "log-quartz-aes.pdf",
+    "stem": "log-quartz-aes",
+    "extension": "pdf"
+  },
+  "identification": {
+    "format": "pdf",
+    "name": "PDF document",
+    "mime": "application/pdf",
+    "family": "doc.pdf",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.pdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 19272
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-17T19:07:42+00:00",
+        "source": "pdf.info.CreationDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-17T19:07:42+00:00",
+        "source": "pdf.info.ModDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-17T19:07:42Z",
+    "latest": "2026-10-17T19:07:42Z"
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 19272,
+    "entropy": 7.836,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 1
+    }
+  },
+  "integrity": {
+    "sha256": "22e7087609b0c3169a2827d1abed49fa6ffacc1b47984e4644b030e42ed071dc",
+    "blake3": "24da8672d7a7f4a3c66ff2e0f96671cb5335c1bb407fb1f3a23c4d78ac5b60de"
+  },
+  "content": {
+    "title": "Lighthouse keeper's log",
+    "description": "Weekly log of the Saltmere light",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.543
+    },
+    "keywords": [
+      "lighthouse",
+      "log",
+      "Lighthouse keeper's log",
+      "Saltmere light",
+      "keeper's",
+      "Saltmere",
+      "Weekly log",
+      "light",
+      "Weekly",
+      "Monday"
+    ],
+    "keyword_frequency": [
+      [
+        "log",
+        3
+      ],
+      [
+        "keeper's",
+        2
+      ],
+      [
+        "lighthouse",
+        2
+      ]
+    ],
+    "excerpt": "Lighthouse keeper's log Monday: lamp lit at 18:02, fog signal sounded for two hours. Tuesday: lens cleaned; visibility twelve miles.",
+    "tags": [
+      "lighthouse",
+      "log",
+      "Lighthouse keeper's log",
+      "Saltmere light",
+      "keeper's"
+    ]
+  },
+  "metadata": {
+    "pdf_info": {
+      "Author": "Ana Lighthouse",
+      "Title": "Lighthouse keeper's log",
+      "ModDate": "D:20261017190742Z00'00'",
+      "Creator": "whiff fixtures",
+      "Keywords": "lighthouse, log",
+      "Subject": "Weekly log of the Saltmere light",
+      "CreationDate": "D:20261017190742Z00'00'",
+      "Producer": "macOS Version 26.5 (Build 25F71) Quartz PDFContext"
+    }
+  },
+  "format": {
+    "pdf": {
+      "version": "1.6",
+      "objects": 15,
+      "id": [
+        "1765edfd2c20ba1e22ec9b362157042a",
+        "1765edfd2c20ba1e22ec9b362157042a"
+      ],
+      "encryption": {
+        "filter": "Standard",
+        "version": 4,
+        "revision": 4,
+        "key_bits": 128,
+        "method": "AES-128",
+        "user_password": "empty",
+        "permissions": {
+          "print": true,
+          "modify": true,
+          "copy": false,
+          "annotate": true,
+          "fill_forms": true,
+          "extract_for_accessibility": false,
+          "assemble": true,
+          "print_high_quality": true
+        }
+      },
+      "catalog_version": "1.6",
+      "page_sizes": [
+        {
+          "width_pt": 595.0,
+          "height_pt": 842.0,
+          "width_mm": 209.9,
+          "height_mm": 297.0,
+          "paper": "A4",
+          "orientation": "portrait",
+          "pages": 1
+        }
+      ],
+      "pages_with_text": 1,
+      "fonts": {
+        "Helvetica": {
+          "type": "TrueType",
+          "embedded": true,
+          "subset": true
+        },
+        "Helvetica-Bold": {
+          "type": "TrueType",
+          "embedded": true,
+          "subset": true
+        }
+      },
+      "creator": "whiff fixtures",
+      "producer": "macOS Version 26.5 (Build 25F71) Quartz PDFContext"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.pdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

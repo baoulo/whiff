@@ -1,0 +1,146 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-log.pdb",
+    "stem": "harbour-log",
+    "extension": "pdb"
+  },
+  "identification": {
+    "format": "palmdoc",
+    "name": "PalmDOC ebook",
+    "mime": "application/vnd.palm",
+    "family": "doc.ebook",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 256
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 256,
+    "entropy": 4.657,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "555ca70b967cd44d2f6ca259808064da2914902134ab8302b941d54fbfbdb931",
+    "blake3": "7829955b03ecc1e2d1a8dbe5c79e5c5483646f292563e8962e3a0bf6f675074c"
+  },
+  "content": {
+    "title": "Harbour Log",
+    "keywords": [
+      "Harbour Log Monday",
+      "Harbour",
+      "Log",
+      "Monday",
+      "ferry on time",
+      "wind north",
+      "fog",
+      "Tuesday",
+      "Wednesday",
+      "ferry"
+    ],
+    "keyword_frequency": [
+      [
+        "fog",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "log",
+        2
+      ]
+    ],
+    "excerpt": "Harbour Log Monday: wind north-west 4, ferry on time. Tuesday: fog until 10:00, fog signal sounded for two hours. Wednesday: spring tide, berth 3 dried at 14:20.",
+    "tags": [
+      "Harbour Log Monday",
+      "Harbour",
+      "Log",
+      "Monday",
+      "ferry on time"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "palmdoc": {
+      "database_name": "Harbour_Log",
+      "type_creator": "TEXtREAd",
+      "database_created": "2024-05-01T08:30:00Z",
+      "database_modified": "2024-05-01T08:30:00Z",
+      "records": 2,
+      "compression": "palmdoc"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

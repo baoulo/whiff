@@ -1,0 +1,240 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "budget.xlsm",
+    "stem": "budget",
+    "extension": "xlsm"
+  },
+  "identification": {
+    "format": "xlsm",
+    "name": "Excel macro-enabled workbook",
+    "mime": "application/vnd.ms-excel.sheet.macroEnabled.12",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xlsm",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4155
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-03-02T08:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-03-09T17:45:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-03-02T08:00:00Z",
+    "latest": "2024-03-09T17:45:00Z"
+  },
+  "security": {
+    "active_content": [
+      "macros"
+    ],
+    "external_references": 0,
+    "risks": [
+      {
+        "kind": "macros",
+        "category": "active_content",
+        "severity": "medium",
+        "detail": "2 VBA module(s)",
+        "source": "doc.ooxml"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "Tomas Lind"
+    ],
+    "credit": "Example Port Authority"
+  },
+  "physical": {
+    "size_bytes": 4155,
+    "entropy": 7.534,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "cdccb49c17cfe37237524c689bda4e51a81b70adb2e5269761534bf474af6c63",
+    "blake3": "87de1b1c1faf5eb5b5cb8fd2afe7a24488fdab6ddf1e3a8c0c24a986ec08426c"
+  },
+  "content": {
+    "title": "Harbour fees 2024",
+    "authors": [
+      "Tomas Lind"
+    ],
+    "keywords": [
+      "fees",
+      "harbour",
+      "2024"
+    ],
+    "excerpt": "Harbour fees 2024",
+    "tags": [
+      "fees",
+      "harbour",
+      "2024"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour fees 2024",
+        "creator": "Tomas Lind",
+        "lastModifiedBy": "Ana Lima",
+        "keywords": "fees; harbour; 2024",
+        "created": "2024-03-02T08:00:00Z",
+        "modified": "2024-03-09T17:45:00Z"
+      },
+      "app": {
+        "Application": "Microsoft Excel",
+        "AppVersion": "16.0300",
+        "Company": "Example Port Authority",
+        "TitlesOfParts": [
+          "Fees",
+          "Workings"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xlsm": {
+      "content_type": "application/vnd.ms-excel.sheet.macroEnabled.main+xml",
+      "main_part": "xl/workbook.xml",
+      "parts": 10,
+      "uncompressed_bytes": 8516,
+      "part_counts": {
+        "vba_projects": 1
+      },
+      "vba": {
+        "modules": [
+          {
+            "name": "ThisWorkbook",
+            "kind": "document",
+            "lines": 0
+          },
+          {
+            "name": "Module1",
+            "kind": "module",
+            "lines": 3
+          }
+        ],
+        "code_lines": 3,
+        "project": "Project"
+      },
+      "sheets": [
+        {
+          "name": "Fees",
+          "kind": "worksheet"
+        },
+        {
+          "name": "Workings",
+          "kind": "worksheet",
+          "state": "hidden"
+        }
+      ],
+      "hidden_sheets": 1,
+      "sheet_contents": [
+        {
+          "name": "Fees",
+          "cells": 8,
+          "dimension": "A1:B4",
+          "formulas": 1
+        },
+        {
+          "name": "Workings",
+          "cells": 1,
+          "dimension": "A1"
+        }
+      ],
+      "cells": 9,
+      "formulas": 1,
+      "shared_strings": 5
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

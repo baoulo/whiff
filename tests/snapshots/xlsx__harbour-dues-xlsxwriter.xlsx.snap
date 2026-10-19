@@ -1,0 +1,234 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-dues-xlsxwriter.xlsx",
+    "stem": "harbour-dues-xlsxwriter",
+    "extension": "xlsx"
+  },
+  "identification": {
+    "format": "xlsx",
+    "name": "Excel workbook",
+    "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xlsx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7849
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:30:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T09:30:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T09:30:00Z",
+    "latest": "2024-04-01T09:30:00Z"
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Example Ferries"
+  },
+  "physical": {
+    "size_bytes": 7849,
+    "entropy": 7.697,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "25f7d872c52900679217c0af0dc318e524d8d8aaf10c26a7a9a3b799bb30e6f1",
+    "blake3": "00ac1aab578a53f600a5442e0be9ee0a5b82769c16c33c699c02b3bbbb0e3157"
+  },
+  "content": {
+    "title": "Harbour dues 2024",
+    "description": "Draft for the harbour board",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "dues",
+      "Saltmere"
+    ],
+    "excerpt": "Harbour dues 2024 Draft for the harbour board",
+    "tags": [
+      "harbour",
+      "dues",
+      "Saltmere"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour dues 2024",
+        "subject": "Mooring and berthing fees",
+        "creator": "Mira Castell",
+        "keywords": "harbour, dues, Saltmere",
+        "description": "Draft for the harbour board",
+        "lastModifiedBy": "Mira Castell",
+        "created": "2024-04-01T09:30:00Z",
+        "modified": "2024-04-01T09:30:00Z",
+        "category": "Tariffs"
+      },
+      "app": {
+        "Application": "Microsoft Excel",
+        "DocSecurity": 0,
+        "ScaleCrop": "false",
+        "Manager": "Ana Lighthouse",
+        "Company": "Example Ferries",
+        "LinksUpToDate": "false",
+        "SharedDoc": "false",
+        "HyperlinksChanged": "false",
+        "AppVersion": "12.0000",
+        "TitlesOfParts": [
+          "Dues",
+          "Workings",
+          "Total_dues"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xlsx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
+      "main_part": "xl/workbook.xml",
+      "parts": 14,
+      "uncompressed_bytes": 18380,
+      "hyperlinks": 1,
+      "link_hosts": [
+        {
+          "host": "harbour.example",
+          "count": 1
+        }
+      ],
+      "sheets": [
+        {
+          "name": "Dues",
+          "kind": "worksheet"
+        },
+        {
+          "name": "Workings",
+          "kind": "worksheet",
+          "state": "hidden"
+        }
+      ],
+      "hidden_sheets": 1,
+      "defined_names": 1,
+      "sheet_contents": [
+        {
+          "name": "Dues",
+          "cells": 11,
+          "dimension": "A1:B7",
+          "formulas": 1,
+          "hyperlinks": 1
+        },
+        {
+          "name": "Workings",
+          "cells": 1,
+          "dimension": "A1"
+        }
+      ],
+      "cells": 12,
+      "formulas": 1,
+      "shared_strings": 8,
+      "comments": {
+        "count": 1,
+        "authors": [
+          "Ana Lighthouse"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

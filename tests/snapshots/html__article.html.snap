@@ -50,25 +50,34 @@ expression: report
     "risks": [
       {
         "kind": "inline_event_handlers",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "1 handler attributes",
         "source": "text.html"
       },
       {
         "kind": "javascript_urls",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "1 javascript: links",
         "source": "text.html"
       },
       {
         "kind": "hidden_iframe",
+        "category": "obfuscation",
+        "severity": "high",
         "detail": "1 hidden iframe(s)",
         "source": "text.html"
       },
       {
         "kind": "external_form_action",
+        "category": "phishing",
+        "severity": "medium",
         "detail": "form posts to forms.example.net",
         "source": "text.html"
       }
-    ]
+    ],
+    "risk_level": "high"
   },
   "rights": {
     "license": {

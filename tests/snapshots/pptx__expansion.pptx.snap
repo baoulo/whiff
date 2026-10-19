@@ -1,0 +1,236 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "expansion.pptx",
+    "stem": "expansion",
+    "extension": "pptx"
+  },
+  "identification": {
+    "format": "pptx",
+    "name": "PowerPoint presentation",
+    "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pptx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4713
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-06-01T09:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-06-04T11:20:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-06-01T09:00:00Z",
+    "latest": "2024-06-04T11:20:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 4713,
+    "entropy": 7.403,
+    "entropy_scope": "file",
+    "document": {
+      "slides": 3
+    }
+  },
+  "integrity": {
+    "sha256": "1fd4f682ba8f2d1918573ee2a721b73d4d3e93ad6be047d943302b5b0e2f2ef3",
+    "blake3": "01cb78f04d4949c1cc0260c89e6cbec3c8729c01121493593783f9873a454615"
+  },
+  "content": {
+    "title": "Harbour Expansion Plan",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Expansion Plan",
+      "plan",
+      "Expansion",
+      "Harbour",
+      "introduce the plan",
+      "Quay Wall",
+      "June",
+      "Wall",
+      "Quay",
+      "Board meeting"
+    ],
+    "keyword_frequency": [
+      [
+        "plan",
+        3
+      ],
+      [
+        "expansion",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Harbour Expansion Plan"
+      },
+      {
+        "level": 1,
+        "text": "New Quay Wall"
+      },
+      {
+        "level": 1,
+        "text": "Budget (draft)"
+      }
+    ],
+    "excerpt": "Board meeting, June 2024 Welcome everyone and introduce the plan. Four hundred metres of new berth on the east side. Mention the tender timeline. Not for distribution.",
+    "tags": [
+      "Harbour Expansion Plan",
+      "plan",
+      "Expansion",
+      "Harbour",
+      "introduce the plan"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour Expansion Plan",
+        "creator": "Mira Castell",
+        "created": "2024-06-01T09:00:00Z",
+        "modified": "2024-06-04T11:20:00Z"
+      },
+      "app": {
+        "Application": "Microsoft Office PowerPoint",
+        "Slides": 3,
+        "Notes": 2,
+        "HiddenSlides": 1,
+        "PresentationFormat": "Widescreen"
+      }
+    }
+  },
+  "format": {
+    "pptx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml",
+      "main_part": "ppt/presentation.xml",
+      "parts": 13,
+      "uncompressed_bytes": 7800,
+      "slides": [
+        {
+          "number": 1,
+          "title": "Harbour Expansion Plan"
+        },
+        {
+          "number": 2,
+          "title": "New Quay Wall"
+        },
+        {
+          "number": 3,
+          "title": "Budget (draft)"
+        }
+      ],
+      "hidden_slides": 1,
+      "slides_with_notes": 2,
+      "slide_size": {
+        "width_pt": 960.0,
+        "height_pt": 540.0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

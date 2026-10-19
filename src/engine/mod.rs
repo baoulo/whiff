@@ -12,7 +12,7 @@ use std::path::Path;
 use std::sync::Arc;
 use std::time::Duration;
 
-pub use options::{Hashes, Limits, Options, Profile};
+pub use options::{Hashes, Limits, Options, Privacy, Profile};
 
 use crate::Error;
 use crate::plugin::Registry;
@@ -210,6 +210,13 @@ impl EngineBuilder {
     #[must_use]
     pub fn provenance(mut self, on: bool) -> Self {
         self.options.provenance = on;
+        self
+    }
+
+    /// How personal data is reported (default [`Privacy::Strict`]).
+    #[must_use]
+    pub fn privacy(mut self, privacy: Privacy) -> Self {
+        self.options.privacy = privacy;
         self
     }
 

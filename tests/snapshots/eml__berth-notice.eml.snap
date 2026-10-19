@@ -1,0 +1,197 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth-notice.eml",
+    "stem": "berth-notice",
+    "extension": "eml"
+  },
+  "identification": {
+    "format": "eml",
+    "name": "Email message",
+    "mime": "message/rfc822",
+    "family": "email",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 930
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-01T08:30:00+02:00",
+        "source": "email.date",
+        "tz_known": true
+      },
+      {
+        "field": "received",
+        "value": "2024-05-01T08:31:00+02:00",
+        "source": "email.received",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T06:30:00Z",
+    "latest": "2024-05-01T06:31:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 930,
+    "entropy": 5.228,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 930,
+      "chars": 930,
+      "words": 91,
+      "lines": 23,
+      "max_line_length": 76,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "f0092156810e963ba4cef1a19bd3ae08595c92c973f4651e244a3333eba7f6f7",
+    "blake3": "42433f60e3344ef82fcf1b9bbe27537ff5f47f349b053d64f4e064cb1f0df22d"
+  },
+  "content": {
+    "title": "Berth 5 is free on Friday",
+    "authors": [
+      "Saltmere Harbour Office"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Berth",
+      "Friday",
+      "Harbour Office",
+      "Sunday evening",
+      "Friday noon",
+      "Thursday",
+      "confirm by thursday",
+      "noon until sunday",
+      "Office",
+      "Sunday"
+    ],
+    "keyword_frequency": [
+      [
+        "berth",
+        2
+      ],
+      [
+        "friday",
+        2
+      ]
+    ],
+    "excerpt": "Hello, Berth 5 is free from Friday noon until Sunday evening. Please confirm by Thursday. Saltmere Harbour Office",
+    "tags": [
+      "Berth",
+      "Friday",
+      "Harbour Office",
+      "Sunday evening",
+      "Friday noon"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "eml": {
+      "from": {
+        "name": "Saltmere Harbour Office",
+        "domain": "saltmere.example"
+      },
+      "to": [
+        {
+          "name": "Mira Castell",
+          "domain": "example.org"
+        },
+        {
+          "name": "Ben Gull",
+          "domain": "example.org"
+        }
+      ],
+      "to_count": 2,
+      "message_id": "berth5.20240501@saltmere.example",
+      "client": "Harbour Mailer 2.1",
+      "received_hops": 1,
+      "authentication": {
+        "dkim": "pass",
+        "dmarc": "pass",
+        "spf": "pass"
+      },
+      "dkim_domains": [
+        "saltmere.example"
+      ],
+      "mime_parts": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

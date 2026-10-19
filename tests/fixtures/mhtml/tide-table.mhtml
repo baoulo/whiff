@@ -1,0 +1,31 @@
+From: <Saved by whiff fixtures>
+Snapshot-Content-Location: https://tides.example.org/saltmere
+Subject: Saltmere tide table
+Date: Wed, 1 May 2024 12:00:00 +0200
+MIME-Version: 1.0
+Content-Type: multipart/related; type="text/html"; boundary="----=_NextPart_saltmere"
+
+------=_NextPart_saltmere
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://tides.example.org/saltmere
+
+<!DOCTYPE html><html><head><title>Saltmere tide table</title><link rel=3D"s=
+tylesheet" href=3D"style.css"></head><body><h1>Saltmere tide table</h1><p>H=
+igh water today at 12:40 (5.2 m), low water at 18:55 (0.6 m).</p><img src=
+=3D"chart.png" alt=3D"Tide curve"></body></html>
+------=_NextPart_saltmere
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://tides.example.org/style.css
+
+body { font-family: sans-serif; }
+
+------=_NextPart_saltmere
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://tides.example.org/chart.png
+
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAIAAAD4YuoOAAAAHUlEQVR42mOQi1pAU8QwasGoBaMW
+jFowasFQsAAA5XAwHxYcD/8AAAAASUVORK5CYII=
+------=_NextPart_saltmere--

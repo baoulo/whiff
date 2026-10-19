@@ -1,0 +1,221 @@
+---
+source: src/formats/text/calendar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-events.ics",
+    "stem": "harbour-events",
+    "extension": "ics"
+  },
+  "identification": {
+    "format": "ics",
+    "name": "iCalendar",
+    "mime": "text/calendar",
+    "family": "text.calendar",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.calendar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1813
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1813,
+    "entropy": 5.535,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1813,
+      "chars": 1813,
+      "words": 104,
+      "lines": 67,
+      "max_line_length": 87,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "3b444b745c7c1c3230bab5bb9e763de8561f944b551496cc4f38eedd6dff8d22",
+    "blake3": "97c99772d0461de628bb1c80b8496e9c3a3e3ced10102379b4da0a9e4c2dabc0"
+  },
+  "content": {
+    "title": "Saltmere harbour events",
+    "description": "Regattas, open days and closures at the fictitious port of Saltmere.",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere harbour events",
+      "Saltmere",
+      "events",
+      "Saltmere regatta",
+      "regatta",
+      "harbour",
+      "Saltmere light",
+      "Outer mole",
+      "mole",
+      "Outer"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "regatta",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere regatta Outer mole The harbour is closed to traffic during the regatta. Lighthouse open day Saltmere light Inspect the visitors' mooring buoys",
+    "tags": [
+      "Saltmere harbour events",
+      "Saltmere",
+      "events",
+      "Saltmere regatta",
+      "regatta"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ics": {
+      "version": "2.0",
+      "generator": "-//Saltmere Harbour//Events 1.0//EN",
+      "method": "PUBLISH",
+      "calendar_scale": "GREGORIAN",
+      "default_timezone": "Europe/Paris",
+      "components": {
+        "vevent": 2,
+        "vtimezone": 1,
+        "vtodo": 1
+      },
+      "timezones": [
+        "Europe/Paris"
+      ],
+      "items": 3,
+      "date_range": [
+        "2024-05-09T10:00:00",
+        "2024-06-02"
+      ],
+      "recurring": 1,
+      "private_items": 1,
+      "attendees": 2,
+      "events": [
+        {
+          "type": "event",
+          "summary": "Saltmere regatta",
+          "start": "2024-05-09T10:00:00",
+          "timezone": "Europe/Paris",
+          "end": "2024-05-09T17:00:00",
+          "recurrence": "FREQ=YEARLY",
+          "location": "Outer mole",
+          "status": "CONFIRMED",
+          "categories": "Sailing,Closure",
+          "organizer": {
+            "name": "Saltmere Harbour Office",
+            "domain": "saltmere.example"
+          },
+          "attendees": 2,
+          "attendee_list": [
+            {
+              "name": "Mira Castell",
+              "domain": "example.org",
+              "status": "accepted"
+            },
+            {
+              "name": "Ben Gull",
+              "domain": "example.org",
+              "status": "tentative"
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "summary": "Lighthouse open day",
+          "start": "2024-06-01",
+          "all_day": true,
+          "end": "2024-06-02",
+          "location": "Saltmere light"
+        },
+        {
+          "type": "todo",
+          "summary": "Inspect the visitors' mooring buoys",
+          "end": "2024-04-30T16:00:00Z",
+          "status": "NEEDS-ACTION"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.calendar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

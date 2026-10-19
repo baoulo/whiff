@@ -1,0 +1,124 @@
+---
+source: src/formats/doc/pdf/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth-request.fdf",
+    "stem": "berth-request",
+    "extension": "fdf"
+  },
+  "identification": {
+    "format": "fdf",
+    "name": "Forms Data Format",
+    "mime": "application/vnd.fdf",
+    "family": "doc.pdf",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "gbk",
+    "extractor": "doc.pdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 283
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 283,
+    "entropy": 4.947,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 283,
+      "chars": 281,
+      "words": 59,
+      "lines": 8,
+      "max_line_length": 220,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "68a630d32fdc9d90dbfb416263d1ea3e2fd9a837d177fef29c2273a202bc6f99",
+    "blake3": "1452fd0873e9f5abf8539383ee96166932e0fe0e57fa263522f3d2f71d195302"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fdf": {
+      "version": "1.2",
+      "fields": 4,
+      "field_names": [
+        "vessel",
+        "berth",
+        "dates.from",
+        "dates.to"
+      ],
+      "target_file": "berth-request.pdf"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.pdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -28,10 +28,15 @@ pub use spec::{BlockKind, Cost, ExtractorMeta, FormatSpec, Magic, Probe, Sniff};
 pub use text::{TextChunk, TextRole, TextStore};
 pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
-pub use crate::engine::{Options, Profile};
+pub use crate::container::cfb::{Cfb, CfbEntry, CfbKind, filetime, guid};
+pub use crate::container::oleps;
+pub use crate::container::zip::{Zip, ZipEntry, first_stored as zip_first_stored, names as zip_names};
+pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;
+pub use crate::text::latex::{latex_argument, latex_option, latex_text};
 pub use crate::text::license::{find_copyright, identify_license, spdx_identifier};
+pub use crate::text::markup::{decode_entities, html_text, risky_file_name};
 pub use crate::text::sensitive::is_secret_key;
 pub use crate::text::{Decoded, parse_date, squash_whitespace, truncate_chars};
 
@@ -53,7 +58,7 @@ pub fn redact_sensitive(text: &str) -> std::borrow::Cow<'_, str> {
     }
 }
 pub use crate::error::ExtractError;
-pub use crate::io::{BoundedReader, ByteReader, Source, SourceError};
+pub use crate::io::{BoundedReader, ByteReader, BytesSource, Source, SourceError};
 pub use crate::report::{DateField, Map, Report};
 
 /// Extracts information from one or more formats.

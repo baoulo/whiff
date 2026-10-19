@@ -48,10 +48,13 @@ expression: report
     "risks": [
       {
         "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
         "detail": "postinstall",
         "source": "code.manifest"
       }
     ],
+    "risk_level": "medium",
     "personal_data": {
       "email": 1
     }

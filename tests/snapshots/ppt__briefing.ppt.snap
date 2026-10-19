@@ -1,0 +1,187 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "briefing.ppt",
+    "stem": "briefing",
+    "extension": "ppt"
+  },
+  "identification": {
+    "format": "ppt",
+    "name": "PowerPoint 97-2003 presentation",
+    "mime": "application/vnd.ms-powerpoint",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ppt",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 2.137,
+    "entropy_scope": "file",
+    "document": {
+      "slides": 2
+    }
+  },
+  "integrity": {
+    "sha256": "ac89ae39aefa91b5ddfd5499716121a12017ad811a5d36f3c7b5897f4f67bae5",
+    "blake3": "088cd081a90d3da66e0fca75f2e503b48544472de220f2a00666c905e89cd3db"
+  },
+  "content": {
+    "title": "Pilot briefing",
+    "authors": [
+      "Mira Castell"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "Pilot briefing"
+      },
+      {
+        "level": 1,
+        "text": "Approach"
+      }
+    ],
+    "excerpt": "Board two miles off the breakwater. Keep the lighthouse fine on the starboard bow."
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Pilot briefing",
+      "Author": "Mira Castell",
+      "Application": "Microsoft PowerPoint",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "ppt": {
+      "version": 3,
+      "streams": 3,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 216
+        },
+        {
+          "name": "Current User",
+          "size_bytes": 28
+        },
+        {
+          "name": "PowerPoint Document",
+          "size_bytes": 430
+        }
+      ],
+      "slides": 2,
+      "slide_titles": [
+        "Pilot briefing",
+        "Approach"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

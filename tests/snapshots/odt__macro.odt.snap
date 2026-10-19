@@ -1,0 +1,164 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "macro.odt",
+    "stem": "macro",
+    "extension": "odt"
+  },
+  "identification": {
+    "format": "odt",
+    "name": "OpenDocument text",
+    "mime": "application/vnd.oasis.opendocument.text",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2579
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-07-01T09:00:00Z",
+        "source": "odf.meta.creation-date",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-07-01T09:00:00Z",
+        "source": "odf.meta.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-07-01T09:00:00Z",
+    "latest": "2024-07-01T09:00:00Z"
+  },
+  "security": {
+    "encrypted": true,
+    "active_content": [
+      "macros"
+    ],
+    "risks": [
+      {
+        "kind": "macros",
+        "category": "active_content",
+        "severity": "medium",
+        "detail": "1 Basic module(s)",
+        "source": "doc.odf"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2579,
+    "entropy": 7.318,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "bcf8dd576e887630f3dca272ffd1b02dd4d7a6addee52384b0ae57d4e807373e",
+    "blake3": "996880ffdd67aebc00eee8f4e5028671f1bcb3942e6db203549a72c80cd86eaa"
+  },
+  "content": {
+    "title": "Shipping log",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Shipping log for the north quay."
+  },
+  "metadata": {
+    "odf": {
+      "generator": "LibreOffice/7.6.4.1$Linux_X86_64 LibreOffice_project/fixture",
+      "title": "Shipping log",
+      "initial-creator": "Harbour Office",
+      "creation-date": "2024-07-01T09:00:00Z",
+      "date": "2024-07-01T09:00:00Z"
+    }
+  },
+  "format": {
+    "odt": {
+      "mimetype": "application/vnd.oasis.opendocument.text",
+      "parts": 8,
+      "encrypted_parts": 1,
+      "manifest_entries": 7,
+      "odf_version": "1.3",
+      "paragraphs": 1,
+      "macros": {
+        "modules": [
+          "Basic/Standard/Module1.xml"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

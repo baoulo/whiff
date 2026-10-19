@@ -1,0 +1,226 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pilot-notes.fbz",
+    "stem": "pilot-notes",
+    "extension": "fbz"
+  },
+  "identification": {
+    "format": "fbz",
+    "name": "Zipped FictionBook",
+    "mime": "application/x-zip-compressed-fb2",
+    "family": "doc.ebook",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 999
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2024-05-01",
+        "source": "ebook.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 999,
+    "entropy": 7.668,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7aa8e4c42c7f54053f79da1d05c83d6265f660a2dec134d9a24e9ae171b5b003",
+    "blake3": "4a67cf1c5533118417efb24dd064d373d1c9a2d724336246a8b709bf42d3a355"
+  },
+  "content": {
+    "title": "Pilot Notes for Saltmere",
+    "description": "Notes for pilots entering the fictitious port of Saltmere.",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Notes for Saltmere",
+      "Pilot Notes",
+      "Saltmere",
+      "Notes",
+      "port of saltmere",
+      "Notes for pilots",
+      "Approach",
+      "bar",
+      "Pilot",
+      "Berthing"
+    ],
+    "keyword_frequency": [
+      [
+        "approach",
+        3
+      ],
+      [
+        "bar",
+        3
+      ],
+      [
+        "berthing",
+        3
+      ],
+      [
+        "notes",
+        3
+      ],
+      [
+        "pilot",
+        3
+      ],
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "metres",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Approach"
+      },
+      {
+        "level": 2,
+        "text": "The bar"
+      },
+      {
+        "level": 1,
+        "text": "Berthing"
+      }
+    ],
+    "excerpt": "Pilot Notes for Saltmere Approach Approach on a bearing of 040 degrees with the lighthouse fine on the starboard bow. The bar The bar carries 2.1 metres at low water springs. Berthing Berth 5 takes vessels of up to 4.5 metres draught.",
+    "tags": [
+      "pilotage",
+      "harbour",
+      "Notes for Saltmere",
+      "Pilot Notes",
+      "Saltmere",
+      "Notes",
+      "port of saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "fbz": {
+      "entry": "pilot-notes.fb2",
+      "document_author": "whiff",
+      "program_used": "whiff fixtures",
+      "document_date": "1 May 2024",
+      "document_version": "1.0",
+      "genres": [
+        "sci_geo"
+      ],
+      "binaries": 1,
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "fb2",
+          "value": "0b6c4f1e-saltmere-pilot-notes"
+        },
+        {
+          "scheme": "isbn",
+          "value": "9780306406157"
+        }
+      ],
+      "publisher": "Saltmere Harbour Press",
+      "series": {
+        "name": "Harbour Guides",
+        "index": "3"
+      },
+      "toc_entries": 3,
+      "cover": {
+        "binary": "cover.png"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

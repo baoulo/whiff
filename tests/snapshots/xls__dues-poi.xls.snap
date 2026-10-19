@@ -1,0 +1,201 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dues-poi.xls",
+    "stem": "dues-poi",
+    "extension": "xls"
+  },
+  "identification": {
+    "format": "xls",
+    "name": "Excel 97-2003 workbook",
+    "mime": "application/vnd.ms-excel",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xls",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6144
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T09:00:00Z",
+    "latest": "2024-04-01T09:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ],
+    "credit": "Example Ferries"
+  },
+  "physical": {
+    "size_bytes": 6144,
+    "entropy": 3.618,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "a0ecc183e5df46cbaed170b23062a8a42b23e5218f3ca76a18fea8f60802f818",
+    "blake3": "5e2d547441a89711d74e26156bd36adc61800b5a9f0ee663bc65ea211407cd62"
+  },
+  "content": {
+    "title": "Harbour dues 2024",
+    "description": "Written by Apache POI for whiff's tests",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "Saltmere"
+    ],
+    "excerpt": "Harbour dues 2024 Written by Apache POI for whiff's tests",
+    "tags": [
+      "harbour",
+      "Saltmere"
+    ]
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour dues 2024",
+      "Subject": "Saltmere harbour",
+      "Author": "Mira Castell",
+      "Keywords": "harbour, Saltmere",
+      "Comments": "Written by Apache POI for whiff's tests",
+      "LastAuthor": "Ana Lighthouse",
+      "CreateDate": "2024-04-01T09:00:00Z",
+      "ModifyDate": "2024-04-01T09:00:00Z",
+      "Company": "Example Ferries",
+      "Manager": "Ana Lighthouse",
+      "Category": "Tariffs"
+    }
+  },
+  "format": {
+    "xls": {
+      "version": 3,
+      "streams": 3,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "DocumentSummaryInformation",
+          "size_bytes": 144
+        },
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 324
+        },
+        {
+          "name": "Workbook",
+          "size_bytes": 3081
+        }
+      ],
+      "biff_version": "0x0600",
+      "sheets": [
+        {
+          "name": "Dues",
+          "kind": "worksheet"
+        },
+        {
+          "name": "Workings",
+          "kind": "worksheet",
+          "state": "hidden"
+        }
+      ],
+      "hidden_sheets": 1,
+      "defined_names": 1,
+      "cells": 11,
+      "formulas": 1,
+      "shared_strings": 8
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

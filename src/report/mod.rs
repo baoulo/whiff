@@ -65,6 +65,9 @@ impl Report {
 pub use crate::engine::Profile;
 
 mod llm;
+mod risk;
+
+pub use risk::{RISK_KINDS, RiskCategory, RiskKind, Severity, classify as classify_risk};
 
 /// `whiff` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
@@ -125,6 +128,9 @@ pub enum DetectedBy {
     Heuristic,
     /// The caller forced the format.
     Forced,
+    /// A container's extractor looked inside (a compound file's streams, a
+    /// ZIP's parts) and named the real format.
+    Content,
     /// Not applicable (directories, special files).
     #[default]
     None,
@@ -247,6 +253,12 @@ pub enum DateField {
     Published,
     /// Expiry (certificates, licences).
     Expires,
+    /// Last printed (office documents).
+    Printed,
+    /// Sent (e-mail `Date`, Outlook submit time).
+    Sent,
+    /// Received (e-mail delivery, `Received` hops).
+    Received,
     /// Anything else (see `source`).
     Other,
 }
@@ -322,8 +334,13 @@ pub struct Owner {
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
 pub struct Risk {
-    /// Stable `snake_case` kind, e.g. `macros`, `javascript`, `path_traversal`.
+    /// Stable `snake_case` kind, e.g. `macros`, `javascript`, `link_text_mismatch`;
+    /// the vocabulary is listed in `docs/risks.md`.
     pub kind: String,
+    /// What kind of threat it points to (decided by the kind).
+    pub category: RiskCategory,
+    /// How much it should worry the reader (decided by the kind).
+    pub severity: Severity,
     /// Human-readable detail.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub detail: Option<String>,
@@ -374,6 +391,14 @@ pub struct Security {
     /// Risk signals.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub risks: Vec<Risk>,
+    /// The highest severity among `risks` and every embedded file's risks;
+    /// absent when there are none.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub risk_level: Option<Severity>,
+    /// Risks of embedded files (attachments, archive entries, embedded
+    /// objects, at any depth), counted by kind.
+    #[serde(skip_serializing_if = "BTreeMap::is_empty")]
+    pub embedded_risks: BTreeMap<String, u64>,
     /// Secrets found in the content, by kind (`aws_access_key_id`, `private_key`, …).
     /// Only counts: values are redacted from the report.
     #[serde(skip_serializing_if = "BTreeMap::is_empty")]

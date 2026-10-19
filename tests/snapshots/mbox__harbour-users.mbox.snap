@@ -1,0 +1,583 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-users.mbox",
+    "stem": "harbour-users",
+    "extension": "mbox"
+  },
+  "identification": {
+    "format": "mbox",
+    "name": "Mailbox (mbox)",
+    "mime": "application/mbox",
+    "family": "email",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1265
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1265,
+    "entropy": 5.103,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1265,
+      "chars": 1265,
+      "words": 147,
+      "lines": 40,
+      "max_line_length": 55,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "6924e61311eb4de5c8f1ab986eda80e5d22b67f347a115a1201536e0d3e8267b",
+    "blake3": "ea4013583f8bbd1c4ccb38302bb384ca6c204155db99c242252936c2b0ce0484"
+  },
+  "content": {
+    "excerpt": "Harbour closed on 9 May Re: Harbour closed on 9 May Re: Harbour closed on 9 May"
+  },
+  "metadata": {},
+  "format": {
+    "mbox": {
+      "messages": 3,
+      "date_range": [
+        "2024-05-02T09:00:00+02:00",
+        "2024-05-02T11:03:00+02:00"
+      ],
+      "sender_domains": 2
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "message-00001.eml",
+        "stem": "message-00001",
+        "extension": "eml"
+      },
+      "identification": {
+        "format": "eml",
+        "name": "Email message",
+        "mime": "message/rfc822",
+        "family": "email",
+        "confidence": 0.97,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "email.mime"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 358
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "sent",
+            "value": "2024-05-02T09:00:00+02:00",
+            "source": "email.date",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2024-05-02T07:00:00Z",
+        "latest": "2024-05-02T07:00:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 358,
+        "entropy": 5.057,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 358,
+          "chars": 358,
+          "words": 38,
+          "lines": 11,
+          "max_line_length": 55,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 2
+        }
+      },
+      "integrity": {
+        "sha256": "63297eadc5acedc0b404383898ad3e3936d550e095d4496174114416479774d1",
+        "blake3": "4f969d872ad6cc6319af655626d3280b09575e85bca0ebfdcf25c2e9b5a4e8ed"
+      },
+      "content": {
+        "title": "Harbour closed on 9 May",
+        "authors": [
+          "Saltmere Harbour Office"
+        ],
+        "language": {
+          "code": "en",
+          "confidence": 0.97
+        },
+        "excerpt": "The harbour closes for the regatta on 9 May."
+      },
+      "metadata": {},
+      "format": {
+        "eml": {
+          "from": {
+            "name": "Saltmere Harbour Office",
+            "domain": "saltmere.example"
+          },
+          "to": [
+            {
+              "domain": "lists.saltmere.example"
+            }
+          ],
+          "to_count": 1,
+          "message_id": "202405020900.office@saltmere.example",
+          "mime_parts": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "email.mime",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "message-00002.eml",
+        "stem": "message-00002",
+        "extension": "eml"
+      },
+      "identification": {
+        "format": "eml",
+        "name": "Email message",
+        "mime": "message/rfc822",
+        "family": "email",
+        "confidence": 0.97,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "email.mime"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 366
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "sent",
+            "value": "2024-05-02T10:12:00+02:00",
+            "source": "email.date",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2024-05-02T08:12:00Z",
+        "latest": "2024-05-02T08:12:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 366,
+        "entropy": 5.107,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 366,
+          "chars": 366,
+          "words": 45,
+          "lines": 13,
+          "max_line_length": 46,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 3
+        }
+      },
+      "integrity": {
+        "sha256": "4ba29f157ba1b37b5bfd4c556811273dabbd00d1774e61f0e768e8e5befd24e6",
+        "blake3": "10553c526fa45e7a82aa28f764cb08e73f0dbb93cd8dc84e802e37236efb620d"
+      },
+      "content": {
+        "title": "Re: Harbour closed on 9 May",
+        "authors": [
+          "Ben Gull"
+        ],
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Harbour closed",
+          "harbour",
+          "closed",
+          "fuel berth",
+          "berth",
+          "fuel",
+          "regatta"
+        ],
+        "keyword_frequency": [
+          [
+            "closed",
+            2
+          ],
+          [
+            "harbour",
+            2
+          ]
+        ],
+        "excerpt": "Thanks. Is the fuel berth open? > The harbour closes for the regatta on 9 May.",
+        "tags": [
+          "Harbour closed",
+          "harbour",
+          "closed",
+          "fuel berth",
+          "berth"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "eml": {
+          "from": {
+            "name": "Ben Gull",
+            "domain": "example.org"
+          },
+          "to": [
+            {
+              "domain": "lists.saltmere.example"
+            }
+          ],
+          "to_count": 1,
+          "message_id": "202405021012.ben@example.org",
+          "mime_parts": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "email.mime",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "message-00003.eml",
+        "stem": "message-00003",
+        "extension": "eml"
+      },
+      "identification": {
+        "format": "eml",
+        "name": "Email message",
+        "mime": "message/rfc822",
+        "family": "email",
+        "confidence": 0.97,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "email.mime"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 387
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "sent",
+            "value": "2024-05-02T11:03:00+02:00",
+            "source": "email.date",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2024-05-02T09:03:00Z",
+        "latest": "2024-05-02T09:03:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 387,
+        "entropy": 5.109,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 387,
+          "chars": 387,
+          "words": 43,
+          "lines": 13,
+          "max_line_length": 55,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 3
+        }
+      },
+      "integrity": {
+        "sha256": "1211c7ada866624e8271911ef10997699e865b9033332d95449c9a8945ac7965",
+        "blake3": "ad5e1d1a4e839c9eaf56e0b3ee7c72ae151c3d1ba1d71cedff44083a1dcdb948"
+      },
+      "content": {
+        "title": "Re: Harbour closed on 9 May",
+        "authors": [
+          "Saltmere Harbour Office"
+        ],
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "excerpt": "Yes, the fuel berth stays open. >From the office: ask on channel 12."
+      },
+      "metadata": {},
+      "format": {
+        "eml": {
+          "from": {
+            "name": "Saltmere Harbour Office",
+            "domain": "saltmere.example"
+          },
+          "to": [
+            {
+              "domain": "lists.saltmere.example"
+            }
+          ],
+          "to_count": 1,
+          "message_id": "202405021103.office@saltmere.example",
+          "mime_parts": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "email.mime",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,131 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-table.mhtml",
+    "stem": "tide-table",
+    "extension": "mhtml"
+  },
+  "identification": {
+    "format": "mhtml",
+    "name": "MHTML web archive",
+    "mime": "multipart/related",
+    "family": "email",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1200
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-01T12:00:00+02:00",
+        "source": "email.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T10:00:00Z",
+    "latest": "2024-05-01T10:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1200,
+    "entropy": 5.426,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1200,
+      "chars": 1200,
+      "words": 80,
+      "lines": 31,
+      "max_line_length": 85,
+      "line_endings": "mixed",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "27430ae753695168237c11a6813634168e7fbfad5531aee3dbbcb821a769f15f",
+    "blake3": "3bf83f80b9f23b6a786149337ca643d6b352b8aaa1b0f3da330d5af8f9968f82"
+  },
+  "content": {
+    "title": "Saltmere tide table",
+    "excerpt": "Saltmere tide table High water today at 12:40 (5.2 m), low water at 18:55 (0.6 m)."
+  },
+  "metadata": {},
+  "format": {
+    "mhtml": {
+      "url": "https://tides.example.org/saltmere",
+      "resources": 2,
+      "mime_parts": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

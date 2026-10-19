@@ -1,0 +1,141 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-formula.odf",
+    "stem": "tide-formula",
+    "extension": "odf"
+  },
+  "identification": {
+    "format": "odf",
+    "name": "OpenDocument formula",
+    "mime": "application/vnd.oasis.opendocument.formula",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1489
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1489,
+    "entropy": 7.341,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0b236856bb5d161d71ebf211990b185734e05ca292d9ef696b70331c34761370",
+    "blake3": "94311a49e7f274bc1ab26236d515b8cecae83532e93fa080c8d63628fe9e6dde"
+  },
+  "content": {
+    "title": "Tide height",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Tide height"
+  },
+  "metadata": {
+    "odf": {
+      "generator": "LibreOffice/7.6.4.1$Linux_X86_64 LibreOffice_project/fixture",
+      "title": "Tide height",
+      "initial-creator": "Harbour Office",
+      "creation-date": "2024-04-01T08:00:00",
+      "date": "2024-04-01T08:00:00"
+    }
+  },
+  "format": {
+    "odf": {
+      "mimetype": "application/vnd.oasis.opendocument.formula",
+      "parts": 4,
+      "manifest_entries": 3,
+      "odf_version": "1.3",
+      "paragraphs": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

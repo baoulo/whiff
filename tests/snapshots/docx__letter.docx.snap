@@ -1,0 +1,138 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "letter.docx",
+    "stem": "letter",
+    "extension": "docx"
+  },
+  "identification": {
+    "format": "docx",
+    "name": "Word document",
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1922
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1,
+    "risks": [
+      {
+        "kind": "external_template",
+        "category": "external_reference",
+        "severity": "high",
+        "detail": "https://intranet.example.org/templates/letterhead.dotx",
+        "source": "doc.ooxml"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1922,
+    "entropy": 7.25,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "55fca7bd3c66579eca2a9b8f3648b63c9f560d5f31b7d18debfb0d7b2492718e",
+    "blake3": "be16a6e95ef3112cefd81856878a94d2bea35fe4da702171a6cd277ed93fd8be"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 0.833
+    },
+    "excerpt": "Dear harbour users, The north quay closes for maintenance in March."
+  },
+  "metadata": {},
+  "format": {
+    "docx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 6,
+      "uncompressed_bytes": 2144,
+      "paragraphs": 2,
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

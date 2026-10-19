@@ -35,10 +35,13 @@ expression: report
     "risks": [
       {
         "kind": "xml_entities",
+        "category": "exploit",
+        "severity": "low",
         "detail": "1 entity declaration(s) in the DOCTYPE",
         "source": "text.xml"
       }
-    ]
+    ],
+    "risk_level": "low"
   },
   "rights": {},
   "physical": {

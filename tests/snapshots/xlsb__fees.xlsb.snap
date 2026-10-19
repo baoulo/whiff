@@ -1,0 +1,164 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fees.xlsb",
+    "stem": "fees",
+    "extension": "xlsb"
+  },
+  "identification": {
+    "format": "xlsb",
+    "name": "Excel binary workbook",
+    "mime": "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xlsb",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1629
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-03-02T08:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-03-02T08:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-03-02T08:00:00Z",
+    "latest": "2024-03-02T08:00:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Tomas Lind"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1629,
+    "entropy": 7.266,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 0
+    }
+  },
+  "integrity": {
+    "sha256": "daa97662af3779a347838fefc7cce8a8e907b355851d5616d897778876fb3b9a",
+    "blake3": "82da54e0ab95812d3649f55e3e3406e8f0cc0e668dceb7d6d576a7d1ab79a5dd"
+  },
+  "content": {
+    "title": "Harbour fees (binary)",
+    "authors": [
+      "Tomas Lind"
+    ],
+    "excerpt": "Harbour fees (binary)"
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour fees (binary)",
+        "creator": "Tomas Lind",
+        "created": "2024-03-02T08:00:00Z",
+        "modified": "2024-03-02T08:00:00Z"
+      },
+      "app": {
+        "Application": "Microsoft Excel",
+        "TitlesOfParts": [
+          "Fees"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xlsb": {
+      "content_type": "application/vnd.ms-excel.sheet.binary.macroEnabled.main",
+      "main_part": "xl/workbook.bin",
+      "parts": 5,
+      "uncompressed_bytes": 2269
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

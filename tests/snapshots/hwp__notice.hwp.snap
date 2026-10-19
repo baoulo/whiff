@@ -1,0 +1,174 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notice.hwp",
+    "stem": "notice",
+    "extension": "hwp"
+  },
+  "identification": {
+    "format": "hwp",
+    "name": "Hangul HWP document",
+    "mime": "application/x-hwp",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hwp",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3584
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3584,
+    "entropy": 1.597,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a04e3ea58c9e5e2be3ed93b176039cc5e2bfd7f69d5c6dd518267702cf5bd173",
+    "blake3": "56a569e84b599ea20dd9301ac482e96c74aaf89b0e8390844dfef6c8999e0d4d"
+  },
+  "content": {
+    "title": "Harbour notice",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour notice"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour notice",
+      "Author": "Harbour Office",
+      "Application": "Hancom Office",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "hwp": {
+      "version": 3,
+      "streams": 4,
+      "storages": 1,
+      "entries": [
+        {
+          "name": "HwpSummaryInformation",
+          "size_bytes": 208
+        },
+        {
+          "name": "BodyText/"
+        },
+        {
+          "name": "BodyText/Section0",
+          "size_bytes": 32
+        },
+        {
+          "name": "DocInfo",
+          "size_bytes": 32
+        },
+        {
+          "name": "FileHeader",
+          "size_bytes": 256
+        }
+      ],
+      "hwp_version": "5.1.0.1",
+      "compressed": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

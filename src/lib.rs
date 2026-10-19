@@ -15,6 +15,7 @@
 //! [`plugin`] API; see `CONTRIBUTING.md`. Extractors from other crates are
 //! added with [`Registry::with`].
 
+pub mod container;
 pub mod detect;
 pub mod engine;
 mod error;
@@ -25,10 +26,10 @@ pub mod plugin;
 pub mod report;
 pub mod text;
 
-pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Profile};
+pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Privacy, Profile};
 pub use error::{Error, ExtractError};
 pub use plugin::Registry;
-pub use report::Report;
+pub use report::{RISK_KINDS, Report, Risk, RiskCategory, RiskKind, Severity};
 
 /// The report schema identifier written to `whiff.schema`.
 pub const SCHEMA: &str = "whiff/1";

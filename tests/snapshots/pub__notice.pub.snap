@@ -1,0 +1,171 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notice.pub",
+    "stem": "notice",
+    "extension": "pub"
+  },
+  "identification": {
+    "format": "pub",
+    "name": "Microsoft Publisher document",
+    "mime": "application/x-mspublisher",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pub",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 1.741,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d435d863b9df1a2e832c8a0c513ab44cb6e8f643dc0176c8a7b38de880010fde",
+    "blake3": "b25f0fa2464c34442fa0eb88b9b1cd3f39a47714f525376b989b541a28672115"
+  },
+  "content": {
+    "title": "Harbour notice",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour notice"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour notice",
+      "Author": "Harbour Office",
+      "Application": "Microsoft Publisher",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "pub": {
+      "version": 3,
+      "streams": 4,
+      "storages": 2,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 212
+        },
+        {
+          "name": "Contents",
+          "size_bytes": 64
+        },
+        {
+          "name": "Envelope",
+          "size_bytes": 16
+        },
+        {
+          "name": "Quill/"
+        },
+        {
+          "name": "Quill/QuillSub/"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

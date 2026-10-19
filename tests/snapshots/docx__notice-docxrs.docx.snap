@@ -1,0 +1,224 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notice-docxrs.docx",
+    "stem": "notice-docxrs",
+    "extension": "docx"
+  },
+  "identification": {
+    "format": "docx",
+    "name": "Word document",
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 21538
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-02T10:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T09:00:00Z",
+    "latest": "2024-04-02T10:00:00Z"
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "unknown"
+    ]
+  },
+  "physical": {
+    "size_bytes": 21538,
+    "entropy": 5.321,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0bd3b2d239c9f1ca206db0e1d1896932194622353e4258c3c540c6cfdf3b8999",
+    "blake3": "0fe22725cfe03f4db639109e0060b3781d64428257be9cf180fe7c65fef782f6"
+  },
+  "content": {
+    "authors": [
+      "unknown"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.933
+    },
+    "keywords": [
+      "Notice to mariners",
+      "mariners",
+      "Notice",
+      "berth",
+      "draught",
+      "Saltmere",
+      "harbour.example",
+      "tides",
+      "Max draught",
+      "Max"
+    ],
+    "keyword_frequency": [
+      [
+        "berth",
+        4
+      ],
+      [
+        "draught",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Notice to mariners"
+      },
+      {
+        "level": 2,
+        "text": "Berths"
+      }
+    ],
+    "excerpt": "Berth 3 dries at low water from 1 May. Use berth 5 for vessels over 1.5 m draught. Berth Max draught (m) 3 1.8 5 4.5 Tide tables: harbour.example/tides Issued by the Saltmere harbour office.",
+    "tags": [
+      "Notice to mariners",
+      "mariners",
+      "Notice",
+      "berth",
+      "draught"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "created": "2024-04-01T09:00:00Z",
+        "creator": "unknown",
+        "lastModifiedBy": "unknown",
+        "modified": "2024-04-02T10:00:00Z",
+        "revision": "1"
+      },
+      "custom": {
+        "Notice number": "2024-07"
+      }
+    }
+  },
+  "format": {
+    "docx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 18,
+      "uncompressed_bytes": 19576,
+      "part_counts": {
+        "embedded_fonts": 1
+      },
+      "hyperlinks": 1,
+      "link_hosts": [
+        {
+          "host": "harbour.example",
+          "count": 1
+        }
+      ],
+      "paragraphs": 11,
+      "tables": 1,
+      "sections": 1,
+      "comments": {
+        "count": 1,
+        "authors": [
+          "Ana Lighthouse"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

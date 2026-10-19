@@ -48,7 +48,8 @@ enum Cmd {
         #[arg(long)]
         force: bool,
     },
-    /// Regenerate docs/metadata-extracted.md from data/ and the registry.
+    /// Regenerate docs/metadata-extracted.md (from data/ and the registry) and
+    /// docs/risks.md (from the risk vocabulary).
     Catalogue {
         /// Fail if the committed file is out of date instead of writing it.
         #[arg(long)]
@@ -62,7 +63,8 @@ enum Cmd {
         #[arg(long, default_value_t = 60)]
         seconds: u64,
     },
-    /// Check transitive dependency counts against the budgets.
+    /// Check transitive dependency counts against the budgets, and that the
+    /// dependency graph is pure Rust.
     CheckDeps,
     /// Check that format modules use only the plugin API.
     CheckBoundary,
@@ -122,18 +124,25 @@ fn main() -> ExitCode {
 
 fn catalogue_cmd(check: bool) -> Result<(), String> {
     let registry = Registry::builtin();
-    let rendered = catalogue::render(root(), &registry)?;
-    let path = root().join("docs/metadata-extracted.md");
-    if check {
-        let current = std::fs::read_to_string(&path).unwrap_or_default();
-        if current != rendered {
-            return Err("docs/metadata-extracted.md is out of date; run `cargo run --features dev --bin whiff-dev -- catalogue`".into());
+    let docs = [
+        ("docs/metadata-extracted.md", catalogue::render(root(), &registry)?),
+        ("docs/risks.md", catalogue::render_risks()),
+    ];
+    for (name, rendered) in docs {
+        let path = root().join(name);
+        if check {
+            let current = std::fs::read_to_string(&path).unwrap_or_default();
+            if current != rendered {
+                return Err(format!(
+                    "{name} is out of date; run `cargo run --features dev --bin whiff-dev -- catalogue`"
+                ));
+            }
+            println!("{name}: up to date");
+        } else {
+            std::fs::write(&path, rendered).map_err(|e| format!("{}: {e}", path.display()))?;
+            println!("wrote {}", path.display());
         }
-        println!("catalogue: up to date");
-        return Ok(());
     }
-    std::fs::write(&path, rendered).map_err(|e| format!("{}: {e}", path.display()))?;
-    println!("wrote {}", path.display());
     Ok(())
 }
 

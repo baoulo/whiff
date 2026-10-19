@@ -45,25 +45,34 @@ expression: report
     "risks": [
       {
         "kind": "script",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "1 <script> element(s)",
         "source": "image.svg"
       },
       {
         "kind": "script",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "3 event handler / javascript: attribute(s)",
         "source": "image.svg"
       },
       {
         "kind": "active_content",
+        "category": "active_content",
+        "severity": "medium",
         "detail": "1 <foreignObject> element(s)",
         "source": "image.svg"
       },
       {
         "kind": "external_reference",
+        "category": "external_reference",
+        "severity": "low",
         "detail": "1 external link(s)",
         "source": "image.svg"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {},
   "physical": {

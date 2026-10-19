@@ -10,13 +10,16 @@
 //! * **schema** — reports round-trip through the `whiff/1` model;
 //! * **determinism** — two runs give identical (redacted) JSON;
 //! * **field names** — keys in `format.<id>` are `snake_case`;
+//! * **risk kinds** — every reported risk is in the vocabulary
+//!   (`src/report/risk.rs`, listed in `docs/risks.md`);
 //! * **robustness** — empty, 1-byte, magic-only, random, deeply nested,
 //!   truncated and bit-flipped inputs never panic;
 //! * **performance** — none of those inputs makes an extractor hit its
 //!   deadline (a sign of super-linear work);
 //! * **budget** — a 4 KiB read budget never causes a panic;
 //! * **magic** — the declared magic matches all own fixtures and at most 5 %
-//!   of other formats' fixtures.
+//!   of other formats' fixtures (formats declaring it as their parent
+//!   excepted).
 
 use std::path::{Path, PathBuf};
 use std::time::Duration;
@@ -148,6 +151,9 @@ fn check_format(
         if let Some(run) = panicked(&a) {
             fail("robustness", format!("{name}: {run}"));
         }
+        for r in a.security.risks.iter().filter(|r| r.category == crate::report::RiskCategory::Other) {
+            fail("risk_kinds", format!("{name}: risk kind `{}` is not in src/report/risk.rs", r.kind));
+        }
         if serde_json::to_value(&a).ok().and_then(|v| serde_json::from_value::<Report>(v).ok()).as_ref() != Some(&a) {
             fail("schema", format!("{name}: report does not round-trip through the whiff/1 model"));
         }
@@ -190,7 +196,11 @@ fn check_format(
 
     // Magic sanity: not matching (almost) everything else.
     if !spec.magic.is_empty() {
-        let others: Vec<&PathBuf> = all_fixtures.iter().filter(|(f, _)| *f != spec.id).map(|(_, p)| p).collect();
+        // Formats declared as children of this one (xls inside cfb) share its
+        // magic by design.
+        let child = |f: &str| registry.formats().any(|(s, _)| s.id == f && s.parent == Some(spec.id));
+        let others: Vec<&PathBuf> =
+            all_fixtures.iter().filter(|(f, _)| *f != spec.id && !child(f)).map(|(_, p)| p).collect();
         let hits =
             others.iter().filter(|p| std::fs::read(p).is_ok_and(|d| spec.magic.iter().any(|m| m.matches(&d)))).count();
         if !others.is_empty() && hits * 20 > others.len() {

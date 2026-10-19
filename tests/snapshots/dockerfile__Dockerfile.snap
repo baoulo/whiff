@@ -33,20 +33,27 @@ expression: report
     "risks": [
       {
         "kind": "runs_as_root",
+        "category": "unsafe_operation",
+        "severity": "low",
         "detail": "no USER, or USER root, in the final stage",
         "source": "code.infra"
       },
       {
         "kind": "secret_in_env",
+        "category": "data_exposure",
+        "severity": "high",
         "detail": "ENV sets API_TOKEN",
         "source": "code.infra"
       },
       {
         "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
         "detail": "credential_assignment",
         "source": "privacy.scan"
       }
     ],
+    "risk_level": "high",
     "secrets": {
       "credential_assignment": 1
     }

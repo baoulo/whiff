@@ -29,8 +29,22 @@ has_toolchain() {
 # --- lint -------------------------------------------------------------------
 run cargo fmt --all -- --check
 (cd fuzz && run cargo fmt -- --check)
-run cargo clippy --all-targets --features dev -- -D warnings
-run cargo clippy --all-targets --no-default-features --features common -- -D warnings
+# CI lints with the latest stable, whose clippy has lints an older local
+# toolchain lacks: use the newest numbered rustup toolchain for this host
+# (LINT_TOOLCHAIN overrides), through its own cargo as for MSRV below.
+HOST="$(rustup show 2>/dev/null | awk '/^Default host/ {print $3}')"
+LINT_TC="${LINT_TOOLCHAIN:-$(rustup toolchain list 2>/dev/null | awk '{print $1}' |
+  grep -E "^1\.[0-9]+(\.[0-9]+)?-${HOST}\$" | sort -V | tail -1 || true)}"
+if [ -n "$LINT_TC" ]; then
+  LINT_BIN="$(dirname "$(rustup which --toolchain "$LINT_TC" cargo)")"
+  echo ""
+  echo "==> clippy with $LINT_TC (check it is the latest stable: rustup check)"
+  lint() { PATH="$LINT_BIN:$PATH" CARGO_TARGET_DIR=target/lint run "$LINT_BIN/cargo" "$@"; }
+else
+  lint() { run cargo "$@"; }
+fi
+lint clippy --all-targets --features dev -- -D warnings
+lint clippy --all-targets --no-default-features --features common -- -D warnings
 
 # --- test (`dev` implies `full`: every extractor, the CLI and whiff-dev) -----
 run cargo test --features dev
@@ -57,6 +71,21 @@ fi
 run cargo run -q --features dev --bin whiff-dev -- catalogue --check
 run cargo run -q --features dev --bin whiff-dev -- check-deps
 run cargo run -q --features dev --bin whiff-dev -- check-boundary
+
+# --- the published crate: Rust only, no development tooling ------------------
+# Development may use any tool (scripts/, the fixture generators, fuzz/);
+# none of it may reach crates.io. check-deps above covers the dependencies.
+echo ""
+echo "==> published crate holds no development tooling"
+packaged=$(cargo package --list --allow-dirty --locked)
+dev_files=$(grep -E '^(scripts|fuzz|tests|baoulo|packaging|\.github)/' <<<"$packaged" || true)
+foreign=$(grep -vE '\.(rs|toml|lock|md|txt|tsv|json)$|^(LICENSE[^/]*|Cargo\.toml\.orig|\.cargo_vcs_info\.json|\.gitattributes|\.gitignore)$' <<<"$packaged" || true)
+if [ -n "$dev_files$foreign" ]; then
+  echo "error: these files would be published:" >&2
+  printf '%s\n' "$dev_files" "$foreign" | sed '/^$/d; s/^/  /' >&2
+  echo "add them to \`exclude\` in Cargo.toml" >&2
+  exit 1
+fi
 
 # --- fixtures: what git stores must be what the tests read -------------------
 # Line-ending conversion would silently change test inputs (CRLF fixtures).

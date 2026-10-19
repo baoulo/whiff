@@ -4,6 +4,104 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## 0.3.0 — 2026-10-18
+
+Documents, e-mail, calendars and contacts.
+
+- **PDF** (in-house parser): cross-reference tables and streams, object
+  streams, incremental updates, and a repair scan for damaged files; RC4 and
+  AES (128 and 256) decryption with the empty user password, so files
+  encrypted only to set permissions are read in full. Reports the Info
+  dictionary, XMP, page count and sizes, outline (as headings), fonts,
+  images, annotations, AcroForm / XFA fields, signatures, PDF/A, /UA and /X
+  claims, permissions and per-page text. JavaScript, automatic actions,
+  launch actions, form submission, remote go-to actions and executable
+  attachments are `security.risks`; embedded files become children. FDF
+  field names too.
+- **Office Open XML** (Word, Excel, PowerPoint, Visio, with their
+  templates, macro-enabled and show variants, and XLSB): core, app and
+  custom properties, sensitivity labels, outline, comments, tracked changes,
+  fields, hyperlinks, sheets, slides, notes and text. Macros (VBA source
+  decompressed and scanned), auto-run procedures, DDE fields, external
+  templates and OLE links, Excel 4.0 macro sheets and remote images are
+  risks; embeddings become children.
+- **OpenDocument** (text, spreadsheet, presentation, drawing, formula,
+  database, chart, master document, templates and flat XML): `meta.xml`,
+  outline, text, comments, tracked changes, StarBasic macros and the events
+  that run them, encryption.
+- **Legacy Office and other compound files** (in-house CFB and property-set
+  readers): Word 97–2003 text through the piece table and its fields, Excel
+  97–2003 sheets and shared strings, PowerPoint 97–2003 slide titles and
+  text, Visio, Publisher, Project, Hangul HWP, Thumbs.db, VBA projects and
+  encrypted OOXML containers; macros, embedded objects and Equation Editor
+  objects are flagged.
+- **RTF** (in-house): the `\info` group, fonts, styles and outline, text in
+  every code page, comments, fields and links, pictures, tracked changes and
+  protection; embedded OLE objects become children, and linked or
+  auto-updating objects, DDE fields and remote includes are risks.
+- **Ebooks:** EPUB 2 / 3 (OPF metadata, creators and roles, identifiers
+  with ISBN checks, series, navigation document or NCX, cover, DRM and font
+  obfuscation, reading-order text), Mobipocket / Kindle MOBI, AZW and AZW3
+  (EXTH records, PalmDOC-compressed text), PalmDOC, FictionBook (FB2, FBZ)
+  and comic book ZIPs with `ComicInfo.xml`.
+- **E-mail:** EML, mbox, MHTML and Apple Mail EMLX (via `mail-parser`) and
+  Outlook MSG (in-house, including compressed RTF bodies): addresses,
+  dates, Received hops, SPF / DKIM / DMARC verdicts, lists, S/MIME and PGP,
+  body text and attachments as children. Phishing signals are risks: a
+  Reply-To on another domain, a display name naming a different address,
+  link text naming another site, failed authentication, risky attachment
+  names (executables, double extensions, macro documents) and password
+  forms.
+- **Calendars and contacts** (in-house RFC 5545 / 6350 parsers): iCalendar
+  and vCalendar events, to-dos, recurrence, time zones, organizers and
+  attendees, date range and alarms that run a procedure; vCard 2.1 / 3.0 /
+  4.0 names, organisations, titles, e-mail domains, phone and address
+  counts.
+- **PostScript and EPS** (DSC comments, previews, XMP, shown text) and
+  **BibTeX** (entries, types, years, DOIs). LaTeX sources now also report
+  class options, packages, the abstract, included files, figure / table /
+  citation counts and the body text.
+- **Privacy:** `--privacy strict` (the default) keeps only the domain of an
+  e-mail address and counts phone numbers and street addresses;
+  `--privacy off` lists them.
+- **Engine:** a container extractor can hand a file to the format it found
+  inside (`detected_by: content`), so compound files are routed to Word,
+  Excel, Outlook and the rest by their streams.
+- **Risk categories and severities:** every `security.risks[]` entry now
+  has a `category` (`active_content`, `phishing`, `external_reference`,
+  `exploit`, `obfuscation`, `data_exposure`, `supply_chain`,
+  `unsafe_operation`, `provenance`) and a `severity` (`info`, `low`,
+  `medium`, `high`), both decided by the kind in one vocabulary
+  (`src/report/risk.rs`, listed in the generated `docs/risks.md`).
+  `security.risk_level` is the highest severity of a file and everything
+  embedded in it; `security.embedded_risks` counts embedded files' risks by
+  kind, at any depth. The LLM view shows the level and each risk's
+  severity. Kinds outside the vocabulary (third-party extractors) are
+  `other` / `medium`; the conformance suite fails on any in whiff.
+- **Report schema:** new `DateField` values `printed`, `sent` and
+  `received`, `DetectedBy::Content`, and the risk fields above (additive;
+  still `whiff/1`).
+- **Pure-Rust check:** `whiff-dev check-deps` fails on `-sys` crates and
+  native build tools in the library's and CLI's dependency graph, and CI
+  checks that the published crate holds no development tooling.
+- **Developer tools:** `scripts/fixtures/documents.sh` regenerates the
+  document fixtures with textutil, Ghostscript, Core Graphics and poppler,
+  third-party writers (rust_xlsxwriter, simple_excel_writer, docx-rs and
+  ppt-rs in `scripts/fixtures/office_gen`; Apache POI for BIFF8 workbooks,
+  PowerPoint 97 slide shows and genuinely encrypted xls, ppt and OOXML),
+  plus standard-library generators for the formats no local tool writes.
+  Files from these independent writers showed and fixed: a false macro
+  risk on every PowerPoint-saved `.ppt` (the VBA-info record is present
+  without a project), slides lost after a record whose length overruns its
+  container, master-slide placeholders read as slide text, packed string
+  vectors in property sets (PowerPoint's `TitlesOfParts`), sheet names read
+  from encrypted BIFF records, and encrypted OOXML whose directory is not
+  contiguous left as a plain compound file. Excel cell notes and threaded
+  comments are now counted, with their authors.
+- **Release:** the release workflow now pushes the Homebrew formula and
+  Scoop manifest to `baoulo/homebrew-tap` and `baoulo/scoop-bucket`, and
+  publishes to crates.io only once that has succeeded.
+
 ## 0.2.0 — 2026-10-17
 
 Images and embedded metadata blocks.

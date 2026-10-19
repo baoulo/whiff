@@ -1,0 +1,366 @@
+---
+source: src/formats/email/mime.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-newsletter.eml",
+    "stem": "tides-newsletter",
+    "extension": "eml"
+  },
+  "identification": {
+    "format": "eml",
+    "name": "Email message",
+    "mime": "message/rfc822",
+    "family": "email",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.mime"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1697
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2024-05-03T07:00:00+00:00",
+        "source": "email.date",
+        "tz_known": true
+      },
+      {
+        "field": "received",
+        "value": "2024-05-03T07:00:40+00:00",
+        "source": "email.received",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-03T07:00:00Z",
+    "latest": "2024-05-03T07:00:40Z"
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1697,
+    "entropy": 5.347,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1697,
+      "chars": 1697,
+      "words": 124,
+      "lines": 47,
+      "max_line_length": 78,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 9
+    }
+  },
+  "integrity": {
+    "sha256": "99e77ae973c06892e5eb65dfad6fae49819befc1a7e6b47f6f2526f907f15a7a",
+    "blake3": "35f89e4524e79d6f668b992487c877da5da6480a1f6cc9659ffe97ebb072b775"
+  },
+  "content": {
+    "title": "Tides for the week of 6 May",
+    "authors": [
+      "Saltmere Tides"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Wednesday",
+      "tides",
+      "week",
+      "Spring tides",
+      "https",
+      "saltmere",
+      "tides.example.org",
+      "tides this week",
+      "Spring",
+      "table"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        2
+      ],
+      [
+        "week",
+        2
+      ]
+    ],
+    "excerpt": "Spring tides this week: high water 5.2 m on Wednesday. Full table: https://tides.example.org/saltmere",
+    "tags": [
+      "Wednesday",
+      "tides",
+      "week",
+      "Spring tides",
+      "https"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "eml": {
+      "from": {
+        "name": "Saltmere Tides",
+        "domain": "lists.saltmere.example"
+      },
+      "to": [
+        {
+          "domain": "example.org"
+        }
+      ],
+      "to_count": 1,
+      "message_id": "week19.tides@lists.saltmere.example",
+      "bulk": true,
+      "received_hops": 1,
+      "authentication": {
+        "dkim": "pass",
+        "spf": "pass"
+      },
+      "mime_parts": 5,
+      "links": 2,
+      "link_hosts": [
+        "lists.saltmere.example",
+        "tides.example.org"
+      ],
+      "attachments": [
+        {
+          "name": "tides-week19.csv",
+          "content_type": "text/csv",
+          "size_bytes": 65
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides-week19.csv",
+        "stem": "tides-week19",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 65
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 65,
+        "entropy": 4.526,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 65,
+          "chars": 65,
+          "words": 4,
+          "lines": 4,
+          "max_line_length": 28,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "284940ecd9b3bd58f5b6b6b954c2873790e8ec2148afab6abfbd2641874b73db",
+        "blake3": "0d641f635a5e873e8a8846acc5b286f04a3cb4f1f658bca84b407b6af9faa33d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 3,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "day",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "max_length": 3
+            },
+            {
+              "name": "high_water_m",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "min": 4.8,
+              "max": 5.2,
+              "mean": 4.967
+            },
+            {
+              "name": "low_water_m",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "min": 0.6,
+              "max": 0.9,
+              "mean": 0.767
+            }
+          ],
+          "sample_rows": [
+            [
+              "Mon",
+              "4.8",
+              "0.9"
+            ],
+            [
+              "Wed",
+              "5.2",
+              "0.6"
+            ],
+            [
+              "Fri",
+              "4.9",
+              "0.8"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.mime",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

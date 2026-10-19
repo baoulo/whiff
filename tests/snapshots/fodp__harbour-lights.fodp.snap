@@ -1,0 +1,147 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-lights.fodp",
+    "stem": "harbour-lights",
+    "extension": "fodp"
+  },
+  "identification": {
+    "format": "fodp",
+    "name": "Flat OpenDocument presentation",
+    "mime": "application/vnd.oasis.opendocument.presentation-flat-xml",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fodp",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1128
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1128,
+    "entropy": 4.759,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1128,
+      "chars": 1128,
+      "words": 21,
+      "lines": 1,
+      "max_line_length": 1089,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "slides": 1
+    }
+  },
+  "integrity": {
+    "sha256": "efb69a453f54b89da27e439cb21ea13f119110e313edd681a6c6cf24d4e686b5",
+    "blake3": "106b04bc95dcd78b748f5e5c90e593353edff245a6a358a332c4095056de273d"
+  },
+  "content": {
+    "title": "Harbour lights",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour lights"
+  },
+  "metadata": {
+    "odf": {
+      "title": "Harbour lights",
+      "initial-creator": "Harbour Office"
+    }
+  },
+  "format": {
+    "fodp": {
+      "paragraphs": 1,
+      "pages": [
+        "One"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

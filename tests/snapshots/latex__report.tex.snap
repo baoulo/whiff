@@ -32,7 +32,12 @@ expression: report
     "filesystem": {}
   },
   "security": {},
-  "rights": {},
+  "rights": {
+    "creators": [
+      "Ada Example",
+      "Ben Sample"
+    ]
+  },
   "physical": {
     "size_bytes": 481,
     "entropy": 4.849,
@@ -61,23 +66,68 @@ expression: report
     ],
     "language": {
       "code": "en",
-      "confidence": 0.698
+      "confidence": 1.0
     },
+    "keywords": [
+      "Harbour Annual Report",
+      "annual",
+      "report",
+      "harbour",
+      "Introduction",
+      "traffic",
+      "Method",
+      "Introduction This report",
+      "Method Boats",
+      "Boats"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        3
+      ],
+      [
+        "report",
+        3
+      ],
+      [
+        "annual",
+        2
+      ],
+      [
+        "introduction",
+        2
+      ],
+      [
+        "method",
+        2
+      ],
+      [
+        "traffic",
+        2
+      ]
+    ],
     "outline": [
       {
-        "level": 2,
+        "level": 1,
         "text": "Introduction"
       },
       {
-        "level": 3,
+        "level": 2,
         "text": "Method"
       },
       {
-        "level": 2,
+        "level": 1,
         "text": "Results"
       }
     ],
-    "excerpt": "Harbour annual report"
+    "excerpt": "Harbour annual report Introduction This report describes traffic in the old harbour during 2026. Method Boats were counted every morning. Results Traffic rose by twelve per cent.",
+    "tags": [
+      "Harbour Annual Report",
+      "annual",
+      "report",
+      "harbour",
+      "Introduction"
+    ]
   },
   "metadata": {},
   "format": {
@@ -107,7 +157,16 @@ expression: report
       "is_test": false,
       "generated": false,
       "longest_line": 56,
-      "document_class": "article"
+      "document_class": "article",
+      "class_options": [
+        "a4paper"
+      ],
+      "date": "October 2026",
+      "packages": [
+        "inputenc",
+        "graphicx",
+        "hyperref"
+      ]
     }
   },
   "diagnostics": {

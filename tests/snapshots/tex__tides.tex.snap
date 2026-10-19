@@ -1,0 +1,235 @@
+---
+source: src/formats/doc/other.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.tex",
+    "stem": "tides",
+    "extension": "tex"
+  },
+  "identification": {
+    "format": "tex",
+    "name": "LaTeX document",
+    "mime": "application/x-tex",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "tex",
+        "confidence": 0.9
+      },
+      {
+        "format": "latex",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.other"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 982
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01",
+        "source": "latex.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 982,
+    "entropy": 4.822,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 982,
+      "chars": 982,
+      "words": 110,
+      "lines": 35,
+      "max_line_length": 84,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 7
+    }
+  },
+  "integrity": {
+    "sha256": "fed40fdceb7969f93e71cbe6bac00c96036b1e1e78d91e30b336249bb7554296",
+    "blake3": "abe5021dadbac77fa7b52179451f4bd3149dea994d75b633740de031774618cc"
+  },
+  "content": {
+    "title": "Tides at Saltmere",
+    "description": "A short note on the tides of the fictitious port of Saltmere, for visiting skippers.",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "tides",
+      "outer mole",
+      "Spring tides",
+      "outer",
+      "Saltmere",
+      "Neap tides",
+      "Spring",
+      "mole",
+      "Tides at Saltmere",
+      "Neap"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        9
+      ],
+      [
+        "mole",
+        4
+      ],
+      [
+        "outer",
+        4
+      ],
+      [
+        "neap",
+        3
+      ],
+      [
+        "spring",
+        3
+      ],
+      [
+        "water",
+        3
+      ],
+      [
+        "metres",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Spring tides"
+      },
+      {
+        "level": 2,
+        "text": "At the outer mole"
+      },
+      {
+        "level": 1,
+        "text": "Neap tides"
+      }
+    ],
+    "excerpt": "A short note on the tides of the fictitious port of Saltmere, for visiting skippers. Spring tides Spring tides reach h = 5.2 metres two days after the full moon . High water at the outer mole comes about forty minutes after high water at the bar. At the outer mole Tide curve at the outer mole. Neap tides Neap tides rise to 3.9 metres; berth 3 still dries at low water.",
+    "tags": [
+      "tides",
+      "outer mole",
+      "Spring tides",
+      "outer",
+      "Saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "tex": {
+      "document_class": "article",
+      "class_options": [
+        "a4paper",
+        "11pt"
+      ],
+      "packages": [
+        "inputenc",
+        "amsmath",
+        "graphicx",
+        "babel"
+      ],
+      "includes": [
+        "harbour"
+      ],
+      "citations": 1,
+      "figures": 1,
+      "graphics": 1,
+      "labels": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.other",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

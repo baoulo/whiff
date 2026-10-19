@@ -1,0 +1,460 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "review.docx",
+    "stem": "review",
+    "extension": "docx"
+  },
+  "identification": {
+    "format": "docx",
+    "name": "Word document",
+    "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docx",
+        "confidence": 0.99
+      },
+      {
+        "format": "office_encrypted",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6030
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T08:30:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-05-03T16:10:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      },
+      {
+        "field": "printed",
+        "value": "2024-05-03T15:00:00Z",
+        "source": "docprops.core.lastPrinted",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T08:30:00Z",
+    "latest": "2024-05-03T16:10:00Z"
+  },
+  "security": {
+    "active_content": [
+      "ole_objects"
+    ],
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "Ana Lima",
+      "Jonas Wren"
+    ],
+    "credit": "Example Port Authority",
+    "usage_terms": "Sensitivity: Internal"
+  },
+  "physical": {
+    "size_bytes": 6030,
+    "entropy": 7.661,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 3,
+      "words": 412
+    }
+  },
+  "integrity": {
+    "sha256": "91f6722b787ba13b731572bee2b7865f731d90fad8573368169a4ae7aa29f904",
+    "blake3": "1cc11754f5f92e48c2b5337176c2341f3d57e9db0255bd934e2b19ec584fd24d"
+  },
+  "content": {
+    "title": "Harbour Safety Review",
+    "description": "Night-shift safety at the old harbour",
+    "authors": [
+      "Ana Lima",
+      "Jonas Wren"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "safety",
+      "cranes",
+      "Harbour Safety Review",
+      "shift safety",
+      "review",
+      "night",
+      "shift",
+      "mooring",
+      "rules"
+    ],
+    "keyword_frequency": [
+      [
+        "crane",
+        4
+      ],
+      [
+        "harbour",
+        3
+      ],
+      [
+        "mooring",
+        3
+      ],
+      [
+        "night",
+        2
+      ],
+      [
+        "review",
+        2
+      ],
+      [
+        "rules",
+        2
+      ],
+      [
+        "safety",
+        2
+      ],
+      [
+        "shift",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Introduction"
+      },
+      {
+        "level": 1,
+        "text": "Findings"
+      },
+      {
+        "level": 2,
+        "text": "Cranes"
+      },
+      {
+        "level": 3,
+        "text": "Moorings"
+      }
+    ],
+    "excerpt": "This review covers the night shift at the old harbour, the crane inspections and the new mooring rules. Crane 3 needs a new brake. Repairs are scheduled for June. Mooring rules are published online. 3 May 2024 Crane Status",
+    "tags": [
+      "harbour",
+      "safety",
+      "cranes",
+      "Harbour Safety Review",
+      "shift safety",
+      "review"
+    ]
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour Safety Review",
+        "creator": "Ana Lima; Jonas Wren",
+        "subject": "Night-shift safety at the old harbour",
+        "keywords": "harbour, safety, cranes",
+        "lastModifiedBy": "Jonas Wren",
+        "revision": "7",
+        "category": "Report",
+        "lastPrinted": "2024-05-03T15:00:00Z",
+        "language": "en-GB",
+        "created": "2024-05-01T08:30:00Z",
+        "modified": "2024-05-03T16:10:00Z"
+      },
+      "app": {
+        "Application": "Microsoft Office Word",
+        "Template": "Normal.dotm",
+        "TotalTime_s": 5700,
+        "Pages": 3,
+        "Words": 412,
+        "Characters": 2350,
+        "Lines": 40,
+        "Paragraphs": 12,
+        "Company": "Example Port Authority",
+        "AppVersion": "16.0000",
+        "DocSecurity": 0
+      },
+      "custom": {
+        "Project": "Harbour 2024",
+        "Reviewed": true,
+        "MSIP_Label_3f2b1c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d_Enabled": "true",
+        "MSIP_Label_3f2b1c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d_Name": "Internal",
+        "MSIP_Label_3f2b1c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d_SiteId": "11111111-2222-3333-4444-555555555555",
+        "MSIP_Label_3f2b1c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d_Method": "Standard"
+      }
+    }
+  },
+  "format": {
+    "docx": {
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 12,
+      "uncompressed_bytes": 10376,
+      "sensitivity_labels": [
+        {
+          "enabled": "true",
+          "name": "Internal",
+          "site_id": "11111111-2222-3333-4444-555555555555",
+          "method": "Standard",
+          "id": "3f2b1c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+        }
+      ],
+      "part_counts": {
+        "embedded_objects": 1
+      },
+      "hyperlinks": 1,
+      "link_hosts": [
+        {
+          "host": "www.example.org",
+          "count": 1
+        }
+      ],
+      "paragraphs": 11,
+      "tables": 1,
+      "sections": 1,
+      "tracked_changes": {
+        "insertions": 1,
+        "deletions": 1,
+        "authors": [
+          "Ana Lima",
+          "Jonas Wren"
+        ]
+      },
+      "fields": {
+        "DATE": 1
+      },
+      "comments": {
+        "count": 1,
+        "authors": [
+          "Ana Lima"
+        ]
+      },
+      "footnotes": 1,
+      "track_revisions": true,
+      "embedded": [
+        {
+          "name": "word/embeddings/Microsoft_Excel_Worksheet.xlsx",
+          "size_bytes": 1535
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Microsoft_Excel_Worksheet.xlsx",
+        "stem": "Microsoft_Excel_Worksheet",
+        "extension": "xlsx"
+      },
+      "identification": {
+        "format": "xlsx",
+        "name": "Excel workbook",
+        "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "family": "doc.ooxml",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "xlsx",
+            "confidence": 0.99
+          },
+          {
+            "format": "office_encrypted",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "doc.ooxml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1535
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 1535,
+        "entropy": 7.133,
+        "entropy_scope": "file",
+        "document": {
+          "sheets": 1
+        }
+      },
+      "integrity": {
+        "sha256": "e5d992830c557af41f5d4ef701760174812598283814165aae7b654509216fd9",
+        "blake3": "542131d604c684b18597d1f2e0d3bb80aa630c2440058cd98231c718695bedb2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xlsx": {
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml",
+          "main_part": "xl/workbook.xml",
+          "parts": 5,
+          "uncompressed_bytes": 1649,
+          "sheets": [
+            {
+              "name": "Cranes",
+              "kind": "worksheet"
+            }
+          ],
+          "sheet_contents": [
+            {
+              "name": "Cranes",
+              "cells": 2,
+              "dimension": "A1:A2"
+            }
+          ],
+          "cells": 2,
+          "formulas": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "doc.ooxml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

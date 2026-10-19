@@ -45,10 +45,13 @@ expression: report
     "risks": [
       {
         "kind": "custom_package_index",
+        "category": "supply_chain",
+        "severity": "medium",
         "detail": "https://pypi.example.org/simple",
         "source": "code.manifest"
       }
-    ]
+    ],
+    "risk_level": "medium"
   },
   "rights": {},
   "physical": {

@@ -1,0 +1,161 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-plan.vsd",
+    "stem": "harbour-plan",
+    "extension": "vsd"
+  },
+  "identification": {
+    "format": "vsd",
+    "name": "Visio drawing (legacy)",
+    "mime": "application/vnd.visio",
+    "family": "doc.ole",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vsd",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2560
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "ole.ModifyDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2560,
+    "entropy": 1.757,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4b9235de3d519efe66ea8e331e17c623f7301efe20ac93c1269ccf1111ba7bd0",
+    "blake3": "b9cd35e6367b5b40dd77de90be7dd76d03c28b390e4291e693334959ab69c621"
+  },
+  "content": {
+    "title": "Harbour plan",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Harbour plan"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Harbour plan",
+      "Author": "Ben Gull",
+      "Application": "Microsoft Visio",
+      "CreateDate": "2024-04-01T08:00:00Z",
+      "ModifyDate": "2024-04-01T08:00:00Z"
+    }
+  },
+  "format": {
+    "vsd": {
+      "version": 3,
+      "streams": 2,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 204
+        },
+        {
+          "name": "VisioDocument",
+          "size_bytes": 64
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

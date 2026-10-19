@@ -1,0 +1,147 @@
+---
+source: src/formats/doc/ooxml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "letterhead.dotm",
+    "stem": "letterhead",
+    "extension": "dotm"
+  },
+  "identification": {
+    "format": "dotm",
+    "name": "Word macro-enabled template",
+    "mime": "application/vnd.ms-word.template.macroEnabled.12",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ooxml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1476
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "docprops.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-01T08:00:00Z",
+        "source": "docprops.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T08:00:00Z",
+    "latest": "2024-04-01T08:00:00Z"
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1476,
+    "entropy": 7.344,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "71d9313f1f78e4a8fe6cd25316993b4a94d56d4a497850fd32a9cbf2c5633674",
+    "blake3": "530dda0ce30b4586debf17a6cc86cacfd2f780fac269012b773b739a044459f2"
+  },
+  "content": {
+    "title": "Harbour Office letterhead",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Harbour Office letterhead Saltmere Harbour Office, 1 Quay Street."
+  },
+  "metadata": {
+    "docprops": {
+      "core": {
+        "title": "Harbour Office letterhead",
+        "creator": "Harbour Office",
+        "created": "2024-04-01T08:00:00Z",
+        "modified": "2024-04-01T08:00:00Z"
+      }
+    }
+  },
+  "format": {
+    "dotm": {
+      "content_type": "application/vnd.ms-word.template.macroEnabledTemplate.main+xml",
+      "main_part": "word/document.xml",
+      "parts": 4,
+      "uncompressed_bytes": 2012,
+      "paragraphs": 2,
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ooxml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

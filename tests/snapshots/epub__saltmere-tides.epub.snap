@@ -1,0 +1,241 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.epub",
+    "stem": "saltmere-tides",
+    "extension": "epub"
+  },
+  "identification": {
+    "format": "epub",
+    "name": "EPUB ebook",
+    "mime": "application/epub+zip",
+    "family": "doc.ebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3107
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2024-05-01",
+        "source": "ebook.date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-05-02T10:00:00+00:00",
+        "source": "ebook.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-02T10:00:00Z",
+    "latest": "2024-05-02T10:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0: no rights reserved",
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3107,
+    "entropy": 7.417,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cf99cddc78efbe90174603b1299347af2413a17c4259d945fd003ee7cd82d6b3",
+    "blake3": "f6aac6d5b40dfd9b95c21870cb5c86216a8af2e87670cefc790d0706d0c89395"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "description": "A short guide to the tides of the fictitious port of Saltmere.",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "tides",
+      "Saltmere",
+      "Spring tides",
+      "Neap tides",
+      "Spring",
+      "Saltmere Tides",
+      "tides at saltmere",
+      "Neap",
+      "port of saltmere",
+      "water"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        8
+      ],
+      [
+        "neap",
+        3
+      ],
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "spring",
+        3
+      ],
+      [
+        "water",
+        3
+      ],
+      [
+        "metres",
+        2
+      ],
+      [
+        "mole",
+        2
+      ],
+      [
+        "outer",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Spring tides"
+      },
+      {
+        "level": 2,
+        "text": "At the outer mole"
+      },
+      {
+        "level": 1,
+        "text": "Neap tides"
+      }
+    ],
+    "excerpt": "Spring tides Spring tides at Saltmere reach 5.2 metres, two days after the full and new moon. High water at the outer mole comes about forty minutes after high water at the bar. Neap tides Neap tides rise to 3.9 metres; berth 3 still dries at low water.",
+    "tags": [
+      "Tides",
+      "Harbours",
+      "Saltmere",
+      "Spring tides",
+      "Neap tides",
+      "Spring"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "epub": {
+      "entries": 9,
+      "epub_version": "3.0",
+      "manifest": {
+        "documents": 3,
+        "images": 1,
+        "other": 1,
+        "stylesheets": 1
+      },
+      "spine_items": 2,
+      "toc_source": "nav",
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        },
+        {
+          "name": "Ben Gull",
+          "role": "ill"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "isbn",
+          "value": "9780306406157"
+        }
+      ],
+      "publisher": "Saltmere Harbour Press",
+      "series": {
+        "name": "Harbour Guides",
+        "index": "2"
+      },
+      "toc_entries": 3,
+      "cover": {
+        "path": "OEBPS/images/cover.png",
+        "media_type": "image/png",
+        "size_bytes": 151
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

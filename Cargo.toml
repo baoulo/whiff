@@ -1,6 +1,6 @@
 [package]
 name = "whiff"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 rust-version = "1.89"
 license = "MIT"
@@ -10,7 +10,7 @@ documentation = "https://docs.rs/whiff"
 description = "Sniff any file and get one JSON document describing it: identity, provenance, rights, physical properties and an LLM-ready view of its content."
 readme = "README.md"
 keywords = ["metadata", "file-format", "exif", "detection", "llm"]
-categories = ["parser-implementations", "filesystem", "command-line-utilities", "multimedia::images"]
+categories = ["parser-implementations", "filesystem", "command-line-utilities", "multimedia::images", "email"]
 exclude = ["/baoulo", "/fuzz", "/tests", "/.github", "/packaging", "/scripts", "/Sastri.toml"]
 autobins = false
 build = "build.rs"
@@ -38,6 +38,7 @@ common = [
     "dep:csv",
     "dep:ego-tree",
     "dep:json5",
+    "dep:mail-parser",
     "dep:pulldown-cmark",
     "dep:scraper",
     "dep:serde-saphyr",
@@ -86,6 +87,7 @@ quick-xml = "0.42"
 csv = { version = "1.4", optional = true }
 ego-tree = { version = "0.11", optional = true }
 json5 = { version = "1.3", optional = true }
+mail-parser = { version = "0.11", default-features = false, features = ["full_encoding"], optional = true }
 pulldown-cmark = { version = "0.13", default-features = false, optional = true }
 scraper = { version = "0.27", default-features = false, optional = true }
 serde-saphyr = { version = "2", default-features = false, features = ["deserialize"], optional = true }

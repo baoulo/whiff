@@ -1,0 +1,47 @@
+Received: from lists.saltmere.example (lists.saltmere.example [192.0.2.25]) by
+ mx.example.org with ESMTPS id 4Vt1; Fri, 03 May 2024 07:00:40 +0000
+Authentication-Results: mx.example.org; spf=pass
+ smtp.mailfrom=lists.saltmere.example; dkim=pass header.d=saltmere.example
+From: Saltmere Tides <tides@lists.saltmere.example>
+To: mira@example.org
+Subject: Tides for the week of 6 May
+Date: Fri, 03 May 2024 07:00:00 +0000
+Message-ID: <week19.tides@lists.saltmere.example>
+List-Id: Saltmere Tides <tides.lists.saltmere.example>
+List-Unsubscribe: <https://lists.saltmere.example/unsubscribe>
+Precedence: list
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="=_saltmere_0"
+
+--=_saltmere_0
+Content-Type: multipart/alternative; boundary="=_saltmere_1"
+
+--=_saltmere_1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Spring tides this week: high water 5.2 m on Wednesday.
+Full table: https://tides.example.org/saltmere
+
+--=_saltmere_1
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><h1>Tides for the week of 6 May</h1><p>Spring tides this week: hi=
+gh water <b>5.2&nbsp;m</b> on Wednesday.</p><p><a href=3D"https://tides.examp=
+le.org/saltmere">tides.example.org/saltmere</a></p><p><a href=3D"https://list=
+s.saltmere.example/unsubscribe">Unsubscribe</a></p></body></html>
+
+--=_saltmere_1--
+
+--=_saltmere_0
+Content-Type: text/csv
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="tides-week19.csv"
+MIME-Version: 1.0
+
+ZGF5LGhpZ2hfd2F0ZXJfbSxsb3dfd2F0ZXJfbQpNb24sNC44LDAuOQpXZWQsNS4yLDAuNgpGcmks
+NC45LDAuOAo=
+
+--=_saltmere_0--

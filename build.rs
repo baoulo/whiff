@@ -42,7 +42,8 @@ fn main() {
             "block_decoders" => "BlockDecoder",
             _ => "Analyzer",
         };
-        let _ = writeln!(out, "#[allow(clippy::vec_init_then_push)]");
+        // One `push` per registered type: long by design.
+        let _ = writeln!(out, "#[allow(clippy::vec_init_then_push, clippy::too_many_lines)]");
         let _ = writeln!(out, "pub(crate) fn {list}() -> Vec<&'static dyn crate::plugin::{trait_name}> {{");
         let _ = writeln!(
             out,

@@ -7,7 +7,7 @@ use whiff::plugin::{
     Registry, Source, TextRole,
 };
 use whiff::report::{DetectedBy, FileKind, RunStatus};
-use whiff::{Engine, Limits, Options, Profile};
+use whiff::{Engine, Limits, Options, Profile, RiskCategory, Severity};
 
 const DEMO_BLOCK: BlockKind = BlockKind("demo_block");
 
@@ -295,6 +295,17 @@ fn children_recurse_until_max_depth() {
     assert_eq!(child.embedded.len(), 1);
     assert!(child.embedded[0].diagnostics.warnings[0].contains("max_depth"));
     assert!(r.diagnostics.limits_hit.contains(&"max_depth".to_string()));
+
+    // Risks roll up: the child's own risk is counted in the parent, and a
+    // kind outside the vocabulary is `other` / `medium`.
+    let risk = &child.security.risks[0];
+    assert_eq!(
+        (risk.kind.as_str(), risk.category, risk.severity),
+        ("demo_risk", RiskCategory::Other, Severity::Medium)
+    );
+    assert_eq!(child.security.risk_level, Some(Severity::Medium));
+    assert_eq!(r.security.embedded_risks.get("demo_risk"), Some(&1));
+    assert_eq!(r.security.risk_level, Some(Severity::Medium));
 }
 
 #[test]

@@ -22,7 +22,7 @@ The article [*Rust libraries for file formats* (2026-10-13)](https://thanos.gith
 | `xberg` does lightweight magic inference | Actually a document-intelligence (text extraction) library | Not used for detection |
 | `oxiarc` handles ZIP, TAR, GZIP, XZ, CAB and LZH | No crate named `oxiarc`; published as `oxiarc-core` and `oxiarc-archive` 0.4.2 (low adoption) | Prefer `zip`, `tar`, `cab` and `delharc`; evaluate `oxiarc-archive` |
 | `spoor` reads ELF, PE, Mach-O and WASM metadata plus DWARF | `spoor` 0.1.0 (12 downloads) only recovers the crate manifest from Rust binaries | Use `goblin` / `object` + `gimli`. `spoor` is an optional extra for Rust binaries |
-| `turbo-parsepdf-core` speedups | 0.1.1, about 40 downloads | Not used. `lopdf` + `pdf-extract` / `unpdf` instead |
+| `turbo-parsepdf-core` speedups | 0.1.1, about 40 downloads | Not used. whiff reads PDF with an in-house parser |
 | `doc_loader` gives unified extraction | 0.3.2, about 2k downloads | Not used. Per-format crates instead |
 | `oxigdal` / `oxigeo` as a pure-Rust GDAL | 0.1.7 / 0.2.4, about 1k downloads each | Evaluate later (S7). Use mature single-format crates first |
 | `bitframe` for bit-level headers | 0.1.1, 32 downloads | Not used. `binrw` + `zerocopy` instead |
@@ -33,7 +33,7 @@ The article [*Rust libraries for file formats* (2026-10-13)](https://thanos.gith
 | `arrow`, `parquet`, `lance`, `vortex-ipc` | All current | `parquet` / `arrow` footer-only by default. `lance` and `vortex` are feature-gated (heavy) |
 | `monstertruck-io` for STEP/IGES | 0.4.1, about 600 downloads, full B-rep | Feature-gated. The default is an in-house ISO-10303-21 header lexer |
 
-Crates the article missed that whiff relies on: `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `calcard`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
+Crates the article missed that whiff relies on: `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
 
 ## 2. Universal information (every file, every format)
 

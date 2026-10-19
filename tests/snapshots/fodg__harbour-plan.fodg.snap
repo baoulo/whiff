@@ -1,0 +1,144 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-plan.fodg",
+    "stem": "harbour-plan",
+    "extension": "fodg"
+  },
+  "identification": {
+    "format": "fodg",
+    "name": "Flat OpenDocument drawing",
+    "mime": "application/vnd.oasis.opendocument.graphics-flat-xml",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fodg",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1109
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1109,
+    "entropy": 4.777,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1109,
+      "chars": 1109,
+      "words": 21,
+      "lines": 1,
+      "max_line_length": 1070,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "af5afbc416f3900302bc0dc948b6bbd7a62f203c81aca5bcdc020f5e417e51ae",
+    "blake3": "68f94e8e6d37dc51ed0e0fc362b624151dc6da2b30a80e4f84d5f878493a92e5"
+  },
+  "content": {
+    "title": "Harbour plan",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Outer mole"
+  },
+  "metadata": {
+    "odf": {
+      "title": "Harbour plan",
+      "initial-creator": "Harbour Office"
+    }
+  },
+  "format": {
+    "fodg": {
+      "paragraphs": 1,
+      "pages": [
+        "Plan"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

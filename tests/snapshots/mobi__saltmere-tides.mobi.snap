@@ -1,0 +1,210 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.mobi",
+    "stem": "saltmere-tides",
+    "extension": "mobi"
+  },
+  "identification": {
+    "format": "mobi",
+    "name": "Mobipocket / Kindle ebook",
+    "mime": "application/x-mobipocket-ebook",
+    "family": "doc.ebook",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 922
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2024-05-01",
+        "source": "ebook.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 922,
+    "entropy": 4.547,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ce8300ec48d08c5fc733130c5e4e72cb29a802bf9c06c73eaa231e68bd5f4162",
+    "blake3": "a354e65f6e36b6ecfc263dc65df50a8969ad70b900887f9562f0eaddf2872ff5"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "description": "A short guide to the tides of the fictitious port of Saltmere.",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "tides",
+      "Saltmere Tides",
+      "Saltmere",
+      "Neap tides",
+      "Neap",
+      "tides at saltmere",
+      "moorings",
+      "port of saltmere",
+      "metres",
+      "Saltmere reach"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        8
+      ],
+      [
+        "saltmere",
+        5
+      ],
+      [
+        "moorings",
+        3
+      ],
+      [
+        "neap",
+        3
+      ],
+      [
+        "metres",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere Tides"
+      },
+      {
+        "level": 2,
+        "text": "Neap tides"
+      },
+      {
+        "level": 1,
+        "text": "Moorings"
+      }
+    ],
+    "excerpt": "Saltmere Tides Spring tides at Saltmere reach 5.2 metres, two days after the full and new moon. Neap tides Neap tides rise to 3.9 metres; berth 3 still dries at low water. Moorings Visitors' moorings are the yellow buoys east of the ferry pier.",
+    "tags": [
+      "Tides",
+      "Saltmere Tides",
+      "Saltmere",
+      "Neap tides",
+      "Neap"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mobi": {
+      "database_name": "Saltmere_Tides",
+      "type_creator": "BOOKMOBI",
+      "database_created": "2024-05-01T08:30:00Z",
+      "database_modified": "2024-05-01T08:30:00Z",
+      "records": 3,
+      "compression": "palmdoc",
+      "mobi_version": 6,
+      "mobi_type": "book",
+      "text_encoding": "utf-8",
+      "cde_type": "EBOK",
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "isbn",
+          "value": "9780306406157"
+        },
+        {
+          "scheme": "asin",
+          "value": "B0WHIFF001"
+        }
+      ],
+      "publisher": "Saltmere Harbour Press",
+      "toc_entries": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

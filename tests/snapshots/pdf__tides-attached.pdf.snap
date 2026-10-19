@@ -1,0 +1,465 @@
+---
+source: src/formats/doc/pdf/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-attached.pdf",
+    "stem": "tides-attached",
+    "extension": "pdf"
+  },
+  "identification": {
+    "format": "pdf",
+    "name": "PDF document",
+    "mime": "application/pdf",
+    "family": "doc.pdf",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.pdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5105
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "pdf.info.CreationDate",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "pdf.info.ModDate",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2026-10-17T15:05:06-04:00",
+        "source": "xmp.xmp:CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-17T19:05:06Z",
+    "latest": "2026-10-17T19:05:06Z"
+  },
+  "security": {
+    "active_content": [
+      "embedded_files"
+    ],
+    "external_references": 1
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 5105,
+    "entropy": 6.779,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "a5da7b2ecc6c96ee8701174dd3be3c4e483d642db21d644f1d65c58008004295",
+    "blake3": "36e64eefa836855ac40a1422d60e5bfadaeea52970179685ff8f8f53a7e00737"
+  },
+  "content": {
+    "title": "Harbour tide notes",
+    "description": "Tide tables and berth notes for the fictitious port of Saltmere",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.866
+    },
+    "keywords": [
+      "tides",
+      "harbour",
+      "berths",
+      "Harbour tide notes",
+      "Saltmere",
+      "notes",
+      "Tide tables",
+      "port of saltmere",
+      "Tides at Saltmere",
+      "metres"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        9
+      ],
+      [
+        "berth",
+        5
+      ],
+      [
+        "metres",
+        3
+      ],
+      [
+        "spring",
+        3
+      ],
+      [
+        "neap",
+        2
+      ],
+      [
+        "notes",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ],
+      [
+        "tables",
+        2
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Tides"
+      },
+      {
+        "level": 2,
+        "text": "Spring tides"
+      },
+      {
+        "level": 2,
+        "text": "Neap tides"
+      },
+      {
+        "level": 1,
+        "text": "Berths"
+      }
+    ],
+    "excerpt": "Tides at Saltmere High water at the outer mole comes about forty minutes after Dover. Spring tides reach 5.2 metres; neap tides 3.9 metres. Tide tables: tides.example.org Berths Berth 3 dries at low water springs; use berth 5 for vessels over 2 metres draught.",
+    "tags": [
+      "tides",
+      "harbour",
+      "berths",
+      "Harbour tide notes",
+      "Saltmere",
+      "notes",
+      "Tide tables"
+    ]
+  },
+  "metadata": {
+    "pdf_info": {
+      "Producer": "GPL Ghostscript 10.04.0",
+      "CreationDate": "D:20261017150506-04'00'",
+      "ModDate": "D:20261017150506-04'00'",
+      "Title": "Harbour tide notes",
+      "Creator": "whiff fixtures",
+      "Author": "Ana Lighthouse",
+      "Subject": "Tide tables and berth notes for the fictitious port of Saltmere",
+      "Keywords": "tides, harbour, berths"
+    },
+    "xmp": {
+      "pdf": {
+        "Producer": "GPL Ghostscript 10.04.0",
+        "Keywords": "tides, harbour, berths"
+      },
+      "xmp": {
+        "ModifyDate": "2026-10-17T15:05:06-04:00",
+        "CreateDate": "2026-10-17T15:05:06-04:00",
+        "CreatorTool": "whiff fixtures"
+      },
+      "xmpMM": {
+        "DocumentID": "uuid:3702d74f-027a-11fd-0000-6a0c500bd18e"
+      },
+      "dc": {
+        "format": "application/pdf",
+        "title": "Harbour tide notes",
+        "creator": [
+          "Ana Lighthouse"
+        ],
+        "description": "Tide tables and berth notes for the fictitious port of Saltmere"
+      }
+    }
+  },
+  "format": {
+    "pdf": {
+      "version": "1.7",
+      "objects": 28,
+      "incremental_updates": 1,
+      "xref_streams": true,
+      "id": [
+        "3e2a2bee445f10061e048dcf208eef51",
+        "5415683748bc85a0f65d9c7570e8effb"
+      ],
+      "page_sizes": [
+        {
+          "width_pt": 595.0,
+          "height_pt": 842.0,
+          "width_mm": 209.9,
+          "height_mm": 297.0,
+          "paper": "A4",
+          "orientation": "portrait",
+          "pages": 2
+        }
+      ],
+      "outline_items": 4,
+      "pages_with_text": 2,
+      "embedded_files": [
+        "berths.csv"
+      ],
+      "links": [
+        "https://tides.example.org/saltmere"
+      ],
+      "fonts": {
+        "Helvetica": {
+          "type": "Type1",
+          "embedded": false
+        },
+        "Helvetica-Bold": {
+          "type": "Type1",
+          "embedded": false
+        }
+      },
+      "annotations": {
+        "Link": 1
+      },
+      "creator": "whiff fixtures",
+      "producer": "GPL Ghostscript 10.04.0"
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "berths.csv",
+        "stem": "berths",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 45
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 45,
+        "entropy": 4.43,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 45,
+          "chars": 45,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 25,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e5c23bfab18a14f548074e31f8aea5ade2e2b0af81c857f9abcb80ab0b18b08a",
+        "blake3": "6b4ae8b3195565c7e707ff7e34596d008239aa9ced57ed7bde89f0173fa820b9"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": 3.0,
+              "max": 5.0,
+              "mean": 4.0
+            },
+            {
+              "name": "max_draught_m",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": 1.8,
+              "max": 4.5,
+              "mean": 3.15
+            },
+            {
+              "name": "dries",
+              "type": "boolean",
+              "null_ratio": 0.0,
+              "distinct": 2
+            }
+          ],
+          "sample_rows": [
+            [
+              "3",
+              "1.8",
+              "yes"
+            ],
+            [
+              "5",
+              "4.5",
+              "no"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.pdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
