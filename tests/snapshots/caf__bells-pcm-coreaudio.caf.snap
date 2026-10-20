@@ -1,0 +1,137 @@
+---
+source: src/formats/audio/caf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-pcm-coreaudio.caf",
+    "stem": "bells-pcm-coreaudio",
+    "extension": "caf"
+  },
+  "identification": {
+    "format": "caf",
+    "name": "Core Audio Format",
+    "mime": "audio/x-caf",
+    "family": "audio",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.caf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 70246
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 70246,
+    "entropy": 6.908,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 374645,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "bitrate_bps": 352800,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "59e85135ceab9adbea29a75b9e73cff3aa2e68ed8675015552c20330052c3ae9",
+    "blake3": "85ec841514a472dcc56aa5bbb2af1c2573c0346472ec4202d36ce05daf94d167"
+  },
+  "content": {},
+  "metadata": {
+    "caf_info": {
+      "approximate duration in seconds": "1.5",
+      "source bit depth": "I16"
+    }
+  },
+  "format": {
+    "caf": {
+      "chunks": [
+        "desc",
+        "info",
+        "free",
+        "data"
+      ],
+      "format_id": "lpcm",
+      "bytes_per_packet": 2,
+      "frames_per_packet": 1,
+      "tag_formats": [
+        "caf_info"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.caf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

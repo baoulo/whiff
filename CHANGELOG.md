@@ -4,6 +4,51 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased (0.4.0)
+
+Audio, video, subtitles and playlists. Done so far: audio.
+
+- **Audio** (in-house readers, no new dependencies): MP3 / MP2 / MP1
+  (frame header, Xing / Info / VBRI and LAME tags, duration from the VBR
+  header, the CBR size or a bounded frame walk), AAC (ADTS) and MPEG-4
+  audio (M4A, M4B, M4P, M4R: AAC profile, ALAC, Opus, FLAC, AC-3, AMR),
+  FLAC (STREAMINFO, cue sheet, seek table, pictures), Ogg Vorbis / Opus /
+  Speex / FLAC (headers reassembled across pages, duration from the last
+  granule), WAV, Broadcast Wave (`bext`, iXML), RF64 / BW64 and Wave64,
+  AIFF / AIFF-C, CAF (packet table, `info`), WMA (ASF header objects, DRM),
+  WavPack, Monkey's Audio, Musepack SV7 / SV8, TTA, DSF and DSDIFF, AMR,
+  Sun AU and Creative VOC. Streams report codec, profile, sample rate,
+  channels and layout, bit depth, bitrate and CBR / VBR. HE-AAC reports
+  its output rate and channels from the AudioSpecificConfig (SBR / PS
+  signalling included), not the sample entry's. Durations, sample rates
+  and channel counts agree with `ffprobe` on every fixture and on 6 615
+  Apple-made files found on a Mac (system sounds, ringtones, voice
+  prompts). Durations are the presentation length: the encoder priming
+  and padding an MP4 edit list or CAF packet table marks are left out,
+  where ffprobe keeps them (497 of those files).
+- **Tags:** ID3v1 / v1.1 and ID3v2.2–2.4 (unsynchronisation, compressed
+  and grouped frames, iTunes' non-syncsafe sizes, CHAP / CTOC chapters),
+  Vorbis comments, APEv1 / v2, iTunes `ilst` (with free-form `----` items
+  and QuickTime `keys`), RIFF `INFO`, ASF / `WM/` attributes, AIFF text
+  chunks, CAF `info` and DSDIFF edited-master data are kept in their own
+  names under `metadata.<standard>` and normalised into `format.tags`
+  (title, artist, album, track / disc and totals, dates, genre, composer,
+  label, ISRC, BPM, key, MusicBrainz ids, ReplayGain…), which fills
+  `content`, `rights` and `temporal`. Cover art is described and handed
+  on as an embedded file; chapters fill `format.chapters` and the outline;
+  lyrics go to the text analyzers. A purchaser's Apple ID or name
+  (`apID`, `ownr`) goes through the privacy setting.
+- **Containers:** `plugin::mp4` (ISO base media: tracks, sample tables,
+  `esds`, `ilst`, chapters) and `plugin::asf` (ASF header objects) are
+  shared readers, to be used by video too; the HEIF extractor now uses
+  `plugin::mp4`'s box iterator.
+- **Developer tools:** `whiff-dev oracle media` compares durations,
+  sample rates and channel counts with `ffprobe` (gate: 98 % of durations
+  within 0.1 s). `scripts/fixtures/audio.sh` regenerates the audio
+  fixtures with ffmpeg, LAME, flac / metaflac, speexenc, mpcenc and Core
+  Audio's `afconvert`; `craft_audio.py` writes the iXML chunk and the
+  Monkey's Audio, DSF and DSDIFF files no available tool writes.
+
 ## 0.3.0 — 2026-10-18
 
 Documents, e-mail, calendars and contacts.

@@ -6,4 +6,6 @@ doc-valid-idents = [
     "ComfyUI", "InvokeAI", "NovelAI", "WebUI", "GIF89a", "CompuServe",
     "PowerPoint", "OpenDocument", "PalmDOC", "FictionBook", "MobileRead", "StarBasic", "AcroForm", "WinAnsi",
     "MacRoman", "FairPlay", "ASCIIHex", "RunLength", "PDFDocEncoding", "CMaps", "CMap", "ActiveX",
+    "QuickTime", "AudioSpecificConfig", "WavPack", "MusicBrainz", "ReplayGain", "OpenCORE", "DSDIFF", "iXML",
+    "WAVEFORMATEX", "WAVEFORMATEXTENSIBLE", "APEv1", "APEv2", "ID3v1", "ID3v2", "foobar2000", "mp3gain",
 ]

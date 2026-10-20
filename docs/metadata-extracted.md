@@ -99,7 +99,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `meta.iptc` | Block | `common` | IIM Record 1 (CodedCharacterSet, envelope) + Record 2: ObjectName, Urgency, Category, SupplementalCategories, Keywords, SpecialInstructions, DateCreated/TimeCreated, By-line, By-lineTitle, City, Sub-location, Province-State, Country, OriginalTransmissionReference, Headline, Credit, Source, CopyrightNotice, Caption-Abstract, Writer-Editor | Newsroom-grade caption, keywords and credit | impl (Photoshop 8BIM resource 0x0404 + IIM dataset parser, ~300 LOC); `iptc` crate exists but is JPEG-only | impl | S2 | 0 |
 | `meta.vra` | Block | `common` | VRA Core 4 elements for work/image/collection: agent (name, role, dates, culture), culturalContext, date (type, earliest/latest), description, inscription, location, material, measurements, relation, rights, source, stateEdition, stylePeriod, subject, technique, textref, title, worktype | Cultural-heritage cataloguing (museums, slide libraries) | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml (no crate exists) | impl | S2 | 1 |
 | `meta.icc` | Block | `common` | profile class, colour space, PCS, version, rendering intent, creator, device manufacturer/model, description (desc/mluc), copyright, creation date, white point | Colour-management context | impl (header + tag table); moxcms as fallback | impl | S2 | 1 |
-| `audio` | Media | `common` | container, codec, duration, sample rate, channels + layout, bit depth, bitrate (avg, VBR?), encoder, tags (title, artist, album, album artist, track/disc n/total, date/year, genre, composer, conductor, lyricist, comment, lyrics, BPM, key, ISRC, label, MusicBrainz IDs, ReplayGain), cover art (mime, dimensions, size), chapters, loudness (opt-in decode) | Track identity and technical properties | lofty (tags, properties) + symphonia (probe/codec params/duration) | crate | S4 | 34 |
+| `audio` | Media | `common` | container, codec, duration, sample rate, channels + layout, bit depth, bitrate (avg, VBR?), encoder, tags (title, artist, album, album artist, track/disc n/total, date/year, genre, composer, conductor, lyricist, comment, lyrics, BPM, key, ISRC, label, MusicBrainz IDs, ReplayGain), cover art (mime, dimensions, size), chapters, loudness (opt-in decode) | Track identity and technical properties | impl (ID3v1/v2, Vorbis comments, APEv2, iTunes ilst, RIFF, AIFF, CAF, Ogg pages, MPEG / ADTS frames; ISO BMFF and ASF readers shared with video) | impl | S4 | 34 |
 | `audio.score` | Media | `common` | MIDI: format, tracks, PPQ, tempo map, time signatures, key signatures, track/instrument names, lyrics/markers, note count, duration; trackers: title, channels, patterns, instrument/sample names; notation (MusicXML/MEI/ABC): title, composer, parts, measures, key/time | Musical structure for symbolic music | midly (MIDI); quick-xml (MusicXML); impl MOD/XM/IT/S3M/ABC | mixed | S4 | 4 |
 | `audio.playlist` | Media | `common` | entry count, total declared duration, titles/artists, HLS: variants (bandwidth, resolution, codecs), segment count, target duration, encryption; CUE: performer, title, files, tracks + indexes | What a playlist contains | m3u8-rs (HLS), quick-xml (XSPF/ASX/MPD); impl M3U/PLS/CUE | mixed | S4 | 5 |
 | `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | mp4-atom (ISOBMFF/MOV/3GP), matroska / matroska-demuxer (MKV/WebM), riff (AVI), mpeg2ts-reader (TS), h264-parser (SPS details); impl FLV/ASF/MPEG-PS/OGM/RealMedia headers | mixed | S4 | 34 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **225** of 1004.
-* Formats by family status: crate = 246, mixed = 574, impl = 184.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 74, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 205.
+* Formats with an extractor in this build: **248** of 1004.
+* Formats by family status: crate = 212, mixed = 574, impl = 218.
+* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 54, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 225.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -212,14 +212,14 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 71 | Encapsulated PostScript | `eps` `epsf` `epsi` | application/postscript | 1 | `doc.other` | `common` | `doc.other` | impl | S3 | DSC + embedded preview TIFF/WMF + XMP |
 | 72 | LaTeX document | `tex` | application/x-tex | 1 | `doc.other` | `common` | — | impl | S3 | — |
 | 73 | SubRip | `srt` | application/x-subrip | 1 | `text.subtitle` | `common` | — | impl | S4 | — |
-| 74 | MP3 | `mp3` | audio/mpeg | 1 | `audio` | `common` | — | lofty | S4 | ID3v1/ID3v2.3/2.4, APE, Xing/Info/VBRI (VBR, frames), LAME tag |
-| 75 | AAC / M4A | `m4a` `aac` `m4b` `m4p` | audio/mp4 | 1 | `audio` | `common` | — | lofty | S4 | iTunes ilst atoms, chapters (m4b), DRM (m4p) |
-| 76 | WAV | `wav` `wave` | audio/wav | 1 | `audio` | `common` | — | lofty | S4 | fmt/fact/LIST INFO/bext (BWF)/iXML/ID3 chunks |
-| 77 | FLAC | `flac` | audio/flac | 1 | `audio` | `common` | — | lofty | S4 | STREAMINFO, Vorbis comments, PICTURE, CUESHEET |
-| 78 | Ogg Vorbis | `ogg` `oga` | audio/ogg | 1 | `audio` | `common` | — | lofty | S4 | — |
-| 79 | Opus | `opus` | audio/opus | 1 | `audio` | `common` | — | lofty | S4 | OpusHead/OpusTags |
-| 80 | AIFF / AIFF-C | `aif` `aiff` `aifc` | audio/aiff | 1 | `audio` | `common` | — | lofty | S4 | COMM, NAME/AUTH/ANNO, ID3 chunk |
-| 81 | Windows Media Audio | `wma` | audio/x-ms-wma | 1 | `audio` | `common` | — | lofty | S4 | ASF header objects (impl) |
+| 74 | MP3 | `mp3` | audio/mpeg | 1 | `audio` | `common` | `audio.mpeg` | impl | S4 | ID3v1/ID3v2.3/2.4, APE, Xing/Info/VBRI (VBR, frames), LAME tag |
+| 75 | AAC / M4A | `m4a` `aac` `m4b` `m4p` | audio/mp4 | 1 | `audio` | `common` | `audio.mp4` | impl | S4 | iTunes ilst atoms, chapters (m4b), DRM (m4p) |
+| 76 | WAV | `wav` `wave` | audio/wav | 1 | `audio` | `common` | `audio.wave` | impl | S4 | fmt/fact/LIST INFO/bext (BWF)/iXML/ID3 chunks |
+| 77 | FLAC | `flac` | audio/flac | 1 | `audio` | `common` | `audio.flac` | impl | S4 | STREAMINFO, Vorbis comments, PICTURE, CUESHEET |
+| 78 | Ogg Vorbis | `ogg` `oga` | audio/ogg | 1 | `audio` | `common` | `audio.ogg` | impl | S4 | — |
+| 79 | Opus | `opus` | audio/opus | 1 | `audio` | `common` | `audio.ogg` | impl | S4 | OpusHead/OpusTags |
+| 80 | AIFF / AIFF-C | `aif` `aiff` `aifc` | audio/aiff | 1 | `audio` | `common` | `audio.aiff` | impl | S4 | COMM, NAME/AUTH/ANNO, ID3 chunk |
+| 81 | Windows Media Audio | `wma` | audio/x-ms-wma | 1 | `audio` | `common` | `audio.asf` | impl | S4 | ASF header objects (impl) |
 | 82 | MIDI | `mid` `midi` `kar` `rmi` | audio/midi | 1 | `audio.score` | `common` | — | midly | S4 | — |
 | 83 | MP4 | `mp4` `m4v` | video/mp4 | 1 | `video` | `common` | — | mp4-atom | S4 | ftyp brands, moov/mvhd/tkhd/mdia, udta/meta/ilst, ©xyz GPS, Apple keys, sidx/moof (fragmented) |
 | 84 | QuickTime MOV | `mov` `qt` | video/quicktime | 1 | `video` | `common` | — | mp4-atom | S4 | com.apple.quicktime.* keys (make, model, location, creationdate) |
@@ -354,10 +354,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
 | 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
 | 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
-| 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | — | lofty | S4 | — |
-| 217 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | — | lofty | S4 | — |
-| 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | — | lofty | S4 | — |
-| 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | — | lofty | S4 | — |
+| 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
+| 217 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
+| 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
+| 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
 | 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
 | 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | — | mp4-atom | S4 | onMetaData AMF0 (impl) |
 | 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | zip, tar | S5 | — |
@@ -749,28 +749,28 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | cue count, timings |
 | 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
 | 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
-| 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 614 | AC-3 / E-AC-3 / DTS / TrueHD raw | `ac3` `ec3` `eac3` `dts` `thd` `mlp` | audio/ac3 | 3 | `audio` | `common` | — | lofty | S8 | sync frame header: channels, rate, bitrate |
-| 615 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 616 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 617 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 618 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 619 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 620 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | — | lofty | S4 | bext originator, time reference |
-| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | — | lofty | S4 | -&gt; video |
-| 624 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 625 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | lofty | S8 | chapters, title, narrator (header only, DRM flag) |
-| 626 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 627 | SoundFont / DLS | `sf2` `sf3` `dls` | audio/x-soundfont | 3 | `audio` | `common` | — | lofty | S4 | bank name, presets, samples |
-| 628 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 629 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | — | lofty | S4 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
-| 630 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | — | lofty | S4 | — |
-| 631 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | lofty | S4 | tracks, tempo |
-| 632 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | — | lofty | S4 | chapters with titles + URLs |
+| 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S8 | — |
+| 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S8 | — |
+| 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.mp4` | impl | S8 | — |
+| 614 | AC-3 / E-AC-3 / DTS / TrueHD raw | `ac3` `ec3` `eac3` `dts` `thd` `mlp` | audio/ac3 | 3 | `audio` | `common` | — | impl | S8 | sync frame header: channels, rate, bitrate |
+| 615 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | `audio.mpeg` | impl | S8 | — |
+| 616 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
+| 617 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | `audio.dsd` | impl | S8 | — |
+| 618 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
+| 619 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
+| 620 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | impl | S8 | — |
+| 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
+| 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S8 | bext originator, time reference |
+| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | — | impl | S8 | -&gt; video |
+| 624 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | impl | S8 | — |
+| 625 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
+| 626 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 627 | SoundFont / DLS | `sf2` `sf3` `dls` | audio/x-soundfont | 3 | `audio` | `common` | — | impl | S8 | bank name, presets, samples |
+| 628 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 629 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
+| 630 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 631 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo |
+| 632 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S8 | chapters with titles + URLs |
 | 633 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | — | midly | S4 | — |
 | 634 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | — | midly | S4 | — |
 | 635 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | — | midly | S4 | — |

@@ -1,0 +1,165 @@
+---
+source: src/formats/audio/musepack.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-mpcenc.mpc",
+    "stem": "bells-mpcenc",
+    "extension": "mpc"
+  },
+  "identification": {
+    "format": "mpc",
+    "name": "Musepack audio",
+    "mime": "audio/musepack",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.musepack"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 14455
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "ape.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 14455,
+    "entropy": 7.912,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 77093,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "musepack",
+          "profile": "SV8",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 75989,
+          "bitrate_mode": "vbr",
+          "samples": 66150
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "b8e5b5c4f04a9ba731bf3bd391f548b599e28eb323c7b1953912afef32ee9cd9",
+    "blake3": "9ca205697c6e04e9b7b4f3c140baaed2f4cc89d1df7ce7e9fb6eff3bbed7964c"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "ape": {
+      "Track": "3",
+      "Year": "2024",
+      "Genre": "Brass",
+      "Title": "Harbour Bells",
+      "Album": "Tides of Saltmere",
+      "Artist": "Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "mpc": {
+      "stream_version": 8,
+      "mid_side_stereo": true,
+      "encoder_profile": 10.0,
+      "encoder": "1.30.1",
+      "tag_formats": [
+        "apev2"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "track": 3,
+        "date": "2024",
+        "genre": "Brass"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.musepack",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

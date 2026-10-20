@@ -32,63 +32,7 @@ pub(crate) mod tiff;
 pub(crate) mod webp;
 pub(crate) mod xcf;
 
-/// Boxes in an ISO base media file (`size`, `type`, body): 32- and 64-bit
-/// sizes, size 0 = to the end. Stops at the first box that does not fit.
-pub(crate) fn boxes(data: &[u8]) -> impl Iterator<Item = ([u8; 4], &[u8])> {
-    let mut pos = 0usize;
-    std::iter::from_fn(move || {
-        let head = data.get(pos..pos + 8)?;
-        let size32 = u32::from_be_bytes([head[0], head[1], head[2], head[3]]);
-        let kind = [head[4], head[5], head[6], head[7]];
-        let (header, size) = match size32 {
-            0 => (8, data.len() - pos),
-            1 => {
-                let ext = data.get(pos + 8..pos + 16)?;
-                (16, usize::try_from(u64::from_be_bytes(ext.try_into().ok()?)).ok()?)
-            }
-            n => (8, n as usize),
-        };
-        if size < header {
-            return None;
-        }
-        let body = data.get(pos + header..pos.checked_add(size)?)?;
-        pos += size;
-        Some((kind, body))
-    })
-}
-
-/// A top-level box of a file: type, body offset, body length.
-pub(crate) struct TopBox {
-    pub(crate) kind: [u8; 4],
-    pub(crate) at: u64,
-    pub(crate) len: u64,
-}
-
-/// Top-level boxes of an ISO BMFF file, reading only their headers (media
-/// data is never read). At most `max` boxes.
-pub(crate) fn top_boxes(
-    src: &mut dyn crate::plugin::Source,
-    max: usize,
-) -> Result<Vec<TopBox>, crate::plugin::ExtractError> {
-    let mut out = Vec::new();
-    let mut pos = 0u64;
-    while pos + 8 <= src.len() && out.len() < max {
-        let h = src.read_vec(pos, 8)?;
-        let size32 = u64::from(u32::from_be_bytes([h[0], h[1], h[2], h[3]]));
-        let kind = [h[4], h[5], h[6], h[7]];
-        let (header, size) = match size32 {
-            0 => (8, src.len() - pos),
-            1 => (16, u64::from_be_bytes(src.read_vec(pos + 8, 8)?.try_into().unwrap_or_default())),
-            n => (8, n),
-        };
-        if size < header || pos.saturating_add(size) > src.len() {
-            break;
-        }
-        out.push(TopBox { kind, at: pos + header, len: size - header });
-        pos += size;
-    }
-    Ok(out)
-}
+pub(crate) use crate::plugin::mp4::{TopBox, boxes, top_boxes};
 
 /// The body of a top-level box, if it is at most `max` bytes.
 pub(crate) fn read_box(src: &mut dyn crate::plugin::Source, b: &TopBox, max: u64) -> Option<Vec<u8>> {

@@ -29,8 +29,8 @@ pub use text::{TextChunk, TextRole, TextStore};
 pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
 pub use crate::container::cfb::{Cfb, CfbEntry, CfbKind, filetime, guid};
-pub use crate::container::oleps;
 pub use crate::container::zip::{Zip, ZipEntry, first_stored as zip_first_stored, names as zip_names};
+pub use crate::container::{asf, mp4, oleps};
 pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;

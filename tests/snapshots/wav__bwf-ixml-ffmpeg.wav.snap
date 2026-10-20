@@ -1,0 +1,171 @@
+---
+source: src/formats/audio/riff.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bwf-ixml-ffmpeg.wav",
+    "stem": "bwf-ixml-ffmpeg",
+    "extension": "wav"
+  },
+  "identification": {
+    "format": "wav",
+    "name": "WAVE audio",
+    "mime": "audio/wav",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.wave"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 100364
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T09:30:00",
+        "source": "bext.origination",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 100364,
+    "entropy": 5.555,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 535275,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 24,
+          "bitrate_bps": 529200,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "989b15739779286423fcd5b7ab7ae921c0c004816e4891fd7a51ec0b2225b966",
+    "blake3": "02bbca2c68ddfa19c9675e16da573af5551f2024d4044f7eeb151d3e02affc23"
+  },
+  "content": {
+    "description": "Harbour wall take 2"
+  },
+  "metadata": {},
+  "format": {
+    "wav": {
+      "bext": {
+        "description": "Harbour wall take 2",
+        "originator": "Saltmere Sound",
+        "originator_reference": "SLT0000000003",
+        "origination_date": "2024-04-01",
+        "origination_time": "09:30:00",
+        "time_reference_samples": 158760000,
+        "version": 1,
+        "coding_history": [
+          "A=PCM,F=22050,W=24,M=mono,T=ffmpeg"
+        ]
+      },
+      "ixml": {
+        "version": "2.10",
+        "project": "Saltmere Harbour",
+        "scene": "12",
+        "take": "2",
+        "tape": "DAY01",
+        "note": "Bells from the harbour wall",
+        "timecode_rate": "25/1",
+        "timecode_flag": "NDF",
+        "track_count": "1",
+        "track_names": [
+          "Boom"
+        ]
+      },
+      "chunks": [
+        "fmt ",
+        "bext",
+        "data",
+        "iXML"
+      ],
+      "format_tag": "0x0001",
+      "block_align_bytes": 3,
+      "data_bytes": 99225,
+      "tag_formats": [
+        "bext"
+      ],
+      "tags": {
+        "description": "Harbour wall take 2"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.wave",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

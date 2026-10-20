@@ -1,0 +1,153 @@
+---
+source: src/formats/audio/dsd.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-crafted.dff",
+    "stem": "bells-crafted",
+    "extension": "dff"
+  },
+  "identification": {
+    "format": "dff",
+    "name": "DSDIFF audio",
+    "mime": "audio/dff",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.dsd"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 70768
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 70768,
+    "entropy": 0.041,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 0.1,
+      "bitrate_bps": 5661440,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "dsd",
+          "sample_rate_hz": 2822400,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 5644800,
+          "samples": 282240
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "ca1efd271521b52ceaab8c80fe03afb3795d71bcfe0014c1160150e2e3f82333",
+    "blake3": "4a68df172f400cde001f83d35bb11bf82629c59b96cf6c82c7da1f5fd7f538f4"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "metadata": {
+    "dsdiff": {
+      "DITI": "Harbour Bells",
+      "DIAR": "Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "dff": {
+      "format_version": "1.5.0.0",
+      "channel_ids": [
+        "SLFT",
+        "SRGT"
+      ],
+      "compression_name": "not compressed",
+      "chunks": [
+        "FVER",
+        "PROP",
+        "DSD ",
+        "DIIN"
+      ],
+      "dsd_rate": "DSD64",
+      "tag_formats": [
+        "dsdiff"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.dsd",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

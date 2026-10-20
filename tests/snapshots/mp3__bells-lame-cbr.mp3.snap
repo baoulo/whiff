@@ -1,0 +1,344 @@
+---
+source: src/formats/audio/mpeg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-lame-cbr.mp3",
+    "stem": "bells-lame-cbr",
+    "extension": "mp3"
+  },
+  "identification": {
+    "format": "mp3",
+    "name": "MP3 audio",
+    "mime": "audio/mpeg",
+    "family": "audio",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "audio.mpeg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 13288
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "id3.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 13288,
+    "entropy": 7.633,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.56,
+      "bitrate_bps": 68144,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "profile": "MPEG-2 Layer III",
+          "sample_rate_hz": 24000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 64000,
+          "bitrate_mode": "cbr",
+          "samples": 37440
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "35bc04b769bbb5d29a5e3fd86c4886088f4fba4a5b209bc8970f78b1db5155c9",
+    "blake3": "30decdefc3d2919ff686aee9a328cf3d2394d6ecd7ca4dd071c81768cae8968a"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "id3": {
+      "TSSE": "LAME 64bits version 3.100 (http://lame.sf.net)",
+      "TIT2": "Harbour Bells",
+      "TPE1": "Saltmere Brass Band",
+      "TALB": "Tides of Saltmere",
+      "TYER": "2024",
+      "TRCK": "3/9",
+      "TCON": "Brass",
+      "COMM": "Recorded at the harbour wall",
+      "TLEN": "1500"
+    },
+    "id3v1": {
+      "title": "Harbour Bells",
+      "artist": "Saltmere Brass Band",
+      "album": "Tides of Saltmere",
+      "year": "2024",
+      "comment": "Recorded at the harbour wall",
+      "track": 3,
+      "genre": "Other"
+    }
+  },
+  "format": {
+    "mp3": {
+      "id3v2": {
+        "version": "2.3.0",
+        "frames": [
+          "TSSE",
+          "TIT2",
+          "TPE1",
+          "TALB",
+          "TYER",
+          "TRCK",
+          "TCON",
+          "COMM",
+          "TLEN",
+          "APIC"
+        ]
+      },
+      "mpeg_version": "2",
+      "layer": 3,
+      "channel_mode": "joint_stereo",
+      "crc_protected": false,
+      "original": true,
+      "copyright_bit": false,
+      "frames": 65,
+      "audio_bytes": 12672,
+      "vbr_header": {
+        "kind": "info",
+        "frames": 65,
+        "bytes": 12672,
+        "toc": true,
+        "quality": 57
+      },
+      "lame": {
+        "encoder": "LAME3.100",
+        "vbr_method": "cbr",
+        "lowpass_hz": 11000,
+        "replaygain_track_gain_db": 3.1,
+        "encoder_delay_samples": 576,
+        "encoder_padding_samples": 864,
+        "bitrate_kbps": 64,
+        "music_length_bytes": 12672
+      },
+      "tag_formats": [
+        "id3v2.3",
+        "id3v1.1"
+      ],
+      "encoder": "LAME 64bits version 3.100 (http://lame.sf.net)",
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "track": 3,
+        "track_total": 9,
+        "date": "2024",
+        "genre": "Brass",
+        "comment": "Recorded at the harbour wall",
+        "replaygain_track_gain_db": 3.1
+      },
+      "cover_art": [
+        {
+          "mime": "image/png",
+          "picture_type": "other",
+          "size_bytes": 109
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "cover.png",
+        "stem": "cover",
+        "extension": "png"
+      },
+      "identification": {
+        "format": "png",
+        "name": "PNG image",
+        "mime": "image/png",
+        "family": "image.raster",
+        "confidence": 0.97,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "image.png"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 109
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 109,
+        "entropy": 4.998,
+        "entropy_scope": "file",
+        "image": {
+          "width": 24,
+          "height": 24,
+          "bit_depth": 8,
+          "channels": 3
+        }
+      },
+      "integrity": {
+        "sha256": "9fce83bed09b591c7e5a9fd73927478a196884508135821dcecabfb35017b1f4",
+        "blake3": "92928c5a89c3fae3cb761cec766c971fa9c62d457383fde23d53fd79e1d4378b"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "png": {
+          "color_type": 2,
+          "color_model": "RGB",
+          "alpha": false,
+          "interlaced": false,
+          "transparency": false,
+          "chunks": 4,
+          "idat": {
+            "chunks": 1,
+            "bytes": 31
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "image.png",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mpeg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

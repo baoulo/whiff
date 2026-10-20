@@ -1,9 +1,13 @@
-//! `whiff-dev oracle images`: compare whiff's normalised image metadata with
-//! exiftool's MWG composite tags (`exiftool -use MWG`), field by field.
+//! Dev-time oracles: compare whiff with a reference tool, field by field.
 //!
-//! exiftool is a dev-time oracle only. A field counts when exiftool reports
-//! it; whiff agreeing scores, whiff missing or differing does not. Fields
-//! whiff finds that exiftool does not report are not scored.
+//! * `whiff-dev oracle images`: normalised image metadata against exiftool's
+//!   MWG composite tags (`exiftool -use MWG`);
+//! * `whiff-dev oracle media`: audio and video duration, sample rate and
+//!   channels against `ffprobe`.
+//!
+//! The reference tools are never shipped. A field counts when the tool
+//! reports it; whiff agreeing scores, whiff missing or differing does not.
+//! Fields whiff finds that the tool does not report are not scored.
 
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
@@ -251,6 +255,138 @@ fn compare(exp: &Value, got: &Value) -> Vec<Check> {
         push("size", expected, w, ok);
     }
     out
+}
+
+/// Compare durations (within `tolerance` seconds), sample rates and channel
+/// counts of every audio / video file under `paths` with `ffprobe`.
+/// `WHIFF_FFPROBE` overrides the binary. Fails if durations agree on less
+/// than `min` percent of the files ffprobe gives one for.
+pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Result<(), String> {
+    let files = collect(paths)?;
+    let engine = Engine::new();
+    let bin = std::env::var("WHIFF_FFPROBE").unwrap_or_else(|_| "ffprobe".into());
+    let mut tally: BTreeMap<&str, (u64, u64)> = BTreeMap::new();
+    let mut misses = Vec::new();
+    let mut compared = 0;
+    let mut untrimmed_only = 0u64;
+    for file in &files {
+        let report = engine.extract_path(file).map_err(|e| format!("{}: {e}", file.display()))?;
+        let family = report.identification.family.as_deref().unwrap_or("");
+        if family != "audio" && family != "video" {
+            continue;
+        }
+        let Some(expected) = ffprobe(&bin, file)? else { continue };
+        compared += 1;
+        let media = report.physical.media.as_ref();
+        let stream =
+            media.and_then(|m| m.streams.iter().find(|s| s.get("type").and_then(Value::as_str) == Some("audio")));
+        let mut check = |field: &'static str, want: String, got: Option<String>, ok: bool| {
+            let t = tally.entry(field).or_default();
+            t.0 += 1;
+            if ok {
+                t.1 += 1;
+            } else {
+                misses.push((file.clone(), Check { field, ok, expected: want, got: got.unwrap_or_default() }));
+            }
+        };
+        if let Some(d) = expected.duration {
+            let got = media.and_then(|m| m.duration_s);
+            // ffprobe keeps the encoder priming and padding that a CAF packet
+            // table or an MP4 edit list tells whiff to trim; either length agrees.
+            let exact = got.is_some_and(|g| (g - d).abs() <= tolerance);
+            let untrimmed = !exact && untrimmed(&report).is_some_and(|u| (u - d).abs() <= tolerance);
+            if untrimmed {
+                untrimmed_only += 1;
+            }
+            check("duration", format!("{d:.3}"), got.map(|g| format!("{g:.3}")), exact || untrimmed);
+        }
+        let field = |k: &str| stream.and_then(|s| s.get(k)).and_then(Value::as_u64);
+        if let Some(r) = expected.sample_rate {
+            let got = field("sample_rate_hz");
+            // ffprobe gives DSD's byte rate (one byte holds eight 1-bit samples).
+            let dsd = stream
+                .and_then(|s| s.get("codec"))
+                .and_then(Value::as_str)
+                .is_some_and(|c| c.starts_with("dsd") || c == "dst");
+            let want = if dsd { r * 8 } else { r };
+            check("sample_rate", want.to_string(), got.map(|g| g.to_string()), got == Some(want));
+        }
+        if let Some(c) = expected.channels {
+            let got = field("channels");
+            check("channels", c.to_string(), got.map(|g| g.to_string()), got == Some(c));
+        }
+    }
+    if compared == 0 {
+        return Err(format!("ffprobe gave nothing to compare (is `{bin}` installed? set WHIFF_FFPROBE)"));
+    }
+    println!("{:<12} {:>7} {:>7} {:>8}", "field", "checked", "agree", "rate");
+    for (field, (n, ok)) in &tally {
+        println!(
+            "{:<12} {n:>7} {ok:>7} {:>7.1}%{}",
+            field,
+            rate(*ok, *n),
+            if *field == "duration" { " *" } else { "" }
+        );
+    }
+    let (n, ok) = tally.get("duration").copied().unwrap_or_default();
+    let overall = rate(ok, n);
+    println!(
+        "\n{compared} files; durations (*) agree within {tolerance} s on {overall:.1}% ({ok}/{n}), minimum {min}%"
+    );
+    if untrimmed_only > 0 {
+        println!("{untrimmed_only} of them agree only with priming and padding left in (ffprobe's media length)");
+    }
+    let shown = if verbose { misses.len() } else { misses.len().min(25) };
+    if shown > 0 {
+        println!(
+            "\ndisagreements{}:",
+            if shown < misses.len() { format!(" (first {shown} of {})", misses.len()) } else { String::new() }
+        );
+        for (file, c) in misses.iter().take(shown) {
+            println!("  {} {}: ffprobe {:?}, whiff {:?}", file.display(), c.field, c.expected, c.got);
+        }
+    }
+    if n > 0 && overall < min { Err(format!("duration agreement {overall:.1}% is below {min}%")) } else { Ok(()) }
+}
+
+/// The length with encoder priming and padding left in: a CAF's packet
+/// table totals, or the longest MP4 track's media duration.
+fn untrimmed(report: &whiff::Report) -> Option<f64> {
+    if let Some(t) = report.format.get("caf").and_then(|c| c.get("packet_table")) {
+        let frames = t["valid_frames"].as_u64()? + t["priming_frames"].as_u64()? + t["remainder_frames"].as_u64()?;
+        let rate = report.physical.media.as_ref()?.streams.first()?.get("sample_rate_hz")?.as_u64()?;
+        return (rate > 0).then(|| frames as f64 / rate as f64);
+    }
+    let tracks = report.format.get(&report.identification.format)?.get("tracks")?.as_array()?;
+    tracks.iter().filter_map(|t| t["duration_s"].as_f64()).reduce(f64::max)
+}
+
+/// What ffprobe reports for a file.
+struct Probe {
+    duration: Option<f64>,
+    sample_rate: Option<u64>,
+    channels: Option<u64>,
+}
+
+/// ffprobe's format duration and first audio stream, or `None` if it cannot read the file.
+fn ffprobe(bin: &str, file: &Path) -> Result<Option<Probe>, String> {
+    let output = Command::new(bin)
+        .args(["-v", "error", "-of", "json", "-show_entries", "format=duration:stream=codec_type,sample_rate,channels"])
+        .arg(file)
+        .output()
+        .map_err(|e| format!("cannot run `{bin}` ({e}); install ffmpeg or set WHIFF_FFPROBE"))?;
+    if !output.status.success() {
+        return Ok(None);
+    }
+    let v: Value = serde_json::from_slice(&output.stdout).map_err(|e| format!("ffprobe output: {e}"))?;
+    let num = |v: Option<&Value>| v.and_then(|x| x.as_str().and_then(|s| s.parse::<f64>().ok()).or_else(|| x.as_f64()));
+    let audio = v["streams"].as_array().and_then(|s| s.iter().find(|s| s["codec_type"] == "audio"));
+    Ok(Some(Probe {
+        duration: num(v.pointer("/format/duration")).filter(|d| *d > 0.0),
+        #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)] // sample rates are small integers
+        sample_rate: num(audio.and_then(|a| a.get("sample_rate"))).map(|r| r as u64),
+        channels: audio.and_then(|a| a["channels"].as_u64()),
+    }))
 }
 
 /// What `oracle images` compares when given no paths.

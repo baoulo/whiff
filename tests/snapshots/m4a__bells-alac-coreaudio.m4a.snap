@@ -1,0 +1,168 @@
+---
+source: src/formats/audio/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-alac-coreaudio.m4a",
+    "stem": "bells-alac-coreaudio",
+    "extension": "m4a"
+  },
+  "identification": {
+    "format": "m4a",
+    "name": "MPEG-4 audio",
+    "mime": "audio/mp4",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 56811
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-19T20:30:26Z",
+        "source": "mp4.mvhd.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-19T20:30:26Z",
+        "source": "mp4.mvhd.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-19T20:30:26Z",
+    "latest": "2026-10-19T20:30:26Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 56811,
+    "entropy": 7.504,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 302992,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "alac",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 16,
+          "bitrate_bps": 267087,
+          "samples": 66150
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "6e26c2025ec4dcb7360fea17dd5998f9cdd5dd4a1c5890de9e8ddb86b7248362",
+    "blake3": "3913705fed9802f5d564d6d4029809a9ff4d6ba62a4a65584f3fc71b323461c2"
+  },
+  "content": {},
+  "metadata": {
+    "itunes": {
+      "----:com.apple.iTunes:iTunSMPB": " 00000000 00000000 00000D9A 0000000000010266 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000"
+    }
+  },
+  "format": {
+    "m4a": {
+      "major_brand": "M4A",
+      "compatible_brands": [
+        "M4A",
+        "mp42",
+        "isom"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "fragmented": false,
+      "faststart": true,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "soun",
+          "codec": "alac",
+          "language": null,
+          "duration_s": 1.5,
+          "enabled": true
+        }
+      ],
+      "media_data_bytes": 52715,
+      "tag_formats": [
+        "itunes"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

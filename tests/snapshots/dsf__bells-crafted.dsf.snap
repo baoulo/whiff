@@ -1,0 +1,162 @@
+---
+source: src/formats/audio/dsd.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-crafted.dsf",
+    "stem": "bells-crafted",
+    "extension": "dsf"
+  },
+  "identification": {
+    "format": "dsf",
+    "name": "DSD Stream File",
+    "mime": "audio/dsf",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.dsd"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 73899
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "id3.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 73899,
+    "entropy": 0.032,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 0.1,
+      "bitrate_bps": 5911920,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "dsd",
+          "sample_rate_hz": 2822400,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 1,
+          "bitrate_bps": 5644800,
+          "samples": 282240
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "2662538bb8f83a8d8009df76cf74dfea0881c56eab415a0006cd5579c8055b71",
+    "blake3": "f925beea01c3e533a1ee14c442e6cfb6e054808276040ae5caba8b7a21e00a51"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "metadata": {
+    "id3": {
+      "TIT2": "Harbour Bells",
+      "TPE1": "Saltmere Brass Band",
+      "TDRC": "2024"
+    }
+  },
+  "format": {
+    "dsf": {
+      "format_version": 1,
+      "block_bytes_per_channel": 4096,
+      "dsd_rate": "DSD64",
+      "id3v2": {
+        "version": "2.4.0",
+        "frames": [
+          "TIT2",
+          "TPE1",
+          "TDRC"
+        ]
+      },
+      "tag_formats": [
+        "id3v2.4"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "date": "2024"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.dsd",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

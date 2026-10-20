@@ -1,0 +1,192 @@
+---
+source: src/formats/audio/ogg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-flac-ffmpeg.oga",
+    "stem": "bells-flac-ffmpeg",
+    "extension": "oga"
+  },
+  "identification": {
+    "format": "ogg",
+    "name": "Ogg audio",
+    "mime": "audio/ogg",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.ogg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11405
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "vorbis.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 11405,
+    "entropy": 7.007,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 60827,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "flac",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "c11943673409ac60e9c1f145a2867646839419d92a982d2ff20d0d2f7c6e8f02",
+    "blake3": "a7b436fc81799fe8aa06c58cb37e5598267e1c057c23c6546c509eb07e0e0724"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "vorbis": {
+      "vendor": "ffmpeg",
+      "ENCODER": "Lavc flac",
+      "PUBLISHER": "Example Records",
+      "TITLE": "Harbour Bells",
+      "ARTIST": "Saltmere Brass Band",
+      "ALBUM": "Tides of Saltmere",
+      "ALBUMARTIST": "Saltmere Brass Band",
+      "DATE": "2024",
+      "TRACKNUMBER": "3/9",
+      "DISCNUMBER": "1/2",
+      "GENRE": "Brass",
+      "COMPOSER": "Mira Castell",
+      "DESCRIPTION": "Recorded at the harbour wall",
+      "COPYRIGHT": "2024 Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "ogg": {
+      "streaminfo": {
+        "min_block_samples": 2304,
+        "max_block_samples": 2304,
+        "min_frame_bytes": 0,
+        "max_frame_bytes": 4629,
+        "audio_md5": null
+      },
+      "logical_streams": [
+        {
+          "serial": 0,
+          "codec": "flac"
+        }
+      ],
+      "tag_formats": [
+        "vorbis"
+      ],
+      "encoder": "ffmpeg",
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "track_total": 9,
+        "disc": 1,
+        "disc_total": 2,
+        "date": "2024",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "label": "Example Records",
+        "copyright": "2024 Saltmere Brass Band",
+        "description": "Recorded at the harbour wall"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.ogg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

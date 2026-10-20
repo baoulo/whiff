@@ -1,0 +1,146 @@
+---
+source: src/formats/audio/caf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-aac-coreaudio.caf",
+    "stem": "bells-aac-coreaudio",
+    "extension": "caf"
+  },
+  "identification": {
+    "format": "caf",
+    "name": "Core Audio Format",
+    "mime": "audio/x-caf",
+    "family": "audio",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.caf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9673
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 9673,
+    "entropy": 5.379,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.499958,
+      "bitrate_bps": 51591,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "aac",
+          "sample_rate_hz": 24000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 29745,
+          "samples": 35999
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "ecfcaff8e55941630cef5d0bb6fd99bc7679c5eafe22eb828e002c8a8e970764",
+    "blake3": "66b68576beaa9701c55cba5806437dc1b1c714a039e6c549870374fa8bde4426"
+  },
+  "content": {},
+  "metadata": {
+    "caf_info": {
+      "approximate duration in seconds": "1.493",
+      "source bit depth": "I16"
+    }
+  },
+  "format": {
+    "caf": {
+      "channel_layout_tag": 6619138,
+      "packet_table": {
+        "packets": 38,
+        "valid_frames": 35999,
+        "priming_frames": 2112,
+        "remainder_frames": 801
+      },
+      "chunks": [
+        "desc",
+        "kuki",
+        "chan",
+        "info",
+        "pakt",
+        "free",
+        "data"
+      ],
+      "format_id": "aac",
+      "bytes_per_packet": 0,
+      "frames_per_packet": 1024,
+      "tag_formats": [
+        "caf_info"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.caf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

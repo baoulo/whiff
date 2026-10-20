@@ -1,0 +1,187 @@
+---
+source: src/formats/audio/ogg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-vorbis-ffmpeg.ogg",
+    "stem": "bells-vorbis-ffmpeg",
+    "extension": "ogg"
+  },
+  "identification": {
+    "format": "ogg",
+    "name": "Ogg audio",
+    "mime": "audio/ogg",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.ogg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9669
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "vorbis.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 9669,
+    "entropy": 6.303,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 51568,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "vorbis",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 96000,
+          "bitrate_mode": "vbr",
+          "samples": 66150
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "0002a62c36e29a709770cc4398b1933db2d27d85f8b06e2b0cf01a163cb84921",
+    "blake3": "e76390559dd1fc4770600c8fff3651e41d8601a5e9ec39f7c9ddeb3b87ec98db"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "vorbis": {
+      "vendor": "ffmpeg",
+      "ENCODER": "Lavc libvorbis",
+      "PUBLISHER": "Example Records",
+      "TITLE": "Harbour Bells",
+      "ARTIST": "Saltmere Brass Band",
+      "ALBUM": "Tides of Saltmere",
+      "ALBUMARTIST": "Saltmere Brass Band",
+      "DATE": "2024",
+      "TRACKNUMBER": "3/9",
+      "DISCNUMBER": "1/2",
+      "GENRE": "Brass",
+      "COMPOSER": "Mira Castell",
+      "DESCRIPTION": "Recorded at the harbour wall",
+      "COPYRIGHT": "2024 Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "ogg": {
+      "vorbis_version": 0,
+      "logical_streams": [
+        {
+          "serial": 0,
+          "codec": "vorbis"
+        }
+      ],
+      "tag_formats": [
+        "vorbis"
+      ],
+      "encoder": "ffmpeg",
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "track_total": 9,
+        "disc": 1,
+        "disc_total": 2,
+        "date": "2024",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "label": "Example Records",
+        "copyright": "2024 Saltmere Brass Band",
+        "description": "Recorded at the harbour wall"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.ogg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

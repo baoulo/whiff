@@ -1,0 +1,182 @@
+---
+source: src/formats/audio/wavpack.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.wv",
+    "stem": "bells-ffmpeg",
+    "extension": "wv"
+  },
+  "identification": {
+    "format": "wv",
+    "name": "WavPack audio",
+    "mime": "audio/wavpack",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.wavpack"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 17235
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "ape.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 17235,
+    "entropy": 7.917,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 91920,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "wavpack",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "bitrate_bps": 89717,
+          "bitrate_mode": "vbr",
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "d8247502992c7f4ed685b07a58d72bdae9ac0d3a231e9cab861e0e39beeacef6",
+    "blake3": "3af730be27a5e96aca4de1602e198ab19003a77feb49d6e90754186252bccb00"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "ape": {
+      "publisher": "Example Records",
+      "title": "Harbour Bells",
+      "artist": "Saltmere Brass Band",
+      "album": "Tides of Saltmere",
+      "album_artist": "Saltmere Brass Band",
+      "date": "2024",
+      "track": "3/9",
+      "disc": "1/2",
+      "genre": "Brass",
+      "composer": "Mira Castell",
+      "comment": "Recorded at the harbour wall",
+      "copyright": "2024 Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "wv": {
+      "version": "0x410",
+      "mode": "lossless",
+      "float": false,
+      "joint_stereo": false,
+      "tag_formats": [
+        "apev2"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "track_total": 9,
+        "disc": 1,
+        "disc_total": 2,
+        "date": "2024",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "label": "Example Records",
+        "copyright": "2024 Saltmere Brass Band",
+        "comment": "Recorded at the harbour wall"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.wavpack",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

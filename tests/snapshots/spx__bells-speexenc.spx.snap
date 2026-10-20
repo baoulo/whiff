@@ -1,0 +1,168 @@
+---
+source: src/formats/audio/ogg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-speexenc.spx",
+    "stem": "bells-speexenc",
+    "extension": "spx"
+  },
+  "identification": {
+    "format": "spx",
+    "name": "Speex audio",
+    "mime": "audio/speex",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "spx",
+        "confidence": 0.97
+      },
+      {
+        "format": "ogg",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "audio.ogg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7674
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 7674,
+    "entropy": 6.486,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 40928,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "speex",
+          "profile": "wideband",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_mode": "cbr",
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "77178b1765d58d4ba69d68cee9efe5642043e0517fa322f5a67fddb0815a7413",
+    "blake3": "e720d855a4edea138855b3d176bb4fd5fe9e9fbb589a332a18e3951b381aae22"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "vorbis": {
+      "vendor": "Encoded with Speex 1.2.1",
+      "TITLE": "Harbour Bells",
+      "AUTHOR": "Saltmere Brass Band",
+      "GENRE": "Brass"
+    }
+  },
+  "format": {
+    "spx": {
+      "speex": {
+        "version": "1.2.1",
+        "frame_samples": 320
+      },
+      "logical_streams": [
+        {
+          "serial": 669186273,
+          "codec": "speex"
+        }
+      ],
+      "tag_formats": [
+        "vorbis"
+      ],
+      "encoder": "Encoded with Speex 1.2.1",
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "genre": "Brass"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.ogg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

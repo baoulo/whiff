@@ -1,0 +1,122 @@
+---
+source: src/formats/audio/other.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.au",
+    "stem": "bells-ffmpeg",
+    "extension": "au"
+  },
+  "identification": {
+    "format": "au",
+    "name": "Sun / NeXT audio",
+    "mime": "audio/basic",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.other"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12032
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12032,
+    "entropy": 5.736,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 64171,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "mulaw",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 8,
+          "bitrate_bps": 64000,
+          "samples": 12000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "4360a75eafe385f85707837dc57f3cf42fd327c5d53390cc4d9662bfe15ae8c6",
+    "blake3": "0662bd9f634dd654d572588d219464d8206d03def584554de8a3dbc8bd892a77"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "au": {
+      "encoding": 1,
+      "data_offset_bytes": 32
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.other",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

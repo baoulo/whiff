@@ -89,6 +89,20 @@ enum OracleFamily {
         #[arg(long)]
         verbose: bool,
     },
+    /// Audio / video duration, sample rate and channels against `ffprobe`.
+    Media {
+        /// Files or directories (default: tests/fixtures).
+        paths: Vec<PathBuf>,
+        /// Largest duration difference that agrees, in seconds.
+        #[arg(long, default_value_t = 0.1)]
+        tolerance: f64,
+        /// Minimum duration agreement, in percent.
+        #[arg(long, default_value_t = 98.0)]
+        min: f64,
+        /// List every disagreement, not the first 25.
+        #[arg(long)]
+        verbose: bool,
+    },
 }
 
 fn root() -> &'static Path {
@@ -111,6 +125,10 @@ fn main() -> ExitCode {
         Cmd::Oracle { family: OracleFamily::Images { paths, min, verbose } } => {
             let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
             oracle::images(&paths, min, verbose)
+        }
+        Cmd::Oracle { family: OracleFamily::Media { paths, tolerance, min, verbose } } => {
+            let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
+            oracle::media(&paths, tolerance, min, verbose)
         }
     };
     match result {

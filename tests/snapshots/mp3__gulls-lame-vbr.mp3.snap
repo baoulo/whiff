@@ -1,0 +1,187 @@
+---
+source: src/formats/audio/mpeg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gulls-lame-vbr.mp3",
+    "stem": "gulls-lame-vbr",
+    "extension": "mp3"
+  },
+  "identification": {
+    "format": "mp3",
+    "name": "MP3 audio",
+    "mime": "audio/mpeg",
+    "family": "audio",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "audio.mpeg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3767
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3767,
+    "entropy": 7.09,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.567347,
+      "bitrate_bps": 19227,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "profile": "MPEG-2 Layer III",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 18059,
+          "bitrate_mode": "vbr",
+          "samples": 34560
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "95487aa31656705beac8aee01be56e4ad2b227aea3918be8147066d0f878bb8a",
+    "blake3": "8787ee8dc299334ec382a074492e93ab5ba09aec91adbf3d0578876ac6dd3beb"
+  },
+  "content": {
+    "title": "Gull Song",
+    "authors": [
+      "Mira Castell"
+    ]
+  },
+  "metadata": {
+    "id3": {
+      "TSSE": "LAME 64bits version 3.100 (http://lame.sf.net)",
+      "TIT2": "Gull Song",
+      "TPE1": "Mira Castell",
+      "TBPM": "96",
+      "TKEY": "Am",
+      "TXXX:ORIGIN": "Saltmere",
+      "TLEN": "1500"
+    }
+  },
+  "format": {
+    "mp3": {
+      "id3v2": {
+        "version": "2.3.0",
+        "frames": [
+          "TSSE",
+          "TIT2",
+          "TPE1",
+          "TBPM",
+          "TKEY",
+          "TXXX",
+          "TLEN"
+        ]
+      },
+      "mpeg_version": "2",
+      "layer": 3,
+      "channel_mode": "mono",
+      "crc_protected": false,
+      "original": true,
+      "copyright_bit": false,
+      "frames": 60,
+      "audio_bytes": 3538,
+      "vbr_header": {
+        "kind": "xing",
+        "frames": 60,
+        "bytes": 3538,
+        "toc": true,
+        "quality": 70
+      },
+      "lame": {
+        "encoder": "LAME3.100",
+        "vbr_method": "vbr",
+        "lowpass_hz": 11000,
+        "replaygain_track_gain_db": 2.4,
+        "encoder_delay_samples": 576,
+        "encoder_padding_samples": 909,
+        "music_length_bytes": 3538
+      },
+      "tag_formats": [
+        "id3v2.3"
+      ],
+      "encoder": "LAME 64bits version 3.100 (http://lame.sf.net)",
+      "tags": {
+        "title": "Gull Song",
+        "artist": "Mira Castell",
+        "bpm": 96,
+        "key": "Am",
+        "replaygain_track_gain_db": 2.4
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mpeg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
