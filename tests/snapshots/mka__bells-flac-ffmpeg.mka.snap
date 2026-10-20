@@ -1,0 +1,173 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-flac-ffmpeg.mka",
+    "stem": "bells-flac-ffmpeg",
+    "extension": "mka"
+  },
+  "identification": {
+    "format": "mka",
+    "name": "Matroska audio",
+    "mime": "audio/x-matroska",
+    "family": "audio",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mka",
+        "confidence": 0.99
+      },
+      {
+        "format": "mkv",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12862
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "matroska.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12862,
+    "entropy": 6.312,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 102896,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "flac",
+          "sample_rate_hz": 44100,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "default": false,
+          "track": 1
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "38d63e7d000f2584dbf0ffdff16c3ebce174fdb1699288baa32b030fd061baeb",
+    "blake3": "f23d94b29360d6352ecfc17172183fd03da73acdbd921b35f1924a03797dc673"
+  },
+  "content": {
+    "title": "Harbour Bells"
+  },
+  "metadata": {
+    "matroska": {
+      "ARTIST": "Saltmere Brass Band",
+      "ALBUM": "Tides of Saltmere",
+      "PART_NUMBER": "3",
+      "DATE": "2024"
+    }
+  },
+  "format": {
+    "mka": {
+      "doc_type": "matroska",
+      "doc_type_version": 4,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "Lavf",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "audio",
+          "codec_id": "A_FLAC",
+          "statistics": {
+            "ENCODER": "Lavc flac",
+            "DURATION": "00:00:01.000000000"
+          }
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "Lavf",
+      "tags": {
+        "title": "Harbour Bells",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "date": "2024"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

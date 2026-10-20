@@ -145,7 +145,7 @@ impl Frame {
         }) as usize
     }
 
-    fn channels(&self) -> u16 {
+    pub(crate) fn channels(&self) -> u16 {
         if self.mode == 3 { 1 } else { 2 }
     }
 

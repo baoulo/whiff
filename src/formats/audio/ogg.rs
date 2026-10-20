@@ -1,6 +1,7 @@
 //! Ogg: Vorbis, Opus, Speex and FLAC streams (identification and comment
-//! headers, reassembled across pages), the logical streams of a multiplexed
-//! file, and the duration from the last page's granule position.
+//! headers, reassembled across pages), Theora video (Ogg video, `.ogv`),
+//! the logical streams of a multiplexed file, and the duration from the
+//! last page's granule position.
 //!
 //! Specifications: RFC 3533 (Ogg), Vorbis I §4.2, RFC 7845 (Ogg Opus),
 //! the Speex manual (Ogg mapping), the FLAC-in-Ogg mapping (RFC 9639 §10.1).
@@ -9,6 +10,7 @@ use std::collections::BTreeMap;
 
 use serde_json::{Value, json};
 
+use super::super::video::{self, codec as video_codec};
 use super::{Stream, Tags, flac, vorbis};
 use crate::plugin::{ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source};
 
@@ -37,6 +39,15 @@ static META: ExtractorMeta = ExtractorMeta {
             mimes: &["audio/opus", "audio/ogg"],
             extensions: &["opus"],
             magic: &[Magic::at(28, b"OpusHead")],
+            parent: Some("ogg"),
+        },
+        FormatSpec {
+            id: "ogv",
+            name: "Ogg video",
+            family: "video",
+            mimes: &["video/ogg"],
+            extensions: &["ogv", "ogm"],
+            magic: &[Magic::at(28, b"\x80theora")],
             parent: Some("ogg"),
         },
         FormatSpec {
@@ -121,10 +132,27 @@ impl Extractor for Ogg {
         let last = last_granules(src, cx)?;
         let mut tags = Tags::default();
         let mut list = Vec::new();
+        for s in streams.values_mut() {
+            s.codec = codec(s.packets.first().map_or(&[][..], Vec::as_slice));
+        }
+        if cx.format_id() != "ogv" && streams.values().any(|s| s.codec == "theora") {
+            cx.redirect("ogv");
+            return Ok(());
+        }
+        // Theora first: its length counts towards the file's duration.
+        let mut video_s = None;
+        for serial in &order {
+            let s = &streams[serial];
+            if s.codec == "theora"
+                && video_s.is_none()
+                && let Some(d) = theora(s, last.get(serial).copied(), cx, &mut tags)
+            {
+                video_s = Some(d);
+            }
+        }
         let mut main_done = false;
         for serial in &order {
             let s = streams.get_mut(serial).expect("tracked");
-            s.codec = codec(s.packets.first().map_or(&[][..], Vec::as_slice));
             list.push(json!({ "serial": serial, "codec": s.codec }));
             if main_done || !matches!(s.codec, "vorbis" | "opus" | "speex" | "flac") {
                 continue;
@@ -133,11 +161,13 @@ impl Extractor for Ogg {
             if s.overflow {
                 cx.warn("header packet larger than 16 MiB not read");
             }
-            audio_stream(s, last.get(serial).copied(), src.len(), cx, &mut tags);
+            audio_stream(s, last.get(serial).copied(), video_s, src.len(), cx, &mut tags);
         }
         cx.format_set("logical_streams", Value::Array(list));
-        if !main_done {
+        if !main_done && video_s.is_none() {
             cx.warn("no audio stream recognised");
+        } else if !main_done && let Some(d) = video_s {
+            video::finish(cx, Vec::new(), Some(d), src.len());
         }
         tags.report(cx);
         Ok(())
@@ -228,8 +258,33 @@ fn codec(first: &[u8]) -> &'static str {
     }
 }
 
+/// A Theora stream: its map (written now) and its duration.
+fn theora(s: &Logical, last: Option<i64>, cx: &mut Context<'_>, tags: &mut Tags) -> Option<f64> {
+    let (mut v, shift, one_based) = video_codec::theora(s.packets.first()?)?;
+    let mut duration = None;
+    if let (Some(g), Some(fps)) = (last.and_then(|g| u64::try_from(g).ok()), v.fps)
+        && shift < 32
+    {
+        let frames = (g >> shift) + (g & ((1 << shift) - 1)) + u64::from(!one_based);
+        v.frames = Some(frames);
+        duration = Some(frames as f64 / fps).filter(|d| *d > 0.0);
+    }
+    if let Some(c) = s.packets.get(1).and_then(|c| c.strip_prefix(b"\x81theora")) {
+        vorbis::comments(c, cx, tags);
+    }
+    video::finish(cx, vec![v.to_map()], None, 0);
+    duration
+}
+
 #[allow(clippy::too_many_lines)] // one arm per codec
-fn audio_stream(s: &Logical, last: Option<i64>, file_len: u64, cx: &mut Context<'_>, tags: &mut Tags) {
+fn audio_stream(
+    s: &Logical,
+    last: Option<i64>,
+    video_s: Option<f64>,
+    file_len: u64,
+    cx: &mut Context<'_>,
+    tags: &mut Tags,
+) {
     let id = s.packets.first().map_or(&[][..], Vec::as_slice);
     let comments = s.packets.get(1).map_or(&[][..], Vec::as_slice);
     let mut stream = Stream::new(s.codec);
@@ -342,10 +397,14 @@ fn audio_stream(s: &Logical, last: Option<i64>, file_len: u64, cx: &mut Context<
         }
         _ => None,
     };
+    let duration = match (duration, video_s) {
+        (Some(a), Some(v)) => Some(a.max(v)),
+        (a, v) => a.or(v),
+    };
     stream.report(cx, duration, file_len);
 }
 
 #[cfg(test)]
 mod tests {
-    crate::fixture_tests!("ogg", "opus", "spx");
+    crate::fixture_tests!("ogg", "opus", "spx", "ogv");
 }

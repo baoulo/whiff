@@ -1,0 +1,146 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-subtitles-ffmpeg.mks",
+    "stem": "ferry-subtitles-ffmpeg",
+    "extension": "mks"
+  },
+  "identification": {
+    "format": "mks",
+    "name": "Matroska subtitles",
+    "mime": "application/x-matroska",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mks",
+        "confidence": 0.99
+      },
+      {
+        "format": "mkv",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 555
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 555,
+    "entropy": 5.836,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 0.95,
+      "bitrate_bps": 4674,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "subrip",
+          "language": "eng",
+          "default": false,
+          "track": 1
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "703b1e2ffe605ba10ca2dfef7c38768e4b9620929352c0aa156dd4509ba15b07",
+    "blake3": "64254bfd7e5a7da7d1c79ff67ec2a4e904bebe72376e669127a6744e78078d27"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mks": {
+      "doc_type": "matroska",
+      "doc_type_version": 4,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "Lavf",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "subtitle",
+          "codec_id": "S_TEXT/UTF8",
+          "statistics": {
+            "ENCODER": "Lavc srt",
+            "DURATION": "00:00:00.950000000"
+          }
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "Lavf"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

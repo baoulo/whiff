@@ -89,7 +89,7 @@ enum OracleFamily {
         #[arg(long)]
         verbose: bool,
     },
-    /// Audio / video duration, sample rate and channels against `ffprobe`.
+    /// Audio / video duration, sample rate, channels, video codec, size and frame rate against `ffprobe`.
     Media {
         /// Files or directories (default: tests/fixtures).
         paths: Vec<PathBuf>,

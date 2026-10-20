@@ -153,14 +153,14 @@ fn stream_map(s: &Stream) -> serde_json::Map<String, serde_json::Value> {
 }
 
 /// End each chapter where the next starts (the last at the end of the file).
-fn close_chapters(chapters: &mut [Chapter], duration: Option<f64>) {
+pub(crate) fn close_chapters(chapters: &mut [Chapter], duration: Option<f64>) {
     let starts: Vec<f64> = chapters.iter().map(|c| c.start_s).skip(1).collect();
     for (i, c) in chapters.iter_mut().enumerate() {
         c.end_s = starts.get(i).copied().or(duration).filter(|e| *e > c.start_s);
     }
 }
 
-fn codec(t: &mp4::Track) -> String {
+pub(crate) fn codec(t: &mp4::Track) -> String {
     match (t.codec.as_str(), t.profile.as_deref()) {
         ("mp4a", Some("mp3")) | (".mp3", _) => "mp3",
         ("mp4a", Some("ac3")) | ("ac-3", _) => "ac3",
@@ -222,7 +222,7 @@ fn quicktime_key(key: &str) -> Option<&'static str> {
     })
 }
 
-fn items(list: &[Item], cx: &mut Context<'_>, tags: &mut Tags) {
+pub(crate) fn items(list: &[Item], cx: &mut Context<'_>, tags: &mut Tags) {
     if list.iter().any(|i| !i.key.starts_with("udta:") && !i.key.starts_with("com.")) {
         tags.system("itunes");
     }
@@ -320,7 +320,7 @@ fn items(list: &[Item], cx: &mut Context<'_>, tags: &mut Tags) {
 }
 
 /// The iTunes media kind (`stik`).
-fn media_kind(n: i64) -> &'static str {
+pub(crate) fn media_kind(n: i64) -> &'static str {
     match n {
         0 | 1 => "music",
         2 => "audiobook",

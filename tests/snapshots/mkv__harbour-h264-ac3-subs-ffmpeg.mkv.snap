@@ -1,0 +1,397 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-h264-ac3-subs-ffmpeg.mkv",
+    "stem": "harbour-h264-ac3-subs-ffmpeg",
+    "extension": "mkv"
+  },
+  "identification": {
+    "format": "mkv",
+    "name": "Matroska video",
+    "mime": "video/x-matroska",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 22908
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "matroska.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Harbour Films",
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 22908,
+    "entropy": 7.921,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 183264,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "codec_tag": "V_MPEG4/ISO/AVC",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "default": false,
+          "track": 1
+        },
+        {
+          "type": "audio",
+          "codec": "ac3",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "language": "eng",
+          "default": false,
+          "track": 2
+        },
+        {
+          "type": "subtitle",
+          "codec": "subrip",
+          "language": "fra",
+          "title": "Sous-titres",
+          "default": false,
+          "forced": true,
+          "track": 3
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "19e5ebb454cb53ded52838ce87dacd7393002fa300065e2e84477665936a8ff1",
+    "blake3": "16bb8189590627e9111154030279958d542c510fe367b5ac0f22256704e49a1d"
+  },
+  "content": {
+    "title": "Saltmere Harbour at Dawn",
+    "description": "A test pattern filmed nowhere",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Breakwater"
+      },
+      {
+        "level": 1,
+        "text": "Ferry Steps"
+      }
+    ],
+    "tags": [
+      "Documentary"
+    ]
+  },
+  "metadata": {
+    "matroska": {
+      "ARTIST": "Ana Lighthouse",
+      "COMMENT": "A test pattern filmed nowhere",
+      "DATE": "2024-04-01",
+      "GENRE": "Documentary",
+      "COPYRIGHT": "2024 Saltmere Harbour Films"
+    }
+  },
+  "format": {
+    "mkv": {
+      "doc_type": "matroska",
+      "doc_type_version": 4,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "Lavf",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "video",
+          "codec_id": "V_MPEG4/ISO/AVC",
+          "statistics": {
+            "ENCODER": "Lavc libx264",
+            "DURATION": "00:00:01.000000000"
+          }
+        },
+        {
+          "number": 2,
+          "type": "audio",
+          "codec_id": "A_AC3",
+          "statistics": {
+            "ENCODER": "Lavc ac3",
+            "DURATION": "00:00:01.000000000"
+          }
+        },
+        {
+          "number": 3,
+          "type": "subtitle",
+          "codec_id": "S_TEXT/UTF8",
+          "statistics": {
+            "ENCODER": "Lavc srt",
+            "DURATION": "00:00:00.950000000"
+          }
+        }
+      ],
+      "attachments": [
+        {
+          "name": "cover.jpg",
+          "mime": "image/jpeg",
+          "size_bytes": 229
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "Lavf",
+      "tags": {
+        "title": "Saltmere Harbour at Dawn",
+        "artist": "Ana Lighthouse",
+        "date": "2024-04-01",
+        "genre": "Documentary",
+        "copyright": "2024 Saltmere Harbour Films",
+        "comment": "A test pattern filmed nowhere"
+      },
+      "chapter_count": 2,
+      "chapters": [
+        {
+          "start_s": 0.0,
+          "end_s": 0.5,
+          "title": "Breakwater"
+        },
+        {
+          "start_s": 0.5,
+          "end_s": 1.0,
+          "title": "Ferry Steps"
+        }
+      ],
+      "cover_art": [
+        {
+          "mime": "image/jpeg",
+          "picture_type": "front_cover",
+          "description": "cover.jpg",
+          "size_bytes": 229
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "cover.jpg",
+        "stem": "cover",
+        "extension": "jpg"
+      },
+      "identification": {
+        "format": "jpeg",
+        "name": "JPEG image",
+        "mime": "image/jpeg",
+        "family": "image.raster",
+        "confidence": 0.77,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "image.jpeg"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 229
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 229,
+        "entropy": 3.996,
+        "entropy_scope": "file",
+        "image": {
+          "width": 32,
+          "height": 32,
+          "bit_depth": 8,
+          "channels": 3,
+          "color_space": "YCbCr"
+        }
+      },
+      "integrity": {
+        "sha256": "c24ae41c628c866fb0ba97d20045e8e391b762cfa3b7f06ca141e7a519bd513f",
+        "blake3": "ff59104a8a4433719239778f07b3761fde080fd2ce0edca90a57507eea5645bb"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "jpeg": {
+          "process": "baseline",
+          "progressive": false,
+          "chroma_subsampling": "4:2:0",
+          "quality_estimate": 86,
+          "jfif": {
+            "version": "1.02",
+            "units": 0,
+            "density": [
+              1,
+              1
+            ]
+          },
+          "huffman_tables": 1,
+          "comments": [
+            "Lavc61.19.101\u0000"
+          ],
+          "segments": [
+            "APP0 JFIF",
+            "COM",
+            "DQT",
+            "DHT",
+            "SOF0",
+            "SOS"
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "image.jpeg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

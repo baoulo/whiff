@@ -2,10 +2,12 @@
 //! header, each track (handler, codec and its configuration, timescale,
 //! duration, language, sample count and size), iTunes `ilst` metadata
 //! (also keyed through QuickTime `keys`), QuickTime `©xyz`-style user data,
-//! Nero (`chpl`) and QuickTime chapter-track chapters, and the layout
-//! (fragmented, `moov` before `mdat`).
+//! Nero (`chpl`) and QuickTime chapter-track chapters, XMP, the layout
+//! (fragmented, `moov` before `mdat`) and, for fragmented files, the track
+//! durations from the movie fragments.
 //!
-//! Only the `moov` box and chapter text samples are read; media data never is.
+//! Only the `moov` and `moof` boxes and chapter text samples are read;
+//! media data never is.
 //!
 //! Specifications: ISO/IEC 14496-12 (ISO BMFF), 14496-14 (MP4), 14496-1
 //! §7.2.6 (ES descriptors), 14496-3 §1.6.2 (AudioSpecificConfig); Apple
@@ -19,8 +21,18 @@ use crate::plugin::ExtractError;
 
 /// Largest `moov` box read.
 const MAX_MOOV: u64 = 64 << 20;
-/// Top-level boxes listed.
-const MAX_TOP: usize = 4096;
+/// Top-level boxes listed (fragmented files have two per fragment).
+const MAX_TOP: usize = 1 << 16;
+/// Largest `moof` box read.
+const MAX_MOOF: u64 = 1 << 20;
+/// Largest top-level XMP `uuid` box read.
+const MAX_XMP: u64 = 4 << 20;
+/// Codec configuration boxes kept per sample entry, and their largest size.
+const MAX_CONFIGS: usize = 16;
+const MAX_CONFIG_BYTES: usize = 64 << 10;
+/// The XMP `uuid` box type (Adobe XMP specification part 3).
+const XMP_UUID: [u8; 16] =
+    [0xbe, 0x7a, 0xcf, 0xcb, 0x97, 0xa9, 0x42, 0xe8, 0x9c, 0x71, 0x99, 0x94, 0x91, 0xe3, 0xaf, 0xac];
 /// Tracks read.
 const MAX_TRACKS: usize = 256;
 /// Metadata items read.
@@ -185,6 +197,29 @@ pub struct Track {
     pub created: Option<u64>,
     /// Media time skipped by the first edit (encoder delay), in movie units.
     pub edit_media_time: Option<i64>,
+    /// Visual sample entries: the codec configuration and description
+    /// boxes (`avcC`, `hvcC`, `av1C`, `vpcC`, `colr`, `pasp`, `mdcv`, `clli`,
+    /// `dvcC`, `fiel`, `st3d`…), type and body.
+    pub configs: Vec<([u8; 4], Vec<u8>)>,
+    /// Visual sample entries: the compressor name.
+    pub compressor: Option<String>,
+    /// Visual sample entries: the pixel depth.
+    pub depth: Option<u16>,
+    /// The MPEG-4 decoder-specific info of an `esds` (a video object
+    /// sequence header for `mp4v`).
+    pub decoder_config: Option<Vec<u8>>,
+    /// The sample duration, when every sample has the same one.
+    pub sample_delta: Option<u32>,
+    /// Whether sample durations differ (variable frame rate).
+    pub variable_delta: bool,
+    /// Track name (`udta/name`).
+    pub name: Option<String>,
+    /// Protected sample entries (`encv`, `enca`): the original format.
+    pub original_format: Option<String>,
+    /// Protected sample entries: the protection scheme (`cenc`, `cbcs`…).
+    pub protection: Option<String>,
+    /// Samples and duration from the movie fragments.
+    pub fragment_samples: u64,
     sample_table: Option<SampleTable>,
 }
 
@@ -230,10 +265,15 @@ pub struct Movie {
     pub faststart: Option<bool>,
     /// Bytes of media data (`mdat` bodies).
     pub mdat_bytes: u64,
+    /// Movie fragments (`moof` boxes).
+    pub fragments: u64,
+    /// XMP packet (`moov/udta/XMP_` or a top-level XMP `uuid` box).
+    pub xmp: Option<Vec<u8>>,
 }
 
 impl Movie {
-    /// Duration in seconds (movie header, else the longest track).
+    /// Duration in seconds (movie header, else the longest track, which
+    /// for a fragmented file includes its fragments).
     pub fn duration_s(&self) -> Option<f64> {
         if self.timescale > 0 && self.duration > 0 && self.duration != u64::from(u32::MAX) {
             return Some(self.duration as f64 / f64::from(self.timescale));
@@ -251,6 +291,7 @@ pub fn read(src: &mut dyn Source) -> Result<Movie, ExtractError> {
     let mut m = Movie::default();
     let top = top_boxes(src, MAX_TOP)?;
     let mut moov = None;
+    let mut moofs = Vec::new();
     for b in &top {
         if m.top.len() < 64 {
             m.top.push(fourcc(&b.kind));
@@ -279,12 +320,27 @@ pub fn read(src: &mut dyn Source) -> Result<Movie, ExtractError> {
                     m.faststart = Some(false);
                 }
             }
-            b"moof" => m.fragmented = true,
+            b"moof" => {
+                m.fragmented = true;
+                m.fragments += 1;
+                if b.len <= MAX_MOOF {
+                    moofs.push(*b);
+                }
+            }
+            b"uuid" if m.xmp.is_none() && b.len > 16 && b.len <= MAX_XMP => {
+                let d = src.read_vec(b.at, usize::try_from(b.len).unwrap_or(0))?;
+                if d[..16] == XMP_UUID {
+                    m.xmp = Some(d[16..].to_vec());
+                }
+            }
             _ => {}
         }
     }
     let moov = moov.ok_or_else(|| ExtractError::malformed("no moov box"))?;
     parse_moov(&moov, &mut m);
+    if !moofs.is_empty() {
+        fragments(src, &moofs, &moov, &mut m)?;
+    }
     if m.chapters.is_empty() {
         chapter_track(src, &mut m);
     }
@@ -370,6 +426,9 @@ fn track(trak: &[u8]) -> Track {
                 t.edit_media_time = Some(media_time);
             }
         }
+    }
+    if let Some(name) = path(trak, &[b"udta", b"name"]) {
+        t.name = Some(mac_text(name)).filter(|n| !n.is_empty());
     }
     if let Some(chap) = path(trak, &[b"tref", b"chap"]) {
         t.chapter_tracks = chap.as_chunks::<4>().0.iter().map(|c| u32::from_be_bytes(*c)).take(16).collect();
@@ -485,6 +544,13 @@ fn sample_table(stbl: &[u8], t: &mut Track) {
                             (u32::from_be_bytes([c[0], c[1], c[2], c[3]]), u32::from_be_bytes([c[4], c[5], c[6], c[7]]))
                         })
                         .collect();
+                    // A last single sample often has a remainder duration; ignore it.
+                    let mut runs: Vec<u32> = st.times.iter().filter(|(c, _)| *c > 0).map(|&(_, d)| d).collect();
+                    if runs.len() > 1 && st.times.last().is_some_and(|(c, _)| *c == 1) {
+                        runs.pop();
+                    }
+                    t.variable_delta = runs.windows(2).any(|w| w[0] != w[1]);
+                    t.sample_delta = runs.first().copied().filter(|_| !t.variable_delta);
                 }
             }
             b"stsc" => {
@@ -570,11 +636,39 @@ fn sample_entry(entry: BoxRef<'_>, t: &mut Track) {
             {
                 t.dimensions = Some((w, h));
             }
-            if let Some(btrt) = d.get(70..).and_then(|c| find(c, b"btrt")) {
-                bitrate_box(btrt, t);
+            if let Some(name) = d.get(34..66) {
+                let n = usize::from(name[0]).min(31);
+                t.compressor = Some(mac_text(&name[1..=n])).filter(|c| !c.is_empty());
+            }
+            if let Some(depth) = d.get(66..68) {
+                t.depth = Some(u16::from_be_bytes([depth[0], depth[1]]));
+            }
+            for (kind, body) in boxes(d.get(70..).unwrap_or_default()) {
+                match &kind {
+                    b"btrt" => bitrate_box(body, t),
+                    b"esds" => esds(full(body).2, t),
+                    b"sinf" => protection(body, t),
+                    _ if t.configs.len() < MAX_CONFIGS && body.len() <= MAX_CONFIG_BYTES => {
+                        t.configs.push((kind, body.to_vec()));
+                    }
+                    _ => {}
+                }
             }
         }
         _ => {}
+    }
+}
+
+/// A protection scheme box (`sinf`): the original format (`frma`) and the
+/// scheme type (`schm`).
+fn protection(sinf: &[u8], t: &mut Track) {
+    if let Some(f) = find(sinf, b"frma") {
+        t.original_format = Some(fourcc(f));
+    }
+    if let Some(s) = find(sinf, b"schm")
+        && let Some(kind) = full(s).2.get(..4)
+    {
+        t.protection = Some(fourcc(kind));
     }
 }
 
@@ -599,6 +693,7 @@ fn audio_config(children: &[u8], t: &mut Track, depth: usize) {
                 }
             }
             b"btrt" => bitrate_box(body, t),
+            b"sinf" => protection(body, t),
             _ => {}
         }
     }
@@ -660,11 +755,22 @@ fn esds(d: &[u8], t: &mut Track) {
             0xa9 => "dts",
             0xad => "opus",
             0xdd => "vorbis",
+            0x20 => "mpeg4",
+            0x21 => "h264",
+            0x23 => "hevc",
+            0x60..=0x65 => "mpeg2video",
+            0x6a => "mpeg1video",
+            0x6c => "mjpeg",
+            0x6e => "jpeg2000",
             _ => "other",
         }
         .to_string(),
     );
-    if let Some((5, asc)) = descriptor(&mut r)
+    let dsi = descriptor(&mut r).filter(|(tag, _)| *tag == 5).map(|(_, d)| d);
+    if matches!(object, 0x20 | 0x60..=0x65 | 0x6a) {
+        t.decoder_config = dsi.map(<[u8]>::to_vec);
+    }
+    if let Some(asc) = dsi
         && matches!(object, 0x40 | 0x66..=0x68)
         && let Some(c) = AudioConfig::parse(asc)
     {
@@ -804,6 +910,7 @@ fn udta(body: &[u8], m: &mut Movie) {
         match &kind {
             b"meta" => meta(b, m),
             b"chpl" => nero_chapters(b, m),
+            b"XMP_" if m.xmp.is_none() => m.xmp = Some(b.to_vec()),
             // QuickTime user data text: ©xyz atoms holding (length, language, text) entries.
             [0xa9, ..] if m.items.len() < MAX_ITEMS => {
                 let mut r = ByteReader::new(b);
@@ -932,6 +1039,97 @@ fn chapter_track(src: &mut dyn Source, m: &mut Movie) {
         out.push(Chapter { start_s: start as f64 / timescale, title });
     }
     m.chapters = out;
+}
+
+/// Track durations and sample counts from the movie fragments: the
+/// fragment duration (`mvex/mehd`) when given, else each track fragment's
+/// decode time (`tfdt`) plus its run durations (`trun`, defaulting through
+/// `tfhd` and `trex`).
+fn fragments(src: &mut dyn Source, moofs: &[TopBox], moov: &[u8], m: &mut Movie) -> Result<(), ExtractError> {
+    let mut defaults = std::collections::HashMap::new();
+    if let Some(mvex) = find(moov, b"mvex") {
+        for (kind, body) in boxes(mvex) {
+            let (v, _, d) = full(body);
+            let mut r = ByteReader::new(d);
+            match &kind {
+                b"mehd" => {
+                    let dur = if v == 1 { r.be_u64() } else { r.be_u32().map(u64::from) };
+                    if let Ok(dur) = dur
+                        && m.duration == 0
+                    {
+                        m.duration = dur;
+                    }
+                }
+                b"trex" => {
+                    if let (Ok(id), Ok(_desc), Ok(duration)) = (r.be_u32(), r.be_u32(), r.be_u32()) {
+                        defaults.insert(id, duration);
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    let mut ends: std::collections::HashMap<u32, (u64, u64)> = std::collections::HashMap::new();
+    for b in moofs {
+        let moof = src.read_vec(b.at, usize::try_from(b.len).unwrap_or(0))?;
+        for (kind, traf) in boxes(&moof) {
+            if kind != *b"traf" {
+                continue;
+            }
+            let Some(tfhd) = find(traf, b"tfhd") else { continue };
+            let (_, flags, d) = full(tfhd);
+            let mut r = ByteReader::new(d);
+            let Ok(id) = r.be_u32() else { continue };
+            if flags & 1 != 0 && r.advance(8).is_err() {
+                continue;
+            }
+            if flags & 2 != 0 && r.advance(4).is_err() {
+                continue;
+            }
+            let mut default = defaults.get(&id).copied().unwrap_or(0);
+            if flags & 8 != 0 {
+                default = r.be_u32().unwrap_or(default);
+            }
+            let entry = ends.entry(id).or_default();
+            if let Some(tfdt) = find(traf, b"tfdt") {
+                let (v, _, d) = full(tfdt);
+                let mut r = ByteReader::new(d);
+                if let Ok(t) = if v == 1 { r.be_u64() } else { r.be_u32().map(u64::from) } {
+                    entry.0 = t;
+                }
+            }
+            for (k, trun) in boxes(traf) {
+                if k != *b"trun" {
+                    continue;
+                }
+                let (_, flags, d) = full(trun);
+                let mut r = ByteReader::new(d);
+                let Ok(n) = r.be_u32() else { continue };
+                let skip = 4 * usize::from(flags & 1 != 0) + 4 * usize::from(flags & 4 != 0);
+                if r.advance(skip).is_err() {
+                    continue;
+                }
+                entry.1 += u64::from(n);
+                if flags & 0x100 == 0 {
+                    entry.0 += u64::from(n) * u64::from(default);
+                    continue;
+                }
+                let per = 4 * (1 + [0x200, 0x400, 0x800].iter().filter(|f| flags & **f != 0).count());
+                for chunk in r.rest().chunks_exact(per).take(n as usize) {
+                    entry.0 += u64::from(u32::from_be_bytes([chunk[0], chunk[1], chunk[2], chunk[3]]));
+                }
+            }
+        }
+    }
+    for t in &mut m.tracks {
+        if let Some(&(end, samples)) = ends.get(&t.id) {
+            t.fragment_samples = samples;
+            if t.duration == 0 {
+                t.duration = end;
+            }
+        }
+    }
+    Ok(())
 }
 
 /// File offsets of the first `max` samples.

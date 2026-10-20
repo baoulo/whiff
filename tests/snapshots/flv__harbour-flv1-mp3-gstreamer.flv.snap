@@ -1,0 +1,165 @@
+---
+source: src/formats/video/flv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-flv1-mp3-gstreamer.flv",
+    "stem": "harbour-flv1-mp3-gstreamer",
+    "extension": "flv"
+  },
+  "identification": {
+    "format": "flv",
+    "name": "Flash Video",
+    "mime": "video/x-flv",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.flv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 42426
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T18:46:04",
+        "source": "flv.onMetaData.creationdate",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 42426,
+    "entropy": 7.298,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 0.96,
+      "bitrate_bps": 353550,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "flv1",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bitrate_bps": 93000
+        },
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "sample_rate_hz": 44100,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 218000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "e5f7f1537a5b96ce50de8762ff77a55a4d3ee3fe37d6490b8c5f59ce04b69c36",
+    "blake3": "20ac2dab459212a32262fd28c4352991b5bcf0611d1d541e074d67d08cd6b207"
+  },
+  "content": {},
+  "metadata": {
+    "flv": {
+      "duration": 0.96,
+      "filesize": 42426.0,
+      "keyframes": {
+        "indexed": 24
+      },
+      "gstfiller": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "videocodecid": 2.0,
+      "width": 160.0,
+      "height": 90.0,
+      "AspectRatioX": 1.0,
+      "AspectRatioY": 1.0,
+      "framerate": 25.0,
+      "videodatarate": 93.0,
+      "audiocodecid": 2.0,
+      "audiodatarate": 218.0,
+      "metadatacreator": "GStreamer 1.26.2 FLV muxer",
+      "encoder": "GStreamer 1.26.2 FLV muxer",
+      "creationdate": "Tue Oct 20 18:46:04 2026"
+    }
+  },
+  "format": {
+    "flv": {
+      "version": 1,
+      "has_audio": true,
+      "has_video": true,
+      "metadata_keys": 16,
+      "encoder": "GStreamer 1.26.2 FLV muxer"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.flv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

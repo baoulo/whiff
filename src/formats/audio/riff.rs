@@ -298,7 +298,7 @@ pub(crate) fn codec(tag: u16) -> String {
 }
 
 /// A `LIST` chunk: `INFO` tags (other list types are noted only).
-fn list(d: &[u8], cx: &mut Context<'_>, tags: &mut Tags) {
+pub(crate) fn list(d: &[u8], cx: &mut Context<'_>, tags: &mut Tags) {
     let Some(kind) = d.get(..4) else { return };
     if kind != b"INFO" {
         if kind == b"adtl" {

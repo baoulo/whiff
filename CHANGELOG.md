@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased (0.4.0)
 
-Audio, video, subtitles and playlists. Done so far: audio.
+Audio, video, subtitles and playlists. Done so far: audio and video.
 
 - **Audio** (in-house readers, no new dependencies): MP3 / MP2 / MP1
   (frame header, Xing / Info / VBRI and LAME tags, duration from the VBR
@@ -22,10 +22,37 @@ Audio, video, subtitles and playlists. Done so far: audio.
   its output rate and channels from the AudioSpecificConfig (SBR / PS
   signalling included), not the sample entry's. Durations, sample rates
   and channel counts agree with `ffprobe` on every fixture and on 6 615
-  Apple-made files found on a Mac (system sounds, ringtones, voice
-  prompts). Durations are the presentation length: the encoder priming
-  and padding an MP4 edit list or CAF packet table marks are left out,
-  where ffprobe keeps them (497 of those files).
+  audio files found on a Mac (system sounds, ringtones, voice prompts,
+  GarageBand and application content). Durations are the presentation
+  length: the encoder priming and padding an MP4 edit list or CAF packet
+  table marks are left out, where ffprobe keeps them (497 of those files).
+- **Video** (in-house readers, no new dependencies): MP4 / M4V / MOV / 3GP
+  / F4V / CMAF (fragmented files' durations from `mehd` or the `moof`
+  run tables), Matroska / WebM / MKA / MKS (EBML; seek head, chapters,
+  tags, attachments; the duration from the last cluster when the header
+  has none), AVI and OpenDML, MPEG transport streams (TS, BDAV M2TS:
+  PAT / PMT / SDT, stream types and descriptors, scrambling) and program
+  streams (MPEG-1, MPEG-2, DVD VOB with private-stream audio and
+  subpictures), FLV (AMF0 `onMetaData`, enhanced-RTMP FourCCs), WMV,
+  RealMedia, Ogg Theora, and elementary streams (H.264, HEVC, MPEG-1 / 2
+  video, AV1 OBU, IVF, YUV4MPEG2). Each stream reports codec and tag,
+  profile, level and tier, size, display size, sample and display aspect
+  ratios, frame rate and CFR / VFR, frame count, bit depth, chroma
+  subsampling, colour primaries / transfer / matrix / range, HDR format
+  (HDR10, HLG, Dolby Vision), mastering display and content light level,
+  scan type and field order, rotation, stereo mode, bitrate, language,
+  title, and default / forced flags, read from the container and the
+  codec configuration (H.264 / HEVC parameter sets with VUI, `avcC`,
+  `hvcC`, `av1C` and the AV1 sequence header, `vpcC` and VP8 / VP9 key
+  frames, MPEG-1 / 2 sequence headers and extensions, MPEG-4 Part 2
+  profiles, `colr`, `pasp`, `mdcv`, `clli`, `dvcC`). TS and PS durations
+  come from the first and last presentation time stamps. Camera make,
+  model and software go to `format.device`, QuickTime / ISO 6709
+  locations to `content.location`, the QuickTime creation date to the
+  captured date, and MP4 XMP to the XMP decoder. Durations, sizes,
+  frame rates and codecs agree with `ffprobe` on 2 052 video files that
+  ship with macOS and installed applications (one duration differs: an
+  edit list that ends a track after the movie header's length).
 - **Tags:** ID3v1 / v1.1 and ID3v2.2–2.4 (unsynchronisation, compressed
   and grouped frames, iTunes' non-syncsafe sizes, CHAP / CTOC chapters),
   Vorbis comments, APEv1 / v2, iTunes `ilst` (with free-form `----` items
@@ -39,12 +66,20 @@ Audio, video, subtitles and playlists. Done so far: audio.
   lyrics go to the text analyzers. A purchaser's Apple ID or name
   (`apID`, `ownr`) goes through the privacy setting.
 - **Containers:** `plugin::mp4` (ISO base media: tracks, sample tables,
-  `esds`, `ilst`, chapters) and `plugin::asf` (ASF header objects) are
-  shared readers, to be used by video too; the HEIF extractor now uses
-  `plugin::mp4`'s box iterator.
+  `esds`, `ilst`, chapters, visual sample entries and their configuration
+  boxes, protection schemes, movie fragments, XMP) and `plugin::asf` (ASF
+  header objects, extended stream properties, language list) are shared
+  by the audio and video extractors; the HEIF extractor uses
+  `plugin::mp4`'s box iterator. A WMA file with a video stream is handed
+  to the WMV extractor, and an Ogg file with a Theora stream is reported
+  as Ogg video.
 - **Developer tools:** `whiff-dev oracle media` compares durations,
-  sample rates and channel counts with `ffprobe` (gate: 98 % of durations
-  within 0.1 s). `scripts/fixtures/audio.sh` regenerates the audio
+  sample rates and channel counts, and the first video stream's codec,
+  size and frame rate, with `ffprobe` (gate: 98 % of durations within
+  0.1 s; mono HE-AAC, which ffmpeg decodes to stereo, counts as agreeing).
+  `scripts/fixtures/video.sh` regenerates the video fixtures with ffmpeg,
+  GStreamer's own muxers, the x264 / x265 encoders, VideoToolbox and
+  `avconvert`. `scripts/fixtures/audio.sh` regenerates the audio
   fixtures with ffmpeg, LAME, flac / metaflac, speexenc, mpcenc and Core
   Audio's `afconvert`; `craft_audio.py` writes the iXML chunk and the
   Monkey's Audio, DSF and DSDIFF files no available tool writes.

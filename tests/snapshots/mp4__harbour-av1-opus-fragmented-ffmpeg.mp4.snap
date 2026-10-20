@@ -1,0 +1,183 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-av1-opus-fragmented-ffmpeg.mp4",
+    "stem": "harbour-av1-opus-fragmented-ffmpeg",
+    "extension": "mp4"
+  },
+  "identification": {
+    "format": "mp4",
+    "name": "MPEG-4 video",
+    "mime": "video/mp4",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12757
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12757,
+    "entropy": 7.534,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.006563,
+      "bitrate_bps": 101391,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "av1",
+          "codec_tag": "av01",
+          "profile": "main",
+          "level": "2.0",
+          "tier": "main",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 24.837,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "duration_s": 1.006563
+        },
+        {
+          "type": "audio",
+          "codec": "opus",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 24000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "72e8e715fac8562e7a50f6350a747d4875e8fba7d0abad50c7d0e256de72f488",
+    "blake3": "4ffa9842f20de1db80c8dacd6c9dc4ac80d69f3f207b736f61c0d6d9dc2b3e39"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mp4": {
+      "major_brand": "iso5",
+      "minor_version": 512,
+      "compatible_brands": [
+        "iso5",
+        "iso6",
+        "av01",
+        "mp41"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "moov",
+        "moof",
+        "mdat",
+        "mfra"
+      ],
+      "fragmented": true,
+      "fragments": 1,
+      "faststart": true,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "vide",
+          "codec": "av01",
+          "duration_s": 1.006563,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "compressor": "Lavc libsvtav1"
+        },
+        {
+          "id": 2,
+          "handler": "soun",
+          "codec": "Opus",
+          "duration_s": 1.0065,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      ],
+      "media_data_bytes": 10681
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

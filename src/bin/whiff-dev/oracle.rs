@@ -257,10 +257,13 @@ fn compare(exp: &Value, got: &Value) -> Vec<Check> {
     out
 }
 
-/// Compare durations (within `tolerance` seconds), sample rates and channel
-/// counts of every audio / video file under `paths` with `ffprobe`.
+/// Compare durations (within `tolerance` seconds), the first audio stream's
+/// sample rate and channel count, and the first video stream's codec, size
+/// and frame rate (within 1 %) of every audio / video file under `paths`
+/// with `ffprobe`.
 /// `WHIFF_FFPROBE` overrides the binary. Fails if durations agree on less
 /// than `min` percent of the files ffprobe gives one for.
+#[allow(clippy::too_many_lines)] // one check per field, then the summary
 pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Result<(), String> {
     let files = collect(paths)?;
     let engine = Engine::new();
@@ -269,6 +272,7 @@ pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Resu
     let mut misses = Vec::new();
     let mut compared = 0;
     let mut untrimmed_only = 0u64;
+    let mut upmixed = 0u64;
     for file in &files {
         let report = engine.extract_path(file).map_err(|e| format!("{}: {e}", file.display()))?;
         let family = report.identification.family.as_deref().unwrap_or("");
@@ -278,8 +282,10 @@ pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Resu
         let Some(expected) = ffprobe(&bin, file)? else { continue };
         compared += 1;
         let media = report.physical.media.as_ref();
-        let stream =
-            media.and_then(|m| m.streams.iter().find(|s| s.get("type").and_then(Value::as_str) == Some("audio")));
+        let first = |kind: &str| {
+            media.and_then(|m| m.streams.iter().find(|s| s.get("type").and_then(Value::as_str) == Some(kind)))
+        };
+        let (stream, video) = (first("audio"), first("video"));
         let mut check = |field: &'static str, want: String, got: Option<String>, ok: bool| {
             let t = tally.entry(field).or_default();
             t.0 += 1;
@@ -313,7 +319,29 @@ pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Resu
         }
         if let Some(c) = expected.channels {
             let got = field("channels");
-            check("channels", c.to_string(), got.map(|g| g.to_string()), got == Some(c));
+            // ffmpeg decodes mono HE-AAC to stereo (parametric stereo may be
+            // signalled implicitly); whiff reports the configuration's count.
+            let he_mono = got == Some(1)
+                && c == 2
+                && stream.and_then(|s| s.get("profile")).and_then(Value::as_str) == Some("he_aac");
+            if he_mono {
+                upmixed += 1;
+            }
+            check("channels", c.to_string(), got.map(|g| g.to_string()), got == Some(c) || he_mono);
+        }
+        let vfield = |k: &str| video.and_then(|s| s.get(k));
+        if let Some(codec) = &expected.video_codec {
+            let got = vfield("codec").and_then(Value::as_str).map(str::to_string);
+            check("video_codec", codec.clone(), got.clone(), got.as_deref() == Some(codec.as_str()));
+        }
+        if let Some((w, h)) = expected.size {
+            let got = vfield("width").and_then(Value::as_u64).zip(vfield("height").and_then(Value::as_u64));
+            check("video_size", format!("{w}x{h}"), got.map(|(a, b)| format!("{a}x{b}")), got == Some((w, h)));
+        }
+        if let Some(f) = expected.frame_rate {
+            let got = vfield("frame_rate").and_then(Value::as_f64);
+            let ok = got.is_some_and(|g| (g - f).abs() <= f * 0.01 + 0.001);
+            check("frame_rate", format!("{f:.3}"), got.map(|g| format!("{g:.3}")), ok);
         }
     }
     if compared == 0 {
@@ -335,6 +363,9 @@ pub fn media(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Resu
     );
     if untrimmed_only > 0 {
         println!("{untrimmed_only} of them agree only with priming and padding left in (ffprobe's media length)");
+    }
+    if upmixed > 0 {
+        println!("{upmixed} mono HE-AAC streams counted as agreeing with ffprobe's stereo output");
     }
     let shown = if verbose { misses.len() } else { misses.len().min(25) };
     if shown > 0 {
@@ -366,12 +397,18 @@ struct Probe {
     duration: Option<f64>,
     sample_rate: Option<u64>,
     channels: Option<u64>,
+    video_codec: Option<String>,
+    size: Option<(u64, u64)>,
+    frame_rate: Option<f64>,
 }
 
-/// ffprobe's format duration and first audio stream, or `None` if it cannot read the file.
+/// ffprobe's format duration and first audio and video streams, or `None`
+/// if it cannot read the file. Attached pictures (cover art) are not video.
 fn ffprobe(bin: &str, file: &Path) -> Result<Option<Probe>, String> {
+    let entries = "format=duration:stream=codec_type,codec_name,sample_rate,channels,width,height,avg_frame_rate,\
+                   r_frame_rate:stream_disposition=attached_pic";
     let output = Command::new(bin)
-        .args(["-v", "error", "-of", "json", "-show_entries", "format=duration:stream=codec_type,sample_rate,channels"])
+        .args(["-v", "error", "-of", "json", "-show_entries", entries])
         .arg(file)
         .output()
         .map_err(|e| format!("cannot run `{bin}` ({e}); install ffmpeg or set WHIFF_FFPROBE"))?;
@@ -381,7 +418,19 @@ fn ffprobe(bin: &str, file: &Path) -> Result<Option<Probe>, String> {
     let v: Value = serde_json::from_slice(&output.stdout).map_err(|e| format!("ffprobe output: {e}"))?;
     let num = |v: Option<&Value>| v.and_then(|x| x.as_str().and_then(|s| s.parse::<f64>().ok()).or_else(|| x.as_f64()));
     let audio = v["streams"].as_array().and_then(|s| s.iter().find(|s| s["codec_type"] == "audio"));
+    let video = v["streams"].as_array().and_then(|s| {
+        s.iter().find(|s| s["codec_type"] == "video" && s.pointer("/disposition/attached_pic") != Some(&1.into()))
+    });
+    let rate = |key: &str| {
+        let (n, d) = video?.get(key)?.as_str()?.split_once('/')?;
+        let (n, d) = (n.parse::<f64>().ok()?, d.parse::<f64>().ok()?);
+        (n > 0.0 && d > 0.0).then(|| n / d)
+    };
     Ok(Some(Probe {
+        video_codec: video.and_then(|s| s["codec_name"].as_str()).map(str::to_string),
+        size: video.and_then(|s| s["width"].as_u64().zip(s["height"].as_u64())),
+        // A frame rate only when the stream says it is constant (both agree).
+        frame_rate: rate("avg_frame_rate").filter(|a| rate("r_frame_rate").is_some_and(|r| (r - a).abs() < 1e-6)),
         duration: num(v.pointer("/format/duration")).filter(|d| *d > 0.0),
         #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)] // sample rates are small integers
         sample_rate: num(audio.and_then(|a| a.get("sample_rate"))).map(|r| r as u64),

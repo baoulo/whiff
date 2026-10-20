@@ -520,7 +520,7 @@ impl Stream {
         Some(n as f64 / f64::from(r))
     }
 
-    fn to_map(&self) -> Map<String, Value> {
+    pub(crate) fn to_map(&self) -> Map<String, Value> {
         let mut m = Map::new();
         m.insert("type".into(), json!("audio"));
         m.insert("codec".into(), json!(self.codec));

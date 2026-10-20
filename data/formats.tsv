@@ -483,13 +483,13 @@
 1	video	Windows Media Video / ASF	wmv asf	video/x-ms-wmv	ASF content description objects
 2	video	Flash Video	flv f4v	video/x-flv	onMetaData AMF0 (impl)
 1	video	3GPP / 3GPP2	3gp 3g2	video/3gpp	
-1	video	MPEG-1/2 program stream	mpg mpeg m1v m2v vob mpe	video/mpeg	pack/system headers, sequence header
+1	video	MPEG-1/2 program stream	mpg mpeg vob mpe	video/mpeg	pack/system headers, sequence header
 3	video	Ogg Theora / OGM	ogv ogm	video/ogg	
 3	video	RealMedia	rm rmvb	application/vnd.rn-realmedia	
 3	video	DV	dv dif	video/dv	
 3	video	MXF broadcast	mxf	application/mxf	partition pack, operational pattern, essence descriptors (impl KLV)
 3	video	Apple ProRes / HEVC in MOV	mov		codec profile from sample entry
-3	video	H.264 / H.265 / AV1 / VVC elementary stream	h264 264 h265 265 hevc obu ivf vvc	video/h264	SPS/VPS/sequence header: profile, level, size, fps, bit depth
+3	video	H.264 / H.265 / AV1 / VVC / MPEG video elementary stream	h264 264 h265 265 hevc obu ivf vvc m1v m2v	video/h264	SPS/VPS/sequence header: profile, level, size, fps, bit depth
 3	video	Motion JPEG / AVCHD / XAVC	mjpg mjpeg mts		
 3	video	Blackmagic RAW / RED R3D / ARRIRAW	braw r3d ari		camera, lens, timecode (header)
 3	video	DivX / Xvid	divx xvid		-> AVI

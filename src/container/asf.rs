@@ -1,6 +1,7 @@
 //! Advanced Systems Format (WMA, WMV, ASF): the header objects — file
 //! properties (duration, preroll, creation date, flags), stream properties
-//! (audio wave format, video dimensions and codec), content description,
+//! (audio wave format, video dimensions and codec), extended stream
+//! properties (bitrate, frame time, language, name), content description,
 //! extended content description and metadata (library) attributes, the
 //! codec list, and content encryption (DRM).
 //!
@@ -28,7 +29,10 @@ const CONTENT_ENCRYPTION: [u8; 16] =
 const EXTENDED_ENCRYPTION: [u8; 16] =
     guid(0x298A_E614, 0x2622, 0x4C17, [0xB9, 0x35, 0xDA, 0xE0, 0x7E, 0xE9, 0x28, 0x9C]);
 const AUDIO_MEDIA: [u8; 16] = guid(0xF869_9E40, 0x5B4D, 0x11CF, [0xA8, 0xFD, 0x00, 0x80, 0x5F, 0x5C, 0x44, 0x2B]);
-const VIDEO_MEDIA: [u8; 16] = guid(0xBC19_EFC0, 0x5B4D, 0x11CF, [0xA8, 0xFD, 0x00, 0x80, 0x5F, 0x5C, 0x44, 0x2B]);
+/// The video stream type GUID, as stored.
+pub const VIDEO_MEDIA: [u8; 16] = guid(0xBC19_EFC0, 0x5B4D, 0x11CF, [0xA8, 0xFD, 0x00, 0x80, 0x5F, 0x5C, 0x44, 0x2B]);
+const EXTENDED_STREAM: [u8; 16] = guid(0x14E6_A5CB, 0xC672, 0x4332, [0x83, 0x99, 0xA9, 0x69, 0x52, 0x06, 0x5B, 0x5A]);
+const LANGUAGE_LIST: [u8; 16] = guid(0x7C43_46A9, 0xEFE0, 0x4BFC, [0xB2, 0x29, 0x39, 0x3E, 0xDE, 0x41, 0x5C, 0x85]);
 const COMMAND_MEDIA: [u8; 16] = guid(0x59DA_CFC0, 0x59E6, 0x11D0, [0xA3, 0xAC, 0x00, 0xA0, 0xC9, 0x03, 0x48, 0xF6]);
 
 /// Largest header object read.
@@ -89,6 +93,16 @@ pub struct Stream {
     pub audio: Option<WaveFormat>,
     /// Video: width, height, compression four-character code, bit count.
     pub video: Option<(u32, u32, String, u16)>,
+    /// Codec-specific data after the wave format or bitmap header.
+    pub extra: Vec<u8>,
+    /// Data bitrate (extended stream properties).
+    pub bitrate: Option<u32>,
+    /// Average time per frame, in 100 ns units (extended stream properties).
+    pub frame_time: Option<u64>,
+    /// Language tag (extended stream properties and the language list).
+    pub language: Option<String>,
+    /// Stream name (extended stream properties).
+    pub name: Option<String>,
 }
 
 /// File properties.
@@ -137,6 +151,11 @@ pub struct Asf {
     pub encrypted: bool,
     /// Header object names, in order.
     pub objects: Vec<&'static str>,
+    /// Language list (RFC 1766 tags), indexed by the stream properties.
+    pub languages: Vec<String>,
+    /// Extended stream properties: stream number, bitrate, frame time,
+    /// language index, name.
+    extended: Vec<(u16, u32, u64, u16, Option<String>)>,
 }
 
 /// Read the header object at the start of `src`.
@@ -152,6 +171,15 @@ pub fn read(src: &mut dyn Source) -> Result<Asf, ExtractError> {
     let body = src.read_vec(30, usize::try_from(size - 30).unwrap_or(0))?;
     let mut asf = Asf::default();
     objects(&body, &mut asf, true);
+    for (number, bitrate, frame_time, lang, name) in std::mem::take(&mut asf.extended) {
+        let language = asf.languages.get(usize::from(lang)).cloned();
+        for s in asf.streams.iter_mut().filter(|s| s.number == number) {
+            s.bitrate = Some(bitrate).filter(|b| *b > 0);
+            s.frame_time = Some(frame_time).filter(|t| *t > 0);
+            s.language.clone_from(&language);
+            s.name.clone_from(&name);
+        }
+    }
     Ok(asf)
 }
 
@@ -195,6 +223,21 @@ fn objects(mut d: &[u8], asf: &mut Asf, top: bool) {
             CODEC_LIST => {
                 codec_list(body, asf);
                 "codec_list"
+            }
+            EXTENDED_STREAM => {
+                extended_stream(body, asf);
+                "extended_stream_properties"
+            }
+            LANGUAGE_LIST => {
+                let mut r = ByteReader::new(body);
+                if let Ok(n) = r.le_u16() {
+                    for _ in 0..n.min(128) {
+                        let Ok(len) = r.u8() else { break };
+                        let Ok(b) = r.bytes(usize::from(len)) else { break };
+                        asf.languages.push(utf16(b));
+                    }
+                }
+                "language_list"
             }
             CONTENT_ENCRYPTION | EXTENDED_ENCRYPTION => {
                 asf.encrypted = true;
@@ -263,6 +306,7 @@ fn stream_properties(d: &[u8], asf: &mut Asf) {
                 (r.le_u16(), r.le_u16(), r.le_u32(), r.le_u32(), r.le_u16(), r.le_u16())
             {
                 s.audio = Some(WaveFormat { tag, channels, rate, byte_rate, block_align, bits });
+                s.extra = t.get(18..).unwrap_or_default().to_vec();
             }
         }
         "video" => {
@@ -281,12 +325,41 @@ fn stream_properties(d: &[u8], asf: &mut Asf) {
             ) {
                 let code = String::from_utf8_lossy(&fourcc).trim_end_matches(['\0', ' ']).to_string();
                 s.video = Some((w, h, code, bits));
+                // The bitmap header is 40 bytes from offset 11; codec data follows.
+                s.extra = t.get(51..).unwrap_or_default().iter().take(4096).copied().collect();
             }
         }
         _ => {}
     }
     if asf.streams.len() < 128 {
         asf.streams.push(s);
+    }
+}
+
+fn extended_stream(d: &[u8], asf: &mut Asf) {
+    let mut r = ByteReader::new(d);
+    // Start and end time, then the leaky-bucket parameters.
+    if r.advance(16).is_err() {
+        return;
+    }
+    let Ok(bitrate) = r.le_u32() else { return };
+    if r.advance(4 * 5 + 4 + 4).is_err() {
+        return;
+    }
+    let (Ok(number), Ok(lang), Ok(frame_time), Ok(names), Ok(_systems)) =
+        (r.le_u16(), r.le_u16(), r.le_u64(), r.le_u16(), r.le_u16())
+    else {
+        return;
+    };
+    let mut name = None;
+    if names > 0
+        && let (Ok(_lang), Ok(len)) = (r.le_u16(), r.le_u16())
+        && let Ok(b) = r.bytes(usize::from(len))
+    {
+        name = Some(utf16(b)).filter(|n| !n.is_empty());
+    }
+    if asf.extended.len() < 128 {
+        asf.extended.push((number, bitrate, frame_time, lang, name));
     }
 }
 

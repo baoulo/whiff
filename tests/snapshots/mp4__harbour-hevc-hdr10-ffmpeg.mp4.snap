@@ -1,0 +1,168 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-hevc-hdr10-ffmpeg.mp4",
+    "stem": "harbour-hevc-hdr10-ffmpeg",
+    "extension": "mp4"
+  },
+  "identification": {
+    "format": "mp4",
+    "name": "MPEG-4 video",
+    "mime": "video/mp4",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12681
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12681,
+    "entropy": 7.143,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 101448,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "hevc",
+          "codec_tag": "hvc1",
+          "profile": "main_10",
+          "level": "1.0",
+          "tier": "main",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 10,
+          "chroma_subsampling": "4:2:0",
+          "color_primaries": "bt2020",
+          "color_transfer": "smpte2084",
+          "color_matrix": "bt2020nc",
+          "color_range": "limited",
+          "hdr_format": "hdr10",
+          "scan_type": "progressive",
+          "bitrate_bps": 71880,
+          "duration_s": 1.0
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "870d4905137c67c818c723a03a9d0858bb2988bb50b9e08611be03c60988c061",
+    "blake3": "4a730b254f0c6b81b68217e5a0ab82ab1bcebb5a449d8dd280a740af0a7e9461"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mp4": {
+      "major_brand": "isom",
+      "minor_version": 512,
+      "compatible_brands": [
+        "isom",
+        "iso2",
+        "mp41"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "free",
+        "mdat",
+        "moov"
+      ],
+      "fragmented": false,
+      "faststart": false,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "vide",
+          "codec": "hvc1",
+          "duration_s": 1.0,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "compressor": "Lavc libx265"
+        }
+      ],
+      "media_data_bytes": 8985
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

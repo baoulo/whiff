@@ -34,3 +34,5 @@ pub(crate) mod email;
 pub(crate) mod image;
 #[cfg(feature = "common")]
 pub(crate) mod text;
+#[cfg(feature = "common")]
+pub(crate) mod video;

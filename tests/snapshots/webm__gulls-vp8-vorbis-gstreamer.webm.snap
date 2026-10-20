@@ -1,0 +1,183 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gulls-vp8-vorbis-gstreamer.webm",
+    "stem": "gulls-vp8-vorbis-gstreamer",
+    "extension": "webm"
+  },
+  "identification": {
+    "format": "webm",
+    "name": "WebM video",
+    "mime": "video/webm",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "webm",
+        "confidence": 0.99
+      },
+      {
+        "format": "mkv",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 21730
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T18:46:03Z",
+        "source": "matroska.Info.DateUTC",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-20T18:46:03Z",
+    "latest": "2026-10-20T18:46:03Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 21730,
+    "entropy": 7.463,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.002667,
+      "bitrate_bps": 173378,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "vp8",
+          "codec_tag": "V_VP8",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "color_primaries": "smpte170m",
+          "color_transfer": "smpte170m",
+          "color_matrix": "smpte170m",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "language": "eng",
+          "title": "Video",
+          "default": true,
+          "track": 1
+        },
+        {
+          "type": "audio",
+          "codec": "vorbis",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "language": "eng",
+          "title": "Audio",
+          "default": true,
+          "track": 2
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "e0f1e2bc5a6f3592f510d627be4dd001f3b30b6b03acd11392cc347a2cfaeba0",
+    "blake3": "dc53a20a4624e61ab11104860c32affbd6ab17db027c0d69f3463dacfaf4e7db"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "webm": {
+      "doc_type": "webm",
+      "doc_type_version": 4,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "GStreamer matroskamux version 1.26.2",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "video",
+          "codec_id": "V_VP8"
+        },
+        {
+          "number": 2,
+          "type": "audio",
+          "codec_id": "A_VORBIS"
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "GStreamer Matroska muxer"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

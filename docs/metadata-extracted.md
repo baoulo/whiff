@@ -102,7 +102,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `audio` | Media | `common` | container, codec, duration, sample rate, channels + layout, bit depth, bitrate (avg, VBR?), encoder, tags (title, artist, album, album artist, track/disc n/total, date/year, genre, composer, conductor, lyricist, comment, lyrics, BPM, key, ISRC, label, MusicBrainz IDs, ReplayGain), cover art (mime, dimensions, size), chapters, loudness (opt-in decode) | Track identity and technical properties | impl (ID3v1/v2, Vorbis comments, APEv2, iTunes ilst, RIFF, AIFF, CAF, Ogg pages, MPEG / ADTS frames; ISO BMFF and ASF readers shared with video) | impl | S4 | 34 |
 | `audio.score` | Media | `common` | MIDI: format, tracks, PPQ, tempo map, time signatures, key signatures, track/instrument names, lyrics/markers, note count, duration; trackers: title, channels, patterns, instrument/sample names; notation (MusicXML/MEI/ABC): title, composer, parts, measures, key/time | Musical structure for symbolic music | midly (MIDI); quick-xml (MusicXML); impl MOD/XM/IT/S3M/ABC | mixed | S4 | 4 |
 | `audio.playlist` | Media | `common` | entry count, total declared duration, titles/artists, HLS: variants (bandwidth, resolution, codecs), segment count, target duration, encryption; CUE: performer, title, files, tracks + indexes | What a playlist contains | m3u8-rs (HLS), quick-xml (XSPF/ASX/MPD); impl M3U/PLS/CUE | mixed | S4 | 5 |
-| `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | mp4-atom (ISOBMFF/MOV/3GP), matroska / matroska-demuxer (MKV/WebM), riff (AVI), mpeg2ts-reader (TS), h264-parser (SPS details); impl FLV/ASF/MPEG-PS/OGM/RealMedia headers | mixed | S4 | 34 |
+| `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | impl (ISO BMFF / QuickTime via plugin::mp4, EBML / Matroska, RIFF AVI + OpenDML, MPEG-TS PSI + PES, MPEG-PS, FLV + AMF0, ASF via plugin::asf, RealMedia, Ogg Theora; H.264 / HEVC SPS, avcC / hvcC / av1C / vpcC, AV1 sequence header, VP8 / VP9 key frames, MPEG-1/2 sequence headers) | impl | S4 | 34 |
 | `archive` | Archive | `common` | format + version, entry count, total compressed/uncompressed size, ratio, compression methods, encrypted entries, archive comment, multi-volume?, entries (path, size, mtime, mode) top N, file-type histogram, mtime range, risk flags (path traversal, absolute paths, symlinks out, bomb ratio), recursion into entries (bounded) | Inventory of what's inside without extracting; safety flags | zip, tar, sevenz-rust2, cab, delharc, oxiarc-archive; impl RAR4/5 header listing (unrar is FFI), ARJ, CPIO reader, ACE/ZOO/ARC headers | mixed | S5 | 34 |
 | `compress` | Archive | `common` | algorithm, header fields (gzip FNAME/MTIME/OS/FCOMMENT, xz check + block count, zstd frame content size/dict id/checksum, lz4 frame descriptor, bzip2 block size), declared vs measured uncompressed size, then inner file -&gt; recursive extraction (bounded) | Transparent: the LLM cares about what's inside | flate2 (miniz_oxide), bzip2 (libbz2-rs-sys backend), lzma-rust2, ruzstd, lz4_flex, brotli, lzfse-rust; impl LZW (.Z), snappy framing | mixed | S5 | 13 |
 | `package` | Package | `common` | ecosystem, name, version, release/arch, summary/description, licence, maintainer/author, homepage, dependencies, provides/conflicts, install scripts present (risk), file count, installed size, signatures/permissions (Android), min OS/SDK, bundle id, entitlements | What software this is and what it will do on install | rpm, apk-info + axmldecoder (APK), msi, backhand (snap/squashfs), zip, tar, ar; impl DEB control, wheel METADATA, gem, nuspec, xar (PKG), MSIX manifest mapping | mixed | S5 | 29 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **248** of 1004.
-* Formats by family status: crate = 212, mixed = 574, impl = 218.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 54, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 225.
+* Formats with an extractor in this build: **273** of 1004.
+* Formats by family status: crate = 212, mixed = 540, impl = 252.
+* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 34, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 245.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -221,15 +221,15 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 80 | AIFF / AIFF-C | `aif` `aiff` `aifc` | audio/aiff | 1 | `audio` | `common` | `audio.aiff` | impl | S4 | COMM, NAME/AUTH/ANNO, ID3 chunk |
 | 81 | Windows Media Audio | `wma` | audio/x-ms-wma | 1 | `audio` | `common` | `audio.asf` | impl | S4 | ASF header objects (impl) |
 | 82 | MIDI | `mid` `midi` `kar` `rmi` | audio/midi | 1 | `audio.score` | `common` | — | midly | S4 | — |
-| 83 | MP4 | `mp4` `m4v` | video/mp4 | 1 | `video` | `common` | — | mp4-atom | S4 | ftyp brands, moov/mvhd/tkhd/mdia, udta/meta/ilst, ©xyz GPS, Apple keys, sidx/moof (fragmented) |
-| 84 | QuickTime MOV | `mov` `qt` | video/quicktime | 1 | `video` | `common` | — | mp4-atom | S4 | com.apple.quicktime.* keys (make, model, location, creationdate) |
-| 85 | Matroska | `mkv` `mk3d` | video/x-matroska | 1 | `video` | `common` | — | mp4-atom | S4 | EBML DocType, Info, Tracks, Tags, Chapters, Attachments (fonts) |
-| 86 | WebM | `webm` | video/webm | 1 | `video` | `common` | — | mp4-atom | S4 | — |
-| 87 | AVI | `avi` | video/x-msvideo | 1 | `video` | `common` | — | mp4-atom | S4 | RIFF hdrl/strl/INFO, OpenDML |
-| 88 | MPEG transport stream | `ts` `m2ts` `mts` `tsv` | video/mp2t | 1 | `video` | `common` | — | mp4-atom | S4 | PAT/PMT programs, stream types, PCR duration, AVCHD |
-| 89 | Windows Media Video / ASF | `wmv` `asf` | video/x-ms-wmv | 1 | `video` | `common` | — | mp4-atom | S4 | ASF content description objects |
-| 90 | 3GPP / 3GPP2 | `3gp` `3g2` | video/3gpp | 1 | `video` | `common` | — | mp4-atom | S4 | — |
-| 91 | MPEG-1/2 program stream | `mpg` `mpeg` `m1v` `m2v` `vob` `mpe` | video/mpeg | 1 | `video` | `common` | — | mp4-atom | S4 | pack/system headers, sequence header |
+| 83 | MP4 | `mp4` `m4v` | video/mp4 | 1 | `video` | `common` | `video.mp4` | impl | S4 | ftyp brands, moov/mvhd/tkhd/mdia, udta/meta/ilst, ©xyz GPS, Apple keys, sidx/moof (fragmented) |
+| 84 | QuickTime MOV | `mov` `qt` | video/quicktime | 1 | `video` | `common` | `video.mp4` | impl | S4 | com.apple.quicktime.* keys (make, model, location, creationdate) |
+| 85 | Matroska | `mkv` `mk3d` | video/x-matroska | 1 | `video` | `common` | `video.matroska` | impl | S4 | EBML DocType, Info, Tracks, Tags, Chapters, Attachments (fonts) |
+| 86 | WebM | `webm` | video/webm | 1 | `video` | `common` | `video.matroska` | impl | S4 | — |
+| 87 | AVI | `avi` | video/x-msvideo | 1 | `video` | `common` | `video.avi` | impl | S4 | RIFF hdrl/strl/INFO, OpenDML |
+| 88 | MPEG transport stream | `ts` `m2ts` `mts` `tsv` | video/mp2t | 1 | `video` | `common` | `video.mpegts` | impl | S4 | PAT/PMT programs, stream types, PCR duration, AVCHD |
+| 89 | Windows Media Video / ASF | `wmv` `asf` | video/x-ms-wmv | 1 | `video` | `common` | `video.asf` | impl | S4 | ASF content description objects |
+| 90 | 3GPP / 3GPP2 | `3gp` `3g2` | video/3gpp | 1 | `video` | `common` | `video.mp4` | impl | S4 | — |
+| 91 | MPEG-1/2 program stream | `mpg` `mpeg` `vob` `mpe` | video/mpeg | 1 | `video` | `common` | `video.mpegps` | impl | S4 | pack/system headers, sequence header |
 | 92 | ZIP | `zip` `zipx` | application/zip | 1 | `archive` | `common` | — | zip, tar | S5 | central directory, extra fields (Unix/NTFS times, AES), comment, Zip64 |
 | 93 | TAR | `tar` | application/x-tar | 1 | `archive` | `common` | — | zip, tar | S5 | ustar/pax/GNU headers, pax keywords |
 | 94 | 7-Zip | `7z` | application/x-7z-compressed | 1 | `archive` | `common` | — | zip, tar | S5 | — |
@@ -359,7 +359,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
 | 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
 | 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
-| 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | — | mp4-atom | S4 | onMetaData AMF0 (impl) |
+| 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
 | 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | zip, tar | S5 | — |
 | 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
 | 224 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Info.plist, provisioning, executable -&gt; exec |
@@ -761,7 +761,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 620 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | impl | S8 | — |
 | 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
 | 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S8 | bext originator, time reference |
-| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | — | impl | S8 | -&gt; video |
+| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S8 | -&gt; video |
 | 624 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | impl | S8 | — |
 | 625 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
 | 626 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
@@ -778,30 +778,30 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
 | 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | periods, adaptation sets, codecs |
 | 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
-| 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 642 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 643 | MXF broadcast | `mxf` | application/mxf | 3 | `video` | `common` | — | mp4-atom | S8 | partition pack, operational pattern, essence descriptors (impl KLV) |
-| 644 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | — | mp4-atom | S4 | codec profile from sample entry |
-| 645 | H.264 / H.265 / AV1 / VVC elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` | video/h264 | 3 | `video` | `common` | — | mp4-atom | S8 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
-| 646 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 647 | Blackmagic RAW / RED R3D / ARRIRAW | `braw` `r3d` `ari` | — | 3 | `video` | `common` | — | mp4-atom | S8 | camera, lens, timecode (header) |
-| 648 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | — | mp4-atom | S4 | -&gt; AVI |
-| 649 | Nullsoft NSV / Bink / Smacker | `nsv` `bik` `smk` | — | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 650 | AMV / MTV / FLIC | `amv` `mtv` `flc` `fli` | — | 3 | `video` | `common` | — | mp4-atom | S4 | — |
-| 651 | Video project: Premiere / Final Cut / DaVinci / Kdenlive | `prproj` `fcpxml` `drp` `kdenlive` `mlt` | — | 3 | `video` | `common` | — | mp4-atom | S4 | clips, timeline length (gzip-xml/xml) |
-| 652 | EDL / AAF / OTIO edit lists | `edl` `aaf` `otio` | — | 3 | `video` | `common` | — | mp4-atom | S4 | events, reel names, timecodes |
-| 653 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | — | mp4-atom | S4 | paired-asset XMP (GCamera/Container) |
-| 654 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | — | mp4-atom | S4 | sv3d/st3d boxes, Spherical XMP |
-| 655 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | — | mp4-atom | S4 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
-| 656 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | mp4-atom | S4 | -&gt; MP4 |
-| 657 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | mp4-atom | S4 | width, height, duration, command |
-| 658 | Video subtitles container | `mks` | — | 3 | `video` | `common` | — | mp4-atom | S4 | -&gt; video |
-| 659 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | — | mp4-atom | S4 | program title, channel, air date |
-| 660 | 360 camera native (INSV / OSV) | `insv` `osv` | — | 3 | `video` | `common` | — | mp4-atom | S4 | camera, GPS |
-| 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | — | mp4-atom | S8 | WxH, fps, colourspace (Y4M header) |
-| 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | — | mp4-atom | S4 | track ids, fragments |
-| 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | — | mp4-atom | S4 | caption presence + language |
+| 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S8 | — |
+| 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S8 | — |
+| 642 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | impl | S8 | — |
+| 643 | MXF broadcast | `mxf` | application/mxf | 3 | `video` | `common` | — | impl | S8 | partition pack, operational pattern, essence descriptors (impl KLV) |
+| 644 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | codec profile from sample entry |
+| 645 | H.264 / H.265 / AV1 / VVC / MPEG video elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` `m1v` `m2v` | video/h264 | 3 | `video` | `common` | `video.elementary` | impl | S8 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
+| 646 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | `video.mpegts` | impl | S8 | — |
+| 647 | Blackmagic RAW / RED R3D / ARRIRAW | `braw` `r3d` `ari` | — | 3 | `video` | `common` | — | impl | S8 | camera, lens, timecode (header) |
+| 648 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | `video.avi` | impl | S8 | -&gt; AVI |
+| 649 | Nullsoft NSV / Bink / Smacker | `nsv` `bik` `smk` | — | 3 | `video` | `common` | — | impl | S8 | — |
+| 650 | AMV / MTV / FLIC | `amv` `mtv` `flc` `fli` | — | 3 | `video` | `common` | — | impl | S8 | — |
+| 651 | Video project: Premiere / Final Cut / DaVinci / Kdenlive | `prproj` `fcpxml` `drp` `kdenlive` `mlt` | — | 3 | `video` | `common` | — | impl | S8 | clips, timeline length (gzip-xml/xml) |
+| 652 | EDL / AAF / OTIO edit lists | `edl` `aaf` `otio` | — | 3 | `video` | `common` | — | impl | S8 | events, reel names, timecodes |
+| 653 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | paired-asset XMP (GCamera/Container) |
+| 654 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | sv3d/st3d boxes, Spherical XMP |
+| 655 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
+| 656 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | impl | S8 | -&gt; MP4 |
+| 657 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | impl | S8 | width, height, duration, command |
+| 658 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S8 | -&gt; video |
+| 659 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S8 | program title, channel, air date |
+| 660 | 360 camera native (INSV / OSV) | `insv` `osv` | — | 3 | `video` | `common` | — | impl | S8 | camera, GPS |
+| 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S8 | WxH, fps, colourspace (Y4M header) |
+| 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | track ids, fragments |
+| 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | caption presence + language |
 | 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | — | zip, tar | S5 | — |
 | 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | — | zip, tar | S5 | — |
 | 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | — | zip, tar | S5 | newc/odc/bin |

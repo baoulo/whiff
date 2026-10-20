@@ -1,0 +1,164 @@
+---
+source: src/formats/video/mpegts.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-h264-aac-ffmpeg.ts",
+    "stem": "harbour-h264-aac-ffmpeg",
+    "extension": "ts"
+  },
+  "identification": {
+    "format": "ts",
+    "name": "MPEG transport stream",
+    "mime": "video/mp2t",
+    "family": "video",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ts",
+        "confidence": 0.95
+      },
+      {
+        "format": "typescript",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "video.mpegts"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 22936
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 22936,
+    "entropy": 6.577,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.021333,
+      "bitrate_bps": 179655,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive",
+          "pid": 256,
+          "stream_type": "0x1b"
+        },
+        {
+          "type": "audio",
+          "codec": "aac",
+          "profile": "aac_lc",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "language": "eng",
+          "pid": 257,
+          "stream_type": "0x0f"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "939ed1bd158ad90a4d4041c23b8556c282939444086b37db55f15c89e1c33097",
+    "blake3": "3570c7e43daad289166c958ba7e49d0f9d913cf477602e5d4673d4e99c56d2b8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ts": {
+      "packet_size": 188,
+      "transport_stream_id": 1,
+      "programs": [
+        {
+          "number": 1,
+          "pmt_pid": 4096,
+          "pcr_pid": 256,
+          "pids": [
+            256,
+            257
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mpegts",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
