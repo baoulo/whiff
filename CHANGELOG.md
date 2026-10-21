@@ -6,8 +6,7 @@ keep the schema version.
 
 ## Unreleased (0.4.0)
 
-Audio, video, subtitles and playlists. Done so far: audio, video, subtitles
-and playlists.
+Audio, video, subtitles, playlists and scores.
 
 - **Audio** (in-house readers, no new dependencies): MP3 / MP2 / MP1
   (frame header, Xing / Info / VBRI and LAME tags, duration from the VBR
@@ -95,6 +94,25 @@ and playlists.
   Matroska blocks of other tracks are skipped by their headers; the walk
   is skipped in the `minimal` profile and stops at its block, byte and
   time limits with a warning.
+- **Scores** (in-house readers): Standard MIDI files (formats 0, 1 and 2),
+  karaoke `.kar` and RIFF MIDI: division, tracks with names and
+  instruments, the tempo map and the duration it gives, time and key
+  signatures, General MIDI program names, percussion, note counts, GM /
+  GM2 / GS / XG, markers (as chapters), cue points, copyright and lyrics.
+  Tracker modules (MOD, XM, S3M, IT, MPTM): title, tracker, channels,
+  orders, patterns, instrument and sample names, the IT song message, and
+  the length of one pass, from a walk of the patterns for the commands
+  that change timing. Notation: MusicXML (partwise and timewise) and
+  compressed MXL, MEI, MuseScore (`.mscx`, `.mscz`), Guitar Pro 3 to 5,
+  ABC (tune books too) and LilyPond: title, composer and other creators,
+  rights, software, parts with instruments, staves, measures, notes and
+  rests, key, time signature, tempo, repeats, length in quarter notes
+  (seconds when a tempo is marked) and lyrics. MIDI durations agree with
+  mido on every fixture and on 100 corpus scores rendered by music21; on
+  music21's corpus (627 MusicXML / MXL scores, 1 146 ABC files) staves,
+  measures and ABC tune counts agree on all, notes on 99.8 % and lengths
+  in quarter notes on 97.1 %. `.abc` Alembic, `.mod` DTD and `.gpx` GPS
+  files are not mistaken for scores.
 - **Tags:** ID3v1 / v1.1 and ID3v2.2–2.4 (unsynchronisation, compressed
   and grouped frames, iTunes' non-syncsafe sizes, CHAP / CTOC chapters),
   Vorbis comments, APEv1 / v2, iTunes `ilst` (with free-form `----` items
@@ -116,7 +134,11 @@ and playlists.
   `plugin::mp4`'s box iterator. A WMA file with a video stream is handed
   to the WMV extractor, and an Ogg file with a Theora stream is reported
   as Ogg video.
-- **Developer tools:** `whiff-dev oracle subtitles` compares subtitle
+- **Developer tools:** `scripts/fixtures/scores.sh` regenerates the score
+  fixtures with mido, music21, verovio and pyguitarpro;
+  `craft_scores.py` writes the tracker modules, RIFF MIDI, ABC, LilyPond
+  and MuseScore files; `score_oracle.py` compares whiff with music21 and
+  mido. `whiff-dev oracle subtitles` compares subtitle
   codecs, cue counts and the end of the last cue with `ffprobe`'s packets
   (gate: 98 % of cue counts). `scripts/fixtures/subtitles.sh` regenerates
   the subtitle and playlist fixtures with ffmpeg, GStreamer, pysubs2,

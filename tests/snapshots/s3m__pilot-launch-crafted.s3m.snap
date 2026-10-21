@@ -1,0 +1,124 @@
+---
+source: src/formats/score/tracker.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pilot-launch-crafted.s3m",
+    "stem": "pilot-launch-crafted",
+    "extension": "s3m"
+  },
+  "identification": {
+    "format": "s3m",
+    "name": "Scream Tracker 3 module",
+    "mime": "audio/x-s3m",
+    "family": "audio.score",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.tracker"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 344
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 344,
+    "entropy": 2.3,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 8.86
+    }
+  },
+  "integrity": {
+    "sha256": "3b95b179d2769f918172e7cd802ef6995c2bcecc698693dd0ad1491a7d7b33a9",
+    "blake3": "b9c0e9192c6372422a45b542ee353394dbe7b5d5f333701ce15bc7c3bd5c87f5"
+  },
+  "content": {
+    "title": "Pilot Launch",
+    "excerpt": "Pilot Launch"
+  },
+  "metadata": {},
+  "format": {
+    "s3m": {
+      "tracker": "unknown (0x0000)",
+      "channels": 4,
+      "orders": 2,
+      "patterns": 2,
+      "instruments": 1,
+      "samples": 0,
+      "initial_speed": 6,
+      "initial_tempo_bpm": 125,
+      "flags": [
+        "stereo"
+      ],
+      "instrument_names": [
+        "red buoy bell"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.tracker",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

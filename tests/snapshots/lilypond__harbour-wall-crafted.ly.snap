@@ -1,0 +1,141 @@
+---
+source: src/formats/score/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-crafted.ly",
+    "stem": "harbour-wall-crafted",
+    "extension": "ly"
+  },
+  "identification": {
+    "format": "lilypond",
+    "name": "LilyPond score",
+    "mime": "text/x-lilypond",
+    "family": "audio.score",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "score.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 574
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 574,
+    "entropy": 4.797,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 574,
+      "chars": 574,
+      "words": 113,
+      "lines": 28,
+      "max_line_length": 82,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "491a3a0ecbd8360267cce68e1090e2eba3386325c245d28b9cc074d2941e917a",
+    "blake3": "9a435e336f93630776b0a6ff5a8a3516507f5f579948323ec8736dcb7d67b188"
+  },
+  "content": {
+    "title": "The Harbour Wall",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.508
+    },
+    "excerpt": "Harbour wall at dawn, the ferry waits for gulls and men"
+  },
+  "metadata": {},
+  "format": {
+    "lilypond": {
+      "version": "2.24.0",
+      "header": {
+        "subtitle": "for flute",
+        "poet": "Ben Gull"
+      },
+      "scores": 1,
+      "staves": 1,
+      "key": "D major",
+      "time_signature": "6/8",
+      "tempo": "4. = 100",
+      "includes": [
+        "english.ly"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

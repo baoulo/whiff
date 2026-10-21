@@ -1,0 +1,127 @@
+---
+source: src/formats/score/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pilot-launch-crafted.abc",
+    "stem": "pilot-launch-crafted",
+    "extension": "abc"
+  },
+  "identification": {
+    "format": "abc",
+    "name": "ABC notation",
+    "mime": "text/vnd.abc",
+    "family": "audio.score",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "score.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 121
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 121,
+    "entropy": 5.214,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 121,
+      "chars": 121,
+      "words": 17,
+      "lines": 9,
+      "max_line_length": 32,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9f82eb8de67b08fec27d206359b637468f134db81590a21d8b174191bef3ecb4",
+    "blake3": "f0bb1aec385b28f96ef1d0d5092f901221a11b9b2cdfd4cf609282fb7beb1b27"
+  },
+  "content": {
+    "title": "Pilot Launch",
+    "authors": [
+      "Mira Castell"
+    ],
+    "excerpt": "Out past the buoy, out to sea"
+  },
+  "metadata": {},
+  "format": {
+    "abc": {
+      "tunes": 1,
+      "key": "Bb major",
+      "meter": "3/4",
+      "tempo": "1/4=90",
+      "unit_note_length": "1/4",
+      "notes": 8
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

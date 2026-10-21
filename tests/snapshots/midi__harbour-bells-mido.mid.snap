@@ -1,0 +1,203 @@
+---
+source: src/formats/score/midi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bells-mido.mid",
+    "stem": "harbour-bells-mido",
+    "extension": "mid"
+  },
+  "identification": {
+    "format": "midi",
+    "name": "Standard MIDI file",
+    "mime": "audio/midi",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.midi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 546
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0 Saltmere Brass Band"
+  },
+  "physical": {
+    "size_bytes": 546,
+    "entropy": 5.3,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 8.1
+    }
+  },
+  "integrity": {
+    "sha256": "0f4dad6a317f3bf25c397ce55da4d42f4d858f2d50d1cd2477d05c259941ce0d",
+    "blake3": "f6686bb18351012ae6b67d1a30a9c0df7c656dc83c0b338c7a6b280c16c78811"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "outline": [
+      {
+        "level": 1,
+        "text": "Verse"
+      },
+      {
+        "level": 1,
+        "text": "Chorus"
+      }
+    ],
+    "excerpt": "Harbour bells ring out over sea"
+  },
+  "metadata": {},
+  "format": {
+    "midi": {
+      "smf_format": 1,
+      "tracks": 4,
+      "ticks_per_quarter": 480,
+      "tempo_bpm": 100.0,
+      "tempo_changes": 2,
+      "time_signature": "3/4",
+      "key": "D major",
+      "notes": 28,
+      "channels": [
+        1,
+        2,
+        10
+      ],
+      "percussion": true,
+      "programs": [
+        {
+          "channel": 1,
+          "program": 41,
+          "gm_name": "Violin"
+        },
+        {
+          "channel": 2,
+          "program": 74,
+          "gm_name": "Flute"
+        }
+      ],
+      "system": "gm",
+      "track_list": [
+        {
+          "name": "Harbour Bells",
+          "events": 10
+        },
+        {
+          "name": "Violin",
+          "instrument": "Violin",
+          "events": 21,
+          "notes": 8,
+          "channels": [
+            1
+          ]
+        },
+        {
+          "name": "Flute",
+          "instrument": "Flute",
+          "events": 28,
+          "notes": 8,
+          "channels": [
+            2
+          ]
+        },
+        {
+          "name": "Drums",
+          "events": 26,
+          "notes": 12,
+          "channels": [
+            10
+          ]
+        }
+      ],
+      "markers": 2,
+      "cue_points": 1,
+      "sysex_messages": 1,
+      "tag_formats": [
+        "midi"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "copyright": "CC0 1.0 Saltmere Brass Band",
+        "lyrics": true
+      },
+      "chapter_count": 2,
+      "chapters": [
+        {
+          "start_s": 0.0,
+          "title": "Verse"
+        },
+        {
+          "start_s": 3.6,
+          "title": "Chorus"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.midi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,171 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "low-water-timewise-crafted.musicxml",
+    "stem": "low-water-timewise-crafted",
+    "extension": "musicxml"
+  },
+  "identification": {
+    "format": "musicxml",
+    "name": "MusicXML score",
+    "mime": "application/vnd.recordare.musicxml+xml",
+    "family": "audio.score",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "musicxml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1661
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "score.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 1661,
+    "entropy": 4.8,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1661,
+      "chars": 1661,
+      "words": 53,
+      "lines": 30,
+      "max_line_length": 155,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 4.0
+    }
+  },
+  "integrity": {
+    "sha256": "4c42f01018183004b0d9cebcd3dd51179b3067cf1832b653aabae4ab72cf19c1",
+    "blake3": "48541f8bd31c97f2fd3889e21b8436e703cacbaacfb4575c07dffd2879167c0e"
+  },
+  "content": {
+    "title": "Low Water",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Low Water"
+  },
+  "metadata": {},
+  "format": {
+    "musicxml": {
+      "creators": {
+        "composer": [
+          "Ben Gull"
+        ]
+      },
+      "software": [
+        "whiff fixture"
+      ],
+      "parts": 2,
+      "notes": 4,
+      "rests": 1,
+      "part_list": [
+        {
+          "name": "Oboe"
+        },
+        {
+          "name": "Bassoon"
+        }
+      ],
+      "measures": 2,
+      "key": "A minor",
+      "time_signature": "4/4",
+      "tempo_bpm": 120.0,
+      "quarter_notes": 8.0,
+      "version": "4.0",
+      "layout": "timewise",
+      "staves": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,129 @@
+---
+source: src/formats/score/tracker.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "low-water-crafted.xm",
+    "stem": "low-water-crafted",
+    "extension": "xm"
+  },
+  "identification": {
+    "format": "xm",
+    "name": "FastTracker 2 module",
+    "mime": "audio/x-xm",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.tracker"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 875
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 875,
+    "entropy": 1.95,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 6.17
+    }
+  },
+  "integrity": {
+    "sha256": "d5515cd785f792f5330ea1226f3999a4ef415ee9612135ce535f7efd3ba9aa3e",
+    "blake3": "fbc2a253347bd0d1bc5d6fd9a29331a8eefe748ee1da7c4e806892dcb13b9b71"
+  },
+  "content": {
+    "title": "Low Water",
+    "excerpt": "Low Water"
+  },
+  "metadata": {},
+  "format": {
+    "xm": {
+      "tracker": "whiff fixture",
+      "channels": 4,
+      "orders": 2,
+      "patterns": 2,
+      "instruments": 1,
+      "samples": 1,
+      "initial_speed": 6,
+      "initial_tempo_bpm": 125,
+      "flags": [
+        "linear_frequencies"
+      ],
+      "loops": true,
+      "instrument_names": [
+        "Gull cry"
+      ],
+      "sample_names": [
+        "from the outer mole"
+      ],
+      "format_version": "1.04"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.tracker",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

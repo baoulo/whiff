@@ -1,0 +1,126 @@
+---
+source: src/formats/score/tracker.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fog-on-the-mole-crafted.it",
+    "stem": "fog-on-the-mole-crafted",
+    "extension": "it"
+  },
+  "identification": {
+    "format": "it",
+    "name": "Impulse Tracker module",
+    "mime": "audio/x-it",
+    "family": "audio.score",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.tracker"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 424
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 424,
+    "entropy": 3.754,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 4.32
+    }
+  },
+  "integrity": {
+    "sha256": "056003c0298aa0dbdaad9764d33dca7dc3bb40a7dcab94f463c847a6be849fe3",
+    "blake3": "080e9e589b285be36f5305309ddf3f6bebf7570bd623fa6233e8d0d80ebcbd4a"
+  },
+  "content": {
+    "title": "Fog on the Mole",
+    "excerpt": "Fog on the Mole"
+  },
+  "metadata": {},
+  "format": {
+    "it": {
+      "tracker": "unknown (0xf000)",
+      "channels": 4,
+      "orders": 2,
+      "patterns": 2,
+      "instruments": 0,
+      "samples": 1,
+      "initial_speed": 6,
+      "initial_tempo_bpm": 125,
+      "flags": [
+        "linear_slides"
+      ],
+      "sample_names": [
+        "tide gauge"
+      ],
+      "message": "Written for whiff's tests.\nSaltmere harbour at dawn.",
+      "compatible_with": "240.00"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.tracker",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

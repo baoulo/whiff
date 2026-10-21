@@ -1,0 +1,156 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-music21.mxl",
+    "stem": "harbour-wall-music21",
+    "extension": "mxl"
+  },
+  "identification": {
+    "format": "mxl",
+    "name": "Compressed MusicXML score",
+    "mime": "application/vnd.recordare.musicxml",
+    "family": "audio.score",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1660
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-21",
+        "source": "score.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 1660,
+    "entropy": 7.711,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 7.2
+    }
+  },
+  "integrity": {
+    "sha256": "6cffc2231f5f5a531d0c3eb3604554a140b9a6698752369e20e67963ec6d83ca",
+    "blake3": "9ea0a4af88ef99239cd4dbad76e173cd18622871f2a0c5be092a02218a9ddb85"
+  },
+  "content": {
+    "title": "The Harbour Wall",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Har bour wall at dawn the fer ry waits for gulls and"
+  },
+  "metadata": {},
+  "format": {
+    "mxl": {
+      "creators": {
+        "composer": [
+          "Ana Lighthouse"
+        ]
+      },
+      "software": [
+        "music21 v.9.9.1"
+      ],
+      "parts": 2,
+      "notes": 24,
+      "rests": 0,
+      "part_list": [
+        {
+          "name": "Flute",
+          "instrument": "Flute",
+          "midi_program": 74,
+          "gm_name": "Flute"
+        },
+        {
+          "name": "Cello",
+          "instrument": "Violoncello",
+          "midi_program": 43,
+          "gm_name": "Cello"
+        }
+      ],
+      "measures": 4,
+      "key": "D major",
+      "time_signature": "3/4",
+      "tempo_bpm": 100.0,
+      "quarter_notes": 12.0,
+      "root_file": "harbour-wall-music21.musicxml",
+      "version": "4.0",
+      "staves": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

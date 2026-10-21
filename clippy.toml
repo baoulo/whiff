@@ -11,4 +11,5 @@ doc-valid-idents = [
     "WebM", "OpenDML", "RealMedia", "RealVideo", "RealAudio", "ProRes", "FourCCs", "MaxCLL", "MaxFALL",
     "VideoToolbox", "BITMAPINFOHEADER",
     "SubRip", "WebVTT", "SubStation", "SubViewer", "MicroDVD", "VobSub", "VSFilter", "YouTube", "SHOUTcast",
+    "MusicXML", "MuseScore", "LilyPond", "OpenMPT", "ProTracker", "FastTracker", "PyGuitarPro",
 ]

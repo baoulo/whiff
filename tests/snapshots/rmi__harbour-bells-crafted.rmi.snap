@@ -1,0 +1,165 @@
+---
+source: src/formats/score/midi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bells-crafted.rmi",
+    "stem": "harbour-bells-crafted",
+    "extension": "rmi"
+  },
+  "identification": {
+    "format": "rmi",
+    "name": "RIFF MIDI",
+    "mime": "audio/mid",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.midi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 234
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0",
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 234,
+    "entropy": 5.138,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 2.0
+    }
+  },
+  "integrity": {
+    "sha256": "c72333a0b09b7ec2fcd4db62d642ae5065993141b7ae87771de43039588a0ac7",
+    "blake3": "e517fb9bf249e75bbac5e7f9a556d76a06ca3765dfdfc2e5cf3558ae61ea9dc1"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Fixture for whiff",
+    "authors": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "metadata": {
+    "riff_info": {
+      "INAM": "Harbour Bells",
+      "IART": "Saltmere Brass Band",
+      "ICOP": "CC0 1.0",
+      "ICMT": "Fixture for whiff"
+    }
+  },
+  "format": {
+    "rmi": {
+      "smf_format": 1,
+      "tracks": 2,
+      "ticks_per_quarter": 480,
+      "tempo_bpm": 120.0,
+      "time_signature": "4/4",
+      "notes": 4,
+      "channels": [
+        1
+      ],
+      "percussion": false,
+      "programs": [
+        {
+          "channel": 1,
+          "program": 15,
+          "gm_name": "Tubular Bells"
+        }
+      ],
+      "track_list": [
+        {
+          "name": "Harbour Bells",
+          "events": 4
+        },
+        {
+          "events": 10,
+          "notes": 4,
+          "channels": [
+            1
+          ]
+        }
+      ],
+      "tag_formats": [
+        "riff_info",
+        "midi"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "copyright": "CC0 1.0",
+        "comment": "Fixture for whiff"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.midi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

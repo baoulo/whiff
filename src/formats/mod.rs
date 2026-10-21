@@ -5,7 +5,7 @@
 //!
 //! | Feature | Groups |
 //! |---|---|
-//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, archive, package, exec, crypto, db, font, web, apple, binary |
+//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, archive, package, exec, crypto, db, font, web, apple, binary |
 //! | `geo` | geo |
 //! | `science` | science |
 //! | `data` | columnar |
@@ -34,6 +34,8 @@ pub(crate) mod email;
 pub(crate) mod image;
 #[cfg(feature = "common")]
 pub(crate) mod playlist;
+#[cfg(feature = "common")]
+pub(crate) mod score;
 #[cfg(feature = "common")]
 pub(crate) mod subtitle;
 #[cfg(feature = "common")]

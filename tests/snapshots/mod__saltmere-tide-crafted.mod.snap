@@ -1,0 +1,124 @@
+---
+source: src/formats/score/tracker.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tide-crafted.mod",
+    "stem": "saltmere-tide-crafted",
+    "extension": "mod"
+  },
+  "identification": {
+    "format": "mod",
+    "name": "ProTracker module",
+    "mime": "audio/x-mod",
+    "family": "audio.score",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.tracker"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3196
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3196,
+    "entropy": 0.548,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 11.52
+    }
+  },
+  "integrity": {
+    "sha256": "0e1680eec2fbdfd2862fee90bb131a1d141ce9aecff69e8cfc887e03d5cecf9a",
+    "blake3": "c56d434c3a38175377acc6ff4a1032412491f8906ab1fc5f04b7782d3f7d63a5"
+  },
+  "content": {
+    "title": "Saltmere Tide",
+    "excerpt": "Saltmere Tide"
+  },
+  "metadata": {},
+  "format": {
+    "mod": {
+      "tracker": "ProTracker",
+      "channels": 4,
+      "orders": 3,
+      "patterns": 2,
+      "instruments": 0,
+      "samples": 31,
+      "initial_speed": 6,
+      "initial_tempo_bpm": 125,
+      "sample_names": [
+        "harbour bells",
+        "written for whiff's",
+        "test fixtures"
+      ],
+      "signature": "M.K."
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.tracker",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

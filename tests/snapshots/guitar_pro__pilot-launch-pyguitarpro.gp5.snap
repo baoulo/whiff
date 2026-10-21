@@ -1,0 +1,136 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pilot-launch-pyguitarpro.gp5",
+    "stem": "pilot-launch-pyguitarpro",
+    "extension": "gp5"
+  },
+  "identification": {
+    "format": "guitar_pro",
+    "name": "Guitar Pro tablature",
+    "mime": "application/x-guitar-pro",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1557
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 1557,
+    "entropy": 3.283,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1ed20f497bc5140e2425f24feda9f82b660283a0fefe528c5d4bf330c10605db",
+    "blake3": "62d36edc040f3576ee81135eb0653cd4e36966baa8fc2c90623c89b17c24e790"
+  },
+  "content": {
+    "title": "Pilot Launch",
+    "authors": [
+      "Saltmere Brass Band",
+      "Ben Gull",
+      "Mira Castell"
+    ],
+    "excerpt": "Pilot Launch"
+  },
+  "metadata": {},
+  "format": {
+    "guitar_pro": {
+      "subtitle": "Harbour Riff",
+      "creators": {
+        "artist": [
+          "Saltmere Brass Band"
+        ],
+        "composer": [
+          "Mira Castell"
+        ],
+        "words": [
+          "Ben Gull"
+        ]
+      },
+      "measures": 1,
+      "key": "C major",
+      "tempo_bpm": 96.0,
+      "version": "FICHIER GUITAR PRO v5.10",
+      "album": "Tides of Saltmere",
+      "tab_author": "Ana Lighthouse",
+      "instructions": "Play it slow",
+      "notice": "Fixture for whiff",
+      "tempo_name": "Moderate",
+      "tracks": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

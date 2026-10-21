@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<museScore version="4.20">
+  <Score>
+    <metaTag name="workTitle">The Harbour Wall</metaTag>
+    <metaTag name="movementTitle">Dawn</metaTag>
+    <metaTag name="composer">Ana Lighthouse</metaTag>
+    <metaTag name="lyricist">Ben Gull</metaTag>
+    <metaTag name="copyright">CC0 1.0</metaTag>
+    <metaTag name="creationDate">2024-04-01</metaTag>
+    <metaTag name="source">Fixture for whiff</metaTag>
+    <Part id="1">
+      <Staff id="1"/>
+      <trackName>Flute</trackName>
+      <Instrument id="flute">
+        <longName>Flute</longName>
+        <Channel><program value="73"/></Channel>
+      </Instrument>
+    </Part>
+    <Staff id="1">
+      <VBox><Text><style>title</style><text>The Harbour Wall</text></Text></VBox>
+      <Measure>
+        <voice>
+          <KeySig><concertKey>2</concertKey></KeySig>
+          <TimeSig><sigN>3</sigN><sigD>4</sigD></TimeSig>
+          <Tempo><tempo>1.66667</tempo><text>q = 100</text></Tempo>
+          <Chord><durationType>quarter</durationType><Lyrics><syllabic>begin</syllabic><text>Har</text></Lyrics><Note><pitch>74</pitch><tpc>16</tpc></Note></Chord>
+          <Chord><durationType>quarter</durationType><Lyrics><syllabic>end</syllabic><text>bour</text></Lyrics><Note><pitch>78</pitch><tpc>20</tpc></Note></Chord>
+          <Chord><durationType>quarter</durationType><Lyrics><text>wall</text></Lyrics><Note><pitch>81</pitch><tpc>17</tpc></Note></Chord>
+        </voice>
+      </Measure>
+      <Measure>
+        <voice>
+          <Chord><durationType>half</durationType><Note><pitch>79</pitch><tpc>15</tpc></Note><Note><pitch>83</pitch><tpc>19</tpc></Note></Chord>
+          <Rest><durationType>quarter</durationType></Rest>
+          <BarLine><subtype>end</subtype></BarLine>
+        </voice>
+      </Measure>
+    </Staff>
+  </Score>
+</museScore>

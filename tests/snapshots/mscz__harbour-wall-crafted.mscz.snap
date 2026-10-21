@@ -1,0 +1,148 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-crafted.mscz",
+    "stem": "harbour-wall-crafted",
+    "extension": "mscz"
+  },
+  "identification": {
+    "format": "mscz",
+    "name": "Compressed MuseScore score",
+    "mime": "application/x-musescore",
+    "family": "audio.score",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 988
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "score.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 988,
+    "entropy": 7.426,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "42d0a6eb91304d141de1cb397fc741c79d83855bda7ce1c229016d54e71e73af",
+    "blake3": "ba87b7906ee8553f2ad4feb937d016c99d7439ea035e81bb1b287f39f056b924"
+  },
+  "content": {
+    "title": "The Harbour Wall",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "excerpt": "Harbour wall"
+  },
+  "metadata": {},
+  "format": {
+    "mscz": {
+      "subtitle": "Dawn",
+      "creators": {
+        "composer": [
+          "Ana Lighthouse"
+        ],
+        "lyricist": [
+          "Ben Gull"
+        ]
+      },
+      "parts": 1,
+      "notes": 5,
+      "rests": 1,
+      "part_list": [
+        {
+          "name": "Flute",
+          "instrument": "flute",
+          "midi_program": 74,
+          "gm_name": "Flute"
+        }
+      ],
+      "measures": 2,
+      "key": "D major",
+      "time_signature": "3/4",
+      "tempo_bpm": 100.0,
+      "root_file": "harbour-wall.mscx",
+      "version": "4.20",
+      "source": "Fixture for whiff"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

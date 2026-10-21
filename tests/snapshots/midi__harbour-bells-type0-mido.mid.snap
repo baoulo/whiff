@@ -1,0 +1,184 @@
+---
+source: src/formats/score/midi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bells-type0-mido.mid",
+    "stem": "harbour-bells-type0-mido",
+    "extension": "mid"
+  },
+  "identification": {
+    "format": "midi",
+    "name": "Standard MIDI file",
+    "mime": "audio/midi",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.midi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 495
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0 Saltmere Brass Band"
+  },
+  "physical": {
+    "size_bytes": 495,
+    "entropy": 5.22,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 8.1
+    }
+  },
+  "integrity": {
+    "sha256": "fc4b78f5c5814549616979d6c8d95695af46c296ae7d793a3871c83f05c05533",
+    "blake3": "262ae26322ea2eb6f44e3d1ec223c7271b79bc646720d9c43e844f9888b3dacc"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "outline": [
+      {
+        "level": 1,
+        "text": "Verse"
+      },
+      {
+        "level": 1,
+        "text": "Chorus"
+      }
+    ],
+    "excerpt": "Harbour bells ring out over sea"
+  },
+  "metadata": {},
+  "format": {
+    "midi": {
+      "smf_format": 0,
+      "tracks": 1,
+      "ticks_per_quarter": 480,
+      "tempo_bpm": 100.0,
+      "tempo_changes": 2,
+      "time_signature": "3/4",
+      "key": "D major",
+      "notes": 28,
+      "channels": [
+        1,
+        2,
+        10
+      ],
+      "percussion": true,
+      "programs": [
+        {
+          "channel": 1,
+          "program": 41,
+          "gm_name": "Violin"
+        },
+        {
+          "channel": 2,
+          "program": 74,
+          "gm_name": "Flute"
+        }
+      ],
+      "system": "gm",
+      "track_list": [
+        {
+          "name": "Harbour Bells",
+          "instrument": "Violin",
+          "events": 82,
+          "notes": 28,
+          "channels": [
+            1,
+            2,
+            10
+          ]
+        }
+      ],
+      "markers": 2,
+      "cue_points": 1,
+      "sysex_messages": 1,
+      "tag_formats": [
+        "midi"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "copyright": "CC0 1.0 Saltmere Brass Band",
+        "lyrics": true
+      },
+      "chapter_count": 2,
+      "chapters": [
+        {
+          "start_s": 0.0,
+          "title": "Verse"
+        },
+        {
+          "start_s": 3.6,
+          "title": "Chorus"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.midi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
