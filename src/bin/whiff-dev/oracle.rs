@@ -4,6 +4,8 @@
 //!   MWG composite tags (`exiftool -use MWG`);
 //! * `whiff-dev oracle media`: audio and video duration, sample rate and
 //!   channels against `ffprobe`.
+//! * `subtitles`: subtitle codecs, cue counts and the end of the last cue
+//!   against `ffprobe`'s packets.
 //!
 //! The reference tools are never shipped. A field counts when the tool
 //! reports it; whiff agreeing scores, whiff missing or differing does not.
@@ -436,6 +438,174 @@ fn ffprobe(bin: &str, file: &Path) -> Result<Option<Probe>, String> {
         sample_rate: num(audio.and_then(|a| a.get("sample_rate"))).map(|r| r as u64),
         channels: audio.and_then(|a| a["channels"].as_u64()),
     }))
+}
+
+/// Compare subtitle files with `ffprobe`'s packets: the codec, the cue
+/// count and the end of the last cue (within `tolerance` seconds). ffmpeg
+/// counts differently for some formats, so the whiff field compared is the
+/// one that counts the same thing: PGS segments, SCC caption lines, the
+/// default VobSub track. Fails if cue counts agree on less than `min`
+/// percent of the files ffprobe reads.
+pub fn subtitles(paths: &[PathBuf], tolerance: f64, min: f64, verbose: bool) -> Result<(), String> {
+    let files = collect(paths)?;
+    let engine = Engine::new();
+    let bin = std::env::var("WHIFF_FFPROBE").unwrap_or_else(|_| "ffprobe".into());
+    let mut tally: BTreeMap<&str, (u64, u64)> = BTreeMap::new();
+    let mut misses = Vec::new();
+    let mut compared = 0;
+    let mut bracketed = 0u64;
+    let mut unscored = 0u64;
+    for file in &files {
+        let report = engine.extract_path(file).map_err(|e| format!("{}: {e}", file.display()))?;
+        if report.identification.family.as_deref() != Some("text.subtitle") {
+            continue;
+        }
+        let id = report.identification.format.clone();
+        // ffmpeg has no EBU STL reader (it tries Spruce STL text).
+        if id == "ebu_stl" {
+            continue;
+        }
+        let Some(p) = packets(&bin, file)? else { continue };
+        compared += 1;
+        let f = report.format.get(&id).cloned().unwrap_or_default();
+        let stream = report.physical.media.as_ref().and_then(|m| m.streams.first());
+        let mut check = |field: &'static str, want: String, got: String, ok: bool| {
+            let t = tally.entry(field).or_default();
+            t.0 += 1;
+            if ok {
+                t.1 += 1;
+            } else {
+                misses.push((file.clone(), Check { field, ok, expected: want, got }));
+            }
+        };
+        let codec = stream.and_then(|s| s.get("codec")).and_then(Value::as_str).unwrap_or("");
+        check("codec", p.codec.clone(), codec.to_string(), codec == p.codec);
+        let count_field = match id.as_str() {
+            "pgs" => "segments",
+            "scc" => "timecode_lines",
+            "sami" => "syncs",
+            _ => "cues",
+        };
+        let mut got = f.get(count_field).and_then(Value::as_u64);
+        // ffmpeg keeps LRC's blank lines (they clear the lyric) as packets.
+        if id == "lrc" {
+            got = got.map(|g| g + f.get("empty_cues").and_then(Value::as_u64).unwrap_or(0));
+        }
+        // ffmpeg keeps cues with negative times; whiff drops them.
+        let p = Packets { count: p.count - p.negative, ..p };
+        // ffmpeg's SubViewer reader takes a cue text starting with `[` for
+        // a header tag and drops the cue.
+        let dropped = if matches!(id.as_str(), "sbv" | "subviewer") { bracket_cues(file) } else { 0 };
+        if dropped > 0 && got == Some(p.count + dropped) {
+            bracketed += 1;
+        }
+        let ok = got == Some(p.count) || got == Some(p.count + dropped);
+        check("cues", p.count.to_string(), got.map(|g| g.to_string()).unwrap_or_default(), ok);
+        // ffmpeg reads Spruce STL's last timecode field as hundredths (it
+        // counts frames), and LRC millisecond fractions as hundredths.
+        let misread = id == "spruce_stl" || (id == "lrc" && millisecond_lrc(file));
+        if misread {
+            unscored += 1;
+        }
+        if let Some(end) = p.end.filter(|_| !misread) {
+            let got = f.get("last_cue_end_s").and_then(Value::as_f64);
+            let ok = got.is_some_and(|g| (g - end).abs() <= tolerance);
+            check("last_cue_end", format!("{end:.3}"), got.map(|g| format!("{g:.3}")).unwrap_or_default(), ok);
+        }
+    }
+    if compared == 0 {
+        return Err(format!("ffprobe read no subtitle file (is `{bin}` installed? set WHIFF_FFPROBE)"));
+    }
+    println!("{:<12} {:>7} {:>7} {:>8}", "field", "checked", "agree", "rate");
+    for (field, (n, ok)) in &tally {
+        println!("{field:<12} {n:>7} {ok:>7} {:>7.1}%{}", rate(*ok, *n), if *field == "cues" { " *" } else { "" });
+    }
+    let (n, ok) = tally.get("cues").copied().unwrap_or_default();
+    let overall = rate(ok, n);
+    println!("\n{compared} files; cue counts (*) agree on {overall:.1}% ({ok}/{n}), minimum {min}%");
+    if bracketed > 0 {
+        println!(
+            "{bracketed} SubViewer / SBV files agree once the cues ffmpeg drops (text starting with `[`) are counted"
+        );
+    }
+    if unscored > 0 {
+        println!(
+            "{unscored} files' end times not scored: ffmpeg misreads their times (Spruce STL frames, LRC milliseconds)"
+        );
+    }
+    let shown = if verbose { misses.len() } else { misses.len().min(25) };
+    if shown > 0 {
+        println!("\ndisagreements:");
+        for (file, c) in misses.iter().take(shown) {
+            println!("  {} {}: ffprobe {:?}, whiff {:?}", file.display(), c.field, c.expected, c.got);
+        }
+    }
+    if overall < min { Err(format!("cue count agreement {overall:.1}% is below {min}%")) } else { Ok(()) }
+}
+
+/// SubViewer / SBV cues whose first text line starts with `[`.
+fn bracket_cues(file: &Path) -> u64 {
+    let text = std::fs::read(file).map(|b| String::from_utf8_lossy(&b).into_owned()).unwrap_or_default();
+    let lines: Vec<&str> = text.lines().map(str::trim).collect();
+    let timing =
+        |l: &str| l.split_once(',').is_some_and(|(a, b)| a.contains(':') && b.contains(':') && !a.contains(' '));
+    lines.windows(2).filter(|w| timing(w[0]) && w[1].starts_with('[')).count() as u64
+}
+
+/// ffprobe's first subtitle stream: codec, packet count, and the latest
+/// packet end (`None` unless every packet has a duration).
+struct Packets {
+    codec: String,
+    count: u64,
+    /// Packets with a negative time.
+    negative: u64,
+    end: Option<f64>,
+}
+
+/// An LRC file with millisecond time stamps (`[01:02.345]`).
+fn millisecond_lrc(file: &Path) -> bool {
+    let text = std::fs::read(file).map(|b| String::from_utf8_lossy(&b).into_owned()).unwrap_or_default();
+    text.lines().any(|l| fraction_digits(l) == Some(3))
+}
+
+/// Digits after the point of a line's leading LRC time stamp.
+fn fraction_digits(line: &str) -> Option<usize> {
+    let t = line.split(']').next()?.strip_prefix('[')?;
+    if !t.starts_with(|c: char| c.is_ascii_digit() || c == '-') {
+        return None;
+    }
+    t.rsplit_once('.').map(|(_, f)| f.len())
+}
+
+fn packets(bin: &str, file: &Path) -> Result<Option<Packets>, String> {
+    let output = Command::new(bin)
+        .args(["-v", "error", "-of", "json", "-select_streams", "s:0", "-show_packets"])
+        .args(["-show_entries", "packet=pts_time,duration_time:stream=codec_name"])
+        .arg(file)
+        .output()
+        .map_err(|e| format!("cannot run `{bin}` ({e}); install ffmpeg or set WHIFF_FFPROBE"))?;
+    if !output.status.success() {
+        return Ok(None);
+    }
+    let v: Value = serde_json::from_slice(&output.stdout).map_err(|e| format!("ffprobe output: {e}"))?;
+    let Some(codec) = v.pointer("/streams/0/codec_name").and_then(Value::as_str) else { return Ok(None) };
+    let num = |x: &Value| x.as_str().and_then(|s| s.parse::<f64>().ok());
+    let list = v["packets"].as_array().cloned().unwrap_or_default();
+    let mut end = Some(0.0f64);
+    let mut negative = 0;
+    for pk in &list {
+        let t = num(&pk["pts_time"]);
+        if t.is_some_and(|t| t < 0.0) {
+            negative += 1;
+            continue;
+        }
+        // ffmpeg writes -1 (a tick) for a duration it does not know.
+        end = match (end, t, num(&pk["duration_time"])) {
+            (Some(e), Some(t), Some(d)) => Some(e.max(t + d.max(0.0))),
+            _ => None,
+        };
+    }
+    Ok(Some(Packets { codec: codec.to_string(), count: list.len() as u64, negative, end: end.filter(|e| *e > 0.0) }))
 }
 
 /// What `oracle images` compares when given no paths.

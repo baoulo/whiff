@@ -1,0 +1,192 @@
+---
+source: src/formats/subtitle/markup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-ebu-tt-crafted.ttml",
+    "stem": "harbour-ebu-tt-crafted",
+    "extension": "ttml"
+  },
+  "identification": {
+    "format": "ttml",
+    "name": "TTML timed text",
+    "mime": "application/ttml+xml",
+    "family": "text.subtitle",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ttml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "subtitle.markup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2092
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Broadcasting"
+  },
+  "physical": {
+    "size_bytes": 2092,
+    "entropy": 4.948,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2092,
+      "chars": 2088,
+      "words": 127,
+      "lines": 37,
+      "max_line_length": 159,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 16.5,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "ttml",
+          "language": "en",
+          "cues": 6
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "b2f76253145088e433bf30bba1cd8bbb51b4c5144625eb4ce776955a7d24553f",
+    "blake3": "b7da1612bc4f8eddf3c52008cefdbac5b9f905c7b48ca23ff175bbbfbfdcd54e"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "gulls calling",
+      "ferry leaves",
+      "calling",
+      "gulls"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ttml": {
+      "cues": 6,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 16.5,
+      "frame_rate": 25.0,
+      "text_lines": 9,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "speakers": 2,
+      "top_speakers": {
+        "Ana Lighthouse": 3,
+        "Ben Gull": 1
+      },
+      "time_base": "media",
+      "dialect": "ebu_tt",
+      "style_definitions": 2,
+      "regions": 1,
+      "agents": 2,
+      "ebu_metadata": {
+        "original_programme_title": "Saltmere Harbour",
+        "original_episode_title": "Morning"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.markup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

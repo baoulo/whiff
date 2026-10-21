@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tt xmlns="http://www.w3.org/ns/ttml" xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
+    xmlns:tts="http://www.w3.org/ns/ttml#styling" xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
+    xmlns:ebuttm="urn:ebu:tt:metadata" xmlns:ebutts="urn:ebu:tt:style"
+    ttp:timeBase="media" ttp:frameRate="25" ttp:tickRate="10000000" ttp:cellResolution="50 30" xml:lang="en-GB">
+  <head>
+    <metadata>
+      <ttm:title>Saltmere Harbour</ttm:title>
+      <ttm:copyright>2024 Saltmere Broadcasting</ttm:copyright>
+      <ttm:agent xml:id="ana" type="person"><ttm:name type="full">Ana Lighthouse</ttm:name></ttm:agent>
+      <ttm:agent xml:id="ben" type="person"><ttm:name type="full">Ben Gull</ttm:name></ttm:agent>
+      <ebuttm:documentMetadata>
+        <ebuttm:documentOriginalProgrammeTitle>Saltmere Harbour</ebuttm:documentOriginalProgrammeTitle>
+        <ebuttm:documentOriginalEpisodeTitle>Morning</ebuttm:documentOriginalEpisodeTitle>
+      </ebuttm:documentMetadata>
+    </metadata>
+    <styling>
+      <style xml:id="white" tts:color="#FFFFFF" tts:fontFamily="sansSerif"/>
+      <style xml:id="yellow" tts:color="#FFFF00"/>
+    </styling>
+    <layout>
+      <region xml:id="bottom" tts:origin="10% 80%" tts:extent="80% 15%"/>
+    </layout>
+  </head>
+  <body region="bottom">
+    <div>
+      <p xml:id="s0" begin="5000000t" end="30000000t" ttm:agent="ana"><span style="white">Morning on the Saltmere breakwater.</span></p>
+      <p xml:id="s1" begin="32000000t" end="58000000t" ttm:agent="ana"><span style="white">The ferry leaves at seven,<br/>as it has for forty years.</span></p>
+      <p xml:id="s2" begin="60000000t" end="80000000t"><span style="white">[gulls calling]</span></p>
+    </div>
+    <div begin="8s">
+      <p xml:id="s3" begin="5f" dur="2.8s" ttm:agent="ben">Tide's turning. We should check<br/>the mooring buoys.</p>
+      <p xml:id="s4" begin="80f" dur="2.8s" ttm:agent="ana">The lighthouse keeper logs<br/>every boat that passes.</p>
+      <p xml:id="s5" begin="155f" dur="2.3s">♪ brass band playing ♪</p>
+    </div>
+  </body>
+</tt>

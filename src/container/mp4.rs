@@ -2,12 +2,13 @@
 //! header, each track (handler, codec and its configuration, timescale,
 //! duration, language, sample count and size), iTunes `ilst` metadata
 //! (also keyed through QuickTime `keys`), QuickTime `©xyz`-style user data,
-//! Nero (`chpl`) and QuickTime chapter-track chapters, XMP, the layout
-//! (fragmented, `moov` before `mdat`) and, for fragmented files, the track
-//! durations from the movie fragments.
+//! Nero (`chpl`) and QuickTime chapter-track chapters, the text of
+//! subtitle tracks (3GPP timed text, QuickTime text, WebVTT in ISO BMFF),
+//! XMP, the layout (fragmented, `moov` before `mdat`) and, for fragmented
+//! files, the track durations from the movie fragments.
 //!
-//! Only the `moov` and `moof` boxes and chapter text samples are read;
-//! media data never is.
+//! Only the `moov` and `moof` boxes and chapter and subtitle text samples
+//! are read; audio and video data never is.
 //!
 //! Specifications: ISO/IEC 14496-12 (ISO BMFF), 14496-14 (MP4), 14496-1
 //! §7.2.6 (ES descriptors), 14496-3 §1.6.2 (AudioSpecificConfig); Apple
@@ -39,6 +40,12 @@ const MAX_TRACKS: usize = 256;
 const MAX_ITEMS: usize = 4096;
 /// Chapter samples read from a chapter track.
 const MAX_CHAPTER_SAMPLES: usize = 500;
+/// Samples read from each subtitle track.
+const MAX_TEXT_SAMPLES: usize = 20_000;
+/// Largest subtitle sample read.
+const MAX_TEXT_SAMPLE: u32 = 16 << 10;
+/// Subtitle sample bytes read from one movie.
+const MAX_TEXT_BYTES: u64 = 8 << 20;
 /// QuickTime `wave` boxes followed inside one another.
 const MAX_WAVE_DEPTH: usize = 4;
 
@@ -220,7 +227,22 @@ pub struct Track {
     pub protection: Option<String>,
     /// Samples and duration from the movie fragments.
     pub fragment_samples: u64,
+    /// Subtitle tracks (`tx3g`, `text`, `wvtt`): the samples that hold text,
+    /// in order.
+    pub text_samples: Vec<TextSample>,
     sample_table: Option<SampleTable>,
+}
+
+/// One text sample of a subtitle track.
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct TextSample {
+    /// Start, seconds.
+    pub start_s: f64,
+    /// End, seconds.
+    pub end_s: f64,
+    /// The text as stored (styling is in separate boxes; WebVTT cue
+    /// payloads keep their tags).
+    pub text: String,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -344,6 +366,7 @@ pub fn read(src: &mut dyn Source) -> Result<Movie, ExtractError> {
     if m.chapters.is_empty() {
         chapter_track(src, &mut m);
     }
+    text_tracks(src, &mut m);
     for t in &mut m.tracks {
         t.sample_table = None;
     }
@@ -1041,6 +1064,69 @@ fn chapter_track(src: &mut dyn Source, m: &mut Movie) {
     m.chapters = out;
 }
 
+/// The text samples of subtitle tracks that are not chapter tracks.
+fn text_tracks(src: &mut dyn Source, m: &mut Movie) {
+    let chapters: Vec<u32> = m.tracks.iter().flat_map(|t| t.chapter_tracks.iter().copied()).collect();
+    let mut budget = MAX_TEXT_BYTES;
+    for t in &mut m.tracks {
+        let subtitle = matches!(t.handler.as_str(), "text" | "sbtl" | "subt")
+            && matches!(t.codec.as_str(), "tx3g" | "text" | "wvtt")
+            && !chapters.contains(&t.id);
+        let Some(st) = t.sample_table.as_ref().filter(|_| subtitle && t.timescale > 0) else { continue };
+        let timescale = f64::from(t.timescale);
+        let mut times = st.times.iter().flat_map(|&(n, d)| std::iter::repeat_n(d, n as usize));
+        let mut time = 0u64;
+        let mut out = Vec::new();
+        for (i, off) in sample_offsets(st, MAX_TEXT_SAMPLES).into_iter().enumerate() {
+            let size = if st.fixed_size > 0 { st.fixed_size } else { st.sizes.get(i).copied().unwrap_or(0) };
+            let start = time;
+            time += u64::from(times.next().unwrap_or(0));
+            if !(2..=MAX_TEXT_SAMPLE).contains(&size) || u64::from(size) > budget {
+                continue;
+            }
+            budget -= u64::from(size);
+            let Ok(d) = src.read_vec(off, size as usize) else { continue };
+            let text = if t.codec == "wvtt" { webvtt_sample(&d) } else { timed_text(&d) };
+            if !text.trim().is_empty() {
+                out.push(TextSample { start_s: start as f64 / timescale, end_s: time as f64 / timescale, text });
+            }
+        }
+        t.text_samples = out;
+    }
+}
+
+/// A 3GPP timed text / QuickTime text sample: a 16-bit length and the text
+/// (UTF-8, or UTF-16 after a byte-order mark); style boxes follow.
+fn timed_text(d: &[u8]) -> String {
+    let n = usize::from(u16::from_be_bytes([d[0], d[1]]));
+    // A length past the sample keeps what is there.
+    let text = &d[2..(2 + n).min(d.len())];
+    if text.starts_with(&[0xfe, 0xff]) {
+        let units: Vec<u16> = text[2..].as_chunks::<2>().0.iter().map(|c| u16::from_be_bytes(*c)).collect();
+        String::from_utf16_lossy(&units)
+    } else {
+        String::from_utf8_lossy(text).into_owned()
+    }
+}
+
+/// A WebVTT-in-ISO-BMFF sample: the `payl` text of each `vttc` cue box
+/// (`vtte` boxes are empty cues).
+fn webvtt_sample(d: &[u8]) -> String {
+    let mut out = String::new();
+    for (kind, body) in boxes(d) {
+        if &kind != b"vttc" {
+            continue;
+        }
+        if let Some(p) = find(body, b"payl") {
+            if !out.is_empty() {
+                out.push('\n');
+            }
+            out.push_str(&String::from_utf8_lossy(p));
+        }
+    }
+    out
+}
+
 /// Track durations and sample counts from the movie fragments: the
 /// fragment duration (`mvex/mehd`) when given, else each track fragment's
 /// decode time (`tfdt`) plus its run durations (`trun`, defaulting through
@@ -1174,6 +1260,25 @@ pub fn mac_time(secs: u64) -> Option<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn subtitle_samples() {
+        let bx = |kind: &[u8; 4], body: &[u8]| {
+            let mut v = u32::try_from(body.len() + 8).unwrap().to_be_bytes().to_vec();
+            v.extend_from_slice(kind);
+            v.extend_from_slice(body);
+            v
+        };
+        let mut cue = bx(b"iden", b"c1");
+        cue.extend(bx(b"payl", b"<v Ana>Hello"));
+        let mut sample = bx(b"vttc", &cue);
+        sample.extend(bx(b"vtte", b""));
+        sample.extend(bx(b"vttc", &bx(b"payl", b"again")));
+        assert_eq!(webvtt_sample(&sample), "<v Ana>Hello\nagain");
+        assert_eq!(timed_text(b"\x00\x05Hello\x00\x00\x00\x0cstyl"), "Hello");
+        assert_eq!(timed_text(b"\x00\x06\xfe\xff\x00H\x00i"), "Hi");
+        assert_eq!(timed_text(b"\x00\x09ab"), "ab");
+    }
 
     #[test]
     fn languages_times_and_descriptors() {

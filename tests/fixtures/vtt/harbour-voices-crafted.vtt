@@ -1,0 +1,49 @@
+WEBVTT - Saltmere Harbour
+Kind: captions
+Language: en-GB
+
+NOTE Written for whiff's tests.
+
+STYLE
+::cue(v[voice="Ana"]) { color: yellow }
+
+REGION
+id:bottom width:80% lines:3 regionanchor:0%,100% viewportanchor:10%,90%
+
+cue-1
+00:00.500 --> 00:00:03.000 region:bottom align:center
+<v Ana>Morning on the Saltmere breakwater.
+
+00:03.200 --> 00:00:05.800
+<v Ana>The ferry leaves at seven,
+as it has for forty years.
+
+00:06.000 --> 00:00:08.000 line:10% position:50%
+[gulls calling]
+
+cue-4
+00:08.200 --> 00:00:11.000
+<v Ben>Tide's turning. We should check
+the mooring buoys.
+
+00:11.200 --> 00:00:14.000
+<v.loud Ana><i>The lighthouse keeper logs
+every boat that passes.</i>
+
+00:14.200 --> 00:00:16.500 line:10% position:50%
+♪ brass band playing ♪
+
+cue-7
+00:16.800 --> 00:00:19.500
+<v Ben>Harbour office, this is the pilot launch.
+
+00:19.700 --> 00:00:22.000
+<v Ana>Fog rolls in from the outer mole by noon.
+
+00:22.200 --> 00:00:25.000
+<v Ben>Keep to the marked channel
+past the red buoy.
+
+cue-10
+00:25.200 --> 00:00:28.000
+<v Ana>By evening the quay is quiet again.

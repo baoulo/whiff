@@ -55,7 +55,9 @@ expression: report
           "codec": "subrip",
           "language": "eng",
           "default": false,
-          "track": 1
+          "track": 1,
+          "cues": 2,
+          "last_cue_end_s": 0.95
         }
       ]
     }
@@ -64,7 +66,13 @@ expression: report
     "sha256": "703b1e2ffe605ba10ca2dfef7c38768e4b9620929352c0aa156dd4509ba15b07",
     "blake3": "64254bfd7e5a7da7d1c79ff67ec2a4e904bebe72376e669127a6744e78078d27"
   },
-  "content": {},
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 0.554
+    },
+    "excerpt": "The ferry leaves the breakwater. Gulls follow it out."
+  },
   "metadata": {},
   "format": {
     "mks": {
@@ -72,6 +80,7 @@ expression: report
       "doc_type_version": 4,
       "timestamp_scale_ns": 1000000,
       "muxing_app": "Lavf",
+      "transcript_stream": 0,
       "tracks": [
         {
           "number": 1,

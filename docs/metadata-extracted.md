@@ -78,7 +78,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `code.manifest` | Code | `common` | ecosystem, package name, version, description, licence, authors, repository, dependencies (+dev) with versions & counts, scripts/entry points, lockfile: resolved package count | Dependency + licence picture of a project | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | impl | S1 | 33 |
 | `code.notebook` | Code | `common` | kernel + language, nbformat, cell counts by type, markdown headings outline, imports, output types, error outputs, executed?, execution order | Outline + imports + errors summarise an analysis notebook | serde_json | impl | S1 | 4 |
 | `code.infra` | Code | `common` | per dialect: base images/stages/ports/entrypoint (Dockerfile), targets (Makefile), providers/resources/modules (Terraform/HCL), server blocks (nginx), unit/exec (systemd), schedules (crontab) | What does this infra file deploy/run | hcl-rs + impl line scanners | mixed | S8 | 9 |
-| `text.subtitle` | Media | `common` | cue count, first/last timestamp (duration covered), language tag, styles/speakers, frame rate (MicroDVD), full transcript text -&gt; text.plain | Transcript text is the content of the video for an LLM | impl (all formats are simple), ass_parser optional | impl | S4 | 11 |
+| `text.subtitle` | Media | `common` | cue count, first cue / end of the last cue, language, styles and fonts, speakers, frame rate (MicroDVD, SCC, EBU STL, TTML), markup used, sound-description and music cues, header fields (ASS script info, WebVTT kind, EBU STL GSI titles and dates, TTML agents and metadata), bitmap subtitles (PGS display sets, VobSub tracks), full transcript text | Transcript text is the content of the video for an LLM | impl (SRT, WebVTT, SBV, SubViewer, MicroDVD, MPL2, LRC, ASS / SSA, TTML / DFXP / IMSC / EBU-TT, SAMI, YouTube srv3 / json3, SCC with a CEA-608 decoder, EBU STL with ISO 6937, PGS, VobSub index; quick-xml for TTML) | impl | S4 | 11 |
 | `text.calendar` | Personal | `common` | calendar name, prodid, event/todo counts, date range, recurring events, organizers/attendee counts, locations, timezones, event summaries (first N) | Schedules summarised | impl (RFC 5545 content lines, vCalendar 1.0) | impl | S3 | 3 |
 | `text.contact` | Personal | `common` | contact count, versions, names, organisations, titles; emails/phones counted or redacted per privacy policy | Who is in the address book (privacy-aware) | impl (RFC 6350 content lines, vCard 2.1/3.0/4.0) | impl | S3 | 2 |
 | `email` | Personal | `common` | From/To/Cc/Reply-To, Date, Subject, Message-ID, In-Reply-To/References (thread), mailer, Received hop count + first/last hop, SPF/DKIM/DMARC results, list headers, attachments (name, type, size), body text/plain (or html-&gt;text) -&gt; text.plain; mailbox: message count, date range, top senders | Who/when/what + thread linkage + attachment inventory | mail-parser (EML, mbox, MHTML, EMLX); impl MSG (MS-OXMSG over the in-house CFB reader, MS-OXRTFCP) | mixed | S3 | 11 |
@@ -101,7 +101,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `meta.icc` | Block | `common` | profile class, colour space, PCS, version, rendering intent, creator, device manufacturer/model, description (desc/mluc), copyright, creation date, white point | Colour-management context | impl (header + tag table); moxcms as fallback | impl | S2 | 1 |
 | `audio` | Media | `common` | container, codec, duration, sample rate, channels + layout, bit depth, bitrate (avg, VBR?), encoder, tags (title, artist, album, album artist, track/disc n/total, date/year, genre, composer, conductor, lyricist, comment, lyrics, BPM, key, ISRC, label, MusicBrainz IDs, ReplayGain), cover art (mime, dimensions, size), chapters, loudness (opt-in decode) | Track identity and technical properties | impl (ID3v1/v2, Vorbis comments, APEv2, iTunes ilst, RIFF, AIFF, CAF, Ogg pages, MPEG / ADTS frames; ISO BMFF and ASF readers shared with video) | impl | S4 | 34 |
 | `audio.score` | Media | `common` | MIDI: format, tracks, PPQ, tempo map, time signatures, key signatures, track/instrument names, lyrics/markers, note count, duration; trackers: title, channels, patterns, instrument/sample names; notation (MusicXML/MEI/ABC): title, composer, parts, measures, key/time | Musical structure for symbolic music | midly (MIDI); quick-xml (MusicXML); impl MOD/XM/IT/S3M/ABC | mixed | S4 | 4 |
-| `audio.playlist` | Media | `common` | entry count, total declared duration, titles/artists, HLS: variants (bandwidth, resolution, codecs), segment count, target duration, encryption; CUE: performer, title, files, tracks + indexes | What a playlist contains | m3u8-rs (HLS), quick-xml (XSPF/ASX/MPD); impl M3U/PLS/CUE | mixed | S4 | 5 |
+| `audio.playlist` | Media | `common` | entry count, declared and total duration, titles / artists / albums, file types, local vs remote entries and hosts, IPTV groups; HLS: master (variants with bandwidth, resolution, codecs, frame rate, renditions, I-frame variants) or media (segments, target duration, VOD / live, fMP4 / TS, encryption and DRM, ad markers); DASH / Smooth Streaming: periods, adaptation sets / stream indexes, representations, DRM systems; CUE: catalogue, REM fields, files, tracks with ISRC and index times | What a playlist contains | impl (M3U / HLS, PLS, CUE, XSPF / ASX / WPL, DASH MPD, Smooth Streaming; quick-xml for the XML formats) | impl | S4 | 5 |
 | `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | impl (ISO BMFF / QuickTime via plugin::mp4, EBML / Matroska, RIFF AVI + OpenDML, MPEG-TS PSI + PES, MPEG-PS, FLV + AMF0, ASF via plugin::asf, RealMedia, Ogg Theora; H.264 / HEVC SPS, avcC / hvcC / av1C / vpcC, AV1 sequence header, VP8 / VP9 key frames, MPEG-1/2 sequence headers) | impl | S4 | 34 |
 | `archive` | Archive | `common` | format + version, entry count, total compressed/uncompressed size, ratio, compression methods, encrypted entries, archive comment, multi-volume?, entries (path, size, mtime, mode) top N, file-type histogram, mtime range, risk flags (path traversal, absolute paths, symlinks out, bomb ratio), recursion into entries (bounded) | Inventory of what's inside without extracting; safety flags | zip, tar, sevenz-rust2, cab, delharc, oxiarc-archive; impl RAR4/5 header listing (unrar is FFI), ARJ, CPIO reader, ACE/ZOO/ARC headers | mixed | S5 | 34 |
 | `compress` | Archive | `common` | algorithm, header fields (gzip FNAME/MTIME/OS/FCOMMENT, xz check + block count, zstd frame content size/dict id/checksum, lz4 frame descriptor, bzip2 block size), declared vs measured uncompressed size, then inner file -&gt; recursive extraction (bounded) | Transparent: the LLM cares about what's inside | flate2 (miniz_oxide), bzip2 (libbz2-rs-sys backend), lzma-rust2, ruzstd, lz4_flex, brotli, lzfse-rust; impl LZW (.Z), snappy framing | mixed | S5 | 13 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **273** of 1004.
-* Formats by family status: crate = 212, mixed = 540, impl = 252.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 34, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 245.
+* Formats with an extractor in this build: **289** of 1004.
+* Formats by family status: crate = 212, mixed = 535, impl = 257.
+* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 30, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 249.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -211,7 +211,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 70 | PostScript | `ps` | application/postscript | 1 | `doc.other` | `common` | `doc.other` | impl | S3 | DSC comments |
 | 71 | Encapsulated PostScript | `eps` `epsf` `epsi` | application/postscript | 1 | `doc.other` | `common` | `doc.other` | impl | S3 | DSC + embedded preview TIFF/WMF + XMP |
 | 72 | LaTeX document | `tex` | application/x-tex | 1 | `doc.other` | `common` | — | impl | S3 | — |
-| 73 | SubRip | `srt` | application/x-subrip | 1 | `text.subtitle` | `common` | — | impl | S4 | — |
+| 73 | SubRip | `srt` | application/x-subrip | 1 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
 | 74 | MP3 | `mp3` | audio/mpeg | 1 | `audio` | `common` | `audio.mpeg` | impl | S4 | ID3v1/ID3v2.3/2.4, APE, Xing/Info/VBRI (VBR, frames), LAME tag |
 | 75 | AAC / M4A | `m4a` `aac` `m4b` `m4p` | audio/mp4 | 1 | `audio` | `common` | `audio.mp4` | impl | S4 | iTunes ilst atoms, chapters (m4b), DRM (m4p) |
 | 76 | WAV | `wav` `wave` | audio/wav | 1 | `audio` | `common` | `audio.wave` | impl | S4 | fmt/fact/LIST INFO/bext (BWF)/iXML/ID3 chunks |
@@ -352,13 +352,13 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 211 | Kindle MOBI / AZW / AZW3 | `mobi` `azw` `azw3` `prc` | application/x-mobipocket-ebook | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | EXTH records |
 | 212 | Comic book archive | `cbz` `cbr` `cb7` `cbt` | application/vnd.comicbook+zip | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | page count, ComicInfo.xml |
 | 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
-| 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
-| 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | — | impl | S4 | — |
+| 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
+| 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | `subtitle.ass` | impl | S4 | — |
 | 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
 | 217 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
 | 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
 | 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
-| 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
+| 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | `playlist.m3u` | impl | S4 | — |
 | 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
 | 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | zip, tar | S5 | — |
 | 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
@@ -741,14 +741,14 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 600 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 601 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
 | 602 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
-| 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
-| 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
-| 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
-| 606 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | ti/ar/al tags |
-| 607 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | languages, cue count (vobsub) |
-| 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | cue count, timings |
-| 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
-| 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | — | impl | S8 | — |
+| 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
+| 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S8 | — |
+| 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
+| 606 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S8 | ti/ar/al tags |
+| 607 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S8 | languages, cue count (vobsub) |
+| 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S8 | cue count, timings |
+| 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | `subtitle.caption` | impl | S8 | — |
+| 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
 | 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S8 | — |
 | 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S8 | — |
 | 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.mp4` | impl | S8 | — |
@@ -774,10 +774,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 633 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | — | midly | S4 | — |
 | 634 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | — | midly | S4 | — |
 | 635 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | — | midly | S4 | — |
-| 636 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
-| 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
-| 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | periods, adaptation sets, codecs |
-| 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | — | m3u8-rs | S4 | — |
+| 636 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S8 | — |
+| 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S8 | — |
+| 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S8 | periods, adaptation sets, codecs |
+| 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S8 | — |
 | 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S8 | — |
 | 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S8 | — |
 | 642 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | impl | S8 | — |

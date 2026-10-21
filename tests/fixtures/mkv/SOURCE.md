@@ -10,3 +10,4 @@ is a point in the open Atlantic. Regenerate with `scripts/fixtures/video.sh`.
 | `harbour-h264-ac3-subs-ffmpeg.mkv` | ffmpeg 7.1 (libx264, AC-3, SubRip in French marked forced), tags, chapters, a cover attachment | CC0-1.0 |
 | `harbour-h264-vorbis-gstreamer.mkv` | GStreamer 1.x `matroskamux` (x264enc, vorbisenc) | CC0-1.0 |
 | `harbour-hevc-hlg-ffmpeg.mkv` | ffmpeg 7.1 (libx265 Main 10), BT.2020 / HLG `Colour` element | CC0-1.0 |
+| `ferry-h264-ass-srt-ffmpeg.mkv` | ffmpeg 7.1 (libx264; an English ASS track marked default and a French SubRip track) | CC0-1.0 |

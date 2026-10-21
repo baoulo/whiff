@@ -43,6 +43,15 @@ The ferry leaves the breakwater.
 00:00:00,600 --> 00:00:00,950
 Gulls follow it out.
 EOF
+cat > "$work/subs-fr.srt" <<'EOF'
+1
+00:00:00,100 --> 00:00:00,600
+Le ferry quitte la digue.
+
+2
+00:00:00,600 --> 00:00:00,950
+Les mouettes le suivent.
+EOF
 cat > "$work/chapters.txt" <<'EOF'
 ;FFMETADATA1
 title=Saltmere Harbour at Dawn
@@ -82,6 +91,13 @@ ff "${v[@]}" "${a[@]}" -c:v libsvtav1 -preset 12 -crf 50 -svtav1-params log-leve
     -movflags frag_keyframe+empty_moov+default_base_moof "${bx[@]}" "$(out mp4 harbour-av1-opus-fragmented-ffmpeg.mp4)"
 gst $gv ! x264enc bitrate=96 speed-preset=veryfast ! h264parse ! mp4mux name=m ! filesink location="$(out mp4 harbour-h264-gstreamer.mp4)" \
     $ga ! faac bitrate=48000 ! m.
+
+# Subtitle text tracks: 3GPP timed text from ffmpeg and from GStreamer's mp4mux.
+ff "${v[@]}" -i "$work/subs.srt" -map 0 -map 1 -c:v libx264 -preset veryfast -crf 36 -c:s mov_text \
+    -metadata:s:s:0 language=eng "${bx[@]}" "$(out mp4 ferry-h264-movtext-ffmpeg.mp4)"
+gst mp4mux name=m ! filesink location="$(out mp4 ferry-h264-tx3g-gstreamer.mp4)" \
+    $gv ! x264enc bitrate=64 speed-preset=veryfast ! h264parse ! m.video_0 \
+    filesrc location="$work/subs.srt" ! subparse ! text/x-raw,format=utf8 ! m.subtitle_0
 
 # ---- QuickTime ------------------------------------------------------------------
 ff -noautorotate -display_rotation:v:0 -90 "${v[@]}" "${a[@]}" -c:v libx264 -preset veryfast -crf 32 -c:a aac -b:a 48k \
@@ -123,6 +139,9 @@ gst $gv ! vp8enc target-bitrate=96000 deadline=1 ! webmmux name=m ! filesink loc
 ff "${v[@]}" -c:v libsvtav1 -preset 12 -crf 50 -svtav1-params log-level=0 -live 1 -cluster_size_limit 4096 \
     "${bx[@]}" "$(out webm gulls-av1-live-ffmpeg.webm)"
 ff -i "$work/subs.srt" -c:s srt -metadata:s:s:0 language=eng -f matroska "${bx[@]}" "$(out mks ferry-subtitles-ffmpeg.mks)"
+ff "${v[@]}" -i "$work/subs.srt" -i "$work/subs-fr.srt" -map 0 -map 1 -map 2 -c:v libx264 -preset veryfast -crf 36 \
+    -c:s:0 ass -c:s:1 srt -metadata:s:s:0 language=eng -metadata:s:s:1 language=fre -disposition:s:0 default \
+    "${bx[@]}" "$(out mkv ferry-h264-ass-srt-ffmpeg.mkv)"
 ff -f lavfi -i "sine=frequency=330:duration=1:sample_rate=44100" -c:a flac \
     -metadata title="Harbour Bells" -metadata artist="Saltmere Brass Band" -metadata album="Tides of Saltmere" \
     -metadata track=3 -metadata date=2024 "${bx[@]}" "$(out mka bells-flac-ffmpeg.mka)"

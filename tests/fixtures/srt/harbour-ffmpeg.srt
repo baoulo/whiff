@@ -1,0 +1,44 @@
+1
+00:00:00,500 --> 00:00:03,000
+<font face="Open Sans" size="42">Morning on the Saltmere breakwater.</font>
+
+2
+00:00:03,200 --> 00:00:05,800
+<font face="Open Sans" size="42">The ferry leaves at seven,
+as it has for forty years.</font>
+
+3
+00:00:06,000 --> 00:00:08,000
+<font face="Open Sans" size="38" color="#ffe0c0"><i>{\an8}<i>[gulls calling]</i></i></font>
+
+4
+00:00:08,200 --> 00:00:11,000
+<font face="Open Sans" size="42">Tide's turning. We should check
+the mooring buoys.</font>
+
+5
+00:00:11,200 --> 00:00:14,000
+<font face="Open Sans" size="42">The lighthouse keeper logs
+every boat that passes.</font>
+
+6
+00:00:14,200 --> 00:00:16,500
+<font face="Open Sans" size="38" color="#ffe0c0"><i>{\an8}<i>♪ brass band playing ♪</i></i></font>
+
+7
+00:00:16,800 --> 00:00:19,500
+<font face="Open Sans" size="42">Harbour office, this is the pilot launch.</font>
+
+8
+00:00:19,700 --> 00:00:22,000
+<font face="Open Sans" size="42">Fog rolls in from the outer mole by noon.</font>
+
+9
+00:00:22,200 --> 00:00:25,000
+<font face="Open Sans" size="42">Keep to the marked channel
+past the red buoy.</font>
+
+10
+00:00:25,200 --> 00:00:28,000
+<font face="Open Sans" size="42">By evening the quay is quiet again.</font>
+

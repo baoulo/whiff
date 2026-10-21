@@ -1,0 +1,202 @@
+---
+source: src/formats/playlist/m3u.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-master-m3u8lib.m3u8",
+    "stem": "harbour-master-m3u8lib",
+    "extension": "m3u8"
+  },
+  "identification": {
+    "format": "hls",
+    "name": "HLS playlist",
+    "mime": "application/vnd.apple.mpegurl",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hls",
+        "confidence": 0.99
+      },
+      {
+        "format": "m3u",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "playlist.m3u"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1230
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1230,
+    "entropy": 5.479,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1230,
+      "chars": 1229,
+      "words": 15,
+      "lines": 14,
+      "max_line_length": 177,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "00ee2b37311b1444d3caeee086f2b592d71c5343c92c763719e77f1148b111ff",
+    "blake3": "f938fdf4f371e1f7b62b8fab0fb530d38e8bd54889233973360ef47f6e23acc2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hls": {
+      "entries": 3,
+      "local_entries": 3,
+      "file_types": {
+        "m3u8": 3
+      },
+      "kind": "master",
+      "version": 6,
+      "independent_segments": true,
+      "variants": 3,
+      "variant_list": [
+        {
+          "bandwidth_bps": 800000,
+          "average_bandwidth_bps": 720000,
+          "resolution": "640x360",
+          "codecs": "avc1.4d401e,mp4a.40.2",
+          "frame_rate": 25.0,
+          "video_range": "SDR",
+          "audio_group": "aud",
+          "subtitles_group": "subs"
+        },
+        {
+          "bandwidth_bps": 2400000,
+          "average_bandwidth_bps": 2160000,
+          "resolution": "1280x720",
+          "codecs": "avc1.4d401f,mp4a.40.2",
+          "frame_rate": 25.0,
+          "video_range": "SDR",
+          "audio_group": "aud",
+          "subtitles_group": "subs"
+        },
+        {
+          "bandwidth_bps": 6000000,
+          "average_bandwidth_bps": 5400000,
+          "resolution": "1920x1080",
+          "codecs": "hvc1.2.4.L123.B0,mp4a.40.2",
+          "frame_rate": 25.0,
+          "video_range": "SDR",
+          "audio_group": "aud",
+          "subtitles_group": "subs"
+        }
+      ],
+      "i_frame_variants": 1,
+      "renditions": [
+        {
+          "type": "audio",
+          "group": "aud",
+          "language": "en",
+          "name": "English",
+          "channels": "2",
+          "default": true
+        },
+        {
+          "type": "audio",
+          "group": "aud",
+          "language": "fr",
+          "name": "Français",
+          "channels": "2"
+        },
+        {
+          "type": "subtitles",
+          "group": "subs",
+          "language": "en",
+          "name": "English"
+        }
+      ],
+      "codecs": [
+        "avc1.4d401e",
+        "avc1.4d401f",
+        "hvc1.2.4.L123.B0",
+        "mp4a.40.2"
+      ],
+      "session_data": [
+        "com.saltmere.title"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.m3u",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

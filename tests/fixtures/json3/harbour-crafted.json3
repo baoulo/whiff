@@ -1,0 +1,404 @@
+{
+ "wireMagic": "pb3",
+ "pens": [
+  {}
+ ],
+ "wsWinStyles": [
+  {}
+ ],
+ "wpWinPositions": [
+  {}
+ ],
+ "events": [
+  {
+   "tStartMs": 0,
+   "dDurationMs": 28000,
+   "id": 1,
+   "wpWinPosId": 1,
+   "wsWinStyleId": 1
+  },
+  {
+   "tStartMs": 500,
+   "dDurationMs": 2500,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "Morning"
+    },
+    {
+     "utf8": " on"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " Saltmere"
+    },
+    {
+     "utf8": " breakwater."
+    }
+   ]
+  },
+  {
+   "tStartMs": 2990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 3200,
+   "dDurationMs": 2600,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "The"
+    },
+    {
+     "utf8": " ferry"
+    },
+    {
+     "utf8": " leaves"
+    },
+    {
+     "utf8": " at"
+    },
+    {
+     "utf8": " seven,"
+    },
+    {
+     "utf8": " as"
+    },
+    {
+     "utf8": " it"
+    },
+    {
+     "utf8": " has"
+    },
+    {
+     "utf8": " for"
+    },
+    {
+     "utf8": " forty"
+    },
+    {
+     "utf8": " years."
+    }
+   ]
+  },
+  {
+   "tStartMs": 5790,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 6000,
+   "dDurationMs": 2000,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "[gulls"
+    },
+    {
+     "utf8": " calling]"
+    }
+   ]
+  },
+  {
+   "tStartMs": 7990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 8200,
+   "dDurationMs": 2800,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "Tide's"
+    },
+    {
+     "utf8": " turning."
+    },
+    {
+     "utf8": " We"
+    },
+    {
+     "utf8": " should"
+    },
+    {
+     "utf8": " check"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " mooring"
+    },
+    {
+     "utf8": " buoys."
+    }
+   ]
+  },
+  {
+   "tStartMs": 10990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 11200,
+   "dDurationMs": 2800,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "The"
+    },
+    {
+     "utf8": " lighthouse"
+    },
+    {
+     "utf8": " keeper"
+    },
+    {
+     "utf8": " logs"
+    },
+    {
+     "utf8": " every"
+    },
+    {
+     "utf8": " boat"
+    },
+    {
+     "utf8": " that"
+    },
+    {
+     "utf8": " passes."
+    }
+   ]
+  },
+  {
+   "tStartMs": 13990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 14200,
+   "dDurationMs": 2300,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "♪"
+    },
+    {
+     "utf8": " brass"
+    },
+    {
+     "utf8": " band"
+    },
+    {
+     "utf8": " playing"
+    },
+    {
+     "utf8": " ♪"
+    }
+   ]
+  },
+  {
+   "tStartMs": 16490,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 16800,
+   "dDurationMs": 2700,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "Harbour"
+    },
+    {
+     "utf8": " office,"
+    },
+    {
+     "utf8": " this"
+    },
+    {
+     "utf8": " is"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " pilot"
+    },
+    {
+     "utf8": " launch."
+    }
+   ]
+  },
+  {
+   "tStartMs": 19490,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 19700,
+   "dDurationMs": 2300,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "Fog"
+    },
+    {
+     "utf8": " rolls"
+    },
+    {
+     "utf8": " in"
+    },
+    {
+     "utf8": " from"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " outer"
+    },
+    {
+     "utf8": " mole"
+    },
+    {
+     "utf8": " by"
+    },
+    {
+     "utf8": " noon."
+    }
+   ]
+  },
+  {
+   "tStartMs": 21990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 22200,
+   "dDurationMs": 2800,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "Keep"
+    },
+    {
+     "utf8": " to"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " marked"
+    },
+    {
+     "utf8": " channel"
+    },
+    {
+     "utf8": " past"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " red"
+    },
+    {
+     "utf8": " buoy."
+    }
+   ]
+  },
+  {
+   "tStartMs": 24990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  },
+  {
+   "tStartMs": 25200,
+   "dDurationMs": 2800,
+   "wWinId": 1,
+   "segs": [
+    {
+     "utf8": "By"
+    },
+    {
+     "utf8": " evening"
+    },
+    {
+     "utf8": " the"
+    },
+    {
+     "utf8": " quay"
+    },
+    {
+     "utf8": " is"
+    },
+    {
+     "utf8": " quiet"
+    },
+    {
+     "utf8": " again."
+    }
+   ]
+  },
+  {
+   "tStartMs": 27990,
+   "wWinId": 1,
+   "aAppend": 1,
+   "segs": [
+    {
+     "utf8": "\n"
+    }
+   ]
+  }
+ ]
+}

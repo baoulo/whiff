@@ -12,6 +12,7 @@
 use serde_json::{Map, Value, json};
 
 use super::super::audio::{self, Chapter, Stream, Tags};
+use super::super::subtitle;
 use super::codec::{self, Colour};
 use super::{Device, Video, audio_map, finish, iso6709, labels, other_map};
 use crate::plugin::mp4::{self, Track, Value as ItemValue};
@@ -140,6 +141,7 @@ impl Extractor for Mp4Video {
         let mut tracks = Vec::new();
         let mut streams = Vec::new();
         let mut schemes = Vec::new();
+        let mut texts = Vec::new();
         for t in &movie.tracks {
             let track_s = track_seconds(t);
             let mut entry = json!({
@@ -174,8 +176,17 @@ impl Extractor for Mp4Video {
                 let lang = t.language.as_deref();
                 labels(&mut map, lang, t.name.as_deref(), None, None);
             }
+            if !t.text_samples.is_empty() {
+                texts.push(subtitle::Embedded {
+                    stream: streams.len(),
+                    cues: text_cues(t),
+                    default: t.enabled,
+                    forced: false,
+                });
+            }
             streams.push(map);
         }
+        subtitle::embedded(cx, &mut streams, &texts);
         cx.format_set("tracks", json!(tracks));
         cx.format_set("media_data_bytes", movie.mdat_bytes);
         if !schemes.is_empty() || movie.tracks.iter().any(|t| matches!(t.codec.as_str(), "drmi" | "drms")) {
@@ -200,6 +211,20 @@ impl Extractor for Mp4Video {
 }
 
 crate::register_extractor!(Mp4Video);
+
+/// A subtitle track's text samples as cues (WebVTT payloads keep their tags).
+fn text_cues(t: &Track) -> Vec<subtitle::Cue> {
+    let mut markup = std::collections::BTreeSet::new();
+    t.text_samples
+        .iter()
+        .map(|s| subtitle::Cue {
+            start: s.start_s,
+            end: Some(s.end_s),
+            text: subtitle::plain_text(&s.text, &mut markup),
+            speaker: None,
+        })
+        .collect()
+}
 
 fn track_seconds(t: &Track) -> Option<f64> {
     (t.timescale > 0 && t.duration > 0).then(|| t.duration as f64 / f64::from(t.timescale))

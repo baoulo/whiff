@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tt
+  xmlns="http://www.w3.org/ns/ttml"
+  xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
+  xmlns:tts="http://www.w3.org/ns/ttml#styling"
+  xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
+  ttp:cellResolution="1280 720"
+  xml:lang="eng">
+  <head>
+    <layout>
+      <region xml:id="Default"
+        tts:origin="3% 0%"
+        tts:extent="97% 96%"
+        tts:displayAlign="after"
+        tts:textAlign="center"
+        tts:fontSize="42c"
+        tts:fontFamily="Open Sans"
+        tts:overflow="visible" />
+      <region xml:id="Sound"
+        tts:origin="3% 4%"
+        tts:extent="97% 100%"
+        tts:displayAlign="before"
+        tts:textAlign="center"
+        tts:fontSize="38c"
+        tts:fontFamily="Open Sans"
+        tts:overflow="visible" />
+    </layout>
+  </head>
+  <body>
+    <div>
+      <p
+        begin="00:00:00.500"
+        end="00:00:03.000"><span region="Default">Morning on the Saltmere breakwater.</span></p>
+      <p
+        begin="00:00:03.200"
+        end="00:00:05.800"><span region="Default">The ferry leaves at seven,<br/>as it has for forty years.</span></p>
+      <p
+        begin="00:00:06.000"
+        end="00:00:08.000"><span region="Sound">[gulls calling]</span></p>
+      <p
+        begin="00:00:08.200"
+        end="00:00:11.000"><span region="Default">Tide's turning. We should check<br/>the mooring buoys.</span></p>
+      <p
+        begin="00:00:11.200"
+        end="00:00:14.000"><span region="Default">The lighthouse keeper logs<br/>every boat that passes.</span></p>
+      <p
+        begin="00:00:14.200"
+        end="00:00:16.500"><span region="Sound">♪ brass band playing ♪</span></p>
+      <p
+        begin="00:00:16.800"
+        end="00:00:19.500"><span region="Default">Harbour office, this is the pilot launch.</span></p>
+      <p
+        begin="00:00:19.700"
+        end="00:00:22.000"><span region="Default">Fog rolls in from the outer mole by noon.</span></p>
+      <p
+        begin="00:00:22.200"
+        end="00:00:25.000"><span region="Default">Keep to the marked channel<br/>past the red buoy.</span></p>
+      <p
+        begin="00:00:25.200"
+        end="00:00:28.000"><span region="Default">By evening the quay is quiet again.</span></p>
+    </div>
+  </body>
+</tt>

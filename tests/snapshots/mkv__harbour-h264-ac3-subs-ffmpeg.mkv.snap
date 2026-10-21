@@ -92,7 +92,9 @@ expression: report
           "title": "Sous-titres",
           "default": false,
           "forced": true,
-          "track": 3
+          "track": 3,
+          "cues": 2,
+          "last_cue_end_s": 0.95
         }
       ]
     }
@@ -107,6 +109,10 @@ expression: report
     "authors": [
       "Ana Lighthouse"
     ],
+    "language": {
+      "code": "en",
+      "confidence": 0.554
+    },
     "outline": [
       {
         "level": 1,
@@ -117,6 +123,7 @@ expression: report
         "text": "Ferry Steps"
       }
     ],
+    "excerpt": "The ferry leaves the breakwater. Gulls follow it out.",
     "tags": [
       "Documentary"
     ]
@@ -136,6 +143,7 @@ expression: report
       "doc_type_version": 4,
       "timestamp_scale_ns": 1000000,
       "muxing_app": "Lavf",
+      "transcript_stream": 2,
       "tracks": [
         {
           "number": 1,

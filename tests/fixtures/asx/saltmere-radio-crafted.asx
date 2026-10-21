@@ -1,0 +1,19 @@
+<ASX VERSION="3.0">
+  <TITLE>Saltmere Radio</TITLE>
+  <AUTHOR>Saltmere Broadcasting</AUTHOR>
+  <COPYRIGHT>2024 Saltmere Broadcasting</COPYRIGHT>
+  <ABSTRACT>Harbour news and music</ABSTRACT>
+  <ENTRY>
+    <TITLE>Morning Tide</TITLE>
+    <AUTHOR>Ana Lighthouse</AUTHOR>
+    <REF HREF="mms://radio.saltmere.example/morning"/>
+    <REF HREF="http://radio.saltmere.example/morning.wma"/>
+    <DURATION VALUE="00:30:00"/>
+  </ENTRY>
+  <ENTRY>
+    <TITLE>Saltmere Brass Band - Harbour Bells</TITLE>
+    <REF HREF="http://radio.saltmere.example/bells.wma"/>
+    <DURATION VALUE="00:03:03.4"/>
+  </ENTRY>
+  <ENTRYREF HREF="http://radio.saltmere.example/evening.asx"/>
+</ASX>

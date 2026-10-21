@@ -1,0 +1,186 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-h264-movtext-ffmpeg.mp4",
+    "stem": "ferry-h264-movtext-ffmpeg",
+    "extension": "mp4"
+  },
+  "identification": {
+    "format": "mp4",
+    "name": "MPEG-4 video",
+    "mime": "video/mp4",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9135
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 9135,
+    "entropy": 7.406,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 73080,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "codec_tag": "avc1",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive",
+          "bitrate_bps": 58928,
+          "duration_s": 1.0
+        },
+        {
+          "type": "subtitle",
+          "codec": "mov_text",
+          "language": "eng",
+          "cues": 2,
+          "last_cue_end_s": 0.95
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "e69a9a4efa316afb0ff5d52f735cf2a3c93a60b9bc3a298139806b6435b625b2",
+    "blake3": "94c9e200a92ab25d5ce710fc48a492953bb794ac87f33169bcb6045bbcab6381"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 0.554
+    },
+    "excerpt": "The ferry leaves the breakwater. Gulls follow it out."
+  },
+  "metadata": {},
+  "format": {
+    "mp4": {
+      "major_brand": "isom",
+      "minor_version": 512,
+      "compatible_brands": [
+        "isom",
+        "iso2",
+        "avc1",
+        "mp41"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "free",
+        "mdat",
+        "moov"
+      ],
+      "fragmented": false,
+      "faststart": false,
+      "transcript_stream": 1,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "vide",
+          "codec": "avc1",
+          "duration_s": 1.0,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "compressor": "Lavc libx264"
+        },
+        {
+          "id": 2,
+          "handler": "sbtl",
+          "codec": "tx3g",
+          "duration_s": 0.95,
+          "enabled": true,
+          "language": "eng",
+          "handler_name": "SubtitleHandler"
+        }
+      ],
+      "media_data_bytes": 7426
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

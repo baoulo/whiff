@@ -1,0 +1,177 @@
+---
+source: src/formats/subtitle/markup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-pycaption.dfxp",
+    "stem": "harbour-pycaption",
+    "extension": "dfxp"
+  },
+  "identification": {
+    "format": "ttml",
+    "name": "TTML timed text",
+    "mime": "application/ttml+xml",
+    "family": "text.subtitle",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ttml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "subtitle.markup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1792
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1792,
+    "entropy": 4.86,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1792,
+      "chars": 1788,
+      "words": 160,
+      "lines": 49,
+      "max_line_length": 98,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 28.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "ttml",
+          "language": "en",
+          "cues": 10
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "30685965e8e1f06a21e5e1fe391f37b215b7876d8c3902ca099ca875d2a326a9",
+    "blake3": "dae7973cd698ffb81fd7a9c2d1c2a625c81c2d986828e028f46952ab1b64e5c2"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves",
+      "gulls calling",
+      "lighthouse keeper logs",
+      "ferry",
+      "leaves",
+      "brass band playing"
+    ],
+    "keyword_frequency": [
+      [
+        "buoy",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪ Harbour office, this is the pilot launch. Fog rolls in from the outer mole by noon. Keep to the marked channel past the red buoy. By evening the quay is quiet again.",
+    "tags": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ttml": {
+      "cues": 10,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 28.0,
+      "text_lines": 14,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "dialect": "ttml",
+      "style_definitions": 1,
+      "regions": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.markup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

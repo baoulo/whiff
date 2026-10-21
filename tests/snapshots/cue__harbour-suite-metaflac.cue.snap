@@ -1,0 +1,164 @@
+---
+source: src/formats/playlist/sheet.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-suite-metaflac.cue",
+    "stem": "harbour-suite-metaflac",
+    "extension": "cue"
+  },
+  "identification": {
+    "format": "cue",
+    "name": "CUE sheet",
+    "mime": "application/x-cue",
+    "family": "audio.playlist",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "playlist.sheet"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 246
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 246,
+    "entropy": 4.663,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 246,
+      "chars": 246,
+      "words": 33,
+      "lines": 11,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "215cbad20b1b2ff16d9c431110e0884c39f372ea3045e1464e2572bcea257344",
+    "blake3": "bc5e9b6a6f5a3ed22590a761a7999fe1260131ba6adbbbbd0fe864679a3c0898"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cue": {
+      "entries": 3,
+      "declared_duration_s": 5.0,
+      "entries_with_duration": 2,
+      "local_entries": 3,
+      "file_types": {
+        "flac": 3
+      },
+      "tracks": 3,
+      "track_starts": [
+        {
+          "track": 1,
+          "start_s": 0.0
+        },
+        {
+          "track": 2,
+          "start_s": 2.4
+        },
+        {
+          "track": 3,
+          "start_s": 5.0
+        }
+      ],
+      "files": [
+        {
+          "file": "harbour-suite.flac",
+          "type": "flac"
+        }
+      ],
+      "isrc_codes": 1,
+      "rem": {
+        "flac__lead-in": "88200",
+        "flac__lead-out": "170 352800"
+      },
+      "listed": [
+        {
+          "duration_s": 2.4,
+          "file": "harbour-suite.flac"
+        },
+        {
+          "duration_s": 2.6,
+          "file": "harbour-suite.flac"
+        },
+        {
+          "file": "harbour-suite.flac"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.sheet",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

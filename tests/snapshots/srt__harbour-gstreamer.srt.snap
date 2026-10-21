@@ -1,0 +1,163 @@
+---
+source: src/formats/subtitle/timed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-gstreamer.srt",
+    "stem": "harbour-gstreamer",
+    "extension": "srt"
+  },
+  "identification": {
+    "format": "srt",
+    "name": "SubRip subtitles",
+    "mime": "application/x-subrip",
+    "family": "text.subtitle",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "subtitle.timed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 737
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 737,
+    "entropy": 4.691,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 737,
+      "chars": 733,
+      "words": 111,
+      "lines": 44,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 10
+    },
+    "media": {
+      "duration_s": 28.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "subrip",
+          "cues": 10
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "af4fc221ba6e749f3d104b2f5fc5e34d3efba4193cd8ad8044420dcbf0b24e2e",
+    "blake3": "54fa7d42614736625c5f02f30aa1989cdaed9250040f6845366f94da4e7069be"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves",
+      "gulls calling",
+      "lighthouse keeper logs",
+      "ferry",
+      "leaves",
+      "brass band playing"
+    ],
+    "keyword_frequency": [
+      [
+        "buoy",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪ Harbour office, this is the pilot launch. Fog rolls in from the outer mole by noon. Keep to the marked channel past the red buoy. By evening the quay is quiet again.",
+    "tags": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "srt": {
+      "cues": 10,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 28.0,
+      "text_lines": 14,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.timed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -103,6 +103,20 @@ enum OracleFamily {
         #[arg(long)]
         verbose: bool,
     },
+    /// Subtitle codec, cue count and end of the last cue against `ffprobe`'s packets.
+    Subtitles {
+        /// Files or directories (default: tests/fixtures).
+        paths: Vec<PathBuf>,
+        /// Largest difference in the end of the last cue that agrees, in seconds.
+        #[arg(long, default_value_t = 0.05)]
+        tolerance: f64,
+        /// Minimum cue count agreement, in percent.
+        #[arg(long, default_value_t = 98.0)]
+        min: f64,
+        /// List every disagreement, not the first 25.
+        #[arg(long)]
+        verbose: bool,
+    },
 }
 
 fn root() -> &'static Path {
@@ -129,6 +143,10 @@ fn main() -> ExitCode {
         Cmd::Oracle { family: OracleFamily::Media { paths, tolerance, min, verbose } } => {
             let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
             oracle::media(&paths, tolerance, min, verbose)
+        }
+        Cmd::Oracle { family: OracleFamily::Subtitles { paths, tolerance, min, verbose } } => {
+            let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
+            oracle::subtitles(&paths, tolerance, min, verbose)
         }
     };
     match result {

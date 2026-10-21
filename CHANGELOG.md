@@ -6,7 +6,8 @@ keep the schema version.
 
 ## Unreleased (0.4.0)
 
-Audio, video, subtitles and playlists. Done so far: audio and video.
+Audio, video, subtitles and playlists. Done so far: audio, video, subtitles
+and playlists.
 
 - **Audio** (in-house readers, no new dependencies): MP3 / MP2 / MP1
   (frame header, Xing / Info / VBRI and LAME tags, duration from the VBR
@@ -53,6 +54,47 @@ Audio, video, subtitles and playlists. Done so far: audio and video.
   frame rates and codecs agree with `ffprobe` on 2 052 video files that
   ship with macOS and installed applications (one duration differs: an
   edit list that ends a track after the movie header's length).
+- **Subtitles** (in-house readers, no new dependencies): SubRip, WebVTT,
+  ASS / SSA, TTML (TTML 1 / 2, DFXP, IMSC, SMPTE-TT, EBU-TT: clock, frame,
+  tick and offset times, nested time containers, agents), SAMI (classes
+  and their languages), YouTube SBV, srv1 / srv2 / srv3 and json3,
+  SubViewer 1 and 2, Spruce STL, MicroDVD, MPL2, LRC (ID tags, offsets,
+  word times), Scenarist SCC (a CEA-608 decoder for pop-on, roll-up and
+  paint-on captions), EBU STL (GSI titles, language, dates and counts; ISO
+  6937 and ISO 8859 text), Blu-ray PGS and the VobSub index. Each reports
+  the cue count, the first cue and the end of the last, language, title
+  and author, styles and fonts, speakers, the frame rate, the markup used,
+  sound-description and music cues, overlapping and out-of-order cues, and
+  the format's header fields, and hands the transcript to the text
+  analyzers. Codecs, cue counts and end times agree with `ffprobe` on 51
+  of 52 files (the fixtures, ffmpeg's own subtitle test samples and the
+  Sintel subtitles; the miss is a trimmed VobSub sample whose index points
+  past its picture data). Where ffmpeg reads a format differently (it
+  drops SubViewer cues whose text starts with `[`, reads LRC millisecond
+  fractions and Spruce STL frames as hundredths), whiff follows the format.
+- **Playlists** (in-house readers): M3U and extended M3U (IPTV attributes
+  and groups), HLS master playlists (variants with bandwidth, resolution,
+  codecs, frame rate and video range; renditions; I-frame variants;
+  session data) and media playlists (segments and total duration, target
+  duration, VOD / live, fMP4 / TS / packed audio, byte ranges, gaps,
+  encryption and key formats, program date-times, ad markers,
+  low-latency parts), PLS, XSPF, ASX, WPL / ZPL, CUE sheets (catalogue
+  number, REM fields, files, tracks with ISRCs and index times, disc
+  images), MPEG-DASH (type, duration, periods, adaptation sets,
+  representations, segment addressing, DRM systems) and Smooth Streaming
+  client manifests. Entries report titles, artists, albums and durations;
+  locations only by file name and host, since paths name folders and users
+  and query strings can carry access tokens. Remote entries count as
+  external references; HLS keys and DRM systems set `security.encrypted`.
+- **Subtitle text in video files:** the text of SubRip, ASS / SSA and
+  WebVTT tracks in Matroska and WebM (zlib and header-stripping
+  compression included), and of 3GPP timed text, QuickTime text and
+  WebVTT tracks in MP4 / MOV, is read into cues. Each subtitle stream
+  reports its cue count and the end of its last cue, and the text of one
+  track (the default one that is not forced) goes to the text analyzers.
+  Matroska blocks of other tracks are skipped by their headers; the walk
+  is skipped in the `minimal` profile and stops at its block, byte and
+  time limits with a warning.
 - **Tags:** ID3v1 / v1.1 and ID3v2.2–2.4 (unsynchronisation, compressed
   and grouped frames, iTunes' non-syncsafe sizes, CHAP / CTOC chapters),
   Vorbis comments, APEv1 / v2, iTunes `ilst` (with free-form `----` items
@@ -67,13 +109,21 @@ Audio, video, subtitles and playlists. Done so far: audio and video.
   (`apID`, `ownr`) goes through the privacy setting.
 - **Containers:** `plugin::mp4` (ISO base media: tracks, sample tables,
   `esds`, `ilst`, chapters, visual sample entries and their configuration
-  boxes, protection schemes, movie fragments, XMP) and `plugin::asf` (ASF
+  boxes, protection schemes, movie fragments, subtitle text samples, XMP)
+  and `plugin::asf` (ASF
   header objects, extended stream properties, language list) are shared
   by the audio and video extractors; the HEIF extractor uses
   `plugin::mp4`'s box iterator. A WMA file with a video stream is handed
   to the WMV extractor, and an Ogg file with a Theora stream is reported
   as Ogg video.
-- **Developer tools:** `whiff-dev oracle media` compares durations,
+- **Developer tools:** `whiff-dev oracle subtitles` compares subtitle
+  codecs, cue counts and the end of the last cue with `ffprobe`'s packets
+  (gate: 98 % of cue counts). `scripts/fixtures/subtitles.sh` regenerates
+  the subtitle and playlist fixtures with ffmpeg, GStreamer, pysubs2,
+  pycaption, the m3u8 library and metaflac; `craft_subtitles.py` writes
+  the formats none of them does (SBV, SubViewer, Spruce STL, YouTube timed
+  text, EBU STL, PGS, VobSub, hand-written playlists).
+  `whiff-dev oracle media` compares durations,
   sample rates and channel counts, and the first video stream's codec,
   size and frame rate, with `ffprobe` (gate: 98 % of durations within
   0.1 s; mono HE-AAC, which ffmpeg decodes to stereo, counts as agreeing).

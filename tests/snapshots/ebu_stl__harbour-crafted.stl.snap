@@ -1,0 +1,192 @@
+---
+source: src/formats/subtitle/caption.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.stl",
+    "stem": "harbour-crafted",
+    "extension": "stl"
+  },
+  "identification": {
+    "format": "ebu_stl",
+    "name": "EBU STL subtitles",
+    "mime": "application/x-ebu-stl",
+    "family": "text.subtitle",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "subtitle.caption"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1920
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "stl.creation_date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-04-02",
+        "source": "stl.revision_date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1920,
+    "entropy": 2.866,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 16.48,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "ebu_stl",
+          "language": "fr",
+          "cues": 6
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "5ceaaebc584db7459037f0bba66ba6ca08b86e9bc2e0fbe1ef26f0a2fe723600",
+    "blake3": "758717f29697fa6bf7c9deff85aa92f733735684b9372196760df7d2e31e102d"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "fr",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "digue de saltmere",
+      "Vérifions",
+      "cris de mouettes",
+      "heures",
+      "digue",
+      "matin",
+      "ans"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Le matin sur la digue de Saltmere. Le ferry part à sept heures, comme depuis quarante ans. [cris de mouettes] La marée tourne. Vérifions les bouées d'amarrage. Le gardien du phare note chaque bateau qui passe. ♪ fanfare au loin ♪",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "digue de saltmere",
+      "Vérifions"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ebu_stl": {
+      "cues": 6,
+      "first_cue_s": 0.48,
+      "last_cue_end_s": 16.48,
+      "frame_rate": 25.0,
+      "text_lines": 9,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "markup": [
+        "italic"
+      ],
+      "disk_format": "STL25.01",
+      "display_standard": "teletext_level_1",
+      "character_table": "latin",
+      "episode_title": "Morning",
+      "translated_title": "Le port de Saltmere",
+      "translated_episode_title": "Le matin",
+      "translator": "Mira Castell",
+      "subtitle_list_reference": "SALT-0001",
+      "revision": 1,
+      "declared_subtitles": 6,
+      "max_chars_per_row": 40,
+      "max_rows": 23,
+      "country": "FRA",
+      "publisher": "Saltmere Broadcasting",
+      "editor": "Ana Lighthouse",
+      "creation_date": "2024-04-01",
+      "revision_date": "2024-04-02",
+      "timecode_start": "10:00:00:00",
+      "times_relative_to_timecode_start": true,
+      "comment_subtitles": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.caption",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

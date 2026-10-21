@@ -1,0 +1,7 @@
+#EXTM3U url-tvg="https://epg.saltmere.example/guide.xml"
+#EXTINF:-1 tvg-id="harbour.tv" tvg-name="Harbour TV" tvg-logo="https://img.saltmere.example/harbour.png" group-title="Local",Harbour TV
+https://tv.saltmere.example/harbour/index.m3u8
+#EXTINF:-1 tvg-id="tides.tv" tvg-name="Tides Channel" group-title="Local",Tides Channel
+https://tv.saltmere.example/tides/index.m3u8
+#EXTINF:-1 tvg-id="news.tv" tvg-name="Saltmere News" tvg-logo="https://img.saltmere.example/news.png" group-title="News",Saltmere News
+https://tv.saltmere.example/news/index.m3u8

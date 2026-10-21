@@ -1,0 +1,154 @@
+---
+source: src/formats/playlist/m3u.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-encrypted-m3u8lib.m3u8",
+    "stem": "harbour-encrypted-m3u8lib",
+    "extension": "m3u8"
+  },
+  "identification": {
+    "format": "hls",
+    "name": "HLS playlist",
+    "mime": "application/vnd.apple.mpegurl",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hls",
+        "confidence": 0.99
+      },
+      {
+        "format": "m3u",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.m3u"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 426
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true,
+    "external_references": 4
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 426,
+    "entropy": 5.252,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 426,
+      "chars": 426,
+      "words": 14,
+      "lines": 14,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 22.5
+    },
+    "container": {
+      "entries": 4
+    }
+  },
+  "integrity": {
+    "sha256": "b283ebdfb2061af002330195258f4071666f8d10b944d5729d0e7520335b0229",
+    "blake3": "b1a920fd4e5fa518fefbc6c5e46208674bdcacea2218f8b297c3c963b0109788"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hls": {
+      "entries": 4,
+      "declared_duration_s": 22.5,
+      "remote_entries": 4,
+      "hosts": {
+        "cdn.saltmere.example": 4
+      },
+      "file_types": {
+        "ts": 4
+      },
+      "kind": "media",
+      "version": 3,
+      "target_duration_s": 6.0,
+      "playlist_type": "vod",
+      "segments": 4,
+      "live": false,
+      "segment_format": "mpeg_ts",
+      "longest_segment_s": 6.0,
+      "encryption": [
+        "aes-128"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.m3u",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

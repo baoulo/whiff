@@ -10,7 +10,9 @@
 //! Elements before the first cluster and those its seek head points to are
 //! read; clusters are skipped, except the first (for the key frames of
 //! VP8 / VP9 / AV1 streams without codec private data) and the last (for the
-//! duration of a file whose header has none).
+//! duration of a file whose header has none). The blocks of text subtitle
+//! tracks (SubRip, ASS / SSA, WebVTT) are read from every cluster for the
+//! transcript; of other blocks only the first bytes are.
 //!
 //! Specifications: RFC 8794 (EBML), RFC 9559 (Matroska), the WebM container
 //! guidelines, the Matroska codec mappings and tagging guidelines.
@@ -18,11 +20,13 @@
 use serde_json::{Map, Value, json};
 
 use super::super::audio::{self, Chapter, Picture, Stream, Tags, add_raw, comment_key};
+use super::super::subtitle;
 use super::codec::{self, Colour};
 use super::{Video, audio_map, avi, finish, labels, other_map};
 use crate::plugin::mp4::AudioConfig;
 use crate::plugin::{
-    Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source,
+    Compression, Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Profile,
+    Sniff, Source,
 };
 
 /// Extractor for Matroska and WebM.
@@ -98,6 +102,14 @@ const TAIL: u64 = 4 << 20;
 /// Largest attached picture handed on as cover art.
 const MAX_COVER: u64 = 8 << 20;
 const MAX_ATTACHMENTS: usize = 256;
+/// Cluster children (blocks) visited when reading subtitle text.
+const MAX_SCAN_BLOCKS: u64 = 1 << 20;
+/// Largest subtitle block read.
+const MAX_TEXT_BLOCK: u64 = 64 << 10;
+/// Subtitle block bytes read from one file.
+const MAX_TEXT_BYTES: u64 = 8 << 20;
+/// Cues kept per subtitle track.
+const MAX_TRACK_CUES: usize = 20_000;
 const MAX_TAGS: usize = 4096;
 const MAX_DEPTH: usize = 8;
 
@@ -200,6 +212,7 @@ impl Extractor for Matroska {
         Some(Sniff { format, confidence: 0.95 })
     }
 
+    #[allow(clippy::too_many_lines)] // the EBML header, the segment's elements, then the clusters
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let len = src.len();
         let (id, at, size) = read_header(src, 0, len).ok_or_else(|| ExtractError::malformed("no EBML header"))?;
@@ -230,6 +243,7 @@ impl Extractor for Matroska {
         let mut seeks: Vec<(u32, u64)> = Vec::new();
         let mut pos = seg;
         let mut first_cluster = None;
+        let mut cluster_start = None;
         let mut last_cluster = None;
         for _ in 0..MAX_TOP {
             let Some((id, data, size)) = read_header(src, pos, seg_end) else { break };
@@ -249,6 +263,7 @@ impl Extractor for Matroska {
                 }
                 CLUSTER => {
                     first_cluster.get_or_insert((data, size));
+                    cluster_start.get_or_insert(pos);
                     last_cluster = Some(data);
                     if !seeks.is_empty() || size.is_none() {
                         break;
@@ -297,6 +312,11 @@ impl Extractor for Matroska {
         }
         if m.duration_ns.is_none() {
             m.duration_ns = last_block_time(src, seg_end, last_cluster, &m)?;
+        }
+        if let Some(at) = cluster_start
+            && cx.options().profile != Profile::Minimal
+        {
+            m.text_blocks(src, at, seg_end, cx);
         }
         m.report(cx, len);
         Ok(())
@@ -358,6 +378,11 @@ struct Track {
     /// Block time stamps seen in the first cluster (for the frame rate when
     /// there is no default duration).
     times: Vec<i64>,
+    /// `ContentCompression`: the algorithm (0 zlib, 3 header stripping) and
+    /// its settings (the stripped bytes).
+    compression: Option<(u64, Vec<u8>)>,
+    /// Text subtitle tracks: the cues read from the blocks.
+    cues: Vec<subtitle::Cue>,
 }
 
 struct SimpleTag {
@@ -592,6 +617,135 @@ impl Mkv {
         }
     }
 
+    /// The cues of text subtitle tracks, from the blocks of every cluster;
+    /// of other tracks' blocks only the first bytes are read. Stops, with a
+    /// warning, at the block, byte or time limit, keeping what it read.
+    fn text_blocks(&mut self, src: &mut dyn Source, from: u64, seg_end: u64, cx: &mut Context<'_>) {
+        let text: Vec<u64> = self
+            .tracks
+            .iter()
+            .filter(|t| t.kind == 0x11 && text_codec(&t.codec_id) && !t.encrypted)
+            .filter(|t| t.compression.as_ref().is_none_or(|(a, _)| matches!(a, 0 | 3)))
+            .map(|t| t.number)
+            .collect();
+        if text.is_empty() {
+            return;
+        }
+        let scale = self.timestamp_scale.unwrap_or(1_000_000) as f64 / 1e9;
+        let (mut pos, mut visited, mut bytes) = (from, 0u64, 0u64);
+        let stop = |cx: &mut Context<'_>, why: &str| cx.warn(format!("subtitle text read in part: {why}"));
+        'clusters: while let Some((id, data, size)) = read_header(src, pos, seg_end) {
+            let Some(size) = size else { break };
+            let end = data.saturating_add(size).min(seg_end);
+            if id == CLUSTER {
+                let (mut base, mut at) = (0u64, data);
+                while let Some((kind, body, Some(n))) = read_header(src, at, end) {
+                    visited += 1;
+                    if visited > MAX_SCAN_BLOCKS {
+                        stop(cx, "block limit");
+                        break 'clusters;
+                    }
+                    if visited.is_multiple_of(4096) && cx.checkpoint().is_err() {
+                        stop(cx, "time limit");
+                        break 'clusters;
+                    }
+                    let Ok(head) = src.read_vec(body, usize::try_from(n.min(16)).unwrap_or(0)) else {
+                        stop(cx, "read error");
+                        break 'clusters;
+                    };
+                    let number = match kind {
+                        0xe7 => {
+                            base = uint(&head);
+                            None
+                        }
+                        0xa3 => vint(&head, false).map(|v| v.0),
+                        // BlockGroup: its Block comes first.
+                        0xa0 => header(&head)
+                            .filter(|h| h.0 == 0xa1)
+                            .and_then(|(_, hl, _)| vint(&head[hl..], false))
+                            .map(|v| v.0),
+                        _ => None,
+                    };
+                    if let Some(number) = number.filter(|n| text.contains(n))
+                        && n <= MAX_TEXT_BLOCK
+                        && bytes + n <= MAX_TEXT_BYTES
+                    {
+                        bytes += n;
+                        let Ok(d) = src.read_vec(body, usize::try_from(n).unwrap_or(0)) else {
+                            stop(cx, "read error");
+                            break 'clusters;
+                        };
+                        self.text_block(number, kind, &d, base, scale, cx);
+                    }
+                    at = body.saturating_add(n);
+                }
+            }
+            pos = end;
+            if pos >= seg_end {
+                break;
+            }
+        }
+        for t in &mut self.tracks {
+            t.cues.sort_by(|a, b| a.start.total_cmp(&b.start));
+        }
+    }
+
+    /// One `SimpleBlock` (0xA3) or `BlockGroup` (0xA0) of a text track.
+    fn text_block(&mut self, number: u64, kind: u32, d: &[u8], base: u64, scale: f64, cx: &mut Context<'_>) {
+        let (block, duration) = if kind == 0xa0 {
+            let mut block = None;
+            let mut duration = None;
+            for (k, v) in children(d) {
+                match k {
+                    0xa1 => block = Some(v),
+                    0x9b => duration = Some(uint(v)),
+                    _ => {}
+                }
+            }
+            (block, duration)
+        } else {
+            (Some(d), None)
+        };
+        let Some(block) = block else { return };
+        let Some((_, n)) = vint(block, false) else { return };
+        let (Some(rel), Some(&flags)) = (block.get(n..n + 2), block.get(n + 2)) else { return };
+        if flags & 0x06 != 0 {
+            return; // laced: not used for text
+        }
+        let Some(t) = self.tracks.iter_mut().find(|t| t.number == number) else { return };
+        if t.cues.len() >= MAX_TRACK_CUES {
+            return;
+        }
+        let payload = block.get(n + 3..).unwrap_or_default();
+        let data = match &t.compression {
+            Some((3, stripped)) => [stripped.as_slice(), payload].concat(),
+            Some((0, _)) => match cx.inflate(payload, Compression::Zlib, 64 << 10) {
+                Ok(d) => d,
+                Err(_) => return,
+            },
+            _ => payload.to_vec(),
+        };
+        let raw = String::from_utf8_lossy(&data);
+        // ASS / SSA blocks: ReadOrder, Layer, Style, Name, MarginL, MarginR, MarginV, Effect, Text.
+        let ass = t.codec_id.contains("ASS") || t.codec_id.contains("SSA");
+        let (speaker, raw) = if ass {
+            let f: Vec<&str> = raw.splitn(9, ',').collect();
+            (
+                f.get(3).map(|s| s.trim().to_string()).filter(|s| !s.is_empty()),
+                f.get(8).copied().unwrap_or("").to_string(),
+            )
+        } else {
+            (None, raw.into_owned())
+        };
+        let mut markup = std::collections::BTreeSet::new();
+        let text = subtitle::plain_text(&raw, &mut markup);
+        let start = (base as f64 + f64::from(i16::from_be_bytes([rel[0], rel[1]]))) * scale;
+        if start.is_finite() && start >= 0.0 && !text.is_empty() {
+            let end = duration.map(|d| start + d as f64 * scale);
+            t.cues.push(subtitle::Cue { start, end, text, speaker });
+        }
+    }
+
     #[allow(clippy::too_many_lines)] // one section of the report after another
     fn report(mut self, cx: &mut Context<'_>, len: u64) {
         let scale = self.timestamp_scale.unwrap_or(1_000_000);
@@ -614,6 +768,7 @@ impl Mkv {
         }
         let mut list = Vec::new();
         let mut streams = Vec::new();
+        let mut texts = Vec::new();
         let mut encrypted = false;
         for t in &mut self.tracks {
             encrypted |= t.encrypted;
@@ -665,8 +820,17 @@ impl Mkv {
                 m.insert("commentary".into(), json!(true));
             }
             m.insert("track".into(), json!(t.number));
+            if !t.cues.is_empty() {
+                texts.push(subtitle::Embedded {
+                    stream: streams.len(),
+                    cues: std::mem::take(&mut t.cues),
+                    default: t.default,
+                    forced: t.forced,
+                });
+            }
             streams.push(m);
         }
+        subtitle::embedded(cx, &mut streams, &texts);
         cx.format_set("tracks", Value::Array(list));
         if encrypted {
             cx.format_set("encrypted", true);
@@ -785,6 +949,14 @@ fn track(entry: &[u8]) -> Track {
                 t.encrypted = children(d)
                     .filter(|(k, _)| *k == 0x6240)
                     .any(|(_, e)| children(e).any(|(k, v)| (k == 0x5033 && uint(v) == 1) || k == 0x5035));
+                // ContentCompression > ContentCompAlgo, ContentCompSettings.
+                for (_, e) in children(d).filter(|(k, _)| *k == 0x6240) {
+                    if let Some((_, c)) = children(e).find(|(k, _)| *k == 0x5034) {
+                        let algo = children(c).find(|(k, _)| *k == 0x4254).map_or(0, |(_, v)| uint(v));
+                        let settings = children(c).find(|(k, _)| *k == 0x4255).map(|(_, v)| v.to_vec());
+                        t.compression = Some((algo, settings.unwrap_or_default()));
+                    }
+                }
             }
             0x41e4 => {
                 let (mut kind, mut extra) = (0u64, None);
@@ -1069,6 +1241,11 @@ fn audio_stream(t: &Track) -> Stream {
         _ => {}
     }
     s
+}
+
+/// Text subtitle codecs whose blocks are read for the transcript.
+fn text_codec(id: &str) -> bool {
+    matches!(id, "S_TEXT/UTF8" | "S_TEXT/ASCII" | "S_TEXT/ASS" | "S_TEXT/SSA" | "S_ASS" | "S_SSA" | "S_TEXT/WEBVTT")
 }
 
 fn subtitle_codec(id: &str) -> &str {

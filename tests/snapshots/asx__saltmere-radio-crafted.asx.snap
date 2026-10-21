@@ -1,0 +1,173 @@
+---
+source: src/formats/playlist/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-radio-crafted.asx",
+    "stem": "saltmere-radio-crafted",
+    "extension": "asx"
+  },
+  "identification": {
+    "format": "asx",
+    "name": "Windows Media ASX playlist",
+    "mime": "video/x-ms-asf-plugin",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "asx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 686
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 3
+  },
+  "rights": {
+    "copyright": "2024 Saltmere Broadcasting"
+  },
+  "physical": {
+    "size_bytes": 686,
+    "entropy": 5.289,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 686,
+      "chars": 686,
+      "words": 40,
+      "lines": 19,
+      "max_line_length": 62,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "1a20999d66307d15d07eb7983dc0651d947f7e5ee55c81e9aa78bb88fe0111ee",
+    "blake3": "53fcfc6561b02646ba25559fd545aac9cc7620b9fab88720e10ab0d72a45d5ca"
+  },
+  "content": {
+    "title": "Saltmere Radio",
+    "description": "Harbour news and music",
+    "authors": [
+      "Saltmere Broadcasting"
+    ],
+    "excerpt": "Harbour news and music Ana Lighthouse - Morning Tide Saltmere Brass Band - Harbour Bells"
+  },
+  "metadata": {},
+  "format": {
+    "asx": {
+      "entries": 3,
+      "declared_duration_s": 1983.4,
+      "entries_with_duration": 2,
+      "remote_entries": 3,
+      "hosts": {
+        "radio.saltmere.example": 3
+      },
+      "file_types": {
+        "asx": 1,
+        "wma": 1
+      },
+      "version": "3.0",
+      "references": 3,
+      "entry_references": 1,
+      "listed": [
+        {
+          "title": "Morning Tide",
+          "artist": "Ana Lighthouse",
+          "duration_s": 1800.0,
+          "host": "radio.saltmere.example",
+          "file": "morning"
+        },
+        {
+          "title": "Harbour Bells",
+          "artist": "Saltmere Brass Band",
+          "duration_s": 183.4,
+          "host": "radio.saltmere.example",
+          "file": "bells.wma"
+        },
+        {
+          "host": "radio.saltmere.example",
+          "file": "evening.asx"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,146 @@
+---
+source: src/formats/subtitle/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.idx",
+    "stem": "harbour-crafted",
+    "extension": "idx"
+  },
+  "identification": {
+    "format": "vobsub",
+    "name": "VobSub index",
+    "mime": "text/x-vobsub-index",
+    "family": "text.subtitle",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "subtitle.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 795
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 795,
+    "entropy": 4.635,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 795,
+      "chars": 795,
+      "words": 112,
+      "lines": 28,
+      "max_line_length": 135,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    },
+    "media": {
+      "duration_s": 6.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "dvd_subtitle",
+          "language": "en",
+          "cues": 3,
+          "last_cue_s": 6.0,
+          "default": true
+        },
+        {
+          "type": "subtitle",
+          "codec": "dvd_subtitle",
+          "language": "fr",
+          "cues": 3,
+          "last_cue_s": 6.0
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "aa22085ed933ba43ae247b84f0886f6342b62c2903dcf24016eda2cf97152164",
+    "blake3": "93430ed1717c7963dd3dab5f5f045ec86121922e462febbaf75f9785ebe2ab43"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    }
+  },
+  "metadata": {},
+  "format": {
+    "vobsub": {
+      "cues": 3,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 6.0,
+      "version": "v7",
+      "video_size": "720x576",
+      "palette_colours": 16
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

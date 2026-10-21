@@ -1,0 +1,180 @@
+---
+source: src/formats/subtitle/timed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-v1-crafted.sub",
+    "stem": "harbour-v1-crafted",
+    "extension": "sub"
+  },
+  "identification": {
+    "format": "subviewer",
+    "name": "SubViewer subtitles",
+    "mime": "text/x-subviewer",
+    "family": "text.subtitle",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "subviewer",
+        "confidence": 0.95
+      },
+      {
+        "format": "microdvd",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "subtitle.timed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 542
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 542,
+    "entropy": 5.201,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 542,
+      "chars": 538,
+      "words": 69,
+      "lines": 39,
+      "max_line_length": 53,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    },
+    "media": {
+      "duration_s": 16.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "subviewer1",
+          "cues": 6
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "9b40be4c3f35cda20592072b9811863c28e32bc223acfd30c1ac7cca7199fe4f",
+    "blake3": "9db249fa5860a93a20f05dc0ba3e1c45a0773ee941bb81f36912d7f56ae1c7d8"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "gulls calling",
+      "ferry leaves",
+      "calling",
+      "gulls"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "subviewer": {
+      "cues": 6,
+      "first_cue_s": 0.0,
+      "last_cue_end_s": 16.0,
+      "text_lines": 9,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "source": "Fixture for whiff",
+      "delay": "0",
+      "version": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.timed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
