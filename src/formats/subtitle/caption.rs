@@ -574,7 +574,7 @@ fn stl(bytes: &[u8], cx: &mut Context<'_>) -> Result<Subtitles, ExtractError> {
             .then(|| f64::from(hours) * 3600.0 + f64::from(minutes) * 60.0 + f64::from(secs) + f64::from(frames) / fps)
     };
     let programme_start = field(256, 264).filter(|t| t.len() == 8).and_then(|t| {
-        let n: Vec<u8> = (0..4).map(|i| t[i * 2..i * 2 + 2].parse().ok()).collect::<Option<_>>()?;
+        let n: Vec<u8> = (0..4).map(|i| t[i * 2..i * 2 + 2].parse::<u8>().ok()).collect::<Option<_>>()?;
         subs.set("timecode_start", format!("{}:{}:{}:{}", &t[..2], &t[2..4], &t[4..6], &t[6..8]));
         tc(&n)
     });
