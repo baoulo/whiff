@@ -1,0 +1,123 @@
+---
+source: src/formats/video/elementary.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-x264.264",
+    "stem": "harbour-x264",
+    "extension": "264"
+  },
+  "identification": {
+    "format": "h264",
+    "name": "H.264 elementary stream",
+    "mime": "video/h264",
+    "family": "video",
+    "confidence": 0.65,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.elementary"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8685
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8685,
+    "entropy": 7.927,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "ee402bdfc3fbbc4ebe28dc9f4ee12b53ca0843a3c8da08dbbd269b50bd24ebdd",
+    "blake3": "a54c4a6148b9fd201b17cc378ce51930d861fe5c1c9fa7d6c8cc3c791f0defac"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.elementary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

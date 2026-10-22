@@ -1,0 +1,146 @@
+---
+source: src/formats/video/avi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-mjpeg-pcm-ffmpeg.avi",
+    "stem": "harbour-mjpeg-pcm-ffmpeg",
+    "extension": "avi"
+  },
+  "identification": {
+    "format": "avi",
+    "name": "AVI video",
+    "mime": "video/x-msvideo",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.avi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 26818
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 26818,
+    "entropy": 5.206,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 36,
+      "frames": 10
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 214544,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "mjpeg",
+          "codec_tag": "MJPG",
+          "width": 64,
+          "height": 36,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 10.0,
+          "frames": 10,
+          "scan_type": "progressive",
+          "duration_s": 1.0
+        },
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 8,
+          "bitrate_bps": 64000,
+          "samples": 8000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "b567e5496a02b126dc979c9b914f22e7227c2ac7e82a6c36b4abaa837f8991d1",
+    "blake3": "30b75a8ff790fca3008f6e83ca5ed602e2c8a96af582075ed02e2498d0208bf0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "avi": {
+      "riff_chunks": 1,
+      "opendml": false,
+      "indexed": true,
+      "main_header": {
+        "microseconds_per_frame": 100000,
+        "total_frames": 10,
+        "width": 64,
+        "height": 36
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.avi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,185 @@
+---
+source: src/formats/playlist/manifest.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-ffmpeg.mpd",
+    "stem": "harbour-ffmpeg",
+    "extension": "mpd"
+  },
+  "identification": {
+    "format": "mpd",
+    "name": "MPEG-DASH manifest",
+    "mime": "application/dash+xml",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mpd",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2332
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2332,
+    "entropy": 5.225,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2332,
+      "chars": 2332,
+      "words": 117,
+      "lines": 45,
+      "max_line_length": 190,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 6.0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "2d71b79843226a9e5f9f310f7ef6ac2bc99c1ef1250e19f769e97c61118384f7",
+    "blake3": "5a4e00e868745e1fe5ce14c957b893da8afec1344e06f97b5def641282b1e772"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mpd": {
+      "entries": 3,
+      "type": "static",
+      "profiles": [
+        "urn:mpeg:dash:profile:isoff-live:2011"
+      ],
+      "min_buffer_time_s": 4.0,
+      "max_segment_duration_s": 2.0,
+      "periods": 1,
+      "adaptation_sets": 2,
+      "representations": 3,
+      "adaptation_set_list": [
+        {
+          "content_type": "video",
+          "mime_types": [
+            "video/mp4"
+          ],
+          "codecs": [
+            "avc1.640009",
+            "avc1.64000c"
+          ],
+          "representations": 2,
+          "bandwidth_bps": [
+            80000,
+            200000
+          ],
+          "max_resolution": "160x90",
+          "frame_rates": [
+            25.0
+          ]
+        },
+        {
+          "content_type": "audio",
+          "mime_types": [
+            "audio/mp4"
+          ],
+          "codecs": [
+            "mp4a.40.2"
+          ],
+          "language": "eng",
+          "representations": 1,
+          "bandwidth_bps": [
+            48000,
+            48000
+          ],
+          "sampling_rate": 48000,
+          "channels": "1"
+        }
+      ],
+      "segment_addressing": [
+        "template"
+      ],
+      "languages": [
+        "eng"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.manifest",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

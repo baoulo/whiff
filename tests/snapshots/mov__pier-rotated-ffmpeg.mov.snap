@@ -1,0 +1,239 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-rotated-ffmpeg.mov",
+    "stem": "pier-rotated-ffmpeg",
+    "extension": "mov"
+  },
+  "identification": {
+    "format": "mov",
+    "name": "QuickTime movie",
+    "mime": "video/quicktime",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18175
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-04-01T06:30:00+01:00",
+        "source": "quicktime.creationdate",
+        "tz_known": true
+      },
+      {
+        "field": "created",
+        "value": "2024-04-01T06:30:00+01:00",
+        "source": "quicktime.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T05:30:00Z",
+    "latest": "2024-04-01T05:30:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18175,
+    "entropy": 7.524,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 145400,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "codec_tag": "avc1",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive",
+          "rotation_deg": 90,
+          "bitrate_bps": 69192,
+          "duration_s": 1.0
+        },
+        {
+          "type": "audio",
+          "codec": "aac",
+          "profile": "aac_lc",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 47804
+        },
+        {
+          "type": "data",
+          "codec": "timecode"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "a541d3e93a49518a71a7fe517306835b27ac43b9f114a62be28c41d4755db5a1",
+    "blake3": "1267c72fc1395833319c2e387ec03a3112da6593755dd4a0ec38a7a184855a8d"
+  },
+  "content": {
+    "title": "Pier at Dawn",
+    "location": {
+      "lat": 50.0,
+      "lon": -30.0,
+      "alt_m": 0.0,
+      "source": "quicktime.com.apple.quicktime.location.ISO6709"
+    }
+  },
+  "metadata": {
+    "itunes": {
+      "timecode": "01:00:00:00"
+    },
+    "quicktime": {
+      "com.apple.quicktime.make": "Saltmere Optics",
+      "com.apple.quicktime.model": "SO-100",
+      "com.apple.quicktime.software": "SO-100 Firmware 2.1",
+      "com.apple.quicktime.location.ISO6709": "+50.0000-030.0000+000.000/",
+      "com.apple.quicktime.creationdate": "2024-04-01T06:30:00+0100",
+      "com.apple.quicktime.title": "Pier at Dawn"
+    }
+  },
+  "format": {
+    "mov": {
+      "major_brand": "qt",
+      "minor_version": 512,
+      "compatible_brands": [
+        "qt"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "wide",
+        "mdat",
+        "moov"
+      ],
+      "fragmented": false,
+      "faststart": false,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "vide",
+          "codec": "avc1",
+          "duration_s": 1.0,
+          "enabled": true,
+          "handler_name": "VideoHandler",
+          "compressor": "Lavc libx264"
+        },
+        {
+          "id": 2,
+          "handler": "soun",
+          "codec": "mp4a",
+          "duration_s": 1.021333,
+          "enabled": true,
+          "handler_name": "SoundHandler"
+        },
+        {
+          "id": 3,
+          "handler": "tmcd",
+          "codec": "tmcd",
+          "duration_s": 1.0,
+          "enabled": false,
+          "handler_name": "TimeCodeHandler"
+        }
+      ],
+      "media_data_bytes": 14756,
+      "device": {
+        "make": "Saltmere Optics",
+        "model": "SO-100",
+        "software": "SO-100 Firmware 2.1"
+      },
+      "tag_formats": [
+        "itunes",
+        "quicktime"
+      ],
+      "encoder": "SO-100 Firmware 2.1",
+      "tags": {
+        "title": "Pier at Dawn",
+        "date": "2024-04-01T06:30:00+0100"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,176 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-music21.musicxml",
+    "stem": "harbour-wall-music21",
+    "extension": "musicxml"
+  },
+  "identification": {
+    "format": "musicxml",
+    "name": "MusicXML score",
+    "mime": "application/vnd.recordare.musicxml+xml",
+    "family": "audio.score",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "musicxml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10037
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-21",
+        "source": "score.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 10037,
+    "entropy": 4.321,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 10037,
+      "chars": 10037,
+      "words": 470,
+      "lines": 368,
+      "max_line_length": 123,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 7.2
+    }
+  },
+  "integrity": {
+    "sha256": "3af7ac532a561b879797c12287e6ee65e63d0f476dc944b059734f67fe595202",
+    "blake3": "afe75f78cf69c83244588805bb6a0e0c605f478f0df35c8d3fb666e7f2bd6bd5"
+  },
+  "content": {
+    "title": "The Harbour Wall",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Har bour wall at dawn the fer ry waits for gulls and"
+  },
+  "metadata": {},
+  "format": {
+    "musicxml": {
+      "creators": {
+        "composer": [
+          "Ana Lighthouse"
+        ]
+      },
+      "software": [
+        "music21 v.9.9.1"
+      ],
+      "parts": 2,
+      "notes": 24,
+      "rests": 0,
+      "part_list": [
+        {
+          "name": "Flute",
+          "instrument": "Flute",
+          "midi_program": 74,
+          "gm_name": "Flute"
+        },
+        {
+          "name": "Cello",
+          "instrument": "Violoncello",
+          "midi_program": 43,
+          "gm_name": "Cello"
+        }
+      ],
+      "measures": 4,
+      "key": "D major",
+      "time_signature": "3/4",
+      "tempo_bpm": 100.0,
+      "quarter_notes": 12.0,
+      "version": "4.0",
+      "staves": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

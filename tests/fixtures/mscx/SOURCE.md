@@ -1,0 +1,9 @@
+# Fixtures for `mscx` (MuseScore score)
+
+Every file here was made for whiff's tests and is released under CC0-1.0. The music is a few
+bars written for the tests; titles and names (Saltmere, Ana Lighthouse, Ben Gull, Mira Castell,
+Saltmere Brass Band) are fictitious. Regenerate with `scripts/fixtures/scores.sh`.
+
+| File | Origin | Licence |
+|---|---|---|
+| `harbour-wall-crafted.mscx` | Written by `scripts/fixtures/craft_scores.py`: metadata tags, a part, key, time, tempo, lyrics | CC0-1.0 |

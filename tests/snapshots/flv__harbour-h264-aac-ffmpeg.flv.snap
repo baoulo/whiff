@@ -1,0 +1,178 @@
+---
+source: src/formats/video/flv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-h264-aac-ffmpeg.flv",
+    "stem": "harbour-h264-aac-ffmpeg",
+    "extension": "flv"
+  },
+  "identification": {
+    "format": "flv",
+    "name": "Flash Video",
+    "mime": "video/x-flv",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.flv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16631
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Harbour Films",
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 16631,
+    "entropy": 7.767,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.08,
+      "bitrate_bps": 123193,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive"
+        },
+        {
+          "type": "audio",
+          "codec": "aac",
+          "profile": "aac_lc",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 46875
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "a277d318f989a7e4b501952bfcfa79b33149c9c29f8eca87bc30d2a939ef6696",
+    "blake3": "2a88276c5fd4449fb0c2701bfda04c4728e13994e219399562335959e602bdbd"
+  },
+  "content": {
+    "title": "Saltmere Harbour at Dawn",
+    "description": "A test pattern filmed nowhere",
+    "authors": [
+      "Ana Lighthouse"
+    ]
+  },
+  "metadata": {
+    "flv": {
+      "duration": 1.08,
+      "width": 160.0,
+      "height": 90.0,
+      "videodatarate": 0.0,
+      "framerate": 25.0,
+      "videocodecid": 7.0,
+      "audiodatarate": 46.875,
+      "audiosamplerate": 48000.0,
+      "audiosamplesize": 16.0,
+      "stereo": false,
+      "audiocodecid": 10.0,
+      "title": "Saltmere Harbour at Dawn",
+      "artist": "Ana Lighthouse",
+      "comment": "A test pattern filmed nowhere",
+      "date": "2024-04-01",
+      "copyright": "2024 Saltmere Harbour Films",
+      "filesize": 16631.0
+    }
+  },
+  "format": {
+    "flv": {
+      "version": 1,
+      "has_audio": true,
+      "has_video": true,
+      "metadata_keys": 17,
+      "tags": {
+        "title": "Saltmere Harbour at Dawn",
+        "artist": "Ana Lighthouse",
+        "copyright": "2024 Saltmere Harbour Films",
+        "comment": "A test pattern filmed nowhere"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.flv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

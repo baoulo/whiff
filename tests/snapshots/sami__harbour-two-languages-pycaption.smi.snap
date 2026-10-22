@@ -1,0 +1,189 @@
+---
+source: src/formats/subtitle/markup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-two-languages-pycaption.smi",
+    "stem": "harbour-two-languages-pycaption",
+    "extension": "smi"
+  },
+  "identification": {
+    "format": "sami",
+    "name": "SAMI captions",
+    "mime": "application/x-sami",
+    "family": "text.subtitle",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sami",
+        "confidence": 0.99
+      },
+      {
+        "format": "html",
+        "confidence": 0.7
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "subtitle.markup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3168
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3168,
+    "entropy": 4.642,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3168,
+      "chars": 3152,
+      "words": 361,
+      "lines": 185,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    },
+    "media": {
+      "duration_s": 28.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "sami",
+          "language": "en",
+          "cues": 10
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "502951dc400e2e99c366dd83c3eefc967bb59004242bf0b593c6572132ef7ae5",
+    "blake3": "059538d18f0e0edf2632021c8cc529faedb8f0265af1b26f54dc06a76ef86aab"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves",
+      "gulls calling",
+      "lighthouse keeper logs",
+      "ferry",
+      "leaves",
+      "brass band playing"
+    ],
+    "keyword_frequency": [
+      [
+        "buoy",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪ Harbour office, this is the pilot launch. Fog rolls in from the outer mole by noon. Keep to the marked channel past the red buoy. By evening the quay is quiet again.",
+    "tags": [
+      "Saltmere breakwater",
+      "Saltmere",
+      "breakwater",
+      "Morning",
+      "ferry leaves"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "sami": {
+      "cues": 10,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 28.0,
+      "text_lines": 14,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "styles": 2,
+      "style_names": [
+        "en-US",
+        "fr-FR"
+      ],
+      "languages": [
+        "en-US",
+        "fr-FR"
+      ],
+      "syncs": 20,
+      "other_language_paragraphs": 20
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.markup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

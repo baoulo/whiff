@@ -1,0 +1,175 @@
+---
+source: src/formats/audio/riff.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-info-ffmpeg.wav",
+    "stem": "bells-info-ffmpeg",
+    "extension": "wav"
+  },
+  "identification": {
+    "format": "wav",
+    "name": "WAVE audio",
+    "mime": "audio/wav",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.wave"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66394
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "riff_info.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band"
+    ]
+  },
+  "physical": {
+    "size_bytes": 66394,
+    "entropy": 7.04,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 354101,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "bitrate_bps": 352800,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "ec78c0dcf8836b6540fae9c3950847f5ab7253fb6e1b72b58933742f8ef8f6d7",
+    "blake3": "aed73343c00fe85ea485922e51469123be630d3ea6fe267d79a68bb1a683f0d7"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "riff_info": {
+      "IART": "Saltmere Brass Band",
+      "ICMT": "Recorded at the harbour wall",
+      "ICOP": "2024 Saltmere Brass Band",
+      "ICRD": "2024",
+      "IGNR": "Brass",
+      "INAM": "Harbour Bells",
+      "IPRD": "Tides of Saltmere",
+      "IPRT": "3/9"
+    }
+  },
+  "format": {
+    "wav": {
+      "chunks": [
+        "fmt ",
+        "LIST",
+        "data"
+      ],
+      "format_tag": "0x0001",
+      "block_align_bytes": 2,
+      "data_bytes": 66150,
+      "tag_formats": [
+        "riff_info"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "track": 3,
+        "track_total": 9,
+        "date": "2024",
+        "genre": "Brass",
+        "copyright": "2024 Saltmere Brass Band",
+        "comment": "Recorded at the harbour wall"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.wave",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

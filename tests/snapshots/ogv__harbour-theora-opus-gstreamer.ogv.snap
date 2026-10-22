@@ -1,0 +1,178 @@
+---
+source: src/formats/audio/ogg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-theora-opus-gstreamer.ogv",
+    "stem": "harbour-theora-opus-gstreamer",
+    "extension": "ogv"
+  },
+  "identification": {
+    "format": "ogv",
+    "name": "Ogg video",
+    "mime": "video/ogg",
+    "family": "video",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ogv",
+        "confidence": 0.93
+      },
+      {
+        "format": "ogg",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "audio.ogg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 20592
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 20592,
+    "entropy": 7.966,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 164736,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "theora",
+          "profile": "3.2.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "bitrate_bps": 96000
+        },
+        {
+          "type": "audio",
+          "codec": "opus",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "samples": 47688
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "54eb2c0ca2151e5e968935ef0cce715a92fbff135f964639e4be786b1bbb026f",
+    "blake3": "582a38cf663bd2c98b1953bb79d854e23fbb9e49297a02901cb8dd60660ac63b"
+  },
+  "content": {
+    "description": "audiotest wave"
+  },
+  "metadata": {
+    "vorbis": {
+      "vendor": "Encoded with GStreamer opusenc",
+      "DESCRIPTION": "audiotest wave"
+    }
+  },
+  "format": {
+    "ogv": {
+      "opus": {
+        "version": 1,
+        "input_sample_rate_hz": 48000,
+        "pre_skip_samples": 312,
+        "output_gain_db": 0.0,
+        "channel_mapping_family": 0
+      },
+      "logical_streams": [
+        {
+          "serial": 1826722674,
+          "codec": "theora"
+        },
+        {
+          "serial": 614201643,
+          "codec": "opus"
+        }
+      ],
+      "tag_formats": [
+        "vorbis"
+      ],
+      "encoder": "Xiph.Org libtheora 1.1 20090822 (Thusnelda)",
+      "tags": {
+        "description": "audiotest wave"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.ogg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

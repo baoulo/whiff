@@ -1,0 +1,173 @@
+---
+source: src/formats/playlist/m3u.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-master-ffmpeg.m3u8",
+    "stem": "harbour-master-ffmpeg",
+    "extension": "m3u8"
+  },
+  "identification": {
+    "format": "hls",
+    "name": "HLS playlist",
+    "mime": "application/vnd.apple.mpegurl",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hls",
+        "confidence": 0.99
+      },
+      {
+        "format": "m3u",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.m3u"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 547
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 547,
+    "entropy": 5.556,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 547,
+      "chars": 547,
+      "words": 9,
+      "lines": 12,
+      "max_line_length": 126,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "55a7579d53e6512cd8fcba7e5bebb7d40b731dd4e140c396b61ab272e20eeb0a",
+    "blake3": "da05972e83fb8689a2553f47e46b294609f2d92b561dbd399411cbef068f55b3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hls": {
+      "entries": 3,
+      "local_entries": 3,
+      "file_types": {
+        "m3u8": 3
+      },
+      "kind": "master",
+      "version": 7,
+      "variants": 3,
+      "variant_list": [
+        {
+          "bandwidth_bps": 208956,
+          "average_bandwidth_bps": 186982,
+          "resolution": "160x90",
+          "codecs": "avc1.64000c,mp4a.40.2",
+          "audio_group": "group_aud"
+        },
+        {
+          "bandwidth_bps": 91155,
+          "average_bandwidth_bps": 82494,
+          "resolution": "96x54",
+          "codecs": "avc1.640009,mp4a.40.2",
+          "audio_group": "group_aud"
+        },
+        {
+          "bandwidth_bps": 50509,
+          "average_bandwidth_bps": 50492,
+          "codecs": "mp4a.40.2",
+          "audio_group": "group_aud"
+        }
+      ],
+      "renditions": [
+        {
+          "type": "audio",
+          "group": "group_aud",
+          "language": "en",
+          "name": "audio_2",
+          "channels": "1",
+          "default": true
+        }
+      ],
+      "codecs": [
+        "avc1.640009",
+        "avc1.64000c",
+        "mp4a.40.2"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.m3u",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

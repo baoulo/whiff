@@ -1,0 +1,353 @@
+---
+source: src/formats/audio/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.m4a",
+    "stem": "bells-ffmpeg",
+    "extension": "m4a"
+  },
+  "identification": {
+    "format": "m4a",
+    "name": "MPEG-4 audio",
+    "mime": "audio/mp4",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 13764
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "itunes.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 13764,
+    "entropy": 7.693,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 73408,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "aac",
+          "profile": "aac_lc",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 63076,
+          "samples": 67174
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "d9897a00ec7e95e6a684b2cbb1443283294ec3c52d2e3205b116d09f7b772e27",
+    "blake3": "1763ba7a83c38178b0d60a20dac3973f4ed897405c0e9be79f8743006c102e8c"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "excerpt": "Bells across the water",
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "itunes": {
+      "©nam": "Harbour Bells",
+      "©ART": "Saltmere Brass Band",
+      "aART": "Saltmere Brass Band",
+      "©wrt": "Mira Castell",
+      "©alb": "Tides of Saltmere",
+      "©day": "2024",
+      "©cmt": "Recorded at the harbour wall",
+      "©gen": "Brass",
+      "cprt": "2024 Saltmere Brass Band",
+      "©lyr": 22,
+      "covr": {
+        "image_bytes": 229,
+        "mime": "image/jpeg"
+      },
+      "trkn": [
+        3,
+        9
+      ],
+      "disk": [
+        1,
+        2
+      ]
+    }
+  },
+  "format": {
+    "m4a": {
+      "major_brand": "M4A",
+      "compatible_brands": [
+        "M4A",
+        "isom",
+        "iso2"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "free",
+        "mdat",
+        "moov"
+      ],
+      "fragmented": false,
+      "faststart": false,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "soun",
+          "codec": "mp4a",
+          "language": "und",
+          "duration_s": 1.52322,
+          "enabled": true
+        }
+      ],
+      "media_data_bytes": 12010,
+      "tag_formats": [
+        "itunes"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "track_total": 9,
+        "disc": 1,
+        "disc_total": 2,
+        "date": "2024",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "copyright": "2024 Saltmere Brass Band",
+        "comment": "Recorded at the harbour wall",
+        "lyrics": true
+      },
+      "cover_art": [
+        {
+          "mime": "image/jpeg",
+          "picture_type": "front_cover",
+          "size_bytes": 229
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "cover.jpg",
+        "stem": "cover",
+        "extension": "jpg"
+      },
+      "identification": {
+        "format": "jpeg",
+        "name": "JPEG image",
+        "mime": "image/jpeg",
+        "family": "image.raster",
+        "confidence": 0.77,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "image.jpeg"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 229
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 229,
+        "entropy": 3.97,
+        "entropy_scope": "file",
+        "image": {
+          "width": 32,
+          "height": 32,
+          "bit_depth": 8,
+          "channels": 3,
+          "color_space": "YCbCr"
+        }
+      },
+      "integrity": {
+        "sha256": "e1246b141915adddfbce21b745bd4f9791e0b62cffb9b5906843ae51f316fc21",
+        "blake3": "f7644c257be74b4dc76706d8d7035037265ccc089f80db28a886b939bcb09e68"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "jpeg": {
+          "process": "baseline",
+          "progressive": false,
+          "chroma_subsampling": "4:2:0",
+          "quality_estimate": 86,
+          "jfif": {
+            "version": "1.02",
+            "units": 0,
+            "density": [
+              1,
+              1
+            ]
+          },
+          "huffman_tables": 1,
+          "comments": [
+            "Lavc61.19.101\u0000"
+          ],
+          "segments": [
+            "APP0 JFIF",
+            "COM",
+            "DQT",
+            "DHT",
+            "SOF0",
+            "SOS"
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "image.jpeg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,223 @@
+---
+source: src/formats/playlist/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-evenings-crafted.xspf",
+    "stem": "saltmere-evenings-crafted",
+    "extension": "xspf"
+  },
+  "identification": {
+    "format": "xspf",
+    "name": "XSPF playlist",
+    "mime": "application/xspf+xml",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xspf",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1395
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01T19:30:00+00:00",
+        "source": "playlist.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-04-01T19:30:00Z",
+    "latest": "2024-04-01T19:30:00Z"
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  "physical": {
+    "size_bytes": 1395,
+    "entropy": 4.802,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1395,
+      "chars": 1395,
+      "words": 68,
+      "lines": 38,
+      "max_line_length": 90,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 4
+    }
+  },
+  "integrity": {
+    "sha256": "d5d9c84803b48f7af8df86239d5e902744ba0de8e2dfe78a98b72ee088832134",
+    "blake3": "e224a211f559ac7e910bdcf4266c832123843b6d5cb5e23b1a483d2f038b52f0"
+  },
+  "content": {
+    "title": "Saltmere Evenings",
+    "description": "Tunes for the harbour wall at dusk.",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "keywords": [
+      "Saltmere Brass Band",
+      "Saltmere Evenings",
+      "Evenings",
+      "Band",
+      "Saltmere",
+      "Harbour Bells",
+      "Brass",
+      "Pilot Launch",
+      "harbour",
+      "Bells"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "band",
+        2
+      ],
+      [
+        "brass",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "excerpt": "Tunes for the harbour wall at dusk. Saltmere Brass Band - Harbour Bells Saltmere Brass Band - Low Water Mira Castell - Fog on the Mole Ben Gull - Pilot Launch",
+    "tags": [
+      "Saltmere Brass Band",
+      "Saltmere Evenings",
+      "Evenings",
+      "Band",
+      "Saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "xspf": {
+      "entries": 4,
+      "declared_duration_s": 797.2,
+      "local_entries": 4,
+      "file_types": {
+        "ogg": 4
+      },
+      "version": "1",
+      "listed": [
+        {
+          "title": "Harbour Bells",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 183.4,
+          "file": "Harbour Bells.ogg"
+        },
+        {
+          "title": "Low Water",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 241.0,
+          "file": "Low Water.ogg"
+        },
+        {
+          "title": "Fog on the Mole",
+          "artist": "Mira Castell",
+          "album": "Outer Mole",
+          "duration_s": 205.6,
+          "file": "Fog on the Mole.ogg"
+        },
+        {
+          "title": "Pilot Launch",
+          "artist": "Ben Gull",
+          "album": "Outer Mole",
+          "duration_s": 167.2,
+          "file": "Pilot Launch.ogg"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

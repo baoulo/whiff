@@ -1,0 +1,28 @@
+# VobSub index file, v7 (do not modify this line!)
+# Fixture for whiff: two tracks of the Saltmere Harbour script.
+size: 720x576
+org: 0, 0
+scale: 100%, 100%
+alpha: 100%
+smooth: OFF
+fadein/out: 50, 50
+align: OFF at LEFT TOP
+time offset: 0
+forced subs: OFF
+palette: 000000, f0f0f0, cccccc, 999999, 3333fa, 1111bb, fa3333, bb1111, 33fa33, 11bb11, fafa33, bbbb11, 33fafa, 11bbbb, fa33fa, bb11bb
+custom colors: OFF, tridx: 0000, colors: 000000, 000000, 000000, 000000
+
+langidx: 0
+
+# English
+id: en, index: 0
+timestamp: 00:00:00:500, filepos: 000000000
+timestamp: 00:00:03:200, filepos: 000000800
+timestamp: 00:00:06:000, filepos: 000001000
+
+# French
+id: fr, index: 1
+timestamp: 00:00:00:500, filepos: 000001800
+timestamp: 00:00:03:200, filepos: 000002000
+timestamp: 00:00:06:000, filepos: 000002800
+

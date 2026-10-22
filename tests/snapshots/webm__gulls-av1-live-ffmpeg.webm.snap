@@ -1,0 +1,160 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gulls-av1-live-ffmpeg.webm",
+    "stem": "gulls-av1-live-ffmpeg",
+    "extension": "webm"
+  },
+  "identification": {
+    "format": "webm",
+    "name": "WebM video",
+    "mime": "video/webm",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "webm",
+        "confidence": 0.99
+      },
+      {
+        "format": "mkv",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7536
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7536,
+    "entropy": 7.866,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 60288,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "av1",
+          "codec_tag": "V_AV1",
+          "profile": "main",
+          "level": "2.0",
+          "tier": "main",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "default": false,
+          "track": 1
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "271eeda11073e22b8666b8101e99b35059f57d3d8482dc057125f9164edfaf3c",
+    "blake3": "db781ebccd194c1ce8fa54267f2768e86c3af293aee535383a0c6ad4df2a4b54"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "webm": {
+      "doc_type": "webm",
+      "doc_type_version": 2,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "Lavf",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "video",
+          "codec_id": "V_AV1",
+          "statistics": {
+            "ENCODER": "Lavc libsvtav1"
+          }
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "Lavf"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

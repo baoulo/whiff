@@ -1,0 +1,199 @@
+---
+source: src/formats/subtitle/ass.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-pysubs2.ssa",
+    "stem": "harbour-pysubs2",
+    "extension": "ssa"
+  },
+  "identification": {
+    "format": "ssa",
+    "name": "SubStation Alpha subtitles",
+    "mime": "text/x-ssa",
+    "family": "text.subtitle",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "subtitle.ass"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1759
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1759,
+    "entropy": 5.089,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1759,
+      "chars": 1755,
+      "words": 149,
+      "lines": 29,
+      "max_line_length": 196,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    },
+    "media": {
+      "duration_s": 28.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "ass",
+          "cues": 10
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "0d89a670eac926545ac86f38a75137bbc3c2f3d7c0f16eac98892247e0245bab",
+    "blake3": "84c008b786fc933a776854cc5c3e95d7b94b67d855cd55c25aa8195540677958"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere breakwater",
+      "Saltmere Harbour",
+      "Saltmere",
+      "Harbour",
+      "ferry leaves",
+      "Harbour office",
+      "gulls calling",
+      "breakwater",
+      "Morning",
+      "ferry"
+    ],
+    "keyword_frequency": [
+      [
+        "buoy",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪ Harbour office, this is the pilot launch. Fog rolls in from the outer mole by noon. Keep to the marked channel past the red buoy. By evening the quay is quiet again.",
+    "tags": [
+      "Saltmere breakwater",
+      "Saltmere Harbour",
+      "Saltmere",
+      "Harbour",
+      "ferry leaves"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ssa": {
+      "cues": 10,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 28.0,
+      "text_lines": 14,
+      "max_lines_per_cue": 2,
+      "sound_description_cues": 1,
+      "music_cues": 1,
+      "speakers": 2,
+      "top_speakers": {
+        "Ana": 5,
+        "Ben": 3
+      },
+      "styles": 2,
+      "style_names": [
+        "Default",
+        "Sound"
+      ],
+      "markup": [
+        "italic",
+        "position"
+      ],
+      "generator": "pysubs2",
+      "translation_by": "Mira Castell",
+      "script_type": "v4.00",
+      "play_res_x": 1280,
+      "play_res_y": 720,
+      "wrap_style": 0,
+      "fonts": [
+        "Open Sans"
+      ],
+      "comment_events": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.ass",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

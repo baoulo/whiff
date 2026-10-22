@@ -64,8 +64,20 @@ pub fn check_registry(registry: &Registry, manifest_dir: &Path) -> Outcome {
         .formats()
         .flat_map(|(spec, _)| fixture_files(manifest_dir, spec.id).into_iter().map(move |p| (spec.id, p)))
         .collect();
-    let pairs: Vec<(&dyn Extractor, &'static FormatSpec)> =
-        registry.extractors().flat_map(|e| e.meta().formats.iter().map(move |f| (e, f))).collect();
+    // Spread each extractor's formats evenly over the run (by their relative
+    // position among its formats), so the many formats of one extractor
+    // (`code.source` has 40) are not checked side by side: run at once they
+    // contend for the same code, which under coverage instrumentation pushes
+    // slow inputs past their deadlines. The order stays deterministic.
+    let mut pairs: Vec<(usize, &dyn Extractor, &'static FormatSpec)> = registry
+        .extractors()
+        .flat_map(|e| {
+            let n = e.meta().formats.len().max(1);
+            e.meta().formats.iter().enumerate().map(move |(i, f)| (i * 1_000_000 / n, e, f))
+        })
+        .collect();
+    pairs.sort_by_key(|(at, _, _)| *at);
+    let pairs: Vec<(&dyn Extractor, &'static FormatSpec)> = pairs.into_iter().map(|(_, e, f)| (e, f)).collect();
     // Pairs are independent; check them on all cores, in a stable order.
     let threads = std::thread::available_parallelism().map_or(4, std::num::NonZero::get).min(pairs.len().max(1));
     let next = std::sync::atomic::AtomicUsize::new(0);

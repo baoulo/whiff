@@ -1,0 +1,20 @@
+#EXTM3U
+#PLAYLIST:Saltmere Evenings
+#EXTINF:183,Saltmere Brass Band - Harbour Bells
+#EXTALB:Tides of Saltmere
+#EXTGENRE:Brass
+../Music/Saltmere Brass Band/Tides of Saltmere/03 Harbour Bells.flac
+#EXTINF:241,Saltmere Brass Band - Low Water
+#EXTALB:Tides of Saltmere
+#EXTGENRE:Brass
+../Music/Saltmere Brass Band/Tides of Saltmere/04 Low Water.flac
+#EXTINF:206,Mira Castell - Fog on the Mole
+#EXTALB:Outer Mole
+#EXTGENRE:Brass
+C:\Music\Mira Castell\Outer Mole\Fog on the Mole.mp3
+#EXTINF:167,Ben Gull - Pilot Launch
+#EXTALB:Outer Mole
+#EXTGENRE:Brass
+https://media.saltmere.example/ben-gull/pilot-launch.m4a?session=fixture
+#EXTINF:-1,Saltmere Radio
+http://radio.saltmere.example:8000/live.mp3

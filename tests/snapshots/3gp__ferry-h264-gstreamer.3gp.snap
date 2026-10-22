@@ -1,0 +1,199 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-h264-gstreamer.3gp",
+    "stem": "ferry-h264-gstreamer",
+    "extension": "3gp"
+  },
+  "identification": {
+    "format": "3gp",
+    "name": "3GPP multimedia",
+    "mime": "video/3gpp",
+    "family": "video",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 13138
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T18:46:02Z",
+        "source": "mp4.mvhd.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-20T18:46:02Z",
+        "source": "mp4.mvhd.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-20T18:46:02Z",
+    "latest": "2026-10-20T18:46:02Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 13138,
+    "entropy": 7.511,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.28,
+      "bitrate_bps": 82113,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "codec_tag": "avc1",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_primaries": "smpte170m",
+          "color_transfer": "smpte170m",
+          "color_matrix": "smpte170m",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "bitrate_bps": 73632,
+          "max_bitrate_bps": 65536,
+          "duration_s": 1.0
+        },
+        {
+          "type": "audio",
+          "codec": "amr_nb",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 12800
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "6ba78e4b4d584e5073185fbf01110b9b1ce2a5e3059c2eeb740494746d7c893a",
+    "blake3": "76fc9fbf9d3d92e6c9f8c466cf512ab3ab79e70c6be0364adf9b73b5d3cd5093"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "3gp": {
+      "major_brand": "3gp6",
+      "minor_version": 256,
+      "compatible_brands": [
+        "3gp6",
+        "isom",
+        "iso2"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "free",
+        "mdat",
+        "moov"
+      ],
+      "fragmented": false,
+      "faststart": false,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "vide",
+          "codec": "avc1",
+          "duration_s": 1.0,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "VideoHandler"
+        },
+        {
+          "id": 2,
+          "handler": "soun",
+          "codec": "samr",
+          "duration_s": 1.28,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      ],
+      "media_data_bytes": 11252
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

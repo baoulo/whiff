@@ -1,0 +1,168 @@
+---
+source: src/formats/video/realmedia.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-rv20-ffmpeg.rm",
+    "stem": "harbour-rv20-ffmpeg",
+    "extension": "rm"
+  },
+  "identification": {
+    "format": "rm",
+    "name": "RealMedia",
+    "mime": "application/vnd.rn-realmedia",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.realmedia"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 49305
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Harbour Films"
+  },
+  "physical": {
+    "size_bytes": 49305,
+    "entropy": 7.631,
+    "entropy_scope": "file",
+    "image": {
+      "width": 176,
+      "height": 144
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 394440,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "rv20",
+          "codec_tag": "RV20",
+          "width": 176,
+          "height": 144,
+          "display_aspect_ratio": "11:9",
+          "frame_rate": 10.0,
+          "bitrate_bps": 120000,
+          "duration_s": 1.0,
+          "title": "The Video Stream",
+          "stream_number": 0,
+          "mime": "video/x-pn-realvideo"
+        },
+        {
+          "type": "audio",
+          "codec": "ra_144",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 8000,
+          "title": "The Audio Stream",
+          "stream_number": 1,
+          "mime": "audio/x-pn-realaudio"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "c6f6577dd4041362ae3e736b11070ba3381b8fc3ad771776fdd52a7bfc18a50d",
+    "blake3": "11e07535580992af9cc0e1366a330ccd6a91251458800fd04d8b1123bb342838"
+  },
+  "content": {
+    "title": "Saltmere Harbour at Dawn",
+    "description": "A test pattern filmed nowhere"
+  },
+  "metadata": {
+    "realmedia": {
+      "title": "Saltmere Harbour at Dawn",
+      "copyright": "2024 Saltmere Harbour Films",
+      "comment": "A test pattern filmed nowhere"
+    }
+  },
+  "format": {
+    "rm": {
+      "file_version": 0,
+      "max_bitrate_bps": 128000,
+      "avg_bitrate_bps": 128000,
+      "packets": 61,
+      "preroll_ms": 0,
+      "flags": {
+        "save_enabled": true,
+        "perfect_play": true,
+        "live": false
+      },
+      "tag_formats": [
+        "realmedia"
+      ],
+      "tags": {
+        "title": "Saltmere Harbour at Dawn",
+        "copyright": "2024 Saltmere Harbour Films",
+        "comment": "A test pattern filmed nowhere"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.realmedia",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

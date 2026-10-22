@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://music-encoding.org/schema/dev/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="6.0-dev">
+   <meiHead>
+      <fileDesc>
+         <titleStmt>
+            <title />
+         </titleStmt>
+         <pubStmt />
+      </fileDesc>
+      <encodingDesc>
+         <appInfo>
+            <application isodate="2026-10-21T00:43:09" version="6.3.0-425dd7b">
+               <name>Verovio</name>
+               <p>Transcoded from abc music</p>
+            </application>
+         </appInfo>
+      </encodingDesc>
+      <workList>
+         <work n="7" data="#snv3xwb">
+            <title xml:id="abcLine03" analog="abc:T" type="main">Pilot Launch</title>
+            <composer xml:id="abcLine04" analog="abc:C">Mira Castell</composer>
+         </work>
+      </workList>
+   </meiHead>
+   <music>
+      <body>
+         <mdiv xml:id="snv3xwb" n="7">
+            <score xml:id="xi42qvx">
+               <scoreDef xml:id="yw9obm9" dur.default="4" key.mode="major" key.pname="b" keysig="2f">
+                  <pgHead xml:id="h1kz5qtb" func="first">
+                     <rend xml:id="iz0kve0" halign="center" valign="middle">Pilot Launch</rend>
+                     <rend xml:id="k1mldbl2" halign="right" valign="bottom">Mira Castell</rend>
+                  </pgHead>
+                  <staffGrp xml:id="z15zhu0r">
+                     <staffDef xml:id="a1hrq65y" n="1" lines="5" trans.semi="0">
+                        <clef xml:id="w18mv89x" shape="G" line="2" />
+                        <meterSig xml:id="t1mpo60w" count="3" unit="4" />
+                     </staffDef>
+                  </staffGrp>
+               </scoreDef>
+               <section xml:id="mbtw37a">
+                  <pb xml:id="abcLine09" />
+                  <measure xml:id="v1u9zgmd" right="single">
+                     <staff xml:id="efvutqj" n="1">
+                        <layer xml:id="ov160l8" n="1">
+                           <note xml:id="p1bmm9un" dur="4" oct="3" pname="b" accid.ges="f">
+                              <verse xml:id="o18b71wf" n="1">
+                                 <syl xml:id="z1d4cvir">Out</syl>
+                              </verse>
+                           </note>
+                           <note xml:id="t1c18rvk" dur="4" oct="4" pname="d">
+                              <verse xml:id="prm4g82" n="1">
+                                 <syl xml:id="b15n2syg">past</syl>
+                              </verse>
+                           </note>
+                           <note xml:id="u1slkofs" dur="4" oct="4" pname="f">
+                              <verse xml:id="q1fppv1e" n="1">
+                                 <syl xml:id="drio9rd">the</syl>
+                              </verse>
+                           </note>
+                        </layer>
+                     </staff>
+                     <tempo xml:id="uktbh48" tstamp="1" mm="90" />
+                     <dynam xml:id="rm03g7u" startid="#p1bmm9un">p</dynam>
+                  </measure>
+                  <measure xml:id="j1544qq" right="single">
+                     <staff xml:id="s1uk27oe" n="1">
+                        <layer xml:id="f1uu3yyw" n="1">
+                           <note xml:id="g6m374r" dur="2" oct="4" pname="b" accid.ges="f">
+                              <verse xml:id="rbd02fn" n="1">
+                                 <syl xml:id="fexegqz" con="d" wordpos="m">bu</syl>
+                              </verse>
+                           </note>
+                           <note xml:id="i1gv1alk" dur="4" oct="4" pname="a">
+                              <verse xml:id="s7nfj6a" n="1">
+                                 <syl xml:id="heu2g1w">oy,</syl>
+                              </verse>
+                           </note>
+                        </layer>
+                     </staff>
+                  </measure>
+                  <measure xml:id="yf8c0lb" right="single">
+                     <staff xml:id="h1b44ju2" n="1">
+                        <layer xml:id="tx7ckv1" n="1">
+                           <note xml:id="wi9e0s0" dur="2" oct="4" pname="g">
+                              <verse xml:id="t9wcs3" n="1">
+                                 <syl xml:id="j1iy9cs8">out</syl>
+                              </verse>
+                           </note>
+                           <note xml:id="xu3ef1a" dur="4" oct="4" pname="f">
+                              <verse xml:id="u1japdcv" n="1">
+                                 <syl xml:id="l1cj583g">to</syl>
+                              </verse>
+                           </note>
+                        </layer>
+                     </staff>
+                     <harm xml:id="u5cuc9z" startid="#wi9e0s0">Eb</harm>
+                  </measure>
+                  <measure xml:id="m4h2i16" right="single">
+                     <staff xml:id="vpkc0zc" n="1">
+                        <layer xml:id="i15jk87l" n="1">
+                           <note xml:id="l9uls7x" dots="1" dur="2" oct="4" pname="f">
+                              <verse xml:id="v1yvmodb" n="1">
+                                 <syl xml:id="nvd9s6m">sea</syl>
+                              </verse>
+                           </note>
+                        </layer>
+                     </staff>
+                     <harm xml:id="jg3neiv" startid="#l9uls7x">Bb</harm>
+                  </measure>
+                  <sb xml:id="abcLine10" />
+               </section>
+            </score>
+         </mdiv>
+      </body>
+   </music>
+</mei>

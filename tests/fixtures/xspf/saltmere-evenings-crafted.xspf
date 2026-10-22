@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist version="1" xmlns="http://xspf.org/ns/0/">
+  <title>Saltmere Evenings</title>
+  <creator>Ana Lighthouse</creator>
+  <annotation>Tunes for the harbour wall at dusk.</annotation>
+  <date>2024-04-01T19:30:00Z</date>
+  <license>https://creativecommons.org/publicdomain/zero/1.0/</license>
+  <trackList>
+    <track>
+      <location>file:///media/music/Saltmere%20Brass%20Band/Harbour%20Bells.ogg</location>
+      <title>Harbour Bells</title>
+      <creator>Saltmere Brass Band</creator>
+      <album>Tides of Saltmere</album>
+      <duration>183400</duration>
+    </track>
+    <track>
+      <location>file:///media/music/Saltmere%20Brass%20Band/Low%20Water.ogg</location>
+      <title>Low Water</title>
+      <creator>Saltmere Brass Band</creator>
+      <album>Tides of Saltmere</album>
+      <duration>241000</duration>
+    </track>
+    <track>
+      <location>file:///media/music/Mira%20Castell/Fog%20on%20the%20Mole.ogg</location>
+      <title>Fog on the Mole</title>
+      <creator>Mira Castell</creator>
+      <album>Outer Mole</album>
+      <duration>205600</duration>
+    </track>
+    <track>
+      <location>file:///media/music/Ben%20Gull/Pilot%20Launch.ogg</location>
+      <title>Pilot Launch</title>
+      <creator>Ben Gull</creator>
+      <album>Outer Mole</album>
+      <duration>167200</duration>
+    </track>
+  </trackList>
+</playlist>

@@ -1,0 +1,27 @@
+%abc-2.1
+%%abc-creator whiff fixture
+B:Saltmere Tunes
+Z:Fixture for whiff
+
+X:1
+T:The Harbour Wall
+T:A Jig for the Ferry
+C:Ana Lighthouse
+O:Saltmere
+R:jig
+M:6/8
+L:1/8
+Q:3/8=100
+K:D
+|:"D"A2F A2d|"G"B2G B2d|"D"A2F "A"E2D|"D"F3 D3:|
+w:Har-bour wall at dawn, the fer-ry waits for gulls and men, home a-gain
+|:"G"g2e "D"f2d|"A"e2c "D"d3:|
+
+X:2
+T:Low Water
+C:Ben Gull
+R:reel
+M:4/4
+L:1/8
+K:Ador
+|:EAAB c2BA|GBdB G2BG|EAAB c2Bc|dBGB A4:|

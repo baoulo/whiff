@@ -1,0 +1,159 @@
+---
+source: src/formats/playlist/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-crafted.wpl",
+    "stem": "harbour-wall-crafted",
+    "extension": "wpl"
+  },
+  "identification": {
+    "format": "wpl",
+    "name": "Windows Media playlist",
+    "mime": "application/vnd.ms-wpl",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "wpl",
+        "confidence": 0.99
+      },
+      {
+        "format": "html",
+        "confidence": 0.7
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 789
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 789,
+    "entropy": 5.12,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 789,
+      "chars": 789,
+      "words": 52,
+      "lines": 17,
+      "max_line_length": 136,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 630.0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "84b89f1767d6a7d23225e08bf5af36bc7c5a45958202bad9a78a2d84378effe2",
+    "blake3": "8a19c58e38301fb8a100f2a15a77cdd01a43ffd3a9607e61b8910326a1be3b2d"
+  },
+  "content": {
+    "title": "Harbour Wall",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Harbour Wall"
+  },
+  "metadata": {},
+  "format": {
+    "wpl": {
+      "entries": 3,
+      "local_entries": 3,
+      "file_types": {
+        "wma": 3
+      },
+      "generator": "Microsoft Windows Media Player -- 12.0.19041.1",
+      "declared_entries": 3,
+      "listed": [
+        {
+          "file": "Harbour Bells.wma"
+        },
+        {
+          "file": "Low Water.wma"
+        },
+        {
+          "file": "Fog on the Mole.wma"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

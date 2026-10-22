@@ -1,0 +1,166 @@
+---
+source: src/formats/playlist/m3u.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "channels-crafted.m3u8",
+    "stem": "channels-crafted",
+    "extension": "m3u8"
+  },
+  "identification": {
+    "format": "m3u",
+    "name": "M3U playlist",
+    "mime": "audio/x-mpegurl",
+    "family": "audio.playlist",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "m3u",
+        "confidence": 0.95
+      },
+      {
+        "format": "hls",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "playlist.m3u"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 552
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 3
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 552,
+    "entropy": 4.999,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 552,
+      "chars": 552,
+      "words": 25,
+      "lines": 7,
+      "max_line_length": 135,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "12aa05e7f55ab0ce96689c6aba40a70a7efbaaacdcc57f274dd409ab0ea6a529",
+    "blake3": "e6a6854aeab8c811d9a63d64144e6a8b42c8673ca96a1b79551f1e35f47bdcba"
+  },
+  "content": {
+    "excerpt": "Harbour TV Tides Channel Saltmere News"
+  },
+  "metadata": {},
+  "format": {
+    "m3u": {
+      "entries": 3,
+      "remote_entries": 3,
+      "hosts": {
+        "tv.saltmere.example": 3
+      },
+      "file_types": {
+        "m3u8": 3
+      },
+      "groups": 2,
+      "top_groups": {
+        "Local": 2,
+        "News": 1
+      },
+      "epg_url_host": "epg.saltmere.example",
+      "extended": true,
+      "iptv": true,
+      "channel_logos": 2,
+      "listed": [
+        {
+          "title": "Harbour TV",
+          "host": "tv.saltmere.example",
+          "file": "index.m3u8"
+        },
+        {
+          "title": "Tides Channel",
+          "host": "tv.saltmere.example",
+          "file": "index.m3u8"
+        },
+        {
+          "title": "Saltmere News",
+          "host": "tv.saltmere.example",
+          "file": "index.m3u8"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.m3u",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

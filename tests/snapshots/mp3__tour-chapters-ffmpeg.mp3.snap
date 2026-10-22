@@ -1,0 +1,221 @@
+---
+source: src/formats/audio/mpeg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tour-chapters-ffmpeg.mp3",
+    "stem": "tour-chapters-ffmpeg",
+    "extension": "mp3"
+  },
+  "identification": {
+    "format": "mp3",
+    "name": "MP3 audio",
+    "mime": "audio/mpeg",
+    "family": "audio",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "audio.mpeg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9933
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "id3.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 9933,
+    "entropy": 7.815,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.567347,
+      "bitrate_bps": 50700,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "profile": "MPEG-2 Layer III",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 56000,
+          "bitrate_mode": "cbr",
+          "samples": 34560
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "f908bbc520ec1590b8243a8b25e6622ce4063eae0c048a65e0842ae0594c1276",
+    "blake3": "473b0b41df06b8888c67f4c2d61e7e36b6d922a3ee1d04223923a7ac7007cb4f"
+  },
+  "content": {
+    "title": "Saltmere Harbour Tour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "The Breakwater"
+      },
+      {
+        "level": 1,
+        "text": "Ferry Steps"
+      }
+    ],
+    "excerpt": "Bells across the water, ringing in the tide",
+    "tags": [
+      "Audiobook"
+    ]
+  },
+  "metadata": {
+    "id3": {
+      "TIT2": "Saltmere Harbour Tour",
+      "TPE1": "Ana Lighthouse",
+      "TALB": "Saltmere Walks",
+      "TCON": "Audiobook",
+      "TDRC": "2024-04-01",
+      "TXXX:lyrics-eng": 43
+    }
+  },
+  "format": {
+    "mp3": {
+      "id3v2": {
+        "version": "2.4.0",
+        "frames": [
+          "TIT2",
+          "TPE1",
+          "TALB",
+          "TCON",
+          "TDRC",
+          "TXXX",
+          "CTOC",
+          "CHAP"
+        ]
+      },
+      "mpeg_version": "2",
+      "layer": 3,
+      "channel_mode": "mono",
+      "crc_protected": false,
+      "original": false,
+      "copyright_bit": false,
+      "frames": 60,
+      "audio_bytes": 9586,
+      "vbr_header": {
+        "kind": "info",
+        "frames": 60,
+        "bytes": 9586,
+        "toc": true,
+        "quality": 0
+      },
+      "lame": {
+        "encoder": "Lavf lame",
+        "vbr_method": "unknown",
+        "encoder_delay_samples": 576,
+        "encoder_padding_samples": 909,
+        "music_length_bytes": 9586
+      },
+      "tag_formats": [
+        "id3v2.4"
+      ],
+      "encoder": "Lavf lame",
+      "tags": {
+        "title": "Saltmere Harbour Tour",
+        "artist": "Ana Lighthouse",
+        "album": "Saltmere Walks",
+        "date": "2024-04-01",
+        "genre": "Audiobook",
+        "lyrics": true
+      },
+      "chapter_count": 2,
+      "chapters": [
+        {
+          "start_s": 0.0,
+          "end_s": 0.7,
+          "title": "The Breakwater"
+        },
+        {
+          "start_s": 0.7,
+          "end_s": 1.5,
+          "title": "Ferry Steps"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mpeg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

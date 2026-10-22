@@ -1,0 +1,122 @@
+---
+source: src/formats/video/elementary.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-ffmpeg.m2v",
+    "stem": "harbour-ffmpeg",
+    "extension": "m2v"
+  },
+  "identification": {
+    "format": "m2v",
+    "name": "MPEG video elementary stream",
+    "mime": "video/mpv",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.elementary"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 77499
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 77499,
+    "entropy": 7.571,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "streams": [
+        {
+          "type": "video",
+          "codec": "mpeg2video",
+          "profile": "main",
+          "level": "main",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "e6faaabc8eb1e4fe3c1014f68af04a494fef1c67dc8c1ba371ac4d47e24d662b",
+    "blake3": "6b3d3b78cf9a10bc8eb2b994cc1b51a70be0316332b9cf33f3bdf06b3c9cc2e2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.elementary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

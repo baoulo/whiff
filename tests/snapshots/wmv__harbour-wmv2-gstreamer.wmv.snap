@@ -1,0 +1,168 @@
+---
+source: src/formats/video/asf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wmv2-gstreamer.wmv",
+    "stem": "harbour-wmv2-gstreamer",
+    "extension": "wmv"
+  },
+  "identification": {
+    "format": "wmv",
+    "name": "Windows Media Video",
+    "mime": "video/x-ms-wmv",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "wmv",
+        "confidence": 0.99
+      },
+      {
+        "format": "wma",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "video.asf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 51065
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T15:46:04Z",
+        "source": "asf.file_properties.creation_date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-20T15:46:04Z",
+    "latest": "2026-10-20T15:46:04Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 51065,
+    "entropy": 7.18,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.024,
+      "bitrate_bps": 398945,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "wmv2",
+          "codec_tag": "WMV2",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "stream_number": 1
+        },
+        {
+          "type": "audio",
+          "codec": "wmav2",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 48000,
+          "stream_number": 2
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "3c4594b1aa8f49ca3eca58af07a80d203600d58240fb625dcf7d44ce832fdbf9",
+    "blake3": "29c8394b69159968c22a35ba9eb1636dffe9e1d81b87598e752c3ac320c45c21"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wmv": {
+      "header_objects": [
+        "file_properties",
+        "stream_properties",
+        "stream_properties",
+        "extended_stream_properties",
+        "extended_stream_properties",
+        "header_extension"
+      ],
+      "packets": 10,
+      "preroll_ms": 5000,
+      "seekable": true,
+      "broadcast": false,
+      "max_bitrate_bps": 48000,
+      "tag_formats": [
+        "asf"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.asf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

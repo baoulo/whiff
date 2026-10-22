@@ -1,0 +1,210 @@
+---
+source: src/formats/audio/aiff.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.aiff",
+    "stem": "bells-ffmpeg",
+    "extension": "aiff"
+  },
+  "identification": {
+    "format": "aiff",
+    "name": "AIFF audio",
+    "mime": "audio/aiff",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.aiff"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66636
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "aiff.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Brass Band",
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 66636,
+    "entropy": 7.043,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 355392,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "bitrate_bps": 352800,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "6cb72f1f312ede75d43e3a3468fbf50ce77d46101076db699be140feb8ff992e",
+    "blake3": "dbe7cd54254ffa46665a2ea52bbf3cca23fdc8449d24b5322e0af5bbe0f4e279"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "description": "Recorded at the harbour wall",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "aiff": {
+      "NAME": "Harbour Bells",
+      "(c)": "2024 Saltmere Brass Band",
+      "ANNO": "Recorded at the harbour wall"
+    },
+    "id3": {
+      "TPUB": "Example Records",
+      "TIT2": "Harbour Bells",
+      "TPE1": "Saltmere Brass Band",
+      "TALB": "Tides of Saltmere",
+      "TPE2": "Saltmere Brass Band",
+      "TDRC": "2024",
+      "TRCK": "3/9",
+      "TPOS": "1/2",
+      "TCON": "Brass",
+      "TCOM": "Mira Castell",
+      "TXXX:comment": "Recorded at the harbour wall",
+      "TCOP": "2024 Saltmere Brass Band"
+    }
+  },
+  "format": {
+    "aiff": {
+      "variant": "aiff",
+      "id3v2": {
+        "version": "2.4.0",
+        "frames": [
+          "TPUB",
+          "TIT2",
+          "TPE1",
+          "TALB",
+          "TPE2",
+          "TDRC",
+          "TRCK",
+          "TPOS",
+          "TCON",
+          "TCOM",
+          "TXXX",
+          "TCOP"
+        ]
+      },
+      "chunks": [
+        "NAME",
+        "(c) ",
+        "ANNO",
+        "COMM",
+        "SSND",
+        "ID3 "
+      ],
+      "sound_bytes": 66150,
+      "tag_formats": [
+        "aiff_text",
+        "id3v2.4"
+      ],
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "album_artist": "Saltmere Brass Band",
+        "track": 3,
+        "track_total": 9,
+        "disc": 1,
+        "disc_total": 2,
+        "date": "2024",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "label": "Example Records",
+        "copyright": "2024 Saltmere Brass Band",
+        "comment": "Recorded at the harbour wall"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.aiff",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

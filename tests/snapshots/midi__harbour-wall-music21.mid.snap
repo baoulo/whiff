@@ -1,0 +1,160 @@
+---
+source: src/formats/score/midi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-music21.mid",
+    "stem": "harbour-wall-music21",
+    "extension": "mid"
+  },
+  "identification": {
+    "format": "midi",
+    "name": "Standard MIDI file",
+    "mime": "audio/midi",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.midi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 423
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 423,
+    "entropy": 4.935,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 7.8
+    }
+  },
+  "integrity": {
+    "sha256": "a3ec1b5e0ea14aee593b49bd3b72a6a6b52f201df2fe2775a456d214a9819e83",
+    "blake3": "2fa229f7509b4e0ed929c5c5c621c4d5de2b2d378d1d3ef85114bd41f20eaec6"
+  },
+  "content": {
+    "excerpt": "Harbourwallatdawntheferrywaitsforgullsand"
+  },
+  "metadata": {},
+  "format": {
+    "midi": {
+      "smf_format": 1,
+      "tracks": 3,
+      "ticks_per_quarter": 10080,
+      "tempo_bpm": 100.0,
+      "time_signature": "3/4",
+      "key": "D major",
+      "notes": 24,
+      "channels": [
+        1,
+        2
+      ],
+      "percussion": false,
+      "programs": [
+        {
+          "channel": 1,
+          "program": 74,
+          "gm_name": "Flute"
+        },
+        {
+          "channel": 2,
+          "program": 43,
+          "gm_name": "Cello"
+        }
+      ],
+      "track_list": [
+        {
+          "events": 4
+        },
+        {
+          "name": "Flute",
+          "events": 41,
+          "notes": 12,
+          "channels": [
+            1
+          ]
+        },
+        {
+          "name": "Violoncello",
+          "events": 29,
+          "notes": 12,
+          "channels": [
+            2
+          ]
+        }
+      ],
+      "tag_formats": [
+        "midi"
+      ],
+      "tags": {
+        "lyrics": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.midi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

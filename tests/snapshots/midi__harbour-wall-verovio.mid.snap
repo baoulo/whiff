@@ -1,0 +1,162 @@
+---
+source: src/formats/score/midi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-verovio.mid",
+    "stem": "harbour-wall-verovio",
+    "extension": "mid"
+  },
+  "identification": {
+    "format": "midi",
+    "name": "Standard MIDI file",
+    "mime": "audio/midi",
+    "family": "audio.score",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "score.midi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 390
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 390,
+    "entropy": 4.839,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 7.195
+    }
+  },
+  "integrity": {
+    "sha256": "af46820cf7a975ca014d4a28b655ffd152a1352e919d5ecc45521ef4fafc152d",
+    "blake3": "b429c076c88f8eb4eeb9271c1ab4a5e0c501a00fa4905f1f566964f29e561336"
+  },
+  "content": {
+    "excerpt": "Harbourwallatdawntheferrywaitsforgullsand"
+  },
+  "metadata": {},
+  "format": {
+    "midi": {
+      "smf_format": 1,
+      "tracks": 3,
+      "ticks_per_quarter": 120,
+      "tempo_bpm": 100.0,
+      "time_signature": "3/4",
+      "time_signature_changes": 2,
+      "key": "D major",
+      "key_changes": 2,
+      "notes": 24,
+      "channels": [
+        1,
+        2
+      ],
+      "percussion": false,
+      "programs": [
+        {
+          "channel": 1,
+          "program": 74,
+          "gm_name": "Flute"
+        },
+        {
+          "channel": 2,
+          "program": 43,
+          "gm_name": "Cello"
+        }
+      ],
+      "track_list": [
+        {
+          "events": 2
+        },
+        {
+          "name": "Flute",
+          "events": 41,
+          "notes": 12,
+          "channels": [
+            1
+          ]
+        },
+        {
+          "name": "Cello",
+          "events": 29,
+          "notes": 12,
+          "channels": [
+            2
+          ]
+        }
+      ],
+      "tag_formats": [
+        "midi"
+      ],
+      "tags": {
+        "lyrics": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.midi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,154 @@
+---
+source: src/formats/playlist/sheet.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-radio-crafted.pls",
+    "stem": "saltmere-radio-crafted",
+    "extension": "pls"
+  },
+  "identification": {
+    "format": "pls",
+    "name": "PLS playlist",
+    "mime": "audio/x-scpls",
+    "family": "audio.playlist",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "playlist.sheet"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 320
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 320,
+    "entropy": 4.981,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 320,
+      "chars": 320,
+      "words": 29,
+      "lines": 12,
+      "max_line_length": 49,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "d398e7417c4294c204b9f9aef5a4f7d6565ffedeee681b92363c40c7bfae6133",
+    "blake3": "e896972bfa27794e46f468a1af3f8eefb03b76c34d864ee2fab3fe94e4ea82e5"
+  },
+  "content": {
+    "excerpt": "Saltmere Radio Saltmere Brass Band - Harbour Bells Saltmere Brass Band - Low Water"
+  },
+  "metadata": {},
+  "format": {
+    "pls": {
+      "entries": 3,
+      "declared_duration_s": 424.0,
+      "entries_with_duration": 2,
+      "local_entries": 2,
+      "remote_entries": 1,
+      "hosts": {
+        "radio.saltmere.example": 1
+      },
+      "file_types": {
+        "mp3": 2
+      },
+      "declared_entries": 3,
+      "version": 2,
+      "listed": [
+        {
+          "title": "Saltmere Radio",
+          "host": "radio.saltmere.example",
+          "file": "live"
+        },
+        {
+          "title": "Harbour Bells",
+          "artist": "Saltmere Brass Band",
+          "duration_s": 183.0,
+          "file": "Harbour Bells.mp3"
+        },
+        {
+          "title": "Low Water",
+          "artist": "Saltmere Brass Band",
+          "duration_s": 241.0,
+          "file": "Low Water.mp3"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.sheet",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

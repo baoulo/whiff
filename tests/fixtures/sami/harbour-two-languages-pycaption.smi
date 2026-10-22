@@ -1,0 +1,185 @@
+<sami>
+ <head>
+  <style type="text/css">
+   <!--
+    .en-US {
+     lang: en-US;
+    }
+
+    .fr-FR {
+     lang: fr-FR;
+    }
+   -->
+  </style>
+ </head>
+ <body>
+  <sync start="500">
+   <p class="en-US">
+    Morning on the Saltmere breakwater.
+   </p>
+   <p class="fr-FR">
+    Le matin sur la digue de Saltmere.
+   </p>
+  </sync>
+  <sync start="3000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="3200">
+   <p class="en-US">
+    The ferry leaves at seven,<br/>
+    as it has for forty years.
+   </p>
+   <p class="fr-FR">
+    Le ferry part à sept heures,<br/>
+    comme depuis quarante ans.
+   </p>
+  </sync>
+  <sync start="5800">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="6000">
+   <p class="en-US">
+    [gulls calling]
+   </p>
+   <p class="fr-FR">
+    [cris de mouettes]
+   </p>
+  </sync>
+  <sync start="8000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="8200">
+   <p class="en-US">
+    Tide's turning. We should check<br/>
+    the mooring buoys.
+   </p>
+   <p class="fr-FR">
+    La marée tourne. Vérifions<br/>
+    les bouées d'amarrage.
+   </p>
+  </sync>
+  <sync start="11000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="11200">
+   <p class="en-US">
+    The lighthouse keeper logs<br/>
+    every boat that passes.
+   </p>
+   <p class="fr-FR">
+    Le gardien du phare note<br/>
+    chaque bateau qui passe.
+   </p>
+  </sync>
+  <sync start="14000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="14200">
+   <p class="en-US">
+    ♪ brass band playing ♪
+   </p>
+   <p class="fr-FR">
+    ♪ fanfare au loin ♪
+   </p>
+  </sync>
+  <sync start="16500">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="16800">
+   <p class="en-US">
+    Harbour office, this is the pilot launch.
+   </p>
+   <p class="fr-FR">
+    Capitainerie, ici la vedette du pilote.
+   </p>
+  </sync>
+  <sync start="19500">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="19700">
+   <p class="en-US">
+    Fog rolls in from the outer mole by noon.
+   </p>
+   <p class="fr-FR">
+    Le brouillard arrive du môle vers midi.
+   </p>
+  </sync>
+  <sync start="22000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="22200">
+   <p class="en-US">
+    Keep to the marked channel<br/>
+    past the red buoy.
+   </p>
+   <p class="fr-FR">
+    Restez dans le chenal balisé<br/>
+    après la bouée rouge.
+   </p>
+  </sync>
+  <sync start="25000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+  <sync start="25200">
+   <p class="en-US">
+    By evening the quay is quiet again.
+   </p>
+   <p class="fr-FR">
+    Le soir, le quai redevient calme.
+   </p>
+  </sync>
+  <sync start="28000">
+   <p class="en-US">
+    &nbsp;
+   </p>
+   <p class="fr-FR">
+    &nbsp;
+   </p>
+  </sync>
+ </body>
+</sami>

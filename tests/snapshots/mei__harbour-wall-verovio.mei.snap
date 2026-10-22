@@ -1,0 +1,167 @@
+---
+source: src/formats/score/notation.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-verovio.mei",
+    "stem": "harbour-wall-verovio",
+    "extension": "mei"
+  },
+  "identification": {
+    "format": "mei",
+    "name": "MEI score",
+    "mime": "application/mei+xml",
+    "family": "audio.score",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mei",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "score.notation"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10345
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-21",
+        "source": "score.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10345,
+    "entropy": 3.87,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 10345,
+      "chars": 10343,
+      "words": 520,
+      "lines": 176,
+      "max_line_length": 145,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5212d493e516070f0f7e769fa38070203312372b409c11e09c861c3ac1eafc59",
+    "blake3": "5186125dce07504baa4da14c0eb6c5238f3c291ddb27edd9cf78aa2adbd61ef4"
+  },
+  "content": {
+    "title": "The Harbour Wall",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Har bour wall at dawn the fer ry waits for gulls and"
+  },
+  "metadata": {},
+  "format": {
+    "mei": {
+      "creators": {
+        "composer": [
+          "Ana Lighthouse"
+        ]
+      },
+      "software": [
+        "Verovio"
+      ],
+      "parts": 2,
+      "notes": 24,
+      "rests": 0,
+      "part_list": [
+        {
+          "name": "Flute",
+          "midi_program": 74,
+          "gm_name": "Flute"
+        },
+        {
+          "name": "Cello",
+          "midi_program": 43,
+          "gm_name": "Cello"
+        }
+      ],
+      "measures": 4,
+      "key": "D major",
+      "time_signature": "3/4",
+      "tempo_bpm": 100.0,
+      "version": "6.0-dev"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "score.notation",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

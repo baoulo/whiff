@@ -1,0 +1,127 @@
+---
+source: src/formats/audio/mpeg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.mp2",
+    "stem": "bells-ffmpeg",
+    "extension": "mp2"
+  },
+  "identification": {
+    "format": "mp2",
+    "name": "MPEG audio Layer I / II",
+    "mime": "audio/mpeg",
+    "family": "audio",
+    "confidence": 0.73,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.mpeg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12120
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12120,
+    "entropy": 7.947,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.515,
+      "bitrate_bps": 64000,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "mp2",
+          "profile": "MPEG-2 Layer II",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 64000,
+          "bitrate_mode": "cbr"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "96cd36e159c82a53b7d68885f3e2a11b580df202111513bbbf9722ed709a99dd",
+    "blake3": "c5543d6fc4191e55fdfd8a2f0c677b534a2474a09fc2e3d6e3212b2514973fbd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mp2": {
+      "mpeg_version": "2",
+      "layer": 2,
+      "channel_mode": "mono",
+      "crc_protected": false,
+      "original": true,
+      "copyright_bit": false,
+      "audio_bytes": 12120
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.mpeg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

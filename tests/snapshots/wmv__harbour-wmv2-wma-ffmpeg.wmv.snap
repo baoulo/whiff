@@ -1,0 +1,210 @@
+---
+source: src/formats/video/asf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wmv2-wma-ffmpeg.wmv",
+    "stem": "harbour-wmv2-wma-ffmpeg",
+    "extension": "wmv"
+  },
+  "identification": {
+    "format": "wmv",
+    "name": "Windows Media Video",
+    "mime": "video/x-ms-wmv",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "wmv",
+        "confidence": 0.99
+      },
+      {
+        "format": "wma",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "video.asf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 55725
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "asf.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Harbour Films",
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 55725,
+    "entropy": 7.474,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.043,
+      "bitrate_bps": 427421,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "wmv2",
+          "codec_tag": "WMV2",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "stream_number": 1
+        },
+        {
+          "type": "audio",
+          "codec": "wmav2",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 48000,
+          "stream_number": 2
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "f8d94a8f2beefd7174dc25b1ae6603ae269f4d2fc782b72a69ac36e447ab9d0e",
+    "blake3": "74f93481ec7cc13a22c7af012f46caf31aa92bb82d9b6488b6712fa38a209790"
+  },
+  "content": {
+    "title": "Saltmere Harbour at Dawn",
+    "description": "A test pattern filmed nowhere",
+    "authors": [
+      "Ana Lighthouse"
+    ]
+  },
+  "metadata": {
+    "asf": {
+      "Title": "Saltmere Harbour at Dawn",
+      "Author": "Ana Lighthouse",
+      "Copyright": "2024 Saltmere Harbour Films",
+      "AspectRatioX": 1,
+      "AspectRatioY": 1,
+      "title": "Saltmere Harbour at Dawn",
+      "Description": "A test pattern filmed nowhere",
+      "date": "2024-04-01",
+      "copyright": "2024 Saltmere Harbour Films"
+    }
+  },
+  "format": {
+    "wmv": {
+      "header_objects": [
+        "file_properties",
+        "metadata",
+        "header_extension",
+        "content_description",
+        "extended_content_description",
+        "stream_properties",
+        "stream_properties",
+        "codec_list"
+      ],
+      "packets": 17,
+      "preroll_ms": 3100,
+      "seekable": true,
+      "broadcast": false,
+      "max_bitrate_bps": 168000,
+      "codecs": [
+        {
+          "type": "video",
+          "name": "wmv2",
+          "description": ""
+        },
+        {
+          "type": "audio",
+          "name": "Windows Media Audio V8",
+          "description": ""
+        }
+      ],
+      "tag_formats": [
+        "asf"
+      ],
+      "tags": {
+        "title": "Saltmere Harbour at Dawn",
+        "artist": "Ana Lighthouse",
+        "date": "2024-04-01",
+        "copyright": "2024 Saltmere Harbour Films",
+        "description": "A test pattern filmed nowhere"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.asf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

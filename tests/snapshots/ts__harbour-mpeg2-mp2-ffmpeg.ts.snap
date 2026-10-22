@@ -1,0 +1,162 @@
+---
+source: src/formats/video/mpegts.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-mpeg2-mp2-ffmpeg.ts",
+    "stem": "harbour-mpeg2-mp2-ffmpeg",
+    "extension": "ts"
+  },
+  "identification": {
+    "format": "ts",
+    "name": "MPEG transport stream",
+    "mime": "video/mp2t",
+    "family": "video",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ts",
+        "confidence": 0.95
+      },
+      {
+        "format": "typescript",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "video.mpegts"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 94376
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 94376,
+    "entropy": 7.425,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.010022,
+      "bitrate_bps": 747516,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "mpeg2video",
+          "profile": "main",
+          "level": "main",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "scan_type": "progressive",
+          "pid": 256,
+          "stream_type": "0x02"
+        },
+        {
+          "type": "audio",
+          "codec": "mp2",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 64000,
+          "pid": 257,
+          "stream_type": "0x03"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "e277e2d3b4ac31e8e40b862c787869f05e090b2c79aa21909400ecdca12b6c15",
+    "blake3": "0bf0bc356407b958cc8ce644f1ca2eaa4b4bded41eec069929deb2e4b77ef8a6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ts": {
+      "packet_size": 188,
+      "transport_stream_id": 1,
+      "programs": [
+        {
+          "number": 1,
+          "pmt_pid": 4096,
+          "pcr_pid": 256,
+          "pids": [
+            256,
+            257
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mpegts",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -466,15 +466,19 @@ struct Compiled {
 
 fn compiled(lang: &'static Lang) -> Arc<Compiled> {
     static CACHE: LazyLock<Mutex<HashMap<&'static str, Arc<Compiled>>>> = LazyLock::new(Mutex::default);
-    let mut cache = CACHE.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
+    let lock = || CACHE.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
+    if let Some(c) = lock().get(lang.id) {
+        return Arc::clone(c);
+    }
+    // Compile without holding the lock, so threads analysing other languages
+    // do not wait on it; a thread that loses the race uses the winner's copy.
     let re = |p: &str| Regex::new(&format!("(?m){p}")).ok();
-    Arc::clone(cache.entry(lang.id).or_insert_with(|| {
-        Arc::new(Compiled {
-            imports: lang.imports.iter().filter_map(|p| re(p)).collect(),
-            symbols: lang.symbols.iter().filter_map(|(k, p)| re(p).map(|r| (*k, r))).collect(),
-            package: (!lang.package.is_empty()).then(|| re(lang.package)).flatten(),
-        })
-    }))
+    let fresh = Arc::new(Compiled {
+        imports: lang.imports.iter().filter_map(|p| re(p)).collect(),
+        symbols: lang.symbols.iter().filter_map(|(k, p)| re(p).map(|r| (*k, r))).collect(),
+        package: (!lang.package.is_empty()).then(|| re(lang.package)).flatten(),
+    });
+    Arc::clone(lock().entry(lang.id).or_insert(fresh))
 }
 
 #[derive(Default)]

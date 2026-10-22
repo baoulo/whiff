@@ -1,0 +1,208 @@
+---
+source: src/formats/playlist/m3u.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-evenings-crafted.m3u",
+    "stem": "saltmere-evenings-crafted",
+    "extension": "m3u"
+  },
+  "identification": {
+    "format": "m3u",
+    "name": "M3U playlist",
+    "mime": "audio/x-mpegurl",
+    "family": "audio.playlist",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "playlist.m3u"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 691
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 691,
+    "entropy": 5.256,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 691,
+      "chars": 691,
+      "words": 65,
+      "lines": 20,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 5
+    }
+  },
+  "integrity": {
+    "sha256": "4b099a0b52f3ecee6e26fb432a74f51714c236e1ffe8b18252680891daca1dbf",
+    "blake3": "651bd1ca514d38c4418bc2a60781454c71fa26f84a5acee0820df1c248806962"
+  },
+  "content": {
+    "title": "Saltmere Evenings",
+    "keywords": [
+      "Saltmere Brass Band",
+      "Saltmere Evenings",
+      "Harbour Bells",
+      "Evenings",
+      "Saltmere",
+      "Band",
+      "Brass",
+      "Saltmere Radio",
+      "Pilot Launch",
+      "Bells"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        4
+      ],
+      [
+        "band",
+        2
+      ],
+      [
+        "brass",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere Brass Band - Harbour Bells Saltmere Brass Band - Low Water Mira Castell - Fog on the Mole Ben Gull - Pilot Launch Saltmere Radio",
+    "tags": [
+      "Brass",
+      "Saltmere Brass Band",
+      "Saltmere Evenings",
+      "Harbour Bells",
+      "Evenings",
+      "Saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "m3u": {
+      "entries": 5,
+      "declared_duration_s": 797.0,
+      "entries_with_duration": 4,
+      "local_entries": 3,
+      "remote_entries": 2,
+      "hosts": {
+        "media.saltmere.example": 1,
+        "radio.saltmere.example": 1
+      },
+      "file_types": {
+        "flac": 2,
+        "mp3": 2,
+        "m4a": 1
+      },
+      "extended": true,
+      "listed": [
+        {
+          "title": "Harbour Bells",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 183.0,
+          "file": "03 Harbour Bells.flac"
+        },
+        {
+          "title": "Low Water",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 241.0,
+          "file": "04 Low Water.flac"
+        },
+        {
+          "title": "Fog on the Mole",
+          "artist": "Mira Castell",
+          "album": "Outer Mole",
+          "duration_s": 206.0,
+          "file": "Fog on the Mole.mp3"
+        },
+        {
+          "title": "Pilot Launch",
+          "artist": "Ben Gull",
+          "album": "Outer Mole",
+          "duration_s": 167.0,
+          "host": "media.saltmere.example",
+          "file": "pilot-launch.m4a"
+        },
+        {
+          "title": "Saltmere Radio",
+          "host": "radio.saltmere.example",
+          "file": "live.mp3"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.m3u",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -5,7 +5,7 @@
 //!
 //! | Feature | Groups |
 //! |---|---|
-//! | `common` (default) | text, data, code, doc, email, image, audio, video, archive, package, exec, crypto, db, font, web, apple, binary |
+//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, archive, package, exec, crypto, db, font, web, apple, binary |
 //! | `geo` | geo |
 //! | `science` | science |
 //! | `data` | columnar |
@@ -19,6 +19,8 @@
 
 // whiff-dev: group modules below this line
 #[cfg(feature = "common")]
+pub(crate) mod audio;
+#[cfg(feature = "common")]
 pub(crate) mod binary;
 #[cfg(feature = "common")]
 pub(crate) mod code;
@@ -31,4 +33,12 @@ pub(crate) mod email;
 #[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]
+pub(crate) mod playlist;
+#[cfg(feature = "common")]
+pub(crate) mod score;
+#[cfg(feature = "common")]
+pub(crate) mod subtitle;
+#[cfg(feature = "common")]
 pub(crate) mod text;
+#[cfg(feature = "common")]
+pub(crate) mod video;

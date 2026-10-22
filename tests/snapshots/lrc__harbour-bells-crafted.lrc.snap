@@ -1,0 +1,170 @@
+---
+source: src/formats/subtitle/timed.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bells-crafted.lrc",
+    "stem": "harbour-bells-crafted",
+    "extension": "lrc"
+  },
+  "identification": {
+    "format": "lrc",
+    "name": "LRC lyrics",
+    "mime": "application/x-lrc",
+    "family": "text.subtitle",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "subtitle.timed"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 569
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 569,
+    "entropy": 4.967,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 569,
+      "chars": 565,
+      "words": 55,
+      "lines": 15,
+      "max_line_length": 173,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    },
+    "media": {
+      "duration_s": 39.75,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "text",
+          "cues": 7
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "2599945c240d36dec260ceeddeff7f8b0344494ca1a8e08b23f0df0554492c43",
+    "blake3": "4e758d98642d03233b10d637720ef097eab246381150a0433649aad400d47771"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour Bells",
+      "Bells",
+      "Saltmere breakwater",
+      "Harbour",
+      "Saltmere",
+      "gulls calling",
+      "ferry leaves",
+      "breakwater",
+      "Morning",
+      "mooring buoys"
+    ],
+    "excerpt": "Morning on the Saltmere breakwater. The ferry leaves at seven, as it has for forty years. [gulls calling] Tide's turning. We should check the mooring buoys. The lighthouse keeper logs every boat that passes. ♪ brass band playing ♪",
+    "tags": [
+      "Harbour Bells",
+      "Bells",
+      "Saltmere breakwater",
+      "Harbour",
+      "Saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "lrc": {
+      "cues": 7,
+      "first_cue_s": 0.25,
+      "last_cue_end_s": 39.75,
+      "text_lines": 7,
+      "max_lines_per_cue": 1,
+      "sound_description_cues": 1,
+      "music_cues": 2,
+      "markup": [
+        "karaoke_timing"
+      ],
+      "artist": "Saltmere Brass Band",
+      "album": "Tides of Saltmere",
+      "lyrics_by": "Mira Castell",
+      "length_s": 62.0,
+      "offset_ms": 250.0,
+      "generator": "whiff fixture"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.timed",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?><timedtext format="3">
+<head>
+<pen id="1" b="1"/>
+<ws id="1" ju="2"/>
+<wp id="1" ap="7" ah="50" av="100"/>
+</head>
+<body>
+<p t="500" d="2500" wp="1" ws="1">Morning on the Saltmere breakwater.</p>
+<p t="3200" d="2600" wp="1" ws="1">The ferry leaves at seven,<br/>as it has for forty years.</p>
+<p t="6000" d="2000" wp="1" ws="1">[gulls calling]</p>
+<p t="8200" d="2800" wp="1" ws="1">Tide's turning. We should check<br/>the mooring buoys.</p>
+<p t="11200" d="2800" wp="1" ws="1">The lighthouse keeper logs<br/>every boat that passes.</p>
+<p t="14200" d="2300" wp="1" ws="1">♪ brass band playing ♪</p>
+<p t="16800" d="2700" wp="1" ws="1">Harbour office, this is the pilot launch.</p>
+<p t="19700" d="2300" wp="1" ws="1">Fog rolls in from the outer mole by noon.</p>
+<p t="22200" d="2800" wp="1" ws="1">Keep to the marked channel<br/>past the red buoy.</p>
+<p t="25200" d="2800" wp="1" ws="1">By evening the quay is quiet again.</p>
+</body>
+</timedtext>

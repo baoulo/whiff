@@ -1,0 +1,223 @@
+---
+source: src/formats/playlist/sheet.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-of-saltmere-crafted.cue",
+    "stem": "tides-of-saltmere-crafted",
+    "extension": "cue"
+  },
+  "identification": {
+    "format": "cue",
+    "name": "CUE sheet",
+    "mime": "application/x-cue",
+    "family": "audio.playlist",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "playlist.sheet"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 625
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024",
+        "source": "playlist.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 625,
+    "entropy": 4.942,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 625,
+      "chars": 625,
+      "words": 82,
+      "lines": 24,
+      "max_line_length": 56,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 3
+    }
+  },
+  "integrity": {
+    "sha256": "f1a092f5842eedf57a58bfa98ef57a41e7cc644a0860909a075f7be252f0a5ff",
+    "blake3": "f5f870f06e19005b2d43bc7759179628b55051e5502e0a0a7ef04e604d27970a"
+  },
+  "content": {
+    "title": "Tides of Saltmere",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "keywords": [
+      "Saltmere Brass Band",
+      "Harbour Bells",
+      "Tides of Saltmere",
+      "Band",
+      "Brass",
+      "Saltmere",
+      "Tides",
+      "Bells",
+      "Harbour",
+      "Mira Castell"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "band",
+        2
+      ],
+      [
+        "brass",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere Brass Band - Harbour Bells Saltmere Brass Band - Low Water Mira Castell - Fog on the Mole",
+    "tags": [
+      "Brass",
+      "Saltmere Brass Band",
+      "Harbour Bells",
+      "Tides of Saltmere",
+      "Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "cue": {
+      "entries": 3,
+      "declared_duration_s": 424.4,
+      "entries_with_duration": 2,
+      "local_entries": 3,
+      "file_types": {
+        "flac": 3
+      },
+      "catalog": "0000000000017",
+      "tracks": 3,
+      "track_starts": [
+        {
+          "track": 1,
+          "start_s": 0.0
+        },
+        {
+          "track": 2,
+          "start_s": 183.4
+        },
+        {
+          "track": 3,
+          "start_s": 424.4
+        }
+      ],
+      "files": [
+        {
+          "file": "Saltmere Brass Band - Tides of Saltmere.flac",
+          "type": "wave"
+        }
+      ],
+      "isrc_codes": 3,
+      "rem": {
+        "comment": "Fixture for whiff",
+        "date": "2024",
+        "discid": "3A0B4C05",
+        "genre": "Brass"
+      },
+      "listed": [
+        {
+          "title": "Harbour Bells",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 183.4,
+          "file": "Saltmere Brass Band - Tides of Saltmere.flac"
+        },
+        {
+          "title": "Low Water",
+          "artist": "Saltmere Brass Band",
+          "album": "Tides of Saltmere",
+          "duration_s": 241.0,
+          "file": "Saltmere Brass Band - Tides of Saltmere.flac"
+        },
+        {
+          "title": "Fog on the Mole",
+          "artist": "Mira Castell",
+          "album": "Tides of Saltmere",
+          "file": "Saltmere Brass Band - Tides of Saltmere.flac"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "playlist.sheet",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

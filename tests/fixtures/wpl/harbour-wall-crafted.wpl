@@ -1,0 +1,17 @@
+<?wpl version="1.0"?>
+<smil>
+    <head>
+        <meta name="Generator" content="Microsoft Windows Media Player -- 12.0.19041.1"/>
+        <meta name="ItemCount" content="3"/>
+        <meta name="TotalDuration" content="630000"/>
+        <author>Ana Lighthouse</author>
+        <title>Harbour Wall</title>
+    </head>
+    <body>
+        <seq>
+            <media src="..\Music\Saltmere Brass Band\Tides of Saltmere\Harbour Bells.wma" tid="{0D1C2B3A-4F5E-6D7C-8B9A-001F2E3D4C5B}"/>
+            <media src="..\Music\Saltmere Brass Band\Tides of Saltmere\Low Water.wma" tid="{0D1C2B3A-4F5E-6D7C-8B9A-011F2E3D4C5B}"/>
+            <media src="..\Music\Mira Castell\Outer Mole\Fog on the Mole.wma" tid="{0D1C2B3A-4F5E-6D7C-8B9A-021F2E3D4C5B}"/>
+        </seq>
+    </body>
+</smil>

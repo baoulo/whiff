@@ -1,0 +1,128 @@
+---
+source: src/formats/video/elementary.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-av1-ffmpeg.ivf",
+    "stem": "harbour-av1-ffmpeg",
+    "extension": "ivf"
+  },
+  "identification": {
+    "format": "ivf",
+    "name": "IVF video",
+    "mime": "video/x-ivf",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.elementary"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7360
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7360,
+    "entropy": 7.809,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 58880,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "av1",
+          "codec_tag": "AV01",
+          "profile": "main",
+          "level": "2.0",
+          "tier": "main",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_range": "limited"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "7c1e466c42b47da261d98758cb5eeee40e8c621305beeec8f2222a3f75cc4b21",
+    "blake3": "54cfe5d35d21005d291c3a9dba1db31bdd30d7af0341b153a5272e3c0feeda73"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.elementary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

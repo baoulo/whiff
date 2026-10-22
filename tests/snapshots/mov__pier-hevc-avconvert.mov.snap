@@ -1,0 +1,209 @@
+---
+source: src/formats/video/mp4.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-hevc-avconvert.mov",
+    "stem": "pier-hevc-avconvert",
+    "extension": "mov"
+  },
+  "identification": {
+    "format": "mov",
+    "name": "QuickTime movie",
+    "mime": "video/quicktime",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.mp4"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 86033
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T18:46:00Z",
+        "source": "mp4.mvhd.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-20T18:46:01Z",
+        "source": "mp4.mvhd.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-20T18:46:00Z",
+    "latest": "2026-10-20T18:46:01Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 86033,
+    "entropy": 7.971,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 25
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 688264,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "aac",
+          "profile": "aac_lc",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 70832
+        },
+        {
+          "type": "video",
+          "codec": "hevc",
+          "codec_tag": "hvc1",
+          "profile": "main",
+          "level": "2.0",
+          "tier": "main",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frame_rate_mode": "cfr",
+          "frames": 25,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_primaries": "bt709",
+          "color_transfer": "bt709",
+          "color_matrix": "bt709",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "bitrate_bps": 597560,
+          "duration_s": 1.0
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "c6bdc067b96fd1bb78040f67cfa1a0dfe48cef182e1b8d51f342ef732f4764d6",
+    "blake3": "4cd36008aef9f32dac0d877b2fb0d32b1fa6a5eff6338fe5ef53552ba54daa08"
+  },
+  "content": {},
+  "metadata": {
+    "quicktime": {
+      "©swr": "Lavf61.7.100"
+    }
+  },
+  "format": {
+    "mov": {
+      "major_brand": "qt",
+      "minor_version": 0,
+      "compatible_brands": [
+        "qt"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "moov",
+        "wide",
+        "mdat"
+      ],
+      "fragmented": false,
+      "faststart": true,
+      "tracks": [
+        {
+          "id": 1,
+          "handler": "soun",
+          "codec": "mp4a",
+          "duration_s": 1.021333,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "Core Media Audio"
+        },
+        {
+          "id": 2,
+          "handler": "vide",
+          "codec": "hvc1",
+          "duration_s": 1.0,
+          "enabled": true,
+          "language": "und",
+          "handler_name": "Core Media Video",
+          "compressor": "HEVC"
+        }
+      ],
+      "media_data_bytes": 83738,
+      "device": {
+        "software": "Lavf61.7.100"
+      },
+      "tag_formats": [
+        "quicktime"
+      ],
+      "encoder": "Lavf61.7.100"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.mp4",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

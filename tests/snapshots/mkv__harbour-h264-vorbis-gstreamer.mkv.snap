@@ -1,0 +1,183 @@
+---
+source: src/formats/video/matroska.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-h264-vorbis-gstreamer.mkv",
+    "stem": "harbour-h264-vorbis-gstreamer",
+    "extension": "mkv"
+  },
+  "identification": {
+    "format": "mkv",
+    "name": "Matroska video",
+    "mime": "video/x-matroska",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.matroska"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 23347
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-20T18:46:03Z",
+        "source": "matroska.Info.DateUTC",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-20T18:46:03Z",
+    "latest": "2026-10-20T18:46:03Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 23347,
+    "entropy": 7.48,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90
+    },
+    "media": {
+      "duration_s": 1.002667,
+      "bitrate_bps": 186279,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "h264",
+          "codec_tag": "V_MPEG4/ISO/AVC",
+          "profile": "high",
+          "level": "1.1",
+          "width": 160,
+          "height": 90,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "bit_depth": 8,
+          "chroma_subsampling": "4:2:0",
+          "color_primaries": "smpte170m",
+          "color_transfer": "smpte170m",
+          "color_matrix": "smpte170m",
+          "color_range": "limited",
+          "scan_type": "progressive",
+          "language": "eng",
+          "title": "Video",
+          "default": true,
+          "track": 1
+        },
+        {
+          "type": "audio",
+          "codec": "vorbis",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "language": "eng",
+          "title": "Audio",
+          "default": true,
+          "track": 2
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "ea397e5c481f9aec201fa1a82a4c677fa4050097cf02048d3e9765ca5e2704f1",
+    "blake3": "c197e162361607a67ebbc5a35958ee9405fbe53d2589f23b1c7b2dbb2b9765e6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mkv": {
+      "doc_type": "matroska",
+      "doc_type_version": 4,
+      "timestamp_scale_ns": 1000000,
+      "muxing_app": "GStreamer matroskamux version 1.26.2",
+      "segment_uid": "ddfa3261b6bc4625197ec16d187f3f19",
+      "tracks": [
+        {
+          "number": 1,
+          "type": "video",
+          "codec_id": "V_MPEG4/ISO/AVC",
+          "statistics": {
+            "ENCODER": "x264",
+            "BITSPS": "113592"
+          }
+        },
+        {
+          "number": 2,
+          "type": "audio",
+          "codec_id": "A_VORBIS"
+        }
+      ],
+      "tag_formats": [
+        "matroska"
+      ],
+      "encoder": "GStreamer Matroska muxer"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.matroska",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

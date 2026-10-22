@@ -1,0 +1,345 @@
+---
+source: src/formats/audio/flac.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-reference.flac",
+    "stem": "bells-reference",
+    "extension": "flac"
+  },
+  "identification": {
+    "format": "flac",
+    "name": "FLAC audio",
+    "mime": "audio/flac",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.flac"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 52507
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "vorbis.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Brass Band",
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 52507,
+    "entropy": 6.593,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 280037,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "flac",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 16,
+          "bitrate_bps": 230453,
+          "samples": 66150
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "d520b611cf92fd6eb65a2799fd9443f411aec35a97f234ff06f44c37f9bbeed5",
+    "blake3": "2241271afc0b103922d6cd4fe406266d041613b56da6a82d3e1145a806a307f6"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Brass Band"
+    ],
+    "tags": [
+      "Brass"
+    ]
+  },
+  "metadata": {
+    "vorbis": {
+      "vendor": "reference libFLAC 1.5.0 20250211",
+      "TITLE": "Harbour Bells",
+      "ARTIST": "Saltmere Brass Band",
+      "ALBUM": "Tides of Saltmere",
+      "DATE": "2024-04-01",
+      "TRACKNUMBER": "3",
+      "TRACKTOTAL": "9",
+      "GENRE": "Brass",
+      "COMPOSER": "Mira Castell",
+      "ISRC": "ZZSLT2400003",
+      "LABEL": "Example Records",
+      "MUSICBRAINZ_TRACKID": "00000000-0000-4000-8000-000000000003",
+      "REPLAYGAIN_REFERENCE_LOUDNESS": "89.0 dB",
+      "REPLAYGAIN_TRACK_GAIN": "+3.28 dB",
+      "REPLAYGAIN_TRACK_PEAK": "0.12496948",
+      "REPLAYGAIN_ALBUM_GAIN": "+3.28 dB",
+      "REPLAYGAIN_ALBUM_PEAK": "0.12496948"
+    }
+  },
+  "format": {
+    "flac": {
+      "streaminfo": {
+        "min_block_samples": 4096,
+        "max_block_samples": 4096,
+        "min_frame_bytes": 429,
+        "max_frame_bytes": 2693,
+        "audio_md5": "0a40d13ca4b21470ad79d3f45620655e"
+      },
+      "cuesheet": {
+        "catalog_number": null,
+        "compact_disc": false,
+        "lead_in_samples": 88200,
+        "tracks": [
+          {
+            "number": 1,
+            "start_s": 0.0,
+            "audio": true
+          },
+          {
+            "number": 2,
+            "start_s": 1.0,
+            "audio": true
+          }
+        ]
+      },
+      "metadata_blocks": [
+        "streaminfo",
+        "seektable",
+        "cuesheet",
+        "vorbis_comment",
+        "picture",
+        "padding"
+      ],
+      "padding_bytes": 8011,
+      "seek_points": 2,
+      "audio_offset_bytes": 9297,
+      "tag_formats": [
+        "vorbis"
+      ],
+      "encoder": "reference libFLAC 1.5.0 20250211",
+      "tags": {
+        "title": "Harbour Bells",
+        "artist": "Saltmere Brass Band",
+        "album": "Tides of Saltmere",
+        "track": 3,
+        "track_total": 9,
+        "date": "2024-04-01",
+        "genre": "Brass",
+        "composer": "Mira Castell",
+        "label": "Example Records",
+        "isrc": "ZZSLT2400003",
+        "musicbrainz_track_id": "00000000-0000-4000-8000-000000000003",
+        "replaygain_track_gain_db": 3.28,
+        "replaygain_track_peak": 0.12496948,
+        "replaygain_album_gain_db": 3.28,
+        "replaygain_album_peak": 0.12496948
+      },
+      "cover_art": [
+        {
+          "mime": "image/png",
+          "picture_type": "front_cover",
+          "description": "Front cover",
+          "width_px": 24,
+          "height_px": 24,
+          "size_bytes": 109
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "cover.png",
+        "stem": "cover",
+        "extension": "png"
+      },
+      "identification": {
+        "format": "png",
+        "name": "PNG image",
+        "mime": "image/png",
+        "family": "image.raster",
+        "confidence": 0.97,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "image.png"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 109
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 109,
+        "entropy": 4.998,
+        "entropy_scope": "file",
+        "image": {
+          "width": 24,
+          "height": 24,
+          "bit_depth": 8,
+          "channels": 3
+        }
+      },
+      "integrity": {
+        "sha256": "9fce83bed09b591c7e5a9fd73927478a196884508135821dcecabfb35017b1f4",
+        "blake3": "92928c5a89c3fae3cb761cec766c971fa9c62d457383fde23d53fd79e1d4378b"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "png": {
+          "color_type": 2,
+          "color_model": "RGB",
+          "alpha": false,
+          "interlaced": false,
+          "transparency": false,
+          "chunks": 4,
+          "idat": {
+            "chunks": 1,
+            "bytes": 31
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "image.png",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.flac",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

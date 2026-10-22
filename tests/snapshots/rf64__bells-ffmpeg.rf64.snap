@@ -1,0 +1,128 @@
+---
+source: src/formats/audio/riff.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bells-ffmpeg.rf64",
+    "stem": "bells-ffmpeg",
+    "extension": "rf64"
+  },
+  "identification": {
+    "format": "rf64",
+    "name": "RF64 / BW64 audio",
+    "mime": "audio/x-rf64",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.wave"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66230
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 66230,
+    "entropy": 7.036,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.5,
+      "bitrate_bps": 353227,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "pcm",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 16,
+          "bitrate_bps": 352800,
+          "samples": 33075
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "c3a493c0a80c2a67a64f2a045168eb38fec0826ec8b6a50472d8dc7615b48da6",
+    "blake3": "81482b18f2d3ad9ec3fa5f340f24d3a2c2982845033c5b23ec4733f396969a31"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "rf64": {
+      "chunks": [
+        "ds64",
+        "fmt ",
+        "data"
+      ],
+      "format_tag": "0x0001",
+      "block_align_bytes": 2,
+      "data_bytes": 66150
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.wave",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

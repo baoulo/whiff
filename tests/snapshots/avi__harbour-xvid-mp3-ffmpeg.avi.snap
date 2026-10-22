@@ -1,0 +1,183 @@
+---
+source: src/formats/video/avi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-xvid-mp3-ffmpeg.avi",
+    "stem": "harbour-xvid-mp3-ffmpeg",
+    "extension": "avi"
+  },
+  "identification": {
+    "format": "avi",
+    "name": "AVI video",
+    "mime": "video/x-msvideo",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.avi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 47892
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-04-01",
+        "source": "riff_info.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2024 Saltmere Harbour Films",
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 47892,
+    "entropy": 6.9,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 90,
+      "frames": 26
+    },
+    "media": {
+      "duration_s": 1.04,
+      "bitrate_bps": 368400,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "mpeg4",
+          "codec_tag": "xvid",
+          "profile": "simple",
+          "level": "3",
+          "width": 160,
+          "height": 90,
+          "display_aspect_ratio": "16:9",
+          "frame_rate": 25.0,
+          "frames": 26,
+          "scan_type": "progressive",
+          "duration_s": 1.04
+        },
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "sample_rate_hz": 48000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 48000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "1b2bb2c160068285320449c70595e39369708d811373681b243c1b68fa32ed49",
+    "blake3": "a536b3d06d1fef4e8560abf62a5e6c805bedcad1359cfe1194dd2a610024f925"
+  },
+  "content": {
+    "title": "Saltmere Harbour at Dawn",
+    "description": "A test pattern filmed nowhere",
+    "authors": [
+      "Ana Lighthouse"
+    ]
+  },
+  "metadata": {
+    "riff_info": {
+      "IART": "Ana Lighthouse",
+      "ICMT": "A test pattern filmed nowhere",
+      "ICOP": "2024 Saltmere Harbour Films",
+      "ICRD": "2024-04-01",
+      "INAM": "Saltmere Harbour at Dawn"
+    }
+  },
+  "format": {
+    "avi": {
+      "riff_chunks": 1,
+      "opendml": false,
+      "indexed": true,
+      "main_header": {
+        "microseconds_per_frame": 40000,
+        "total_frames": 26,
+        "width": 160,
+        "height": 90
+      },
+      "tag_formats": [
+        "riff_info"
+      ],
+      "tags": {
+        "title": "Saltmere Harbour at Dawn",
+        "artist": "Ana Lighthouse",
+        "date": "2024-04-01",
+        "copyright": "2024 Saltmere Harbour Films",
+        "comment": "A test pattern filmed nowhere"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.avi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

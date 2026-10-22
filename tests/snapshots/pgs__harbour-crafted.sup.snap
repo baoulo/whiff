@@ -1,0 +1,125 @@
+---
+source: src/formats/subtitle/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.sup",
+    "stem": "harbour-crafted",
+    "extension": "sup"
+  },
+  "identification": {
+    "format": "pgs",
+    "name": "Blu-ray PGS subtitles",
+    "mime": "application/x-pgs",
+    "family": "text.subtitle",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "subtitle.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 768
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 768,
+    "entropy": 3.57,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 11.0,
+      "streams": [
+        {
+          "type": "subtitle",
+          "codec": "hdmv_pgs_subtitle",
+          "cues": 4
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "bd599586761f0a9ff2bc6dc7ea010b5a261c6fdeebc393d69ccbfccf50a5ba69",
+    "blake3": "084e377633f4070d977587ed90b3b260190cd8b5b42e7a6b0ffc52e4d7374380"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pgs": {
+      "cues": 4,
+      "first_cue_s": 0.5,
+      "last_cue_end_s": 11.0,
+      "frame_rate": 23.976,
+      "video_size": "1920x1080",
+      "segments": 32,
+      "display_sets": 8,
+      "epochs": 1,
+      "forced_cues": 1,
+      "object_segments": 4,
+      "palette_segments": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "subtitle.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
