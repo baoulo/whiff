@@ -4,7 +4,7 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased (0.4.0)
+## 0.4.0 — 2026-10-22
 
 Audio, video, subtitles, playlists and scores.
 
