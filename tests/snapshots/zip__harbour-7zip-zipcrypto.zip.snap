@@ -1,0 +1,150 @@
+---
+source: src/formats/archive/zip.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-7zip-zipcrypto.zip",
+    "stem": "harbour-7zip-zipcrypto",
+    "extension": "zip"
+  },
+  "identification": {
+    "format": "zip",
+    "name": "ZIP archive",
+    "mime": "application/zip",
+    "family": "archive",
+    "confidence": 0.55,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "archive.zip"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 308
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.zip",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 308,
+    "entropy": 6.032,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 159,
+      "ratio": 0.5162337662337663,
+      "encrypted_entries": 1
+    }
+  },
+  "integrity": {
+    "sha256": "2300c79fb6d2f3ef6264626e29197d4ca454642ba9abcb4ab75624a6a24b0bef",
+    "blake3": "a3fe5731896cd7654761bb696ff36d3fd0e5cbfcdcab4fc8043fd793107419ef"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zip": {
+      "created_on": "Unix",
+      "encryption": [
+        "ZipCrypto"
+      ],
+      "files": 1,
+      "compressed_bytes": 140,
+      "methods": {
+        "deflate": 1
+      },
+      "file_types": {
+        "txt": 1
+      },
+      "top_level": [
+        "harbour/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "harbour/notes.txt",
+          "size_bytes": 159,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644",
+          "encrypted": true
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.zip",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -27,6 +27,10 @@ expression: report
         "confidence": 0.99
       },
       {
+        "format": "zip",
+        "confidence": 0.5
+      },
+      {
         "format": "office_encrypted",
         "confidence": 0.35
       }
@@ -291,6 +295,10 @@ expression: report
           {
             "format": "xlsx",
             "confidence": 0.99
+          },
+          {
+            "format": "zip",
+            "confidence": 0.5
           },
           {
             "format": "office_encrypted",

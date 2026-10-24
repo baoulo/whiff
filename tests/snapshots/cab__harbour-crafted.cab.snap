@@ -1,0 +1,608 @@
+---
+source: src/formats/archive/cab.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.cab",
+    "stem": "harbour-crafted",
+    "extension": "cab"
+  },
+  "identification": {
+    "format": "cab",
+    "name": "Microsoft Cabinet",
+    "mime": "application/vnd.ms-cab-compressed",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.cab"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2118
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.cab",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2118,
+    "entropy": 7.133,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 69367,
+      "ratio": 32.75118035882908
+    }
+  },
+  "integrity": {
+    "sha256": "22e61388d4bf74c5f65d3a89ab1cf1e4b314754a30e9de917e0c5766af68f5c4",
+    "blake3": "fb27b15ccf0695c2af853c90e25cc666d39faa80b3205050e7c8c6dec3f8dd1d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cab": {
+      "version": "1.3",
+      "folders": 2,
+      "compression": [
+        "none",
+        "MSZIP"
+      ],
+      "files": 3,
+      "methods": {
+        "none": 2,
+        "MSZIP": 1
+      },
+      "file_types": {
+        "txt": 2,
+        "csv": 1
+      },
+      "top_level": [
+        "log.csv",
+        "notes.txt",
+        "tides/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "notes.txt",
+          "size_bytes": 159,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "log.csv",
+          "size_bytes": 88,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "tides\\year.txt",
+          "size_bytes": 69120,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes.txt",
+        "stem": "notes",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 159
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 159,
+        "entropy": 4.529,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 159,
+          "chars": 159,
+          "words": 27,
+          "lines": 3,
+          "max_line_length": 67,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9c0b4d42ae82009411ab10fb13ea641d44d544298ecc4ad525ff9191c1419fdb",
+        "blake3": "950bc63d01b41d7ba04645cc572601a1ad61ce887ed284b25494b5b13509cbd4"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "leaves at dawn",
+          "Gull"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            2
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.",
+        "tags": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "log.csv",
+        "stem": "log",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 88
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 88,
+        "entropy": 4.454,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 88,
+          "chars": 88,
+          "words": 7,
+          "lines": 4,
+          "max_line_length": 25,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "1dd5f34efa909d87546f9d15a03a6de507994f0d6ae66bd4f3d544583160704b",
+        "blake3": "070476113ee30201f9cfad0362fccb97c1973db0d2f27ba0d579a86a4d9b3e05"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 3,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "boat",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "max_length": 12
+            },
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "min": 1.0,
+              "max": 5.0,
+              "mean": 3.0
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "Harbour Bell",
+              "3"
+            ],
+            [
+              "2025-09-01",
+              "Grey Tern",
+              "5"
+            ],
+            [
+              "2025-09-02",
+              "Low Water",
+              "1"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "year.txt",
+        "stem": "year",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 69120
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 69120,
+        "entropy": 4.387,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 69120,
+          "chars": 69120,
+          "words": 13824,
+          "lines": 1728,
+          "max_line_length": 39,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "632548ea6c387c11ee21bc8d1159ee6b5247e6827acdc7b32a26750bdfd74882",
+        "blake3": "b4370ee62129866c8c632d3cfb56ee0de5f28ef077c1c3aabe7a7d5d7fac79fe"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "bell rings",
+          "rings",
+          "bell",
+          "water"
+        ],
+        "keyword_frequency": [
+          [
+            "bell",
+            1728
+          ],
+          [
+            "rings",
+            1728
+          ],
+          [
+            "water",
+            1728
+          ]
+        ],
+        "excerpt": "00:00 high water 380 cm, the bell rings 00:05 high water 385 cm, the bell rings 00:10 high water 390 cm, the bell rings 00:15 high water 395 cm, the bell rings 00:20 high water 400 cm, the bell rings 00:25 high water 405 cm, the bell rings 00:30 high water 410 cm, the bell rings 00:35 high water 415 cm, the bell rings 00:40 high water 420 cm, the bell rings 00:45 high water 425 cm, the bell rings…",
+        "tags": [
+          "bell rings",
+          "rings",
+          "bell",
+          "water"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.cab",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

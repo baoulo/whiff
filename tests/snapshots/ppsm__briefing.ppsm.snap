@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.99,
     "detected_by": "sniff",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ppsm",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
     "extractor": "doc.ooxml"
   },
   "system": {

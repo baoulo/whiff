@@ -12,4 +12,5 @@ doc-valid-idents = [
     "VideoToolbox", "BITMAPINFOHEADER",
     "SubRip", "WebVTT", "SubStation", "SubViewer", "MicroDVD", "VobSub", "VSFilter", "YouTube", "SHOUTcast",
     "MusicXML", "MuseScore", "LilyPond", "OpenMPT", "ProTracker", "FastTracker", "PyGuitarPro",
+    "ZipCrypto", "WinZip", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
 ]

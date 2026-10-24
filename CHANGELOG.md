@@ -4,6 +4,65 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased (0.5.0)
+
+Archives and compressed files (packages and disk images to come).
+
+- **Compressed files:** gzip (name, time, comment, operating system,
+  level, extra subfields incl. BGZF and dictzip; several members), raw
+  zlib, bzip2 (several streams), xz (check, filters, dictionary; streams,
+  blocks and size from the index), `.lzma`, lzip, Zstandard (window,
+  content size, dictionary id, checksum, skippable frames, seekable
+  format), LZ4 (frame and legacy formats), Brotli, Unix `compress` (`.Z`)
+  and the Snappy framing format are decompressed and the stream inside is
+  analysed in turn, so `x.tar.gz` lists the tar's entries. The stream
+  does not use up a recursion level (up to three nested layers). lzop and
+  LZFSE headers are read. Declared and measured sizes, trailing data and
+  decompression bombs are reported.
+- **Archives:** ZIP (Zip64, extended-timestamp and NTFS times, Unix modes,
+  ZipCrypto and WinZip AES, comment, the system that made it, a
+  self-extractor or polyglot prefix; stored, deflate, bzip2, LZMA,
+  Zstandard and xz entries handed on), tar (v7, ustar, pax with global
+  and extended headers, GNU long names and sparse files; checksums
+  verified), 7z (plain and packed headers, folders, coders, solid blocks,
+  encrypted headers; copy, LZMA, LZMA2, deflate and bzip2 folders, with
+  BCJ or delta filters, handed on), RAR 4 and 5 (volume, solid, recovery
+  record, lock, encrypted headers, comment; stored entries handed on),
+  Microsoft Cabinet (sets of cabinets, folders; uncompressed and MSZIP
+  folders handed on), LHA (header levels 0–2), ARJ, cpio (newc, crc, odc,
+  binary) and `ar` (GNU and BSD names, symbol tables). Every archive
+  reports the same inventory: entry, file, folder and link counts, sizes
+  and ratio, methods, encrypted entries, file types, top-level folders,
+  the range of modification times and the first 50 entries. ZIP names
+  without the UTF-8 flag are read as code page 437.
+- **Risks:** `path_traversal`, `absolute_path`, `symlink_escape`,
+  `decompression_bomb` and `overlapping_entries` (Fifield's overlapping
+  zip bomb), plus `double_extension` for archive entries; `trailing_data`
+  now also covers archives and compressed streams.
+- **Engine and plugin API:** `plugin::codec` decodes every codec above
+  into at most a given number of bytes, charged to the decompression
+  budget, with memory bounded by the output (LZMA dictionaries are never
+  larger than it); `Context::decompress`, `decompress_mszip`,
+  `emit_inner` (the stream inside a compressed file), `emit_child_prefix`
+  (the start of a larger entry) and `child_room`. The ZIP reader reads
+  extra fields, more methods and entries' first bytes
+  (`Zip::read_prefix`). New dependencies, all pure Rust: `ruzstd`,
+  `lzma-rust2` and `brotli-decompressor` (132 of 185 for the library).
+- **Tests:** `tests/bombs.rs` checks that a 1 GiB zip bomb, a 42.zip-style
+  nest of them (256 GiB in all), an overlapping-entry bomb, archives whose
+  paths leave the target folder and a deep gzip-in-gzip chain are all
+  reported within the limits; the inputs are built in memory, not kept as
+  fixtures.
+- **Developer tools:** `scripts/fixtures/archives.sh` regenerates the
+  archive and compression fixtures with bsdtar, Info-ZIP, 7-Zip, Python's
+  zipfile and tarfile, gzip, bzip2, xz, zstd, lz4, brotli, compress and
+  `compression_tool`; `craft_archives.py` writes RAR, CAB, LHA, ARJ, lzip,
+  Snappy, lzop and BGZF files (checked with `7zz t`).
+  `archive_corpus.sh` builds a larger corpus from system folders with
+  every method each tool offers, and `archive_oracle.py` compares entry
+  counts, paths, types and sizes with 7-Zip's listing and uncompressed
+  sizes with the reference decompressors.
+
 ## 0.4.0 — 2026-10-22
 
 Audio, video, subtitles, playlists and scores.

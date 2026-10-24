@@ -4,8 +4,9 @@
 //!
 //! Specification: PKWARE APPNOTE.TXT 6.3.10.
 
+use crate::container::codec::{Codec, End as Ended};
 use crate::io::{ByteReader, Source};
-use crate::plugin::{Compression, Context, ExtractError, Probe};
+use crate::plugin::{Context, ExtractError, Probe};
 
 const EOCD: &[u8; 4] = b"PK\x05\x06";
 const EOCD64_LOCATOR: &[u8; 4] = b"PK\x06\x07";
@@ -36,12 +37,27 @@ pub struct ZipEntry {
     pub modified: Option<String>,
     /// Unix mode bits, when the entry was made on Unix.
     pub unix_mode: Option<u32>,
+    /// The system that made the entry (the high byte of "version made by":
+    /// 0 MS-DOS, 3 Unix, 10 NTFS, 19 macOS …).
+    pub host: u8,
+    /// Modification time in UTC (RFC 3339) from the extended-timestamp or
+    /// NTFS extra field, when present.
+    pub modified_utc: Option<String>,
+    /// AES encryption (WinZip AE-1 / AE-2): key bits and the real method.
+    pub aes: Option<(u16, u16)>,
+    /// Where the entry's data starts at the earliest: its local header plus
+    /// the name (the local extra field may add more).
+    pub min_data_offset: u64,
+    /// MS-DOS attributes (low byte of the external attributes).
+    pub dos_attributes: u8,
 }
 
 impl ZipEntry {
-    /// Whether the entry is a directory.
+    /// Whether the entry is a directory (a name ending in `/`, or in `\`
+    /// as some Windows writers make it, or the MS-DOS directory attribute
+    /// on an empty entry).
     pub fn is_dir(&self) -> bool {
-        self.name.ends_with('/')
+        self.name.ends_with('/') || self.name.ends_with('\\') || (self.dos_attributes & 0x10 != 0 && self.size == 0)
     }
 
     /// Whether the entry is encrypted (traditional PKWARE or AES).
@@ -52,6 +68,35 @@ impl ZipEntry {
     /// Whether the entry is a symbolic link (Unix mode).
     pub fn is_symlink(&self) -> bool {
         self.unix_mode.is_some_and(|m| m & 0o170_000 == 0o120_000)
+    }
+
+    /// The compression method, behind AES encryption when there is one.
+    pub fn real_method(&self) -> u16 {
+        self.aes.map_or(self.method, |(_, m)| m)
+    }
+}
+
+/// The name of a ZIP compression method.
+pub fn method_name(method: u16) -> String {
+    match method {
+        0 => "stored".into(),
+        1 => "shrunk".into(),
+        2..=5 => "reduced".into(),
+        6 => "imploded".into(),
+        8 => "deflate".into(),
+        9 => "deflate64".into(),
+        10 => "terse".into(),
+        12 => "bzip2".into(),
+        14 => "lzma".into(),
+        18 => "terse (new)".into(),
+        19 => "lz77".into(),
+        93 => "zstd".into(),
+        95 => "xz".into(),
+        96 => "jpeg".into(),
+        97 => "wavpack".into(),
+        98 => "ppmd".into(),
+        99 => "aes".into(),
+        m => format!("method {m}"),
     }
 }
 
@@ -79,8 +124,39 @@ fn dos_time(date: u16, time: u16) -> Option<String> {
         .then(|| format!("{y:04}-{mo:02}-{d:02}T{h:02}:{mi:02}:{s:02}"))
 }
 
+/// The upper half of code page 437, the ZIP default for names without
+/// the UTF-8 flag, sixteen to a row.
+const CP437_HIGH: [&str; 8] = [
+    "ÇüéâäàåçêëèïîìÄÅ",
+    "ÉæÆôöòûùÿÖÜ¢£¥₧ƒ",
+    "áíóúñÑªº¿⌐¬½¼¡«»",
+    "░▒▓│┤╡╢╖╕╣║╗╝╜╛┐",
+    "└┴┬├─┼╞╟╚╔╩╦╠═╬╧",
+    "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀",
+    "αßΓπΣσµτΦΘΩδ∞φε∩",
+    "≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ",
+];
+
+/// A name in code page 437.
+fn cp437(raw: &[u8]) -> String {
+    raw.iter()
+        .map(|&b| {
+            if b < 0x80 {
+                char::from(b)
+            } else {
+                CP437_HIGH[usize::from(b - 0x80) / 16].chars().nth(usize::from(b % 16)).unwrap_or('?')
+            }
+        })
+        .collect()
+}
+
+/// An entry name: UTF-8 when flagged (or when it decodes as UTF-8, as
+/// many writers use it unflagged), code page 437 otherwise.
 fn entry_name(raw: &[u8], flags: u16) -> String {
-    if flags & 0x800 != 0 { String::from_utf8_lossy(raw).into_owned() } else { crate::meta::latin1_or_utf8(raw) }
+    if flags & 0x800 != 0 {
+        return String::from_utf8_lossy(raw).into_owned();
+    }
+    std::str::from_utf8(raw).map_or_else(|_| cp437(raw), str::to_string)
 }
 
 /// The end-of-central-directory record in `window` (the file's last bytes):
@@ -135,25 +211,70 @@ fn parse_end(window: &[u8], window_start: u64, i: usize) -> Result<End, ExtractE
     Ok(end)
 }
 
-/// Zip64 extended information: replaces the 32-bit fields that are all ones.
-fn zip64_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) {
+/// What the extra fields of a central-directory record add.
+#[derive(Default)]
+struct Extra {
+    modified_utc: Option<String>,
+    aes: Option<(u16, u16)>,
+}
+
+fn unix_utc(secs: i64) -> Option<String> {
+    let ts = jiff::Timestamp::from_second(secs).ok()?;
+    Some(ts.strftime("%Y-%m-%dT%H:%M:%SZ").to_string())
+}
+
+/// Read the extra fields: Zip64 sizes (replacing the 32-bit fields that are
+/// all ones), extended timestamps, NTFS times and AES encryption.
+fn parse_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) -> Extra {
+    let mut out = Extra::default();
     let mut r = ByteReader::new(extra);
     while let (Ok(id), Ok(len)) = (r.le_u16(), r.le_u16()) {
-        let Ok(body) = r.bytes(usize::from(len)) else { return };
-        if id != 1 {
-            continue;
-        }
+        let Ok(body) = r.bytes(usize::from(len)) else { break };
         let mut b = ByteReader::new(body);
-        for field in [size, csize, offset] {
-            if *field == u64::from(u32::MAX) {
-                match b.le_u64() {
-                    Ok(v) => *field = v,
-                    Err(_) => return,
+        match id {
+            0x0001 => {
+                for field in [&mut *size, &mut *csize, &mut *offset] {
+                    if *field == u64::from(u32::MAX) {
+                        let Ok(v) = b.le_u64() else { break };
+                        *field = v;
+                    }
                 }
             }
+            // Extended timestamp: flags, then the modification time first.
+            0x5455 => {
+                if let (Ok(flags), Ok(t)) = (b.u8(), b.le_u32())
+                    && flags & 1 != 0
+                {
+                    // A signed 32-bit time (before 1970 is negative).
+                    out.modified_utc =
+                        out.modified_utc.or_else(|| unix_utc(i64::from(i32::from_le_bytes(t.to_le_bytes()))));
+                }
+            }
+            // NTFS: reserved, then tag 1 with mtime, atime, ctime.
+            0x000a => {
+                if b.advance(4).is_ok()
+                    && let (Ok(1), Ok(24..)) = (b.le_u16(), b.le_u16())
+                    && let Ok(ticks) = b.le_u64()
+                {
+                    let secs = i64::try_from(ticks / 10_000_000).unwrap_or(0) - 11_644_473_600;
+                    out.modified_utc = unix_utc(secs).or(out.modified_utc);
+                }
+            }
+            // WinZip AES: version, vendor "AE", strength, actual method.
+            0x9901 => {
+                if let (Ok(_), Ok(_), Ok(strength), Ok(method)) = (b.le_u16(), b.le_u16(), b.u8(), b.le_u16()) {
+                    let bits = match strength {
+                        1 => 128,
+                        2 => 192,
+                        _ => 256,
+                    };
+                    out.aes = Some((bits, method));
+                }
+            }
+            _ => {}
         }
-        return;
     }
+    out
 }
 
 #[allow(clippy::many_single_char_names, clippy::similar_names)] // record field names (n, e, c; date, data)
@@ -180,8 +301,9 @@ fn parse_central(data: &[u8], max_entries: usize, zip: &mut Zip) -> Result<(), E
         let external = h.le_u32()?;
         let mut offset = u64::from(h.le_u32()?);
         let name = entry_name(r.bytes(n)?, flags);
-        zip64_extra(r.bytes(e)?, &mut size, &mut csize, &mut offset);
+        let extra = parse_extra(r.bytes(e)?, &mut size, &mut csize, &mut offset);
         r.advance(c)?;
+        let host = (made_by >> 8) as u8;
         zip.entries.push(ZipEntry {
             name,
             method,
@@ -191,7 +313,14 @@ fn parse_central(data: &[u8], max_entries: usize, zip: &mut Zip) -> Result<(), E
             crc32,
             local_offset: offset,
             modified: dos_time(date, time),
-            unix_mode: (made_by >> 8 == 3).then_some(external >> 16).filter(|m| *m != 0),
+            // Unix permissions in the high half: Unix, and macOS / OS X
+            // (Archive Utility writes 3, some tools 19).
+            unix_mode: matches!(host, 3 | 19).then_some(external >> 16).filter(|m| *m != 0),
+            host,
+            modified_utc: extra.modified_utc,
+            aes: extra.aes,
+            min_data_offset: offset.saturating_add(30 + n as u64),
+            dos_attributes: (external & 0xff) as u8,
         });
     }
     Ok(())
@@ -226,6 +355,7 @@ impl Zip {
         if delta > 0 {
             for e in &mut zip.entries {
                 e.local_offset += delta;
+                e.min_data_offset += delta;
             }
         }
         Ok(zip)
@@ -261,32 +391,78 @@ impl Zip {
         cx: &mut Context<'_>,
         max: usize,
     ) -> Result<Vec<u8>, ExtractError> {
-        if entry.is_encrypted() {
-            return Err(ExtractError::Encrypted);
+        // Deflate rarely beats 1000:1 on real data; a larger claim is a bomb.
+        let cap = if entry.method == 8 {
+            max.min(usize::try_from(entry.compressed_size.saturating_mul(1032).saturating_add(4096)).unwrap_or(max))
+        } else {
+            max
+        };
+        let (data, complete) = self.read_prefix(src, entry, cx, cap)?;
+        if complete {
+            Ok(data)
+        } else if entry.method == 0 || data.len() >= cap {
+            Err(ExtractError::LimitExceeded(format!("{}: entry size", entry.name)))
+        } else {
+            Err(ExtractError::malformed(format!("{}: compressed data", entry.name)))
         }
+    }
+
+    /// Where `entry`'s data starts (after its local header).
+    pub fn data_offset(&self, src: &mut dyn Source, entry: &ZipEntry) -> Result<u64, ExtractError> {
         let header = src.read_vec(entry.local_offset, 30)?;
         if !header.starts_with(LOCAL) {
             return Err(ExtractError::malformed(format!("{}: no local header", entry.name)));
         }
         let n = u64::from(u16::from_le_bytes([header[26], header[27]]));
         let e = u64::from(u16::from_le_bytes([header[28], header[29]]));
-        let at = entry.local_offset + 30 + n + e;
-        let csize = entry.compressed_size;
-        match entry.method {
-            0 => {
-                if csize > max as u64 {
-                    return Err(ExtractError::LimitExceeded(format!("{}: entry size", entry.name)));
-                }
-                Ok(src.read_vec(at, usize::try_from(csize).unwrap_or(0))?)
-            }
-            8 => {
-                // Deflate rarely beats 1000:1 on real data; a larger claim is a bomb.
-                let cap = max.min(usize::try_from(csize.saturating_mul(1032).saturating_add(4096)).unwrap_or(max));
-                let data = src.read_vec(at, usize::try_from(csize).map_err(|_| ExtractError::malformed("size"))?)?;
-                cx.inflate(&data, Compression::Deflate, cap)
-            }
-            m => Err(ExtractError::Unsupported(format!("{}: compression method {m}", entry.name))),
+        Ok(entry.local_offset + 30 + n + e)
+    }
+
+    /// Up to `max` bytes of `entry`'s data, and whether that is all of it.
+    /// Reads stored, deflate, bzip2, LZMA, Zstandard and xz entries;
+    /// decompression is charged to the budget.
+    pub fn read_prefix(
+        &self,
+        src: &mut dyn Source,
+        entry: &ZipEntry,
+        cx: &mut Context<'_>,
+        max: usize,
+    ) -> Result<(Vec<u8>, bool), ExtractError> {
+        if entry.is_encrypted() {
+            return Err(ExtractError::Encrypted);
         }
+        let at = self.data_offset(src, entry)?;
+        let csize = entry.compressed_size;
+        if at.checked_add(csize).is_none_or(|end| end > src.len()) {
+            return Err(ExtractError::malformed(format!("{}: data out of range", entry.name)));
+        }
+        if entry.method == 0 {
+            let n = csize.min(max as u64);
+            return Ok((src.read_vec(at, usize::try_from(n).unwrap_or(0))?, n == csize));
+        }
+        // Compressed input needed for `max` bytes of output, at most.
+        let input = csize.min((max as u64).saturating_mul(4).saturating_add(1 << 16));
+        let data = src.read_vec(at, usize::try_from(input).map_err(|_| ExtractError::malformed("size"))?)?;
+        let codec = match entry.method {
+            8 => Codec::Deflate,
+            12 => Codec::Bzip2,
+            93 => Codec::Zstd,
+            95 => Codec::Xz,
+            14 => {
+                // Version (2 bytes), properties size (2), properties (5).
+                let mut r = ByteReader::new(&data).skip(4)?;
+                let props = r.u8()?;
+                let dict_size = r.le_u32()?;
+                let size = (entry.flags & 2 == 0).then_some(entry.size);
+                let d = cx.decompress(&data[9..], Codec::Lzma { props, dict_size, size }, max)?;
+                let complete = d.end == Ended::Complete;
+                return Ok((d.data, complete));
+            }
+            m => return Err(ExtractError::Unsupported(format!("{}: compression method {m}", entry.name))),
+        };
+        let d = cx.decompress(&data, codec, max)?;
+        let complete = d.end == Ended::Complete;
+        Ok((d.data, complete))
     }
 
     /// [`read`](Self::read) of the entry named `name`, as text (UTF-8 or a BOM-marked encoding).
@@ -437,6 +613,14 @@ pub(crate) mod tests {
             crate::io::BytesSource::new(None, b"not a zip at all, no".to_vec(), crate::io::Budget::unlimited());
         assert!(matches!(Zip::open(&mut src, 10), Err(ExtractError::Unsupported(_))));
         assert_eq!(names(&probe(b"PK\x03\x04"), 5), Vec::<String>::new());
+    }
+
+    #[test]
+    fn entry_names() {
+        assert_eq!(entry_name(b"caf\x82.txt", 0), "café.txt");
+        assert_eq!(entry_name("café.txt".as_bytes(), 0), "café.txt");
+        assert_eq!(entry_name(b"\xe1\xf1", 0x800), "\u{fffd}\u{fffd}");
+        assert_eq!(cp437(&[0x80, 0x9b, 0xe1, 0xfe]), "Ç¢ß■");
     }
 
     #[test]

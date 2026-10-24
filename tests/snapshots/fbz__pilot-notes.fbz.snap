@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.9,
     "detected_by": "sniff",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fbz",
+        "confidence": 0.9
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
     "extractor": "doc.ebook"
   },
   "system": {

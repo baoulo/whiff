@@ -1,0 +1,231 @@
+---
+source: src/formats/compress/lzma.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-xz.txt.xz",
+    "stem": "harbour-wall-xz.txt",
+    "extension": "xz"
+  },
+  "identification": {
+    "format": "xz",
+    "name": "xz",
+    "mime": "application/x-xz",
+    "family": "compress",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "compress.lzma"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 100
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 100,
+    "entropy": 5.28,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 43,
+      "ratio": 0.43
+    }
+  },
+  "integrity": {
+    "sha256": "20d80ebb0780275693e50c8dd9f699107073a9f10b1d1bf57e6f4e3d35eabfaf",
+    "blake3": "c4d1ee128f55b87b133a7ca54ef915a54bec0efe07e161ad96a72d49c50e9ae2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xz": {
+      "check": "CRC64",
+      "filters": [
+        "lzma2"
+      ],
+      "dictionary_bytes": 8388608,
+      "streams": 1,
+      "blocks": 1,
+      "declared_size_bytes": 43
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "harbour-wall-xz.txt",
+        "stem": "harbour-wall-xz",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 43
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 43,
+        "entropy": 3.574,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 43,
+          "chars": 43,
+          "words": 8,
+          "lines": 0,
+          "max_line_length": 43,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "aa98c63be726dafba7553bbc77d3f3aad9106ac54be28630066b82c94d5a715d",
+        "blake3": "3288abe3e50c40069a159d4e734d5e3778817bb3883975be8f3f5ca19ca29526"
+      },
+      "content": {
+        "excerpt": "Harbour wall at dawn, harbour wall at dawn."
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "compress.lzma",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

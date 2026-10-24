@@ -54,6 +54,11 @@ pub(crate) struct PendingBlock {
 pub(crate) struct PendingChild {
     pub name: String,
     pub data: Vec<u8>,
+    /// The stream a compressed file holds: analysed without using up a
+    /// recursion level.
+    pub inner: bool,
+    /// Only a prefix of the child (decompression stopped at a limit).
+    pub truncated: bool,
 }
 
 /// The only way an extractor writes output.
@@ -210,8 +215,65 @@ impl Context<'_> {
             self.budget.hit("max_children");
             return Err(ExtractError::LimitExceeded("max_children".into()));
         }
-        self.children.push(PendingChild { name: name.to_string(), data: data.into() });
+        self.children.push(PendingChild { name: name.to_string(), data: data.into(), inner: false, truncated: false });
         Ok(())
+    }
+
+    /// Like [`emit_child`](Self::emit_child), for a child of which `data`
+    /// is only the start (an archive entry larger than the parse limit).
+    pub fn emit_child_prefix(&mut self, name: &str, data: Vec<u8>) -> Result<(), ExtractError> {
+        self.emit_child(name, data)?;
+        if let Some(child) = self.children.last_mut() {
+            child.truncated = true;
+        }
+        Ok(())
+    }
+
+    /// Queue the stream a compressed file holds (`x.tar` inside `x.tar.gz`)
+    /// for extraction. Unlike [`emit_child`](Self::emit_child) it does not
+    /// use up a recursion level (a few nested layers are allowed), so the
+    /// entries of a compressed archive are analysed as those of a plain one.
+    /// `truncated` says `data` is only a prefix of the stream. Counts
+    /// towards the child limit.
+    pub fn emit_inner(&mut self, name: &str, data: Vec<u8>, truncated: bool) -> Result<(), ExtractError> {
+        self.emit_child(name, data)?;
+        if let Some(child) = self.children.last_mut() {
+            child.inner = true;
+            child.truncated = truncated;
+        }
+        Ok(())
+    }
+
+    /// Children that may still be queued (`limits.max_children` minus those
+    /// queued so far). Check it before decompressing something only to
+    /// hand it on.
+    pub fn child_room(&self) -> usize {
+        (self.options.limits.max_children as usize).saturating_sub(self.children.len())
+    }
+
+    /// Decompress `data` with `codec` into at most `max` bytes (and no
+    /// more than the decompression budget has left). Hitting the cap is not
+    /// an error: the result says how decoding ended
+    /// ([`End`](crate::container::codec::End)) and holds what came before.
+    pub fn decompress(
+        &mut self,
+        data: &[u8],
+        codec: crate::container::codec::Codec,
+        max: usize,
+    ) -> Result<crate::container::codec::Decoded, ExtractError> {
+        self.checkpoint()?;
+        crate::container::codec::decode(data, codec, max, self.budget)
+    }
+
+    /// Decompress the MSZIP blocks of a cabinet folder (see
+    /// [`codec::mszip`](crate::container::codec::mszip)) into at most `max` bytes.
+    pub fn decompress_mszip(
+        &mut self,
+        blocks: &[&[u8]],
+        max: usize,
+    ) -> Result<crate::container::codec::Decoded, ExtractError> {
+        self.checkpoint()?;
+        crate::container::codec::mszip(blocks.iter().copied(), max, self.budget)
     }
 
     /// Read the input (up to `limits.max_parse_bytes`) and decode it as text.

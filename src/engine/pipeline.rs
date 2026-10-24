@@ -97,7 +97,7 @@ pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error
 
     let text = match FileSource::open(path, budget.clone()) {
         Ok(mut src) => {
-            let text = extract_source(engine, &mut report, &mut src, 0);
+            let text = extract_source(engine, &mut report, &mut src, Level::ROOT);
             if engine.detect_only {
                 report.integrity.skipped = Some("extraction abandoned".into());
             } else {
@@ -122,20 +122,38 @@ pub(super) fn extract_bytes(engine: &Engine, name: Option<&str>, data: &Arc<[u8]
     let clock = Stopwatch::start();
     let budget = budget_for(engine);
     let source = name.map_or_else(SourceInfo::default, |n| SourceInfo::from_name(None, n));
-    let mut report = bytes_report(engine, source, data, 0, &budget);
+    let mut report = bytes_report(engine, source, data, Level::ROOT, &budget);
     finish_clock(&mut report, &clock);
     report
 }
 
+/// Where an input sits among the inputs embedded in the root one.
+#[derive(Debug, Clone, Copy)]
+struct Level {
+    /// Recursion depth (children of children…).
+    depth: u32,
+    /// Decompressed streams nested at this depth (`.tar.gz` → `.tar`).
+    layers: u32,
+}
+
+impl Level {
+    const ROOT: Self = Self { depth: 0, layers: 0 };
+}
+
+/// Decompressed streams that may nest without using up recursion depth
+/// (`.tar.gz.xz` is two). Beyond this they count as ordinary children, so a
+/// file that decompresses to itself stops at `max_depth`.
+const MAX_LAYERS: u32 = 3;
+
 /// Full pipeline over in-memory data (root bytes input or an embedded child).
-fn bytes_report(engine: &Engine, source: SourceInfo, data: &Arc<[u8]>, depth: u32, budget: &Budget) -> Report {
+fn bytes_report(engine: &Engine, source: SourceInfo, data: &Arc<[u8]>, level: Level, budget: &Budget) -> Report {
     let clock = Stopwatch::start();
     let mut report = new_report(engine, source);
     report.system.kind = FileKind::Memory;
     report.system.size_bytes = Some(data.len() as u64);
     report.physical.size_bytes = Some(data.len() as u64);
     let mut src = BytesSource::new(report.source.name.clone(), Arc::clone(data), budget.clone());
-    let text = extract_source(engine, &mut report, &mut src, depth);
+    let text = extract_source(engine, &mut report, &mut src, level);
     if engine.detect_only {
         report.integrity.skipped = Some("extraction abandoned".into());
     } else {
@@ -148,7 +166,7 @@ fn bytes_report(engine: &Engine, source: SourceInfo, data: &Arc<[u8]>, depth: u3
 }
 
 /// Detection, extractors, block decoders and children for one source.
-fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, depth: u32) -> TextStore {
+fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, level: Level) -> TextStore {
     let options = &engine.options;
     let registry = &engine.registry;
     let mut text = TextStore::with_limit(options.limits.max_text_bytes);
@@ -226,7 +244,7 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, de
     }
 
     decode_blocks(engine, report, &mut text, &mut blocks, &mut children, spec.id, &budget);
-    extract_children(engine, report, children, depth, &budget);
+    extract_children(engine, report, children, level, &budget);
     text
 }
 
@@ -298,10 +316,15 @@ fn decode_blocks(
     }
 }
 
-fn extract_children(engine: &Engine, report: &mut Report, children: Vec<PendingChild>, depth: u32, budget: &Budget) {
+fn extract_children(engine: &Engine, report: &mut Report, children: Vec<PendingChild>, level: Level, budget: &Budget) {
     for child in children {
         let source = SourceInfo::from_name(None, &child.name);
-        if depth >= engine.options.limits.max_depth {
+        let next = if child.inner && level.layers < MAX_LAYERS {
+            Level { depth: level.depth, layers: level.layers + 1 }
+        } else {
+            Level { depth: level.depth + 1, layers: 0 }
+        };
+        if next.depth > engine.options.limits.max_depth {
             budget.hit("max_depth");
             let mut r = new_report(engine, source);
             r.system.kind = FileKind::Memory;
@@ -310,7 +333,12 @@ fn extract_children(engine: &Engine, report: &mut Report, children: Vec<PendingC
             report.embedded.push(r);
             continue;
         }
-        report.embedded.push(bytes_report(engine, source, &child.data.into(), depth + 1, budget));
+        let mut r = bytes_report(engine, source, &child.data.into(), next, budget);
+        if child.truncated {
+            r.diagnostics.truncated = true;
+            r.diagnostics.warnings.push("only the start of this content was analysed".into());
+        }
+        report.embedded.push(r);
     }
 }
 

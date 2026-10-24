@@ -77,11 +77,15 @@ stop-words = "0.10"
 unicode-segmentation = "1.13"
 unicode-width = "0.2"
 whatlang = "0.18"
-# Embedded metadata (`whiff::meta`: EXIF, XMP, IPTC, ICC) and decompression.
+# Embedded metadata (`whiff::meta`: EXIF, XMP, IPTC, ICC) and decompression
+# (bzip2, LZ4, Snappy and Unix compress are in-house).
+brotli-decompressor = { version = "6.1", default-features = false, features = ["std"] }
 kamadak-exif = "0.6"
+lzma-rust2 = { version = "0.23", default-features = false, features = ["std"] }
 md-5 = "0.11"
 miniz_oxide = "0.8"
 quick-xml = "0.42"
+ruzstd = { version = "0.9", default-features = false, features = ["std"] }
 
 # Format parsers (feature `common`).
 csv = { version = "1.4", optional = true }
@@ -104,6 +108,7 @@ xattr = "1.6"
 
 [dev-dependencies]
 insta = { version = "1.49", features = ["json"] }
+miniz_oxide = "0.8"
 tempfile = "3.27"
 
 [lints.rust]

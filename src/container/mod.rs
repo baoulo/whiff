@@ -12,6 +12,7 @@
 
 pub mod asf;
 pub mod cfb;
+pub mod codec;
 pub mod mp4;
 pub mod oleps;
 pub mod zip;
