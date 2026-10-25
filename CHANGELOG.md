@@ -4,7 +4,7 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased (0.5.0)
+## 0.5.0 — 2026-10-25
 
 Archives and compressed files (packages and disk images to come).
 
