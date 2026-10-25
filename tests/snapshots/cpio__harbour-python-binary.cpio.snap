@@ -1,0 +1,285 @@
+---
+source: src/formats/archive/cpio.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-python-binary.cpio",
+    "stem": "harbour-python-binary",
+    "extension": "cpio"
+  },
+  "identification": {
+    "format": "cpio",
+    "name": "cpio archive",
+    "mime": "application/x-cpio",
+    "family": "archive",
+    "confidence": 0.73,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.cpio"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 512
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.cpio",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 512,
+    "entropy": 3.131,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 159,
+      "ratio": 0.310546875
+    }
+  },
+  "integrity": {
+    "sha256": "7ba767104a79365908647bd166a2751ab340ef509344ed13b066a45456b3ccaa",
+    "blake3": "e50883b760954103f0ffde8f507b8dcb4ce619fe6a356f760baff43989a637ba"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cpio": {
+      "variant": "binary",
+      "files": 1,
+      "compressed_bytes": 159,
+      "file_types": {
+        "txt": 1
+      },
+      "top_level": [
+        "harbour/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "harbour/notes.txt",
+          "size_bytes": 159,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes.txt",
+        "stem": "notes",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 159
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 159,
+        "entropy": 4.529,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 159,
+          "chars": 159,
+          "words": 27,
+          "lines": 3,
+          "max_line_length": 67,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9c0b4d42ae82009411ab10fb13ea641d44d544298ecc4ad525ff9191c1419fdb",
+        "blake3": "950bc63d01b41d7ba04645cc572601a1ad61ce887ed284b25494b5b13509cbd4"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "leaves at dawn",
+          "Gull"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            2
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.",
+        "tags": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.cpio",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

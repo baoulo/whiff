@@ -1,0 +1,260 @@
+---
+source: src/formats/archive/tar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-tarfile-pax.tar",
+    "stem": "harbour-tarfile-pax",
+    "extension": "tar"
+  },
+  "identification": {
+    "format": "tar",
+    "name": "tar archive",
+    "mime": "application/x-tar",
+    "family": "archive",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "archive.tar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10240
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.tar",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10240,
+    "entropy": 0.38,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 50,
+      "ratio": 0.0048828125
+    }
+  },
+  "integrity": {
+    "sha256": "820152bf012a103a32bbab398a6da6255e2a5d2eb54f54d8e2757b61976f9e59",
+    "blake3": "5429f3b4c473560f3613cdf994b6e11213a9f1754488b27a3fab9d1ba0118ef7"
+  },
+  "content": {
+    "description": "Saltmere harbour, September tides"
+  },
+  "metadata": {},
+  "format": {
+    "tar": {
+      "variant": "pax",
+      "comment": "Saltmere harbour, September tides",
+      "owners": 1,
+      "files": 1,
+      "compressed_bytes": 50,
+      "file_types": {
+        "txt": 1
+      },
+      "top_level": [
+        "harbour/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "harbour/glocke-läutet.txt",
+          "size_bytes": 50,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "glocke-läutet.txt",
+        "stem": "glocke-läutet",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "utf-8",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 50
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 50,
+        "entropy": 4.659,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 50,
+          "chars": 47,
+          "words": 8,
+          "lines": 1,
+          "max_line_length": 46,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "67d8335dc0c71a11b431476afc0153aec28b0b15ebf37080a0c08c4ffee3045a",
+        "blake3": "bafe76f5b09802ee22bc042b5c6a5a24f65686427602bd530ae42e2147306bb3"
+      },
+      "content": {
+        "excerpt": "Tidenhub: 3,9 m — Glocke läutet bei Hochwasser"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.tar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

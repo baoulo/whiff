@@ -1,0 +1,652 @@
+---
+source: src/formats/archive/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.lzh",
+    "stem": "harbour-crafted",
+    "extension": "lzh"
+  },
+  "identification": {
+    "format": "lha",
+    "name": "LHA / LZH archive",
+    "mime": "application/x-lzh-compressed",
+    "family": "archive",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 700
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.legacy",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 700,
+    "entropy": 5.116,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 555,
+      "ratio": 0.7928571428571428
+    }
+  },
+  "integrity": {
+    "sha256": "9836ebbaf1e5911cb7f5ec17ce55b05a9d1e94d1ec94cebf68a25d09c2ced99b",
+    "blake3": "858f53be4b5034b9fd6254f0298960be801de08c3359839738bca454b96b7390"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lha": {
+      "header_levels": [
+        0,
+        1,
+        2
+      ],
+      "created_on": "MS-DOS",
+      "files": 3,
+      "compressed_bytes": 555,
+      "methods": {
+        "lh0": 3
+      },
+      "file_types": {
+        "csv": 1,
+        "md": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "harbour/",
+        "NOTES.TXT"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "NOTES.TXT",
+          "size_bytes": 159,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "harbour/log.csv",
+          "size_bytes": 88,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "harbour/charts/README.md",
+          "size_bytes": 308,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "NOTES.TXT",
+        "stem": "NOTES",
+        "extension": "TXT"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 159
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 159,
+        "entropy": 4.529,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 159,
+          "chars": 159,
+          "words": 27,
+          "lines": 3,
+          "max_line_length": 67,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9c0b4d42ae82009411ab10fb13ea641d44d544298ecc4ad525ff9191c1419fdb",
+        "blake3": "950bc63d01b41d7ba04645cc572601a1ad61ce887ed284b25494b5b13509cbd4"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "leaves at dawn",
+          "Gull"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            2
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.",
+        "tags": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "log.csv",
+        "stem": "log",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 88
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 88,
+        "entropy": 4.454,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 88,
+          "chars": 88,
+          "words": 7,
+          "lines": 4,
+          "max_line_length": 25,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "1dd5f34efa909d87546f9d15a03a6de507994f0d6ae66bd4f3d544583160704b",
+        "blake3": "070476113ee30201f9cfad0362fccb97c1973db0d2f27ba0d579a86a4d9b3e05"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 3,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "boat",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "max_length": 12
+            },
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "min": 1.0,
+              "max": 5.0,
+              "mean": 3.0
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "Harbour Bell",
+              "3"
+            ],
+            [
+              "2025-09-01",
+              "Grey Tern",
+              "5"
+            ],
+            [
+              "2025-09-02",
+              "Low Water",
+              "1"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "README.md",
+        "stem": "README",
+        "extension": "md"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 308
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 308,
+        "entropy": 4.053,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 308,
+          "chars": 308,
+          "words": 64,
+          "lines": 12,
+          "max_line_length": 64,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 4
+        }
+      },
+      "integrity": {
+        "sha256": "b4c99c2c0585be3664635316d77b9e91718ba5ca2bee1d4cd67fbc8a3c5993cc",
+        "blake3": "69a3f4318e2793962d34b696cbcb827cb130c59246e55cbc93cc848649da7b45"
+      },
+      "content": {
+        "title": "Saltmere",
+        "keywords": [
+          "bell that rings",
+          "Saltmere",
+          "harbour",
+          "tide",
+          "bell",
+          "rings",
+          "wall"
+        ],
+        "keyword_frequency": [
+          [
+            "bell",
+            4
+          ],
+          [
+            "harbour",
+            4
+          ],
+          [
+            "rings",
+            4
+          ],
+          [
+            "saltmere",
+            4
+          ],
+          [
+            "tide",
+            4
+          ],
+          [
+            "wall",
+            4
+          ]
+        ],
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere"
+          },
+          {
+            "level": 1,
+            "text": "Saltmere"
+          },
+          {
+            "level": 1,
+            "text": "Saltmere"
+          },
+          {
+            "level": 1,
+            "text": "Saltmere"
+          }
+        ],
+        "excerpt": "A small harbour, a long wall and a bell that rings at high tide. A small harbour, a long wall and a bell that rings at high tide. A small harbour, a long wall and a bell that rings at high tide. A small harbour, a long wall and a bell that rings at high tide.",
+        "tags": [
+          "bell that rings",
+          "Saltmere",
+          "harbour",
+          "tide",
+          "bell"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 4,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

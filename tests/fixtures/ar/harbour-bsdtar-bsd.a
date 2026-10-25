@@ -1,0 +1,11 @@
+!<arch>
+#1/48           1756728000  1000  1000  100644  207       `
+a-rather-long-member-name-for-the-tide-notes.txtSaltmere harbour notes
+High water 06:12, low water 12:31. The pilot launch leaves at dawn.
+Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.
+
+log.csv         1756728000  1000  1000  100644  65        `
+date,boat,berth
+2025-09-01,Harbour Bell,3
+2025-09-01,Grey Tern,5
+

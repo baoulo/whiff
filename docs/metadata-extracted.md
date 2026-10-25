@@ -103,8 +103,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `audio.score` | Media | `common` | MIDI: format, tracks, PPQ / SMPTE division, tempo map and duration, time and key signatures, track and instrument names, GM programs, percussion, notes, GM / GS / XG, markers, lyrics and karaoke text; trackers (MOD / XM / S3M / IT / MPTM): title, tracker, channels, orders, patterns, instrument and sample names, song message, the duration of one pass; notation (MusicXML / MXL, MEI, MuseScore, Guitar Pro, ABC, LilyPond): title, composer, lyricist, rights, software, parts and instruments, staves, measures, notes, key, time, tempo, length, lyrics | Musical structure for symbolic music | impl (SMF and RIFF MIDI; MOD / XM / S3M / IT pattern walk for timing; quick-xml for MusicXML / MEI / MuseScore, the ZIP reader for MXL / MSCZ; Guitar Pro 3–5 header; ABC and LilyPond text) | impl | S4 | 4 |
 | `audio.playlist` | Media | `common` | entry count, declared and total duration, titles / artists / albums, file types, local vs remote entries and hosts, IPTV groups; HLS: master (variants with bandwidth, resolution, codecs, frame rate, renditions, I-frame variants) or media (segments, target duration, VOD / live, fMP4 / TS, encryption and DRM, ad markers); DASH / Smooth Streaming: periods, adaptation sets / stream indexes, representations, DRM systems; CUE: catalogue, REM fields, files, tracks with ISRC and index times | What a playlist contains | impl (M3U / HLS, PLS, CUE, XSPF / ASX / WPL, DASH MPD, Smooth Streaming; quick-xml for the XML formats) | impl | S4 | 5 |
 | `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | impl (ISO BMFF / QuickTime via plugin::mp4, EBML / Matroska, RIFF AVI + OpenDML, MPEG-TS PSI + PES, MPEG-PS, FLV + AMF0, ASF via plugin::asf, RealMedia, Ogg Theora; H.264 / HEVC SPS, avcC / hvcC / av1C / vpcC, AV1 sequence header, VP8 / VP9 key frames, MPEG-1/2 sequence headers) | impl | S4 | 34 |
-| `archive` | Archive | `common` | format + version, entry count, total compressed/uncompressed size, ratio, compression methods, encrypted entries, archive comment, multi-volume?, entries (path, size, mtime, mode) top N, file-type histogram, mtime range, risk flags (path traversal, absolute paths, symlinks out, bomb ratio), recursion into entries (bounded) | Inventory of what's inside without extracting; safety flags | zip, tar, sevenz-rust2, cab, delharc, oxiarc-archive; impl RAR4/5 header listing (unrar is FFI), ARJ, CPIO reader, ACE/ZOO/ARC headers | mixed | S5 | 34 |
-| `compress` | Archive | `common` | algorithm, header fields (gzip FNAME/MTIME/OS/FCOMMENT, xz check + block count, zstd frame content size/dict id/checksum, lz4 frame descriptor, bzip2 block size), declared vs measured uncompressed size, then inner file -&gt; recursive extraction (bounded) | Transparent: the LLM cares about what's inside | flate2 (miniz_oxide), bzip2 (libbz2-rs-sys backend), lzma-rust2, ruzstd, lz4_flex, brotli, lzfse-rust; impl LZW (.Z), snappy framing | mixed | S5 | 13 |
+| `archive` | Archive | `common` | format + version, entry, file, folder and link counts, total compressed / uncompressed size and ratio, compression methods, encrypted entries (ZipCrypto / AES), archive comment, multi-volume and solid flags, the system that made it, entries (path, type, size, mtime, mode, link) top 50, file-type histogram, top-level folders, mtime range, risk flags (path traversal, absolute paths, symlinks out, double extensions, decompression bombs, overlapping ZIP entries), entries handed on as children (bounded) | Inventory of what's inside without extracting; safety flags | impl (ZIP with Zip64, extra fields and stored / deflate / bzip2 / LZMA / zstd / xz entries; tar v7 / ustar / pax / GNU with sparse files; 7z headers, packed headers and copy / LZMA / LZMA2 / deflate / bzip2 folders with BCJ / delta filters; RAR 4 / 5 listing; CAB with MSZIP; LHA levels 0–2; ARJ; cpio newc / odc / binary; ar GNU / BSD) | impl | S5 | 34 |
+| `compress` | Archive | `common` | algorithm, header fields (gzip name / mtime / OS / comment / extra subfields incl. BGZF, zlib window and level, xz check, filters, dictionary, streams and blocks from the index, .lzma properties, lzip dictionary and member sizes, zstd window / content size / dictionary id / checksum / seekable, lz4 frame descriptor, bzip2 block size, .Z code width, lzop and LZFSE headers), declared vs measured uncompressed size, trailing data, decompression bombs, then the inner stream -&gt; recursive extraction (bounded; does not use up recursion depth) | Transparent: the LLM cares about what's inside | miniz_oxide (deflate, zlib, gzip), lzma-rust2 (xz, .lzma, lzip, 7z), ruzstd, brotli-decompressor; impl bzip2, LZ4, LZW (.Z), Snappy framing, MSZIP; headers only: lzop, LZFSE | impl | S5 | 13 |
 | `package` | Package | `common` | ecosystem, name, version, release/arch, summary/description, licence, maintainer/author, homepage, dependencies, provides/conflicts, install scripts present (risk), file count, installed size, signatures/permissions (Android), min OS/SDK, bundle id, entitlements | What software this is and what it will do on install | rpm, apk-info + axmldecoder (APK), msi, backhand (snap/squashfs), zip, tar, ar; impl DEB control, wheel METADATA, gem, nuspec, xar (PKG), MSIX manifest mapping | mixed | S5 | 29 |
 | `disk` | Disk | `forensics` | image type + version, virtual size, partition table (MBR/GPT: partitions, types, sizes, labels, GUIDs), filesystem superblocks (type, label, UUID, block size, used, created/mounted times), ISO PVD (volume id, publisher, preparer, application, dates, El Torito boot), backing file (qcow2), snapshots | What's on a disk image without mounting it | gpt, mbrman, fatfs, ext4-view, ntfs, backhand, apfs, vhd, vmdk; impl ISO9660/UDF PVD, qcow2/VDI/VHDX headers | mixed | S5 | 15 |
 | `exec` | Executable | `common` | format, arch, bitness, endianness, kind (exe/dylib/object/core), entry point, sections (name, size, flags, entropy), segments, imports (libraries + symbol counts), exports, linked libraries/rpaths, interpreter, stripped?, debug info (DWARF, build-id, PDB path + GUID), hardening (PIE, NX, RELRO, stack canary, ASLR/DEP/CFG/SafeSEH), code signature (Authenticode signer, Apple team id + entitlements), PE version resources (CompanyName, ProductName, FileVersion, OriginalFilename), toolchain hints (rustc/Go buildinfo/.comment), packer/high-entropy flags | Identity, provenance and risk profile of a binary | goblin / object, gimli, pdb, wasmparser, apple-codesign (macOS sigs); impl Authenticode summary via cms | mixed | S6 | 22 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **293** of 1004.
-* Formats by family status: crate = 212, mixed = 531, impl = 261.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 27, S5 = 85, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 252.
+* Formats with an extractor in this build: **316** of 1004.
+* Formats by family status: crate = 212, mixed = 484, impl = 308.
+* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 27, S5 = 53, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 284.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -230,16 +230,16 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 89 | Windows Media Video / ASF | `wmv` `asf` | video/x-ms-wmv | 1 | `video` | `common` | `video.asf` | impl | S4 | ASF content description objects |
 | 90 | 3GPP / 3GPP2 | `3gp` `3g2` | video/3gpp | 1 | `video` | `common` | `video.mp4` | impl | S4 | — |
 | 91 | MPEG-1/2 program stream | `mpg` `mpeg` `vob` `mpe` | video/mpeg | 1 | `video` | `common` | `video.mpegps` | impl | S4 | pack/system headers, sequence header |
-| 92 | ZIP | `zip` `zipx` | application/zip | 1 | `archive` | `common` | — | zip, tar | S5 | central directory, extra fields (Unix/NTFS times, AES), comment, Zip64 |
-| 93 | TAR | `tar` | application/x-tar | 1 | `archive` | `common` | — | zip, tar | S5 | ustar/pax/GNU headers, pax keywords |
-| 94 | 7-Zip | `7z` | application/x-7z-compressed | 1 | `archive` | `common` | — | zip, tar | S5 | — |
-| 95 | RAR | `rar` | application/vnd.rar | 1 | `archive` | `common` | — | zip, tar | S5 | RAR4/RAR5 block headers, encrypted headers flag, recovery record, solid |
-| 96 | tar.gz / tgz | `tgz` `tar.gz` | application/gzip | 1 | `archive` | `common` | — | zip, tar | S5 | compress -&gt; archive chain |
-| 97 | Microsoft Cabinet | `cab` | application/vnd.ms-cab-compressed | 1 | `archive` | `common` | — | zip, tar | S5 | — |
-| 98 | gzip | `gz` `gzip` | application/gzip | 1 | `compress` | `common` | — | flate2 | S5 | — |
-| 99 | bzip2 | `bz2` `bzip2` | application/x-bzip2 | 1 | `compress` | `common` | — | flate2 | S5 | — |
-| 100 | xz | `xz` | application/x-xz | 1 | `compress` | `common` | — | flate2 | S5 | — |
-| 101 | Zstandard | `zst` `zstd` | application/zstd | 1 | `compress` | `common` | — | flate2 | S5 | — |
+| 92 | ZIP | `zip` `zipx` | application/zip | 1 | `archive` | `common` | `archive.zip` | impl | S5 | central directory, extra fields (Unix/NTFS times, AES), comment, Zip64 |
+| 93 | TAR | `tar` | application/x-tar | 1 | `archive` | `common` | `archive.tar` | impl | S5 | ustar/pax/GNU headers, pax keywords |
+| 94 | 7-Zip | `7z` | application/x-7z-compressed | 1 | `archive` | `common` | `archive.7z` | impl | S5 | — |
+| 95 | RAR | `rar` | application/vnd.rar | 1 | `archive` | `common` | `archive.rar` | impl | S5 | RAR4/RAR5 block headers, encrypted headers flag, recovery record, solid |
+| 96 | tar.gz / tgz | `tgz` `tar.gz` | application/gzip | 1 | `archive` | `common` | — | impl | S5 | compress -&gt; archive chain |
+| 97 | Microsoft Cabinet | `cab` | application/vnd.ms-cab-compressed | 1 | `archive` | `common` | `archive.cab` | impl | S5 | — |
+| 98 | gzip | `gz` `gzip` | application/gzip | 1 | `compress` | `common` | `compress.gzip` | miniz_oxide | S5 | — |
+| 99 | bzip2 | `bz2` `bzip2` | application/x-bzip2 | 1 | `compress` | `common` | `compress.bzip2` | miniz_oxide | S5 | — |
+| 100 | xz | `xz` | application/x-xz | 1 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
+| 101 | Zstandard | `zst` `zstd` | application/zstd | 1 | `compress` | `common` | `compress.zstd` | miniz_oxide | S5 | — |
 | 102 | Debian package | `deb` `udeb` | application/vnd.debian.binary-package | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
 | 103 | Android APK / AAB | `apk` `aab` `apks` `xapk` | application/vnd.android.package-archive | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | manifest, permissions, signing scheme v1-v4, dex count, native ABIs |
 | 104 | Java JAR / WAR / EAR | `jar` `war` `ear` | application/java-archive | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | MANIFEST.MF, Maven pom.properties, signed (META-INF/*.SF) |
@@ -360,7 +360,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
 | 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | `playlist.m3u` | impl | S4 | — |
 | 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
-| 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | zip, tar | S5 | — |
+| 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | impl | S5 | — |
 | 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
 | 224 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Info.plist, provisioning, executable -&gt; exec |
 | 225 | Python sdist / egg | `tar.gz` `egg` | application/gzip | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | PKG-INFO |
@@ -802,42 +802,42 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S8 | WxH, fps, colourspace (Y4M header) |
 | 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | track ids, fragments |
 | 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | caption presence + language |
-| 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | — | zip, tar | S5 | newc/odc/bin |
-| 667 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | — | zip, tar | S5 | -&gt; also static libraries (exec members) |
-| 668 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | zip, tar | S8 | headers only |
-| 669 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | zip, tar | S8 | header only |
-| 670 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | zip, tar | S5 | images + XML metadata |
-| 671 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | — | zip, tar | S5 | TOC XML |
-| 672 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | zip, tar | S5 | volume detection |
-| 673 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 674 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | — | zip, tar | S5 | -&gt; package |
-| 675 | Squashfs | `squashfs` `sqsh` `sfs` | application/vnd.squashfs | 3 | `archive` | `common` | — | zip, tar | S5 | -&gt; disk |
-| 676 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | — | zip, tar | S8 | headers only |
-| 677 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 678 | Bundle formats: .app/.framework zipped | `ipa` | — | 3 | `archive` | `common` | — | zip, tar | S5 | -&gt; package |
-| 679 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | — | zip, tar | S5 | embedded zip/rar/7z offset, then archive listing |
-| 680 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | — | zip, tar | S8 | installer type, product name, version, files (NSIS/Inno headers) |
-| 681 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | — | zip, tar | S5 | __main__, PEX-INFO |
-| 682 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | — | zip, tar | S5 | module-info |
-| 683 | Android OBB | `obb` | — | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 684 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 685 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | — | zip, tar | S5 | — |
-| 686 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | — | zip, tar | S5 | finder info, resource fork types, xattrs |
-| 687 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | zip, tar | S5 | decoded filename, recurse |
-| 688 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | zip, tar | S5 | repo version, encryption |
-| 689 | Android backup | `ab` | — | 3 | `archive` | `common` | — | zip, tar | S5 | version, compressed, encrypted |
-| 690 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | — | zip, tar | S5 | -&gt; package |
-| 691 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 692 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 693 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 694 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 695 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 696 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 697 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 698 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | — | flate2 | S5 | — |
-| 699 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | — | flate2 | S5 | — |
+| 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | `archive.legacy` | impl | S8 | — |
+| 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S8 | — |
+| 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S8 | newc/odc/bin |
+| 667 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S8 | -&gt; also static libraries (exec members) |
+| 668 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
+| 669 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | impl | S8 | header only |
+| 670 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | impl | S8 | images + XML metadata |
+| 671 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | — | impl | S8 | TOC XML |
+| 672 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | impl | S8 | volume detection |
+| 673 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 674 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
+| 675 | Squashfs | `squashfs` `sqsh` `sfs` | application/vnd.squashfs | 3 | `archive` | `common` | — | impl | S8 | -&gt; disk |
+| 676 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
+| 677 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 678 | Bundle formats: .app/.framework zipped | `ipa` | — | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
+| 679 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | embedded zip/rar/7z offset, then archive listing |
+| 680 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | installer type, product name, version, files (NSIS/Inno headers) |
+| 681 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | — | impl | S8 | __main__, PEX-INFO |
+| 682 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | — | impl | S8 | module-info |
+| 683 | Android OBB | `obb` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 684 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 685 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 686 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | — | impl | S8 | finder info, resource fork types, xattrs |
+| 687 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | impl | S8 | decoded filename, recurse |
+| 688 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | impl | S8 | repo version, encryption |
+| 689 | Android backup | `ab` | — | 3 | `archive` | `common` | — | impl | S8 | version, compressed, encrypted |
+| 690 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S8 | -&gt; package |
+| 691 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S8 | — |
+| 692 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S8 | — |
+| 693 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
+| 694 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
+| 695 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S8 | — |
+| 696 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
+| 697 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
+| 698 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | `compress.gzip` | miniz_oxide | S8 | — |
+| 699 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
 | 700 | NuGet package | `nupkg` `snupkg` | application/zip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | .nuspec |
 | 701 | Ruby gem | `gem` | application/x-tar | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | metadata.gz (YAML) |
 | 702 | Rust crate | `crate` | application/gzip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Cargo.toml inside |

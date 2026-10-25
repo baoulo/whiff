@@ -1,0 +1,257 @@
+---
+source: src/formats/compress/lzma.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notes-lzma.txt.lzma",
+    "stem": "notes-lzma.txt",
+    "extension": "lzma"
+  },
+  "identification": {
+    "format": "lzma",
+    "name": "LZMA (alone)",
+    "mime": "application/x-lzma",
+    "family": "compress",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "compress.lzma"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 155
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 155,
+    "entropy": 6.524,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 159,
+      "ratio": 1.0258064516129033
+    }
+  },
+  "integrity": {
+    "sha256": "8528f5096d7bdf7281977d32f7d25acc2e47c81947d25748cbb0c10d95cfa741",
+    "blake3": "6ef79369294f471eccb7975fb14f0745b76d4790f5a1372c671c0a89e50aa5bb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lzma": {
+      "lc": 3,
+      "lp": 0,
+      "pb": 2,
+      "dictionary_bytes": 8388608
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes-lzma.txt",
+        "stem": "notes-lzma",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 159
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 159,
+        "entropy": 4.529,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 159,
+          "chars": 159,
+          "words": 27,
+          "lines": 3,
+          "max_line_length": 67,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9c0b4d42ae82009411ab10fb13ea641d44d544298ecc4ad525ff9191c1419fdb",
+        "blake3": "950bc63d01b41d7ba04645cc572601a1ad61ce887ed284b25494b5b13509cbd4"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "leaves at dawn",
+          "Gull"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            2
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.",
+        "tags": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "compress.lzma",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

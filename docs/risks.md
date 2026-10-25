@@ -71,8 +71,13 @@ Constructs tied to known exploitation techniques.
 | Kind | Severity | Meaning |
 |---|---|---|
 | `auto_update_object` | high | Embedded object refreshed automatically on open, a common exploit trigger |
+| `decompression_bomb` | high | Expands to 1 GiB or more at over 100:1, or beyond the budget |
 | `equation_editor_object` | high | Equation Editor 3.0 object, a classic Office exploit vector |
 | `external_entity` | high | XML external entity (`SYSTEM` / `PUBLIC`), a vector for XXE |
+| `overlapping_entries` | high | ZIP entries share their compressed data (an overlapping-entry zip bomb) |
+| `path_traversal` | high | Archive entry whose path climbs out of the folder it is unpacked into (`../`) |
+| `symlink_escape` | high | Archive symbolic link that points outside the archive (absolute or `../`) |
+| `absolute_path` | medium | Archive entry with an absolute path, which an unpacker may write anywhere |
 | `xml_entities` | low | DOCTYPE declares internal entities (entity expansion) |
 
 ## Obfuscation (`obfuscation`)
@@ -83,7 +88,7 @@ Content hidden from a casual look.
 |---|---|---|
 | `hidden_iframe` | high | Invisible `<iframe>` |
 | `hidden_macro_sheet` | high | Excel 4.0 macro sheet hidden from the sheet tabs |
-| `trailing_data` | low | Bytes after the end of the image |
+| `trailing_data` | low | Bytes after the end of the image, archive or compressed stream |
 
 ## Data exposure (`data_exposure`)
 

@@ -1,0 +1,123 @@
+---
+source: src/formats/compress/other.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notes-crafted.txt.lzo",
+    "stem": "notes-crafted.txt",
+    "extension": "lzo"
+  },
+  "identification": {
+    "format": "lzop",
+    "name": "lzop",
+    "mime": "application/x-lzop",
+    "family": "compress",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "compress.other"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 222
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "compress.other",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 222,
+    "entropy": 5.1,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e68f8528c5d9ea43afdaff0c3f133c7eed726634c83ce694df2e2105d963857f",
+    "blake3": "46a65a2d2e23565e01d4acd244390a6afbc507682ff7475e5b823843f25ac49e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lzop": {
+      "version": "1.040",
+      "method": "LZO1X-1",
+      "level": 5,
+      "mode": "644",
+      "modified": "2025-09-01T12:00:00Z",
+      "original_name": "notes.txt"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "compress.other",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "warnings": [
+      "compress.other: LZO data is not decompressed"
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

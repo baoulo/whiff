@@ -1,0 +1,316 @@
+---
+source: src/formats/compress/lzma.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notes-crafted.txt.lz",
+    "stem": "notes-crafted.txt",
+    "extension": "lz"
+  },
+  "identification": {
+    "format": "lzip",
+    "name": "lzip",
+    "mime": "application/x-lzip",
+    "family": "compress",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "compress.lzma"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 173
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 173,
+    "entropy": 6.627,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 477,
+      "ratio": 2.7572254335260116
+    }
+  },
+  "integrity": {
+    "sha256": "25f0c03dec9f7088aa4e3014a84d2610b100dae84a053f09b4c0d4ba22c0ae1c",
+    "blake3": "f43ab870074711e4b952e0daec353c516045acfad18dc2800fe0e071fe0293e8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lzip": {
+      "version": 1,
+      "dictionary_bytes": 1048576,
+      "declared_size_bytes": 477
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes-crafted.txt",
+        "stem": "notes-crafted",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 477
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 477,
+        "entropy": 4.529,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 477,
+          "chars": 477,
+          "words": 81,
+          "lines": 9,
+          "max_line_length": 67,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3830de30ab27c9f2acf7940e02babd02bc98287746d14328022d479a63c64c43",
+        "blake3": "e6d6d17fd011080b195efe03fe71ff720d6cfc754d0c5ef86d63739eef1ddaac"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Ana Lighthouse",
+          "Saltmere harbour notes",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "Gull",
+          "Lighthouse",
+          "bell tower log",
+          "pilot launch leaves",
+          "leaves at dawn"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            6
+          ],
+          [
+            "ana",
+            3
+          ],
+          [
+            "bell",
+            3
+          ],
+          [
+            "ben",
+            3
+          ],
+          [
+            "charts",
+            3
+          ],
+          [
+            "dawn",
+            3
+          ],
+          [
+            "gull",
+            3
+          ],
+          [
+            "harbour",
+            3
+          ],
+          [
+            "launch",
+            3
+          ],
+          [
+            "leaves",
+            3
+          ],
+          [
+            "lighthouse",
+            3
+          ],
+          [
+            "log",
+            3
+          ],
+          [
+            "notes",
+            3
+          ],
+          [
+            "pilot",
+            3
+          ],
+          [
+            "saltmere",
+            3
+          ],
+          [
+            "tower",
+            3
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts. Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts. Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves…",
+        "tags": [
+          "Ana Lighthouse",
+          "Saltmere harbour notes",
+          "Ben Gull",
+          "water",
+          "Ana"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "compress.lzma",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

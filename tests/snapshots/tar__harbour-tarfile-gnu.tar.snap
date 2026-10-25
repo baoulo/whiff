@@ -1,0 +1,385 @@
+---
+source: src/formats/archive/tar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-tarfile-gnu.tar",
+    "stem": "harbour-tarfile-gnu",
+    "extension": "tar"
+  },
+  "identification": {
+    "format": "tar",
+    "name": "tar archive",
+    "mime": "application/x-tar",
+    "family": "archive",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "archive.tar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10240
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.tar",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10240,
+    "entropy": 0.625,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 54,
+      "ratio": 0.0052734375
+    }
+  },
+  "integrity": {
+    "sha256": "e00166eacb78d4873dd8e5f33cb50b3d53792d157890a4726eaf03c7cc3c0a50",
+    "blake3": "66db1bb4169babdd7a8cc172147ab58c7f73a6ed57a4000e34cd904f79ae3d84"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tar": {
+      "variant": "gnu",
+      "owners": 1,
+      "files": 2,
+      "links": 1,
+      "compressed_bytes": 54,
+      "file_types": {
+        "txt": 2
+      },
+      "top_level": [
+        "harbour/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "harbour/notes.txt",
+          "size_bytes": 23,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "harbour/charts/the-long-channel-between-the-harbour-wall-and-the-bell-tower-buoys/the-long-channel-between-the-harbour-wall-and-the-bell-tower-buoys/soundings.txt",
+          "size_bytes": 31,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "harbour/latest.txt",
+          "type": "symlink",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644",
+          "link": "notes.txt"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes.txt",
+        "stem": "notes",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 23
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 23,
+        "entropy": 3.762,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 23,
+          "chars": 23,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 22,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "fab64655ebed57ca923b81d37d787cb0a67dcad93638f90bcadd5a41d8be8045",
+        "blake3": "f9da1d01a0c3af24dc06b2eaa5852758f8f831eea4507a6820ed986a5b3952eb"
+      },
+      "content": {
+        "excerpt": "Saltmere harbour notes"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "soundings.txt",
+        "stem": "soundings",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 31
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 31,
+        "entropy": 4.018,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 31,
+          "chars": 31,
+          "words": 7,
+          "lines": 1,
+          "max_line_length": 30,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "a970ef7b58e2a5b911985e08402fcbd5ead36e22f6f9b489d0d2b0200f426a2a",
+        "blake3": "d9fd547e83d0d9d01b1f5a6fb456bb5058b6d586b568280a31b9f554ab056ae7"
+      },
+      "content": {
+        "excerpt": "Soundings: 4.2 m, 3.8 m, 5.1 m"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.tar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.95,
     "detected_by": "sniff",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svgz",
+        "confidence": 0.95
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
     "extractor": "image.svg"
   },
   "system": {

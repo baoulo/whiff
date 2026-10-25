@@ -106,6 +106,7 @@ use Severity::{High, Info, Low, Medium};
 
 /// Every risk kind, sorted by kind.
 pub static RISK_KINDS: &[RiskKind] = &[
+    k("absolute_path", Exploit, Medium, "Archive entry with an absolute path, which an unpacker may write anywhere"),
     k("active_content", Act, Medium, "SVG `<foreignObject>`: embedded HTML that a browser renders and may script"),
     k("ai_generated", Prov, Info, "Metadata says the image was generated or composited by an AI model"),
     k("alarm_procedure", Act, Medium, "Calendar alarm whose action runs a program (`ACTION:PROCEDURE`)"),
@@ -121,6 +122,7 @@ pub static RISK_KINDS: &[RiskKind] = &[
     ),
     k("custom_package_index", Supply, Medium, "Packages are installed from a non-default index"),
     k("dde", Act, High, "DDE field or formula that can launch a program"),
+    k("decompression_bomb", Exploit, High, "Expands to 1 GiB or more at over 100:1, or beyond the budget"),
     k("destructive_statements", Unsafe, Medium, "SQL that drops or truncates tables or deletes without a condition"),
     k("display_name_spoof", Phishing, High, "Sender display name shows an address other than the real sender"),
     k("double_extension", Phishing, High, "Attachment name hides an executable behind a document extension"),
@@ -147,7 +149,9 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("macro_attachment", Act, Medium, "Attachment is a macro-enabled Office document"),
     k("macros", Act, Medium, "VBA or StarBasic macro project"),
     k("meta_refresh_redirect", Phishing, Low, "HTML redirects itself to another page"),
+    k("overlapping_entries", Exploit, High, "ZIP entries share their compressed data (an overlapping-entry zip bomb)"),
     k("password_form", Phishing, High, "Message or page asks for a password"),
+    k("path_traversal", Exploit, High, "Archive entry whose path climbs out of the folder it is unpacked into (`../`)"),
     k("privilege_changes", Unsafe, Medium, "SQL that grants or revokes privileges or creates users"),
     k("remote_add", Supply, Low, "Dockerfile `ADD` fetches a URL"),
     k("remote_goto", Ext, Low, "PDF link that opens another document"),
@@ -157,7 +161,8 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("script", Act, Medium, "SVG `<script>` or event handlers"),
     k("secret_in_env", Data, High, "Secret value set in an environment variable of a build file"),
     k("suspicious_macro", Act, High, "Macro uses shell, download, process or obfuscation calls"),
-    k("trailing_data", Obf, Low, "Bytes after the end of the image"),
+    k("symlink_escape", Exploit, High, "Archive symbolic link that points outside the archive (absolute or `../`)"),
+    k("trailing_data", Obf, Low, "Bytes after the end of the image, archive or compressed stream"),
     k("xinclude", Ext, Medium, "XML includes another document (XInclude)"),
     k("xlm_macros", Act, High, "Excel 4.0 (XLM) macro sheet"),
     k("xml_entities", Exploit, Low, "DOCTYPE declares internal entities (entity expansion)"),
