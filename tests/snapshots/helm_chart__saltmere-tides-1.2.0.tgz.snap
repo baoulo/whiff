@@ -1,0 +1,2231 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.tgz",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "tgz"
+  },
+  "identification": {
+    "format": "helm_chart",
+    "name": "Helm chart archive",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "helm_chart",
+        "confidence": 0.95
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.77
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3838
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 3838,
+    "entropy": 7.942,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 11,
+      "uncompressed_bytes": 12226,
+      "ratio": 3.1855132881709225
+    }
+  },
+  "integrity": {
+    "sha256": "46adfcd50abedf75be54124a006a0eefd379bde003e408fbddf0f03eb5384e7c",
+    "blake3": "7e7d6754ae4a44962c2302bde374658efbb9dba048621809049b2492c54f72ca"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "helm_chart": {
+      "ecosystem": "helm",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "MIT",
+      "homepage": "https://example.org/saltmere/tides",
+      "repository": "https://example.org/saltmere/tides.git",
+      "authors": [
+        "Ana Lighthouse"
+      ],
+      "compression": "gzip",
+      "app_version": "1.2.0",
+      "api_version": "v2",
+      "chart_type": "application",
+      "files": 11,
+      "compressed_bytes": 12226,
+      "file_types": {
+        "yaml": 8,
+        "helmignore": 1,
+        "tpl": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "saltmere-tides/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "saltmere-tides/Chart.yaml",
+          "size_bytes": 328,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/values.yaml",
+          "size_bytes": 1881,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/NOTES.txt",
+          "size_bytes": 1775,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/_helpers.tpl",
+          "size_bytes": 1852,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/deployment.yaml",
+          "size_bytes": 1895,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/hpa.yaml",
+          "size_bytes": 937,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/ingress.yaml",
+          "size_bytes": 2093,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/service.yaml",
+          "size_bytes": 382,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/serviceaccount.yaml",
+          "size_bytes": 334,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/templates/tests/test-connection.yaml",
+          "size_bytes": 400,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides/.helmignore",
+          "size_bytes": 349,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Chart.yaml",
+        "stem": "Chart",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 328
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 328,
+        "entropy": 4.624,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 328,
+          "chars": 328,
+          "words": 31,
+          "lines": 14,
+          "max_line_length": 45,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3275d95352d3992783e37008ffcc3066b3b665fc34de3ef915a3d995dc1f143f",
+        "blake3": "f7b47c34394564fdfe5df1e1f2ed8ea146a81472edcfd5d6b4b4a110623cbfe8"
+      },
+      "content": {
+        "title": "saltmere-tides",
+        "description": "Tide tables for Saltmere harbour",
+        "excerpt": "Tide tables for Saltmere harbour"
+      },
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": true,
+          "documents": 1,
+          "top_level": "object",
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.annotations": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.annotations.[\"artifacthub.io/license\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "MIT"
+                ]
+              },
+              "$.apiVersion": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "v2"
+                ]
+              },
+              "$.appVersion": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.description": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.home": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.maintainers": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.maintainers[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.maintainers[].email": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "[redacted:email]"
+                ]
+              },
+              "$.maintainers[].name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Ana Lighthouse"
+                ]
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere-tides"
+                ]
+              },
+              "$.sources": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.sources[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides.git"
+                ]
+              },
+              "$.type": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "application"
+                ]
+              },
+              "$.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              }
+            },
+            "max_depth": 3
+          },
+          "known_schema": {
+            "id": "helm_chart",
+            "name": "Helm chart",
+            "chart": "saltmere-tides",
+            "version": "1.2.0",
+            "app_version": "1.2.0",
+            "api_version": "v2",
+            "dependencies": []
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "values.yaml",
+        "stem": "values",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1881
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1881,
+        "entropy": 4.649,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 1881,
+          "chars": 1881,
+          "words": 254,
+          "lines": 82,
+          "max_line_length": 93,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 14
+        }
+      },
+      "integrity": {
+        "sha256": "ac4c952a8755828047663fb34c176f1d0397d88356edcdef3a8eb992de87f64e",
+        "blake3": "3c630aa9e84b8b1894f5dcd514aa0acd44ce8c73b2ff634adcf488eab0781f47"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": true,
+          "documents": 1,
+          "top_level": "object",
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.replicaCount": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  1
+                ]
+              },
+              "$.image": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.image.repository": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "nginx"
+                ]
+              },
+              "$.image.pullPolicy": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "IfNotPresent"
+                ]
+              },
+              "$.image.tag": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  ""
+                ]
+              },
+              "$.imagePullSecrets": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  0,
+                  0
+                ]
+              },
+              "$.nameOverride": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  ""
+                ]
+              },
+              "$.fullnameOverride": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  ""
+                ]
+              },
+              "$.serviceAccount": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.serviceAccount.create": {
+                "types": [
+                  "boolean"
+                ],
+                "count": 1,
+                "examples": [
+                  true
+                ]
+              },
+              "$.serviceAccount.annotations": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.serviceAccount.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  ""
+                ]
+              },
+              "$.podAnnotations": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.podSecurityContext": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.securityContext": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.service": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.service.type": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "ClusterIP"
+                ]
+              },
+              "$.service.port": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  80
+                ]
+              },
+              "$.ingress": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.ingress.enabled": {
+                "types": [
+                  "boolean"
+                ],
+                "count": 1,
+                "examples": [
+                  false
+                ]
+              },
+              "$.ingress.className": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  ""
+                ]
+              },
+              "$.ingress.annotations": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.ingress.hosts": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.ingress.hosts[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.ingress.hosts[].host": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "chart-example.local"
+                ]
+              },
+              "$.ingress.hosts[].paths": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.ingress.hosts[].paths[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.ingress.hosts[].paths[].path": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "/"
+                ]
+              },
+              "$.ingress.hosts[].paths[].pathType": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "ImplementationSpecific"
+                ]
+              },
+              "$.ingress.tls": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  0,
+                  0
+                ]
+              },
+              "$.resources": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.autoscaling": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.autoscaling.enabled": {
+                "types": [
+                  "boolean"
+                ],
+                "count": 1,
+                "examples": [
+                  false
+                ]
+              },
+              "$.autoscaling.minReplicas": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  1
+                ]
+              },
+              "$.autoscaling.maxReplicas": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  100
+                ]
+              },
+              "$.autoscaling.targetCPUUtilizationPercentage": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  80
+                ]
+              },
+              "$.nodeSelector": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.tolerations": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  0,
+                  0
+                ]
+              },
+              "$.affinity": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              }
+            },
+            "max_depth": 6
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "NOTES.txt",
+        "stem": "NOTES",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1775
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1775,
+        "entropy": 5.024,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 1775,
+          "chars": 1775,
+          "words": 195,
+          "lines": 22,
+          "max_line_length": 227,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "fec76846a5cb954fcf70cee944d6a47b6e1d6fd28c68a11b4777c953f4b6f783",
+        "blake3": "08d6cd910f7ff83f7181d1cb1bbda1f026d4313f503e02f5737fcca1d61381c3"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 0.563
+        },
+        "keywords": [
+          "namespace",
+          "Release.Namespace",
+          "kubectl",
+          "include",
+          "saltmere",
+          "export",
+          "jsonpath",
+          "range",
+          "Values.service.type",
+          "POD_NAME"
+        ],
+        "keyword_frequency": [
+          [
+            "kubectl",
+            7
+          ],
+          [
+            "namespace",
+            7
+          ],
+          [
+            "release.namespace",
+            7
+          ],
+          [
+            "export",
+            5
+          ],
+          [
+            "include",
+            4
+          ],
+          [
+            "jsonpath",
+            4
+          ],
+          [
+            "saltmere",
+            4
+          ],
+          [
+            "echo",
+            3
+          ],
+          [
+            "pod_name",
+            3
+          ],
+          [
+            "range",
+            3
+          ],
+          [
+            "tides.fullname",
+            3
+          ],
+          [
+            "values.service.type",
+            3
+          ],
+          [
+            "app.kubernetes.io",
+            2
+          ],
+          [
+            "application",
+            2
+          ],
+          [
+            "container_port",
+            2
+          ],
+          [
+            "items",
+            2
+          ],
+          [
+            "loadbalancer",
+            2
+          ],
+          [
+            "node_ip",
+            2
+          ],
+          [
+            "node_port",
+            2
+          ],
+          [
+            "nodeport",
+            2
+          ]
+        ],
+        "excerpt": "1. Get the application URL by running these commands: {{- if .Values.ingress.enabled }} {{- range $host := .Values.ingress.hosts }} {{- range .paths }} http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }} {{- end }} {{- end }} {{- else if contains \"NodePort\" .Values.service.type }} export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o…",
+        "tags": [
+          "namespace",
+          "Release.Namespace",
+          "kubectl",
+          "include",
+          "saltmere"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1,
+          "urls": 3
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "_helpers.tpl",
+        "stem": "_helpers",
+        "extension": "tpl"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1852
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1852,
+        "entropy": 4.759,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 1852,
+          "chars": 1852,
+          "words": 270,
+          "lines": 62,
+          "max_line_length": 105,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 5
+        }
+      },
+      "integrity": {
+        "sha256": "d0fbf29b43b404c59594a2cf3bd698705b0a6d2e611d179d375e21d394c83f1f",
+        "blake3": "bf58efb575405a1632facadd31a6f2c109517c33a919d3cacb1c5a06b07ff5a1"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "saltmere",
+          "define",
+          "trimsuffix",
+          "trunc",
+          "default",
+          "Release.Name",
+          "chart",
+          "include",
+          "app.kubernetes.io",
+          "Chart.Name"
+        ],
+        "keyword_frequency": [
+          [
+            "saltmere",
+            10
+          ],
+          [
+            "default",
+            6
+          ],
+          [
+            "define",
+            6
+          ],
+          [
+            "chart",
+            5
+          ],
+          [
+            "trimsuffix",
+            5
+          ],
+          [
+            "trunc",
+            5
+          ],
+          [
+            "app.kubernetes.io",
+            4
+          ],
+          [
+            "include",
+            4
+          ],
+          [
+            "release.name",
+            4
+          ],
+          [
+            "chart.name",
+            3
+          ],
+          [
+            "create",
+            3
+          ],
+          [
+            "labels",
+            3
+          ],
+          [
+            "chart.appversion",
+            2
+          ],
+          [
+            "printf",
+            2
+          ],
+          [
+            "tides.chart",
+            2
+          ],
+          [
+            "tides.fullname",
+            2
+          ],
+          [
+            "tides.name",
+            2
+          ],
+          [
+            "tides.selectorlabels",
+            2
+          ],
+          [
+            "values.fullnameoverride",
+            2
+          ],
+          [
+            "values.nameoverride",
+            2
+          ]
+        ],
+        "excerpt": "{{/* Expand the name of the chart. */}} {{- define \"saltmere-tides.name\" -}} {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix \"-\" }} {{- end }} {{/* Create a default fully qualified app name. We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec). If release name contains chart name it will be used as a full name. */}} {{-…",
+        "tags": [
+          "saltmere",
+          "define",
+          "trimsuffix",
+          "trunc",
+          "default"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 6
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "deployment.yaml",
+        "stem": "deployment",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1895
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1895,
+        "entropy": 4.219,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 1895,
+          "chars": 1895,
+          "words": 201,
+          "lines": 61,
+          "max_line_length": 101,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "34a48a5a0c229b9718d0d92a7395cd8920800c027fed0a30bf3d760eb6331e55",
+        "blake3": "de95b7e19cb11a8d758d3cd88bae5ef84952c865348338ae82bd050e3881e52a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 6 column 7: \"-\" is only valid inside a block\n --> <input>:6:7\n  |\n4 |   name: {{ include \"saltmere-tides.fullname\" . }}\n5 |   labels:\n6 |     {{- include \"saltmere-tides.labels\" . | nindent 4 }}\n  |       ^ \"-\" is only valid inside a block\n7 | spec:\n8 |   {{- if not…"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "hpa.yaml",
+        "stem": "hpa",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 937
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 937,
+        "entropy": 4.579,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 937,
+          "chars": 937,
+          "words": 82,
+          "lines": 28,
+          "max_line_length": 93,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "689a39c5493c966b79ac3b150cf63920124066c7cd11fb21620384e5270dd371",
+        "blake3": "9b9d73d83b1c1c40336ee3a1719ac7de2c530a11a676dc1d9630b6a94bdb61a0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 1 column 3: \"-\" is only valid inside a block\n --> <input>:1:3\n  |\n1 | {{- if .Values.autoscaling.enabled }}\n  |   ^ \"-\" is only valid inside a block\n2 | apiVersion: autoscaling/v2beta1\n3 | kind: HorizontalPodAutoscaler\n  |"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "ingress.yaml",
+        "stem": "ingress",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2093
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2093,
+        "entropy": 4.519,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 2093,
+          "chars": 2093,
+          "words": 229,
+          "lines": 61,
+          "max_line_length": 109,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "509584355eff3196327a6b95a08c09b56739656455e8cb134fc0a89df2d93bd9",
+        "blake3": "ce9c38c9d23775a03a18babf201d30305cf41b2370947e3bb6a423e549ad307d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 1 column 3: \"-\" is only valid inside a block\n --> <input>:1:3\n  |\n1 | {{- if .Values.ingress.enabled -}}\n  |   ^ \"-\" is only valid inside a block\n2 | {{- $fullName := include \"saltmere-tides.fullname\" . -}}\n3 | {{- $svcPort := .Values.service.port -}}\n  |"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "service.yaml",
+        "stem": "service",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 382
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 382,
+        "entropy": 4.456,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 382,
+          "chars": 382,
+          "words": 46,
+          "lines": 15,
+          "max_line_length": 64,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "366573c9389e52bc8ed0d81e7945b640bc71fb29b7112be6b7732942d7cbe814",
+        "blake3": "59a33c90533c3ab2c9042b40ff15475c9503518a85181d7ec5592cf520e863e1"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 6 column 7: \"-\" is only valid inside a block\n --> <input>:6:7\n  |\n4 |   name: {{ include \"saltmere-tides.fullname\" . }}\n5 |   labels:\n6 |     {{- include \"saltmere-tides.labels\" . | nindent 4 }}\n  |       ^ \"-\" is only valid inside a block\n7 | spec:\n8 |   type: {{ .Values.service.type…"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "serviceaccount.yaml",
+        "stem": "serviceaccount",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 334
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 334,
+        "entropy": 4.508,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 334,
+          "chars": 334,
+          "words": 42,
+          "lines": 12,
+          "max_line_length": 59,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "5ad12829dae7541aed45b355e17748a09ff169d3eeec42b9b9d40d92d89e3293",
+        "blake3": "0c065a16aba7ecfdfe65553112b8f8ae578ab9e2b2b784ff20f043302b089c0e"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 1 column 3: \"-\" is only valid inside a block\n --> <input>:1:3\n  |\n1 | {{- if .Values.serviceAccount.create -}}\n  |   ^ \"-\" is only valid inside a block\n2 | apiVersion: v1\n3 | kind: ServiceAccount\n  |"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "test-connection.yaml",
+        "stem": "test-connection",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 400
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 400,
+        "entropy": 4.592,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 400,
+          "chars": 400,
+          "words": 42,
+          "lines": 15,
+          "max_line_length": 84,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "11662c3046425e009e4974084a6385bbe654fad2c5bcfa8c38b6f5e415d68d10",
+        "blake3": "3033c2bcd81860d057c599cd28cd214b93d9a30904a9a7c980e37b07cb5e4802"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 4 column 22: invalid trailing content after double-quoted scalar\n --> <input>:4:22\n  |\n2 | kind: Pod\n3 | metadata:\n4 |   name: \"{{ include \"saltmere-tides.fullname\" . }}-test-connection\"\n  |                      ^ invalid trailing content after double-quoted scalar\n5 |   labels:\n6 |…"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": ".helmignore",
+        "stem": ".helmignore"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 349
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 349,
+        "entropy": 4.828,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 349,
+          "chars": 349,
+          "words": 55,
+          "lines": 23,
+          "max_line_length": 64,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "bb987e6a8ef45a99255d1d632812482d5f0f3255ea841520b4d90342df5fe2b3",
+        "blake3": "06230bb9e9b7803a18e2a4a992dc5fd12efdc90a2a49516690d878c14900402d"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "building packages",
+          "Patterns to ignore",
+          "ignore when building",
+          "packages",
+          "Patterns",
+          "matching",
+          "relative path matching",
+          "building",
+          "ignore",
+          "Common"
+        ],
+        "keyword_frequency": [
+          [
+            "common",
+            2
+          ],
+          [
+            "matching",
+            2
+          ],
+          [
+            "pattern",
+            2
+          ]
+        ],
+        "excerpt": "# Patterns to ignore when building packages. # This supports shell glob matching, relative path matching, and # negation (prefixed with !). Only one pattern per line. .DS_Store # Common VCS dirs .git/ .gitignore .bzr/ .bzrignore .hg/ .hgignore .svn/ # Common backup files *.swp *.bak *.tmp *.orig *~ # Various IDEs .project .idea/ *.tmproj .vscode/",
+        "tags": [
+          "building packages",
+          "Patterns to ignore",
+          "ignore when building",
+          "packages",
+          "Patterns"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

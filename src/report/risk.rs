@@ -122,6 +122,12 @@ pub static RISK_KINDS: &[RiskKind] = &[
     ),
     k("custom_package_index", Supply, Medium, "Packages are installed from a non-default index"),
     k("dde", Act, High, "DDE field or formula that can launch a program"),
+    k(
+        "debuggable",
+        Unsafe,
+        Medium,
+        "App built debuggable (Android `debuggable`, iOS `get-task-allow`): a debugger can attach",
+    ),
     k("decompression_bomb", Exploit, High, "Expands to 1 GiB or more at over 100:1, or beyond the budget"),
     k("destructive_statements", Unsafe, Medium, "SQL that drops or truncates tables or deletes without a condition"),
     k("display_name_spoof", Phishing, High, "Sender display name shows an address other than the real sender"),

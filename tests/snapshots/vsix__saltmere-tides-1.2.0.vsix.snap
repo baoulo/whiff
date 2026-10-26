@@ -1,0 +1,902 @@
+---
+source: src/formats/package/zipped.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.vsix",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "vsix"
+  },
+  "identification": {
+    "format": "vsix",
+    "name": "Visual Studio / VS Code extension",
+    "mime": "application/vsix",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vsix",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.zipped"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1662
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.zipped",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {
+    "creators": [
+      "saltmere"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 1662,
+    "entropy": 7.249,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 5,
+      "uncompressed_bytes": 1744,
+      "ratio": 1.049338146811071
+    }
+  },
+  "integrity": {
+    "sha256": "d4431678e935967585e881cea2e01a85ccc1e33a0537f6d87977dfe9147b2372",
+    "blake3": "690c05aec29f2ca3d5162c46a1dadde6e1417cf869a8b662fc168331c1b12849"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Saltmere Tides",
+    "authors": [
+      "saltmere"
+    ],
+    "excerpt": "Saltmere Tides Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "vsix": {
+      "ecosystem": "vsix",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "https://example.org/saltmere/tides",
+      "authors": [
+        "saltmere"
+      ],
+      "dependencies": {
+        "left-pad": "^1.3.0"
+      },
+      "dependencies_count": 1,
+      "tags": [
+        "tides",
+        "harbour"
+      ],
+      "installation_targets": [
+        "Microsoft.VisualStudio.Code"
+      ],
+      "vscode_engine": "^1.90.0",
+      "activation_events": [
+        "onStartupFinished"
+      ],
+      "main": "./out/extension.js",
+      "contributes": [
+        "commands"
+      ],
+      "files": 5,
+      "compressed_bytes": 1040,
+      "methods": {
+        "deflate": 5
+      },
+      "file_types": {
+        "js": 1,
+        "json": 1,
+        "txt": 1,
+        "vsixmanifest": 1,
+        "xml": 1
+      },
+      "top_level": [
+        "extension/",
+        "[Content_Types].xml",
+        "extension.vsixmanifest"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "extension.vsixmanifest",
+          "size_bytes": 670,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "[Content_Types].xml",
+          "size_bytes": 244,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "extension/package.json",
+          "size_bytes": 530,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "extension/out/extension.js",
+          "size_bytes": 58,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "extension/LICENSE.txt",
+          "size_bytes": 242,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "extension.vsixmanifest",
+        "stem": "extension",
+        "extension": "vsixmanifest"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 670
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 670,
+        "entropy": 5.026,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 670,
+          "chars": 670,
+          "words": 32,
+          "lines": 12,
+          "max_line_length": 102,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "4160018a55710f4a82a1b167aa9645e78bc537594b1c77114de35b7e2bc12cc5",
+        "blake3": "b055fa1b880aa7bb94963335c951991179e959e3962fb83f149a4262e0d4a8fa"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "utf-8"
+          },
+          "root": "PackageManifest",
+          "namespace": "http://schemas.microsoft.com/developer/vsx-schema/2011",
+          "root_attributes": {
+            "Version": "2.0.0"
+          },
+          "well_formed": true,
+          "elements": 11,
+          "attributes": 10,
+          "max_depth": 3,
+          "distinct_elements": 11,
+          "top_elements": {
+            "Asset": 1,
+            "Assets": 1,
+            "Description": 1,
+            "DisplayName": 1,
+            "Identity": 1,
+            "Installation": 1,
+            "InstallationTarget": 1,
+            "License": 1,
+            "Metadata": 1,
+            "PackageManifest": 1,
+            "Tags": 1
+          },
+          "text_bytes": 120
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "[Content_Types].xml",
+        "stem": "[Content_Types]",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 244
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 244,
+        "entropy": 4.871,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 244,
+          "chars": 244,
+          "words": 8,
+          "lines": 0,
+          "max_line_length": 244,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "96e00959f41eff50ea4875a393869a26cfd7398060f33fa3457ebe73f02acc99",
+        "blake3": "0c347358f69aa784d7dff85ef033dd158518e8598f9337f3770af15100446d05"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "utf-8"
+          },
+          "root": "Types",
+          "namespace": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "well_formed": true,
+          "elements": 3,
+          "attributes": 5,
+          "max_depth": 1,
+          "distinct_elements": 2,
+          "top_elements": {
+            "Default": 2,
+            "Types": 1
+          },
+          "text_bytes": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "package.json",
+        "stem": "package",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "npm_package",
+        "name": "npm package.json",
+        "mime": "application/json",
+        "family": "code.manifest",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "npm_package",
+            "confidence": 0.95
+          },
+          {
+            "format": "json",
+            "confidence": 0.6
+          }
+        ],
+        "encoding": "us-ascii",
+        "extractor": "code.manifest"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 530
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "physical": {
+        "size_bytes": 530,
+        "entropy": 4.476,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 530,
+          "chars": 530,
+          "words": 49,
+          "lines": 28,
+          "max_line_length": 47,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "f77ac44d722995a75a0a7efbb2516cd5b88ace066981a94c7f50bcf2f01fccd6",
+        "blake3": "5ebf60b98ba9fba6a1ebf5e3970df0d6ad5106ef74f546441cce3e66d78a1293"
+      },
+      "content": {
+        "title": "saltmere-tides 1.2.0"
+      },
+      "metadata": {},
+      "format": {
+        "npm_package": {
+          "ecosystem": "npm",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "license": "MIT",
+          "repository": "https://example.org/saltmere/tides",
+          "dependencies": {
+            "left-pad": "^1.3.0"
+          },
+          "dependencies_count": 1,
+          "main": "./out/extension.js",
+          "engines": {
+            "vscode": "^1.90.0"
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.manifest",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "extension.js",
+        "stem": "extension",
+        "extension": "js"
+      },
+      "identification": {
+        "format": "javascript",
+        "name": "JavaScript source",
+        "mime": "text/javascript",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 58
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 58,
+        "entropy": 4.715,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 58,
+          "chars": 58,
+          "words": 7,
+          "lines": 1,
+          "max_line_length": 57,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "ebdd8059b2c568521baaebb98b293e70d494104ebcf631907da3f717edcc432f",
+        "blake3": "8666b9796c950c04074ae28a95fd7c26e97e64de056cda77af9bfcdb9620f398"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "javascript": {
+          "language": "JavaScript",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "minified": false,
+          "longest_line": 57
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "LICENSE.txt",
+        "stem": "LICENSE",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 242
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {
+        "copyright": "Copyright (c) 2025 Saltmere Harbour",
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "physical": {
+        "size_bytes": 242,
+        "entropy": 4.511,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 242,
+          "chars": 242,
+          "words": 36,
+          "lines": 5,
+          "max_line_length": 191,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 2
+        }
+      },
+      "integrity": {
+        "sha256": "dabc6a32369a2e889f012723dc0e0525b568bed8dbc35dedf023ba2af8ab6ba4",
+        "blake3": "9a3845ee5a09af0cb65a8968412c5c641155c8def4248cbb9f1ecfbc02e1f5c6"
+      },
+      "content": {
+        "title": "MIT License",
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "MIT License",
+          "Saltmere Harbour",
+          "License",
+          "MIT",
+          "software",
+          "Harbour",
+          "Copyright",
+          "Saltmere",
+          "Software without restriction",
+          "documentation files"
+        ],
+        "keyword_frequency": [
+          [
+            "software",
+            3
+          ]
+        ],
+        "excerpt": "MIT License Copyright (c) 2025 Saltmere Harbour Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction.",
+        "tags": [
+          "MIT License",
+          "Saltmere Harbour",
+          "License",
+          "MIT",
+          "software"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "license": "MIT",
+          "paragraphs": 3
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.zipped",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,952 @@
+---
+source: src/formats/package/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.war",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "war"
+  },
+  "identification": {
+    "format": "war",
+    "name": "Java web application archive",
+    "mime": "application/java-archive",
+    "family": "package",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "war",
+        "confidence": 0.98
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1947
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.java",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1947,
+    "entropy": 6.883,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 7,
+      "uncompressed_bytes": 2126,
+      "ratio": 1.0919363122752954
+    }
+  },
+  "integrity": {
+    "sha256": "05ad6a9ea78ad699325459e3000852805a85bcac3d359881d0c2c4f3d97a8c66",
+    "blake3": "9097f49e66607d6658d29e3bc7c90bb0e1126867b333bfb5b67e89b8d14fd56e"
+  },
+  "content": {
+    "title": "Saltmere Tides Web",
+    "excerpt": "Saltmere Tides Web"
+  },
+  "metadata": {},
+  "format": {
+    "war": {
+      "ecosystem": "maven",
+      "name": "Saltmere Tides Web",
+      "manifest_version": "1.0",
+      "created_by": "21.0.2 (Oracle Corporation)",
+      "nested_jars": 1,
+      "servlets": [
+        "org.saltmere.Tides"
+      ],
+      "files": 4,
+      "directories": 3,
+      "compressed_bytes": 1131,
+      "methods": {
+        "deflate": 4
+      },
+      "file_types": {
+        "html": 1,
+        "jar": 1,
+        "mf": 1,
+        "xml": 1
+      },
+      "top_level": [
+        "WEB-INF/",
+        "META-INF/",
+        "index.html"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "META-INF/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "META-INF/MANIFEST.MF",
+          "size_bytes": 66,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "WEB-INF/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "WEB-INF/lib/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "WEB-INF/lib/tides.jar",
+          "size_bytes": 1658,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "WEB-INF/web.xml",
+          "size_bytes": 378,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "index.html",
+          "size_bytes": 24,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "MANIFEST.MF",
+        "stem": "MANIFEST",
+        "extension": "MF"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 66
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 66,
+        "entropy": 4.685,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 66,
+          "chars": 66,
+          "words": 6,
+          "lines": 3,
+          "max_line_length": 39,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "3c1ff6ad26bc097bd67164a8e340aebb8c008add5d655c910f9d481eee4bb76d",
+        "blake3": "4cb2518bbe81cad6b89fec90c29fb85ae3b6f93d66eaeb9a7560879637d2f3d0"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 0.865
+        },
+        "excerpt": "Manifest-Version: 1.0 Created-By: 21.0.2 (Oracle Corporation)"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.jar",
+        "stem": "tides",
+        "extension": "jar"
+      },
+      "identification": {
+        "format": "jar",
+        "name": "Java archive",
+        "mime": "application/java-archive",
+        "family": "package",
+        "confidence": 0.98,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "jar",
+            "confidence": 0.98
+          },
+          {
+            "format": "zip",
+            "confidence": 0.5
+          }
+        ],
+        "extractor": "package.java"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1658
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "package.java",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {
+        "signed": false
+      },
+      "rights": {
+        "creators": [
+          "Saltmere Harbour"
+        ]
+      },
+      "physical": {
+        "size_bytes": 1658,
+        "entropy": 5.846,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 9,
+          "uncompressed_bytes": 732,
+          "ratio": 0.44149577804583834
+        }
+      },
+      "integrity": {
+        "sha256": "3d0efaa575eb9638827f93b5d656f95cc4b7c760824d3c79e9d58d665953e63b",
+        "blake3": "9742e5aa9f0a2c26a8dc5af0e95cf9e832d0cc2249ad6c3a0592a606b5a15d3f"
+      },
+      "content": {
+        "title": "Saltmere Tides 1.2.0",
+        "authors": [
+          "Saltmere Harbour"
+        ],
+        "excerpt": "Saltmere Tides 1.2.0"
+      },
+      "metadata": {},
+      "format": {
+        "jar": {
+          "ecosystem": "maven",
+          "name": "Saltmere Tides",
+          "version": "1.2.0",
+          "authors": [
+            "Saltmere Harbour"
+          ],
+          "manifest_version": "1.0",
+          "main_class": "org.saltmere.Tides",
+          "module_name": "org.saltmere.tides",
+          "created_by": "21.0.2 (Oracle Corporation)",
+          "coordinates": "org.saltmere:tides",
+          "classes": 1,
+          "class_file_version": 61,
+          "java_release": "17",
+          "files": 3,
+          "directories": 6,
+          "compressed_bytes": 506,
+          "methods": {
+            "deflate": 3
+          },
+          "file_types": {
+            "class": 1,
+            "mf": 1,
+            "properties": 1
+          },
+          "top_level": [
+            "META-INF/",
+            "org/"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "META-INF/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/MANIFEST.MF",
+              "size_bytes": 251,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/maven/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/maven/org.saltmere/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/maven/org.saltmere/tides/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/maven/org.saltmere/tides/pom.properties",
+              "size_bytes": 52,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "org/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "org/saltmere/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "org/saltmere/Tides.class",
+              "size_bytes": 429,
+              "modified": "2025-09-01T12:00:00"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "MANIFEST.MF",
+            "stem": "MANIFEST",
+            "extension": "MF"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 251
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "pom.properties",
+            "stem": "pom",
+            "extension": "properties"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 52
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "Tides.class",
+            "stem": "Tides",
+            "extension": "class"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 429
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "package.java",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "web.xml",
+        "stem": "web",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 378
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 378,
+        "entropy": 4.699,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 378,
+          "chars": 378,
+          "words": 12,
+          "lines": 6,
+          "max_line_length": 104,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "b0d16384aff1fc16456a2b5cf59b5f2b49cf9158d3a86fa21a6e484db256c8f0",
+        "blake3": "a97506d3358ba2c1aa242c8be0a8589d312f7e5f317d948640b3bc1f3691ca88"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "root": "web-app",
+          "namespace": "https://jakarta.ee/xml/ns/jakartaee",
+          "root_attributes": {
+            "version": "6.0"
+          },
+          "well_formed": true,
+          "elements": 8,
+          "attributes": 2,
+          "max_depth": 3,
+          "distinct_elements": 7,
+          "top_elements": {
+            "servlet-name": 2,
+            "display-name": 1,
+            "servlet": 1,
+            "servlet-class": 1,
+            "servlet-mapping": 1,
+            "url-pattern": 1,
+            "web-app": 1
+          },
+          "text_bytes": 64
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "index.html",
+        "stem": "index",
+        "extension": "html"
+      },
+      "identification": {
+        "format": "html",
+        "name": "HTML document",
+        "mime": "text/html",
+        "family": "text.html",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "html",
+            "confidence": 0.35
+          },
+          {
+            "format": "xml",
+            "confidence": 0.32
+          }
+        ],
+        "encoding": "us-ascii",
+        "extractor": "text.html"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 24
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 24,
+        "entropy": 3.97,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 24,
+          "chars": 24,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "edfcc3b7e61d05b1aa8e07c1e35f9e98b16a5ff216c5498ae842841577a3d374",
+        "blake3": "8e47f58c2b556fa8c1473987106345b36e4f4414facd70f20c5c402272ac9504"
+      },
+      "content": {
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere tides"
+          }
+        ],
+        "excerpt": "Saltmere tides"
+      },
+      "metadata": {},
+      "format": {
+        "html": {
+          "elements": 4,
+          "max_depth": 3,
+          "links": {
+            "internal": 0,
+            "external": 0,
+            "mailto": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "scripts": {
+            "inline": 0,
+            "external": 0,
+            "hosts": {}
+          },
+          "stylesheets": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.html",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

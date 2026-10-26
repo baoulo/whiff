@@ -116,6 +116,7 @@ Operations that change or destroy state with broad privileges.
 
 | Kind | Severity | Meaning |
 |---|---|---|
+| `debuggable` | medium | App built debuggable (Android `debuggable`, iOS `get-task-allow`): a debugger can attach |
 | `destructive_statements` | medium | SQL that drops or truncates tables or deletes without a condition |
 | `privilege_changes` | medium | SQL that grants or revokes privileges or creates users |
 | `runs_as_root` | low | Container image runs as root |

@@ -1,0 +1,156 @@
+---
+source: src/formats/package/dmg.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-udzo.dmg",
+    "stem": "saltmere-tides-udzo",
+    "extension": "dmg"
+  },
+  "identification": {
+    "format": "dmg",
+    "name": "Apple disk image",
+    "mime": "application/x-apple-diskimage",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "package.dmg"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10257
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10257,
+    "entropy": 4.346,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 1048576,
+      "ratio": 102.23028175879887
+    }
+  },
+  "integrity": {
+    "sha256": "34bd8e59f3f60c85ed2f389777c0020ff6ad06c8b2e2b3b9edcdaad9bc29ab0e",
+    "blake3": "fb4443e1476bd12d6e1d9fae61849369dcfcb8b4a4721765bb7787d896ff4ac5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dmg": {
+      "ecosystem": "apple_disk_image",
+      "format": "UDIF",
+      "udif_version": 4,
+      "flattened": true,
+      "image_variant": "device",
+      "sectors": 2048,
+      "disk_bytes": 1048576,
+      "data_fork_bytes": 1656,
+      "data_checksum": "crc32",
+      "master_checksum": "crc32",
+      "partitions": [
+        {
+          "name": "Protective Master Boot Record (MBR : 0)",
+          "bytes": 512
+        },
+        {
+          "name": "GPT Header (Primary GPT Header : 1)",
+          "bytes": 512
+        },
+        {
+          "name": "GPT Partition Data (Primary GPT Table : 2)",
+          "bytes": 16384
+        },
+        {
+          "name": " (Apple_Free : 3)",
+          "bytes": 3072
+        },
+        {
+          "name": "disk image (Apple_HFS : 4)",
+          "bytes": 1007616
+        },
+        {
+          "name": " (Apple_Free : 5)",
+          "bytes": 3584
+        },
+        {
+          "name": "GPT Partition Data (Backup GPT Table : 6)",
+          "bytes": 16384
+        },
+        {
+          "name": "GPT Header (Backup GPT Header : 7)",
+          "bytes": 512
+        }
+      ],
+      "chunk_methods": {
+        "zero": 4,
+        "zlib": 7
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.dmg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

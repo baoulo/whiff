@@ -1,0 +1,776 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.tgz",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "tgz"
+  },
+  "identification": {
+    "format": "npm_tarball",
+    "name": "npm package tarball",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "npm_tarball",
+        "confidence": 0.95
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.77
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 497
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "postinstall",
+        "source": "package.tarball"
+      }
+    ],
+    "risk_level": "medium",
+    "embedded_risks": {
+      "install_script": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 497,
+    "entropy": 7.539,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 535,
+      "ratio": 1.0764587525150906
+    }
+  },
+  "integrity": {
+    "sha256": "7f1ac301fac080dee171b419a1d45e01b5cbd516c7a2487973158aee28425cef",
+    "blake3": "6e9e55c5733488c1a1df4b01d3efecea6b471a63a5126c2fabbf4815ca432465"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "keywords": [
+      "tides",
+      "harbour"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour",
+    "tags": [
+      "tides",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "npm_tarball": {
+      "ecosystem": "npm",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "https://example.org/saltmere/tides",
+      "dependencies": {
+        "left-pad": "^1.3.0"
+      },
+      "dependencies_count": 1,
+      "scripts": [
+        "postinstall",
+        "test"
+      ],
+      "main": "index.js",
+      "compression": "gzip",
+      "files": 4,
+      "compressed_bytes": 535,
+      "file_types": {
+        "js": 2,
+        "json": 1,
+        "md": 1
+      },
+      "top_level": [
+        "package/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "package/index.js",
+          "size_bytes": 36,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "package/setup.js",
+          "size_bytes": 37,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "package/package.json",
+          "size_bytes": 403,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "package/README.md",
+          "size_bytes": 59,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "index.js",
+        "stem": "index",
+        "extension": "js"
+      },
+      "identification": {
+        "format": "javascript",
+        "name": "JavaScript source",
+        "mime": "text/javascript",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 36
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 36,
+        "entropy": 4.57,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 36,
+          "chars": 36,
+          "words": 6,
+          "lines": 1,
+          "max_line_length": 35,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "b34a09a898cb90d85336a1ad8e8e0e982f21e3a20c6501704f2d08d2dd9056c0",
+        "blake3": "cf860ed07d3be238cb58b0f2063b04bb9cf3336e4c740f1eb5920367aff18f57"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "javascript": {
+          "language": "JavaScript",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "minified": false,
+          "longest_line": 35
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "setup.js",
+        "stem": "setup",
+        "extension": "js"
+      },
+      "identification": {
+        "format": "javascript",
+        "name": "JavaScript source",
+        "mime": "text/javascript",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 37
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 37,
+        "entropy": 4.26,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 37,
+          "chars": 37,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 36,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "8379a83724d57c49c1a58aa817076e3f96b8ee42935432813c2d05961289516f",
+        "blake3": "6aec24d1916f1c1fa39117ccfba7f8a0906d0148c1cf0788808c05dea46979ed"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "javascript": {
+          "language": "JavaScript",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "minified": false,
+          "longest_line": 36
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "package.json",
+        "stem": "package",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "npm_package",
+        "name": "npm package.json",
+        "mime": "application/json",
+        "family": "code.manifest",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "npm_package",
+            "confidence": 0.95
+          },
+          {
+            "format": "json",
+            "confidence": 0.6
+          }
+        ],
+        "encoding": "us-ascii",
+        "extractor": "code.manifest"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 403
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "active_content": [
+          "install_scripts"
+        ],
+        "risks": [
+          {
+            "kind": "install_script",
+            "category": "supply_chain",
+            "severity": "medium",
+            "detail": "postinstall",
+            "source": "code.manifest"
+          }
+        ],
+        "risk_level": "medium",
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {
+        "creators": [
+          "Ana Lighthouse"
+        ],
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "physical": {
+        "size_bytes": 403,
+        "entropy": 4.687,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 403,
+          "chars": 403,
+          "words": 39,
+          "lines": 12,
+          "max_line_length": 72,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3e007b27d1f560c24cf03d9017b89b37ac2ed723c5f6d8ff6f46d44b15777383",
+        "blake3": "3001685d020b56ce3fbc503f52c97546e95a284d51da36aebb816790128eb518"
+      },
+      "content": {
+        "title": "saltmere-tides 1.2.0",
+        "description": "Tide tables for Saltmere harbour",
+        "authors": [
+          "Ana Lighthouse"
+        ],
+        "keywords": [
+          "tides",
+          "harbour"
+        ],
+        "excerpt": "Tide tables for Saltmere harbour",
+        "tags": [
+          "tides",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "npm_package": {
+          "ecosystem": "npm",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "license": "MIT",
+          "repository": "https://example.org/saltmere/tides",
+          "dependencies": {
+            "left-pad": "^1.3.0"
+          },
+          "dependencies_count": 1,
+          "scripts": [
+            "postinstall",
+            "test"
+          ],
+          "main": "index.js"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.manifest",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "README.md",
+        "stem": "README",
+        "extension": "md"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 59
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 59,
+        "entropy": 4.173,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 59,
+          "chars": 59,
+          "words": 10,
+          "lines": 3,
+          "max_line_length": 40,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "d395eb531d57c6ac81c9ead2bd09d4448cb67a0687cea1c5de68fc0aca25199d",
+        "blake3": "84d74db10ff612958bd38f67b7eb7823e60730ae4951abe54446cd967e7cc6d9"
+      },
+      "content": {
+        "title": "Saltmere tides",
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere tides"
+          }
+        ],
+        "excerpt": "High and low water for Saltmere harbour."
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 1,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

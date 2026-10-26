@@ -1,0 +1,1029 @@
+---
+source: src/formats/package/zipped.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.xpi",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "xpi"
+  },
+  "identification": {
+    "format": "xpi",
+    "name": "Firefox extension",
+    "mime": "application/x-xpinstall",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xpi",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.zipped"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2250
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.zipped",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": true,
+    "risks": [
+      {
+        "kind": "broad_extension_permissions",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "tabs",
+        "source": "package.zipped"
+      }
+    ],
+    "risk_level": "medium",
+    "embedded_risks": {
+      "broad_extension_permissions": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2250,
+    "entropy": 7.556,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 5,
+      "uncompressed_bytes": 2339,
+      "ratio": 1.0395555555555556
+    }
+  },
+  "integrity": {
+    "sha256": "9eb00ce8c5b3b702e1f8d114889acd329065f2708b8088a87e52db0bde939a79",
+    "blake3": "c604b543405786f97b7d1ed899751f25cc5720f9bfdb4a51e35bbba54c43b7df"
+  },
+  "content": {
+    "title": "Saltmere Tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "xpi": {
+      "ecosystem": "webextension",
+      "name": "Saltmere Tides",
+      "version": "1.2.0",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "Ana Lighthouse"
+      ],
+      "signatures": [
+        "mozilla.rsa"
+      ],
+      "gecko_id": "tides@saltmere.example",
+      "manifest_version": 3,
+      "permissions": [
+        "storage",
+        "tabs",
+        "https://example.org/*"
+      ],
+      "content_scripts": 1,
+      "background": true,
+      "files": 5,
+      "compressed_bytes": 1700,
+      "methods": {
+        "deflate": 5
+      },
+      "file_types": {
+        "js": 2,
+        "json": 1,
+        "mf": 1,
+        "rsa": 1
+      },
+      "top_level": [
+        "META-INF/",
+        "background.js",
+        "manifest.json",
+        "tides.js"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "manifest.json",
+          "size_bytes": 621,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "background.js",
+          "size_bytes": 50,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "tides.js",
+          "size_bytes": 33,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "META-INF/manifest.mf",
+          "size_bytes": 103,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "META-INF/mozilla.rsa",
+          "size_bytes": 1532,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "manifest.json",
+        "stem": "manifest",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 621
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "risks": [
+          {
+            "kind": "broad_extension_permissions",
+            "category": "supply_chain",
+            "severity": "medium",
+            "detail": "tabs",
+            "source": "data.json"
+          }
+        ],
+        "risk_level": "medium",
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 621,
+        "entropy": 4.496,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 621,
+          "chars": 621,
+          "words": 55,
+          "lines": 32,
+          "max_line_length": 55,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "b815ddc8106f9ba176cbf8989d462934e693c157a10e3357b6987bb35ec3285c",
+        "blake3": "7f70033ce89e489623e5681d7f40434b8c8ccb64367232974a06e27bb998ae0b"
+      },
+      "content": {
+        "title": "Saltmere Tides",
+        "description": "Tide tables for Saltmere harbour",
+        "excerpt": "Tide tables for Saltmere harbour"
+      },
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "manifest_version",
+            "name",
+            "version",
+            "description",
+            "homepage_url",
+            "author",
+            "permissions",
+            "host_permissions",
+            "background",
+            "content_scripts",
+            "browser_specific_settings"
+          ],
+          "key_count": 11,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.manifest_version": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  3
+                ]
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Saltmere Tides"
+                ]
+              },
+              "$.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.description": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.homepage_url": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.author": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Ana Lighthouse"
+                ]
+              },
+              "$.permissions": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  2,
+                  2
+                ]
+              },
+              "$.permissions[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 2,
+                "examples": [
+                  "storage",
+                  "tabs"
+                ]
+              },
+              "$.host_permissions": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.host_permissions[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/*"
+                ]
+              },
+              "$.background": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.background.service_worker": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "background.js"
+                ]
+              },
+              "$.content_scripts": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.content_scripts[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.content_scripts[].matches": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.content_scripts[].matches[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/*"
+                ]
+              },
+              "$.content_scripts[].js": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.content_scripts[].js[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "tides.js"
+                ]
+              },
+              "$.browser_specific_settings": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.browser_specific_settings.gecko": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.browser_specific_settings.gecko.id": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "[redacted:email]"
+                ]
+              }
+            },
+            "max_depth": 4
+          },
+          "known_schema": {
+            "id": "browser_extension",
+            "name": "Browser extension manifest",
+            "extension_name": "Saltmere Tides",
+            "version": "1.2.0",
+            "manifest_version": 3,
+            "permissions": [
+              "storage",
+              "tabs",
+              "https://example.org/*"
+            ],
+            "content_scripts": 1
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "background.js",
+        "stem": "background",
+        "extension": "js"
+      },
+      "identification": {
+        "format": "javascript",
+        "name": "JavaScript source",
+        "mime": "text/javascript",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 50
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 50,
+        "entropy": 4.511,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 50,
+          "chars": 50,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 49,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "7e9c368e21496d7a9c897bbb6887c70fd328348b82fd1365af538b0ec014da0f",
+        "blake3": "0dc6c479589f002002395db1aa86c786271f94a72d73a69de2ad72649d2806e9"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "javascript": {
+          "language": "JavaScript",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "minified": false,
+          "longest_line": 49
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.js",
+        "stem": "tides",
+        "extension": "js"
+      },
+      "identification": {
+        "format": "javascript",
+        "name": "JavaScript source",
+        "mime": "text/javascript",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 33
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 33,
+        "entropy": 4.597,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 33,
+          "chars": 33,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 32,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "53edbf948134addeccfa28551e1857af899fe29e963835964153778f4ed678d4",
+        "blake3": "3d087532a861ee06fc50da9e67611d410e7a0b3875d16c85def16048a40c64c3"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "javascript": {
+          "language": "JavaScript",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "minified": false,
+          "longest_line": 32
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "manifest.mf",
+        "stem": "manifest",
+        "extension": "mf"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 103
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 103,
+        "entropy": 5.32,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 103,
+          "chars": 103,
+          "words": 6,
+          "lines": 4,
+          "max_line_length": 59,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "bdab0f0f0e921269a2429a221b6473bba99ec87457e81a3d67b57e40d23ddaf5",
+        "blake3": "dd9200f7e1a96409d541b9cf5fbecfcf2384a6464bd71fc880374211b34733a9"
+      },
+      "content": {
+        "title": "Manifest-Version: 1.0",
+        "excerpt": "Manifest-Version: 1.0 Name: manifest.json SHA256-Digest: uBXdyBBvm6F2y/iYnUYpNOaTwVehDjNXtph7s17DKFw="
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 2
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "mozilla.rsa",
+        "stem": "mozilla",
+        "extension": "rsa"
+      },
+      "identification": {
+        "format": "der",
+        "name": "DER Certificate",
+        "mime": "application/x-x509-ca-cert",
+        "family": "data.binser",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1532
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1532,
+        "entropy": 7.359,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "24fb7006b7db57767c9eb0fe53610f0f37060891f4c8dae749c0333035946b6e",
+        "blake3": "f969dd3d0c5cf236c1864a94797d27557fd38fca978752b4ab3a136b09167769"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.zipped",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

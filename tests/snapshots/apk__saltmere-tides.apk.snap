@@ -1,0 +1,975 @@
+---
+source: src/formats/package/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.apk",
+    "stem": "saltmere-tides",
+    "extension": "apk"
+  },
+  "identification": {
+    "format": "apk",
+    "name": "Android package",
+    "mime": "application/vnd.android.package-archive",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "apk",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      },
+      {
+        "format": "alpine_package",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "package.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 25047
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.android",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 25047,
+    "entropy": 2.095,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 7,
+      "uncompressed_bytes": 5893,
+      "ratio": 0.235277677965425
+    }
+  },
+  "integrity": {
+    "sha256": "f260e1ea0bbaf820d1a4b28e8cf4ae4973e3bf2fb089f17c307f267efc98f08c",
+    "blake3": "15bfc2ab0b75a86f51b15e6e1a95d4165da90da49d81f9aba7e9cf5e3919b2e4"
+  },
+  "content": {
+    "title": "org.saltmere.tides 1.2.0",
+    "description": "Saltmere Tides",
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "apk": {
+      "ecosystem": "android",
+      "name": "org.saltmere.tides",
+      "version": "1.2.0",
+      "release": "12",
+      "signatures": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "compile_sdk": "37",
+      "platform_build_version": "17",
+      "min_sdk": 24,
+      "target_sdk": 36,
+      "allow_backup": true,
+      "launcher_activity": ".MainActivity",
+      "dangerous_permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "features": [
+        "android.hardware.location.gps"
+      ],
+      "activities": 1,
+      "services": 1,
+      "receivers": 1,
+      "exported_components": 2,
+      "label": "Saltmere Tides",
+      "dex_files": 1,
+      "native_abis": [
+        "arm64-v8a"
+      ],
+      "files": 7,
+      "compressed_bytes": 3192,
+      "methods": {
+        "deflate": 5,
+        "stored": 2
+      },
+      "file_types": {
+        "arsc": 1,
+        "dex": 1,
+        "ec": 1,
+        "mf": 1,
+        "sf": 1,
+        "so": 1,
+        "xml": 1
+      },
+      "top_level": [
+        "META-INF/",
+        "AndroidManifest.xml",
+        "classes.dex",
+        "lib/",
+        "resources.arsc"
+      ],
+      "modified_range": [
+        "1980-01-01T00:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "AndroidManifest.xml",
+          "size_bytes": 2864,
+          "modified": "1980-01-01T00:00:00"
+        },
+        {
+          "path": "resources.arsc",
+          "size_bytes": 568,
+          "modified": "1980-01-01T00:00:00"
+        },
+        {
+          "path": "classes.dex",
+          "size_bytes": 920,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "lib/arm64-v8a/libtides.so",
+          "size_bytes": 4,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "META-INF/HARBOUR.SF",
+          "size_bytes": 509,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "META-INF/HARBOUR.EC",
+          "size_bytes": 646,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "META-INF/MANIFEST.MF",
+          "size_bytes": 382,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "AndroidManifest.xml",
+        "stem": "AndroidManifest",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "axml",
+        "name": "Android Binary XML",
+        "mime": "application/vnd.android.axml",
+        "family": "text.xml",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "axml",
+            "confidence": 0.5
+          },
+          {
+            "format": "xml",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2864
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2864,
+        "entropy": 3.494,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "2d0d8c108c0d5d83cd71837cb36976bcbb9700d03517063d1924a2da1fada6e5",
+        "blake3": "649ed56656e70730be860a0383f36e230f92494de32fc4c976a38996de45c79a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "resources.arsc",
+        "stem": "resources",
+        "extension": "arsc"
+      },
+      "identification": {
+        "format": "arsc",
+        "name": "Android Resource Storage Container",
+        "mime": "application/vnd.android.arsc",
+        "family": "data.binser",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 568
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 568,
+        "entropy": 1.504,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "b6ac2da7142f56b089e59e5839b737f6dd65a0aadb665ba9f146cfae6da8ada5",
+        "blake3": "cd0c7b79cb47090abec1b3f390bc8c05f7c3c20b30493c7b5ea5c377d4097c6d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "classes.dex",
+        "stem": "classes",
+        "extension": "dex"
+      },
+      "identification": {
+        "format": "dex",
+        "name": "Dalvik Executable",
+        "mime": "application/vnd.android.dex",
+        "family": "bytecode",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 920
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 920,
+        "entropy": 4.566,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "25f20e41aeae37d9cbbe752b1e949d7b3437fa49d0af8ec738c89af4dde2d2a8",
+        "blake3": "91b63dca36acf424d5bf73a815212060f110c2d8124c01a37786136bc41550e2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "libtides.so",
+        "stem": "libtides",
+        "extension": "so"
+      },
+      "identification": {
+        "format": "elf",
+        "name": "Executable and Linkable Format",
+        "mime": "application/x-executable",
+        "family": "exec",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 4
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 4,
+        "entropy": 2.0,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 4,
+          "chars": 4,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 3,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3bdbb4fe8397cd2b842430b39ccff01a8663c751945ef5e9a09e267fb8b1d359",
+        "blake3": "00a0cf9af76f7e29417c67eaffca7443e4df433baa8e33882d4d24e3a6675c38"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "HARBOUR.SF",
+        "stem": "HARBOUR",
+        "extension": "SF"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 509
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 509,
+        "entropy": 5.845,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 509,
+          "chars": 509,
+          "words": 26,
+          "lines": 17,
+          "max_line_length": 69,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 5
+        }
+      },
+      "integrity": {
+        "sha256": "6427212c7341ba8888c1679457c368c13f6000b415a6b5daf8f6a68f11a6f463",
+        "blake3": "0910ebd40c7ea69299d0d5c403f877ca5ad159fd321ef4cda818ea2c626706d0"
+      },
+      "content": {
+        "keywords": [
+          "Digest",
+          "SHA",
+          "Version",
+          "Android",
+          "Signature",
+          "Manifest",
+          "APK",
+          "Signed",
+          "AndroidManifest.xml",
+          "MQzbE"
+        ],
+        "keyword_frequency": [
+          [
+            "digest",
+            5
+          ],
+          [
+            "sha",
+            5
+          ],
+          [
+            "android",
+            2
+          ]
+        ],
+        "excerpt": "Signature-Version: 1.0 Created-By: 1.0 (Android) SHA-256-Digest-Manifest: V+adpzpuL/z0s7QzOMgj51Z0NvoTK93g/krsUPsVLzE= X-Android-APK-Signed: 2, 3 Name: AndroidManifest.xml SHA-256-Digest: 1haLE4F5dAfZrWJHKS/t4nqM3M8Ta4x+MQzbE/RGgUA= Name: classes.dex SHA-256-Digest: 2qwzQSoovBf9piixJcTxXd39OVt6EgogYKU1OW5tWdE= Name: lib/arm64-v8a/libtides.so SHA-256-Digest:…",
+        "tags": [
+          "Digest",
+          "SHA",
+          "Version",
+          "Android",
+          "Signature"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "HARBOUR.EC",
+        "stem": "HARBOUR",
+        "extension": "EC"
+      },
+      "identification": {
+        "format": "der",
+        "name": "DER Certificate",
+        "mime": "application/x-x509-ca-cert",
+        "family": "data.binser",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 646
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 646,
+        "entropy": 6.698,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "d975f4e52d6fd8b09008e3fcc59aac0b25705721eb941a67ab50795676383b00",
+        "blake3": "731de1c55bc63251f3728f072a4f4fbacd1c273f632b42369bb37b94a5cf3a33"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "MANIFEST.MF",
+        "stem": "MANIFEST",
+        "extension": "MF"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 382
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 382,
+        "entropy": 5.753,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 382,
+          "chars": 382,
+          "words": 18,
+          "lines": 14,
+          "max_line_length": 60,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 5
+        }
+      },
+      "integrity": {
+        "sha256": "57e69da73a6e2ffcf4b3b43338c823e7567436fa132bdde0fe4aec50fb152f31",
+        "blake3": "ed6148618f20acb531f3e7423c7db63522e6b855b98936cc1faf0dcc089b1bc2"
+      },
+      "content": {
+        "title": "Manifest-Version: 1.0",
+        "excerpt": "Manifest-Version: 1.0 Name: AndroidManifest.xml SHA-256-Digest: LQ2MEIwNXYPNcYN8s2l2vLuXANA1FwY9GSSi2h+tpuU= Name: classes.dex SHA-256-Digest: JfIOQa6uN9nLvnUrHpSdezQ3+knQr47HOMia9N3i0qg= Name: lib/arm64-v8a/libtides.so SHA-256-Digest: O9u0/oOXzSuEJDCznM/wGoZjx1GUXvXpoJ4mf7ix01k= Name: resources.arsc SHA-256-Digest: tqwtpxQvVrCJ5Z5YObc39t1loKrbZlup8UbPrm2oraU="
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,1154 @@
+---
+source: src/formats/package/apple.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides.ipa",
+    "stem": "SaltmereTides",
+    "extension": "ipa"
+  },
+  "identification": {
+    "format": "ipa",
+    "name": "iOS app archive",
+    "mime": "application/octet-stream",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ipa",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.ios"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4459
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "expires",
+        "value": "2026-09-01T12:00:00Z",
+        "source": "package.ios",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.ios",
+        "tz_known": false
+      }
+    ],
+    "earliest": "2026-09-01T12:00:00Z",
+    "latest": "2026-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 4459,
+    "entropy": 7.486,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 9,
+      "uncompressed_bytes": 4253,
+      "ratio": 0.9538013007400763
+    }
+  },
+  "integrity": {
+    "sha256": "118338b7826f28e09d72be9f0aba2c726f6b4da769111c27d2c2245d824390d6",
+    "blake3": "5ebd9d84bec8c40414ef34f891e1273c7222d89e330656a0f49137f78cd5504a"
+  },
+  "content": {
+    "title": "org.saltmere.tides 1.2.0",
+    "description": "Saltmere Tides",
+    "authors": [
+      "Saltmere Harbour"
+    ],
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "ipa": {
+      "ecosystem": "ios",
+      "name": "org.saltmere.tides",
+      "version": "1.2.0",
+      "release": "12",
+      "authors": [
+        "Saltmere Harbour"
+      ],
+      "signatures": [
+        "code_signature"
+      ],
+      "display_name": "Saltmere Tides",
+      "executable": "SaltmereTides",
+      "minimum_os": "16.0",
+      "platform": "iphoneos",
+      "sdk": "iphoneos18.0",
+      "xcode": "1600",
+      "device_families": [
+        "iPhone",
+        "iPad"
+      ],
+      "required_capabilities": [
+        "arm64"
+      ],
+      "background_modes": [
+        "location"
+      ],
+      "url_schemes": [
+        "saltmere-tides"
+      ],
+      "privacy_usage": [
+        "NSCameraUsageDescription",
+        "NSLocationWhenInUseUsageDescription"
+      ],
+      "profile_name": "Saltmere Tides Ad Hoc",
+      "team_name": "Saltmere Harbour",
+      "app_id_name": "Saltmere Tides",
+      "team_id": "SALTMERE01",
+      "profile_expires": "2026-09-01T12:00:00Z",
+      "profile_created": "2025-09-01T12:00:00Z",
+      "distribution": "ad_hoc",
+      "provisioned_devices": 1,
+      "entitlements": [
+        "application-identifier",
+        "aps-environment",
+        "get-task-allow"
+      ],
+      "get_task_allow": false,
+      "frameworks": [
+        "TideKit.framework"
+      ],
+      "app_extensions": [
+        "TidesWidget.appex"
+      ],
+      "files": 7,
+      "directories": 2,
+      "compressed_bytes": 3003,
+      "methods": {
+        "deflate": 7
+      },
+      "file_types": {
+        "plist": 3,
+        "(none)": 2,
+        "csv": 1
+      },
+      "top_level": [
+        "Payload/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "Payload/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00",
+          "mode": "755"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00",
+          "mode": "755"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/Info.plist",
+          "size_bytes": 812,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/SaltmereTides",
+          "size_bytes": 32,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/embedded.mobileprovision",
+          "size_bytes": 2458,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/_CodeSignature/CodeResources",
+          "size_bytes": 370,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/tides.csv",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/Frameworks/TideKit.framework/Info.plist",
+          "size_bytes": 258,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "Payload/SaltmereTides.app/PlugIns/TidesWidget.appex/Info.plist",
+          "size_bytes": 263,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Info.plist",
+        "stem": "Info",
+        "extension": "plist"
+      },
+      "identification": {
+        "format": "binary",
+        "name": "Binary data",
+        "mime": "application/octet-stream",
+        "family": "binary.unknown",
+        "confidence": 0.1,
+        "detected_by": "heuristic",
+        "extractor": "binary.unknown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 812
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 812,
+        "entropy": 5.948,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "36c66c4a663bdbaf6f392caa04c8569519e63c723b93d51405ebece968438470",
+        "blake3": "34e2a1a9e5e6dfaf139923a38418a4955a1d7ced55adca680cef9b2c5a6d85e0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "binary": {
+          "bytes_examined": 812,
+          "strings": {
+            "ascii": 23,
+            "utf16le": 0
+          },
+          "strings_sample": [
+            "bplist00",
+            "CFBundleDisplayName_",
+            "CFBundleExecutable_",
+            "CFBundleIdentifier\\CFBundleName_",
+            "CFBundlePackageType_",
+            "CFBundleShortVersionString_",
+            "CFBundleURLTypes_",
+            "CFBundleVersion^DTPlatformNameYDTSDKNameWDTXcode_",
+            "MinimumOSVersion_",
+            "NSAppTransportSecurity_",
+            "NSCameraUsageDescription_",
+            "#NSLocationWhenInUseUsageDescription_",
+            "UIBackgroundModes^UIDeviceFamily_",
+            "UIRequiredDeviceCapabilities^Saltmere Tides]SaltmereTides_",
+            "org.saltmere.tidesUTidesTAPPLU1.2.0",
+            "CFBundleURLSchemes",
+            "^saltmere-tidesR12Xiphoneos\\iphoneos18.0T1600T16.0",
+            "NSAllowsArbitraryLoads",
+            "Scans berth QR codes._",
+            "'Shows the tides at the nearest harbour.",
+            ")Xlocation",
+            ".Uarm64"
+          ],
+          "entropy_profile": {
+            "block_bytes": 65536,
+            "blocks": 1,
+            "min": 5.948,
+            "max": 5.948,
+            "mean": 5.948,
+            "high_entropy_blocks": 0,
+            "likely_compressed_or_encrypted": false
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "binary.unknown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "SaltmereTides",
+        "stem": "SaltmereTides"
+      },
+      "identification": {
+        "format": "mach",
+        "name": "Mach-O",
+        "mime": "application/x-mach-binary",
+        "family": "exec",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 32
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 32,
+        "entropy": 1.181,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "3494872239b72e19f0a15250ffac9f3e39b8c69a1624beee60bcfea495a5e331",
+        "blake3": "86fd9ecbe0f871bfda1193f0fd743b5b238cae86c5e34a12c94c4ecca0af0318"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "embedded.mobileprovision",
+        "stem": "embedded",
+        "extension": "mobileprovision"
+      },
+      "identification": {
+        "format": "der",
+        "name": "DER Certificate",
+        "mime": "application/x-x509-ca-cert",
+        "family": "data.binser",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2458
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2458,
+        "entropy": 7.081,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "581193a400990f3554e604be80f1444c45ed594ebc28af28691472e27c9ebcf8",
+        "blake3": "15374ce8240574d05862fdd4c3fbab52a0624d8ed942bd24de7755d36543018b"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "CodeResources",
+        "stem": "CodeResources"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 370
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 370,
+        "entropy": 5.426,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 370,
+          "chars": 370,
+          "words": 26,
+          "lines": 17,
+          "max_line_length": 102,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "503278bbdede1b951dce3c2d16a2e0e4a3853282c74bee74cfed3fc94d07bafd",
+        "blake3": "b609ab6b3fbef150c2076a3b0fdc5f1d1c1d637dfc52cde42aa6993a8c5b7fcf"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
+          "root": "plist",
+          "root_attributes": {
+            "version": "1.0"
+          },
+          "vocabulary": {
+            "id": "plist",
+            "name": "Property list"
+          },
+          "well_formed": true,
+          "elements": 8,
+          "attributes": 1,
+          "max_depth": 4,
+          "distinct_elements": 4,
+          "top_elements": {
+            "key": 3,
+            "data": 2,
+            "dict": 2,
+            "plist": 1
+          },
+          "text_bytes": 116
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.csv",
+        "stem": "tides",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.05,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 22,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d4e900d4d2b2dae61f3078ebe92597adee0e1bd6ed666b2d2bcc76342bc2c949",
+        "blake3": "5768308f561208a5b1eda920eaab1707b1f3a24dcd6b3ae1ed3ab8c2b8c1aead"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "high",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            },
+            {
+              "name": "low",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "06:12",
+              "12:31"
+            ],
+            [
+              "2025-09-02",
+              "06:58",
+              "13:15"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Info.plist",
+        "stem": "Info",
+        "extension": "plist"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 258
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 258,
+        "entropy": 5.26,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 258,
+          "chars": 258,
+          "words": 17,
+          "lines": 8,
+          "max_line_length": 102,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "dd88d21a462aa4a5c05a07ac949477f5d4f28aa219fefd230d0328dd8aabb337",
+        "blake3": "29dd3b02d5986f886987c70547354a189c787e072ca0f802a68f7b8be31b84a3"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
+          "root": "plist",
+          "root_attributes": {
+            "version": "1.0"
+          },
+          "vocabulary": {
+            "id": "plist",
+            "name": "Property list"
+          },
+          "well_formed": true,
+          "elements": 4,
+          "attributes": 1,
+          "max_depth": 3,
+          "distinct_elements": 4,
+          "top_elements": {
+            "dict": 1,
+            "key": 1,
+            "plist": 1,
+            "string": 1
+          },
+          "text_bytes": 48
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Info.plist",
+        "stem": "Info",
+        "extension": "plist"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 263
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 263,
+        "entropy": 5.251,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 263,
+          "chars": 263,
+          "words": 17,
+          "lines": 8,
+          "max_line_length": 102,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "0d4ca616a9108901e569b60cc4f13ac169a5210150c1f8d0e59d8661dd971bef",
+        "blake3": "9d4142017b0ad7b2327359d344bd168c71b6f8694bc2ce8f08a95b290bd8e67e"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
+          "root": "plist",
+          "root_attributes": {
+            "version": "1.0"
+          },
+          "vocabulary": {
+            "id": "plist",
+            "name": "Property list"
+          },
+          "well_formed": true,
+          "elements": 4,
+          "attributes": 1,
+          "max_depth": 3,
+          "distinct_elements": 4,
+          "top_elements": {
+            "dict": 1,
+            "key": 1,
+            "plist": 1,
+            "string": 1
+          },
+          "text_bytes": 53
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.ios",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

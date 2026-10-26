@@ -103,7 +103,7 @@ fn parse_json(text: &str) -> Result<Value, ExtractError> {
     serde_json::from_str(text.trim_start_matches('\u{feff}')).map_err(|e| ExtractError::malformed(e.to_string()))
 }
 
-fn parse_toml(text: &str) -> Result<Value, ExtractError> {
+pub(crate) fn parse_toml(text: &str) -> Result<Value, ExtractError> {
     if nesting_depth(text) > MAX_NESTING || dotted_key_depth(text) > MAX_NESTING {
         return Err(ExtractError::malformed("nested too deeply"));
     }
@@ -201,7 +201,7 @@ fn put_deps(cx: &mut Context<'_>, group: &str, (listed, n): (Map<String, Value>,
     }
 }
 
-fn npm(v: &Value, cx: &mut Context<'_>) {
+pub(crate) fn npm(v: &Value, cx: &mut Context<'_>) {
     let authors: Vec<String> = v
         .get("author")
         .into_iter()
@@ -272,7 +272,7 @@ fn npm_lock(v: &Value, cx: &mut Context<'_>) {
     cx.format_set("resolved_packages", packages);
 }
 
-fn cargo(v: &Value, cx: &mut Context<'_>) {
+pub(crate) fn cargo(v: &Value, cx: &mut Context<'_>) {
     let pkg = v.get("package").unwrap_or(&Value::Null);
     let authors: Vec<String> =
         pkg.get("authors").and_then(Value::as_array).into_iter().flatten().filter_map(person).collect();
@@ -305,7 +305,7 @@ fn cargo(v: &Value, cx: &mut Context<'_>) {
             cx.format_set(&format!("{target}_targets"), a.len());
         }
     }
-    if pkg.get("build").is_some() {
+    if pkg.get("build").is_some_and(|b| b != &Value::Bool(false)) {
         cx.format_set("build_script", true);
     }
     if let Some(k) = pkg.get("keywords").and_then(Value::as_array) {

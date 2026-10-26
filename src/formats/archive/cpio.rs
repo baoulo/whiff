@@ -6,7 +6,7 @@
 //! Specification: the `cpio(5)` manual page of libarchive (formats as
 //! GNU cpio and bsdcpio write them).
 
-use super::{Entry, Inventory, Kind, child, unix_time, wanted};
+use super::{Entry, Inventory, Kind, Stored, stored_children, unix_time, wanted};
 use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, latin1_or_utf8};
 
 /// Extractor for cpio archives.
@@ -99,77 +99,77 @@ impl Extractor for Cpio {
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let v = Variant::of(src.head()).ok_or_else(|| ExtractError::Unsupported("cpio".into()))?;
         cx.format_set("variant", v.name());
-        let len = src.len();
-        let align = |n: u64| match v {
-            Variant::Newc | Variant::Crc => n.div_ceil(4) * 4,
-            Variant::BinLe | Variant::BinBe => n.div_ceil(2) * 2,
-            Variant::Odc => n,
-        };
-        let mut inv = Inventory::new();
-        let mut pending = Vec::new();
-        let mut at = 0u64;
-        let mut ended = false;
-        for i in 0..MAX_HEADERS {
-            if i % 1024 == 1023 {
-                cx.checkpoint()?;
-            }
-            let h = src.read_vec(at, usize::try_from(110.min(len.saturating_sub(at))).unwrap_or(0))?;
-            if Variant::of(&h) != Some(v) {
-                break;
-            }
-            let Some((mode, mtime, name_len, size, hlen, links)) = header(v, &h) else { break };
-            let name_at = at + hlen;
-            let name = src.read_vec(name_at, usize::try_from(name_len.min(4096)).unwrap_or(0))?;
-            let name = latin1_or_utf8(name.split(|&b| b == 0).next().unwrap_or(&[]));
-            let data_at = align(name_at + name_len);
-            if name == "TRAILER!!!" {
-                ended = true;
-                break;
-            }
-            // newc keeps a hard-linked file's data with its last link only.
-            let mut kind = Kind::from_mode(mode);
-            if kind == Kind::File && links > 1 && size == 0 && matches!(v, Variant::Newc | Variant::Crc) {
-                kind = Kind::Hardlink;
-            }
-            let link = if kind == Kind::Symlink && size <= 4096 {
-                Some(latin1_or_utf8(&src.read_vec(data_at, usize::try_from(size).unwrap_or(0))?))
-            } else {
-                None
-            };
-            let e = Entry {
-                path: name.clone(),
-                kind,
-                size: Some(if kind == Kind::File { size } else { 0 }),
-                compressed: Some(if kind == Kind::File { size } else { 0 }),
-                modified: i64::try_from(mtime).ok().and_then(unix_time),
-                mode: Some(mode & 0o7777),
-                link,
-                ..Entry::default()
-            };
-            if wanted(&e) && pending.len() < cx.child_room() {
-                pending.push((name, data_at, size));
-            }
-            inv.push(e);
-            at = align(data_at.saturating_add(size));
-            if at >= len {
-                break;
-            }
-        }
-        if !ended {
-            inv.truncated = true;
-            cx.warn("no TRAILER!!! entry (the archive may be cut short)");
-        }
-        inv.report(cx, len);
-        let limit = cx.parse_limit() as u64;
-        for (name, offset, size) in pending {
-            let n = size.min(limit).min(len.saturating_sub(offset));
-            let data = src.read_vec(offset, usize::try_from(n).unwrap_or(0))?;
-            if !child(cx, &name, data, n == size)? {
-                break;
-            }
-        }
-        Ok(())
+        let (inv, pending) = list(src, cx)?;
+        inv.report(cx, src.len());
+        stored_children(src, cx, pending)
     }
+}
+
+/// Read every header of the cpio archive in `src` into an inventory; also
+/// returns the entries to hand on (within the child limit).
+pub(crate) fn list(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(Inventory, Vec<Stored>), ExtractError> {
+    let v = Variant::of(src.head()).ok_or_else(|| ExtractError::Unsupported("cpio".into()))?;
+    let len = src.len();
+    let align = |n: u64| match v {
+        Variant::Newc | Variant::Crc => n.div_ceil(4) * 4,
+        Variant::BinLe | Variant::BinBe => n.div_ceil(2) * 2,
+        Variant::Odc => n,
+    };
+    let mut inv = Inventory::new();
+    let mut pending = Vec::new();
+    let mut at = 0u64;
+    let mut ended = false;
+    for i in 0..MAX_HEADERS {
+        if i % 1024 == 1023 {
+            cx.checkpoint()?;
+        }
+        let h = src.read_vec(at, usize::try_from(110.min(len.saturating_sub(at))).unwrap_or(0))?;
+        if Variant::of(&h) != Some(v) {
+            break;
+        }
+        let Some((mode, mtime, name_len, size, hlen, links)) = header(v, &h) else { break };
+        let name_at = at + hlen;
+        let name = src.read_vec(name_at, usize::try_from(name_len.min(4096)).unwrap_or(0))?;
+        let name = latin1_or_utf8(name.split(|&b| b == 0).next().unwrap_or(&[]));
+        let data_at = align(name_at + name_len);
+        if name == "TRAILER!!!" {
+            ended = true;
+            break;
+        }
+        // newc keeps a hard-linked file's data with its last link only.
+        let mut kind = Kind::from_mode(mode);
+        if kind == Kind::File && links > 1 && size == 0 && matches!(v, Variant::Newc | Variant::Crc) {
+            kind = Kind::Hardlink;
+        }
+        let link = if kind == Kind::Symlink && size <= 4096 {
+            Some(latin1_or_utf8(&src.read_vec(data_at, usize::try_from(size).unwrap_or(0))?))
+        } else {
+            None
+        };
+        let e = Entry {
+            path: name.clone(),
+            kind,
+            size: Some(if kind == Kind::File { size } else { 0 }),
+            compressed: Some(if kind == Kind::File { size } else { 0 }),
+            modified: i64::try_from(mtime).ok().and_then(unix_time),
+            mode: Some(mode & 0o7777),
+            link,
+            ..Entry::default()
+        };
+        if wanted(&e) && pending.len() < cx.child_room() {
+            pending.push((name, data_at, size));
+        }
+        inv.push(e);
+        at = align(data_at.saturating_add(size));
+        if at >= len {
+            break;
+        }
+    }
+    if !ended {
+        inv.truncated = true;
+        cx.warn("no TRAILER!!! entry (the archive may be cut short)");
+    }
+    Ok((inv, pending))
 }
 
 crate::register_extractor!(Cpio);

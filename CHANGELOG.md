@@ -4,6 +4,69 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased
+
+Software packages and installers (disk images to come).
+
+- **Packages:** one set of facts for every package format — ecosystem,
+  name, version, release, architecture, summary and description, licence,
+  authors or maintainer, homepage, repository, dependencies with their
+  constraints, install-time scripts (`install_script` risk) and
+  signatures — and the payload listed with the archive inventory (so the
+  archive risks apply) and handed on within the limits:
+  - Linux: Debian `.deb` / `.udeb` (control file, maintainer scripts,
+    conffiles, the DEP-5 `copyright` licence, `debsigs` signatures), RPM
+    (lead, signature and main headers: digests, OpenPGP signatures,
+    scriptlets, requires / provides / conflicts / obsoletes / recommends,
+    the file list from the header, the cpio payload), Arch `.pkg.tar.*`
+    and Alpine `.apk` (`.PKGINFO`, install scripts, Alpine signatures),
+    Slackware and FreeBSD `pkg`;
+  - mobile: Android APK, App Bundle (protocol-buffer manifest), APK sets
+    and XAPK (binary XML manifest: package, version code and name, SDK
+    levels, permissions and which are dangerous, features, components and
+    exported ones, the launcher activity, the label from `resources.arsc`,
+    flags; v1 / v2 / v3 / v3.1 signing schemes; DEX files, native ABIs,
+    Flutter / React Native / Xamarin / Unity), iOS IPA (`Info.plist`:
+    bundle id, versions, minimum OS, devices, URL schemes, privacy usage
+    keys; the provisioning profile: team, expiry, entitlements,
+    distribution kind; code signature, FairPlay);
+  - language ecosystems: npm tarballs and Rust crates (through the
+    `code.manifest` mappings), Python wheels, source distributions and
+    eggs (core metadata, wheel tags, commands, `.pth` start-up hooks),
+    Ruby gems (the YAML specification; native extensions), Java JAR / WAR
+    / EAR / AAR (manifest, Maven coordinates, JAR signatures, the Java
+    release targeted, servlets, modules), NuGet (`.nuspec`, PowerShell
+    install scripts), conda (`.conda` and `.tar.bz2`);
+  - Windows: Windows Installer `.msi` / `.msm` / `.msp` (summary
+    information, the Property table, file / component / feature counts and
+    installed size, custom actions that run code, embedded cabinets handed
+    on, Authenticode), MSIX / APPX and bundles (identity, publisher,
+    device families, capabilities and the restricted ones);
+  - macOS: installer packages `.pkg` / `.mpkg` and plain XAR (table of
+    contents, Distribution: product, components, architectures, minimum
+    OS, installer JavaScript; PackageInfo: identifier, install location,
+    scripts; the gzip or `pbzx` cpio payload), disk images `.dmg` (UDIF
+    trailer, partitions, chunk compression, licence agreement, encrypted
+    images);
+  - others: Helm charts, Docker / OCI image tarballs (tags, platform,
+    entry point, environment with secrets redacted, ports, labels, layers;
+    `runs_as_root`), VS Code / Visual Studio extensions (`.vsix`), Firefox
+    `.xpi` and Chrome `.crx` (CRX2 / CRX3 header, signatures, extension
+    id; WebExtension permissions and `broad_extension_permissions`),
+    Electron `.asar`.
+- **Risks:** `debuggable` (Android `debuggable`, iOS `get-task-allow`).
+- **Fixes:** `code.manifest` no longer reports `build_script` for a
+  Cargo manifest with `build = false`.
+- **Developer tools:** `scripts/fixtures/packages.sh` makes the package
+  fixtures with npm, cargo, setuptools, RubyGems, Helm, the JDK (jar,
+  jarsigner), the Android build tools (aapt2, d8, zipalign, apksigner) and
+  hdiutil; `craft_packages.py` writes the rest (Debian, RPM, Windows
+  Installer, MSIX, NuGet, CRX3, IPA, XAR / `.pkg` …) with real signatures
+  from throwaway keys. The tar and cpio readers are shared with the
+  package extractors. `whiff-dev catalogue` matches formats by name as
+  well as by extension, and long-tail formats already handled keep their
+  stage.
+
 ## 0.5.0 — 2026-10-25
 
 Archives and compressed files (packages and disk images to come).

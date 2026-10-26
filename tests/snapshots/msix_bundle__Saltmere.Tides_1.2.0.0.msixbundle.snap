@@ -1,0 +1,1014 @@
+---
+source: src/formats/package/zipped.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere.Tides_1.2.0.0.msixbundle",
+    "stem": "Saltmere.Tides_1.2.0.0",
+    "extension": "msixbundle"
+  },
+  "identification": {
+    "format": "msix_bundle",
+    "name": "MSIX / APPX bundle",
+    "mime": "application/msixbundle",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "msix_bundle",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.zipped"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3015
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.zipped",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 3015,
+    "entropy": 6.884,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 2487,
+      "ratio": 0.8248756218905473
+    }
+  },
+  "integrity": {
+    "sha256": "1ec1e317162e3821b50695b54fdd1cc47c8762a97d123284bcf8627ce60a9653",
+    "blake3": "7d9557090dc8012410a97a9817251dad90fb642ee01e701c46d6f3458da788aa"
+  },
+  "content": {
+    "title": "Saltmere.Tides 1.2.0.0",
+    "excerpt": "Saltmere.Tides 1.2.0.0"
+  },
+  "metadata": {},
+  "format": {
+    "msix_bundle": {
+      "ecosystem": "msix",
+      "name": "Saltmere.Tides",
+      "version": "1.2.0.0",
+      "publisher": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+      "packages": [
+        "Saltmere.Tides_1.2.0.0_x64.msix"
+      ],
+      "files": 4,
+      "compressed_bytes": 2487,
+      "methods": {
+        "stored": 4
+      },
+      "file_types": {
+        "xml": 3,
+        "msix": 1
+      },
+      "top_level": [
+        "AppxBlockMap.xml",
+        "AppxMetadata/",
+        "Saltmere.Tides_1.2.0.0_x64.msix",
+        "[Content_Types].xml"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "Saltmere.Tides_1.2.0.0_x64.msix",
+          "size_bytes": 1639,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "AppxMetadata/AppxBundleManifest.xml",
+          "size_bytes": 402,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "AppxBlockMap.xml",
+          "size_bytes": 168,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "[Content_Types].xml",
+          "size_bytes": 278,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Saltmere.Tides_1.2.0.0_x64.msix",
+        "stem": "Saltmere.Tides_1.2.0.0_x64",
+        "extension": "msix"
+      },
+      "identification": {
+        "format": "msix",
+        "name": "MSIX / APPX package",
+        "mime": "application/msix",
+        "family": "package",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "msix",
+            "confidence": 0.99
+          },
+          {
+            "format": "zip",
+            "confidence": 0.5
+          }
+        ],
+        "extractor": "package.zipped"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1639
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "package.zipped",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {
+        "signed": false
+      },
+      "rights": {
+        "creators": [
+          "Saltmere Harbour"
+        ]
+      },
+      "physical": {
+        "size_bytes": 1639,
+        "entropy": 7.303,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 5,
+          "uncompressed_bytes": 2117,
+          "ratio": 1.291641244661379
+        }
+      },
+      "integrity": {
+        "sha256": "5910eec4da079ebec6c3fa5f707a7705e31ade8fe657c81bf6ae97b4fd0dba8f",
+        "blake3": "5593e692f6a643c9ceb920d72a6767c991209a31fa27233a21afbf1112eee24a"
+      },
+      "content": {
+        "title": "Saltmere.Tides 1.2.0.0",
+        "description": "Saltmere Tides",
+        "authors": [
+          "Saltmere Harbour"
+        ],
+        "language": {
+          "code": "en",
+          "confidence": 0.92
+        },
+        "excerpt": "Saltmere Tides High and low water times for Saltmere harbour, with the bell tower schedule."
+      },
+      "metadata": {},
+      "format": {
+        "msix": {
+          "ecosystem": "msix",
+          "name": "Saltmere.Tides",
+          "version": "1.2.0.0",
+          "architecture": "x64",
+          "authors": [
+            "Saltmere Harbour"
+          ],
+          "dependencies": {
+            "Microsoft.VCLibs.140.00": "14.0.30704.0"
+          },
+          "dependencies_count": 1,
+          "publisher": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+          "target_device_families": [
+            "Windows.Desktop 10.0.17763.0"
+          ],
+          "restricted_capabilities": [
+            "runFullTrust"
+          ],
+          "capabilities": [
+            "internetClient",
+            "runFullTrust",
+            "location"
+          ],
+          "applications": [
+            "SaltmereTides.exe"
+          ],
+          "files": 5,
+          "compressed_bytes": 1083,
+          "methods": {
+            "deflate": 5
+          },
+          "file_types": {
+            "xml": 3,
+            "csv": 1,
+            "exe": 1
+          },
+          "top_level": [
+            "AppxBlockMap.xml",
+            "AppxManifest.xml",
+            "SaltmereTides.exe",
+            "[Content_Types].xml",
+            "tides.csv"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "SaltmereTides.exe",
+              "size_bytes": 64,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "tides.csv",
+              "size_bytes": 60,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "AppxManifest.xml",
+              "size_bytes": 1547,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "AppxBlockMap.xml",
+              "size_bytes": 168,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "[Content_Types].xml",
+              "size_bytes": 278,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "SaltmereTides.exe",
+            "stem": "SaltmereTides",
+            "extension": "exe"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 64
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "tides.csv",
+            "stem": "tides",
+            "extension": "csv"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 60
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "AppxManifest.xml",
+            "stem": "AppxManifest",
+            "extension": "xml"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 1547
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "AppxBlockMap.xml",
+            "stem": "AppxBlockMap",
+            "extension": "xml"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 168
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "[Content_Types].xml",
+            "stem": "[Content_Types]",
+            "extension": "xml"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 278
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "package.zipped",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "AppxBundleManifest.xml",
+        "stem": "AppxBundleManifest",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 402
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 402,
+        "entropy": 5.247,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 402,
+          "chars": 402,
+          "words": 25,
+          "lines": 7,
+          "max_line_length": 137,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "21ac079accc1ba83f24d1ec94201ed509310638be52281186dfa521bae6a5d58",
+        "blake3": "c614e9cfa99609af2d220ef1cca2fa632d131ef7eeca4216f992e526845dfea5"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "root": "Bundle",
+          "namespace": "http://schemas.microsoft.com/appx/2013/bundle",
+          "root_attributes": {
+            "SchemaVersion": "5.0"
+          },
+          "well_formed": true,
+          "elements": 4,
+          "attributes": 11,
+          "max_depth": 2,
+          "distinct_elements": 4,
+          "top_elements": {
+            "Bundle": 1,
+            "Identity": 1,
+            "Package": 1,
+            "Packages": 1
+          },
+          "text_bytes": 17
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "AppxBlockMap.xml",
+        "stem": "AppxBlockMap",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 168
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 168,
+        "entropy": 5.161,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 168,
+          "chars": 168,
+          "words": 5,
+          "lines": 0,
+          "max_line_length": 168,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "312868e5326b093ab8ffe0ee21733051d394b1b43933f39cef070d397fbafdee",
+        "blake3": "f960899efc54c0d7ce0b9c7f0412922116abdb3f028adbcbe081093b4ba44af0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "root": "BlockMap",
+          "namespace": "http://schemas.microsoft.com/appx/2010/blockmap",
+          "root_attributes": {
+            "HashMethod": "http://www.w3.org/2001/04/xmlenc#sha256"
+          },
+          "well_formed": true,
+          "elements": 1,
+          "attributes": 2,
+          "max_depth": 1,
+          "distinct_elements": 1,
+          "top_elements": {
+            "BlockMap": 1
+          },
+          "text_bytes": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "[Content_Types].xml",
+        "stem": "[Content_Types]",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 278
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 278,
+        "entropy": 4.984,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 278,
+          "chars": 278,
+          "words": 8,
+          "lines": 0,
+          "max_line_length": 278,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "ab84ed4960c5bf1e482382a931344ef23ec54f5ccdbbf5625ffb64f5698887e3",
+        "blake3": "36302b553094d346ccc6d21a797bd32beec3aca78b214a23441812bcf3a7f22f"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "root": "Types",
+          "namespace": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "well_formed": true,
+          "elements": 3,
+          "attributes": 5,
+          "max_depth": 1,
+          "distinct_elements": 3,
+          "top_elements": {
+            "Default": 1,
+            "Override": 1,
+            "Types": 1
+          },
+          "text_bytes": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.zipped",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

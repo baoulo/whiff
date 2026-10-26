@@ -1,0 +1,1724 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-image.tar",
+    "stem": "saltmere-tides-image",
+    "extension": "tar"
+  },
+  "identification": {
+    "format": "docker_image",
+    "name": "Docker / OCI image tarball",
+    "mime": "application/x-tar",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "docker_image",
+        "confidence": 0.95
+      },
+      {
+        "format": "tar",
+        "confidence": 0.9
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 20480
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 20480,
+    "entropy": 1.266,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 9,
+      "uncompressed_bytes": 11858,
+      "ratio": 0.57900390625
+    }
+  },
+  "integrity": {
+    "sha256": "89399c691054c227ca659507f078ddc73b5fd8bd1f7613b23c09748e51937d27",
+    "blake3": "79996b24a482a2572d2b474fcc92f11dfac7f1d22e0c77c24f86b23ef5dc768a"
+  },
+  "content": {
+    "title": "saltmere/tides 1.2.0",
+    "description": "Saltmere Tides",
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "docker_image": {
+      "ecosystem": "oci",
+      "name": "saltmere/tides",
+      "version": "1.2.0",
+      "architecture": "amd64",
+      "license": "MIT",
+      "repository": "https://example.org/saltmere/tides",
+      "oci_layout": true,
+      "tags": [
+        "saltmere/tides:1.2.0"
+      ],
+      "layers": 1,
+      "os": "linux",
+      "created": "2025-09-01T12:00:00Z",
+      "entrypoint": [
+        "/srv/tides"
+      ],
+      "env": [
+        "PATH=/usr/bin:/bin",
+        "TIDE_PORT=8080"
+      ],
+      "exposed_ports": [
+        "8080/tcp"
+      ],
+      "labels": {
+        "org.opencontainers.image.title": "Saltmere Tides",
+        "org.opencontainers.image.version": "1.2.0",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://example.org/saltmere/tides"
+      },
+      "working_dir": "/srv",
+      "user": "tides",
+      "history_steps": 1,
+      "files": 7,
+      "directories": 2,
+      "compressed_bytes": 11858,
+      "file_types": {
+        "(none)": 5,
+        "json": 2
+      },
+      "top_level": [
+        "blobs/",
+        "index.json",
+        "manifest.json",
+        "oci-layout",
+        "repositories"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "blobs/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "blobs/sha256/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "blobs/sha256/89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8eac5f90051e5f5025",
+          "size_bytes": 628,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "blobs/sha256/b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01582dda4ab95",
+          "size_bytes": 10240,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "blobs/sha256/79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154ea33261c5976",
+          "size_bytes": 398,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "index.json",
+          "size_bytes": 246,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "manifest.json",
+          "size_bytes": 219,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "oci-layout",
+          "size_bytes": 30,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "repositories",
+          "size_bytes": 97,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8eac5f90051e5f5025",
+        "stem": "89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8eac5f90051e5f5025"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 628
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 628,
+        "entropy": 5.178,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 628,
+          "chars": 628,
+          "words": 4,
+          "lines": 0,
+          "max_line_length": 628,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8eac5f90051e5f5025",
+        "blake3": "77effb090db95553dc238f7a027d3357425e31af9f9fef2a156b7a71293f0091"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "architecture",
+            "os",
+            "created",
+            "config",
+            "rootfs",
+            "history"
+          ],
+          "key_count": 6,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.architecture": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "amd64"
+                ]
+              },
+              "$.os": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "linux"
+                ]
+              },
+              "$.created": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "2025-09-01T12:00:00Z"
+                ]
+              },
+              "$.config": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.config.User": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "tides"
+                ]
+              },
+              "$.config.Env": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  2,
+                  2
+                ]
+              },
+              "$.config.Env[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 2,
+                "examples": [
+                  "PATH=/usr/bin:/bin",
+                  "TIDE_PORT=8080"
+                ]
+              },
+              "$.config.Entrypoint": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.config.Entrypoint[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "/srv/tides"
+                ]
+              },
+              "$.config.ExposedPorts": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.config.ExposedPorts.[\"8080/tcp\"]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.config.WorkingDir": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "/srv"
+                ]
+              },
+              "$.config.Labels": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.config.Labels.[\"org.opencontainers.image.title\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Saltmere Tides"
+                ]
+              },
+              "$.config.Labels.[\"org.opencontainers.image.version\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.config.Labels.[\"org.opencontainers.image.licenses\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "MIT"
+                ]
+              },
+              "$.config.Labels.[\"org.opencontainers.image.source\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.rootfs": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.rootfs.type": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "layers"
+                ]
+              },
+              "$.rootfs.diff_ids": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.rootfs.diff_ids[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "sha256:b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01…"
+                ]
+              },
+              "$.history": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.history[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.history[].created": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "2025-09-01T12:00:00Z"
+                ]
+              },
+              "$.history[].created_by": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "COPY srv /srv"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01582dda4ab95",
+        "stem": "b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01582dda4ab95"
+      },
+      "identification": {
+        "format": "tar",
+        "name": "tar archive",
+        "mime": "application/x-tar",
+        "family": "archive",
+        "confidence": 0.85,
+        "detected_by": "sniff",
+        "extractor": "archive.tar"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 10240
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00Z",
+            "source": "archive.tar",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2025-09-01T12:00:00Z",
+        "latest": "2025-09-01T12:00:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 10240,
+        "entropy": 0.324,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 3,
+          "uncompressed_bytes": 94,
+          "ratio": 0.0091796875
+        }
+      },
+      "integrity": {
+        "sha256": "b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01582dda4ab95",
+        "blake3": "d2a204fa84631cbf2070c087fc0a809822dccbe425309a9b34cc49643fe8e45d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "tar": {
+          "variant": "gnu",
+          "owners": 1,
+          "files": 2,
+          "directories": 1,
+          "compressed_bytes": 94,
+          "file_types": {
+            "(none)": 1,
+            "csv": 1
+          },
+          "top_level": [
+            "srv/"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00Z",
+            "2025-09-01T12:00:00Z"
+          ],
+          "entries": [
+            {
+              "path": "srv/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "755"
+            },
+            {
+              "path": "srv/tides.csv",
+              "size_bytes": 60,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "srv/tides",
+              "size_bytes": 34,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "755"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "tides.csv",
+            "stem": "tides",
+            "extension": "csv"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 60
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "tides",
+            "stem": "tides"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 34
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "archive.tar",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154ea33261c5976",
+        "stem": "79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154ea33261c5976"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 398
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 398,
+        "entropy": 5.009,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 398,
+          "chars": 398,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 398,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154ea33261c5976",
+        "blake3": "b7ea56058d9401ec214e36476d611c53ff64bfe415011ad7912bee9a775eaf18"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "schemaVersion",
+            "mediaType",
+            "config",
+            "layers"
+          ],
+          "key_count": 4,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.schemaVersion": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  2
+                ]
+              },
+              "$.mediaType": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "application/vnd.oci.image.manifest.v1+json"
+                ]
+              },
+              "$.config": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.config.mediaType": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "application/vnd.oci.image.config.v1+json"
+                ]
+              },
+              "$.config.digest": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "sha256:89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8eac5f9…"
+                ]
+              },
+              "$.config.size": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  628
+                ]
+              },
+              "$.layers": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.layers[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.layers[].mediaType": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "application/vnd.oci.image.layer.v1.tar"
+                ]
+              },
+              "$.layers[].digest": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "sha256:b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2c4ae01…"
+                ]
+              },
+              "$.layers[].size": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  10240
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "index.json",
+        "stem": "index",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 246
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 246,
+        "entropy": 4.945,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 246,
+          "chars": 246,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 246,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "1dcd72cb2900d349b916368200de7e7beed888760f8ec97c3c002b7b7f5a065f",
+        "blake3": "a70527741f42c5c88d466c23473d3af670aa743546c8415de21d6c8164ab76ad"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "schemaVersion",
+            "manifests"
+          ],
+          "key_count": 2,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.schemaVersion": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  2
+                ]
+              },
+              "$.manifests": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.manifests[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.manifests[].mediaType": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "application/vnd.oci.image.manifest.v1+json"
+                ]
+              },
+              "$.manifests[].digest": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "sha256:79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154e…"
+                ]
+              },
+              "$.manifests[].size": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  398
+                ]
+              },
+              "$.manifests[].annotations": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.manifests[].annotations.[\"org.opencontainers.image.ref.name\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              }
+            },
+            "max_depth": 4
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "manifest.json",
+        "stem": "manifest",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 219
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 219,
+        "entropy": 4.866,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 219,
+          "chars": 219,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 219,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "8402e04781c865965528f0b8c5350720fa16768df2d55ec7170020433e7df885",
+        "blake3": "dfacb4bde1ca155afee89395879248872f9ada7b2ac005fd22fc9f463309dee4"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "array",
+          "length": 1,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$[].Config": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "blobs/sha256/89fb16eb6caa8a55c4117a1411fdc13aa535c8a7e3af2d8…"
+                ]
+              },
+              "$[].RepoTags": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$[].RepoTags[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere/tides:1.2.0"
+                ]
+              },
+              "$[].Layers": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$[].Layers[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "blobs/sha256/b57414d8ffd3c6f29cd17b12a24c4b9d9d33d42243384c2…"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "oci-layout",
+        "stem": "oci-layout"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 30
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 30,
+        "entropy": 4.24,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 30,
+          "chars": 30,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 30,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "18f0797eab35a4597c1e9624aa4f15fd91f6254e5538c1e0d193b2a95dd4acc6",
+        "blake3": "b6a872c008c393d252a3f170926ae17bc001171a1ab9c59d17f096ca49a63345"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "imageLayoutVersion"
+          ],
+          "key_count": 1,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.imageLayoutVersion": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.0.0"
+                ]
+              }
+            },
+            "max_depth": 1
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "repositories",
+        "stem": "repositories"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 97
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 97,
+        "entropy": 4.534,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 97,
+          "chars": 97,
+          "words": 3,
+          "lines": 0,
+          "max_line_length": 97,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "6f616dd2d84ad7f46d7867a0959ec0c435bdfa9ab0a67bd2442144cb945246e9",
+        "blake3": "3fb78138615ecf4200af4ad4cbf2149b55bf05fde5d85595a3d96b29a02e2a2d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "saltmere/tides"
+          ],
+          "key_count": 1,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.[\"saltmere/tides\"]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.[\"saltmere/tides\"].[\"1.2.0\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "79f4a2c6bfb92720fa57397244a3a1416d77b7cfe99a1cd77154ea33261c…"
+                ]
+              }
+            },
+            "max_depth": 2
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,151 @@
+---
+source: src/formats/package/msi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.1.msp",
+    "stem": "saltmere-tides-1.2.1",
+    "extension": "msp"
+  },
+  "identification": {
+    "format": "msp",
+    "name": "Windows Installer patch",
+    "mime": "application/x-msi",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "msp",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "package.msi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3072
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.msi",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3072,
+    "entropy": 2.206,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "685629e5dbac04013c2f38be4a2f64135a504244cf5e7910b9986d1465a15748",
+    "blake3": "06920351d7d24c0b500d6c3e221f8bd2f48f668a29a15adc86f2fb7cbaf43220"
+  },
+  "content": {
+    "title": "Saltmere Tides 1.2.1 patch",
+    "description": "Fixes the 1.2.0 low-water times",
+    "authors": [
+      "Saltmere Harbour"
+    ],
+    "excerpt": "Fixes the 1.2.0 low-water times"
+  },
+  "metadata": {},
+  "format": {
+    "msp": {
+      "ecosystem": "windows_installer",
+      "name": "Saltmere Tides 1.2.1 patch",
+      "authors": [
+        "Saltmere Harbour"
+      ],
+      "database_title": "Patch",
+      "target_products": [
+        "{0B2C1F44-7E8A-4C7B-9D61-2B4E5C6A7F80}"
+      ],
+      "package_code": "{7C3D9E55-1F2A-4B3C-8D4E-5F6A7B8C9D0E}",
+      "minimum_installer_version": "5.0",
+      "creating_application": "craft_packages.py",
+      "created": "2025-09-01T12:00:00Z",
+      "tables": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.msi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

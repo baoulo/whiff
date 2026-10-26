@@ -105,7 +105,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `video` | Media | `common` | container + brand, duration, overall bitrate, creation time, encoder/handler, streams: video (codec, profile/level, WxH, SAR/DAR, fps, bit depth, chroma, HDR colour primaries/transfer/matrix, rotation), audio (codec, channels, rate, language), subtitle/data tracks (language, title), chapters, tags (title, artist, comment, ©xyz GPS, Apple QuickTime make/model/software), cover art, fragmented/faststart | Technical + descriptive summary of footage; GPS/make/model for provenance | impl (ISO BMFF / QuickTime via plugin::mp4, EBML / Matroska, RIFF AVI + OpenDML, MPEG-TS PSI + PES, MPEG-PS, FLV + AMF0, ASF via plugin::asf, RealMedia, Ogg Theora; H.264 / HEVC SPS, avcC / hvcC / av1C / vpcC, AV1 sequence header, VP8 / VP9 key frames, MPEG-1/2 sequence headers) | impl | S4 | 34 |
 | `archive` | Archive | `common` | format + version, entry, file, folder and link counts, total compressed / uncompressed size and ratio, compression methods, encrypted entries (ZipCrypto / AES), archive comment, multi-volume and solid flags, the system that made it, entries (path, type, size, mtime, mode, link) top 50, file-type histogram, top-level folders, mtime range, risk flags (path traversal, absolute paths, symlinks out, double extensions, decompression bombs, overlapping ZIP entries), entries handed on as children (bounded) | Inventory of what's inside without extracting; safety flags | impl (ZIP with Zip64, extra fields and stored / deflate / bzip2 / LZMA / zstd / xz entries; tar v7 / ustar / pax / GNU with sparse files; 7z headers, packed headers and copy / LZMA / LZMA2 / deflate / bzip2 folders with BCJ / delta filters; RAR 4 / 5 listing; CAB with MSZIP; LHA levels 0–2; ARJ; cpio newc / odc / binary; ar GNU / BSD) | impl | S5 | 34 |
 | `compress` | Archive | `common` | algorithm, header fields (gzip name / mtime / OS / comment / extra subfields incl. BGZF, zlib window and level, xz check, filters, dictionary, streams and blocks from the index, .lzma properties, lzip dictionary and member sizes, zstd window / content size / dictionary id / checksum / seekable, lz4 frame descriptor, bzip2 block size, .Z code width, lzop and LZFSE headers), declared vs measured uncompressed size, trailing data, decompression bombs, then the inner stream -&gt; recursive extraction (bounded; does not use up recursion depth) | Transparent: the LLM cares about what's inside | miniz_oxide (deflate, zlib, gzip), lzma-rust2 (xz, .lzma, lzip, 7z), ruzstd, brotli-decompressor; impl bzip2, LZ4, LZW (.Z), Snappy framing, MSZIP; headers only: lzop, LZFSE | impl | S5 | 13 |
-| `package` | Package | `common` | ecosystem, name, version, release/arch, summary/description, licence, maintainer/author, homepage, dependencies, provides/conflicts, install scripts present (risk), file count, installed size, signatures/permissions (Android), min OS/SDK, bundle id, entitlements | What software this is and what it will do on install | rpm, apk-info + axmldecoder (APK), msi, backhand (snap/squashfs), zip, tar, ar; impl DEB control, wheel METADATA, gem, nuspec, xar (PKG), MSIX manifest mapping | mixed | S5 | 29 |
+| `package` | Package | `common` | ecosystem, name, version, release, architecture, summary / description, licence, authors / maintainer, homepage, repository, dependencies with constraints, provides / conflicts / recommends, install-time scripts (risk), signatures and signing schemes, installed size, payload listed as an archive inventory (bounded children); per format: Android permissions (dangerous ones), SDK levels, components, label, flags; iOS bundle id, minimum OS, privacy usage keys, provisioning profile (team, expiry, entitlements, distribution); MSI product / upgrade codes, custom actions, cabinets; MSIX capabilities; macOS installer components, install location, installer JavaScript; container image platform, entry point, env, ports, labels, user; DMG partitions and chunk compression | What software this is and what it will do on install | impl (DEB control + data; RPM v4 headers; APK binary XML, resources.arsc, APK Signing Block; AAB protobuf manifest; IPA Info.plist + provisioning profile via plist; JAR / WAR / EAR / AAR manifests; wheel / sdist / egg core metadata; npm and crate via code.manifest; gem YAML; Helm Chart.yaml; Arch / Alpine .PKGINFO; conda index / about / paths; OCI and docker save tarballs; MSI string pool and tables; MSIX / APPX; NuGet nuspec; VSIX; XPI; CRX2 / CRX3; DMG koly + plist; XAR / PKG TOC, Distribution, PackageInfo, payload; Electron asar) | impl | S5 | 29 |
 | `disk` | Disk | `forensics` | image type + version, virtual size, partition table (MBR/GPT: partitions, types, sizes, labels, GUIDs), filesystem superblocks (type, label, UUID, block size, used, created/mounted times), ISO PVD (volume id, publisher, preparer, application, dates, El Torito boot), backing file (qcow2), snapshots | What's on a disk image without mounting it | gpt, mbrman, fatfs, ext4-view, ntfs, backhand, apfs, vhd, vmdk; impl ISO9660/UDF PVD, qcow2/VDI/VHDX headers | mixed | S5 | 15 |
 | `exec` | Executable | `common` | format, arch, bitness, endianness, kind (exe/dylib/object/core), entry point, sections (name, size, flags, entropy), segments, imports (libraries + symbol counts), exports, linked libraries/rpaths, interpreter, stripped?, debug info (DWARF, build-id, PDB path + GUID), hardening (PIE, NX, RELRO, stack canary, ASLR/DEP/CFG/SafeSEH), code signature (Authenticode signer, Apple team id + entitlements), PE version resources (CompanyName, ProductName, FileVersion, OriginalFilename), toolchain hints (rustc/Go buildinfo/.comment), packer/high-entropy flags | Identity, provenance and risk profile of a binary | goblin / object, gimli, pdb, wasmparser, apple-codesign (macOS sigs); impl Authenticode summary via cms | mixed | S6 | 22 |
 | `bytecode` | Executable | `common` | target runtime + version (class major/minor, pyc magic -&gt; Python version, .NET metadata version), class/module name, superclass/interfaces, method & field counts, referenced assemblies/modules, source file attribute, timestamps | Identity of compiled artifacts | classfile-parser, dex, pyc (old) ; impl .NET CLI metadata reader, Lua/BEAM/Hermes headers | mixed | S6 | 12 |
@@ -127,15 +127,15 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **316** of 1004.
-* Formats by family status: crate = 212, mixed = 484, impl = 308.
-* Formats by target stage: S1 = 168, S1/S6 = 97, S2 = 91, S3 = 32, S3/S8 = 1, S4 = 27, S5 = 53, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 284.
+* Formats with an extractor in this build: **341** of 1004.
+* Formats by family status: crate = 212, mixed = 455, impl = 337.
+* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 63, S6 = 94, S6/S8 = 22, S7 = 135, S8 = 215.
 * By feature: `common` = 817, `cad` = 45, `forensics` = 39, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 29, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 15, Platform 11, Font 10, Fallback 8, Block 4.
 
 ## 5. Format table
 
-`#` is the position after sorting by tier, then by stage and family. **Tier 1** is the ~140 formats a general-purpose tool meets every day. **Tier 2** is common in professional or specialist work. **Tier 3** is the long tail. Ordering inside a tier is by family, not a fine-grained popularity rank. "Stage" is the implementation stage (S0–S8) in the implementation plan. "Feature" is the cargo feature of the `whiff` crate that compiles the extractor: `common` is on by default; `geo`, `science`, `data`, `cad`, `forensics` and `games` are opt-in (`full` enables all). "Extractor" is the extractor that handles the format today (`—` = not implemented yet). Tier-3 formats are scheduled for S8, the long-tail stage, when they need an in-house parser (impl family, or the notes say "header" / "impl").
+`#` is the position after sorting by tier, then by stage and family. **Tier 1** is the ~140 formats a general-purpose tool meets every day. **Tier 2** is common in professional or specialist work. **Tier 3** is the long tail. Ordering inside a tier is by family, not a fine-grained popularity rank. "Stage" is the implementation stage (S0–S8) in the implementation plan. "Feature" is the cargo feature of the `whiff` crate that compiles the extractor: `common` is on by default; `geo`, `science`, `data`, `cad`, `forensics` and `games` are opt-in (`full` enables all). "Extractor" is the extractor that handles the format today (`—` = not implemented yet). Tier-3 formats not handled yet are scheduled for S8, the long-tail stage, when they need an in-house parser (impl family, or the notes say "header" / "impl").
 
 | # | Format | Extensions | MIME | Tier | Family | Feature | Extractor | Library | Stage | Format-specific extras |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -240,12 +240,12 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 99 | bzip2 | `bz2` `bzip2` | application/x-bzip2 | 1 | `compress` | `common` | `compress.bzip2` | miniz_oxide | S5 | — |
 | 100 | xz | `xz` | application/x-xz | 1 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
 | 101 | Zstandard | `zst` `zstd` | application/zstd | 1 | `compress` | `common` | `compress.zstd` | miniz_oxide | S5 | — |
-| 102 | Debian package | `deb` `udeb` | application/vnd.debian.binary-package | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 103 | Android APK / AAB | `apk` `aab` `apks` `xapk` | application/vnd.android.package-archive | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | manifest, permissions, signing scheme v1-v4, dex count, native ABIs |
-| 104 | Java JAR / WAR / EAR | `jar` `war` `ear` | application/java-archive | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | MANIFEST.MF, Maven pom.properties, signed (META-INF/*.SF) |
-| 105 | Python wheel | `whl` | application/zip | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | METADATA (core metadata), WHEEL tags, entry points |
-| 106 | Windows Installer | `msi` `msp` `msm` | application/x-msi | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | SummaryInformation + Property table (ProductName, Version, Manufacturer, UpgradeCode) |
-| 107 | macOS disk image | `dmg` | application/x-apple-diskimage | 1 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | koly trailer, plist, partitions |
+| 102 | Debian package | `deb` `udeb` | application/vnd.debian.binary-package | 1 | `package` | `common` | `package.deb` | impl | S5 | — |
+| 103 | Android APK / AAB | `apk` `aab` `apks` `xapk` | application/vnd.android.package-archive | 1 | `package` | `common` | `package.android` | impl | S5 | manifest, permissions, signing scheme v1-v4, dex count, native ABIs |
+| 104 | Java JAR / WAR / EAR | `jar` `war` `ear` | application/java-archive | 1 | `package` | `common` | `package.java` | impl | S5 | MANIFEST.MF, Maven pom.properties, signed (META-INF/*.SF) |
+| 105 | Python wheel | `whl` | application/zip | 1 | `package` | `common` | `package.zipped` | impl | S5 | METADATA (core metadata), WHEEL tags, entry points |
+| 106 | Windows Installer | `msi` `msp` `msm` | application/x-msi | 1 | `package` | `common` | `package.msi` | impl | S5 | SummaryInformation + Property table (ProductName, Version, Manufacturer, UpgradeCode) |
+| 107 | macOS disk image | `dmg` | application/x-apple-diskimage | 1 | `package` | `common` | `package.dmg` | impl | S5 | koly trailer, plist, partitions |
 | 108 | ISO 9660 / UDF | `iso` `udf` | application/x-iso9660-image | 1 | `disk` | `forensics` | — | gpt, mbrman | S5 | — |
 | 109 | Apple plist (XML) | `plist` | application/x-plist | 1 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | -&gt; apple |
 | 110 | Apple plist (binary) | `plist` | application/x-bplist | 1 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | -&gt; apple |
@@ -354,19 +354,19 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
 | 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
 | 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | `subtitle.ass` | impl | S4 | — |
-| 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
+| 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.mp4` | impl | S4 | — |
 | 217 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
 | 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
 | 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
 | 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | `playlist.m3u` | impl | S4 | — |
 | 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
 | 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | impl | S5 | — |
-| 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 224 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Info.plist, provisioning, executable -&gt; exec |
-| 225 | Python sdist / egg | `tar.gz` `egg` | application/gzip | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | PKG-INFO |
-| 226 | npm package tarball | `tgz` | application/gzip | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | package/package.json |
-| 227 | macOS installer package | `pkg` `mpkg` | application/vnd.apple.installer+xml | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | xar TOC, Distribution, PackageInfo, signed |
-| 228 | Windows MSIX / APPX | `msix` `appx` `msixbundle` `appxbundle` | application/msix | 2 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | AppxManifest.xml identity, capabilities |
+| 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | `package.rpm` | impl | S5 | — |
+| 224 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | `package.ios` | impl | S5 | Info.plist, provisioning, executable -&gt; exec |
+| 225 | Python sdist / egg | `tar.gz` `egg` | application/gzip | 2 | `package` | `common` | `package.zipped` | impl | S5 | PKG-INFO |
+| 226 | npm package tarball | `tgz` | application/gzip | 2 | `package` | `common` | `package.tarball` | impl | S5 | package/package.json |
+| 227 | macOS installer package | `pkg` `mpkg` | application/vnd.apple.installer+xml | 2 | `package` | `common` | `package.xar` | impl | S5 | xar TOC, Distribution, PackageInfo, signed |
+| 228 | Windows MSIX / APPX | `msix` `appx` `msixbundle` `appxbundle` | application/msix | 2 | `package` | `common` | `package.zipped` | impl | S5 | AppxManifest.xml identity, capabilities |
 | 229 | MessagePack | `msgpack` `mpk` | application/vnd.msgpack | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
 | 230 | CBOR | `cbor` | application/cbor | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
 | 231 | BSON | `bson` | application/bson | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
@@ -415,7 +415,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 274 | DTD | `dtd` | application/xml-dtd | 3 | `text.xml` | `common` | — | quick-xml | S1 | element declarations |
 | 275 | RELAX NG | `rng` `rnc` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 276 | DocBook | `dbk` `docbook` | application/docbook+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | title, chapters |
-| 277 | TEI XML | `tei` | application/tei+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S8 | teiHeader fileDesc |
+| 277 | TEI XML | `tei` | application/tei+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | teiHeader fileDesc |
 | 278 | JATS article XML | `nxml` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | article-meta: title, authors, DOI |
 | 279 | WSDL | `wsdl` | application/wsdl+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | services, operations |
 | 280 | XLIFF translation | `xlf` `xliff` | application/xliff+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | source/target languages, unit count |
@@ -439,7 +439,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 298 | Nmap XML / Nessus reports | `xml` `nessus` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | hosts, open ports, findings by severity |
 | 299 | OpenSCENARIO / OpenDRIVE | `xosc` `xodr` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | roads, junctions |
 | 300 | GPX-like Garmin TCX | `tcx` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | -&gt; geo |
-| 301 | JSON Feed | `json` | application/feed+json | 3 | `text.feed` | `common` | — | feed-rs | S1 | — |
+| 301 | JSON Feed | `json` | application/feed+json | 3 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | — |
 | 302 | OPML outline | `opml` | text/x-opml | 3 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | outline titles, feed URLs |
 | 303 | JSON5 | `json5` | application/json5 | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | — |
 | 304 | JSON-LD | `jsonld` | application/ld+json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | @context, @type |
@@ -602,7 +602,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 461 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 462 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 463 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | strings + embedded signatures only |
-| 464 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S8 | binwalk-style signature scan |
+| 464 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | binwalk-style signature scan |
 | 465 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
 | 466 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
 | 467 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
@@ -681,7 +681,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 540 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | — | impl on quick-xml | S8 | — |
 | 541 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | — | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S8 | — |
 | 542 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | — | impl | S8 | — |
-| 543 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S8 | — |
+| 543 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
 | 544 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
 | 545 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
 | 546 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
@@ -692,33 +692,33 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 551 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
 | 552 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
 | 553 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 554 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | conformance from XMP pdfaid/pdfx/pdfuaid |
+| 554 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | conformance from XMP pdfaid/pdfx/pdfuaid |
 | 555 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | — | impl | S8 | AI private data present, artboards |
-| 556 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | field names/values |
-| 557 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S8 | embedded file list |
-| 558 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S8 | page names, shape text |
+| 556 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | field names/values |
+| 557 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | embedded file list |
+| 558 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | page names, shape text |
 | 559 | Word XML 2003 / Flat OPC | `xml` `fodt` | — | 3 | `doc.ooxml` | `common` | — | impl | S8 | — |
 | 560 | XPS / OpenXPS | `xps` `oxps` | application/oxps | 3 | `doc.ooxml` | `common` | — | impl | S8 | pages, fonts, docProps |
 | 561 | 3D Manufacturing Format (OPC) | `3mf` | model/3mf | 3 | `doc.ooxml` | `common` | — | impl | S8 | -&gt; 3d |
-| 562 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
-| 563 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
-| 564 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S8 | — |
+| 562 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 563 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 564 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
 | 565 | Apple Pages / Numbers / Keynote | `pages` `numbers` `key` | application/vnd.apple.pages | 3 | `doc.odf` | `common` | — | impl | S8 | zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview |
 | 566 | Hancom HWPX | `hwpx` | — | 3 | `doc.odf` | `common` | — | impl | S8 | — |
-| 567 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
-| 568 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
-| 569 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
+| 567 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 568 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 569 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
 | 570 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; email |
-| 571 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | thumbnail count |
-| 572 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | — |
-| 573 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S8 | storage tree |
+| 571 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | thumbnail count |
+| 572 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 573 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | storage tree |
 | 574 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; cad, summary info |
 | 575 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | impl | S8 | header + prefix packet |
 | 576 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | impl | S8 | — |
 | 577 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | header only; DRM flag |
-| 578 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S8 | — |
+| 578 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
 | 579 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
-| 580 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S8 | — |
+| 580 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
 | 581 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
 | 582 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 583 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
@@ -741,27 +741,27 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 600 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 601 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
 | 602 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
-| 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
-| 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S8 | — |
-| 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
-| 606 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S8 | ti/ar/al tags |
-| 607 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S8 | languages, cue count (vobsub) |
-| 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S8 | cue count, timings |
-| 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | `subtitle.caption` | impl | S8 | — |
-| 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S8 | — |
-| 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S8 | — |
-| 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S8 | — |
-| 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.mp4` | impl | S8 | — |
+| 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
+| 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 606 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | ti/ar/al tags |
+| 607 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | languages, cue count (vobsub) |
+| 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | cue count, timings |
+| 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | `subtitle.caption` | impl | S4 | — |
+| 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S4 | — |
+| 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S4 | — |
+| 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
 | 614 | AC-3 / E-AC-3 / DTS / TrueHD raw | `ac3` `ec3` `eac3` `dts` `thd` `mlp` | audio/ac3 | 3 | `audio` | `common` | — | impl | S8 | sync frame header: channels, rate, bitrate |
-| 615 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | `audio.mpeg` | impl | S8 | — |
-| 616 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
-| 617 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | `audio.dsd` | impl | S8 | — |
-| 618 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
-| 619 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
+| 615 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | — |
+| 616 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 617 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | `audio.dsd` | impl | S4 | — |
+| 618 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 619 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
 | 620 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | impl | S8 | — |
-| 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S8 | — |
-| 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S8 | bext originator, time reference |
-| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S8 | -&gt; video |
+| 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S4 | bext originator, time reference |
+| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S4 | -&gt; video |
 | 624 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | impl | S8 | — |
 | 625 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
 | 626 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
@@ -770,46 +770,46 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 629 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
 | 630 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | — | impl | S8 | — |
 | 631 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo |
-| 632 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S8 | chapters with titles + URLs |
-| 633 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | `score.notation` | impl | S8 | — |
-| 634 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | `score.notation` | impl | S8 | — |
-| 635 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | `score.tracker` | impl | S8 | — |
-| 636 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S8 | — |
-| 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S8 | — |
-| 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S8 | periods, adaptation sets, codecs |
-| 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S8 | — |
-| 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S8 | — |
-| 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S8 | — |
+| 632 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | chapters with titles + URLs |
+| 633 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
+| 634 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
+| 635 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | `score.tracker` | impl | S4 | — |
+| 636 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
+| 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
+| 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | periods, adaptation sets, codecs |
+| 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | — |
+| 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S4 | — |
+| 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S4 | — |
 | 642 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | impl | S8 | — |
 | 643 | MXF broadcast | `mxf` | application/mxf | 3 | `video` | `common` | — | impl | S8 | partition pack, operational pattern, essence descriptors (impl KLV) |
-| 644 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | codec profile from sample entry |
-| 645 | H.264 / H.265 / AV1 / VVC / MPEG video elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` `m1v` `m2v` | video/h264 | 3 | `video` | `common` | `video.elementary` | impl | S8 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
-| 646 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | `video.mpegts` | impl | S8 | — |
+| 644 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | codec profile from sample entry |
+| 645 | H.264 / H.265 / AV1 / VVC / MPEG video elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` `m1v` `m2v` | video/h264 | 3 | `video` | `common` | `video.elementary` | impl | S4 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
+| 646 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | `video.mpegts` | impl | S4 | — |
 | 647 | Blackmagic RAW / RED R3D / ARRIRAW | `braw` `r3d` `ari` | — | 3 | `video` | `common` | — | impl | S8 | camera, lens, timecode (header) |
-| 648 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | `video.avi` | impl | S8 | -&gt; AVI |
+| 648 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | `video.avi` | impl | S4 | -&gt; AVI |
 | 649 | Nullsoft NSV / Bink / Smacker | `nsv` `bik` `smk` | — | 3 | `video` | `common` | — | impl | S8 | — |
 | 650 | AMV / MTV / FLIC | `amv` `mtv` `flc` `fli` | — | 3 | `video` | `common` | — | impl | S8 | — |
 | 651 | Video project: Premiere / Final Cut / DaVinci / Kdenlive | `prproj` `fcpxml` `drp` `kdenlive` `mlt` | — | 3 | `video` | `common` | — | impl | S8 | clips, timeline length (gzip-xml/xml) |
 | 652 | EDL / AAF / OTIO edit lists | `edl` `aaf` `otio` | — | 3 | `video` | `common` | — | impl | S8 | events, reel names, timecodes |
-| 653 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | paired-asset XMP (GCamera/Container) |
-| 654 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | sv3d/st3d boxes, Spherical XMP |
-| 655 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
+| 653 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | paired-asset XMP (GCamera/Container) |
+| 654 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | sv3d/st3d boxes, Spherical XMP |
+| 655 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
 | 656 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | impl | S8 | -&gt; MP4 |
 | 657 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | impl | S8 | width, height, duration, command |
-| 658 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S8 | -&gt; video |
-| 659 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S8 | program title, channel, air date |
+| 658 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S4 | -&gt; video |
+| 659 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S4 | program title, channel, air date |
 | 660 | 360 camera native (INSV / OSV) | `insv` `osv` | — | 3 | `video` | `common` | — | impl | S8 | camera, GPS |
-| 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S8 | WxH, fps, colourspace (Y4M header) |
-| 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | track ids, fragments |
-| 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S8 | caption presence + language |
-| 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | `archive.legacy` | impl | S8 | — |
-| 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S8 | — |
-| 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S8 | newc/odc/bin |
-| 667 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S8 | -&gt; also static libraries (exec members) |
+| 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S4 | WxH, fps, colourspace (Y4M header) |
+| 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | track ids, fragments |
+| 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | caption presence + language |
+| 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
+| 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
+| 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S5 | newc/odc/bin |
+| 667 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S5 | -&gt; also static libraries (exec members) |
 | 668 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
 | 669 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | impl | S8 | header only |
 | 670 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | impl | S8 | images + XML metadata |
-| 671 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | — | impl | S8 | TOC XML |
+| 671 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | `package.xar` | impl | S5 | TOC XML |
 | 672 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | impl | S8 | volume detection |
 | 673 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | impl | S8 | — |
 | 674 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
@@ -828,33 +828,33 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 687 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | impl | S8 | decoded filename, recurse |
 | 688 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | impl | S8 | repo version, encryption |
 | 689 | Android backup | `ab` | — | 3 | `archive` | `common` | — | impl | S8 | version, compressed, encrypted |
-| 690 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S8 | -&gt; package |
-| 691 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S8 | — |
-| 692 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S8 | — |
-| 693 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
-| 694 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
-| 695 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S8 | — |
-| 696 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
-| 697 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
-| 698 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | `compress.gzip` | miniz_oxide | S8 | — |
-| 699 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S8 | — |
-| 700 | NuGet package | `nupkg` `snupkg` | application/zip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | .nuspec |
-| 701 | Ruby gem | `gem` | application/x-tar | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | metadata.gz (YAML) |
-| 702 | Rust crate | `crate` | application/gzip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Cargo.toml inside |
-| 703 | Snap / Flatpak / AppImage | `snap` `flatpak` `flatpakref` `AppImage` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | snap.yaml, flatpak metadata, ELF + squashfs desktop file |
-| 704 | Arch / Alpine packages | `pkg.tar.zst` `apk` | application/x-tar | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | .PKGINFO |
-| 705 | Conda package | `conda` `tar.bz2` | application/zip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | info/index.json |
-| 706 | Chrome / Firefox extension | `crx` `xpi` | application/x-chrome-extension | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | manifest.json permissions |
-| 707 | VS Code extension / JetBrains plugin | `vsix` | application/zip | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | package.json / plugin.xml |
-| 708 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | Chart.yaml |
-| 709 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | manifest.json, config: layers, env, entrypoint, labels |
-| 710 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 711 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 712 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 713 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | — |
-| 714 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | asset paths |
-| 715 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S5 | -&gt; doc.ole |
-| 716 | Electron asar | `asar` | — | 3 | `package` | `common` | — | rpm, apk-info + axmldecoder | S8 | header JSON file list |
+| 690 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S5 | -&gt; package |
+| 691 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
+| 692 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S5 | — |
+| 693 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 694 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 695 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
+| 696 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 697 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 698 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | `compress.gzip` | miniz_oxide | S5 | — |
+| 699 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 700 | NuGet package | `nupkg` `snupkg` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | .nuspec |
+| 701 | Ruby gem | `gem` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | metadata.gz (YAML) |
+| 702 | Rust crate | `crate` | application/gzip | 3 | `package` | `common` | `package.tarball` | impl | S5 | Cargo.toml inside |
+| 703 | Snap / Flatpak / AppImage | `snap` `flatpak` `flatpakref` `AppImage` | — | 3 | `package` | `common` | — | impl | S8 | snap.yaml, flatpak metadata, ELF + squashfs desktop file |
+| 704 | Arch / Alpine packages | `pkg.tar.zst` `apk` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | .PKGINFO |
+| 705 | Conda package | `conda` `tar.bz2` | application/zip | 3 | `package` | `common` | `package.tarball` | impl | S5 | info/index.json |
+| 706 | Chrome / Firefox extension | `crx` `xpi` | application/x-chrome-extension | 3 | `package` | `common` | `package.zipped` | impl | S5 | manifest.json permissions |
+| 707 | VS Code extension / JetBrains plugin | `vsix` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | package.json / plugin.xml |
+| 708 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | Chart.yaml |
+| 709 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | manifest.json, config: layers, env, entrypoint, labels |
+| 710 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 711 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 712 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
+| 713 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 714 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | impl | S8 | asset paths |
+| 715 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | — | impl | S8 | -&gt; doc.ole |
+| 716 | Electron asar | `asar` | — | 3 | `package` | `common` | `package.asar` | impl | S5 | header JSON file list |
 | 717 | Raw disk image | `img` `raw` `dd` `bin` | application/octet-stream | 3 | `disk` | `forensics` | — | gpt, mbrman | S5 | MBR/GPT |
 | 718 | VirtualBox VDI | `vdi` | application/x-virtualbox-vdi | 3 | `disk` | `forensics` | — | gpt, mbrman | S5 | — |
 | 719 | VMware VMDK | `vmdk` | application/x-vmdk | 3 | `disk` | `forensics` | — | gpt, mbrman | S5 | descriptor, extents |
