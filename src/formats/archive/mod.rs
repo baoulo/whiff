@@ -219,6 +219,12 @@ impl Inventory {
         }
     }
 
+    /// Treat absolute entry paths as expected (packages whose payload names
+    /// the installed paths, `/usr/local/bin/…`), not as a risk.
+    pub fn allow_absolute(&mut self) {
+        self.absolute = None;
+    }
+
     /// Write the inventory into the report. `archive_bytes` is the
     /// archive's size, for the ratio.
     pub fn report(self, cx: &mut Context<'_>, archive_bytes: u64) {

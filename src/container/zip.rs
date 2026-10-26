@@ -181,8 +181,9 @@ struct End {
     cd_offset: u64,
     comment: String,
     zip64: bool,
-    /// File offset of the end record.
-    at: u64,
+    /// Where the central directory ends: the Zip64 record if there is one
+    /// (its size varies with extensible data), else the end record.
+    cd_limit: u64,
 }
 
 #[allow(clippy::many_single_char_names)] // record field names
@@ -193,7 +194,8 @@ fn parse_end(window: &[u8], window_start: u64, i: usize) -> Result<End, ExtractE
     let cd_offset = u64::from(r.le_u32()?);
     let n = usize::from(r.le_u16()?);
     let comment = crate::meta::latin1_or_utf8(r.bytes(n.min(r.remaining()))?);
-    let mut end = End { entries, cd_size, cd_offset, comment, zip64: false, at: window_start + i as u64 };
+    let at = window_start + i as u64;
+    let mut end = End { entries, cd_size, cd_offset, comment, zip64: false, cd_limit: at };
     // Zip64: a locator right before the end record points at the Zip64 record.
     if i >= 20 && window[i - 20..].starts_with(EOCD64_LOCATOR) {
         let mut l = ByteReader::new(&window[i - 20..i]).skip(8)?;
@@ -206,6 +208,7 @@ fn parse_end(window: &[u8], window_start: u64, i: usize) -> Result<End, ExtractE
             end.cd_size = z.le_u64()?;
             end.cd_offset = z.le_u64()?;
             end.zip64 = true;
+            end.cd_limit = rec;
         }
     }
     Ok(end)
@@ -337,8 +340,7 @@ impl Zip {
         let end = parse_end(&window, window_start, i)?;
         // Self-extractors and archives with a prefix: offsets are relative
         // to the start of the archive, which sits `delta` bytes in.
-        let cd_end = end.at.saturating_sub(if end.zip64 { 76 } else { 0 });
-        let delta = cd_end.saturating_sub(end.cd_size).saturating_sub(end.cd_offset);
+        let delta = end.cd_limit.saturating_sub(end.cd_size).saturating_sub(end.cd_offset);
         let cd_at = end.cd_offset + delta;
         if end.cd_size > MAX_CENTRAL_BYTES || cd_at.checked_add(end.cd_size).is_none_or(|e| e > len) {
             return Err(ExtractError::malformed("central directory out of range"));
@@ -491,8 +493,7 @@ pub fn names(probe: &Probe<'_>, max: usize) -> Vec<String> {
     if let Some(i) = find_eocd(tail)
         && let Ok(end) = parse_end(tail, tail_start, i)
     {
-        let cd_end = end.at.saturating_sub(if end.zip64 { 76 } else { 0 });
-        let delta = cd_end.saturating_sub(end.cd_size).saturating_sub(end.cd_offset);
+        let delta = end.cd_limit.saturating_sub(end.cd_size).saturating_sub(end.cd_offset);
         if let Some(cd) = (end.cd_offset + delta)
             .checked_sub(tail_start)
             .and_then(|o| usize::try_from(o).ok())

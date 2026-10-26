@@ -1,0 +1,459 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere_tides-1.2.0.gem",
+    "stem": "saltmere_tides-1.2.0",
+    "extension": "gem"
+  },
+  "identification": {
+    "format": "gem",
+    "name": "Ruby gem",
+    "mime": "application/x-tar",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gem",
+        "confidence": 0.99
+      },
+      {
+        "format": "tar",
+        "confidence": 0.85
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4608
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false,
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "ext/tides/extconf.rb",
+        "source": "package.tarball"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 4608,
+    "entropy": 3.042,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 2,
+      "uncompressed_bytes": 89,
+      "ratio": 0.019314236111111112
+    }
+  },
+  "integrity": {
+    "sha256": "2b2f9cb4a92b496c47396907c516c9880eef04c2fc2ae2b2c2fd25d33e04964c",
+    "blake3": "3969554c1740520fe36c494c40dcb8d3ec31576b61ec2e05dae1bf20c92c10b1"
+  },
+  "content": {
+    "title": "saltmere_tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour High and low water times for Saltmere harbour."
+  },
+  "metadata": {},
+  "format": {
+    "gem": {
+      "ecosystem": "rubygems",
+      "name": "saltmere_tides",
+      "version": "1.2.0",
+      "architecture": "ruby",
+      "license": "MIT",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "Ana Lighthouse"
+      ],
+      "dependencies": {
+        "json": "~> 2.0"
+      },
+      "dependencies_count": 1,
+      "install_scripts": [
+        "ext/tides/extconf.rb"
+      ],
+      "required_ruby_version": ">= 2.6",
+      "listed_files": 2,
+      "files": 2,
+      "compressed_bytes": 89,
+      "file_types": {
+        "rb": 2
+      },
+      "top_level": [
+        "ext/",
+        "lib/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "ext/tides/extconf.rb",
+          "size_bytes": 47,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "lib/saltmere_tides.rb",
+          "size_bytes": 42,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "extconf.rb",
+        "stem": "extconf",
+        "extension": "rb"
+      },
+      "identification": {
+        "format": "ruby",
+        "name": "Ruby source",
+        "mime": "text/x-ruby",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 47
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 47,
+        "entropy": 4.145,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 47,
+          "chars": 47,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 46,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "25ad6b7454e7483d6baa92998d8529bf83f3b2961e6ba0aa43e79458ef257d82",
+        "blake3": "ffcfb1de527869fc4d6915093fcf39bb6b42696cf477f0672f74c29898ecac25"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "ruby": {
+          "language": "Ruby",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "imports": [
+            "mkmf"
+          ],
+          "import_count": 1,
+          "is_test": false,
+          "generated": false,
+          "longest_line": 46
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere_tides.rb",
+        "stem": "saltmere_tides",
+        "extension": "rb"
+      },
+      "identification": {
+        "format": "ruby",
+        "name": "Ruby source",
+        "mime": "text/x-ruby",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 42
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 42,
+        "entropy": 4.488,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 42,
+          "chars": 42,
+          "words": 6,
+          "lines": 1,
+          "max_line_length": 41,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9c56f259b5c72b6c73c9d6ef77a5618d6e1b82385a1e2e7dfd8c7a6ff4fbb28d",
+        "blake3": "5d7aa38668c08177e735ed2d255303c0b7c06d14bda296f6f1965ddaaa11e980"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "ruby": {
+          "language": "Ruby",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "symbols": {
+            "module": [
+              "SaltmereTides"
+            ]
+          },
+          "symbol_counts": {
+            "module": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "longest_line": 41
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

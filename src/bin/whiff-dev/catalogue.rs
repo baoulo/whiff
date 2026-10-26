@@ -100,9 +100,10 @@ fn stage_rank(stage: &str) -> u8 {
     stage.get(1..2).and_then(|d| d.parse().ok()).unwrap_or(9)
 }
 
-fn stage_for(f: &Format, fam: &Family) -> String {
+fn stage_for(f: &Format, fam: &Family, covered: bool) -> String {
     let note = f.note.to_lowercase();
-    if f.tier == 3 && (fam.status == "impl" || note.contains("header") || note.contains("impl")) {
+    // Long-tail formats wait for S8 unless their family's stage already did them.
+    if !covered && f.tier == 3 && (fam.status == "impl" || note.contains("header") || note.contains("impl")) {
         return "S8".into();
     }
     if f.tier == 1 { fam.stage.split('/').next().unwrap_or(&fam.stage).to_string() } else { fam.stage.clone() }
@@ -137,13 +138,19 @@ fn most_common<'a>(items: impl Iterator<Item = &'a str>) -> Vec<(&'a str, usize)
 /// Extractor covering a catalogue row: same family and a shared extension,
 /// or an extractor whose sniffer claims one of the row's file names
 /// (`package.json`, `Dockerfile`) from the name alone.
+/// The extractor that handles a catalogue row: a format of the same family
+/// with the row's name, else one with one of its extensions (in the row's
+/// order), else a sniffer that recognises the row's file names.
 fn coverage(registry: &Registry, f: &Format) -> Option<&'static str> {
-    let exts: Vec<String> = f.extensions.split_whitespace().map(str::to_ascii_lowercase).collect();
-    let by_extension = registry
-        .formats()
-        .find(|(spec, _)| spec.family == f.family && spec.extensions.iter().any(|e| exts.iter().any(|x| x == e)))
-        .map(|(_, e)| e.meta().id);
-    by_extension.or_else(|| {
+    if let Some((_, e)) =
+        registry.formats().find(|(spec, _)| spec.family == f.family && spec.name.eq_ignore_ascii_case(&f.name))
+    {
+        return Some(e.meta().id);
+    }
+    let by_extension = f.extensions.split_whitespace().map(str::to_ascii_lowercase).find_map(|x| {
+        registry.formats().find(|(spec, _)| spec.family == f.family && spec.extensions.contains(&x.as_str()))
+    });
+    by_extension.map(|(_, e)| e.meta().id).or_else(|| {
         registry
             .extractors()
             .find(|e| {
@@ -201,7 +208,8 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
         tier(2),
         tier(3)
     ));
-    let covered = rows.iter().filter(|r| coverage(registry, r).is_some()).count();
+    let cov: HashMap<usize, Option<&'static str>> = rows.iter().map(|r| (r.order, coverage(registry, r))).collect();
+    let covered = cov.values().filter(|c| c.is_some()).count();
     out.push(format!("* Formats with an extractor in this build: **{covered}** of {}.", rows.len()));
     let status = |s: &str| rows.iter().filter(|r| fam[r.family.as_str()].1.status == s).count();
     out.push(format!(
@@ -212,7 +220,7 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
     ));
     let mut stages: Vec<(String, usize)> = Vec::new();
     for r in &rows {
-        let s = stage_for(r, fam[r.family.as_str()].1);
+        let s = stage_for(r, fam[r.family.as_str()].1, cov[&r.order].is_some());
         match stages.iter_mut().find(|(k, _)| *k == s) {
             Some((_, n)) => *n += 1,
             None => stages.push((s, 1)),
@@ -235,12 +243,12 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
     ));
 
     out.push("## 5. Format table\n".into());
-    out.push("`#` is the position after sorting by tier, then by stage and family. **Tier 1** is the ~140 formats a general-purpose tool meets every day. **Tier 2** is common in professional or specialist work. **Tier 3** is the long tail. Ordering inside a tier is by family, not a fine-grained popularity rank. \"Stage\" is the implementation stage (S0–S8) in the implementation plan. \"Feature\" is the cargo feature of the `whiff` crate that compiles the extractor: `common` is on by default; `geo`, `science`, `data`, `cad`, `forensics` and `games` are opt-in (`full` enables all). \"Extractor\" is the extractor that handles the format today (`—` = not implemented yet). Tier-3 formats are scheduled for S8, the long-tail stage, when they need an in-house parser (impl family, or the notes say \"header\" / \"impl\").\n".into());
+    out.push("`#` is the position after sorting by tier, then by stage and family. **Tier 1** is the ~140 formats a general-purpose tool meets every day. **Tier 2** is common in professional or specialist work. **Tier 3** is the long tail. Ordering inside a tier is by family, not a fine-grained popularity rank. \"Stage\" is the implementation stage (S0–S8) in the implementation plan. \"Feature\" is the cargo feature of the `whiff` crate that compiles the extractor: `common` is on by default; `geo`, `science`, `data`, `cad`, `forensics` and `games` are opt-in (`full` enables all). \"Extractor\" is the extractor that handles the format today (`—` = not implemented yet). Tier-3 formats not handled yet are scheduled for S8, the long-tail stage, when they need an in-house parser (impl family, or the notes say \"header\" / \"impl\").\n".into());
     out.push("| # | Format | Extensions | MIME | Tier | Family | Feature | Extractor | Library | Stage | Format-specific extras |".into());
     out.push("|---|---|---|---|---|---|---|---|---|---|---|".into());
     for (n, r) in rows.iter().enumerate() {
         let f = fam[r.family.as_str()].1;
-        let ext = coverage(registry, r).map_or_else(|| "—".to_string(), |id| format!("`{id}`"));
+        let ext = cov[&r.order].map_or_else(|| "—".to_string(), |id| format!("`{id}`"));
         let mut line = String::new();
         let _ = write!(
             line,
@@ -253,7 +261,7 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
             r.family,
             f.feature,
             esc(&short_lib(&f.libraries)),
-            stage_for(r, f),
+            stage_for(r, f, cov[&r.order].is_some()),
             if r.note.is_empty() { "—".to_string() } else { esc(&r.note) },
         );
         out.push(line);

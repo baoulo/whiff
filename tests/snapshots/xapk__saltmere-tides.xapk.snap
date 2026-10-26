@@ -1,0 +1,962 @@
+---
+source: src/formats/package/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.xapk",
+    "stem": "saltmere-tides",
+    "extension": "xapk"
+  },
+  "identification": {
+    "format": "xapk",
+    "name": "XAPK Android package",
+    "mime": "application/zip",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xapk",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 25689
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.android",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 25689,
+    "entropy": 2.25,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 2,
+      "uncompressed_bytes": 25445,
+      "ratio": 0.9905017711861108
+    }
+  },
+  "integrity": {
+    "sha256": "ebcb20f2b335af42c040e1aaca149258d1515bc4c8d999c5781aa6802cb2d095",
+    "blake3": "a0ab1b3ee6025128494b1f08d1c644ae55f4512a7b35c9d7c007415b32100627"
+  },
+  "content": {
+    "title": "org.saltmere.tides 1.2.0",
+    "description": "Saltmere Tides",
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "xapk": {
+      "ecosystem": "android",
+      "name": "org.saltmere.tides",
+      "version": "1.2.0",
+      "release": "12",
+      "label": "Saltmere Tides",
+      "min_sdk": "24",
+      "target_sdk": "36",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "apks": 1,
+      "apk_names": [
+        "org.saltmere.tides.apk"
+      ],
+      "files": 2,
+      "compressed_bytes": 25445,
+      "methods": {
+        "stored": 2
+      },
+      "file_types": {
+        "apk": 1,
+        "json": 1
+      },
+      "top_level": [
+        "manifest.json",
+        "org.saltmere.tides.apk"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "manifest.json",
+          "size_bytes": 398,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "org.saltmere.tides.apk",
+          "size_bytes": 25047,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "manifest.json",
+        "stem": "manifest",
+        "extension": "json"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.6,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 398
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 398,
+        "entropy": 4.689,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 398,
+          "chars": 398,
+          "words": 31,
+          "lines": 18,
+          "max_line_length": 45,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "932541659d655cf6353419bcb8c02527100c1e7b2ecbab4ce769252834476347",
+        "blake3": "85ae24835b66fddccec9c1e322bf58bd1457ed040ba29966b00c1039a19b4195"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "xapk_version",
+            "package_name",
+            "name",
+            "version_code",
+            "version_name",
+            "min_sdk_version",
+            "target_sdk_version",
+            "permissions",
+            "split_apks"
+          ],
+          "key_count": 9,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.xapk_version": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  2
+                ]
+              },
+              "$.package_name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "org.saltmere.tides"
+                ]
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Saltmere Tides"
+                ]
+              },
+              "$.version_code": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "12"
+                ]
+              },
+              "$.version_name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.min_sdk_version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "24"
+                ]
+              },
+              "$.target_sdk_version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "36"
+                ]
+              },
+              "$.permissions": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  2,
+                  2
+                ]
+              },
+              "$.permissions[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 2,
+                "examples": [
+                  "android.permission.INTERNET",
+                  "android.permission.ACCESS_FINE_LOCATION"
+                ]
+              },
+              "$.split_apks": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.split_apks[]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.split_apks[].file": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "org.saltmere.tides.apk"
+                ]
+              },
+              "$.split_apks[].id": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "base"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "org.saltmere.tides.apk",
+        "stem": "org.saltmere.tides",
+        "extension": "apk"
+      },
+      "identification": {
+        "format": "apk",
+        "name": "Android package",
+        "mime": "application/vnd.android.package-archive",
+        "family": "package",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "apk",
+            "confidence": 0.99
+          },
+          {
+            "format": "zip",
+            "confidence": 0.5
+          },
+          {
+            "format": "alpine_package",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "package.android"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 25047
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "package.android",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {
+        "signed": true
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 25047,
+        "entropy": 2.095,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 7,
+          "uncompressed_bytes": 5893,
+          "ratio": 0.235277677965425
+        }
+      },
+      "integrity": {
+        "sha256": "f260e1ea0bbaf820d1a4b28e8cf4ae4973e3bf2fb089f17c307f267efc98f08c",
+        "blake3": "15bfc2ab0b75a86f51b15e6e1a95d4165da90da49d81f9aba7e9cf5e3919b2e4"
+      },
+      "content": {
+        "title": "org.saltmere.tides 1.2.0",
+        "description": "Saltmere Tides",
+        "excerpt": "Saltmere Tides"
+      },
+      "metadata": {},
+      "format": {
+        "apk": {
+          "ecosystem": "android",
+          "name": "org.saltmere.tides",
+          "version": "1.2.0",
+          "release": "12",
+          "signatures": [
+            "v1",
+            "v2",
+            "v3"
+          ],
+          "compile_sdk": "37",
+          "platform_build_version": "17",
+          "min_sdk": 24,
+          "target_sdk": 36,
+          "allow_backup": true,
+          "launcher_activity": ".MainActivity",
+          "dangerous_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.CAMERA"
+          ],
+          "permissions": [
+            "android.permission.INTERNET",
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.CAMERA"
+          ],
+          "features": [
+            "android.hardware.location.gps"
+          ],
+          "activities": 1,
+          "services": 1,
+          "receivers": 1,
+          "exported_components": 2,
+          "label": "Saltmere Tides",
+          "dex_files": 1,
+          "native_abis": [
+            "arm64-v8a"
+          ],
+          "files": 7,
+          "compressed_bytes": 3192,
+          "methods": {
+            "deflate": 5,
+            "stored": 2
+          },
+          "file_types": {
+            "arsc": 1,
+            "dex": 1,
+            "ec": 1,
+            "mf": 1,
+            "sf": 1,
+            "so": 1,
+            "xml": 1
+          },
+          "top_level": [
+            "META-INF/",
+            "AndroidManifest.xml",
+            "classes.dex",
+            "lib/",
+            "resources.arsc"
+          ],
+          "modified_range": [
+            "1980-01-01T00:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "AndroidManifest.xml",
+              "size_bytes": 2864,
+              "modified": "1980-01-01T00:00:00"
+            },
+            {
+              "path": "resources.arsc",
+              "size_bytes": 568,
+              "modified": "1980-01-01T00:00:00"
+            },
+            {
+              "path": "classes.dex",
+              "size_bytes": 920,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "lib/arm64-v8a/libtides.so",
+              "size_bytes": 4,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "META-INF/HARBOUR.SF",
+              "size_bytes": 509,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/HARBOUR.EC",
+              "size_bytes": 646,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "META-INF/MANIFEST.MF",
+              "size_bytes": 382,
+              "modified": "2025-09-01T12:00:00"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "AndroidManifest.xml",
+            "stem": "AndroidManifest",
+            "extension": "xml"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 2864
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "resources.arsc",
+            "stem": "resources",
+            "extension": "arsc"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 568
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "classes.dex",
+            "stem": "classes",
+            "extension": "dex"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 920
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "libtides.so",
+            "stem": "libtides",
+            "extension": "so"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 4
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "HARBOUR.SF",
+            "stem": "HARBOUR",
+            "extension": "SF"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 509
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "HARBOUR.EC",
+            "stem": "HARBOUR",
+            "extension": "EC"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 646
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "MANIFEST.MF",
+            "stem": "MANIFEST",
+            "extension": "MF"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 382
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "package.android",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

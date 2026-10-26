@@ -1,0 +1,1749 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere_tides-1.2.0.tar.gz",
+    "stem": "saltmere_tides-1.2.0.tar",
+    "extension": "gz"
+  },
+  "identification": {
+    "format": "python_sdist",
+    "name": "Python source distribution",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "python_sdist",
+        "confidence": 0.95
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.77
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1129
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 1129,
+    "entropy": 7.74,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 14,
+      "uncompressed_bytes": 2305,
+      "ratio": 2.0416297608503102
+    }
+  },
+  "integrity": {
+    "sha256": "4b16acaab7558366f5db51160b519d3cae816705fbb8586aafdebccff037cde9",
+    "blake3": "58e31714540b6d3abf4f0f70c3e0c57bacdbb4dc0ac3b8d2d218da7ce64f73ef"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour # Saltmere tides High and low water for Saltmere harbour."
+  },
+  "metadata": {},
+  "format": {
+    "python_sdist": {
+      "ecosystem": "pypi",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "MIT",
+      "homepage": "https://example.org/saltmere/tides",
+      "repository": "https://example.org/saltmere/tides.git",
+      "authors": [
+        "Ana Lighthouse"
+      ],
+      "dependencies": {
+        "requests": ">=2.0",
+        "rich": "* ; python_version >= \"3.10\""
+      },
+      "dependencies_count": 2,
+      "compression": "gzip",
+      "metadata_version": "2.4",
+      "requires_python": ">=3.9",
+      "classifiers": 2,
+      "files": 11,
+      "directories": 3,
+      "compressed_bytes": 2305,
+      "file_types": {
+        "txt": 5,
+        "(none)": 2,
+        "cfg": 1,
+        "md": 1,
+        "py": 1,
+        "toml": 1
+      },
+      "top_level": [
+        "saltmere_tides-1.2.0/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "saltmere_tides-1.2.0/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/PKG-INFO",
+          "size_bytes": 583,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/README.md",
+          "size_bytes": 59,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/pyproject.toml",
+          "size_bytes": 636,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides/__init__.py",
+          "size_bytes": 15,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/PKG-INFO",
+          "size_bytes": 583,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/SOURCES.txt",
+          "size_bytes": 281,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/dependency_links.txt",
+          "size_bytes": 1,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/entry_points.txt",
+          "size_bytes": 46,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/requires.txt",
+          "size_bytes": 48,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/saltmere_tides.egg-info/top_level.txt",
+          "size_bytes": 15,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere_tides-1.2.0/setup.cfg",
+          "size_bytes": 38,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "PKG-INFO",
+        "stem": "PKG-INFO"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 583
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 583,
+        "entropy": 5.051,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 583,
+          "chars": 583,
+          "words": 56,
+          "lines": 18,
+          "max_line_length": 63,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 2
+        }
+      },
+      "integrity": {
+        "sha256": "04caa05f589e032321c23c84fa6f73cf12f503138d1c9af2bf616d77747fcb5d",
+        "blake3": "39e796760ef7961e86dfd1632d92a64a06b51ff701c70ec838839f4fddf90b69"
+      },
+      "content": {
+        "keywords": [
+          "saltmere",
+          "Version",
+          "example.org",
+          "URL",
+          "Requires",
+          "Python",
+          "Dist",
+          "Metadata",
+          "Ana Lighthouse",
+          "Saltmere harbour"
+        ],
+        "keyword_frequency": [
+          [
+            "saltmere",
+            6
+          ],
+          [
+            "tides",
+            4
+          ],
+          [
+            "example.org",
+            3
+          ],
+          [
+            "requires",
+            3
+          ],
+          [
+            "ana",
+            2
+          ],
+          [
+            "classifier",
+            2
+          ],
+          [
+            "dist",
+            2
+          ],
+          [
+            "harbour",
+            2
+          ],
+          [
+            "https",
+            2
+          ],
+          [
+            "project",
+            2
+          ],
+          [
+            "python",
+            2
+          ],
+          [
+            "url",
+            2
+          ],
+          [
+            "version",
+            2
+          ]
+        ],
+        "excerpt": "Metadata-Version: 2.4 Name: saltmere-tides Version: 1.2.0 Summary: Tide tables for Saltmere harbour Author-email: Ana Lighthouse <[redacted:email]> License-Expression: MIT Project-URL: Homepage, https://example.org/saltmere/tides Project-URL: Repository, https://example.org/saltmere/tides.git Classifier: Programming Language :: Python :: 3 Classifier: Topic :: Scientific/Engineering…",
+        "tags": [
+          "saltmere",
+          "Version",
+          "example.org",
+          "URL",
+          "Requires"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 3,
+          "urls": 2
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "README.md",
+        "stem": "README",
+        "extension": "md"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 59
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 59,
+        "entropy": 4.173,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 59,
+          "chars": 59,
+          "words": 10,
+          "lines": 3,
+          "max_line_length": 40,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "d395eb531d57c6ac81c9ead2bd09d4448cb67a0687cea1c5de68fc0aca25199d",
+        "blake3": "84d74db10ff612958bd38f67b7eb7823e60730ae4951abe54446cd967e7cc6d9"
+      },
+      "content": {
+        "title": "Saltmere tides",
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere tides"
+          }
+        ],
+        "excerpt": "High and low water for Saltmere harbour."
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 1,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pyproject.toml",
+        "stem": "pyproject",
+        "extension": "toml"
+      },
+      "identification": {
+        "format": "pyproject",
+        "name": "Python pyproject.toml",
+        "mime": "application/toml",
+        "family": "code.manifest",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "pyproject",
+            "confidence": 0.95
+          },
+          {
+            "format": "toml",
+            "confidence": 0.35
+          }
+        ],
+        "encoding": "us-ascii",
+        "extractor": "code.manifest"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 636
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {
+        "creators": [
+          "Ana Lighthouse"
+        ],
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "physical": {
+        "size_bytes": 636,
+        "entropy": 5.002,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 636,
+          "chars": 636,
+          "words": 70,
+          "lines": 21,
+          "max_line_length": 88,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 3
+        }
+      },
+      "integrity": {
+        "sha256": "09de8bc67a701db8e26bc40765e86ad07754805b389993b2ba7b9851218ee5ac",
+        "blake3": "ae8fea019d086c10d700adb08effcbb3f87174ac457cb537286975118e9f4c10"
+      },
+      "content": {
+        "title": "saltmere-tides 1.2.0",
+        "description": "Tide tables for Saltmere harbour",
+        "authors": [
+          "Ana Lighthouse"
+        ],
+        "excerpt": "Tide tables for Saltmere harbour"
+      },
+      "metadata": {},
+      "format": {
+        "pyproject": {
+          "ecosystem": "python",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "license": "MIT",
+          "repository": "https://example.org/saltmere/tides.git",
+          "requires_python": ">=3.9",
+          "dependencies": [
+            "requests>=2.0",
+            "rich; python_version >= '3.10'"
+          ],
+          "dependencies_count": 2,
+          "scripts": [
+            "tides"
+          ],
+          "build_backend": "setuptools.build_meta"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.manifest",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "__init__.py",
+        "stem": "__init__",
+        "extension": "py"
+      },
+      "identification": {
+        "format": "python",
+        "name": "Python source",
+        "mime": "text/x-python",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 15
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 15,
+        "entropy": 3.507,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 15,
+          "chars": 15,
+          "words": 3,
+          "lines": 1,
+          "max_line_length": 14,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "2576ee53fc4d9ac37bf6841785f5640807bbf6c2f002f76b200232052b42dad0",
+        "blake3": "27d6834d9e63697dfb0b0d7443c2bd9e9afa388cc3dda40493bfc6cbdf2e2b8d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "python": {
+          "language": "Python",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "longest_line": 14
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "PKG-INFO",
+        "stem": "PKG-INFO"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 583
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 583,
+        "entropy": 5.051,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 583,
+          "chars": 583,
+          "words": 56,
+          "lines": 18,
+          "max_line_length": 63,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 2
+        }
+      },
+      "integrity": {
+        "sha256": "04caa05f589e032321c23c84fa6f73cf12f503138d1c9af2bf616d77747fcb5d",
+        "blake3": "39e796760ef7961e86dfd1632d92a64a06b51ff701c70ec838839f4fddf90b69"
+      },
+      "content": {
+        "keywords": [
+          "saltmere",
+          "Version",
+          "example.org",
+          "URL",
+          "Requires",
+          "Python",
+          "Dist",
+          "Metadata",
+          "Ana Lighthouse",
+          "Saltmere harbour"
+        ],
+        "keyword_frequency": [
+          [
+            "saltmere",
+            6
+          ],
+          [
+            "tides",
+            4
+          ],
+          [
+            "example.org",
+            3
+          ],
+          [
+            "requires",
+            3
+          ],
+          [
+            "ana",
+            2
+          ],
+          [
+            "classifier",
+            2
+          ],
+          [
+            "dist",
+            2
+          ],
+          [
+            "harbour",
+            2
+          ],
+          [
+            "https",
+            2
+          ],
+          [
+            "project",
+            2
+          ],
+          [
+            "python",
+            2
+          ],
+          [
+            "url",
+            2
+          ],
+          [
+            "version",
+            2
+          ]
+        ],
+        "excerpt": "Metadata-Version: 2.4 Name: saltmere-tides Version: 1.2.0 Summary: Tide tables for Saltmere harbour Author-email: Ana Lighthouse <[redacted:email]> License-Expression: MIT Project-URL: Homepage, https://example.org/saltmere/tides Project-URL: Repository, https://example.org/saltmere/tides.git Classifier: Programming Language :: Python :: 3 Classifier: Topic :: Scientific/Engineering…",
+        "tags": [
+          "saltmere",
+          "Version",
+          "example.org",
+          "URL",
+          "Requires"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 3,
+          "urls": 2
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "SOURCES.txt",
+        "stem": "SOURCES",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 281
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 281,
+        "entropy": 4.619,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 281,
+          "chars": 281,
+          "words": 9,
+          "lines": 8,
+          "max_line_length": 44,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "32a363b44092eeb23ec5e6f27317a04941fdabbc044c23dfe30d1aa73a6aeceb",
+        "blake3": "968963c98e12573bcf0182202621eec7f4cc63ea1a621b5b6ec07ef63fb0254d"
+      },
+      "content": {
+        "excerpt": "README.md pyproject.toml saltmere_tides/__init__.py saltmere_tides.egg-info/PKG-INFO saltmere_tides.egg-info/SOURCES.txt saltmere_tides.egg-info/dependency_links.txt saltmere_tides.egg-info/entry_points.txt saltmere_tides.egg-info/requires.txt saltmere_tides.egg-info/top_level.txt"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "dependency_links.txt",
+        "stem": "dependency_links",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 1
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 1,
+        "entropy": -0.0,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 1,
+          "chars": 1,
+          "words": 0,
+          "lines": 1,
+          "max_line_length": 0,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "blake3": "295192ea1ec8566d563b1a7587e5f0198580cdbd043842f5090a4c197c20c67a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "entry_points.txt",
+        "stem": "entry_points",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 46
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 46,
+        "entropy": 4.108,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 46,
+          "chars": 46,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 27,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "10964992bf773304cc72fdb349456e4667b161bc5a94753754315b2059be565b",
+        "blake3": "cbcea9b099579d0b84e7c864155036f13095abb5f410d39f28995580a8c28f84"
+      },
+      "content": {
+        "excerpt": "[console_scripts] tides = saltmere_tides:main"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "requires.txt",
+        "stem": "requires",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 48
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 48,
+        "entropy": 4.663,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 48,
+          "chars": 48,
+          "words": 5,
+          "lines": 4,
+          "max_line_length": 27,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "e10eef6d99da9469bd7e735456248f14818369aaa2472d9c9e4ed7f0a3243119",
+        "blake3": "c71e289a3dbf0ebfa7aae9204ae5e65a5d35a7e11d6239312bfb8db996f27200"
+      },
+      "content": {
+        "title": "requests>=2.0",
+        "excerpt": "requests>=2.0 [:python_version >= \"3.10\"] rich"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 2
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "top_level.txt",
+        "stem": "top_level",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 15
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 15,
+        "entropy": 3.323,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 15,
+          "chars": 15,
+          "words": 1,
+          "lines": 1,
+          "max_line_length": 14,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "be76f1199dffa8d5c824a80c935ba21b928dd9cf763f9dbfbbe511cbb3ef67ee",
+        "blake3": "359bca5a0742d485cc43d39195b349fbc53f718f324a74c6b92001398f9c3c22"
+      },
+      "content": {
+        "excerpt": "saltmere_tides"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "setup.cfg",
+        "stem": "setup",
+        "extension": "cfg"
+      },
+      "identification": {
+        "format": "ini",
+        "name": "INI configuration",
+        "mime": "text/plain",
+        "family": "data.ini",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.ini"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 38
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 38,
+        "entropy": 4.03,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 38,
+          "chars": 38,
+          "words": 6,
+          "lines": 4,
+          "max_line_length": 12,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "1c473cbaee8da5fc46e7f0158794af5cea4414c34a3cf3f180c2001f5e38bd3e",
+        "blake3": "79fc26b5d742e577a5f7bbf5bc30a989270c1d60af2b1cf42a100124e727d798"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "ini": {
+          "dialect": "ini",
+          "sections": [
+            {
+              "name": "egg_info",
+              "keys": 2
+            }
+          ],
+          "keys": 2,
+          "values": {
+            "egg_info": {
+              "tag_build": "",
+              "tag_date": "0"
+            }
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.ini",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -90,6 +90,13 @@ impl Extractor for Yaml {
 
 crate::register_extractor!(Yaml);
 
+/// The first document of `text`, for formats that carry YAML metadata
+/// (Helm charts, Ruby gem specifications); `None` when it does not parse.
+pub(crate) fn first_document(text: &str) -> Option<Value> {
+    let docs = serde_saphyr::from_multiple_with_options::<AnyValue>(text, yaml_options()).ok()?;
+    docs.into_iter().map(|d| d.0).find(|d| !d.is_null())
+}
+
 /// YAML 1.2 booleans (`on`, `yes` stay strings: GitHub Actions' `on:` key),
 /// and the last of duplicate keys wins instead of failing the document.
 fn yaml_options() -> serde_saphyr::Options {

@@ -1,0 +1,751 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.crate",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "crate"
+  },
+  "identification": {
+    "format": "crate",
+    "name": "Rust crate",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "crate",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 851
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2006-07-24T01:21:28Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2006-07-24T01:21:28Z",
+    "latest": "2006-07-24T01:21:28Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT OR Apache-2.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 851,
+    "entropy": 7.716,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 1426,
+      "ratio": 1.6756756756756757
+    }
+  },
+  "integrity": {
+    "sha256": "d0e2384301e496eb7bdde5526ed8f0d61583493afe02a7bdd976d3ee979232dd",
+    "blake3": "605ff48dec637dc340c3aefecfa5da2f1112c6f27106127a0368614cd8a9932e"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "keywords": [
+      "tides",
+      "harbour"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour",
+    "tags": [
+      "tides",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "crate": {
+      "ecosystem": "cargo",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "MIT OR Apache-2.0",
+      "repository": "https://example.org/saltmere/tides",
+      "edition": "2021",
+      "compression": "gzip",
+      "files": 4,
+      "compressed_bytes": 1426,
+      "file_types": {
+        "lock": 1,
+        "orig": 1,
+        "rs": 1,
+        "toml": 1
+      },
+      "top_level": [
+        "saltmere-tides-1.2.0/"
+      ],
+      "modified_range": [
+        "2006-07-24T01:21:28Z",
+        "2006-07-24T01:21:28Z"
+      ],
+      "entries": [
+        {
+          "path": "saltmere-tides-1.2.0/Cargo.lock",
+          "size_bytes": 158,
+          "modified": "2006-07-24T01:21:28Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides-1.2.0/Cargo.toml",
+          "size_bytes": 943,
+          "modified": "2006-07-24T01:21:28Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides-1.2.0/Cargo.toml.orig",
+          "size_bytes": 293,
+          "modified": "2006-07-24T01:21:28Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-tides-1.2.0/src/lib.rs",
+          "size_bytes": 32,
+          "modified": "2006-07-24T01:21:28Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Cargo.lock",
+        "stem": "Cargo",
+        "extension": "lock"
+      },
+      "identification": {
+        "format": "cargo_lockfile",
+        "name": "Cargo lockfile",
+        "mime": "application/toml",
+        "family": "code.manifest",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.manifest"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 158
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 158,
+        "entropy": 4.651,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 158,
+          "chars": 158,
+          "words": 26,
+          "lines": 7,
+          "max_line_length": 49,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "2a6f1672ed58fdf6e873a7bd90a5d7ad608f208ef4020ceb0512391fc9fa0f39",
+        "blake3": "e052c59e7e71014f822c41ff154a0e0344f7e7988afe1832b5cdc0e3dac39f45"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "cargo_lockfile": {
+          "ecosystem": "cargo",
+          "lockfile_version": 4,
+          "resolved_packages": 1,
+          "sources": {
+            "local": 1
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.manifest",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Cargo.toml",
+        "stem": "Cargo",
+        "extension": "toml"
+      },
+      "identification": {
+        "format": "cargo_manifest",
+        "name": "Cargo manifest",
+        "mime": "application/toml",
+        "family": "code.manifest",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "cargo_manifest",
+            "confidence": 0.95
+          },
+          {
+            "format": "toml",
+            "confidence": 0.35
+          }
+        ],
+        "encoding": "us-ascii",
+        "extractor": "code.manifest"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 943
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {
+        "creators": [
+          "Ana Lighthouse"
+        ],
+        "license": {
+          "name": "MIT OR Apache-2.0"
+        }
+      },
+      "physical": {
+        "size_bytes": 943,
+        "entropy": 4.926,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 943,
+          "chars": 943,
+          "words": 139,
+          "lines": 36,
+          "max_line_length": 68,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 3
+        }
+      },
+      "integrity": {
+        "sha256": "042a7c2d9180947017d1848986a0bc5a35a3caf099ac159df58c555384f4219a",
+        "blake3": "e747da7000afd22ac5c38f4477e3e7ffd97284a590141665b0970fd3347f5487"
+      },
+      "content": {
+        "title": "saltmere-tides 1.2.0",
+        "description": "Tide tables for Saltmere harbour",
+        "authors": [
+          "Ana Lighthouse"
+        ],
+        "keywords": [
+          "tides",
+          "harbour"
+        ],
+        "excerpt": "Tide tables for Saltmere harbour",
+        "tags": [
+          "tides",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "cargo_manifest": {
+          "ecosystem": "cargo",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "license": "MIT OR Apache-2.0",
+          "repository": "https://example.org/saltmere/tides",
+          "edition": "2021"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.manifest",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "Cargo.toml.orig",
+        "stem": "Cargo.toml",
+        "extension": "orig"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 293
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 293,
+        "entropy": 4.894,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 293,
+          "chars": 293,
+          "words": 35,
+          "lines": 11,
+          "max_line_length": 49,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "fe686bded347232a2e096c55a6564c9522867f1b8ad178704ff4c1cba88739d5",
+        "blake3": "78e3cd4462d63c8c5a8c9ba71c1b57e2fb6d23d4c3aff122c3c39dcb0ead2be5"
+      },
+      "content": {
+        "keywords": [
+          "tides",
+          "package",
+          "MIT OR Apache",
+          "example.org",
+          "saltmere",
+          "ana",
+          "Ana Lighthouse",
+          "harbour",
+          "Tide tables",
+          "Apache"
+        ],
+        "keyword_frequency": [
+          [
+            "tides",
+            4
+          ],
+          [
+            "saltmere",
+            3
+          ],
+          [
+            "ana",
+            2
+          ],
+          [
+            "example.org",
+            2
+          ],
+          [
+            "harbour",
+            2
+          ]
+        ],
+        "excerpt": "[package] name = \"saltmere-tides\" version = \"1.2.0\" edition = \"2021\" description = \"Tide tables for Saltmere harbour\" license = \"MIT OR Apache-2.0\" authors = [\"Ana Lighthouse <[redacted:email]>\"] repository = \"https://example.org/saltmere/tides\" keywords = [\"tides\", \"harbour\"] [dependencies]",
+        "tags": [
+          "tides",
+          "package",
+          "MIT OR Apache",
+          "example.org",
+          "saltmere"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 2,
+          "urls": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "lib.rs",
+        "stem": "lib",
+        "extension": "rs"
+      },
+      "identification": {
+        "format": "rust",
+        "name": "Rust source",
+        "mime": "text/rust",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 32
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 32,
+        "entropy": 4.325,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 32,
+          "chars": 32,
+          "words": 6,
+          "lines": 1,
+          "max_line_length": 31,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "6fa425deabcfa8ce248523a794c5718086c5d502e4317e46691a8133ec83d66a",
+        "blake3": "3a58e0d91b3a2f16a926830b1b22a1f6b39e4c0facc1215d5d076433a22d244e"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "rust": {
+          "language": "Rust",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "longest_line": 31
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

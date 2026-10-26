@@ -314,12 +314,9 @@ fn web_manifest(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
     }))
 }
 
-fn browser_extension(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
-    let mv = v.get("manifest_version")?.as_u64()?;
-    let o = obj(v)?;
-    if !(o.contains_key("permissions") || o.contains_key("background") || o.contains_key("content_scripts")) {
-        return None;
-    }
+/// A WebExtension manifest's permissions (API and host), with the
+/// broad-permission risk reported.
+pub(crate) fn extension_permissions(v: &Value, cx: &mut Context<'_>) -> Vec<String> {
     let mut perms: Vec<String> = Vec::new();
     for key in ["permissions", "host_permissions", "optional_permissions"] {
         for p in v.get(key).and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str) {
@@ -331,6 +328,16 @@ fn browser_extension(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> 
         let detail = broad.iter().map(|s| s.as_str()).collect::<Vec<_>>().join(", ");
         cx.security().risk("broad_extension_permissions", Some(detail));
     }
+    perms
+}
+
+fn browser_extension(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let mv = v.get("manifest_version")?.as_u64()?;
+    let o = obj(v)?;
+    if !(o.contains_key("permissions") || o.contains_key("background") || o.contains_key("content_scripts")) {
+        return None;
+    }
+    let perms = extension_permissions(v, cx);
     title(cx, "extension.name", s(v, &["name"]).filter(|n| !n.starts_with("__MSG_")), s(v, &["description"]));
     Some(json!({
         "id": "browser_extension",

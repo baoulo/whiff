@@ -9,7 +9,7 @@
 
 use std::collections::BTreeSet;
 
-use super::{Entry, Inventory, Kind, child, unix_time, wanted};
+use super::{Entry, Inventory, Kind, Stored, stored_children, unix_time, wanted};
 use crate::plugin::{
     Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, latin1_or_utf8,
 };
@@ -99,6 +99,34 @@ fn pax_records(data: &[u8]) -> Vec<(String, Vec<u8>)> {
     out
 }
 
+/// Names of the entries whose headers lie in `head`, up to `max` (for
+/// sniffers of tar-based formats). GNU long names and pax paths are
+/// followed while their records are in `head` too.
+pub(crate) fn head_names(head: &[u8], max: usize) -> Vec<String> {
+    let mut out = Vec::new();
+    let mut at = 0usize;
+    let mut long: Option<String> = None;
+    while out.len() < max && at + 512 <= head.len() && valid_header(&head[at..]) {
+        let h = &head[at..at + 512];
+        let size = usize::try_from(number(&h[124..136]).unwrap_or(0)).unwrap_or(usize::MAX);
+        let body = head.get(at + 512..(at + 512).saturating_add(size)).unwrap_or(&[]);
+        match h[156] {
+            b'L' => long = Some(text(body)),
+            b'x' => long = pax_records(body).into_iter().find(|(k, _)| k == "path").map(|(_, v)| text(&v)),
+            b'g' => {}
+            _ => {
+                let mut name = text(&h[..100]);
+                if h[257..263] == *b"ustar\0" && h[345] != 0 {
+                    name = format!("{}/{name}", text(&h[345..500]));
+                }
+                out.push(long.take().unwrap_or(name));
+            }
+        }
+        at = at.saturating_add(512).saturating_add(size.div_ceil(512).saturating_mul(512));
+    }
+    out
+}
+
 impl Extractor for Tar {
     fn meta(&self) -> &'static ExtractorMeta {
         &META
@@ -118,221 +146,244 @@ impl Extractor for Tar {
         (printable && name[0] != 0).then_some(Sniff { format: "tar", confidence })
     }
 
-    #[allow(clippy::too_many_lines)] // one pass over the header kinds
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let len = src.len();
-        let mut inv = Inventory::new();
-        let mut at = 0u64;
-        let (mut pax, mut gnu, mut ustar) = (false, false, false);
-        let mut long_name: Option<String> = None;
-        let mut long_link: Option<String> = None;
-        let mut local: Vec<(String, Vec<u8>)> = Vec::new();
-        let mut global: Vec<(String, Vec<u8>)> = Vec::new();
-        let mut owners: BTreeSet<String> = BTreeSet::new();
-        let (mut xattrs, mut sparse) = (0u64, 0u64);
-        let mut pending: Vec<(String, u64, u64)> = Vec::new(); // children: name, offset, size
-        let mut headers = 0u64;
-        let mut ended = false;
-        while at + BLOCK <= len {
-            headers += 1;
-            if headers > MAX_HEADERS {
-                inv.truncated = true;
-                break;
+        let mut pending: Vec<Stored> = Vec::new();
+        let listing = list(src, cx, |e, data_at, size, sparse, cx| {
+            if wanted(e) && !sparse && pending.len() < cx.child_room() {
+                pending.push((e.path.clone(), data_at, size));
             }
-            if headers.is_multiple_of(1024) {
-                cx.checkpoint()?;
-            }
-            let h = src.read_vec(at, 512)?;
-            if h.iter().all(|&b| b == 0) {
-                ended = true;
-                break;
-            }
-            if !valid_header(&h) {
-                cx.warn(format!("bad header checksum at offset {at}"));
-                inv.truncated = true;
-                break;
-            }
-            let magic = &h[257..265];
-            ustar |= magic.starts_with(b"ustar");
-            gnu |= magic == b"ustar  \0";
-            let flag = h[156];
-            let mut size = number(&h[124..136]).unwrap_or(0);
-            let override_size = local
-                .iter()
-                .rev()
-                .find(|(k, _)| k == "size")
-                .and_then(|(_, v)| std::str::from_utf8(v).ok()?.parse().ok());
-            if let Some(s) = override_size.filter(|_| !matches!(flag, b'x' | b'g')) {
-                size = s;
-            }
-            // Old GNU sparse headers continue in extension blocks while byte
-            // 482 (then 504 of each block) is set; the data follows them.
-            let mut ext_blocks = 0u64;
-            if flag == b'S' {
-                let mut extended = h[482] != 0;
-                while extended && ext_blocks < 1 << 16 && at + BLOCK * (ext_blocks + 2) <= len {
-                    ext_blocks += 1;
-                    extended = src.read_vec(at + BLOCK * ext_blocks, 512)?[504] != 0;
-                }
-            }
-            let data_at = at + BLOCK * (1 + ext_blocks);
-            let next = data_at.saturating_add(size.div_ceil(BLOCK) * BLOCK);
-            match flag {
-                b'x' | b'g' | b'L' | b'K' => {
-                    let body =
-                        src.read_vec(data_at, usize::try_from(size.min(MAX_META).min(len - data_at)).unwrap_or(0))?;
-                    match flag {
-                        b'x' => {
-                            pax = true;
-                            local = pax_records(&body);
-                        }
-                        b'g' => {
-                            pax = true;
-                            global.extend(pax_records(&body));
-                        }
-                        b'L' => {
-                            gnu = true;
-                            long_name = Some(text(&body));
-                        }
-                        _ => {
-                            gnu = true;
-                            long_link = Some(text(&body));
-                        }
-                    }
-                    at = next;
-                    continue;
-                }
-                b'V' => {
-                    gnu = true;
-                    cx.format_set("volume_label", text(&h[..100]));
-                    at = next;
-                    continue;
-                }
-                _ => {}
-            }
-            // A pax value ends at a NUL; an empty one removes the override.
-            let get = |key: &str| {
-                local.iter().rev().chain(global.iter().rev()).find(|(k, _)| k == key).and_then(|(_, v)| {
-                    let v = v.split(|&b| b == 0).next().unwrap_or(&[]);
-                    (!v.is_empty()).then(|| String::from_utf8_lossy(v).into_owned())
-                })
-            };
-            let mut path = text(&h[..100]);
-            if magic == b"ustar\x0000" || (magic.starts_with(b"ustar\0") && h[345] != 0) {
-                let prefix = text(&h[345..500]);
-                if !prefix.is_empty() {
-                    path = format!("{prefix}/{path}");
-                }
-            }
-            // pax sparse files (formats 0.1 and 1.0) keep the real name aside.
-            let path = get("GNU.sparse.name").or_else(|| get("path")).or(long_name.take()).unwrap_or(path);
-            let link =
-                get("linkpath").or(long_link.take()).or_else(|| Some(text(&h[157..257])).filter(|l| !l.is_empty()));
-            let mode = number(&h[100..108]).map(|m| (m & 0o7777) as u32);
-            let mtime = get("mtime")
-                .and_then(|t| t.split('.').next()?.parse::<i64>().ok())
-                .or_else(|| number(&h[136..148]).and_then(|t| i64::try_from(t).ok()));
-            if let Some(owner) = get("uname").or_else(|| Some(text(&h[265..297])).filter(|o| !o.is_empty()))
-                && owners.len() < 64
-            {
-                owners.insert(owner);
-            }
-            xattrs += local
-                .iter()
-                .filter(|(k, _)| k.starts_with("SCHILY.xattr.") || k.starts_with("LIBARCHIVE.xattr."))
-                .count() as u64;
-            let is_sparse = flag == b'S' || local.iter().any(|(k, _)| k.starts_with("GNU.sparse."));
-            sparse += u64::from(is_sparse);
-            let kind = match flag {
-                b'0' | b'\0' | b'7' | b'S' => {
-                    if path.ends_with('/') {
-                        Kind::Dir
-                    } else {
-                        Kind::File
-                    }
-                }
-                b'1' => Kind::Hardlink,
-                b'2' => Kind::Symlink,
-                b'5' | b'D' => Kind::Dir,
-                b'3' | b'4' | b'6' => Kind::Special,
-                _ => Kind::File,
-            };
-            // Old GNU sparse headers keep the real size at 483.
-            let gnu_real = if flag == b'S' { number(&h[483..495]) } else { None };
-            let real_size = get("GNU.sparse.realsize")
-                .or_else(|| get("GNU.sparse.size"))
-                .and_then(|s| s.parse().ok())
-                .or(gnu_real)
-                .unwrap_or(size);
-            let e = Entry {
-                path: path.clone(),
-                kind,
-                size: Some(if kind == Kind::File { real_size } else { 0 }),
-                compressed: Some(if kind == Kind::File { size } else { 0 }),
-                modified: mtime.and_then(unix_time),
-                mode,
-                link: link.filter(|_| matches!(kind, Kind::Symlink | Kind::Hardlink)),
-                encrypted: false,
-                method: None,
-            };
-            if wanted(&e) && !is_sparse && pending.len() < cx.child_room() {
-                pending.push((path, data_at, size));
-            }
-            inv.push(e);
-            local.clear();
-            at = next;
-        }
-        cx.format_set(
-            "variant",
-            if pax {
-                "pax"
-            } else if gnu {
-                "gnu"
-            } else if ustar {
-                "ustar"
-            } else {
-                "v7"
-            },
-        );
-        if let Some(c) =
-            global.iter().find(|(k, _)| k == "comment").map(|(_, v)| String::from_utf8_lossy(v).into_owned())
-        {
-            cx.format_set("comment", c.clone());
-            cx.content().description(c);
-        }
-        if !owners.is_empty() {
-            if cx.privacy_strict() {
-                cx.format_set("owners", owners.len());
-            } else {
-                cx.format_set("owners", owners.into_iter().collect::<Vec<_>>());
-            }
-        }
-        if xattrs > 0 {
-            cx.format_set("extended_attributes", xattrs);
-        }
-        if sparse > 0 {
-            cx.format_set("sparse_files", sparse);
-        }
-        if !ended && !inv.truncated && at < len {
-            inv.truncated = true;
-        }
-        if !ended && at >= len && inv.entries > 0 {
-            cx.warn("no end-of-archive marker (the archive may be cut short)");
-        }
-        inv.report(cx, len);
-        let limit = cx.parse_limit() as u64;
-        for (name, offset, size) in pending {
-            let n = size.min(limit).min(len.saturating_sub(offset));
-            let data = src.read_vec(offset, usize::try_from(n).unwrap_or(0))?;
-            if !child(cx, &name, data, n == size)? {
-                break;
-            }
-        }
-        Ok(())
+        })?;
+        listing.report(cx);
+        listing.inventory.report(cx, len);
+        stored_children(src, cx, pending)
     }
 }
 
 crate::register_extractor!(Tar);
+
+/// What a pass over a tar archive found, besides the entries.
+pub(crate) struct Listing {
+    pub inventory: Inventory,
+    pax: bool,
+    gnu: bool,
+    ustar: bool,
+    comment: Option<String>,
+    volume_label: Option<String>,
+    owners: BTreeSet<String>,
+    xattrs: u64,
+    sparse: u64,
+}
+
+impl Listing {
+    /// Write the tar-specific facts (variant, comment, owners …), not the inventory.
+    pub fn report(&self, cx: &mut Context<'_>) {
+        let variant = if self.pax {
+            "pax"
+        } else if self.gnu {
+            "gnu"
+        } else if self.ustar {
+            "ustar"
+        } else {
+            "v7"
+        };
+        cx.format_set("variant", variant);
+        if let Some(l) = &self.volume_label {
+            cx.format_set("volume_label", l.clone());
+        }
+        if let Some(c) = &self.comment {
+            cx.format_set("comment", c.clone());
+            cx.content().description(c.clone());
+        }
+        if !self.owners.is_empty() {
+            if cx.privacy_strict() {
+                cx.format_set("owners", self.owners.len());
+            } else {
+                cx.format_set("owners", self.owners.iter().cloned().collect::<Vec<_>>());
+            }
+        }
+        if self.xattrs > 0 {
+            cx.format_set("extended_attributes", self.xattrs);
+        }
+        if self.sparse > 0 {
+            cx.format_set("sparse_files", self.sparse);
+        }
+    }
+}
+
+/// Read every header of the tar archive in `src` into an inventory,
+/// calling `visit` with each entry, its data offset and stored size, and
+/// whether it is a sparse file (whose stored data is not the file).
+#[allow(clippy::too_many_lines)] // one pass over the header kinds
+pub(crate) fn list(
+    src: &mut dyn Source,
+    cx: &mut Context<'_>,
+    mut visit: impl FnMut(&Entry, u64, u64, bool, &mut Context<'_>),
+) -> Result<Listing, ExtractError> {
+    let len = src.len();
+    let mut inv = Inventory::new();
+    let mut at = 0u64;
+    let (mut pax, mut gnu, mut ustar) = (false, false, false);
+    let mut long_name: Option<String> = None;
+    let mut volume_label: Option<String> = None;
+    let mut long_link: Option<String> = None;
+    let mut local: Vec<(String, Vec<u8>)> = Vec::new();
+    let mut global: Vec<(String, Vec<u8>)> = Vec::new();
+    let mut owners: BTreeSet<String> = BTreeSet::new();
+    let (mut xattrs, mut sparse) = (0u64, 0u64);
+    let mut headers = 0u64;
+    let mut ended = false;
+    while at + BLOCK <= len {
+        headers += 1;
+        if headers > MAX_HEADERS {
+            inv.truncated = true;
+            break;
+        }
+        if headers.is_multiple_of(1024) {
+            cx.checkpoint()?;
+        }
+        let h = src.read_vec(at, 512)?;
+        if h.iter().all(|&b| b == 0) {
+            ended = true;
+            break;
+        }
+        if !valid_header(&h) {
+            cx.warn(format!("bad header checksum at offset {at}"));
+            inv.truncated = true;
+            break;
+        }
+        let magic = &h[257..265];
+        ustar |= magic.starts_with(b"ustar");
+        gnu |= magic == b"ustar  \0";
+        let flag = h[156];
+        let mut size = number(&h[124..136]).unwrap_or(0);
+        let override_size =
+            local.iter().rev().find(|(k, _)| k == "size").and_then(|(_, v)| std::str::from_utf8(v).ok()?.parse().ok());
+        if let Some(s) = override_size.filter(|_| !matches!(flag, b'x' | b'g')) {
+            size = s;
+        }
+        // Old GNU sparse headers continue in extension blocks while byte
+        // 482 (then 504 of each block) is set; the data follows them.
+        let mut ext_blocks = 0u64;
+        if flag == b'S' {
+            let mut extended = h[482] != 0;
+            while extended && ext_blocks < 1 << 16 && at + BLOCK * (ext_blocks + 2) <= len {
+                ext_blocks += 1;
+                extended = src.read_vec(at + BLOCK * ext_blocks, 512)?[504] != 0;
+            }
+        }
+        let data_at = at + BLOCK * (1 + ext_blocks);
+        let next = data_at.saturating_add(size.div_ceil(BLOCK) * BLOCK);
+        match flag {
+            b'x' | b'g' | b'L' | b'K' => {
+                let body =
+                    src.read_vec(data_at, usize::try_from(size.min(MAX_META).min(len - data_at)).unwrap_or(0))?;
+                match flag {
+                    b'x' => {
+                        pax = true;
+                        local = pax_records(&body);
+                    }
+                    b'g' => {
+                        pax = true;
+                        global.extend(pax_records(&body));
+                    }
+                    b'L' => {
+                        gnu = true;
+                        long_name = Some(text(&body));
+                    }
+                    _ => {
+                        gnu = true;
+                        long_link = Some(text(&body));
+                    }
+                }
+                at = next;
+                continue;
+            }
+            b'V' => {
+                gnu = true;
+                volume_label = Some(text(&h[..100]));
+                at = next;
+                continue;
+            }
+            _ => {}
+        }
+        // A pax value ends at a NUL; an empty one removes the override.
+        let get = |key: &str| {
+            local.iter().rev().chain(global.iter().rev()).find(|(k, _)| k == key).and_then(|(_, v)| {
+                let v = v.split(|&b| b == 0).next().unwrap_or(&[]);
+                (!v.is_empty()).then(|| String::from_utf8_lossy(v).into_owned())
+            })
+        };
+        let mut path = text(&h[..100]);
+        if magic == b"ustar\x0000" || (magic.starts_with(b"ustar\0") && h[345] != 0) {
+            let prefix = text(&h[345..500]);
+            if !prefix.is_empty() {
+                path = format!("{prefix}/{path}");
+            }
+        }
+        // pax sparse files (formats 0.1 and 1.0) keep the real name aside.
+        let path = get("GNU.sparse.name").or_else(|| get("path")).or(long_name.take()).unwrap_or(path);
+        let link = get("linkpath").or(long_link.take()).or_else(|| Some(text(&h[157..257])).filter(|l| !l.is_empty()));
+        let mode = number(&h[100..108]).map(|m| (m & 0o7777) as u32);
+        let mtime = get("mtime")
+            .and_then(|t| t.split('.').next()?.parse::<i64>().ok())
+            .or_else(|| number(&h[136..148]).and_then(|t| i64::try_from(t).ok()));
+        if let Some(owner) = get("uname").or_else(|| Some(text(&h[265..297])).filter(|o| !o.is_empty()))
+            && owners.len() < 64
+        {
+            owners.insert(owner);
+        }
+        xattrs +=
+            local.iter().filter(|(k, _)| k.starts_with("SCHILY.xattr.") || k.starts_with("LIBARCHIVE.xattr.")).count()
+                as u64;
+        let is_sparse = flag == b'S' || local.iter().any(|(k, _)| k.starts_with("GNU.sparse."));
+        sparse += u64::from(is_sparse);
+        let kind = match flag {
+            b'0' | b'\0' | b'7' | b'S' => {
+                if path.ends_with('/') {
+                    Kind::Dir
+                } else {
+                    Kind::File
+                }
+            }
+            b'1' => Kind::Hardlink,
+            b'2' => Kind::Symlink,
+            b'5' | b'D' => Kind::Dir,
+            b'3' | b'4' | b'6' => Kind::Special,
+            _ => Kind::File,
+        };
+        // Old GNU sparse headers keep the real size at 483.
+        let gnu_real = if flag == b'S' { number(&h[483..495]) } else { None };
+        let real_size = get("GNU.sparse.realsize")
+            .or_else(|| get("GNU.sparse.size"))
+            .and_then(|s| s.parse().ok())
+            .or(gnu_real)
+            .unwrap_or(size);
+        let e = Entry {
+            path: path.clone(),
+            kind,
+            size: Some(if kind == Kind::File { real_size } else { 0 }),
+            compressed: Some(if kind == Kind::File { size } else { 0 }),
+            modified: mtime.and_then(unix_time),
+            mode,
+            link: link.filter(|_| matches!(kind, Kind::Symlink | Kind::Hardlink)),
+            encrypted: false,
+            method: None,
+        };
+        visit(&e, data_at, size, is_sparse, cx);
+        inv.push(e);
+        local.clear();
+        at = next;
+    }
+    if !ended && !inv.truncated && at < len {
+        inv.truncated = true;
+    }
+    if !ended && at >= len && inv.entries > 0 {
+        cx.warn("no end-of-archive marker (the archive may be cut short)");
+    }
+    let comment = global.iter().find(|(k, _)| k == "comment").map(|(_, v)| String::from_utf8_lossy(v).into_owned());
+    Ok(Listing { inventory: inv, pax, gnu, ustar, comment, volume_label, owners, xattrs, sparse })
+}
 
 #[cfg(test)]
 mod tests {

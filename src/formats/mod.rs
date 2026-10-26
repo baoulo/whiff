@@ -37,6 +37,8 @@ pub(crate) mod email;
 #[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]
+pub(crate) mod package;
+#[cfg(feature = "common")]
 pub(crate) mod playlist;
 #[cfg(feature = "common")]
 pub(crate) mod score;

@@ -137,7 +137,7 @@ impl Extractor for ZipArchive {
 
 crate::register_extractor!(ZipArchive);
 
-fn entry(e: &ZipEntry) -> Entry {
+pub(crate) fn entry(e: &ZipEntry) -> Entry {
     let kind = if e.is_dir() {
         Kind::Dir
     } else if e.is_symlink() {
@@ -172,7 +172,7 @@ fn overlapping(entries: &[ZipEntry]) -> usize {
 }
 
 /// Hand the readable entries on, in order, as far as the limits allow.
-fn children(src: &mut dyn Source, cx: &mut Context<'_>, zip: &Zip) -> Result<(), ExtractError> {
+pub(crate) fn children(src: &mut dyn Source, cx: &mut Context<'_>, zip: &Zip) -> Result<(), ExtractError> {
     let limit = cx.parse_limit();
     let mut unreadable = 0u64;
     for e in &zip.entries {

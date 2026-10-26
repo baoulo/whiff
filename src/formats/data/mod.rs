@@ -4,7 +4,7 @@
 pub(crate) mod csv;
 pub(crate) mod ini;
 pub(crate) mod json;
-mod known;
+pub(crate) mod known;
 mod schema;
 pub(crate) mod sql;
 pub(crate) mod toml;

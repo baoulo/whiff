@@ -1,0 +1,480 @@
+---
+source: src/formats/package/msi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.msi",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "msi"
+  },
+  "identification": {
+    "format": "msi",
+    "name": "Windows Installer package",
+    "mime": "application/x-msi",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "msi",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "package.msi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8704
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.msi",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.msi",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false,
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "RegisterTides (exe), CheckHarbour (vbscript)",
+        "source": "package.msi"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 8704,
+    "entropy": 4.62,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3d3885075859f32eb4c70d34f8594f10c36118dcc810f388bfff6a5afe834dc2",
+    "blake3": "0fcb107dc34ed0bf9f85f1895cdf9dc6a1c4ac0784e759dd4e970d737a3fb4a6"
+  },
+  "content": {
+    "title": "Saltmere Tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Saltmere Harbour"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "msi": {
+      "ecosystem": "windows_installer",
+      "name": "Saltmere Tides",
+      "version": "1.2.0",
+      "architecture": "x64",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "Saltmere Harbour"
+      ],
+      "install_scripts": [
+        "RegisterTides (exe)",
+        "CheckHarbour (vbscript)"
+      ],
+      "database_title": "Installation Database",
+      "languages": [
+        "1033",
+        "2057"
+      ],
+      "package_code": "{6A1D5C43-2E0F-4B61-9E3A-5A1C0C2B7D10}",
+      "minimum_installer_version": "5.0",
+      "compressed": true,
+      "creating_application": "craft_packages.py",
+      "created": "2025-09-01T12:00:00Z",
+      "saved": "2025-09-01T12:00:00Z",
+      "keywords": "Installer, tides",
+      "product_code": "{0B2C1F44-7E8A-4C7B-9D61-2B4E5C6A7F80}",
+      "upgrade_code": "{A41E3B22-9C5D-4F18-8B7A-6D2C1E0F9A33}",
+      "product_language": "1033",
+      "all_users": "1",
+      "files": 2,
+      "installed_size_bytes": 2108,
+      "components": 1,
+      "features": 1,
+      "directories": 3,
+      "tables": 7,
+      "cabinets": [
+        "#tides.cab"
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.cab",
+        "stem": "tides",
+        "extension": "cab"
+      },
+      "identification": {
+        "format": "cab",
+        "name": "Microsoft Cabinet",
+        "mime": "application/vnd.ms-cab-compressed",
+        "family": "archive",
+        "confidence": 0.97,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "archive.cab"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2118
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "archive.cab",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2118,
+        "entropy": 7.133,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 3,
+          "uncompressed_bytes": 69367,
+          "ratio": 32.75118035882908
+        }
+      },
+      "integrity": {
+        "sha256": "22e61388d4bf74c5f65d3a89ab1cf1e4b314754a30e9de917e0c5766af68f5c4",
+        "blake3": "fb27b15ccf0695c2af853c90e25cc666d39faa80b3205050e7c8c6dec3f8dd1d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "cab": {
+          "version": "1.3",
+          "folders": 2,
+          "compression": [
+            "none",
+            "MSZIP"
+          ],
+          "files": 3,
+          "methods": {
+            "none": 2,
+            "MSZIP": 1
+          },
+          "file_types": {
+            "txt": 2,
+            "csv": 1
+          },
+          "top_level": [
+            "log.csv",
+            "notes.txt",
+            "tides/"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "notes.txt",
+              "size_bytes": 159,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "log.csv",
+              "size_bytes": 88,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "tides\\year.txt",
+              "size_bytes": 69120,
+              "modified": "2025-09-01T12:00:00"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "notes.txt",
+            "stem": "notes",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 159
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "log.csv",
+            "stem": "log",
+            "extension": "csv"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 88
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "year.txt",
+            "stem": "year",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 69120
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "archive.cab",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.msi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

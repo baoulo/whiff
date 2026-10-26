@@ -1,0 +1,157 @@
+---
+source: src/formats/package/msi.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-runtime.msm",
+    "stem": "saltmere-tides-runtime",
+    "extension": "msm"
+  },
+  "identification": {
+    "format": "msm",
+    "name": "Windows Installer merge module",
+    "mime": "application/x-msi",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "msm",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "package.msi"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4608
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.msi",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 4608,
+    "entropy": 2.837,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "adfb624bcee363ae6fb292f804b63d4382298d32764fc658187b9b23e14ff6ed",
+    "blake3": "e6f2d6387f8c44542a918aee63577473c82abfef5aa0a5e271ecaf29231a77fc"
+  },
+  "content": {
+    "title": "Saltmere Tides Runtime 1.2.0",
+    "authors": [
+      "Saltmere Harbour"
+    ],
+    "excerpt": "Saltmere Tides Runtime 1.2.0"
+  },
+  "metadata": {},
+  "format": {
+    "msm": {
+      "ecosystem": "windows_installer",
+      "name": "Saltmere Tides Runtime",
+      "version": "1.2.0",
+      "architecture": "Intel",
+      "authors": [
+        "Saltmere Harbour"
+      ],
+      "database_title": "Merge Module",
+      "languages": [
+        "1033"
+      ],
+      "package_code": "{5B2E8C11-3D4F-4A6B-9C8D-7E6F5A4B3C2D}",
+      "minimum_installer_version": "2.0",
+      "compressed": true,
+      "creating_application": "craft_packages.py",
+      "created": "2025-09-01T12:00:00Z",
+      "files": 2,
+      "installed_size_bytes": 2108,
+      "components": 1,
+      "directories": 3,
+      "tables": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.msi",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

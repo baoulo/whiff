@@ -1,0 +1,777 @@
+---
+source: src/formats/package/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.aab",
+    "stem": "saltmere-tides",
+    "extension": "aab"
+  },
+  "identification": {
+    "format": "aab",
+    "name": "Android App Bundle",
+    "mime": "application/x-authorware-bin",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "aab",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "package.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2138
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "package.android",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 2138,
+    "entropy": 7.48,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 5,
+      "uncompressed_bytes": 3483,
+      "ratio": 1.6290926099158092
+    }
+  },
+  "integrity": {
+    "sha256": "cba662fa88ec2dfe505c08cdcee44384a055dd434bb3fcef8121e987fcc28e81",
+    "blake3": "e4c51b0e4b40835410804b37cd8fc941af19311ac90a351b675cdd1ec6410b10"
+  },
+  "content": {
+    "title": "org.saltmere.tides 1.2.0",
+    "excerpt": "org.saltmere.tides 1.2.0"
+  },
+  "metadata": {},
+  "format": {
+    "aab": {
+      "ecosystem": "android",
+      "name": "org.saltmere.tides",
+      "version": "1.2.0",
+      "release": "12",
+      "compile_sdk": "37",
+      "platform_build_version": "17",
+      "min_sdk": 24,
+      "target_sdk": 36,
+      "allow_backup": true,
+      "launcher_activity": ".MainActivity",
+      "dangerous_permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ],
+      "features": [
+        "android.hardware.location.gps"
+      ],
+      "activities": 1,
+      "services": 1,
+      "receivers": 1,
+      "exported_components": 2,
+      "dex_files": 1,
+      "native_abis": [
+        "arm64-v8a"
+      ],
+      "files": 5,
+      "compressed_bytes": 1498,
+      "methods": {
+        "deflate": 5
+      },
+      "file_types": {
+        "csv": 1,
+        "dex": 1,
+        "pb": 1,
+        "so": 1,
+        "xml": 1
+      },
+      "top_level": [
+        "base/",
+        "BundleConfig.pb"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "BundleConfig.pb",
+          "size_bytes": 8,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "base/manifest/AndroidManifest.xml",
+          "size_bytes": 2491,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "base/dex/classes.dex",
+          "size_bytes": 920,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "base/assets/tides.csv",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "base/lib/arm64-v8a/libtides.so",
+          "size_bytes": 4,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "BundleConfig.pb",
+        "stem": "BundleConfig",
+        "extension": "pb"
+      },
+      "identification": {
+        "format": "binary",
+        "name": "Binary data",
+        "mime": "application/octet-stream",
+        "family": "binary.unknown",
+        "confidence": 0.1,
+        "detected_by": "heuristic",
+        "extractor": "binary.unknown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 8
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 8,
+        "entropy": 2.5,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "34dd025a1e401b2638a2f310f101c8b4a8ddc3e1a307a6e783a6006b205e53cf",
+        "blake3": "9ea0602dc46acdf39900c079c1c21ab2d3ad3cf367946ba2045776e6756a54a2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "binary": {
+          "bytes_examined": 8,
+          "strings": {
+            "ascii": 0,
+            "utf16le": 0
+          },
+          "strings_sample": [],
+          "entropy_profile": {
+            "blocks": 0
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "binary.unknown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "AndroidManifest.xml",
+        "stem": "AndroidManifest",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2491
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2491,
+        "entropy": 5.529,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "bc4ad1984a78a8b029f4c1db107a9c72b8f6f0f568bcf721bf09802f79568608",
+        "blake3": "6843bcae8ae8fd7059dbb19953cf079e78c146e4e43b2051477ad009355948c7"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "well_formed": true,
+          "elements": 0,
+          "attributes": 0,
+          "max_depth": 0,
+          "distinct_elements": 0,
+          "top_elements": {},
+          "text_bytes": 2577
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "classes.dex",
+        "stem": "classes",
+        "extension": "dex"
+      },
+      "identification": {
+        "format": "dex",
+        "name": "Dalvik Executable",
+        "mime": "application/vnd.android.dex",
+        "family": "bytecode",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 920
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 920,
+        "entropy": 4.566,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "25f20e41aeae37d9cbbe752b1e949d7b3437fa49d0af8ec738c89af4dde2d2a8",
+        "blake3": "91b63dca36acf424d5bf73a815212060f110c2d8124c01a37786136bc41550e2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.csv",
+        "stem": "tides",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.05,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 22,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d4e900d4d2b2dae61f3078ebe92597adee0e1bd6ed666b2d2bcc76342bc2c949",
+        "blake3": "5768308f561208a5b1eda920eaab1707b1f3a24dcd6b3ae1ed3ab8c2b8c1aead"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "high",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            },
+            {
+              "name": "low",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "06:12",
+              "12:31"
+            ],
+            [
+              "2025-09-02",
+              "06:58",
+              "13:15"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "libtides.so",
+        "stem": "libtides",
+        "extension": "so"
+      },
+      "identification": {
+        "format": "elf",
+        "name": "Executable and Linkable Format",
+        "mime": "application/x-executable",
+        "family": "exec",
+        "confidence": 0.5,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": null
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 4
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 4,
+        "entropy": 2.0,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 4,
+          "chars": 4,
+          "words": 1,
+          "lines": 0,
+          "max_line_length": 3,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3bdbb4fe8397cd2b842430b39ccff01a8663c751945ef5e9a09e267fb8b1d359",
+        "blake3": "00a0cf9af76f7e29417c67eaffca7443e4df433baa8e33882d4d24e3a6675c38"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {},
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

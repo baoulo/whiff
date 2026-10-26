@@ -1,0 +1,649 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0-noarch-1_saltmere.tgz",
+    "stem": "saltmere-tides-1.2.0-noarch-1_saltmere",
+    "extension": "tgz"
+  },
+  "identification": {
+    "format": "slackware_package",
+    "name": "Slackware package",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "slackware_package",
+        "confidence": 0.95
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.77
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 457
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "install/doinst.sh",
+        "source": "package.tarball"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 457,
+    "entropy": 7.492,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 7,
+      "uncompressed_bytes": 429,
+      "ratio": 0.9387308533916849
+    }
+  },
+  "integrity": {
+    "sha256": "19c68b8ca8af10ec78e144949eb71487c5420694cb1b924e815b8c40064eddfc",
+    "blake3": "50b8952a088ad689f626ceed9f04c528a4eaf2b317e8c372e679b2e1cd1fca27"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "saltmere-tides (Tide tables for Saltmere harbour)",
+    "language": {
+      "code": "en",
+      "confidence": 0.91
+    },
+    "keywords": [
+      "Saltmere harbour",
+      "saltmere",
+      "tides",
+      "Tide tables",
+      "harbour",
+      "tables for saltmere",
+      "times for saltmere",
+      "tower schedule",
+      "example.org",
+      "https"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        5
+      ],
+      [
+        "tides",
+        4
+      ],
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "excerpt": "saltmere-tides (Tide tables for Saltmere harbour) High and low water times for Saltmere harbour, with the bell tower schedule. Homepage: https://example.org/saltmere/tides",
+    "tags": [
+      "Saltmere harbour",
+      "saltmere",
+      "tides",
+      "Tide tables",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "slackware_package": {
+      "ecosystem": "slackware",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "release": "1_saltmere",
+      "architecture": "noarch",
+      "install_scripts": [
+        "install/doinst.sh"
+      ],
+      "compression": "gzip",
+      "files": 3,
+      "directories": 4,
+      "compressed_bytes": 429,
+      "file_types": {
+        "(none)": 2,
+        "sh": 1
+      },
+      "top_level": [
+        "install/",
+        "usr/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "./",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "install/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "install/slack-desc",
+          "size_bytes": 350,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "install/doinst.sh",
+          "size_bytes": 45,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "usr/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/bin/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/bin/saltmere-tides",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "slack-desc",
+        "stem": "slack-desc"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 350
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 350,
+        "entropy": 4.585,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 350,
+          "chars": 350,
+          "words": 45,
+          "lines": 7,
+          "max_line_length": 92,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d8f6ad531594cb0256d99ba5b1e162e19fbac6902e46428a85300b37d276e01c",
+        "blake3": "026def150f4e10422a626b438588ce687bab2f2d2273c26a7b890c2c328a922a"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "EDIT THIS FILE",
+          "tides",
+          "saltmere",
+          "FILE",
+          "edit",
+          "Saltmere harbour",
+          "easier to edit",
+          "edit a package",
+          "Tide tables",
+          "harbour"
+        ],
+        "keyword_frequency": [
+          [
+            "saltmere",
+            9
+          ],
+          [
+            "tides",
+            8
+          ],
+          [
+            "edit",
+            2
+          ],
+          [
+            "harbour",
+            2
+          ]
+        ],
+        "excerpt": "# HOW TO EDIT THIS FILE: # The \"handy ruler\" below makes it easier to edit a package description. saltmere-tides: saltmere-tides (Tide tables for Saltmere harbour) saltmere-tides: saltmere-tides: High and low water times for Saltmere harbour, with the bell tower schedule. saltmere-tides: saltmere-tides: Homepage: https://example.org/saltmere/tides",
+        "tags": [
+          "EDIT THIS FILE",
+          "tides",
+          "saltmere",
+          "FILE",
+          "edit"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1,
+          "urls": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "doinst.sh",
+        "stem": "doinst",
+        "extension": "sh"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 45
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 45,
+        "entropy": 4.028,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 45,
+          "chars": 45,
+          "words": 9,
+          "lines": 1,
+          "max_line_length": 44,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d6e667d05f8361147b9b940b986bd59b7188315903784e8f385d28ef4cbed3fb",
+        "blake3": "4790fe746fae1a824cf5eb50d41dc01ea16a063750cf81a0be57b2863b9c50c0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 1,
+            "comment": 0,
+            "blank": 0,
+            "total": 1
+          },
+          "is_test": false,
+          "generated": false,
+          "longest_line": 44
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-tides",
+        "stem": "saltmere-tides"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 4.514,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 5,
+          "lines": 2,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "39f7b1fcef5fe4c5c76bf67fb889adc9afcee23b8281b7dd376ddc65feeb568c",
+        "blake3": "7ea1c258582812db29eab2d7b46e88e2741623b688ce8db3ee26dc923f517b44"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 23
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,1159 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0-1-any.pkg.tar.zst",
+    "stem": "saltmere-tides-1.2.0-1-any.pkg.tar",
+    "extension": "zst"
+  },
+  "identification": {
+    "format": "arch_package",
+    "name": "Arch Linux package",
+    "mime": "application/x-tar",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "arch_package",
+        "confidence": 0.95
+      },
+      {
+        "format": "zstd",
+        "confidence": 0.81
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 830
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": ".INSTALL",
+        "source": "package.tarball"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 830,
+    "entropy": 7.744,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 9,
+      "uncompressed_bytes": 721,
+      "ratio": 0.8686746987951808
+    }
+  },
+  "integrity": {
+    "sha256": "36e17cb342f51cf66b3ee219f61022440ea466d241fa74a08dc17ad354668966",
+    "blake3": "676a2867418b1a515fb57fe3b73b8f295acb40a2bf75615390dbf72f2a7f9025"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0-1",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "arch_package": {
+      "ecosystem": "arch",
+      "name": "saltmere-tides",
+      "version": "1.2.0-1",
+      "architecture": "any",
+      "license": "MIT",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "Ana Lighthouse"
+      ],
+      "dependencies": {
+        "python": ">=3.9",
+        "bash": "*"
+      },
+      "dependencies_count": 2,
+      "install_scripts": [
+        ".INSTALL"
+      ],
+      "compression": "zstd",
+      "generator": "makepkg 7.0.0",
+      "build_time": "2025-09-01T12:00:00Z",
+      "installed_size_bytes": 4096,
+      "provides": [
+        "tide-tables"
+      ],
+      "conflicts": [
+        "old-tides"
+      ],
+      "files": 6,
+      "directories": 3,
+      "compressed_bytes": 721,
+      "file_types": {
+        "(none)": 1,
+        "buildinfo": 1,
+        "csv": 1,
+        "install": 1,
+        "mtree": 1,
+        "pkginfo": 1
+      },
+      "top_level": [
+        "usr/",
+        ".BUILDINFO",
+        ".INSTALL",
+        ".MTREE",
+        ".PKGINFO"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": ".BUILDINFO",
+          "size_bytes": 36,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": ".MTREE",
+          "size_bytes": 111,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": ".PKGINFO",
+          "size_bytes": 427,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": ".INSTALL",
+          "size_bytes": 53,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "usr/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/bin/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/bin/saltmere-tides",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/share/saltmere/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/share/saltmere/tides.csv",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": ".BUILDINFO",
+        "stem": ".BUILDINFO"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 36
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 36,
+        "entropy": 4.107,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 36,
+          "chars": 36,
+          "words": 6,
+          "lines": 2,
+          "max_line_length": 24,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "5fea93ad8868c888f283e2d3a0380a72dd86c730ddc934111477991e6ecd16c9",
+        "blake3": "979c648f153e7e416130127a90701856409b83f3374cfd772d65432cdfcc6a19"
+      },
+      "content": {
+        "excerpt": "format = 2 pkgname = saltmere-tides"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": ".MTREE",
+        "stem": ".MTREE"
+      },
+      "identification": {
+        "format": "gzip",
+        "name": "gzip",
+        "mime": "application/gzip",
+        "family": "compress",
+        "confidence": 0.72,
+        "detected_by": "magic",
+        "extractor": "compress.gzip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 111
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00Z",
+            "source": "compress.gzip",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2025-09-01T12:00:00Z",
+        "latest": "2025-09-01T12:00:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 111,
+        "entropy": 6.33,
+        "entropy_scope": "file",
+        "container": {
+          "uncompressed_bytes": 103,
+          "ratio": 0.9279279279279279
+        }
+      },
+      "integrity": {
+        "sha256": "417fa7ced72056960eb3d652b616b43c796b79f3cc2e1ef9dc1b2fb28c033bbf",
+        "blake3": "84fc9012923001e340abd4015b60d5da75d410feb93e1e0cba52f8c8f6fb886f"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "gzip": {
+          "method": "deflate",
+          "modified": "2025-09-01T12:00:00Z",
+          "level": "maximum",
+          "declared_size_bytes": 103
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": ".MTREE.out",
+            "stem": ".MTREE",
+            "extension": "out"
+          },
+          "identification": {
+            "format": "text",
+            "name": "Plain text",
+            "mime": "text/plain",
+            "family": "text.plain",
+            "confidence": 0.3,
+            "detected_by": "heuristic",
+            "encoding": "us-ascii",
+            "extractor": "text.plain"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 103
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 103,
+            "entropy": 4.652,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 103,
+              "chars": 103,
+              "words": 10,
+              "lines": 3,
+              "max_line_length": 59,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "701509d60686c16b61750057b93cc179202ef3ee5226673fbc88506f20c5704a",
+            "blake3": "cdd53fc18fabf64d64c542dbde11881e64c7a16513503f8e77b79c7e6789db2b"
+          },
+          "content": {
+            "excerpt": "#mtree /set type=file uid=0 gid=0 mode=644 ./usr/bin/saltmere-tides time=1756728000.0 mode=755 size=34"
+          },
+          "metadata": {},
+          "format": {
+            "text": {
+              "paragraphs": 1
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "text.plain",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "compress.gzip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": ".PKGINFO",
+        "stem": ".PKGINFO"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 427
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 427,
+        "entropy": 4.851,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 427,
+          "chars": 427,
+          "words": 61,
+          "lines": 17,
+          "max_line_length": 43,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "a2b01dd525df268497970df692262edcba6ae64833e02e5e54630e7194663c8f",
+        "blake3": "d0bdaa9a169bc9dca371dd425923c059a60601132487f450f84f3e124620ee37"
+      },
+      "content": {
+        "keywords": [
+          "Generated by makepkg",
+          "tides",
+          "saltmere",
+          "Generated",
+          "example.org",
+          "ana",
+          "depend",
+          "Ana Lighthouse",
+          "makepkg",
+          "tables"
+        ],
+        "keyword_frequency": [
+          [
+            "tides",
+            6
+          ],
+          [
+            "saltmere",
+            5
+          ],
+          [
+            "ana",
+            2
+          ],
+          [
+            "chart",
+            2
+          ],
+          [
+            "depend",
+            2
+          ],
+          [
+            "example.org",
+            2
+          ],
+          [
+            "tables",
+            2
+          ]
+        ],
+        "excerpt": "# Generated by makepkg 7.0.0 pkgname = saltmere-tides pkgbase = saltmere-tides xdata = pkgtype=pkg pkgver = 1.2.0-1 pkgdesc = Tide tables for Saltmere harbour url = https://example.org/saltmere/tides builddate = 1756728000 packager = Ana Lighthouse <[redacted:email]> size = 4096 arch = any license = MIT depend = python>=3.9 depend = bash optdepend = saltmere-charts: chart overlays provides =…",
+        "tags": [
+          "Generated by makepkg",
+          "tides",
+          "saltmere",
+          "Generated",
+          "example.org"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1,
+          "urls": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": ".INSTALL",
+        "stem": ".INSTALL"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 53
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 53,
+        "entropy": 4.207,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 53,
+          "chars": 53,
+          "words": 7,
+          "lines": 3,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "cd795915ef0448f2cbb5287de45b8547dc922dc30fca4014ebc7f2289ae4ce66",
+        "blake3": "89aa3c6be39a46ac2983d802aaed7d55617333b9dc2aefcc69499349bbe7b7bc"
+      },
+      "content": {
+        "excerpt": "post_install() { echo 'Saltmere tides installed' }"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-tides",
+        "stem": "saltmere-tides"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 4.514,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 5,
+          "lines": 2,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "39f7b1fcef5fe4c5c76bf67fb889adc9afcee23b8281b7dd376ddc65feeb568c",
+        "blake3": "7ea1c258582812db29eab2d7b46e88e2741623b688ce8db3ee26dc923f517b44"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 23
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.csv",
+        "stem": "tides",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.05,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 22,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d4e900d4d2b2dae61f3078ebe92597adee0e1bd6ed666b2d2bcc76342bc2c949",
+        "blake3": "5768308f561208a5b1eda920eaab1707b1f3a24dcd6b3ae1ed3ab8c2b8c1aead"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "high",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            },
+            {
+              "name": "low",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "06:12",
+              "12:31"
+            ],
+            [
+              "2025-09-02",
+              "06:58",
+              "13:15"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

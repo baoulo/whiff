@@ -1,0 +1,1216 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0.pkg",
+    "stem": "saltmere-tides-1.2.0",
+    "extension": "pkg"
+  },
+  "identification": {
+    "format": "freebsd_package",
+    "name": "FreeBSD package",
+    "mime": "application/x-tar",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "freebsd_package",
+        "confidence": 0.95
+      },
+      {
+        "format": "zstd",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 734
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "post-install",
+        "source": "package.tarball"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "creators": [
+      "ana@example.org"
+    ],
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "physical": {
+    "size_bytes": 734,
+    "entropy": 7.624,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 1429,
+      "ratio": 1.946866485013624
+    }
+  },
+  "integrity": {
+    "sha256": "8c0fe24d9b93f97efd0e55d901fda957991a7e89395832d102c4ba4fe9bfb32e",
+    "blake3": "a857ba16b41863960f28c22c29aa2c7f4ed8ecf1decd9fb0252372a38423c371"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "ana@example.org"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.735
+    },
+    "keywords": [
+      "Saltmere harbour",
+      "saltmere",
+      "tables for saltmere",
+      "harbour",
+      "times for saltmere",
+      "tides",
+      "Tide tables",
+      "tower schedule",
+      "schedule",
+      "tables"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "excerpt": "Tide tables for Saltmere harbour High and low water times for Saltmere harbour, with the bell tower schedule.",
+    "tags": [
+      "Saltmere harbour",
+      "saltmere",
+      "tables for saltmere",
+      "harbour",
+      "times for saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "freebsd_package": {
+      "ecosystem": "freebsd",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "architecture": "FreeBSD:14:*",
+      "license": "MIT",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "ana@example.org"
+      ],
+      "dependencies": {
+        "python311": "3.11.9"
+      },
+      "dependencies_count": 1,
+      "install_scripts": [
+        "post-install"
+      ],
+      "compression": "zstd",
+      "origin": "misc/saltmere-tides",
+      "prefix": "/usr/local",
+      "installed_size_bytes": 94,
+      "categories": [
+        "misc"
+      ],
+      "listed_files": 2,
+      "files": 4,
+      "compressed_bytes": 1429,
+      "file_types": {
+        "(none)": 3,
+        "csv": 1
+      },
+      "top_level": [
+        "usr/",
+        "+COMPACT_MANIFEST",
+        "+MANIFEST"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "+COMPACT_MANIFEST",
+          "size_bytes": 524,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "+MANIFEST",
+          "size_bytes": 811,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "/usr/local/bin/saltmere-tides",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "/usr/local/share/saltmere/tides.csv",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "+COMPACT_MANIFEST",
+        "stem": "+COMPACT_MANIFEST"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 524
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 524,
+        "entropy": 4.749,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 524,
+          "chars": 524,
+          "words": 50,
+          "lines": 0,
+          "max_line_length": 524,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "76eba3caebf47c43f057961c87ed48151bc37966546a94a4bcb42f688eff8967",
+        "blake3": "4154d077a263dc0b2ee82265e213242bb4251fddd3a2f200f2ab36e1ac114eaa"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "name",
+            "origin",
+            "version",
+            "comment",
+            "maintainer",
+            "www",
+            "abi",
+            "arch",
+            "prefix",
+            "flatsize",
+            "licenselogic",
+            "licenses",
+            "desc",
+            "deps",
+            "categories"
+          ],
+          "key_count": 15,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere-tides"
+                ]
+              },
+              "$.origin": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "misc/saltmere-tides"
+                ]
+              },
+              "$.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.comment": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.maintainer": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "[redacted:email]"
+                ]
+              },
+              "$.www": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.abi": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "FreeBSD:14:*"
+                ]
+              },
+              "$.arch": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "freebsd:14:*"
+                ]
+              },
+              "$.prefix": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "/usr/local"
+                ]
+              },
+              "$.flatsize": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  94
+                ]
+              },
+              "$.licenselogic": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "single"
+                ]
+              },
+              "$.licenses": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.licenses[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "MIT"
+                ]
+              },
+              "$.desc": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "High and low water times for Saltmere harbour, with the…"
+                ]
+              },
+              "$.deps": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.deps.python311": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.deps.python311.origin": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "lang/python311"
+                ]
+              },
+              "$.deps.python311.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "3.11.9"
+                ]
+              },
+              "$.categories": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.categories[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "misc"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "+MANIFEST",
+        "stem": "+MANIFEST"
+      },
+      "identification": {
+        "format": "json",
+        "name": "JSON",
+        "mime": "application/json",
+        "family": "data.json",
+        "confidence": 0.55,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.json"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 811
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 811,
+        "entropy": 4.996,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 811,
+          "chars": 811,
+          "words": 61,
+          "lines": 0,
+          "max_line_length": 811,
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "206899f61bf357d9c201b8d5df1774d6939f4877e0a97a66765b70813a285cf3",
+        "blake3": "f3eadb4cf1651be2605ad86c1a4cae41ec780a8b338ff8d8c16e1159e02aa4f7"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "json": {
+          "valid": true,
+          "dialect": "json",
+          "top_level": "object",
+          "keys": [
+            "name",
+            "origin",
+            "version",
+            "comment",
+            "maintainer",
+            "www",
+            "abi",
+            "arch",
+            "prefix",
+            "flatsize",
+            "licenselogic",
+            "licenses",
+            "desc",
+            "deps",
+            "categories",
+            "files",
+            "scripts"
+          ],
+          "key_count": 17,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere-tides"
+                ]
+              },
+              "$.origin": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "misc/saltmere-tides"
+                ]
+              },
+              "$.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.comment": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.maintainer": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "[redacted:email]"
+                ]
+              },
+              "$.www": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.abi": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "FreeBSD:14:*"
+                ]
+              },
+              "$.arch": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "freebsd:14:*"
+                ]
+              },
+              "$.prefix": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "/usr/local"
+                ]
+              },
+              "$.flatsize": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  94
+                ]
+              },
+              "$.licenselogic": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "single"
+                ]
+              },
+              "$.licenses": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.licenses[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "MIT"
+                ]
+              },
+              "$.desc": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "High and low water times for Saltmere harbour, with the…"
+                ]
+              },
+              "$.deps": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.deps.python311": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.deps.python311.origin": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "lang/python311"
+                ]
+              },
+              "$.deps.python311.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "3.11.9"
+                ]
+              },
+              "$.categories": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.categories[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "misc"
+                ]
+              },
+              "$.files": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.files.[\"/usr/local/bin/saltmere-tides\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1$39f7b1fcef5fe4c5c76bf67fb889adc9afcee23b8281b7dd376ddc65fe…"
+                ]
+              },
+              "$.files.[\"/usr/local/share/saltmere/tides.csv\"]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1$d4e900d4d2b2dae61f3078ebe92597adee0e1bd6ed666b2d2bcc76342b…"
+                ]
+              },
+              "$.scripts": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.scripts.post-install": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "echo 'Saltmere tides installed'"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.json",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-tides",
+        "stem": "saltmere-tides"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 4.514,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 5,
+          "lines": 2,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "39f7b1fcef5fe4c5c76bf67fb889adc9afcee23b8281b7dd376ddc65feeb568c",
+        "blake3": "7ea1c258582812db29eab2d7b46e88e2741623b688ce8db3ee26dc923f517b44"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 23
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.csv",
+        "stem": "tides",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.05,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 3,
+          "lines": 3,
+          "max_line_length": 22,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d4e900d4d2b2dae61f3078ebe92597adee0e1bd6ed666b2d2bcc76342bc2c949",
+        "blake3": "5768308f561208a5b1eda920eaab1707b1f3a24dcd6b3ae1ed3ab8c2b8c1aead"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "high",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            },
+            {
+              "name": "low",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 5
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "06:12",
+              "12:31"
+            ],
+            [
+              "2025-09-02",
+              "06:58",
+              "13:15"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

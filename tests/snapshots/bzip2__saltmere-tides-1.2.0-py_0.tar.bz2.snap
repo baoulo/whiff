@@ -1,0 +1,1321 @@
+---
+source: src/formats/compress/bzip2.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-1.2.0-py_0.tar.bz2",
+    "stem": "saltmere-tides-1.2.0-py_0.tar",
+    "extension": "bz2"
+  },
+  "identification": {
+    "format": "bzip2",
+    "name": "bzip2",
+    "mime": "application/x-bzip2",
+    "family": "compress",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "compress.bzip2"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 722
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risk_level": "medium",
+    "embedded_risks": {
+      "install_script": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 722,
+    "entropy": 7.621,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 10240,
+      "ratio": 14.182825484764543
+    }
+  },
+  "integrity": {
+    "sha256": "034f36380e547897b262cf487c05a4793b1cbf9afd89926972661c90870772a0",
+    "blake3": "b0684467c3c9f4c8139130f505987fa7df8694682b06638df26b63279b8c139c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bzip2": {
+      "block_size_bytes": 900000
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-tides-1.2.0-py_0.tar",
+        "stem": "saltmere-tides-1.2.0-py_0",
+        "extension": "tar"
+      },
+      "identification": {
+        "format": "conda_package",
+        "name": "conda package",
+        "mime": "application/zip",
+        "family": "package",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "candidates": [
+          {
+            "format": "conda_package",
+            "confidence": 0.95
+          },
+          {
+            "format": "tar",
+            "confidence": 0.9
+          }
+        ],
+        "extractor": "package.tarball"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 10240
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00Z",
+            "source": "package.tarball",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2025-09-01T12:00:00Z",
+        "latest": "2025-09-01T12:00:00Z"
+      },
+      "security": {
+        "active_content": [
+          "install_scripts"
+        ],
+        "risks": [
+          {
+            "kind": "install_script",
+            "category": "supply_chain",
+            "severity": "medium",
+            "detail": "bin/.saltmere-tides-post-link.sh",
+            "source": "package.tarball"
+          }
+        ],
+        "risk_level": "medium"
+      },
+      "rights": {
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "physical": {
+        "size_bytes": 10240,
+        "entropy": 1.284,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 6,
+          "uncompressed_bytes": 938,
+          "ratio": 0.0916015625
+        }
+      },
+      "integrity": {
+        "sha256": "ab7f3964b8ddf16b54d82f286930ada20d3246482952360270fd40cb7f0dbc07",
+        "blake3": "f69c7975617780892128d2f52eb317ac69f72b987876b46da8796ab3e18aa778"
+      },
+      "content": {
+        "title": "saltmere-tides 1.2.0",
+        "description": "Tide tables for Saltmere harbour",
+        "language": {
+          "code": "en",
+          "confidence": 0.735
+        },
+        "keywords": [
+          "Saltmere harbour",
+          "saltmere",
+          "tables for saltmere",
+          "harbour",
+          "times for saltmere",
+          "tides",
+          "Tide tables",
+          "tower schedule",
+          "schedule",
+          "tables"
+        ],
+        "keyword_frequency": [
+          [
+            "saltmere",
+            3
+          ],
+          [
+            "harbour",
+            2
+          ],
+          [
+            "tide",
+            2
+          ]
+        ],
+        "excerpt": "Tide tables for Saltmere harbour High and low water times for Saltmere harbour, with the bell tower schedule.",
+        "tags": [
+          "Saltmere harbour",
+          "saltmere",
+          "tables for saltmere",
+          "harbour",
+          "times for saltmere"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "conda_package": {
+          "ecosystem": "conda",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "release": "py_0",
+          "architecture": "noarch",
+          "license": "MIT",
+          "homepage": "https://example.org/saltmere/tides",
+          "repository": "https://example.org/saltmere/tides/src",
+          "dependencies": {
+            "python": ">=3.9",
+            "numpy": "*"
+          },
+          "dependencies_count": 2,
+          "install_scripts": [
+            "bin/.saltmere-tides-post-link.sh"
+          ],
+          "build_time": "2025-09-01T12:00:00Z",
+          "listed_files": 2,
+          "files": 6,
+          "compressed_bytes": 938,
+          "file_types": {
+            "json": 3,
+            "(none)": 1,
+            "py": 1,
+            "sh": 1
+          },
+          "top_level": [
+            "info/",
+            "bin/",
+            "site-packages/"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00Z",
+            "2025-09-01T12:00:00Z"
+          ],
+          "entries": [
+            {
+              "path": "info/index.json",
+              "size_bytes": 238,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "info/about.json",
+              "size_bytes": 271,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "info/paths.json",
+              "size_bytes": 291,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "info/files",
+              "size_bytes": 74,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "site-packages/saltmere_tides/__init__.py",
+              "size_bytes": 15,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "644"
+            },
+            {
+              "path": "bin/.saltmere-tides-post-link.sh",
+              "size_bytes": 49,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "755"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "index.json",
+            "stem": "index",
+            "extension": "json"
+          },
+          "identification": {
+            "format": "json",
+            "name": "JSON",
+            "mime": "application/json",
+            "family": "data.json",
+            "confidence": 0.6,
+            "detected_by": "sniff",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "data.json"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 238
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 238,
+            "entropy": 4.624,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 238,
+              "chars": 238,
+              "words": 24,
+              "lines": 13,
+              "max_line_length": 28,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "77f8733322f3d59ffd7fbf4103a65c644644dfb969310a5a30652fdd025ec03a",
+            "blake3": "9a279886777c2c9e5375c64552bc9e2db6f75b4e4a796a0f880da1a372d27027"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "json": {
+              "valid": true,
+              "dialect": "json",
+              "top_level": "object",
+              "keys": [
+                "name",
+                "version",
+                "build",
+                "build_number",
+                "license",
+                "depends",
+                "noarch",
+                "subdir",
+                "timestamp"
+              ],
+              "key_count": 9,
+              "schema": {
+                "paths": {
+                  "$": {
+                    "types": [
+                      "object"
+                    ],
+                    "count": 1
+                  },
+                  "$.name": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "saltmere-tides"
+                    ]
+                  },
+                  "$.version": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "1.2.0"
+                    ]
+                  },
+                  "$.build": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "py_0"
+                    ]
+                  },
+                  "$.build_number": {
+                    "types": [
+                      "integer"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      0
+                    ]
+                  },
+                  "$.license": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "MIT"
+                    ]
+                  },
+                  "$.depends": {
+                    "types": [
+                      "array"
+                    ],
+                    "count": 1,
+                    "items": [
+                      2,
+                      2
+                    ]
+                  },
+                  "$.depends[]": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 2,
+                    "examples": [
+                      "python >=3.9",
+                      "numpy"
+                    ]
+                  },
+                  "$.noarch": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "python"
+                    ]
+                  },
+                  "$.subdir": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "noarch"
+                    ]
+                  },
+                  "$.timestamp": {
+                    "types": [
+                      "integer"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      1756728000000
+                    ]
+                  }
+                },
+                "max_depth": 2
+              }
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "data.json",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "about.json",
+            "stem": "about",
+            "extension": "json"
+          },
+          "identification": {
+            "format": "json",
+            "name": "JSON",
+            "mime": "application/json",
+            "family": "data.json",
+            "confidence": 0.6,
+            "detected_by": "sniff",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "data.json"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 271
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 271,
+            "entropy": 4.59,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 271,
+              "chars": 271,
+              "words": 28,
+              "lines": 6,
+              "max_line_length": 96,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "d0ba7a40e5a3713fcb4844e13f9e9ae40af4590509572c4198b8225d27becd8a",
+            "blake3": "1acb83127e70169b77987db7666178eef31bab227d658b9f3d0ab110f9ce6df2"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "json": {
+              "valid": true,
+              "dialect": "json",
+              "top_level": "object",
+              "keys": [
+                "summary",
+                "description",
+                "home",
+                "dev_url",
+                "license"
+              ],
+              "key_count": 5,
+              "schema": {
+                "paths": {
+                  "$": {
+                    "types": [
+                      "object"
+                    ],
+                    "count": 1
+                  },
+                  "$.summary": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "Tide tables for Saltmere harbour"
+                    ]
+                  },
+                  "$.description": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "High and low water times for Saltmere harbour, with the…"
+                    ]
+                  },
+                  "$.home": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "https://example.org/saltmere/tides"
+                    ]
+                  },
+                  "$.dev_url": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "https://example.org/saltmere/tides/src"
+                    ]
+                  },
+                  "$.license": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      "MIT"
+                    ]
+                  }
+                },
+                "max_depth": 1
+              }
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "data.json",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "paths.json",
+            "stem": "paths",
+            "extension": "json"
+          },
+          "identification": {
+            "format": "json",
+            "name": "JSON",
+            "mime": "application/json",
+            "family": "data.json",
+            "confidence": 0.6,
+            "detected_by": "sniff",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "data.json"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 291
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 291,
+            "entropy": 4.339,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 291,
+              "chars": 291,
+              "words": 23,
+              "lines": 14,
+              "max_line_length": 58,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "f0f408fbfc986b3efe77cb8272292cf0c50d17e9fc74971326deb9e6996c4f3b",
+            "blake3": "43b6d3ac752fb293bfecfe60f163ead9a33aea3261ba3a8a4e6a61cc96a6506f"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "json": {
+              "valid": true,
+              "dialect": "json",
+              "top_level": "object",
+              "keys": [
+                "paths",
+                "paths_version"
+              ],
+              "key_count": 2,
+              "schema": {
+                "paths": {
+                  "$": {
+                    "types": [
+                      "object"
+                    ],
+                    "count": 1
+                  },
+                  "$.paths": {
+                    "types": [
+                      "array"
+                    ],
+                    "count": 1,
+                    "items": [
+                      2,
+                      2
+                    ]
+                  },
+                  "$.paths[]": {
+                    "types": [
+                      "object"
+                    ],
+                    "count": 2
+                  },
+                  "$.paths[]._path": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 2,
+                    "examples": [
+                      "site-packages/saltmere_tides/__init__.py",
+                      "bin/.saltmere-tides-post-link.sh"
+                    ]
+                  },
+                  "$.paths[].path_type": {
+                    "types": [
+                      "string"
+                    ],
+                    "count": 2,
+                    "examples": [
+                      "hardlink"
+                    ]
+                  },
+                  "$.paths[].size_in_bytes": {
+                    "types": [
+                      "integer"
+                    ],
+                    "count": 2,
+                    "examples": [
+                      15,
+                      49
+                    ]
+                  },
+                  "$.paths_version": {
+                    "types": [
+                      "integer"
+                    ],
+                    "count": 1,
+                    "examples": [
+                      1
+                    ]
+                  }
+                },
+                "max_depth": 3
+              }
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "data.json",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "files",
+            "stem": "files"
+          },
+          "identification": {
+            "format": "text",
+            "name": "Plain text",
+            "mime": "text/plain",
+            "family": "text.plain",
+            "confidence": 0.3,
+            "detected_by": "heuristic",
+            "encoding": "us-ascii",
+            "extractor": "text.plain"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 74
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 74,
+            "entropy": 4.2,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 74,
+              "chars": 74,
+              "words": 2,
+              "lines": 2,
+              "max_line_length": 40,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "b12f9f7a2c2cac98c697cc12179ff3bac532e7332e9742a660aa97b0bd54c431",
+            "blake3": "da7666392202f4477329436c4c131ea3e40a62775c420ad2a6aa81443c23cb34"
+          },
+          "content": {
+            "excerpt": "site-packages/saltmere_tides/__init__.py bin/.saltmere-tides-post-link.sh"
+          },
+          "metadata": {},
+          "format": {
+            "text": {
+              "paragraphs": 1
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "text.plain",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "__init__.py",
+            "stem": "__init__",
+            "extension": "py"
+          },
+          "identification": {
+            "format": "python",
+            "name": "Python source",
+            "mime": "text/x-python",
+            "family": "code.source",
+            "confidence": 0.35,
+            "detected_by": "extension",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "code.source"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 15
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 15,
+            "entropy": 3.507,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 15,
+              "chars": 15,
+              "words": 3,
+              "lines": 1,
+              "max_line_length": 14,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "2576ee53fc4d9ac37bf6841785f5640807bbf6c2f002f76b200232052b42dad0",
+            "blake3": "27d6834d9e63697dfb0b0d7443c2bd9e9afa388cc3dda40493bfc6cbdf2e2b8d"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "python": {
+              "language": "Python",
+              "loc": {
+                "code": 1,
+                "comment": 0,
+                "blank": 0,
+                "total": 1
+              },
+              "is_test": false,
+              "generated": false,
+              "longest_line": 14
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "code.source",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": ".saltmere-tides-post-link.sh",
+            "stem": ".saltmere-tides-post-link",
+            "extension": "sh"
+          },
+          "identification": {
+            "format": "shell",
+            "name": "Shell script",
+            "mime": "application/x-sh",
+            "family": "code.source",
+            "confidence": 0.95,
+            "detected_by": "sniff",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "code.source"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 49
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 49,
+            "entropy": 4.188,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 49,
+              "chars": 49,
+              "words": 7,
+              "lines": 3,
+              "max_line_length": 31,
+              "line_endings": "lf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "ad6ac9c284962331927e62230c8fec520a06624b30516a037504eca8579786fd",
+            "blake3": "5e2e9a598f184ccfeb989b6d237196e8ad3acb344fed5c7304e235db5481e4ed"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "shell": {
+              "language": "Shell script",
+              "loc": {
+                "code": 3,
+                "comment": 0,
+                "blank": 0,
+                "total": 3
+              },
+              "interpreter": "sh",
+              "is_test": false,
+              "generated": false,
+              "longest_line": 31
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "code.source",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "package.tarball",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "compress.bzip2",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
