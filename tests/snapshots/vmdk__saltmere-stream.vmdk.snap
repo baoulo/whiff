@@ -1,0 +1,447 @@
+---
+source: src/formats/disk/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-stream.vmdk",
+    "stem": "saltmere-stream",
+    "extension": "vmdk"
+  },
+  "identification": {
+    "format": "vmdk",
+    "name": "VMware virtual disk",
+    "mime": "application/x-vmdk",
+    "family": "disk",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 132608
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "disk.vm",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 132608,
+    "entropy": 0.157,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 196608,
+      "ratio": 1.4826254826254825
+    }
+  },
+  "integrity": {
+    "sha256": "10266666097a565172dce41dfdf6493a97514346bf963284d9e151285e6ec5b8",
+    "blake3": "36755ef52d82dba8d6aaff8a7708e62023983ab9e1768c84f111b3a6fcb2956d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vmdk": {
+      "version": 3,
+      "virtual_bytes": 196608,
+      "grain_size": 65536,
+      "compression": "deflate",
+      "content_id": "80f5b2f5",
+      "create_type": "streamOptimized",
+      "virtual_hardware_version": "4",
+      "adapter_type": "lsilogic",
+      "tools_version": "2147483647",
+      "extents": [
+        {
+          "access": "RW",
+          "sectors": 384,
+          "type": "SPARSE",
+          "file": "saltmere-stream.vmdk"
+        }
+      ],
+      "partition_table": "gpt",
+      "disk_guid": "eae38f11-88c8-436f-86b9-4f4ac21a4c0c",
+      "partitions": [
+        {
+          "index": 1,
+          "start_bytes": 20480,
+          "size_bytes": 32768,
+          "type": "EFI System",
+          "type_id": "c12a7328-f81f-11d2-ba4b-00a0c93ec93b",
+          "name": "EFI System",
+          "guid": "1debd1db-76e3-4542-ab1a-21865012e3bd"
+        },
+        {
+          "index": 2,
+          "start_bytes": 53248,
+          "size_bytes": 126464,
+          "type": "Microsoft basic data",
+          "type_id": "ebd0a0a2-b9e5-4433-87c0-68b6b72699c7",
+          "name": "Tides",
+          "guid": "74438f80-e659-4672-9a3a-daa1d3e05840",
+          "filesystem": {
+            "type": "fat12",
+            "block_size": 2048,
+            "size_bytes": 122880,
+            "clusters": 51,
+            "oem_name": "mkfs.fat",
+            "serial": "1234-ABCD",
+            "boot_sector_label": "SALTMERE",
+            "label": "SALTMERE"
+          }
+        }
+      ],
+      "files": 2,
+      "directories": 1,
+      "compressed_bytes": 100,
+      "file_types": {
+        "md": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "docs/",
+        "tides.txt"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "tides.txt",
+          "size_bytes": 54,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "docs/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "docs/readme.md",
+          "size_bytes": 46,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.txt",
+        "stem": "tides",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 54
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 54,
+        "entropy": 4.24,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 54,
+          "chars": 54,
+          "words": 9,
+          "lines": 2,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e511a695729d01fe22731a6cbbea378a25f8fa78155f486e26f842414609737c",
+        "blake3": "b25f0e65822ae076c8099ddac29336e75c589491e53b18761754f88c0e0872d1"
+      },
+      "content": {
+        "excerpt": "Saltmere tide table High water 06:12, low water 12:31"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "readme.md",
+        "stem": "readme",
+        "extension": "md"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 46
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 46,
+        "entropy": 4.024,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 46,
+          "chars": 46,
+          "words": 7,
+          "lines": 3,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "0d86a56f9b2e144dd3949c0ab1308abc92ff39ba0e8be709d0d67f283064e35c",
+        "blake3": "162c8e539571449e967d80cd00d997597fcc6db61a103f0ad51a3a59f4c4338e"
+      },
+      "content": {
+        "title": "Saltmere",
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere"
+          }
+        ],
+        "excerpt": "Tide tables for Saltmere harbour."
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 1,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

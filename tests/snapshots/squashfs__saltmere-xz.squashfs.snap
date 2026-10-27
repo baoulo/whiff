@@ -1,0 +1,594 @@
+---
+source: src/formats/archive/squashfs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-xz.squashfs",
+    "stem": "saltmere-xz",
+    "extension": "squashfs"
+  },
+  "identification": {
+    "format": "squashfs",
+    "name": "squashfs file system",
+    "mime": "application/vnd.squashfs",
+    "family": "archive",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.squashfs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.squashfs",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 1.105,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 7,
+      "uncompressed_bytes": 131,
+      "ratio": 0.031982421875
+    }
+  },
+  "integrity": {
+    "sha256": "5ae47f2dc67a78367aa9b6f7d53fabf160c6354907718ce46251226143fe7879",
+    "blake3": "cd6dc9608abe41e83c80baa40b593d7755fb4d9f710d1595986f1dd7cfdf5698"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "squashfs": {
+      "version": "4.0",
+      "compression": "xz",
+      "block_size": 131072,
+      "inodes": 8,
+      "fragments": 1,
+      "bytes_used": 656,
+      "created": "2025-09-01T12:00:00Z",
+      "flags": [
+        "duplicates_removed",
+        "exportable"
+      ],
+      "files": 3,
+      "directories": 3,
+      "links": 1,
+      "file_types": {
+        "csv": 1,
+        "md": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "charts/",
+        "docs/",
+        "latest",
+        "tides.txt"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "charts/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "docs/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "latest",
+          "type": "symlink",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755",
+          "link": "tides.txt"
+        },
+        {
+          "path": "tides.txt",
+          "size_bytes": 54,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "docs/readme.md",
+          "size_bytes": 46,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "charts/2025/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "charts/2025/september.csv",
+          "size_bytes": 31,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.txt",
+        "stem": "tides",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 54
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 54,
+        "entropy": 4.24,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 54,
+          "chars": 54,
+          "words": 9,
+          "lines": 2,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e511a695729d01fe22731a6cbbea378a25f8fa78155f486e26f842414609737c",
+        "blake3": "b25f0e65822ae076c8099ddac29336e75c589491e53b18761754f88c0e0872d1"
+      },
+      "content": {
+        "excerpt": "Saltmere tide table High water 06:12, low water 12:31"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "readme.md",
+        "stem": "readme",
+        "extension": "md"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 46
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 46,
+        "entropy": 4.024,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 46,
+          "chars": 46,
+          "words": 7,
+          "lines": 3,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "0d86a56f9b2e144dd3949c0ab1308abc92ff39ba0e8be709d0d67f283064e35c",
+        "blake3": "162c8e539571449e967d80cd00d997597fcc6db61a103f0ad51a3a59f4c4338e"
+      },
+      "content": {
+        "title": "Saltmere",
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere"
+          }
+        ],
+        "excerpt": "Tide tables for Saltmere harbour."
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 1,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "september.csv",
+        "stem": "september",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 31
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 31,
+        "entropy": 4.042,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 31,
+          "chars": 31,
+          "words": 2,
+          "lines": 2,
+          "max_line_length": 15,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "6f6615c3887f8804cf29fa7fa50bc579df839d61bf136f8d07932f0a4d9146bb",
+        "blake3": "b71ef540dd65905ef8fcbb07bc0f3a36180f4dace973301a24d973e27304e02a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 1,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "month",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "max_length": 7
+            },
+            {
+              "name": "high",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "min": 4.2,
+              "max": 4.2,
+              "mean": 4.2
+            },
+            {
+              "name": "low",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "min": 0.6,
+              "max": 0.6,
+              "mean": 0.6
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09",
+              "4.2",
+              "0.6"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.squashfs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

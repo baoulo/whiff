@@ -1,0 +1,119 @@
+---
+source: src/formats/disk/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-vault.luks",
+    "stem": "saltmere-vault",
+    "extension": "luks"
+  },
+  "identification": {
+    "format": "luks",
+    "name": "LUKS encrypted volume",
+    "mime": "application/x-raw-disk-image",
+    "family": "disk",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "disk.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 262144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 262144,
+    "entropy": 5.034,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7a3f8ec524d340583fef2a80044bdb03e990f1769c96e6c868c65d78a79ae622",
+    "blake3": "316ea6857a5cb0692e078828b0f2cead978c75bc886ab9ae0e55e227a7721845"
+  },
+  "content": {
+    "title": "saltmere-vault"
+  },
+  "metadata": {},
+  "format": {
+    "luks": {
+      "disk_bytes": 262144,
+      "filesystem": {
+        "type": "luks",
+        "encrypted": true,
+        "version": 2,
+        "uuid": "5a17e2e0-0000-4000-8000-000000000005",
+        "label": "saltmere-vault",
+        "cipher": "aes-xts-plain64",
+        "key_slots": 1,
+        "kdf": "pbkdf2"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

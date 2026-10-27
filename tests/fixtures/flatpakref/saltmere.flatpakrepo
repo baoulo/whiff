@@ -1,0 +1,6 @@
+[Flatpak Repo]
+Title=Saltmere Harbour apps
+Url=https://example.org/saltmere/repo/
+Homepage=https://example.org/saltmere
+Comment=Apps from the Saltmere harbour office
+GPGKey=bWRUYWxlc3MgcGxhY2Vob2xkZXIsIG5vdCBhIGtleQ==

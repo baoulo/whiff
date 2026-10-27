@@ -1,0 +1,128 @@
+---
+source: src/formats/disk/cd.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.ccd",
+    "stem": "saltmere",
+    "extension": "ccd"
+  },
+  "identification": {
+    "format": "ccd",
+    "name": "CloneCD control file",
+    "mime": "text/x-clonecd",
+    "family": "disk",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "disk.cd"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 765
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 765,
+    "entropy": 4.911,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 765,
+      "chars": 765,
+      "words": 80,
+      "lines": 73,
+      "max_line_length": 21,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d175fc9660240f4fc147f4f13cec80b15b065193c3c0d89e2617c71c7429d3fb",
+    "blake3": "61dca85a6c60d8e23687f9a243515ae64a41e7fb5237172c4d3fcf2d4c46674a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ccd": {
+      "version": "3",
+      "sessions": 1,
+      "data_tracks_scrambled": false,
+      "toc_entries": 4,
+      "audio_tracks": 0,
+      "data_tracks": 1,
+      "tracks": [
+        {
+          "number": 1,
+          "mode": "mode1",
+          "start_sector": 0
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.cd",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,260 @@
+---
+source: src/formats/disk/floppy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ofs.hdf",
+    "stem": "saltmere-ofs",
+    "extension": "hdf"
+  },
+  "identification": {
+    "format": "adf",
+    "name": "Amiga disk image",
+    "mime": "application/x-amiga-disk-format",
+    "family": "disk",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "disk.floppy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 114688
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-27T14:21:02",
+        "source": "disk.floppy",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 114688,
+    "entropy": 0.061,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 54,
+      "ratio": 0.00047084263392857144
+    }
+  },
+  "integrity": {
+    "sha256": "a56730fd3db33b333289b40c1282f09a6a74cc54be2b9c4622346abb116da03e",
+    "blake3": "cf487bcb21d571427387ca3bea3a0466746066555fe84d0ca79dd524902f02b2"
+  },
+  "content": {
+    "title": "Tides OFS"
+  },
+  "metadata": {},
+  "format": {
+    "adf": {
+      "dos_type": "OFS",
+      "blocks": 224,
+      "medium": "hard_file",
+      "volume_name": "Tides OFS",
+      "created": "2026-10-27T14:21:02",
+      "modified": "2026-10-27T14:21:02",
+      "files": 1,
+      "compressed_bytes": 54,
+      "file_types": {
+        "txt": 1
+      },
+      "top_level": [
+        "tides.txt"
+      ],
+      "modified_range": [
+        "2026-10-27T14:21:02",
+        "2026-10-27T14:21:02"
+      ],
+      "entries": [
+        {
+          "path": "tides.txt",
+          "size_bytes": 54,
+          "modified": "2026-10-27T14:21:02"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.txt",
+        "stem": "tides",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 54
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 54,
+        "entropy": 4.24,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 54,
+          "chars": 54,
+          "words": 9,
+          "lines": 2,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e511a695729d01fe22731a6cbbea378a25f8fa78155f486e26f842414609737c",
+        "blake3": "b25f0e65822ae076c8099ddac29336e75c589491e53b18761754f88c0e0872d1"
+      },
+      "content": {
+        "excerpt": "Saltmere tide table High water 06:12, low water 12:31"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.floppy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

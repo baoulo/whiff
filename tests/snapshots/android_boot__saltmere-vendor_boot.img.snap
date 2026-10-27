@@ -1,0 +1,538 @@
+---
+source: src/formats/disk/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-vendor_boot.img",
+    "stem": "saltmere-vendor_boot",
+    "extension": "img"
+  },
+  "identification": {
+    "format": "android_boot",
+    "name": "Android boot image",
+    "mime": "application/x-android-boot-image",
+    "family": "disk",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "android_boot",
+        "confidence": 0.92
+      },
+      {
+        "format": "raw_disk",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "disk.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 0.217,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "27fa363350bfd0f30662e307dc1e7a6d6be912fd844c8b3aff237ba8003e1ca5",
+    "blake3": "9a9f865e5f1f6318da83186f44904e9298033a8e91ed0a9ccd9e0a443c7a06c0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_boot": {
+      "image": "vendor_boot",
+      "header_version": 4,
+      "page_size": 4096,
+      "cmdline": "androidboot.hardware=tg1",
+      "board": "saltmere",
+      "vendor_ramdisk_bytes": 150,
+      "dtb_bytes": 149
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "vendor_ramdisk.img",
+        "stem": "vendor_ramdisk",
+        "extension": "img"
+      },
+      "identification": {
+        "format": "gzip",
+        "name": "gzip",
+        "mime": "application/gzip",
+        "family": "compress",
+        "confidence": 0.72,
+        "detected_by": "magic",
+        "extension_matches": false,
+        "candidates": [
+          {
+            "format": "gzip",
+            "confidence": 0.72
+          },
+          {
+            "format": "raw_disk",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "compress.gzip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 150
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 150,
+        "entropy": 6.218,
+        "entropy_scope": "file",
+        "container": {
+          "uncompressed_bytes": 10240,
+          "ratio": 68.26666666666667
+        }
+      },
+      "integrity": {
+        "sha256": "74514edfde76b41a2ab370dd15dde7c5eb6b291a2a618530f0eee4775c119e3a",
+        "blake3": "e20fafae46782f0d7771488bd1c1fcd10abef97497fe8b157da7ab041d8de020"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "gzip": {
+          "method": "deflate",
+          "level": "maximum",
+          "os": "Unix",
+          "declared_size_bytes": 10240
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "vendor_ramdisk.img.out",
+            "stem": "vendor_ramdisk.img",
+            "extension": "out"
+          },
+          "identification": {
+            "format": "cpio",
+            "name": "cpio archive",
+            "mime": "application/x-cpio",
+            "family": "archive",
+            "confidence": 0.84,
+            "detected_by": "magic",
+            "extension_matches": false,
+            "extractor": "archive.cpio"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 10240
+          },
+          "temporal": {
+            "filesystem": {},
+            "content": [
+              {
+                "field": "modified",
+                "value": "2025-09-01T12:00:00Z",
+                "source": "archive.cpio",
+                "tz_known": true
+              }
+            ],
+            "earliest": "2025-09-01T12:00:00Z",
+            "latest": "2025-09-01T12:00:00Z"
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 10240,
+            "entropy": 0.227,
+            "entropy_scope": "file",
+            "container": {
+              "entries": 1,
+              "uncompressed_bytes": 24,
+              "ratio": 0.00234375
+            }
+          },
+          "integrity": {
+            "sha256": "9d4c120dbd963c95cb01feac9daeaaf8419ffb757925ff031d15f0a5b7f46779",
+            "blake3": "99c57580769643eb3a386a040ce6b90e4d8626f2dca791b2802a655bdc92d591"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "cpio": {
+              "variant": "newc",
+              "files": 1,
+              "compressed_bytes": 24,
+              "file_types": {
+                "rc": 1
+              },
+              "top_level": [
+                "init.rc"
+              ],
+              "modified_range": [
+                "2025-09-01T12:00:00Z",
+                "2025-09-01T12:00:00Z"
+              ],
+              "entries": [
+                {
+                  "path": "init.rc",
+                  "size_bytes": 24,
+                  "modified": "2025-09-01T12:00:00Z",
+                  "mode": "644"
+                }
+              ]
+            }
+          },
+          "embedded": [
+            {
+              "whiff": {
+                "version": "[version]",
+                "schema": "whiff/1",
+                "profile": "standard"
+              },
+              "source": {
+                "name": "init.rc",
+                "stem": "init",
+                "extension": "rc"
+              },
+              "identification": {
+                "format": "",
+                "name": "",
+                "mime": "",
+                "confidence": 0.0,
+                "detected_by": "none",
+                "extractor": null
+              },
+              "system": {
+                "kind": "memory",
+                "size_bytes": 24
+              },
+              "temporal": {
+                "filesystem": {}
+              },
+              "security": {},
+              "rights": {},
+              "physical": {},
+              "integrity": {},
+              "content": {},
+              "metadata": {},
+              "format": {},
+              "diagnostics": {
+                "warnings": [
+                  "not analysed: max_depth reached"
+                ],
+                "truncated": false,
+                "elapsed_ms": 0.0
+              }
+            }
+          ],
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "archive.cpio",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "limits_hit": [
+              "max_depth"
+            ],
+            "truncated": true,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "compress.gzip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "dtb.img",
+        "stem": "dtb",
+        "extension": "img"
+      },
+      "identification": {
+        "format": "raw_disk",
+        "name": "Raw disk image",
+        "mime": "application/x-raw-disk-image",
+        "family": "disk",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "extractor": "disk.raw"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 149
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 149,
+        "entropy": 3.129,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "ddc0c6414addd4ba13d6f4e1c332194d2755e8af6b5cf64ebbeca26c3390d2e7",
+        "blake3": "c77894d23022876f1aaee6086017c26555447c0ae322760fa898573408e2bb04"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "raw_disk": {
+          "disk_bytes": 149
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "disk.raw",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "warnings": [
+          "disk.raw: no partition table or file system recognised"
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

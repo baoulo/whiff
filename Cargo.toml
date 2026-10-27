@@ -49,7 +49,7 @@ geo = []
 science = []
 data = []
 cad = []
-forensics = []
+forensics = ["common"]
 games = []
 full = ["common", "geo", "science", "data", "cad", "forensics", "games"]
 # The `whiff` command-line tool.

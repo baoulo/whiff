@@ -1,8 +1,8 @@
 //! Readers for the container formats documents and media are built on: ZIP
 //! (OOXML, OpenDocument, EPUB, CBZ), the OLE2 compound file (legacy Office,
 //! Outlook `.msg`, MSI) with the property sets (`\x05SummaryInformation`)
-//! stored inside it, ISO base media files (MP4, M4A, MOV, HEIF) and ASF
-//! (WMA, WMV).
+//! stored inside it, ISO base media files (MP4, M4A, MOV, HEIF), ASF
+//! (WMA, WMV), and disk partition tables and file-system superblocks.
 //!
 //! They read through a [`Source`](crate::io::Source), so every read is charged
 //! to the budget, and decompress through
@@ -15,4 +15,5 @@ pub mod cfb;
 pub mod codec;
 pub mod mp4;
 pub mod oleps;
+pub mod volume;
 pub mod zip;

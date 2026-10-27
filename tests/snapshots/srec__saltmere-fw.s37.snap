@@ -1,0 +1,131 @@
+---
+source: src/formats/disk/firmware.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fw.s37",
+    "stem": "saltmere-fw",
+    "extension": "s37"
+  },
+  "identification": {
+    "format": "srec",
+    "name": "Motorola S-record",
+    "mime": "text/x-srecord",
+    "family": "disk",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "disk.firmware"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5182
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 5182,
+    "entropy": 1.189,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 5182,
+      "chars": 5182,
+      "words": 68,
+      "lines": 68,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b079aebb05b4baed79a78c5701928d6d91f2d33d06735b2295dcfac72070fb6d",
+    "blake3": "42fa60b84205eeb3d42872bc7153d39dce82cdcf6f7a295da81ef7c5c45cf383"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "srec": {
+      "records": 68,
+      "data_bytes": 2054,
+      "address_range": [
+        "0x100000",
+        "0x100805"
+      ],
+      "segments": 1,
+      "start_address": "0x100000",
+      "header": "http://srecord.sourceforge.net/",
+      "end_record": true,
+      "record_types": {
+        "S0": 1,
+        "S3": 65,
+        "S5": 1,
+        "S7": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.firmware",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

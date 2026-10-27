@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Software packages and installers (disk images to come).
+Software packages and installers, and disk images (the rest of Stage 5).
 
 - **Packages:** one set of facts for every package format — ecosystem,
   name, version, release, architecture, summary and description, licence,
@@ -53,7 +53,49 @@ Software packages and installers (disk images to come).
     `runs_as_root`), VS Code / Visual Studio extensions (`.vsix`), Firefox
     `.xpi` and Chrome `.crx` (CRX2 / CRX3 header, signatures, extension
     id; WebExtension permissions and `broad_extension_permissions`),
-    Electron `.asar`.
+    Electron `.asar`;
+  - Linux bundles: Snap (`meta/snap.yaml`: apps, plugs and slots, base,
+    grade, confinement; install hooks), AppImage (desktop entry, AppStream
+    metadata, update information, signature section) and Flatpak
+    `.flatpakref` / `.flatpakrepo`. Raw `.dmg` images now report their
+    partition table and file systems.
+- **Disk images** (feature `forensics`, which now includes `common`):
+  every image reports its own facts and then what is on the disk, read
+  without mounting it: the partition table (MBR with extended partitions,
+  GPT with checksums, Apple Partition Map) and each partition's file
+  system (ext2 / 3 / 4, FAT12 / 16 / 32, exFAT, NTFS, HFS / HFS+ / HFSX,
+  APFS with its volumes, roles and encryption, btrfs, XFS, ISO 9660, UDF,
+  squashfs, swap, LVM2, LUKS, BitLocker: label, UUID, sizes, free space,
+  times, features). FAT, ext, ISO 9660, UDF, squashfs, Amiga and C64
+  volumes are listed with the archive inventory and their files handed on.
+  - raw disks and file-system images (`.img`, `.dd`, ext, FAT floppies,
+    exFAT, NTFS, HFS+, APFS, LUKS);
+  - optical discs: ISO 9660 (primary volume descriptor, Joliet and Rock
+    Ridge names, El Torito boot entries, EFI boot images handed on,
+    isohybrid partition tables), UDF (512- and 2048-byte blocks; checked on
+    revisions 1.02, 1.50 and 2.01; metadata partitions of 2.50+ are read
+    but untested on a real disc; write-once discs with a virtual partition
+    are described, not listed), raw 2352-byte CD images (mode 1 and mode 2),
+    CloneCD control files;
+  - VM disks, read through their block maps: VirtualBox VDI, VMware VMDK
+    (sparse, stream-optimised, descriptor files), VHD (fixed, dynamic,
+    differencing with parent locators), VHDX, QEMU QCOW / QCOW2 (zlib and
+    zstd clusters, snapshots, backing files, encryption) and QED, Apple
+    `.sparseimage`; OVF descriptors and OVA appliances (product, vendor,
+    guest OS, CPUs, memory, disks, networks; manifest, signature);
+  - forensic evidence: EnCase / Expert Witness `.E01` (case metadata,
+    acquisition software, dates and device, MD5 / SHA-1; the acquired disk
+    read through its chunk tables) and AFF;
+  - Android sparse images (expanded through their chunks) and boot images
+    (header versions 0–4 and vendor boot: command line, OS version, patch
+    level, kernel version; kernel, ramdisk and device tree handed on);
+  - firmware: U-Boot legacy images (checksums checked, multi-file) and FIT
+    images, Intel HEX, Motorola S-record, UEFI capsules (FMP images,
+    signing, firmware versions);
+  - home computers: Amiga OFS / FFS volumes (`.adf`, `.hdf`) and
+    Commodore 1541 `.d64`.
+- **Archives:** squashfs 4.0 (gzip, LZMA, xz and zstd; fragments,
+  symbolic links), listed and its files handed on.
 - **Risks:** `debuggable` (Android `debuggable`, iOS `get-task-allow`).
 - **Fixes:** `code.manifest` no longer reports `build_script` for a
   Cargo manifest with `build = false`.
@@ -65,7 +107,14 @@ Software packages and installers (disk images to come).
   from throwaway keys. The tar and cpio readers are shared with the
   package extractors. `whiff-dev catalogue` matches formats by name as
   well as by extension, and long-tail formats already handled keep their
-  stage.
+  stage. `scripts/fixtures/disks.sh` makes the disk image fixtures with
+  the Linux tools (in a podman container: mkfs, mksquashfs, xorriso,
+  mkudffs, cryptsetup, ewfacquire, mkbootimg, mkimage …), hdiutil and the
+  macOS newfs tools, qemu-img, amitools and the d64 package;
+  `craft_disks.py` writes the rest (AFF, raw CD sectors, CloneCD, a UEFI
+  capsule, stand-in kernel and AppImage runtime). `disk_oracle.py`
+  compares the reports with 7-Zip, qemu-img, hdiutil, blkid, ewfinfo,
+  unsquashfs, mkimage, srec_info and unpack_bootimg.
 
 ## 0.5.0 — 2026-10-25
 

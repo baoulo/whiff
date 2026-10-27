@@ -30,6 +30,8 @@ pub(crate) mod code;
 pub(crate) mod compress;
 #[cfg(feature = "common")]
 pub(crate) mod data;
+#[cfg(feature = "forensics")]
+pub(crate) mod disk;
 #[cfg(feature = "common")]
 pub(crate) mod doc;
 #[cfg(feature = "common")]

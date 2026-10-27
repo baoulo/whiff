@@ -33,7 +33,7 @@ pub use crate::container::codec::{Codec, End};
 pub use crate::container::zip::{
     Zip, ZipEntry, first_stored as zip_first_stored, method_name as zip_method_name, names as zip_names,
 };
-pub use crate::container::{asf, codec, mp4, oleps};
+pub use crate::container::{asf, codec, mp4, oleps, volume};
 pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;
@@ -61,7 +61,7 @@ pub fn redact_sensitive(text: &str) -> std::borrow::Cow<'_, str> {
     }
 }
 pub use crate::error::ExtractError;
-pub use crate::io::{BoundedReader, ByteReader, BytesSource, Source, SourceError};
+pub use crate::io::{BoundedReader, Budget, ByteReader, BytesSource, Source, SourceError};
 pub use crate::report::{DateField, Map, Report};
 
 /// Extracts information from one or more formats.

@@ -1,0 +1,109 @@
+---
+source: src/formats/disk/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-head.vhdx",
+    "stem": "saltmere-head",
+    "extension": "vhdx"
+  },
+  "identification": {
+    "format": "vhdx",
+    "name": "Microsoft VHDX virtual hard disk",
+    "mime": "application/x-vhdx",
+    "family": "disk",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 262144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 262144,
+    "entropy": 0.011,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8e33f808270982995441eba5a1b273b64c9103a5a70c6627dc751a2ffc607d8c",
+    "blake3": "6efa5e47b091184f1c7ee88b2e8713328731c17ba3caf55c0b4066b5444a5cbc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vhdx": {
+      "creator": "QEMU v10.0.2",
+      "version": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "warnings": [
+      "disk.vm: metadata region past the end of the file"
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,122 @@
+---
+source: src/formats/disk/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-head.hfs",
+    "stem": "saltmere-head",
+    "extension": "hfs"
+  },
+  "identification": {
+    "format": "hfs_plus",
+    "name": "HFS / HFS+ file system image",
+    "mime": "application/x-raw-disk-image",
+    "family": "disk",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "disk.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 262144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 262144,
+    "entropy": 0.075,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0d502ac7eede4dc125936ae2700b05aa5933b2cc4371a9a06d8455ac33a2ab58",
+    "blake3": "cf2db9fda3dc4fd9b7a4538c3363e685f192441396ca4dbe41f72f5587119029"
+  },
+  "content": {
+    "title": "Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "hfs_plus": {
+      "disk_bytes": 262144,
+      "filesystem": {
+        "type": "hfs_plus",
+        "version": 4,
+        "last_mounted_by": "10.0",
+        "created": "2026-10-27T14:20:57Z",
+        "modified": "2026-10-27T14:20:58Z",
+        "checked": "2026-10-27T14:20:57Z",
+        "files": 6,
+        "folders": 6,
+        "block_size": 4096,
+        "size_bytes": 524288,
+        "free_bytes": 356352,
+        "volume_id": "092678325B75E717",
+        "label": "Saltmere"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

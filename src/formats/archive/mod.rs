@@ -17,6 +17,7 @@ pub(crate) mod cpio;
 pub(crate) mod legacy;
 pub(crate) mod rar;
 pub(crate) mod sevenz;
+pub(crate) mod squashfs;
 pub(crate) mod tar;
 pub(crate) mod zip;
 

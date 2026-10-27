@@ -1,0 +1,127 @@
+---
+source: src/formats/package/linux.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.flatpakrepo",
+    "stem": "saltmere",
+    "extension": "flatpakrepo"
+  },
+  "identification": {
+    "format": "flatpakref",
+    "name": "Flatpak reference",
+    "mime": "application/vnd.flatpak.ref",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "package.linux"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 218
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 218,
+    "entropy": 5.073,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 218,
+      "chars": 218,
+      "words": 14,
+      "lines": 6,
+      "max_line_length": 51,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1ddd3dd5182860bd52959b828bbe2d894694916015483fdc38bbf9550a3cfdcb",
+    "blake3": "9a2f5101f238462980ff3c5bbba415cc1e49d26d209913b2e4cacb03798dfecd"
+  },
+  "content": {
+    "description": "Saltmere Harbour apps",
+    "excerpt": "Saltmere Harbour apps"
+  },
+  "metadata": {},
+  "format": {
+    "flatpakref": {
+      "ecosystem": "flatpak",
+      "homepage": "https://example.org/saltmere",
+      "signatures": [
+        "gpg"
+      ],
+      "kind": "repository",
+      "repository_url": "https://example.org/saltmere/repo/"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.linux",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

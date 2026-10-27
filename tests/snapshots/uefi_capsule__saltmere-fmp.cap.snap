@@ -1,0 +1,247 @@
+---
+source: src/formats/disk/firmware.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fmp.cap",
+    "stem": "saltmere-fmp",
+    "extension": "cap"
+  },
+  "identification": {
+    "format": "uefi_capsule",
+    "name": "UEFI capsule",
+    "mime": "application/x-uefi-capsule",
+    "family": "disk",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.firmware"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2214
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 2214,
+    "entropy": 0.757,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "84b22a8f8fe8e6ab93675b08484d8a8e8128af681b6e65287ff855800a7d3a48",
+    "blake3": "c506bfbc03d394ace015d63b3110a3810ac68198bc9ff6480b036572ad93c459"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "uefi_capsule": {
+      "capsule": "fmp",
+      "capsule_guid": "6dcbd5ed-e82d-4c44-bda1-7194199ad92a",
+      "header_bytes": 28,
+      "image_bytes": 2214,
+      "flags": [
+        "persist_across_reset",
+        "initiate_reset"
+      ],
+      "embedded_drivers": 0,
+      "images": [
+        {
+          "image_type_id": "5a17e2e0-7e1d-4a7b-9c0d-5a1700000001",
+          "index": 1,
+          "size_bytes": 2130,
+          "hardware_instance": 0,
+          "signed": true,
+          "firmware_version": 65538,
+          "lowest_supported_version": 65536
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "image1.bin",
+        "stem": "image1",
+        "extension": "bin"
+      },
+      "identification": {
+        "format": "binary",
+        "name": "Binary data",
+        "mime": "application/octet-stream",
+        "family": "binary.unknown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "extractor": "binary.unknown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 2130
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 2130,
+        "entropy": 0.563,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "945c419fb61411ecc5e3c48e3bd683db10b4b108ede007b43c9089380cb237cd",
+        "blake3": "c4c3ba2fdec3b9186e114c0c4bdd358cc3fe3facae41569c9cdacacb1155ac37"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "binary": {
+          "bytes_examined": 2130,
+          "strings": {
+            "ascii": 3,
+            "utf16le": 0
+          },
+          "strings_sample": [
+            "placeholder, not a signatureMSS1",
+            "Saltmere tide table",
+            "High water 06:12, low water 12:31"
+          ],
+          "entropy_profile": {
+            "block_bytes": 65536,
+            "blocks": 1,
+            "min": 0.563,
+            "max": 0.563,
+            "mean": 0.563,
+            "high_entropy_blocks": 0,
+            "likely_compressed_or_encrypted": false
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "binary.unknown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.firmware",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

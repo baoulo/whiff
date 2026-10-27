@@ -15,4 +15,6 @@ doc-valid-idents = [
     "ZipCrypto", "WinZip", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
     "WebExtension", "WebExtensions", "OpenPGP", "RubyGems", "PyPA", "NuGet", "OSGi", "JScript", "VBScript",
     "PackageInfo",
+    "BitLocker", "ReFS", "SquashFS", "CloneCD", "EnCase", "AmigaDOS", "VirtualBox", "VMware", "AppImage",
+    "AppImages", "AppStream",
 ]

@@ -1,0 +1,754 @@
+---
+source: src/formats/package/linux.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere_Tides-1.2.0-x86_64.AppImage",
+    "stem": "Saltmere_Tides-1.2.0-x86_64",
+    "extension": "AppImage"
+  },
+  "identification": {
+    "format": "appimage",
+    "name": "AppImage",
+    "mime": "application/vnd.appimage",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "package.linux"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6504
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.linux",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 6504,
+    "entropy": 1.662,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 9,
+      "uncompressed_bytes": 677,
+      "ratio": 0.10408979089790898
+    }
+  },
+  "integrity": {
+    "sha256": "35b85606022ac1b8a06d0088583f1010f794b42abb67347ebd6b630dfd96e44b",
+    "blake3": "8f64c40e7c9ee9fbfdbe2f4d7ceeb2c6d409c929e3d02ab4513063467e2c4973"
+  },
+  "content": {
+    "title": "Saltmere Tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "authors": [
+      "Saltmere Harbour Office"
+    ],
+    "excerpt": "Tide tables for Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "appimage": {
+      "ecosystem": "appimage",
+      "name": "Saltmere Tides",
+      "version": "1.2.0",
+      "architecture": "x86_64",
+      "license": "CC0-1.0",
+      "homepage": "https://example.org/saltmere/tides",
+      "authors": [
+        "Saltmere Harbour Office"
+      ],
+      "appimage_type": 2,
+      "update_information": "zsync|https://example.org/saltmere/Saltmere_Tides-latest-x86_64.AppImage.zsync",
+      "payload_offset": 2408,
+      "categories": [
+        "Utility",
+        "Education"
+      ],
+      "exec": "tides",
+      "squashfs": {
+        "version": "4.0",
+        "compression": "gzip",
+        "block_size": 131072,
+        "inodes": 10,
+        "fragments": 1,
+        "bytes_used": 864,
+        "created": "2025-09-01T12:00:00Z",
+        "flags": [
+          "duplicates_removed",
+          "exportable"
+        ]
+      },
+      "files": 4,
+      "directories": 4,
+      "links": 1,
+      "file_types": {
+        "(none)": 2,
+        "desktop": 1,
+        "xml": 1
+      },
+      "top_level": [
+        "usr/",
+        "AppRun",
+        "tides",
+        "tides.desktop"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "AppRun",
+          "size_bytes": 44,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "tides",
+          "type": "symlink",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755",
+          "link": "usr/bin/tides"
+        },
+        {
+          "path": "tides.desktop",
+          "size_bytes": 171,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "usr/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/bin/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/share/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/share/metainfo/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "usr/share/metainfo/org.example.saltmere.tides.appdata.xml",
+          "size_bytes": 428,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "usr/bin/tides",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "AppRun",
+        "stem": "AppRun"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 44
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 44,
+        "entropy": 4.417,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 44,
+          "chars": 44,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3f6c400921a8639d787d9113dd1bec316e298debe4c9d070249810f597f75edd",
+        "blake3": "54b519d0766273a0b58b53591277bc3427cf4a2b619401ae3449ff1b0c470de7"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 33
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides.desktop",
+        "stem": "tides",
+        "extension": "desktop"
+      },
+      "identification": {
+        "format": "ini",
+        "name": "INI configuration",
+        "mime": "text/plain",
+        "family": "data.ini",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.ini"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 171
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "active_content": [
+          "exec_command"
+        ]
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 171,
+        "entropy": 4.885,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 171,
+          "chars": 171,
+          "words": 14,
+          "lines": 8,
+          "max_line_length": 40,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "97d6759a5e4d7bdf8f8988fc1ad83a9a263b552e2f1119650ac493e136c64b38",
+        "blake3": "cac634b8272cd9a8c6a4bfda542722bcfd470fe6e8e25f995ba55a237b18906e"
+      },
+      "content": {
+        "title": "Saltmere Tides",
+        "description": "Tide tables for Saltmere harbour"
+      },
+      "metadata": {},
+      "format": {
+        "ini": {
+          "dialect": "desktop_entry",
+          "sections": [
+            {
+              "name": "Desktop Entry",
+              "keys": 7
+            }
+          ],
+          "keys": 7,
+          "values": {
+            "Desktop Entry": {
+              "Type": "Application",
+              "Name": "Saltmere Tides",
+              "Comment": "Tide tables for Saltmere harbour",
+              "Exec": "tides",
+              "Icon": "tides",
+              "Categories": "Utility;Education;",
+              "X-AppImage-Version": "1.2.0"
+            }
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.ini",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "org.example.saltmere.tides.appdata.xml",
+        "stem": "org.example.saltmere.tides.appdata",
+        "extension": "xml"
+      },
+      "identification": {
+        "format": "xml",
+        "name": "XML document",
+        "mime": "application/xml",
+        "family": "text.xml",
+        "confidence": 0.65,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.xml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 428
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 428,
+        "entropy": 4.866,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 428,
+          "chars": 428,
+          "words": 21,
+          "lines": 10,
+          "max_line_length": 63,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "4ae08d99c0965bb3d86f91fe3575a18c52a93438c45120b475518cf78e75ee74",
+        "blake3": "8653aab5d9d2530df6e76206682dc5a002427db75d36e7eb04292ec67231adf9"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "xml": {
+          "declaration": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+          },
+          "root": "component",
+          "root_attributes": {
+            "type": "desktop-application"
+          },
+          "well_formed": true,
+          "elements": 8,
+          "attributes": 2,
+          "max_depth": 2,
+          "distinct_elements": 8,
+          "top_elements": {
+            "component": 1,
+            "developer_name": 1,
+            "id": 1,
+            "metadata_license": 1,
+            "name": 1,
+            "project_license": 1,
+            "summary": 1,
+            "url": 1
+          },
+          "text_bytes": 167
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.xml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides",
+        "stem": "tides"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 4.514,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 5,
+          "lines": 2,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "5f892f5c96300ace1633b94c896961e809b81a6e2b26e6921b6acf9ea329a666",
+        "blake3": "47f72cc0b97886d8b283f5b2d0e6878be5d487611031f8a21e45937027eff711"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 23
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.linux",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

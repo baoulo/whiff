@@ -1,0 +1,130 @@
+---
+source: src/formats/package/linux.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "org.example.saltmere.Tides.flatpakref",
+    "stem": "org.example.saltmere.Tides",
+    "extension": "flatpakref"
+  },
+  "identification": {
+    "format": "flatpakref",
+    "name": "Flatpak reference",
+    "mime": "application/vnd.flatpak.ref",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "package.linux"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 310
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 310,
+    "entropy": 4.549,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 310,
+      "chars": 310,
+      "words": 16,
+      "lines": 10,
+      "max_line_length": 61,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7012fec7ad23ec3735e2bfd0ed2f60aac752a9a0b618c104894381756ec79f64",
+    "blake3": "a8d02d28d287aa644764df5aa7157ee6453f9641d172a50cd143ade381d0a86d"
+  },
+  "content": {
+    "title": "org.example.saltmere.Tides stable",
+    "description": "Saltmere Tides",
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "flatpakref": {
+      "ecosystem": "flatpak",
+      "name": "org.example.saltmere.Tides",
+      "version": "stable",
+      "homepage": "https://example.org/saltmere/tides",
+      "kind": "application",
+      "is_runtime": false,
+      "repository_url": "https://example.org/saltmere/repo/",
+      "remote_name": "saltmere",
+      "runtime_repository": "https://example.org/saltmere/runtimes.flatpakrepo"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.linux",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

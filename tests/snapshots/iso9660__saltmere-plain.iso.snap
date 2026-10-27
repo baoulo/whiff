@@ -1,0 +1,592 @@
+---
+source: src/formats/disk/iso.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-plain.iso",
+    "stem": "saltmere-plain",
+    "extension": "iso"
+  },
+  "identification": {
+    "format": "iso9660",
+    "name": "ISO 9660 disc image",
+    "mime": "application/x-iso9660-image",
+    "family": "disk",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.iso"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 61440
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-27T14:21:03Z",
+        "source": "disk.iso",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-10-27T14:21:03Z",
+        "source": "disk.iso",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "disk.iso",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2026-10-27T14:21:03Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 61440,
+    "entropy": 0.271,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6,
+      "uncompressed_bytes": 131,
+      "ratio": 0.002132161458333333
+    }
+  },
+  "integrity": {
+    "sha256": "88aa49ef6bd42311558abb3e09f1a2746048f419c351ab58de4ec67aeceda300",
+    "blake3": "9a1094660d51408fb77cf2fa3437aafebacf85b9c05885c17bcbd1a0622bc2b4"
+  },
+  "content": {
+    "title": "SALTMERE"
+  },
+  "metadata": {},
+  "format": {
+    "iso9660": {
+      "volume_id": "SALTMERE",
+      "system_id": "LINUX",
+      "application": "GENISOIMAGE ISO 9660/HFS FILESYSTEM CREATOR (C) 1993 E.YOUNGDALE (C) 1997-2006 J.PEARSON/J.SCHILLING (C) 2006-2007 CDRKIT TEAM",
+      "block_size": 2048,
+      "volume_bytes": 61440,
+      "created": "2026-10-27T14:21:03Z",
+      "modified": "2026-10-27T14:21:03Z",
+      "effective": "2026-10-27T14:21:03Z",
+      "names": "iso9660",
+      "files": 3,
+      "directories": 3,
+      "compressed_bytes": 131,
+      "file_types": {
+        "csv": 1,
+        "md": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "CHARTS/",
+        "DOCS/",
+        "TIDES.TXT"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "CHARTS/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z"
+        },
+        {
+          "path": "DOCS/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z"
+        },
+        {
+          "path": "TIDES.TXT",
+          "size_bytes": 54,
+          "modified": "2025-09-01T12:00:00Z"
+        },
+        {
+          "path": "DOCS/README.MD",
+          "size_bytes": 46,
+          "modified": "2025-09-01T12:00:00Z"
+        },
+        {
+          "path": "CHARTS/2025/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z"
+        },
+        {
+          "path": "CHARTS/2025/SEPTEMBE.CSV",
+          "size_bytes": 31,
+          "modified": "2025-09-01T12:00:00Z"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "TIDES.TXT",
+        "stem": "TIDES",
+        "extension": "TXT"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 54
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 54,
+        "entropy": 4.24,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 54,
+          "chars": 54,
+          "words": 9,
+          "lines": 2,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e511a695729d01fe22731a6cbbea378a25f8fa78155f486e26f842414609737c",
+        "blake3": "b25f0e65822ae076c8099ddac29336e75c589491e53b18761754f88c0e0872d1"
+      },
+      "content": {
+        "excerpt": "Saltmere tide table High water 06:12, low water 12:31"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "README.MD",
+        "stem": "README",
+        "extension": "MD"
+      },
+      "identification": {
+        "format": "markdown",
+        "name": "Markdown",
+        "mime": "text/markdown",
+        "family": "text.markdown",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.markdown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 46
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "external_references": 0
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 46,
+        "entropy": 4.024,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 46,
+          "chars": 46,
+          "words": 7,
+          "lines": 3,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "0d86a56f9b2e144dd3949c0ab1308abc92ff39ba0e8be709d0d67f283064e35c",
+        "blake3": "162c8e539571449e967d80cd00d997597fcc6db61a103f0ad51a3a59f4c4338e"
+      },
+      "content": {
+        "title": "Saltmere",
+        "outline": [
+          {
+            "level": 1,
+            "text": "Saltmere"
+          }
+        ],
+        "excerpt": "Tide tables for Saltmere harbour."
+      },
+      "metadata": {},
+      "format": {
+        "markdown": {
+          "headings": 1,
+          "links": {
+            "internal": 0,
+            "external": 0
+          },
+          "images": {
+            "count": 0,
+            "with_alt": 0
+          },
+          "code_blocks": 0,
+          "tables": 0
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.markdown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "SEPTEMBE.CSV",
+        "stem": "SEPTEMBE",
+        "extension": "CSV"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 31
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 31,
+        "entropy": 4.042,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 31,
+          "chars": 31,
+          "words": 2,
+          "lines": 2,
+          "max_line_length": 15,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "6f6615c3887f8804cf29fa7fa50bc579df839d61bf136f8d07932f0a4d9146bb",
+        "blake3": "b71ef540dd65905ef8fcbb07bc0f3a36180f4dace973301a24d973e27304e02a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 1,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "month",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "max_length": 7
+            },
+            {
+              "name": "high",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "min": 4.2,
+              "max": 4.2,
+              "mean": 4.2
+            },
+            {
+              "name": "low",
+              "type": "number",
+              "null_ratio": 0.0,
+              "distinct": 1,
+              "min": 0.6,
+              "max": 0.6,
+              "mean": 0.6
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09",
+              "4.2",
+              "0.6"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.iso",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

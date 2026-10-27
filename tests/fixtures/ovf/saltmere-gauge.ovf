@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<Envelope ovf:version="1.0" xml:lang="en-US" xmlns="http://schemas.dmtf.org/ovf/envelope/1" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1" xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData" xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <References>
+    <File ovf:id="file1" ovf:href="saltmere-disk1.vmdk" ovf:size="132608"/>
+  </References>
+  <DiskSection>
+    <Info>List of the virtual disks used in the package</Info>
+    <Disk ovf:capacity="196608" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized"/>
+  </DiskSection>
+  <NetworkSection>
+    <Info>Logical networks used in the package</Info>
+    <Network ovf:name="Harbour">
+      <Description>Harbour office network</Description>
+    </Network>
+  </NetworkSection>
+  <VirtualSystem ovf:id="saltmere-gauge">
+    <Info>A virtual machine</Info>
+    <ProductSection>
+      <Info>Meta-information about the installed software</Info>
+      <Product>Saltmere Tide Gauge</Product>
+      <Vendor>Saltmere Harbour Office</Vendor>
+      <Version>1.2.0</Version>
+      <ProductUrl>https://example.org/saltmere/gauge</ProductUrl>
+    </ProductSection>
+    <AnnotationSection>
+      <Info>A human-readable annotation</Info>
+      <Annotation>Logs and serves the harbour tide gauge readings.</Annotation>
+    </AnnotationSection>
+    <EulaSection>
+      <Info>License agreement for the virtual system</Info>
+      <License>Released under CC0-1.0.</License>
+    </EulaSection>
+    <OperatingSystemSection ovf:id="96">
+      <Info>The kind of installed guest operating system</Info>
+      <Description>Debian_64</Description>
+    </OperatingSystemSection>
+    <VirtualHardwareSection>
+      <Info>Virtual hardware requirements for a virtual machine</Info>
+      <System>
+        <vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+        <vssd:InstanceID>0</vssd:InstanceID>
+        <vssd:VirtualSystemIdentifier>saltmere-gauge</vssd:VirtualSystemIdentifier>
+        <vssd:VirtualSystemType>virtualbox-2.2</vssd:VirtualSystemType>
+      </System>
+      <Item>
+        <rasd:Caption>2 virtual CPU</rasd:Caption>
+        <rasd:ElementName>2 virtual CPU</rasd:ElementName>
+        <rasd:InstanceID>1</rasd:InstanceID>
+        <rasd:ResourceType>3</rasd:ResourceType>
+        <rasd:VirtualQuantity>2</rasd:VirtualQuantity>
+      </Item>
+      <Item>
+        <rasd:AllocationUnits>MegaBytes</rasd:AllocationUnits>
+        <rasd:ElementName>512 MB of memory</rasd:ElementName>
+        <rasd:InstanceID>2</rasd:InstanceID>
+        <rasd:ResourceType>4</rasd:ResourceType>
+        <rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+      </Item>
+      <Item>
+        <rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+        <rasd:Connection>Harbour</rasd:Connection>
+        <rasd:ElementName>Ethernet adapter on Harbour</rasd:ElementName>
+        <rasd:InstanceID>3</rasd:InstanceID>
+        <rasd:ResourceSubType>E1000</rasd:ResourceSubType>
+        <rasd:ResourceType>10</rasd:ResourceType>
+      </Item>
+      <Item>
+        <rasd:ElementName>disk1</rasd:ElementName>
+        <rasd:HostResource>/disk/vmdisk1</rasd:HostResource>
+        <rasd:InstanceID>4</rasd:InstanceID>
+        <rasd:ResourceType>17</rasd:ResourceType>
+      </Item>
+    </VirtualHardwareSection>
+  </VirtualSystem>
+</Envelope>

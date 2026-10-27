@@ -6,8 +6,10 @@
 //! (zlib, bzip2, LZFSE, LZMA, ADC, raw, zero fill). A software licence
 //! agreement shown before mounting (`LPic` / `TEXT` resources) is noted.
 //! Encrypted images (`encrcdsa`) are recognised as such; an image without
-//! the trailer is a raw disk image (`UDRW`, cryptexes). File-system
-//! contents are not read here.
+//! the trailer is a raw disk image (`UDRW`, cryptexes): its partition
+//! table and file systems are described (see
+//! [`volume`](crate::plugin::volume)). File-system contents are not read
+//! here.
 //!
 //! Specifications: Apple's UDIF layout as documented by the libdmg-hfsplus
 //! and `dmg2img` projects (the koly trailer and `mish` block tables).
@@ -118,6 +120,9 @@ impl Extractor for Dmg {
             // file being the disk itself.
             pkg.set("format", "raw");
             pkg.set("disk_bytes", len);
+            for (k, v) in crate::plugin::volume::describe(src) {
+                pkg.set(&k, v);
+            }
             pkg.write(cx);
             return Ok(());
         }
