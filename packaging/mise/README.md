@@ -3,17 +3,17 @@
 `whiff` is not in the built-in mise registry. Use the GitHub backend:
 
 ```bash
-mise use -g github:baoulo/whiff@0.5.0
+mise use -g github:baoulo/whiff@0.5.1
 ```
 
 Or in `mise.toml`:
 
 ```toml
 [tools]
-"github:baoulo/whiff" = "0.5.0"
+"github:baoulo/whiff" = "0.5.1"
 ```
 
-To keep a short name in `.tool-versions` (`whiff 0.5.0`):
+To keep a short name in `.tool-versions` (`whiff 0.5.1`):
 
 ```toml
 [tool_alias]
