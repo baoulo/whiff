@@ -4,9 +4,11 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased
+## 0.5.1 — 2026-10-27
 
-Software packages and installers, and disk images (the rest of Stage 5).
+Software packages and installers, and disk images: Stage 5 is complete.
+What was deliberately set aside is listed in
+[`docs/known-gaps.md`](docs/known-gaps.md).
 
 - **Packages:** one set of facts for every package format — ecosystem,
   name, version, release, architecture, summary and description, licence,

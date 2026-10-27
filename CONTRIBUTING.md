@@ -1,6 +1,6 @@
 # Contributing to whiff
 
-The most useful contribution is an **extractor** for a format listed in [`docs/metadata-extracted.md`](docs/metadata-extracted.md). Adding one touches no shared code apart from a `mod` line, which the tooling writes for you.
+The most useful contribution is an **extractor** for a format listed in [`docs/metadata-extracted.md`](docs/metadata-extracted.md). Adding one touches no shared code apart from a `mod` line, which the tooling writes for you. [`docs/known-gaps.md`](docs/known-gaps.md) lists the gaps in formats that are already handled.
 
 ## Add a format
 
