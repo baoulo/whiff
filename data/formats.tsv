@@ -1000,6 +1000,6 @@
 3	audio	Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC)	mp3		chapters with titles + URLs
 3	video	Video with embedded captions (CEA-608/708 in SEI)	mp4 ts		caption presence + language
 3	archive	ZIP-based OCI / Docker save archive	tar		-> package
-3	disk	Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW)	dmg		compression type, partition names
+3	package	Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW)	dmg		compression type, partition names
 3	columnar	LanceDB / Chroma vector stores	lance sqlite3		collections, embedding dims
 3	forensic	Wireshark dissector-free: Bluetooth btsnoop / USB pcap	btsnoop log		packet count, time range

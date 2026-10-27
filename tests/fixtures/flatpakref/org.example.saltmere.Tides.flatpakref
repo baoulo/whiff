@@ -1,0 +1,10 @@
+[Flatpak Ref]
+Name=org.example.saltmere.Tides
+Branch=stable
+Title=Saltmere Tides
+IsRuntime=false
+Url=https://example.org/saltmere/repo/
+SuggestRemoteName=saltmere
+RuntimeRepo=https://example.org/saltmere/runtimes.flatpakrepo
+Homepage=https://example.org/saltmere/tides
+Comment=Tide tables for Saltmere harbour

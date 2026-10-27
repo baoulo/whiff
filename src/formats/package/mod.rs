@@ -16,6 +16,7 @@ pub(crate) mod asar;
 pub(crate) mod deb;
 pub(crate) mod dmg;
 pub(crate) mod java;
+pub(crate) mod linux;
 pub(crate) mod msi;
 pub(crate) mod rpm;
 pub(crate) mod tarball;

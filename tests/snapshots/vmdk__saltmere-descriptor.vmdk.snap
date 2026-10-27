@@ -1,0 +1,118 @@
+---
+source: src/formats/disk/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-descriptor.vmdk",
+    "stem": "saltmere-descriptor",
+    "extension": "vmdk"
+  },
+  "identification": {
+    "format": "vmdk",
+    "name": "VMware virtual disk",
+    "mime": "application/x-vmdk",
+    "family": "disk",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "disk.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 512
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 512,
+    "entropy": 4.288,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0f86730291c591206ac6564e69dc2daecd61d08769826009b2157b9a9fb5606d",
+    "blake3": "18c695c2369a4696448b2329338eddc6aca35fa2a323b13593608ccb7060344a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vmdk": {
+      "variant": "descriptor",
+      "content_id": "bb1e0e37",
+      "create_type": "monolithicFlat",
+      "virtual_hardware_version": "4",
+      "adapter_type": "ide",
+      "tools_version": "2147483647",
+      "extents": [
+        {
+          "access": "RW",
+          "sectors": 384,
+          "type": "FLAT",
+          "file": "flat-flat.vmdk"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,116 @@
+---
+source: src/formats/disk/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-overlay.qcow2",
+    "stem": "saltmere-overlay",
+    "extension": "qcow2"
+  },
+  "identification": {
+    "format": "qcow2",
+    "name": "QEMU copy-on-write disk",
+    "mime": "application/x-qemu-disk",
+    "family": "disk",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12296
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12296,
+    "entropy": 0.051,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 196608,
+      "ratio": 15.989590110605075
+    }
+  },
+  "integrity": {
+    "sha256": "e04861de5cd14f0f8ff95e0de44e762645bdd4d08b6bb73afa9f754e4ec61b1d",
+    "blake3": "6d9c79931c8aab0563fb7cee935ee78b68886a23fd4bd8d0a72f4cf163078dc0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "qcow2": {
+      "version": 3,
+      "virtual_bytes": 196608,
+      "cluster_size": 4096,
+      "backing_file": "saltmere.qcow2",
+      "backing_format": "qcow2"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "warnings": [
+      "disk.vm: an overlay: clusters not stored here come from the backing file"
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

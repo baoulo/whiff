@@ -1,0 +1,799 @@
+---
+source: src/formats/package/linux.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides_1.2.0_amd64.snap",
+    "stem": "saltmere-tides_1.2.0_amd64",
+    "extension": "snap"
+  },
+  "identification": {
+    "format": "snap",
+    "name": "Snap package",
+    "mime": "application/vnd.snap",
+    "family": "package",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "snap",
+        "confidence": 0.95
+      },
+      {
+        "format": "squashfs",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "package.linux"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.linux",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "install_scripts"
+    ],
+    "risks": [
+      {
+        "kind": "install_script",
+        "category": "supply_chain",
+        "severity": "medium",
+        "detail": "install",
+        "source": "package.linux"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 1.705,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6,
+      "uncompressed_bytes": 457,
+      "ratio": 0.111572265625
+    }
+  },
+  "integrity": {
+    "sha256": "735e1a12952174fcf895eb5f8d127c179e09691881df665e9b6bb38ba5033b99",
+    "blake3": "48ea1387fb7fbd24793303d8e3c873d7ff7c4b39d749a77872876f53e5641b49"
+  },
+  "content": {
+    "title": "saltmere-tides 1.2.0",
+    "description": "Tide tables for Saltmere harbour",
+    "excerpt": "Tide tables for Saltmere harbour High and low water times for Saltmere harbour, from the harbour office."
+  },
+  "metadata": {},
+  "format": {
+    "snap": {
+      "ecosystem": "snap",
+      "name": "saltmere-tides",
+      "version": "1.2.0",
+      "license": "CC0-1.0",
+      "install_scripts": [
+        "install"
+      ],
+      "base": "core22",
+      "grade": "stable",
+      "confinement": "strict",
+      "architectures": [
+        "amd64"
+      ],
+      "apps": [
+        {
+          "name": "tides",
+          "command": "bin/tides",
+          "plugs": [
+            "network",
+            "home"
+          ]
+        },
+        {
+          "name": "gauge",
+          "command": "bin/tides --serve",
+          "daemon": "simple",
+          "plugs": [
+            "network-bind"
+          ]
+        }
+      ],
+      "plugs": [
+        "home",
+        "network",
+        "network-bind"
+      ],
+      "squashfs": {
+        "version": "4.0",
+        "compression": "xz",
+        "block_size": 131072,
+        "inodes": 7,
+        "fragments": 0,
+        "bytes_used": 848,
+        "created": "2025-09-01T12:00:00Z",
+        "flags": [
+          "no_fragments",
+          "duplicates_removed",
+          "exportable",
+          "no_xattrs"
+        ]
+      },
+      "files": 3,
+      "directories": 3,
+      "compressed_bytes": 387,
+      "file_types": {
+        "(none)": 2,
+        "yaml": 1
+      },
+      "top_level": [
+        "meta/",
+        "bin/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "bin/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "meta/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "meta/hooks/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "meta/snap.yaml",
+          "size_bytes": 406,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "meta/hooks/install",
+          "size_bytes": 17,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "bin/tides",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "snap.yaml",
+        "stem": "snap",
+        "extension": "yaml"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 406
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 406,
+        "entropy": 4.65,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 406,
+          "chars": 406,
+          "words": 49,
+          "lines": 18,
+          "max_line_length": 73,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "4b9917515da7f33274fcfe98be434cf473aa34559681be370e5fc68859d83791",
+        "blake3": "e386d80dffd3431ad00256ae4b18c2e5487764d9940a02e60456c365f5c746c2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 0,
+          "aliases": 0,
+          "valid": true,
+          "documents": 1,
+          "top_level": "object",
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere-tides"
+                ]
+              },
+              "$.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              },
+              "$.summary": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.description": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "High and low water times for Saltmere harbour, from the…"
+                ]
+              },
+              "$.license": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "CC0-1.0"
+                ]
+              },
+              "$.base": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "core22"
+                ]
+              },
+              "$.grade": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "stable"
+                ]
+              },
+              "$.confinement": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "strict"
+                ]
+              },
+              "$.architectures": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.architectures[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "amd64"
+                ]
+              },
+              "$.apps": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.apps.tides": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.apps.tides.command": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "bin/tides"
+                ]
+              },
+              "$.apps.tides.plugs": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  2,
+                  2
+                ]
+              },
+              "$.apps.tides.plugs[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 2,
+                "examples": [
+                  "network",
+                  "home"
+                ]
+              },
+              "$.apps.gauge": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.apps.gauge.command": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "bin/tides --serve"
+                ]
+              },
+              "$.apps.gauge.daemon": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "simple"
+                ]
+              },
+              "$.apps.gauge.plugs": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.apps.gauge.plugs[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "network-bind"
+                ]
+              }
+            },
+            "max_depth": 4
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "install",
+        "stem": "install"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 17
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 17,
+        "entropy": 3.735,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 17,
+          "chars": 17,
+          "words": 3,
+          "lines": 2,
+          "max_line_length": 9,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "blake3": "e87b065684e1003950e1996781ed3cf0a6c88751726df8b9963694f204905b3d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 9
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides",
+        "stem": "tides"
+      },
+      "identification": {
+        "format": "shell",
+        "name": "Shell script",
+        "mime": "application/x-sh",
+        "family": "code.source",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 4.514,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 5,
+          "lines": 2,
+          "max_line_length": 23,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "5f892f5c96300ace1633b94c896961e809b81a6e2b26e6921b6acf9ea329a666",
+        "blake3": "47f72cc0b97886d8b283f5b2d0e6878be5d487611031f8a21e45937027eff711"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "shell": {
+          "language": "Shell script",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 0,
+            "total": 2
+          },
+          "interpreter": "sh",
+          "is_test": false,
+          "generated": false,
+          "longest_line": 23
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.linux",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

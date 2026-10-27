@@ -1,0 +1,548 @@
+---
+source: src/formats/disk/firmware.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-multi.uimg",
+    "stem": "saltmere-multi",
+    "extension": "uimg"
+  },
+  "identification": {
+    "format": "uimage",
+    "name": "U-Boot legacy image",
+    "mime": "application/x-uboot-image",
+    "family": "disk",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "disk.firmware"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4322
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-27T14:21:01Z",
+        "source": "disk.firmware",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-27T14:21:01Z",
+    "latest": "2026-10-27T14:21:01Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4322,
+    "entropy": 0.686,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "11527a382eb280bc411112d6ee78b2995bf785c2b021328d5e021a4e58c66b63",
+    "blake3": "5ae074574274de782a675e6ae6200c545bb2c553c2730f6a3c628298f4fd7bb4"
+  },
+  "content": {
+    "title": "Saltmere TG-1 multi"
+  },
+  "metadata": {},
+  "format": {
+    "uimage": {
+      "header_crc_ok": true,
+      "name": "Saltmere TG-1 multi",
+      "created": "2026-10-27T14:21:01Z",
+      "os": "Linux",
+      "architecture": "arm",
+      "image_type": "multi",
+      "compression": "none",
+      "load_address": "0x0",
+      "entry_point": "0x0",
+      "data_bytes": 4258,
+      "data_crc_ok": true,
+      "files": [
+        4096,
+        150
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "part0",
+        "stem": "part0"
+      },
+      "identification": {
+        "format": "binary",
+        "name": "Binary data",
+        "mime": "application/octet-stream",
+        "family": "binary.unknown",
+        "confidence": 0.1,
+        "detected_by": "heuristic",
+        "extractor": "binary.unknown"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 4096
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {
+        "personal_data": {
+          "email": 1
+        }
+      },
+      "rights": {},
+      "physical": {
+        "size_bytes": 4096,
+        "entropy": 0.209,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "eab79b7b24ea9e04946c55424a1ad289e5707610ec776e2d1dc39631bfce5534",
+        "blake3": "5d39e0c811fb0bbd00a73ce587729099f2c81f81f9246437965b1e27fdb5d61d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "binary": {
+          "bytes_examined": 4096,
+          "strings": {
+            "ascii": 1,
+            "utf16le": 0
+          },
+          "strings_sample": [
+            "Linux version 6.1.0-saltmere (builder@example.org) #1 SMP PREEMPT"
+          ],
+          "entropy_profile": {
+            "block_bytes": 65536,
+            "blocks": 1,
+            "min": 0.209,
+            "max": 0.209,
+            "mean": 0.209,
+            "high_entropy_blocks": 0,
+            "likely_compressed_or_encrypted": false
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "binary.unknown",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "part1",
+        "stem": "part1"
+      },
+      "identification": {
+        "format": "gzip",
+        "name": "gzip",
+        "mime": "application/gzip",
+        "family": "compress",
+        "confidence": 0.72,
+        "detected_by": "magic",
+        "extractor": "compress.gzip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 150
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 150,
+        "entropy": 6.218,
+        "entropy_scope": "file",
+        "container": {
+          "uncompressed_bytes": 10240,
+          "ratio": 68.26666666666667
+        }
+      },
+      "integrity": {
+        "sha256": "74514edfde76b41a2ab370dd15dde7c5eb6b291a2a618530f0eee4775c119e3a",
+        "blake3": "e20fafae46782f0d7771488bd1c1fcd10abef97497fe8b157da7ab041d8de020"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "gzip": {
+          "method": "deflate",
+          "level": "maximum",
+          "os": "Unix",
+          "declared_size_bytes": 10240
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "part1.out",
+            "stem": "part1",
+            "extension": "out"
+          },
+          "identification": {
+            "format": "cpio",
+            "name": "cpio archive",
+            "mime": "application/x-cpio",
+            "family": "archive",
+            "confidence": 0.84,
+            "detected_by": "magic",
+            "extension_matches": false,
+            "extractor": "archive.cpio"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 10240
+          },
+          "temporal": {
+            "filesystem": {},
+            "content": [
+              {
+                "field": "modified",
+                "value": "2025-09-01T12:00:00Z",
+                "source": "archive.cpio",
+                "tz_known": true
+              }
+            ],
+            "earliest": "2025-09-01T12:00:00Z",
+            "latest": "2025-09-01T12:00:00Z"
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 10240,
+            "entropy": 0.227,
+            "entropy_scope": "file",
+            "container": {
+              "entries": 1,
+              "uncompressed_bytes": 24,
+              "ratio": 0.00234375
+            }
+          },
+          "integrity": {
+            "sha256": "9d4c120dbd963c95cb01feac9daeaaf8419ffb757925ff031d15f0a5b7f46779",
+            "blake3": "99c57580769643eb3a386a040ce6b90e4d8626f2dca791b2802a655bdc92d591"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "cpio": {
+              "variant": "newc",
+              "files": 1,
+              "compressed_bytes": 24,
+              "file_types": {
+                "rc": 1
+              },
+              "top_level": [
+                "init.rc"
+              ],
+              "modified_range": [
+                "2025-09-01T12:00:00Z",
+                "2025-09-01T12:00:00Z"
+              ],
+              "entries": [
+                {
+                  "path": "init.rc",
+                  "size_bytes": 24,
+                  "modified": "2025-09-01T12:00:00Z",
+                  "mode": "644"
+                }
+              ]
+            }
+          },
+          "embedded": [
+            {
+              "whiff": {
+                "version": "[version]",
+                "schema": "whiff/1",
+                "profile": "standard"
+              },
+              "source": {
+                "name": "init.rc",
+                "stem": "init",
+                "extension": "rc"
+              },
+              "identification": {
+                "format": "",
+                "name": "",
+                "mime": "",
+                "confidence": 0.0,
+                "detected_by": "none",
+                "extractor": null
+              },
+              "system": {
+                "kind": "memory",
+                "size_bytes": 24
+              },
+              "temporal": {
+                "filesystem": {}
+              },
+              "security": {},
+              "rights": {},
+              "physical": {},
+              "integrity": {},
+              "content": {},
+              "metadata": {},
+              "format": {},
+              "diagnostics": {
+                "warnings": [
+                  "not analysed: max_depth reached"
+                ],
+                "truncated": false,
+                "elapsed_ms": 0.0
+              }
+            }
+          ],
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "archive.cpio",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "limits_hit": [
+              "max_depth"
+            ],
+            "truncated": true,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "compress.gzip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.firmware",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

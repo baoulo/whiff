@@ -1,0 +1,622 @@
+---
+source: src/formats/disk/ovf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-gauge.ova",
+    "stem": "saltmere-gauge",
+    "extension": "ova"
+  },
+  "identification": {
+    "format": "ova",
+    "name": "Open Virtualization Format archive",
+    "mime": "application/ovf",
+    "family": "disk",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ova",
+        "confidence": 0.99
+      },
+      {
+        "format": "tar",
+        "confidence": 0.85
+      }
+    ],
+    "extractor": "disk.ovf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 139264
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "disk.ovf",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": false
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 139264,
+    "entropy": 0.466,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 136296,
+      "ratio": 0.9786879595588235
+    }
+  },
+  "integrity": {
+    "sha256": "584df68406183502fb07c8761a08418fe4ca2654440fa1f66e762aef2e5a4207",
+    "blake3": "3ee7441d74a46ea75d9762f31ec49806956be56ee75f786c1a54d9bb9516ddc3"
+  },
+  "content": {
+    "title": "Saltmere Tide Gauge",
+    "description": "Logs and serves the harbour tide gauge readings.",
+    "authors": [
+      "Saltmere Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ova": {
+      "manifest": "SHA256",
+      "signed": false,
+      "virtual_system": "saltmere-gauge",
+      "product": "Saltmere Tide Gauge",
+      "vendor": "Saltmere Harbour Office",
+      "version": "1.2.0",
+      "product_url": "https://example.org/saltmere/gauge",
+      "system_type": "virtualbox-2.2",
+      "annotation": "Logs and serves the harbour tide gauge readings.",
+      "eula": true,
+      "guest_os": {
+        "id": "96",
+        "description": "Debian_64"
+      },
+      "cpus": 2,
+      "memory_bytes": 536870912,
+      "hardware": [
+        {
+          "type": "cpu",
+          "count": 2
+        },
+        {
+          "type": "memory",
+          "bytes": 536870912
+        },
+        {
+          "type": "ethernet",
+          "subtype": "E1000"
+        },
+        {
+          "type": "disk"
+        }
+      ],
+      "disks": [
+        {
+          "id": "vmdisk1",
+          "capacity_bytes": 196608,
+          "format": "streamOptimized",
+          "file": "file1"
+        }
+      ],
+      "networks": [
+        "Harbour"
+      ],
+      "references": [
+        {
+          "href": "saltmere-disk1.vmdk",
+          "size_bytes": 132608
+        }
+      ],
+      "files": 3,
+      "compressed_bytes": 136296,
+      "file_types": {
+        "mf": 1,
+        "ovf": 1,
+        "vmdk": 1
+      },
+      "top_level": [
+        "saltmere-disk1.vmdk",
+        "saltmere-gauge.mf",
+        "saltmere-gauge.ovf"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "saltmere-gauge.ovf",
+          "size_bytes": 3501,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-gauge.mf",
+          "size_bytes": 187,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "saltmere-disk1.vmdk",
+          "size_bytes": 132608,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-gauge.mf",
+        "stem": "saltmere-gauge",
+        "extension": "mf"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 187
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 187,
+        "entropy": 4.73,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 187,
+          "chars": 187,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 93,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "92e4e3f0f509badd748a84e42807c5abcd0226a240365533afd4d231d872ae59",
+        "blake3": "a02353ad4f2bd4ed99f28c93418951f143dedfdaf56d767d1983c7afe8fad280"
+      },
+      "content": {
+        "excerpt": "SHA256(saltmere-gauge.ovf)= ae4f32a78ee60ea5de44600557910b269d424fb2b055f4f48a151da5628c8420 SHA256(saltmere-disk1.vmdk)= 10266666097a565172dce41dfdf6493a97514346bf963284d9e151285e6ec5b8"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "saltmere-disk1.vmdk",
+        "stem": "saltmere-disk1",
+        "extension": "vmdk"
+      },
+      "identification": {
+        "format": "vmdk",
+        "name": "VMware virtual disk",
+        "mime": "application/x-vmdk",
+        "family": "disk",
+        "confidence": 0.81,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "disk.vm"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 132608
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "disk.vm",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 132608,
+        "entropy": 0.157,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 3,
+          "uncompressed_bytes": 196608,
+          "ratio": 1.4826254826254825
+        }
+      },
+      "integrity": {
+        "sha256": "10266666097a565172dce41dfdf6493a97514346bf963284d9e151285e6ec5b8",
+        "blake3": "36755ef52d82dba8d6aaff8a7708e62023983ab9e1768c84f111b3a6fcb2956d"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "vmdk": {
+          "version": 3,
+          "virtual_bytes": 196608,
+          "grain_size": 65536,
+          "compression": "deflate",
+          "content_id": "80f5b2f5",
+          "create_type": "streamOptimized",
+          "virtual_hardware_version": "4",
+          "adapter_type": "lsilogic",
+          "tools_version": "2147483647",
+          "extents": [
+            {
+              "access": "RW",
+              "sectors": 384,
+              "type": "SPARSE",
+              "file": "saltmere-stream.vmdk"
+            }
+          ],
+          "partition_table": "gpt",
+          "disk_guid": "eae38f11-88c8-436f-86b9-4f4ac21a4c0c",
+          "partitions": [
+            {
+              "index": 1,
+              "start_bytes": 20480,
+              "size_bytes": 32768,
+              "type": "EFI System",
+              "type_id": "c12a7328-f81f-11d2-ba4b-00a0c93ec93b",
+              "name": "EFI System",
+              "guid": "1debd1db-76e3-4542-ab1a-21865012e3bd"
+            },
+            {
+              "index": 2,
+              "start_bytes": 53248,
+              "size_bytes": 126464,
+              "type": "Microsoft basic data",
+              "type_id": "ebd0a0a2-b9e5-4433-87c0-68b6b72699c7",
+              "name": "Tides",
+              "guid": "74438f80-e659-4672-9a3a-daa1d3e05840",
+              "filesystem": {
+                "type": "fat12",
+                "block_size": 2048,
+                "size_bytes": 122880,
+                "clusters": 51,
+                "oem_name": "mkfs.fat",
+                "serial": "1234-ABCD",
+                "boot_sector_label": "SALTMERE",
+                "label": "SALTMERE"
+              }
+            }
+          ],
+          "files": 2,
+          "directories": 1,
+          "compressed_bytes": 100,
+          "file_types": {
+            "md": 1,
+            "txt": 1
+          },
+          "top_level": [
+            "docs/",
+            "tides.txt"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "tides.txt",
+              "size_bytes": 54,
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "docs/",
+              "type": "directory",
+              "modified": "2025-09-01T12:00:00"
+            },
+            {
+              "path": "docs/readme.md",
+              "size_bytes": 46,
+              "modified": "2025-09-01T12:00:00"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "tides.txt",
+            "stem": "tides",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 54
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "readme.md",
+            "stem": "readme",
+            "extension": "md"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 46
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "disk.vm",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "disk.ovf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}
