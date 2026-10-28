@@ -1,0 +1,137 @@
+---
+source: src/formats/bytecode/dex.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-debug.dex",
+    "stem": "tides-debug",
+    "extension": "dex"
+  },
+  "identification": {
+    "format": "dex",
+    "name": "Android DEX",
+    "mime": "application/vnd.android.dex",
+    "family": "bytecode",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.dex"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1252
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1252,
+    "entropy": 4.576,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7f7451fc1b800f8dbdca54dcd06dd938a8785396aec80b625f460a90626e6976",
+    "blake3": "19d755fadc832aa6147da3b8a9d1cbb697634adaf1744531f120d7a374d324bc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dex": {
+      "version": "039",
+      "min_api_level": 28,
+      "checksum_valid": true,
+      "sha1": "06f62d3a022a8339f707f995328a3f9a1ebbb588",
+      "counts": {
+        "strings": 29,
+        "types": 9,
+        "prototypes": 7,
+        "fields": 1,
+        "methods": 9,
+        "classes": 1
+      },
+      "defined_methods": 3,
+      "defined_fields": 0,
+      "class_names": [
+        "Tides"
+      ],
+      "packages": [
+        "(default package) (1)"
+      ],
+      "source_files": [
+        "Tides.java"
+      ],
+      "referenced_packages": [
+        "java.io",
+        "java.lang"
+      ],
+      "compiler": {
+        "tool": "D8",
+        "version": "8.5.35",
+        "mode": "debug",
+        "min_api": 28
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.dex",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

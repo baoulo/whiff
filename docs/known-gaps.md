@@ -67,9 +67,9 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **DWARF:** only the first compile unit's producer, name and language are
   read; in relocatable ELF objects the strings need relocations, so only
   the language is reported.
-- **.NET assemblies:** the CLI header and metadata version are read; the
-  assembly name, version, references and target framework (metadata
-  tables) come with bytecode.
+- **.NET assemblies:** the metadata tables are read (see Bytecode); the
+  IL is not, and neither are the `#US` user strings, resources' contents
+  or portable PDBs (tables past 0x2C stop the table reader).
 - **Go build information** is read in the Go 1.18+ inline format; older
   binaries only report that it is there.
 - **Not read:** PDB files, split DWARF (`.dwo`, `.dwp`) and dSYM bundles
@@ -77,3 +77,26 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   Windows catalogs (`.cat`), Rust `rlib` / `rmeta`, AIX XCOFF, compiled
   AppleScript, Windows script hosts, device trees, FPGA bitstreams, and
   the WebAssembly component model beyond its header.
+
+## Bytecode (unreleased)
+
+- **Nothing is decompiled:** method bodies are measured (Java code
+  bytes) or scanned for one instruction (Python's `IMPORT_NAME`); no
+  control flow, strings or constants are reported from them.
+- **Python:** the `marshal` walk stops after 500,000 objects, 64 levels
+  or 20,000 code objects; imports are found for CPython 2.0 to 3.14 only
+  (3.15's opcodes are not fixed yet), and PyPy and other implementations'
+  magic numbers are not named.
+- **DEX:** the `cdex` (compact DEX), `vdex`, `odex` and OAT containers
+  are not read; class names, packages and source files come from the
+  class definitions, not from the code or debug items.
+- **Lua 5.2** chunks give the version and number sizes but not the source
+  name (5.2 stores it after the function body).
+- **OCaml** files report their kind and release; the module name and
+  imported units sit in OCaml's own (and, since 5.1, compressed) marshal
+  format, which is not read.
+- **YARV:** the Ruby version, byte order and word size; the source path
+  and method names are in the object list, which is not read.
+- **Not read:** Hermes, V8 snapshots and QuickJS bytecode, Smalltalk /
+  Pharo images, Haskell `.hi` interfaces, Flash ActionScript ABC, and
+  Guile `.go` files (ELF files, described by the executable extractor).

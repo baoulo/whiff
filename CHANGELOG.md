@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables (Stage 6, first part).
+Executables and bytecode (Stage 6, first two parts).
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -45,6 +45,39 @@ Executables (Stage 6, first part).
     exports, memory limits, the start function, module name, `producers`,
     target features, source maps, relocatable objects and dynamic
     libraries.
+- **Bytecode** (`common`), all in-house; nothing is run, unmarshalled into
+  live objects or decompiled:
+  - Java class files: class-file version and Java release (preview
+    features), kind (class, interface, enum, record, annotation, module),
+    name, superclass, interfaces, access flags, field and method counts
+    with the method names, source file, record components, permitted
+    subclasses of sealed types, nest and inner classes, annotations (and
+    from them Kotlin, Scala or Groovy as the source language), referenced
+    packages, debug information, and a module's requires, exports, opens,
+    uses, provides and main class;
+  - Android DEX: version and minimum Android API level, the verified
+    checksum and SHA-1 signature, counts of strings, types, prototypes,
+    fields, methods and classes, the classes defined with their packages
+    and source files, referenced packages, the D8 / R8 marker (tool,
+    version, mode, minimum API) and Kotlin;
+  - Python `.pyc` (2.0 to 3.15): the Python version from the magic number
+    (development builds too), timestamp or hash-based invalidation with the
+    source time, size or hash, and from a bounded `marshal` walk the source
+    file, module docstring, imported modules and top-level definitions;
+  - .NET assemblies, through the ECMA-335 metadata tables: assembly name,
+    version, culture and public-key token, module and MVID, referenced
+    assemblies, native modules and P/Invoke imports, counts of types,
+    methods, fields, properties, events and resources, namespaces and
+    public types, the entry point, the target framework and the assembly
+    attributes (title, company, product, copyright, versions,
+    `InternalsVisibleTo`), ReadyToRun images, and known obfuscators;
+  - Lua 5.1 to 5.4 and LuaJIT (version, source name, stripped, number
+    sizes), Erlang BEAM (module, Elixir, exports, imported modules, `vsn`,
+    behaviours, compiler version, options and source, debug information),
+    Emacs Lisp `.elc` (Emacs version, functions, variables, features),
+    mruby (format, compiler, sections, source files), Ruby YARV (Ruby
+    version, byte order, word size) and OCaml compiled files (kind and
+    OCaml release).
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
   algorithm and size, signature algorithm, CA, extended key usage,
@@ -52,14 +85,19 @@ Executables (Stage 6, first part).
   digests, signing time, RFC 3161 and legacy countersignature timestamps).
   Signatures are described, not verified; key material is never reported.
 - **Risks:** `packed_executable`, `writable_executable_memory`,
-  `tls_callbacks`, `weakened_runtime` and `requests_elevation`; Mach-O
-  `get-task-allow` reports `debuggable`.
+  `tls_callbacks`, `weakened_runtime`, `requests_elevation` and
+  `obfuscated_code`; Mach-O `get-task-allow` reports `debuggable`.
 - **Developer tools:** `scripts/fixtures/executables.sh` builds the
   executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
   wat2wasm and gdb (in a podman container) and with the macOS toolchain
   and codesign; `craft_executables.py` writes the MS-DOS, NE, LE and .NET
   headers. `exec_oracle.py` compares the reports with readelf,
   llvm-readobj, osslsigncode, wasm-objdump, lipo, otool and codesign.
+  `scripts/fixtures/bytecode.sh` builds the bytecode fixtures with javac,
+  d8, CPython 3.8 to 3.14, luac 5.1 to 5.4, LuaJIT, erlc, Emacs, mrbc,
+  Ruby, ocamlc and the .NET SDK (in podman containers), and
+  `bytecode_oracle.py` compares the reports with javap, CPython's
+  `marshal` and `dis`, `beam_lib` and dnfile.
 
 ## 0.5.1 — 2026-10-27
 

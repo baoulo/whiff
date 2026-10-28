@@ -1,0 +1,110 @@
+---
+source: src/formats/bytecode/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-luajit.luac",
+    "stem": "tides-luajit",
+    "extension": "luac"
+  },
+  "identification": {
+    "format": "luac",
+    "name": "Lua bytecode / LuaJIT",
+    "mime": "application/x-lua-bytecode",
+    "family": "bytecode",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 273,
+    "entropy": 5.115,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "eb01b91ea52836c85a3746546226a8e1bca6b7419b4c8229c13372ae276d26a8",
+    "blake3": "73fd6394a75fff4910ad098f8dd5442cdb384923e4c734cec9915ce5c5cbc4ca"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "luac": {
+      "implementation": "LuaJIT",
+      "bytecode_version": 2,
+      "byte_order": "little_endian",
+      "gc64": true,
+      "stripped": false,
+      "source": "tides.lua"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

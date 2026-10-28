@@ -1,0 +1,144 @@
+---
+source: src/formats/bytecode/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tide$High.class",
+    "stem": "Tide$High",
+    "extension": "class"
+  },
+  "identification": {
+    "format": "class",
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1595
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1595,
+    "entropy": 5.092,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8a717792a187bd79c9024a5f5ce31b3aeec0ad88dc17764f27f8eb022818b2c8",
+    "blake3": "bd68fee5789af3be4dc6daa2e8b84bebd9f3ac43eac8253f77f7cd10173631c2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "class": {
+      "version": "65.0",
+      "java_release": "21",
+      "constant_pool_entries": 66,
+      "kind": "record",
+      "class_name": "org.example.saltmere.tides.Tide$High",
+      "access": [
+        "public",
+        "final"
+      ],
+      "interfaces": [
+        "org.example.saltmere.tides.Tide"
+      ],
+      "fields": 2,
+      "methods": 6,
+      "method_names": [
+        "toString",
+        "hashCode",
+        "equals",
+        "hour",
+        "metres"
+      ],
+      "code_bytes": 47,
+      "source_file": "Tide.java",
+      "nest_host": "org.example.saltmere.tides.Tide",
+      "record_components": [
+        "hour",
+        "metres"
+      ],
+      "inner_classes": 2,
+      "referenced_classes": 6,
+      "referenced_packages": [
+        "java.lang",
+        "java.lang.invoke",
+        "java.lang.runtime"
+      ],
+      "debug": {
+        "source_file": true,
+        "line_numbers": true,
+        "local_variables": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

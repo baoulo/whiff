@@ -155,6 +155,7 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("macro_attachment", Act, Medium, "Attachment is a macro-enabled Office document"),
     k("macros", Act, Medium, "VBA or StarBasic macro project"),
     k("meta_refresh_redirect", Phishing, Low, "HTML redirects itself to another page"),
+    k("obfuscated_code", Obf, Low, "Compiled code processed by an obfuscator (named in the format section)"),
     k("overlapping_entries", Exploit, High, "ZIP entries share their compressed data (an overlapping-entry zip bomb)"),
     k(
         "packed_executable",

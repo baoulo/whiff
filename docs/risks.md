@@ -89,6 +89,7 @@ Content hidden from a casual look.
 | `hidden_iframe` | high | Invisible `<iframe>` |
 | `hidden_macro_sheet` | high | Excel 4.0 macro sheet hidden from the sheet tabs |
 | `packed_executable` | medium | Executable is packed (UPX, or code with the entropy of compressed data): its code cannot be read statically |
+| `obfuscated_code` | low | Compiled code processed by an obfuscator (named in the format section) |
 | `tls_callbacks` | low | PE image runs TLS callbacks, code that starts before the entry point |
 | `trailing_data` | low | Bytes after the end of the image, archive or compressed stream |
 

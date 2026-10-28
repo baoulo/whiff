@@ -150,6 +150,9 @@ expression: report
         "status": "ok"
       }
     ],
+    "warnings": [
+      "exec.pe: the .NET metadata tables could not be read"
+    ],
     "truncated": false,
     "elapsed_ms": 0.0
   }

@@ -1,0 +1,255 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere.Tides.dll",
+    "stem": "Saltmere.Tides",
+    "extension": "dll"
+  },
+  "identification": {
+    "format": "dotnet",
+    "name": ".NET assembly (CLI)",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "dotnet",
+        "confidence": 0.95
+      },
+      {
+        "format": "pe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 14848
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Public domain (CC0-1.0)"
+  },
+  "physical": {
+    "size_bytes": 14848,
+    "entropy": 6.678,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "03944ce8e1b46b12af720a28d5f87f4ff316f0db9acf9f9326861bd98ead2d88",
+    "blake3": "8833d8bc0ed9833b448110873826a25a174c617e06ce97dedefcff07dc1c0466"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "description": "Saltmere.Tides",
+    "authors": [
+      "Saltmere Harbour Board"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "dotnet": {
+      "architecture": "x86",
+      "bits": 32,
+      "pe_type": "PE32",
+      "kind": "shared_library",
+      "subsystem": "windows_console",
+      "entry_point": "0x512e",
+      "image_base": "0x10000000",
+      "linker_version": "48.0",
+      "os_version": "4.0",
+      "subsystem_version": "4.0",
+      "large_address_aware": true,
+      "section_count": 3,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 12800,
+          "memory_size": 12596,
+          "address": "0x2000",
+          "flags": "r-x",
+          "entropy": 7.142
+        },
+        {
+          "name": ".rsrc",
+          "size": 1024,
+          "memory_size": 1008,
+          "address": "0x6000",
+          "flags": "r--",
+          "entropy": 3.151
+        },
+        {
+          "name": ".reloc",
+          "size": 512,
+          "memory_size": 12,
+          "address": "0x8000",
+          "flags": "r--",
+          "entropy": 0.082
+        }
+      ],
+      "debug": {
+        "pdb": "Saltmere.Tides.pdb",
+        "pdb_guid": "4dfb8610-dd15-4b3b-bde9-8f20d11d9c7e",
+        "pdb_age": 1
+      },
+      "reproducible": true,
+      "library_count": 1,
+      "libraries": [
+        "mscoree.dll"
+      ],
+      "imported_symbol_count": 1,
+      "imports": [
+        "_CorDllMain"
+      ],
+      "resources": {
+        "version": 1
+      },
+      "version_info": {
+        "file_version_number": "1.2.0.0",
+        "product_version_number": "1.2.0.0",
+        "language": "000004b0",
+        "comments": "Tide table for Saltmere Harbour.",
+        "company": "Saltmere Harbour Board",
+        "file_description": "Saltmere.Tides",
+        "file_version": "1.2.0.0",
+        "internal_name": "Saltmere.Tides.dll",
+        "copyright": "Public domain (CC0-1.0)",
+        "original_filename": "Saltmere.Tides.dll",
+        "product_name": "Saltmere Tides",
+        "product_version": "1.2.0"
+      },
+      "dotnet": {
+        "runtime_version": "2.5",
+        "il_only": true,
+        "strong_name_signed": false,
+        "metadata_version": "v4.0.30319",
+        "counts": {
+          "types": 3,
+          "methods": 27,
+          "fields": 6,
+          "properties": 5,
+          "events": 0,
+          "type_references": 41,
+          "member_references": 52,
+          "resources": 0
+        },
+        "module": "Saltmere.Tides.dll",
+        "mvid": "FE48E06B-9F9B-4D17-912B-6623966A3AEF",
+        "assembly": {
+          "name": "Saltmere.Tides",
+          "version": "1.2.0.0",
+          "culture": "neutral"
+        },
+        "assembly_reference_count": 3,
+        "assembly_references": [
+          "System.Runtime 8.0.0.0",
+          "System.Collections 8.0.0.0",
+          "System.Console 8.0.0.0"
+        ],
+        "native_modules": [
+          "libc"
+        ],
+        "pinvoke_imports": [
+          "libc!getpid"
+        ],
+        "namespaces": [
+          "Saltmere.Tides"
+        ],
+        "public_types": [
+          "Saltmere.Tides.Tide",
+          "Saltmere.Tides.TideTable"
+        ],
+        "target_framework": ".NETCoreApp,Version=v8.0",
+        "attributes": {
+          "title": "Saltmere.Tides",
+          "company": "Saltmere Harbour Board",
+          "configuration": "Release",
+          "copyright": "Public domain (CC0-1.0)",
+          "description": "Tide table for Saltmere Harbour.",
+          "file_version": "1.2.0.0",
+          "informational_version": "1.2.0",
+          "product": "Saltmere Tides"
+        },
+        "other_attributes": [
+          "System.Runtime.CompilerServices.CompilationRelaxationsAttribute",
+          "System.Runtime.CompilerServices.RuntimeCompatibilityAttribute",
+          "System.Diagnostics.DebuggableAttribute"
+        ]
+      },
+      "hardening": {
+        "aslr": true,
+        "dep": true,
+        "cfg": false,
+        "no_seh": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

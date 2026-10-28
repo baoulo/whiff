@@ -386,13 +386,13 @@ expression: report
       },
       "identification": {
         "format": "dex",
-        "name": "Dalvik Executable",
+        "name": "Android DEX",
         "mime": "application/vnd.android.dex",
         "family": "bytecode",
-        "confidence": 0.5,
+        "confidence": 0.85,
         "detected_by": "magic",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "bytecode.dex"
       },
       "system": {
         "kind": "memory",
@@ -414,9 +414,51 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "dex": {
+          "version": "037",
+          "min_api_level": 24,
+          "checksum_valid": true,
+          "sha1": "90a99021aa5c1884d2d584499b19d3be0a02bb02",
+          "counts": {
+            "strings": 15,
+            "types": 7,
+            "prototypes": 3,
+            "fields": 1,
+            "methods": 4,
+            "classes": 1
+          },
+          "defined_methods": 2,
+          "defined_fields": 0,
+          "class_names": [
+            "org.saltmere.Tides"
+          ],
+          "packages": [
+            "org.saltmere (1)"
+          ],
+          "source_files": [
+            "Tides.java"
+          ],
+          "referenced_packages": [
+            "java.io",
+            "java.lang"
+          ],
+          "compiler": {
+            "tool": "D8",
+            "version": "8.10.9-dev",
+            "mode": "release",
+            "min_api": 24
+          }
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "bytecode.dex",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

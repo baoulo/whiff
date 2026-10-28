@@ -18,4 +18,5 @@ doc-valid-idents = [
     "BitLocker", "ReFS", "SquashFS", "CloneCD", "EnCase", "AmigaDOS", "VirtualBox", "VMware", "AppImage",
     "AppImages", "AppStream",
     "CodeView", "SafeSEH", "AppContainer", "UTCTime", "GeneralizedTime", "DriverKit", "BridgeOS",
+    "LuaJIT", "CPython", "CRuby", "TypeDef", "TypeRef",
 ]

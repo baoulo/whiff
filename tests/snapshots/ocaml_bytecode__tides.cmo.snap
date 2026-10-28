@@ -1,0 +1,107 @@
+---
+source: src/formats/bytecode/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.cmo",
+    "stem": "tides",
+    "extension": "cmo"
+  },
+  "identification": {
+    "format": "ocaml_bytecode",
+    "name": "OCaml compiled interface / object",
+    "mime": "application/octet-stream",
+    "family": "bytecode",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 726
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 726,
+    "entropy": 5.804,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "62e5230f0dce650e536339fb935d589beb60f1000c7a90d3593ba761080c4ec6",
+    "blake3": "d1900710aed3d49f670006566c0858f1be2b4f89af7dbea609bbd21475dde5da"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ocaml_bytecode": {
+      "kind": "bytecode_object",
+      "magic": "Caml1999O035",
+      "ocaml_version": "5.3"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

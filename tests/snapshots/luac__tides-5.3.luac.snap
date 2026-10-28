@@ -1,0 +1,115 @@
+---
+source: src/formats/bytecode/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-5.3.luac",
+    "stem": "tides-5.3",
+    "extension": "luac"
+  },
+  "identification": {
+    "format": "luac",
+    "name": "Lua bytecode / LuaJIT",
+    "mime": "application/x-lua-bytecode",
+    "family": "bytecode",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 539
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 539,
+    "entropy": 3.896,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4489140c3ae00e7c7f793978f07e3acf3d3b7e37025545c6201eaf0221012f75",
+    "blake3": "dd7c63ac31c2a3f6559ea787f339ca0c99c6df7f07e0790e4f17d0ef2edfea0e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "luac": {
+      "implementation": "Lua",
+      "lua_version": "5.3",
+      "sizes": {
+        "int": 4,
+        "size_t": 8,
+        "instruction": 4,
+        "integer": 8,
+        "number": 8
+      },
+      "source": "tides.lua",
+      "stripped": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

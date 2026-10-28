@@ -5,7 +5,7 @@
 //!
 //! | Feature | Groups |
 //! |---|---|
-//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, compress, archive, package, exec, crypto, db, font, web, apple, binary |
+//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, compress, archive, package, exec, bytecode, crypto, db, font, web, apple, binary |
 //! | `geo` | geo |
 //! | `science` | science |
 //! | `data` | columnar |
@@ -24,6 +24,8 @@ pub(crate) mod archive;
 pub(crate) mod audio;
 #[cfg(feature = "common")]
 pub(crate) mod binary;
+#[cfg(feature = "common")]
+pub(crate) mod bytecode;
 #[cfg(feature = "common")]
 pub(crate) mod code;
 #[cfg(feature = "common")]
