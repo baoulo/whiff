@@ -2,7 +2,8 @@
 //! (OOXML, OpenDocument, EPUB, CBZ), the OLE2 compound file (legacy Office,
 //! Outlook `.msg`, MSI) with the property sets (`\x05SummaryInformation`)
 //! stored inside it, ISO base media files (MP4, M4A, MOV, HEIF), ASF
-//! (WMA, WMV), and disk partition tables and file-system superblocks.
+//! (WMA, WMV), disk partition tables and file-system superblocks, and the
+//! DER encoding of certificates and CMS signatures.
 //!
 //! They read through a [`Source`](crate::io::Source), so every read is charged
 //! to the budget, and decompress through
@@ -13,6 +14,7 @@
 pub mod asf;
 pub mod cfb;
 pub mod codec;
+pub mod der;
 pub mod mp4;
 pub mod oleps;
 pub mod volume;

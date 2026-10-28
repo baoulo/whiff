@@ -465,14 +465,24 @@ expression: report
         "extension": "dll"
       },
       "identification": {
-        "format": "exe",
-        "name": "MS-DOS Executable",
+        "format": "dos_exe",
+        "name": "MS-DOS / NE / LE executables",
         "mime": "application/x-dosexec",
         "family": "exec",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "confidence": 0.8,
+        "detected_by": "sniff",
         "extension_matches": false,
-        "extractor": null
+        "candidates": [
+          {
+            "format": "dos_exe",
+            "confidence": 0.8
+          },
+          {
+            "format": "pe",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "exec.pe"
       },
       "system": {
         "kind": "memory",
@@ -494,9 +504,22 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "dos_exe": {
+          "kind": "dos_executable",
+          "image_bytes": 0,
+          "relocations": 0,
+          "entry_point": "0000:0000"
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "exec.pe",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

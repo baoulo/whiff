@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.99,
     "detected_by": "sniff",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "appimage",
+        "confidence": 0.99
+      },
+      {
+        "format": "elf",
+        "confidence": 0.95
+      }
+    ],
     "extractor": "package.linux"
   },
   "system": {

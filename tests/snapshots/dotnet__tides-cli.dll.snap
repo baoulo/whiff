@@ -1,0 +1,156 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-cli.dll",
+    "stem": "tides-cli",
+    "extension": "dll"
+  },
+  "identification": {
+    "format": "dotnet",
+    "name": ".NET assembly (CLI)",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "dotnet",
+        "confidence": 0.95
+      },
+      {
+        "format": "pe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1024
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "exec.pe",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1024,
+    "entropy": 0.776,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "9b0a1346aeefba7454d40bf27beccfcb1c3d84b0546db0a582d40f4aca8f7253",
+    "blake3": "0efd9d45b844cf7f0b5c27ff82d6b1e7b176182e65d395fe641ef1b971f6bb26"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dotnet": {
+      "architecture": "x86",
+      "bits": 32,
+      "pe_type": "PE32",
+      "kind": "shared_library",
+      "subsystem": "windows_console",
+      "image_base": "0x10000000",
+      "linker_version": "8.0",
+      "os_version": "4.0",
+      "subsystem_version": "4.0",
+      "section_count": 1,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 512,
+          "address": "0x2000",
+          "flags": "r-x",
+          "entropy": 0.463
+        }
+      ],
+      "link_time": "2025-09-01T12:00:00Z",
+      "dotnet": {
+        "runtime_version": "2.5",
+        "il_only": true,
+        "strong_name_signed": false,
+        "metadata_version": "v4.0.30319"
+      },
+      "hardening": {
+        "aslr": true,
+        "dep": true,
+        "cfg": false,
+        "no_seh": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

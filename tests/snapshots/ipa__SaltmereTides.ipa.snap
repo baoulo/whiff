@@ -367,13 +367,13 @@ expression: report
         "stem": "SaltmereTides"
       },
       "identification": {
-        "format": "mach",
-        "name": "Mach-O",
+        "format": "macho",
+        "name": "Mach-O / universal binary",
         "mime": "application/x-mach-binary",
         "family": "exec",
-        "confidence": 0.5,
-        "detected_by": "magic",
-        "extractor": null
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extractor": "exec.macho"
       },
       "system": {
         "kind": "memory",
@@ -395,9 +395,26 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "macho": {
+          "architecture": "arm64",
+          "bits": 64,
+          "endianness": "little",
+          "kind": "unknown",
+          "section_count": 0,
+          "hardening": {
+            "code_signature": false
+          }
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "exec.macho",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

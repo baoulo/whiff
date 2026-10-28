@@ -88,6 +88,8 @@ Content hidden from a casual look.
 |---|---|---|
 | `hidden_iframe` | high | Invisible `<iframe>` |
 | `hidden_macro_sheet` | high | Excel 4.0 macro sheet hidden from the sheet tabs |
+| `packed_executable` | medium | Executable is packed (UPX, or code with the entropy of compressed data): its code cannot be read statically |
+| `tls_callbacks` | low | PE image runs TLS callbacks, code that starts before the entry point |
 | `trailing_data` | low | Bytes after the end of the image, archive or compressed stream |
 
 ## Data exposure (`data_exposure`)
@@ -119,6 +121,9 @@ Operations that change or destroy state with broad privileges.
 | `debuggable` | medium | App built debuggable (Android `debuggable`, iOS `get-task-allow`): a debugger can attach |
 | `destructive_statements` | medium | SQL that drops or truncates tables or deletes without a condition |
 | `privilege_changes` | medium | SQL that grants or revokes privileges or creates users |
+| `weakened_runtime` | medium | Hardened-runtime exception: unsigned executable memory, library injection or `DYLD_` variables allowed |
+| `writable_executable_memory` | medium | Executable maps memory that is writable and executable (W+X section or segment, executable stack) |
+| `requests_elevation` | low | Program manifest asks to run as administrator (`requireAdministrator`) |
 | `runs_as_root` | low | Container image runs as root |
 
 ## Provenance (`provenance`)

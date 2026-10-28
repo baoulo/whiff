@@ -1,0 +1,258 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-mingw64.dll",
+    "stem": "saltmere-mingw64",
+    "extension": "dll"
+  },
+  "identification": {
+    "format": "pe",
+    "name": "Windows PE executable / DLL",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11776
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "tls_callbacks",
+        "category": "obfuscation",
+        "severity": "low",
+        "detail": "2 TLS callback(s)",
+        "source": "exec.pe"
+      }
+    ],
+    "risk_level": "low"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 11776,
+    "entropy": 4.692,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "69415ecb3df718f4d300ffc2018d5dd6a1da35579df11b8613a6e8799db683b8",
+    "blake3": "86010871bd1fa25ba02243e48c31832ada22ce1dc2d656d44b33522d8debcdab"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pe": {
+      "architecture": "x86_64",
+      "bits": 64,
+      "pe_type": "PE32+",
+      "kind": "shared_library",
+      "subsystem": "windows_console",
+      "entry_point": "0x1330",
+      "image_base": "0x3ae790000",
+      "linker_version": "2.44",
+      "os_version": "4.0",
+      "subsystem_version": "5.2",
+      "large_address_aware": true,
+      "checksum": "0x0000b063",
+      "section_count": 10,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 5120,
+          "memory_size": 5072,
+          "address": "0x1000",
+          "flags": "r-x",
+          "entropy": 6.056
+        },
+        {
+          "name": ".data",
+          "size": 512,
+          "memory_size": 112,
+          "address": "0x3000",
+          "flags": "rw-",
+          "entropy": 0.586
+        },
+        {
+          "name": ".rdata",
+          "size": 1536,
+          "memory_size": 1472,
+          "address": "0x4000",
+          "flags": "r--",
+          "entropy": 3.856
+        },
+        {
+          "name": ".pdata",
+          "size": 512,
+          "memory_size": 468,
+          "address": "0x5000",
+          "flags": "r--",
+          "entropy": 3.469
+        },
+        {
+          "name": ".xdata",
+          "size": 512,
+          "memory_size": 308,
+          "address": "0x6000",
+          "flags": "r--",
+          "entropy": 2.606
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 272,
+          "address": "0x7000",
+          "flags": "rw-"
+        },
+        {
+          "name": ".edata",
+          "size": 512,
+          "memory_size": 97,
+          "address": "0x8000",
+          "flags": "r--",
+          "entropy": 0.966
+        },
+        {
+          "name": ".idata",
+          "size": 1024,
+          "memory_size": 872,
+          "address": "0x9000",
+          "flags": "r--",
+          "entropy": 3.243
+        },
+        {
+          "name": ".tls",
+          "size": 512,
+          "memory_size": 16,
+          "address": "0xa000",
+          "flags": "rw-",
+          "entropy": -0.0
+        },
+        {
+          "name": ".reloc",
+          "size": 512,
+          "memory_size": 76,
+          "address": "0xb000",
+          "flags": "r--",
+          "entropy": 0.954
+        }
+      ],
+      "library_count": 2,
+      "libraries": [
+        "KERNEL32.dll",
+        "msvcrt.dll"
+      ],
+      "imported_symbol_count": 22,
+      "imports": [
+        "DeleteCriticalSection",
+        "EnterCriticalSection",
+        "GetLastError",
+        "InitializeCriticalSection",
+        "LeaveCriticalSection",
+        "Sleep",
+        "TlsGetValue",
+        "VirtualProtect",
+        "VirtualQuery",
+        "__iob_func",
+        "_amsg_exit",
+        "_initterm",
+        "_lock",
+        "_unlock",
+        "abort",
+        "calloc",
+        "free",
+        "fwrite",
+        "realloc",
+        "strlen",
+        "strncmp",
+        "vfprintf"
+      ],
+      "export_name": "saltmere.dll",
+      "exported_symbol_count": 2,
+      "exports": [
+        "harbour_name",
+        "high_water"
+      ],
+      "tls_callbacks": 2,
+      "hardening": {
+        "aslr": true,
+        "high_entropy_aslr": true,
+        "dep": true,
+        "cfg": false
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (GNU) 13-win32",
+          "GCC: (GNU) 14-win32"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

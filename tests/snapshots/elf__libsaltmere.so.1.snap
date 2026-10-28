@@ -1,0 +1,316 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "libsaltmere.so.1",
+    "stem": "libsaltmere.so",
+    "extension": "1"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 69384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 69384,
+    "entropy": 0.375,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "63f49c9e1588ff00a74b1df0391cdaf184771d1d32f6d03407b20ef26e5521eb",
+    "blake3": "a2626f47cf2065f275106902345a3d1339833d37bd3b4331ca248f4f43118077"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "arm64",
+      "kind": "shared_library",
+      "segments": [
+        {
+          "address": "0x0",
+          "file_size": 1780,
+          "memory_size": 1780,
+          "flags": "r-x"
+        },
+        {
+          "address": "0x1fe10",
+          "file_size": 520,
+          "memory_size": 528,
+          "flags": "rw-"
+        }
+      ],
+      "section_count": 24,
+      "sections": [
+        {
+          "name": ".note.gnu.build-id",
+          "size": 36,
+          "address": "0x1c8",
+          "flags": "r--",
+          "entropy": 4.247
+        },
+        {
+          "name": ".gnu.hash",
+          "size": 40,
+          "address": "0x1f0",
+          "flags": "r--",
+          "entropy": 2.719
+        },
+        {
+          "name": ".dynsym",
+          "size": 216,
+          "address": "0x218",
+          "flags": "r--",
+          "entropy": 1.096
+        },
+        {
+          "name": ".dynstr",
+          "size": 134,
+          "address": "0x2f0",
+          "flags": "r--",
+          "entropy": 4.538
+        },
+        {
+          "name": ".rela.dyn",
+          "size": 168,
+          "address": "0x378",
+          "flags": "r--",
+          "entropy": 1.743
+        },
+        {
+          "name": ".rela.plt",
+          "size": 48,
+          "address": "0x420",
+          "flags": "r--",
+          "entropy": 1.082
+        },
+        {
+          "name": ".init",
+          "size": 28,
+          "address": "0x450",
+          "flags": "r-x",
+          "entropy": 3.896
+        },
+        {
+          "name": ".plt",
+          "size": 64,
+          "address": "0x470",
+          "flags": "r-x",
+          "entropy": 4.296
+        },
+        {
+          "name": ".text",
+          "size": 296,
+          "address": "0x4c0",
+          "flags": "r-x",
+          "entropy": 5.185
+        },
+        {
+          "name": ".fini",
+          "size": 24,
+          "address": "0x5e8",
+          "flags": "r-x",
+          "entropy": 3.72
+        },
+        {
+          "name": ".rodata",
+          "size": 17,
+          "address": "0x600",
+          "flags": "r--",
+          "entropy": 3.572
+        },
+        {
+          "name": ".eh_frame_hdr",
+          "size": 60,
+          "address": "0x614",
+          "flags": "r--",
+          "entropy": 2.94
+        },
+        {
+          "name": ".eh_frame",
+          "size": 164,
+          "address": "0x650",
+          "flags": "r--",
+          "entropy": 3.144
+        },
+        {
+          "name": ".init_array",
+          "size": 8,
+          "address": "0x1fe10",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": ".fini_array",
+          "size": 8,
+          "address": "0x1fe18",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": ".dynamic",
+          "size": 416,
+          "address": "0x1fe20",
+          "flags": "rw-",
+          "entropy": 1.339
+        },
+        {
+          "name": ".got",
+          "size": 40,
+          "address": "0x1ffc0",
+          "flags": "rw-",
+          "entropy": 0.503
+        },
+        {
+          "name": ".got.plt",
+          "size": 40,
+          "address": "0x1ffe8",
+          "flags": "rw-",
+          "entropy": 0.569
+        },
+        {
+          "name": ".data",
+          "size": 8,
+          "address": "0x20010",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 8,
+          "address": "0x20018",
+          "flags": "rw-"
+        },
+        {
+          "name": ".comment",
+          "size": 31,
+          "flags": "---",
+          "entropy": 4.131
+        },
+        {
+          "name": ".symtab",
+          "size": 1584,
+          "flags": "---",
+          "entropy": 1.624
+        },
+        {
+          "name": ".strtab",
+          "size": 397,
+          "flags": "---",
+          "entropy": 4.79
+        },
+        {
+          "name": ".shstrtab",
+          "size": 209,
+          "flags": "---",
+          "entropy": 4.164
+        }
+      ],
+      "soname": "libsaltmere.so.1",
+      "runpath": "$ORIGIN",
+      "imported_symbol_count": 4,
+      "imports": [
+        "_ITM_deregisterTMCloneTable",
+        "_ITM_registerTMCloneTable",
+        "__cxa_finalize",
+        "__gmon_start__"
+      ],
+      "exported_symbol_count": 2,
+      "exports": [
+        "harbour_name",
+        "high_water"
+      ],
+      "build_id": "3c41641abcd1decd6fa67535caf9dd56480fb29b",
+      "hardening": {
+        "nx": true,
+        "relro": "partial",
+        "stripped": false,
+        "stack_canary": false,
+        "fortify": false
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (Debian 14.2.0-19) 14.2.0"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

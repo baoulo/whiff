@@ -1,0 +1,200 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-clang-riscv64.o",
+    "stem": "tide-clang-riscv64",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "elf",
+        "confidence": 0.99
+      },
+      {
+        "format": "macho",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1576
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1576,
+    "entropy": 2.527,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f1c30e80e130446d61d95031a5c375108e818856942f68d19da64568254d2f2e",
+    "blake3": "c9520101bed7541dcca613de9fe4e8f8a7cf852270fb90d717b68515fcf00036"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "riscv",
+      "float_abi": "double-float",
+      "kind": "object",
+      "section_count": 11,
+      "sections": [
+        {
+          "name": ".strtab",
+          "size": 146,
+          "flags": "---",
+          "entropy": 4.372
+        },
+        {
+          "name": ".text",
+          "size": 42,
+          "flags": "r-x",
+          "entropy": 4.767
+        },
+        {
+          "name": ".rela.text",
+          "size": 24,
+          "flags": "---",
+          "entropy": 0.742
+        },
+        {
+          "name": ".rodata",
+          "size": 17,
+          "flags": "r--",
+          "entropy": 3.572
+        },
+        {
+          "name": ".comment",
+          "size": 36,
+          "flags": "---",
+          "entropy": 4.35
+        },
+        {
+          "name": ".note.GNU-stack",
+          "size": 0,
+          "flags": "---"
+        },
+        {
+          "name": ".riscv.attributes",
+          "size": 71,
+          "flags": "---",
+          "entropy": 4.263
+        },
+        {
+          "name": ".eh_frame",
+          "size": 40,
+          "flags": "r--",
+          "entropy": 1.862
+        },
+        {
+          "name": ".rela.eh_frame",
+          "size": 72,
+          "flags": "---",
+          "entropy": 0.884
+        },
+        {
+          "name": ".llvm_addrsig",
+          "size": 0,
+          "flags": "---"
+        },
+        {
+          "name": ".symtab",
+          "size": 288,
+          "flags": "---",
+          "entropy": 0.869
+        }
+      ],
+      "exported_symbol_count": 2,
+      "exports": [
+        "harbour",
+        "tide_metres"
+      ],
+      "hardening": {
+        "stack_canary": false,
+        "fortify": false
+      },
+      "toolchain": {
+        "compilers": [
+          "Debian clang version 19.1.7 (3+b1)"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

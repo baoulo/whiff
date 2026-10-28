@@ -22,8 +22,9 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   for lack of a writer or reader to check against.
 - **Multi-volume sets** (`.z01`, `.part2.rar`, `.7z.002` …): only the
   volume given is read.
-- **Self-extractors inside executables:** a ZIP after an executable is
-  found; other self-extracting formats come with executables (Stage 6).
+- **Self-extractors inside executables:** ZIP, 7z, RAR and CAB archives
+  appended to a PE image are handed on; NSIS and Inno Setup installers
+  are recognised, but their payload is not unpacked.
 
 ## Packages (0.5.1)
 
@@ -52,3 +53,27 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Backing files:** a differencing or overlay disk (VHD, VMDK, QCOW2,
   QED) whose blocks live in a parent image reads those blocks as zeros;
   the parent's name is reported.
+
+## Executables (unreleased)
+
+- **Signatures are described, not verified:** Authenticode and Apple code
+  signatures report the signer, chain and times; the image hash and the
+  certificate chain are not checked.
+- **One slice of a universal binary** is described in full (arm64, else
+  `x86_64`, else the first); the others are listed.
+- **Imports are named, not resolved:** ELF imports are not matched to the
+  library that provides them, and Mach-O imports are read from the symbol
+  table (not from the dyld binding opcodes or chained fixups).
+- **DWARF:** only the first compile unit's producer, name and language are
+  read; in relocatable ELF objects the strings need relocations, so only
+  the language is reported.
+- **.NET assemblies:** the CLI header and metadata version are read; the
+  assembly name, version, references and target framework (metadata
+  tables) come with bytecode.
+- **Go build information** is read in the Go 1.18+ inline format; older
+  binaries only report that it is there.
+- **Not read:** PDB files, split DWARF (`.dwo`, `.dwp`) and dSYM bundles
+  as folders, Windows minidumps, Linux kernel images, Android OAT / ART,
+  Windows catalogs (`.cat`), Rust `rlib` / `rmeta`, AIX XCOFF, compiled
+  AppleScript, Windows script hosts, device trees, FPGA bitstreams, and
+  the WebAssembly component model beyond its header.

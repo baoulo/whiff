@@ -1,0 +1,138 @@
+---
+source: src/formats/exec/wasm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-clang.wasm",
+    "stem": "tides-clang",
+    "extension": "wasm"
+  },
+  "identification": {
+    "format": "wasm",
+    "name": "WebAssembly module",
+    "mime": "application/wasm",
+    "family": "exec",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "exec.wasm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 271
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 271,
+    "entropy": 5.353,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2c828f043c3eba655085d046ced188e397bddc0c293c30b2ce621657802eb862",
+    "blake3": "43bee168835410a7cea54f4f96701002797c97539e056e72000cbd09a2a66b6f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wasm": {
+      "version": 1,
+      "memory": {
+        "min_pages": 2
+      },
+      "module_name": "tides-clang.wasm",
+      "producers": {
+        "processed-by": [
+          "Debian clang 19.1.7 (3+b1)"
+        ]
+      },
+      "target_features": [
+        "multivalue",
+        "mutable-globals",
+        "reference-types",
+        "sign-ext"
+      ],
+      "kind": "module",
+      "counts": {
+        "types": 1,
+        "functions": 1,
+        "memories": 1,
+        "globals": 1,
+        "exports": 2,
+        "function_bodies": 1
+      },
+      "exports": [
+        "memory",
+        "tide_metres"
+      ],
+      "custom_sections": [
+        "name",
+        "producers",
+        "target_features"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.wasm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

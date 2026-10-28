@@ -1,0 +1,318 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-mingw64.exe",
+    "stem": "tides-mingw64",
+    "extension": "exe"
+  },
+  "identification": {
+    "format": "pe",
+    "name": "Windows PE executable / DLL",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pe",
+        "confidence": 0.99
+      },
+      {
+        "format": "dos_exe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 41472
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "tls_callbacks",
+        "category": "obfuscation",
+        "severity": "low",
+        "detail": "2 TLS callback(s)",
+        "source": "exec.pe"
+      }
+    ],
+    "risk_level": "low"
+  },
+  "rights": {
+    "copyright": "CC0 1.0, Saltmere Harbour Authority"
+  },
+  "physical": {
+    "size_bytes": 41472,
+    "entropy": 5.818,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "09fa65dc961d8b64277d9ceaf3940b7c958ea829f78a5c3c73284a3251f0350b",
+    "blake3": "f91a894c48646c757add60864f91bdc46974acde65e1391a8dd626e6eb44f7bf"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "description": "Saltmere tide table",
+    "authors": [
+      "Saltmere Harbour Authority"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "pe": {
+      "architecture": "x86_64",
+      "bits": 64,
+      "pe_type": "PE32+",
+      "kind": "executable",
+      "subsystem": "windows_console",
+      "entry_point": "0x13f0",
+      "image_base": "0x140000000",
+      "linker_version": "2.44",
+      "os_version": "4.0",
+      "subsystem_version": "5.2",
+      "large_address_aware": true,
+      "checksum": "0x00019adc",
+      "section_count": 10,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 28160,
+          "memory_size": 27696,
+          "address": "0x1000",
+          "flags": "r-x",
+          "entropy": 6.251
+        },
+        {
+          "name": ".data",
+          "size": 512,
+          "memory_size": 192,
+          "address": "0x8000",
+          "flags": "rw-",
+          "entropy": 0.838
+        },
+        {
+          "name": ".rdata",
+          "size": 4096,
+          "memory_size": 3624,
+          "address": "0x9000",
+          "flags": "r--",
+          "entropy": 4.237
+        },
+        {
+          "name": ".pdata",
+          "size": 1536,
+          "memory_size": 1128,
+          "address": "0xa000",
+          "flags": "r--",
+          "entropy": 3.305
+        },
+        {
+          "name": ".xdata",
+          "size": 1536,
+          "memory_size": 1084,
+          "address": "0xb000",
+          "flags": "r--",
+          "entropy": 3.465
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 2944,
+          "address": "0xc000",
+          "flags": "rw-"
+        },
+        {
+          "name": ".idata",
+          "size": 2048,
+          "memory_size": 1744,
+          "address": "0xd000",
+          "flags": "r--",
+          "entropy": 3.494
+        },
+        {
+          "name": ".tls",
+          "size": 512,
+          "memory_size": 16,
+          "address": "0xe000",
+          "flags": "rw-",
+          "entropy": -0.0
+        },
+        {
+          "name": ".rsrc",
+          "size": 1536,
+          "memory_size": 1520,
+          "address": "0xf000",
+          "flags": "r--",
+          "entropy": 4.389
+        },
+        {
+          "name": ".reloc",
+          "size": 512,
+          "memory_size": 108,
+          "address": "0x10000",
+          "flags": "r--",
+          "entropy": 1.385
+        }
+      ],
+      "library_count": 2,
+      "libraries": [
+        "KERNEL32.dll",
+        "msvcrt.dll"
+      ],
+      "imported_symbol_count": 47,
+      "imports": [
+        "DeleteCriticalSection",
+        "EnterCriticalSection",
+        "GetLastError",
+        "InitializeCriticalSection",
+        "IsDBCSLeadByteEx",
+        "LeaveCriticalSection",
+        "MultiByteToWideChar",
+        "SetUnhandledExceptionFilter",
+        "Sleep",
+        "TlsGetValue",
+        "VirtualProtect",
+        "VirtualQuery",
+        "WideCharToMultiByte",
+        "__C_specific_handler",
+        "___lc_codepage_func",
+        "___mb_cur_max_func",
+        "__getmainargs",
+        "__initenv",
+        "__iob_func",
+        "__set_app_type",
+        "__setusermatherr",
+        "_amsg_exit",
+        "_cexit",
+        "_commode",
+        "_errno",
+        "_fmode",
+        "_initterm",
+        "_onexit",
+        "abort",
+        "calloc",
+        "exit",
+        "fprintf",
+        "fputc",
+        "free",
+        "fwrite",
+        "localeconv",
+        "malloc",
+        "memcpy",
+        "memset",
+        "puts",
+        "signal",
+        "strcmp",
+        "strerror",
+        "strlen",
+        "strncmp",
+        "vfprintf",
+        "wcslen"
+      ],
+      "resources": {
+        "version": 1,
+        "manifest": 1
+      },
+      "version_info": {
+        "file_version_number": "1.2.0.0",
+        "product_version_number": "1.2.0.0",
+        "language": "040904b0",
+        "company": "Saltmere Harbour Authority",
+        "file_description": "Saltmere tide table",
+        "file_version": "1.2.0.0",
+        "internal_name": "tides",
+        "copyright": "CC0 1.0, Saltmere Harbour Authority",
+        "original_filename": "tides.exe",
+        "product_name": "Saltmere Tides",
+        "product_version": "1.2"
+      },
+      "manifest": {
+        "requested_execution_level": "asInvoker",
+        "assembly_name": "Saltmere.Tides",
+        "assembly_version": "1.2.0.0",
+        "supported_os_count": 1
+      },
+      "tls_callbacks": 2,
+      "hardening": {
+        "aslr": true,
+        "high_entropy_aslr": true,
+        "dep": true,
+        "cfg": false
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (GNU) 13-win32",
+          "GCC: (GNU) 14-win32"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

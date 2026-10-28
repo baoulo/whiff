@@ -1,0 +1,222 @@
+---
+source: src/formats/exec/macho.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-clang-runtime",
+    "stem": "tides-clang-runtime"
+  },
+  "identification": {
+    "format": "macho",
+    "name": "Mach-O / universal binary",
+    "mime": "application/x-mach-binary",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extractor": "exec.macho"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 68688
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "weakened_runtime",
+        "category": "unsafe_operation",
+        "severity": "medium",
+        "detail": "com.apple.security.cs.disable-library-validation",
+        "source": "exec.macho"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 68688,
+    "entropy": 0.351,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "88bc371922b67c82ec467fb778a5e16bd9a5b3ec1a95f1905e172e54357a3774",
+    "blake3": "3c03457b9785d11ecaa6148ef49c4efc3950484b1c1a0827f3808d76bdca4745"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "macho": {
+      "architecture": "arm64",
+      "bits": 64,
+      "endianness": "little",
+      "kind": "executable",
+      "uuid": "975882C8-69AB-3DD3-A399-3E979BF4B9A1",
+      "platform": "macos",
+      "minimum_os": "12.0",
+      "sdk": "26.5",
+      "entry_point": "0x528",
+      "build_tools": [
+        {
+          "tool": "ld",
+          "version": "1230.1"
+        }
+      ],
+      "section_count": 7,
+      "sections": [
+        {
+          "name": "__TEXT,__text",
+          "size": 360,
+          "address": "0x1000004f8",
+          "flags": "r-x",
+          "entropy": 5.545
+        },
+        {
+          "name": "__TEXT,__stubs",
+          "size": 48,
+          "address": "0x100000660",
+          "flags": "r-x",
+          "entropy": 3.28
+        },
+        {
+          "name": "__TEXT,__cstring",
+          "size": 41,
+          "address": "0x100000690",
+          "flags": "r--",
+          "entropy": 4.26
+        },
+        {
+          "name": "__TEXT,__unwind_info",
+          "size": 96,
+          "address": "0x1000006bc",
+          "flags": "r--",
+          "entropy": 1.574
+        },
+        {
+          "name": "__DATA_CONST,__got",
+          "size": 40,
+          "address": "0x100004000",
+          "flags": "rw-",
+          "entropy": 1.622
+        },
+        {
+          "name": "__DATA,__data",
+          "size": 8,
+          "address": "0x100008000",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": "__LINKEDIT",
+          "size": 19536,
+          "memory_size": 32768,
+          "address": "0x10000c000",
+          "flags": "r--",
+          "entropy": 0.633
+        }
+      ],
+      "library_count": 1,
+      "libraries": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "imported_symbol_count": 5,
+      "imports": [
+        "___stack_chk_fail",
+        "___stack_chk_guard",
+        "_puts",
+        "_snprintf",
+        "_strcmp"
+      ],
+      "exported_symbol_count": 4,
+      "exports": [
+        "__mh_execute_header",
+        "_harbour",
+        "_main",
+        "_tide_metres"
+      ],
+      "signature": {
+        "kind": "apple_code_signature",
+        "identifier": "org.example.saltmere.tides",
+        "hash_type": "sha256",
+        "adhoc": true,
+        "flags": [
+          "adhoc",
+          "runtime"
+        ],
+        "entitlements": [
+          "com.apple.security.app-sandbox",
+          "com.apple.security.cs.disable-library-validation"
+        ],
+        "sandboxed": true
+      },
+      "hardening": {
+        "pie": true,
+        "stack_canary": true,
+        "arc": false,
+        "hardened_runtime": true,
+        "code_signature": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.macho",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

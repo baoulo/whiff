@@ -1,0 +1,294 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-gcc-dwarf.o",
+    "stem": "tides-gcc-dwarf",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "elf",
+        "confidence": 0.99
+      },
+      {
+        "format": "macho",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6416
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6416,
+    "entropy": 3.208,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a68283f4e89d5af6c2de60d87c8c742f739cdfaeab05644f03fc83de43712055",
+    "blake3": "678c9adef5bbd8d76353cda294b2be94e61e3904fd57f6d944e9b9c3c35b44a8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "arm64",
+      "kind": "object",
+      "section_count": 25,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 228,
+          "flags": "r-x",
+          "entropy": 5.489
+        },
+        {
+          "name": ".rela.text",
+          "size": 216,
+          "flags": "---",
+          "entropy": 1.353
+        },
+        {
+          "name": ".data",
+          "size": 0,
+          "flags": "rw-"
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "flags": "rw-"
+        },
+        {
+          "name": ".rodata.str1.8",
+          "size": 41,
+          "flags": "r--",
+          "entropy": 4.26
+        },
+        {
+          "name": ".data.rel.local",
+          "size": 8,
+          "flags": "rw-",
+          "entropy": -0.0
+        },
+        {
+          "name": ".rela.data.rel.local",
+          "size": 24,
+          "flags": "---",
+          "entropy": 0.9
+        },
+        {
+          "name": ".debug_info",
+          "size": 601,
+          "flags": "---",
+          "entropy": 2.895
+        },
+        {
+          "name": ".rela.debug_info",
+          "size": 1056,
+          "flags": "---",
+          "entropy": 1.71
+        },
+        {
+          "name": ".debug_abbrev",
+          "size": 371,
+          "flags": "---",
+          "entropy": 4.782
+        },
+        {
+          "name": ".debug_loclists",
+          "size": 138,
+          "flags": "---",
+          "entropy": 3.487
+        },
+        {
+          "name": ".debug_aranges",
+          "size": 48,
+          "flags": "---",
+          "entropy": 0.58
+        },
+        {
+          "name": ".rela.debug_aranges",
+          "size": 48,
+          "flags": "---",
+          "entropy": 1.009
+        },
+        {
+          "name": ".debug_rnglists",
+          "size": 19,
+          "flags": "---",
+          "entropy": 2.394
+        },
+        {
+          "name": ".debug_line",
+          "size": 229,
+          "flags": "---",
+          "entropy": 3.792
+        },
+        {
+          "name": ".rela.debug_line",
+          "size": 168,
+          "flags": "---",
+          "entropy": 1.404
+        },
+        {
+          "name": ".debug_str",
+          "size": 244,
+          "flags": "---",
+          "entropy": 4.585
+        },
+        {
+          "name": ".debug_line_str",
+          "size": 60,
+          "flags": "---",
+          "entropy": 3.843
+        },
+        {
+          "name": ".comment",
+          "size": 32,
+          "flags": "---",
+          "entropy": 4.14
+        },
+        {
+          "name": ".note.GNU-stack",
+          "size": 0,
+          "flags": "---"
+        },
+        {
+          "name": ".eh_frame",
+          "size": 104,
+          "flags": "r--",
+          "entropy": 4.177
+        },
+        {
+          "name": ".rela.eh_frame",
+          "size": 48,
+          "flags": "---",
+          "entropy": 1.166
+        },
+        {
+          "name": ".symtab",
+          "size": 672,
+          "flags": "---",
+          "entropy": 0.843
+        },
+        {
+          "name": ".strtab",
+          "size": 61,
+          "flags": "---",
+          "entropy": 4.046
+        },
+        {
+          "name": ".shstrtab",
+          "size": 252,
+          "flags": "---",
+          "entropy": 4.243
+        }
+      ],
+      "imported_symbol_count": 3,
+      "imports": [
+        "puts",
+        "snprintf",
+        "strcmp"
+      ],
+      "exported_symbol_count": 3,
+      "exports": [
+        "harbour",
+        "main",
+        "tide_metres"
+      ],
+      "hardening": {
+        "stack_canary": false,
+        "fortify": false
+      },
+      "debug": {
+        "dwarf": true,
+        "dwarf_version": 5,
+        "language": "C"
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (Debian 14.2.0-19) 14.2.0"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

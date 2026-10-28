@@ -631,14 +631,14 @@ expression: report
       },
       "identification": {
         "format": "elf",
-        "name": "Executable and Linkable Format",
+        "name": "ELF executable / shared object",
         "mime": "application/x-executable",
         "family": "exec",
-        "confidence": 0.5,
+        "confidence": 0.81,
         "detected_by": "magic",
         "extension_matches": true,
         "encoding": "us-ascii",
-        "extractor": null
+        "extractor": "exec.elf"
       },
       "system": {
         "kind": "memory",
@@ -672,6 +672,14 @@ expression: report
       "format": {},
       "diagnostics": {
         "extractors": [
+          {
+            "id": "exec.elf",
+            "version": 1,
+            "ms": 0.0,
+            "status": "error",
+            "error_kind": "malformed",
+            "error": "malformed: ELF header"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

@@ -1,0 +1,124 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-ne.exe",
+    "stem": "tides-ne",
+    "extension": "exe"
+  },
+  "identification": {
+    "format": "dos_exe",
+    "name": "MS-DOS / NE / LE executables",
+    "mime": "application/x-dosexec",
+    "family": "exec",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dos_exe",
+        "confidence": 0.85
+      },
+      {
+        "format": "pe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 240
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 240,
+    "entropy": 2.199,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8fafdb2b38ddf9d4beae55e30f4725939405173bdce45b3522f303bc3b7b640c",
+    "blake3": "1ba7c091ce756db130b0d1f2b2f4eb480ec6e0205b389d20c72b46f9a8949bc0"
+  },
+  "content": {
+    "description": "Saltmere tide table for Windows 3.1"
+  },
+  "metadata": {},
+  "format": {
+    "dos_exe": {
+      "kind": "ne_executable",
+      "linker_version": "5.10",
+      "os": "windows",
+      "windows_version": "3.10",
+      "segments": 0,
+      "module_references": 0,
+      "module_name": "TIDES",
+      "description": "Saltmere tide table for Windows 3.1"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

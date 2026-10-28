@@ -37,6 +37,8 @@ pub(crate) mod doc;
 #[cfg(feature = "common")]
 pub(crate) mod email;
 #[cfg(feature = "common")]
+pub(crate) mod exec;
+#[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]
 pub(crate) mod package;
