@@ -1,0 +1,234 @@
+---
+source: src/formats/exec/macho.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-clang-dwarf.o",
+    "stem": "tides-clang-dwarf",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "macho",
+    "name": "Mach-O / universal binary",
+    "mime": "application/x-mach-binary",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "exec.macho"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4144,
+    "entropy": 4.577,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5d617d09e1036813d0492376c552b7673ce03579d0af5e66dc8a49631d384aad",
+    "blake3": "e1e45a544f43d5237c6784c39cb80646023cba7fb5300f328b134a1f231b0548"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "macho": {
+      "architecture": "arm64",
+      "bits": 64,
+      "endianness": "little",
+      "kind": "object",
+      "platform": "macos",
+      "minimum_os": "26.0",
+      "sdk": "26.5",
+      "section_count": 13,
+      "sections": [
+        {
+          "name": "__TEXT,__text",
+          "size": 296,
+          "flags": "r-x",
+          "entropy": 5.77
+        },
+        {
+          "name": "__TEXT,__cstring",
+          "size": 41,
+          "address": "0x128",
+          "flags": "r--",
+          "entropy": 4.26
+        },
+        {
+          "name": "__DATA,__data",
+          "size": 8,
+          "address": "0x158",
+          "flags": "rw-",
+          "entropy": -0.0
+        },
+        {
+          "name": "__DWARF,__debug_loclists",
+          "size": 112,
+          "address": "0x160",
+          "flags": "rw-",
+          "entropy": 3.907
+        },
+        {
+          "name": "__DWARF,__debug_abbrev",
+          "size": 367,
+          "address": "0x1d0",
+          "flags": "rw-",
+          "entropy": 4.851
+        },
+        {
+          "name": "__DWARF,__debug_info",
+          "size": 334,
+          "address": "0x33f",
+          "flags": "rw-",
+          "entropy": 3.644
+        },
+        {
+          "name": "__DWARF,__debug_str_offs",
+          "size": 80,
+          "address": "0x48d",
+          "flags": "rw-",
+          "entropy": 1.867
+        },
+        {
+          "name": "__DWARF,__debug_str",
+          "size": 259,
+          "address": "0x4dd",
+          "flags": "rw-",
+          "entropy": 5.267
+        },
+        {
+          "name": "__DWARF,__debug_addr",
+          "size": 88,
+          "address": "0x5e0",
+          "flags": "rw-",
+          "entropy": 1.32
+        },
+        {
+          "name": "__DWARF,__debug_names",
+          "size": 220,
+          "address": "0x638",
+          "flags": "rw-",
+          "entropy": 3.215
+        },
+        {
+          "name": "__LD,__compact_unwind",
+          "size": 64,
+          "address": "0x718",
+          "flags": "rw-",
+          "entropy": 0.66
+        },
+        {
+          "name": "__DWARF,__debug_line",
+          "size": 202,
+          "address": "0x758",
+          "flags": "rw-",
+          "entropy": 5.195
+        },
+        {
+          "name": "__DWARF,__debug_line_str",
+          "size": 141,
+          "address": "0x822",
+          "flags": "rw-",
+          "entropy": 4.853
+        }
+      ],
+      "imported_symbol_count": 5,
+      "imports": [
+        "___stack_chk_fail",
+        "___stack_chk_guard",
+        "_puts",
+        "_snprintf",
+        "_strcmp"
+      ],
+      "exported_symbol_count": 3,
+      "exports": [
+        "_harbour",
+        "_main",
+        "_tide_metres"
+      ],
+      "hardening": {
+        "stack_canary": true,
+        "arc": false
+      },
+      "debug": {
+        "dwarf": true,
+        "dwarf_version": 5,
+        "producer": "Apple clang version 17.0.0 (clang-1700.6.3.2)",
+        "language": "C",
+        "name": "tides.c"
+      },
+      "toolchain": {
+        "compilers": [
+          "clang version 17.0.0 (clang-1700.6.3.2)"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.macho",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

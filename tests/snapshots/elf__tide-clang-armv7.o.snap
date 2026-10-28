@@ -1,0 +1,193 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-clang-armv7.o",
+    "stem": "tide-clang-armv7",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "elf",
+        "confidence": 0.99
+      },
+      {
+        "format": "macho",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 896
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 896,
+    "entropy": 3.425,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c2cef91211450be8cf1d6be6d4318b9b425783268728d596c78e1000aff61acf",
+    "blake3": "c33a6c7f5916edfd54be734701c6f69d3ad48633c6304af52eaf05d5f365a689"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 32,
+      "endianness": "little",
+      "architecture": "arm",
+      "kind": "object",
+      "section_count": 10,
+      "sections": [
+        {
+          "name": ".strtab",
+          "size": 131,
+          "flags": "---",
+          "entropy": 4.381
+        },
+        {
+          "name": ".text",
+          "size": 44,
+          "flags": "r-x",
+          "entropy": 4.624
+        },
+        {
+          "name": ".ARM.exidx",
+          "size": 8,
+          "flags": "r--",
+          "entropy": 0.544
+        },
+        {
+          "name": ".rel.ARM.exidx",
+          "size": 8,
+          "flags": "---",
+          "entropy": 1.061
+        },
+        {
+          "name": ".rodata",
+          "size": 17,
+          "flags": "r--",
+          "entropy": 3.572
+        },
+        {
+          "name": ".comment",
+          "size": 36,
+          "flags": "---",
+          "entropy": 4.35
+        },
+        {
+          "name": ".note.GNU-stack",
+          "size": 0,
+          "flags": "---"
+        },
+        {
+          "name": ".ARM.attributes",
+          "size": 62,
+          "flags": "---",
+          "entropy": 4.599
+        },
+        {
+          "name": ".llvm_addrsig",
+          "size": 0,
+          "flags": "---"
+        },
+        {
+          "name": ".symtab",
+          "size": 96,
+          "flags": "---",
+          "entropy": 1.246
+        }
+      ],
+      "exported_symbol_count": 2,
+      "exports": [
+        "harbour",
+        "tide_metres"
+      ],
+      "hardening": {
+        "stack_canary": false,
+        "fortify": false
+      },
+      "toolchain": {
+        "compilers": [
+          "Debian clang version 19.1.7 (3+b1)"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

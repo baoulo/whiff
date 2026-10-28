@@ -1,0 +1,118 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-mz.exe",
+    "stem": "tides-mz",
+    "extension": "exe"
+  },
+  "identification": {
+    "format": "dos_exe",
+    "name": "MS-DOS / NE / LE executables",
+    "mime": "application/x-dosexec",
+    "family": "exec",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dos_exe",
+        "confidence": 0.85
+      },
+      {
+        "format": "pe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 101
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 101,
+    "entropy": 3.082,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "eb29774720942691b729c8185e571f09247e937d5fb0c23727adb4855490f1a7",
+    "blake3": "3deb87cf2ddd50f73acd8554694ee2740d46fe85e5dc6265489ae955c116161f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dos_exe": {
+      "kind": "dos_executable",
+      "image_bytes": 101,
+      "relocations": 0,
+      "entry_point": "0000:0000"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

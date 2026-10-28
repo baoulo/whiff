@@ -1,0 +1,297 @@
+---
+source: src/formats/exec/pe.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-setup-nsis.exe",
+    "stem": "tides-setup-nsis",
+    "extension": "exe"
+  },
+  "identification": {
+    "format": "pe",
+    "name": "Windows PE executable / DLL",
+    "mime": "application/vnd.microsoft.portable-executable",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pe",
+        "confidence": 0.99
+      },
+      {
+        "format": "dos_exe",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.pe"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 101588
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-04-02T06:31:17Z",
+        "source": "exec.pe",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-04-02T06:31:17Z",
+    "latest": "2025-04-02T06:31:17Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 101588,
+    "entropy": 6.94,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "02bab84ff33a23b6aa0bb2ee284bd018d2e10c71dbba51ccf82dfb4922e60cf1",
+    "blake3": "dc721015062592afc42da4d92b5c73082714c955aab82425306c7c6f01340267"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pe": {
+      "architecture": "x86",
+      "bits": 32,
+      "pe_type": "PE32",
+      "kind": "executable",
+      "subsystem": "windows_gui",
+      "entry_point": "0x45d8",
+      "image_base": "0x400000",
+      "linker_version": "2.44",
+      "os_version": "4.0",
+      "subsystem_version": "4.0",
+      "section_count": 7,
+      "sections": [
+        {
+          "name": ".text",
+          "size": 37888,
+          "memory_size": 37596,
+          "address": "0x1000",
+          "flags": "r-x",
+          "entropy": 6.093
+        },
+        {
+          "name": ".data",
+          "size": 512,
+          "memory_size": 224,
+          "address": "0xb000",
+          "flags": "rw-",
+          "entropy": 1.568
+        },
+        {
+          "name": ".rdata",
+          "size": 52736,
+          "memory_size": 52408,
+          "address": "0xc000",
+          "flags": "r--",
+          "entropy": 7.31
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 128576,
+          "address": "0x19000",
+          "flags": "rw-"
+        },
+        {
+          "name": ".idata",
+          "size": 5120,
+          "memory_size": 5040,
+          "address": "0x39000",
+          "flags": "r--",
+          "entropy": 5.393
+        },
+        {
+          "name": ".ndata",
+          "size": 512,
+          "memory_size": 65536,
+          "address": "0x3b000",
+          "flags": "rw-",
+          "entropy": -0.0
+        },
+        {
+          "name": ".rsrc",
+          "size": 3072,
+          "memory_size": 2672,
+          "address": "0x4b000",
+          "flags": "r--",
+          "entropy": 4.238
+        }
+      ],
+      "link_time": "2025-04-02T06:31:17Z",
+      "library_count": 7,
+      "libraries": [
+        "ADVAPI32.dll",
+        "COMCTL32.dll",
+        "GDI32.dll",
+        "KERNEL32.dll",
+        "ole32.dll",
+        "SHELL32.dll",
+        "USER32.dll"
+      ],
+      "imported_symbol_count": 163,
+      "imports": [
+        "AdjustTokenPrivileges",
+        "AppendMenuW",
+        "BeginPaint",
+        "CallWindowProcW",
+        "CharNextA",
+        "CharNextW",
+        "CharPrevW",
+        "CheckDlgButton",
+        "CloseClipboard",
+        "CloseHandle",
+        "CoCreateInstance",
+        "CoTaskMemFree",
+        "CompareFileTime",
+        "CopyFileW",
+        "CreateBrushIndirect",
+        "CreateDialogParamW",
+        "CreateDirectoryW",
+        "CreateFileW",
+        "CreateFontIndirectW",
+        "CreatePopupMenu",
+        "CreateProcessW",
+        "CreateThread",
+        "CreateWindowExW",
+        "DefWindowProcW",
+        "DeleteFileW",
+        "DeleteObject",
+        "DestroyWindow",
+        "DialogBoxParamW",
+        "DispatchMessageW",
+        "DrawTextW",
+        "EmptyClipboard",
+        "EnableMenuItem",
+        "EnableWindow",
+        "EndDialog",
+        "EndPaint",
+        "ExitProcess",
+        "ExitWindowsEx",
+        "ExpandEnvironmentStringsW",
+        "FillRect",
+        "FindClose",
+        "FindFirstFileW",
+        "FindNextFileW",
+        "FindWindowExW",
+        "FreeLibrary",
+        "GetClassInfoW",
+        "GetClientRect",
+        "GetCommandLineW",
+        "GetCurrentProcess",
+        "GetDC",
+        "GetDeviceCaps",
+        "GetDiskFreeSpaceW",
+        "GetDlgItem",
+        "GetDlgItemTextW",
+        "GetExitCodeProcess",
+        "GetFileAttributesW",
+        "GetFileSize",
+        "GetFullPathNameW",
+        "GetLastError",
+        "GetMessagePos",
+        "GetModuleFileNameW",
+        "GetModuleHandleA",
+        "GetModuleHandleW",
+        "GetPrivateProfileStringW",
+        "GetProcAddress"
+      ],
+      "resources": {
+        "icon": 1,
+        "dialog": 3,
+        "group_icon": 1,
+        "manifest": 1
+      },
+      "manifest": {
+        "requested_execution_level": "asInvoker",
+        "assembly_name": "Nullsoft.NSIS.exehead",
+        "assembly_version": "1.0.0.0",
+        "supported_os_count": 4
+      },
+      "hardening": {
+        "aslr": false,
+        "dep": true,
+        "cfg": false,
+        "no_seh": true
+      },
+      "overlay_bytes": 724,
+      "overlay": "nsis",
+      "toolchain": {
+        "compilers": [
+          "GCC: (GNU) 14-win32",
+          "GCC: (GNU) 13-win32"
+        ],
+        "installer": "nsis"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.pe",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

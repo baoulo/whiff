@@ -4,6 +4,63 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased
+
+Executables (Stage 6, first part).
+
+- **Executables** (`common`), all in-house: every binary reports its kind
+  (executable, shared library, object, core dump, driver, EFI image),
+  architecture, bitness, byte order, entry point and target OS; its
+  sections with their entropy, segments, the libraries it links and the
+  symbols it imports and exports; `hardening` (PIE / ASLR, NX / DEP,
+  RELRO, stack canary, FORTIFY, CFG, SafeSEH, CET, BTI / PAC, hardened
+  runtime, library validation, stripped); debug information; and
+  `toolchain` from a bounded scan (compilers and linkers, Go build
+  information with module, dependencies and build settings, rustc
+  version and commit, NSIS / Inno Setup installers, PyInstaller bundles
+  with their Python version, UPX):
+  - ELF executables, shared objects, relocatable objects and kernel
+    modules (interpreter, `SONAME`, `RPATH` / `RUNPATH`, GNU build id, ABI
+    tag, GNU properties, FDO package metadata notes, Android API level,
+    the DWARF compile unit's producer and language), core dumps (signal,
+    process, command line, threads, mapped files) and eBPF objects
+    (programs, licence, maps);
+  - Windows PE32 / PE32+ images (subsystem, link time unless the build is
+    reproducible, linker and OS versions, delay-loaded libraries, exports,
+    resources by type, the version information: company, product,
+    description, versions, copyright, original file name; the manifest's
+    requested execution level; the PDB path, GUID and age; TLS callbacks;
+    the Rich header's tool records; the Authenticode signer, digest,
+    signing time, timestamp and chain; installers and archives appended to
+    the image, handed on), .NET assemblies (CLI runtime and metadata
+    versions, IL only, strong name), COFF objects, and the MS-DOS MZ,
+    NE and LE / LX headers (target OS, module name, description);
+  - Mach-O executables, dylibs, bundles, kernel extensions, objects and
+    dSYM files, and universal binaries (the architectures, one slice
+    described): file type and flags, install name and versions, run
+    paths, UUID, platform and minimum OS / SDK, build tools, source
+    version, FairPlay encryption, the code signature (identifier, team,
+    hash type, flags, entitlements, the CMS signer and its chain);
+  - WebAssembly modules: section counts, imports by module (WASI named),
+    exports, memory limits, the start function, module name, `producers`,
+    target features, source maps, relocatable objects and dynamic
+    libraries.
+- **Signatures:** a shared reader for DER (and the BER indefinite lengths
+  Apple uses), X.509 certificates (subject, issuer, serial, validity, key
+  algorithm and size, signature algorithm, CA, extended key usage,
+  alternative names, SHA-256 fingerprint) and CMS `SignedData` (signer,
+  digests, signing time, RFC 3161 and legacy countersignature timestamps).
+  Signatures are described, not verified; key material is never reported.
+- **Risks:** `packed_executable`, `writable_executable_memory`,
+  `tls_callbacks`, `weakened_runtime` and `requests_elevation`; Mach-O
+  `get-task-allow` reports `debuggable`.
+- **Developer tools:** `scripts/fixtures/executables.sh` builds the
+  executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
+  wat2wasm and gdb (in a podman container) and with the macOS toolchain
+  and codesign; `craft_executables.py` writes the MS-DOS, NE, LE and .NET
+  headers. `exec_oracle.py` compares the reports with readelf,
+  llvm-readobj, osslsigncode, wasm-objdump, lipo, otool and codesign.
+
 ## 0.5.1 — 2026-10-27
 
 Software packages and installers, and disk images: Stage 5 is complete.

@@ -1,0 +1,333 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-gcc-hardened",
+    "stem": "tides-gcc-hardened"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 67496
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 67496,
+    "entropy": 0.418,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c2d6b20c8563a265c5063b53bad8a90550c8583a53f4988e114d8a0040ebe9b2",
+    "blake3": "ee5ecac3da3ac7fd12456d316bc170325169b33a37c7bf899e68fd905062793a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "arm64",
+      "entry_point": "0x940",
+      "kind": "executable",
+      "interpreter": "/lib/ld-linux-aarch64.so.1",
+      "segments": [
+        {
+          "address": "0x0",
+          "file_size": 3128,
+          "memory_size": 3128,
+          "flags": "r-x"
+        },
+        {
+          "address": "0x1fd60",
+          "file_size": 696,
+          "memory_size": 704,
+          "flags": "rw-"
+        }
+      ],
+      "section_count": 25,
+      "sections": [
+        {
+          "name": ".note.gnu.build-id",
+          "size": 36,
+          "address": "0x270",
+          "flags": "r--",
+          "entropy": 4.247
+        },
+        {
+          "name": ".interp",
+          "size": 27,
+          "address": "0x294",
+          "flags": "r--",
+          "entropy": 4.208
+        },
+        {
+          "name": ".gnu.hash",
+          "size": 28,
+          "address": "0x2b0",
+          "flags": "r--",
+          "entropy": 0.491
+        },
+        {
+          "name": ".dynsym",
+          "size": 336,
+          "address": "0x2d0",
+          "flags": "r--",
+          "entropy": 0.767
+        },
+        {
+          "name": ".dynstr",
+          "size": 225,
+          "address": "0x420",
+          "flags": "r--",
+          "entropy": 4.766
+        },
+        {
+          "name": ".gnu.version",
+          "size": 28,
+          "address": "0x502",
+          "flags": "r--",
+          "entropy": 1.602
+        },
+        {
+          "name": ".gnu.version_r",
+          "size": 80,
+          "address": "0x520",
+          "flags": "r--",
+          "entropy": 2.204
+        },
+        {
+          "name": ".rela.dyn",
+          "size": 240,
+          "address": "0x570",
+          "flags": "r--",
+          "entropy": 1.792
+        },
+        {
+          "name": ".rela.plt",
+          "size": 192,
+          "address": "0x660",
+          "flags": "r--",
+          "entropy": 1.708
+        },
+        {
+          "name": ".init",
+          "size": 28,
+          "address": "0x720",
+          "flags": "r-x",
+          "entropy": 3.896
+        },
+        {
+          "name": ".plt",
+          "size": 160,
+          "address": "0x740",
+          "flags": "r-x",
+          "entropy": 4.239
+        },
+        {
+          "name": ".text",
+          "size": 672,
+          "address": "0x800",
+          "flags": "r-x",
+          "entropy": 5.704
+        },
+        {
+          "name": ".fini",
+          "size": 24,
+          "address": "0xaa0",
+          "flags": "r-x",
+          "entropy": 3.72
+        },
+        {
+          "name": ".rodata",
+          "size": 49,
+          "address": "0xab8",
+          "flags": "r--",
+          "entropy": 4.211
+        },
+        {
+          "name": ".eh_frame_hdr",
+          "size": 68,
+          "address": "0xaec",
+          "flags": "r--",
+          "entropy": 3.078
+        },
+        {
+          "name": ".eh_frame",
+          "size": 232,
+          "address": "0xb30",
+          "flags": "r--",
+          "entropy": 4.119
+        },
+        {
+          "name": ".note.ABI-tag",
+          "size": 32,
+          "address": "0xc18",
+          "flags": "r--",
+          "entropy": 1.561
+        },
+        {
+          "name": ".init_array",
+          "size": 8,
+          "address": "0x1fd60",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": ".fini_array",
+          "size": 8,
+          "address": "0x1fd68",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": ".dynamic",
+          "size": 512,
+          "address": "0x1fd70",
+          "flags": "rw-",
+          "entropy": 1.475
+        },
+        {
+          "name": ".got",
+          "size": 144,
+          "address": "0x1ff70",
+          "flags": "rw-",
+          "entropy": 0.848
+        },
+        {
+          "name": ".data",
+          "size": 24,
+          "address": "0x20000",
+          "flags": "rw-",
+          "entropy": 0.983
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 8,
+          "address": "0x20018",
+          "flags": "rw-"
+        },
+        {
+          "name": ".comment",
+          "size": 31,
+          "flags": "---",
+          "entropy": 4.131
+        },
+        {
+          "name": ".shstrtab",
+          "size": 234,
+          "flags": "---",
+          "entropy": 4.266
+        }
+      ],
+      "library_count": 2,
+      "libraries": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "imported_symbol_count": 11,
+      "imports": [
+        "_ITM_deregisterTMCloneTable",
+        "_ITM_registerTMCloneTable",
+        "__cxa_finalize",
+        "__gmon_start__",
+        "__libc_start_main",
+        "__snprintf_chk",
+        "__stack_chk_fail",
+        "__stack_chk_guard",
+        "abort",
+        "puts",
+        "strcmp"
+      ],
+      "build_id": "d32f11d9ecfbf12434c4598818af33483b7553d0",
+      "os": "linux",
+      "minimum_kernel": "3.7.0",
+      "hardening": {
+        "nx": true,
+        "pie": true,
+        "relro": "full",
+        "stripped": true,
+        "stack_canary": true,
+        "fortify": true
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (Debian 14.2.0-19) 14.2.0"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

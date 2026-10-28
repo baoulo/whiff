@@ -1,0 +1,136 @@
+---
+source: src/formats/exec/wasm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-wasi.wasm",
+    "stem": "tides-wasi",
+    "extension": "wasm"
+  },
+  "identification": {
+    "format": "wasm",
+    "name": "WebAssembly module",
+    "mime": "application/wasm",
+    "family": "exec",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "exec.wasm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 315
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 315,
+    "entropy": 5.202,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0d7493fd48383c0a40d2c3d64c73d0c51b2a426b8d4959566beaebd836a384e0",
+    "blake3": "b7c420abadaeec933c9d72e7ca4008202efade2b263acea2c59f719c7912e6fb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wasm": {
+      "version": 1,
+      "memory": {
+        "min_pages": 1,
+        "max_pages": 4
+      },
+      "module_name": "saltmere_tides",
+      "kind": "module",
+      "counts": {
+        "types": 4,
+        "imports": 2,
+        "functions": 2,
+        "memories": 1,
+        "exports": 3,
+        "function_bodies": 2,
+        "data_segments": 1
+      },
+      "wasi": true,
+      "import_modules": {
+        "wasi_snapshot_preview1": 2
+      },
+      "imports": [
+        "wasi_snapshot_preview1.fd_write",
+        "wasi_snapshot_preview1.proc_exit"
+      ],
+      "exports": [
+        "memory",
+        "tide_metres",
+        "_start"
+      ],
+      "custom_sections": [
+        "name"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.wasm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

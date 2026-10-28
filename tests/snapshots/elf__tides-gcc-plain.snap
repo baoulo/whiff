@@ -1,0 +1,359 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-gcc-plain",
+    "stem": "tides-gcc-plain"
+  },
+  "identification": {
+    "format": "elf",
+    "name": "ELF executable / shared object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8120
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "writable_executable_memory",
+        "category": "unsafe_operation",
+        "severity": "medium",
+        "detail": "executable stack",
+        "source": "exec.elf"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 8120,
+    "entropy": 3.341,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "89b7fd2b10fd60fabf8dbb8d86196119ce4040911b6240ad709a206f7d302799",
+    "blake3": "efed5b228198339df4ec1d98343238c6d3c1daef6284d47230156846b46d49a3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "arm64",
+      "entry_point": "0x4005c0",
+      "kind": "executable",
+      "interpreter": "/lib/ld-linux-aarch64.so.1",
+      "segments": [
+        {
+          "address": "0x400000",
+          "file_size": 2416,
+          "memory_size": 2416,
+          "flags": "r-x"
+        },
+        {
+          "address": "0x410970",
+          "file_size": 608,
+          "memory_size": 616,
+          "flags": "rw-"
+        }
+      ],
+      "section_count": 28,
+      "sections": [
+        {
+          "name": ".note.gnu.build-id",
+          "size": 36,
+          "address": "0x400238",
+          "flags": "r--",
+          "entropy": 4.192
+        },
+        {
+          "name": ".interp",
+          "size": 27,
+          "address": "0x40025c",
+          "flags": "r--",
+          "entropy": 4.208
+        },
+        {
+          "name": ".gnu.hash",
+          "size": 28,
+          "address": "0x400278",
+          "flags": "r--",
+          "entropy": 0.491
+        },
+        {
+          "name": ".dynsym",
+          "size": 216,
+          "address": "0x400298",
+          "flags": "r--",
+          "entropy": 0.601
+        },
+        {
+          "name": ".dynstr",
+          "size": 147,
+          "address": "0x400370",
+          "flags": "r--",
+          "entropy": 4.644
+        },
+        {
+          "name": ".gnu.version",
+          "size": 18,
+          "address": "0x400404",
+          "flags": "r--",
+          "entropy": 1.616
+        },
+        {
+          "name": ".gnu.version_r",
+          "size": 48,
+          "address": "0x400418",
+          "flags": "r--",
+          "entropy": 2.177
+        },
+        {
+          "name": ".rela.dyn",
+          "size": 72,
+          "address": "0x400448",
+          "flags": "r--",
+          "entropy": 1.545
+        },
+        {
+          "name": ".rela.plt",
+          "size": 144,
+          "address": "0x400490",
+          "flags": "r--",
+          "entropy": 1.644
+        },
+        {
+          "name": ".init",
+          "size": 28,
+          "address": "0x400520",
+          "flags": "r-x",
+          "entropy": 3.896
+        },
+        {
+          "name": ".plt",
+          "size": 128,
+          "address": "0x400540",
+          "flags": "r-x",
+          "entropy": 4.262
+        },
+        {
+          "name": ".text",
+          "size": 520,
+          "address": "0x4005c0",
+          "flags": "r-x",
+          "entropy": 5.479
+        },
+        {
+          "name": ".fini",
+          "size": 24,
+          "address": "0x4007c8",
+          "flags": "r-x",
+          "entropy": 3.72
+        },
+        {
+          "name": ".rodata",
+          "size": 56,
+          "address": "0x4007e0",
+          "flags": "r--",
+          "entropy": 3.945
+        },
+        {
+          "name": ".eh_frame_hdr",
+          "size": 76,
+          "address": "0x400818",
+          "flags": "r--",
+          "entropy": 3.243
+        },
+        {
+          "name": ".eh_frame",
+          "size": 232,
+          "address": "0x400868",
+          "flags": "r--",
+          "entropy": 3.425
+        },
+        {
+          "name": ".note.ABI-tag",
+          "size": 32,
+          "address": "0x400950",
+          "flags": "r--",
+          "entropy": 1.561
+        },
+        {
+          "name": ".init_array",
+          "size": 8,
+          "address": "0x410970",
+          "flags": "rw-",
+          "entropy": 1.549
+        },
+        {
+          "name": ".fini_array",
+          "size": 8,
+          "address": "0x410978",
+          "flags": "rw-",
+          "entropy": 1.549
+        },
+        {
+          "name": ".dynamic",
+          "size": 464,
+          "address": "0x410980",
+          "flags": "rw-",
+          "entropy": 1.513
+        },
+        {
+          "name": ".got",
+          "size": 32,
+          "address": "0x410b50",
+          "flags": "rw-",
+          "entropy": 0.597
+        },
+        {
+          "name": ".got.plt",
+          "size": 72,
+          "address": "0x410b70",
+          "flags": "rw-",
+          "entropy": 1.041
+        },
+        {
+          "name": ".data",
+          "size": 24,
+          "address": "0x410bb8",
+          "flags": "rw-",
+          "entropy": 0.742
+        },
+        {
+          "name": ".bss",
+          "size": 0,
+          "memory_size": 8,
+          "address": "0x410bd0",
+          "flags": "rw-"
+        },
+        {
+          "name": ".comment",
+          "size": 31,
+          "flags": "---",
+          "entropy": 4.131
+        },
+        {
+          "name": ".symtab",
+          "size": 2328,
+          "flags": "---",
+          "entropy": 1.961
+        },
+        {
+          "name": ".strtab",
+          "size": 619,
+          "flags": "---",
+          "entropy": 4.813
+        },
+        {
+          "name": ".shstrtab",
+          "size": 259,
+          "flags": "---",
+          "entropy": 4.262
+        }
+      ],
+      "library_count": 1,
+      "libraries": [
+        "libc.so.6"
+      ],
+      "imported_symbol_count": 8,
+      "imports": [
+        "_ITM_deregisterTMCloneTable",
+        "_ITM_registerTMCloneTable",
+        "__gmon_start__",
+        "__libc_start_main",
+        "abort",
+        "puts",
+        "snprintf",
+        "strcmp"
+      ],
+      "build_id": "2de28223e34614b829b6bf1b7877df386a0166ce",
+      "os": "linux",
+      "minimum_kernel": "3.7.0",
+      "hardening": {
+        "nx": false,
+        "pie": false,
+        "relro": "none",
+        "stripped": false,
+        "stack_canary": false,
+        "fortify": false
+      },
+      "toolchain": {
+        "compilers": [
+          "GCC: (Debian 14.2.0-19) 14.2.0"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

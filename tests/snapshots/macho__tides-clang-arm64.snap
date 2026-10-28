@@ -1,0 +1,206 @@
+---
+source: src/formats/exec/macho.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-clang-arm64",
+    "stem": "tides-clang-arm64"
+  },
+  "identification": {
+    "format": "macho",
+    "name": "Mach-O / universal binary",
+    "mime": "application/x-mach-binary",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extractor": "exec.macho"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 50264
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 50264,
+    "entropy": 0.403,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "9f27a13754f91bc5838ffce9029fc5eb327661a4255c393aa7f43319722b87ec",
+    "blake3": "6646066e9f9c9eab167df5bb7865c9dcc3168e048d1b83280a579d6005f8e4e8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "macho": {
+      "architecture": "arm64",
+      "bits": 64,
+      "endianness": "little",
+      "kind": "executable",
+      "uuid": "975882C8-69AB-3DD3-A399-3E979BF4B9A1",
+      "platform": "macos",
+      "minimum_os": "12.0",
+      "sdk": "26.5",
+      "entry_point": "0x528",
+      "build_tools": [
+        {
+          "tool": "ld",
+          "version": "1230.1"
+        }
+      ],
+      "section_count": 7,
+      "sections": [
+        {
+          "name": "__TEXT,__text",
+          "size": 360,
+          "address": "0x1000004f8",
+          "flags": "r-x",
+          "entropy": 5.545
+        },
+        {
+          "name": "__TEXT,__stubs",
+          "size": 48,
+          "address": "0x100000660",
+          "flags": "r-x",
+          "entropy": 3.28
+        },
+        {
+          "name": "__TEXT,__cstring",
+          "size": 41,
+          "address": "0x100000690",
+          "flags": "r--",
+          "entropy": 4.26
+        },
+        {
+          "name": "__TEXT,__unwind_info",
+          "size": 96,
+          "address": "0x1000006bc",
+          "flags": "r--",
+          "entropy": 1.574
+        },
+        {
+          "name": "__DATA_CONST,__got",
+          "size": 40,
+          "address": "0x100004000",
+          "flags": "rw-",
+          "entropy": 1.622
+        },
+        {
+          "name": "__DATA,__data",
+          "size": 8,
+          "address": "0x100008000",
+          "flags": "rw-",
+          "entropy": 1.061
+        },
+        {
+          "name": "__LINKEDIT",
+          "size": 1112,
+          "memory_size": 16384,
+          "address": "0x10000c000",
+          "flags": "r--",
+          "entropy": 5.239
+        }
+      ],
+      "library_count": 1,
+      "libraries": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "imported_symbol_count": 5,
+      "imports": [
+        "___stack_chk_fail",
+        "___stack_chk_guard",
+        "_puts",
+        "_snprintf",
+        "_strcmp"
+      ],
+      "exported_symbol_count": 4,
+      "exports": [
+        "__mh_execute_header",
+        "_harbour",
+        "_main",
+        "_tide_metres"
+      ],
+      "signature": {
+        "kind": "apple_code_signature",
+        "identifier": "tides-arm64",
+        "hash_type": "sha256",
+        "adhoc": true,
+        "flags": [
+          "adhoc",
+          "linker_signed"
+        ]
+      },
+      "hardening": {
+        "pie": true,
+        "stack_canary": true,
+        "arc": false,
+        "hardened_runtime": false,
+        "code_signature": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.macho",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

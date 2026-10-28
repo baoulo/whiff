@@ -1,0 +1,174 @@
+---
+source: src/formats/exec/elf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-xdp.bpf.o",
+    "stem": "tides-xdp.bpf",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "ebpf",
+    "name": "eBPF object",
+    "mime": "application/x-executable",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ebpf",
+        "confidence": 0.95
+      },
+      {
+        "format": "elf",
+        "confidence": 0.81
+      },
+      {
+        "format": "macho",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.elf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 720
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 720,
+    "entropy": 1.877,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cca3b4afe7a3e0034553d0092afd58f47233e024c2c2e1a340575bb7d0d25f57",
+    "blake3": "77c597a7e777c10e2de87548b4edcc8241934080260189f10f7f4cba666be409"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ebpf": {
+      "bits": 64,
+      "endianness": "little",
+      "architecture": "bpf",
+      "kind": "object",
+      "section_count": 6,
+      "sections": [
+        {
+          "name": ".strtab",
+          "size": 74,
+          "flags": "---",
+          "entropy": 4.066
+        },
+        {
+          "name": ".text",
+          "size": 0,
+          "flags": "r-x"
+        },
+        {
+          "name": "xdp",
+          "size": 16,
+          "flags": "r-x",
+          "entropy": 0.993
+        },
+        {
+          "name": "license",
+          "size": 13,
+          "flags": "rw-",
+          "entropy": 3.7
+        },
+        {
+          "name": ".llvm_addrsig",
+          "size": 2,
+          "flags": "---",
+          "entropy": 1.0
+        },
+        {
+          "name": ".symtab",
+          "size": 96,
+          "flags": "---",
+          "entropy": 0.971
+        }
+      ],
+      "license": "Dual MIT/GPL",
+      "programs": [
+        "xdp"
+      ],
+      "has_maps": false,
+      "exported_symbol_count": 2,
+      "exports": [
+        "licence",
+        "tides_pass"
+      ],
+      "hardening": {
+        "stack_canary": false,
+        "fortify": false
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.elf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
