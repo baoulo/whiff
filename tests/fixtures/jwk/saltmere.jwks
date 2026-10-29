@@ -1,0 +1,21 @@
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "use": "sig",
+      "alg": "RS256",
+      "kid": "saltmere-root",
+      "n": "2wiPNZEJ3sIh91Hy6wg7LPyGKSxbFFRpAXDfz7_5XycnYIdQ-ndf67OiqS-iOGaTgcwM9wM13HMixpwLkr4q0pOzFft_mvDzAEWS0qXWY91cQ039zJmpelYYwzS6Pa5THX58lM4dK6rgycoTrh7JkvDA8tvsl-91lQ5P2B5fheC1vy4PrsBnEZltvVM21SPv5sxGrhz6QQRvrWVTU3058jCWNQpDFOHri3OUtAOxKFrzlft2LzeTNp2JnZx4sIZruHlQb0rbo1QKtQCiRoJryssreLZNbYp1sEod7p7UWnXAp7bfXZbziL57Z-P27lmPQ6zlt3F0m6JPwCvJ6TtRtUzxjakvGx91QSXntk-7MbAsyAXPiLHx05JFo6KfVb4Ih5ki5LNBNisP5JAxerUsWjBxL-xILTXI0iJswrH_NrRFb5jLI0nfPYHDvEHDBtjbtEjjQAjyjmxlWZpMCBmgZViFpYsF0r1fJyXZjIoXsTHGkm7BVG2vsv5ek135_sB1",
+      "e": "AQAB"
+    },
+    {
+      "kty": "EC",
+      "use": "sig",
+      "alg": "ES256",
+      "kid": "tides",
+      "crv": "P-256",
+      "x": "NRJtSFbeFMIa5DYwhfWBe2A5oqBw25FnWz1pY-t7ans",
+      "y": "MK2ZE1QJd-UddG6il_YDpXhzWZrux9mBXEpIaKK_TvI"
+    }
+  ]
+}

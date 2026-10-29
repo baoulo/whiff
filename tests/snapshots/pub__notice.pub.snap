@@ -29,6 +29,10 @@ expression: report
       {
         "format": "cfb",
         "confidence": 0.92
+      },
+      {
+        "format": "ssh_public_key",
+        "confidence": 0.35
       }
     ],
     "extractor": "doc.ole"

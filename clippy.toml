@@ -19,4 +19,5 @@ doc-valid-idents = [
     "AppImages", "AppStream",
     "CodeView", "SafeSEH", "AppContainer", "UTCTime", "GeneralizedTime", "DriverKit", "BridgeOS",
     "LuaJIT", "CPython", "CRuby", "TypeDef", "TypeRef",
+    "GnuPG", "LibrePGP", "PuTTY", "KeePass", "KeyStores", "OpenJDK", "EdDSA",
 ]

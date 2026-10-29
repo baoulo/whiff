@@ -1,0 +1,146 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.csr",
+    "stem": "tides",
+    "extension": "csr"
+  },
+  "identification": {
+    "format": "pem",
+    "name": "PEM file",
+    "mime": "application/x-pem-file",
+    "family": "crypto",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pem",
+        "confidence": 0.95
+      },
+      {
+        "format": "pkcs10",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 550
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 550,
+    "entropy": 5.78,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 550,
+      "chars": 550,
+      "words": 14,
+      "lines": 10,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f5e90647df61f71e76687209ad933fe5c88bb99044755832f23246416024c4bd",
+    "blake3": "86d7ff2cd7758bec05cbb6c3b62db28e26b2e961e3f21d9df95d25d34e5f4d79"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pem": {
+      "encoding": "pem",
+      "objects": 1,
+      "object_types": {
+        "certificate_request": 1
+      },
+      "requests": [
+        {
+          "subject": "CN=tides.saltmere.example, OU=Tides, O=Saltmere Harbour, C=GB",
+          "key_algorithm": "ec",
+          "key_bits": 256,
+          "key_curve": "P-256",
+          "signature_algorithm": "sha256_ecdsa",
+          "subject_alt_names": [
+            "tides.saltmere.example",
+            "www.saltmere.example"
+          ],
+          "attributes": [
+            "extension_request"
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

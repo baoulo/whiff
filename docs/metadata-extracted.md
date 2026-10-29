@@ -109,7 +109,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `disk` | Disk | `forensics` | image type + version, virtual size, block / cluster / grain size and allocation, creator, UUIDs, parent / backing file, snapshots, encryption, compression; partition table (MBR with extended partitions, GPT with checksums, Apple Partition Map: partitions, types, names, GUIDs, flags); file systems (ext2/3/4, FAT12/16/32, exFAT, NTFS, HFS / HFS+ / HFSX, APFS with volumes and roles, btrfs, XFS, ISO 9660, UDF, squashfs, swap, LVM2, LUKS, BitLocker: type, label, UUID, block size, size, free space, created / written / mounted / checked times, features, encryption); ISO 9660 PVD (volume, publisher, preparer, application, dates), Joliet / Rock Ridge names, El Torito boot entries, UDF revision and volume ids; evidence files (case number, examiner, description, notes, acquisition software / OS / dates, device model and serial, MD5 / SHA-1); Android sparse chunks and boot images (header version, cmdline, OS version, patch level, kernel version); firmware (uImage, FIT images and configurations, Intel HEX / S-record ranges, UEFI capsules and FMP images); OVF / OVA appliance (product, vendor, guest OS, CPUs, memory, disks, networks); FAT, ext, ISO 9660, UDF, squashfs, Amiga and C64 directory trees as an archive inventory with files handed on | What's on a disk image without mounting it | impl (MBR / GPT / APM; ext, FAT, exFAT, NTFS, HFS+, APFS object map, btrfs, XFS, LUKS, LVM2 superblocks; ISO 9660 + Joliet + Rock Ridge + El Torito; UDF with metadata partitions; virtual-disk block maps for VDI, VMDK sparse / stream-optimised, VHD, VHDX, QCOW / QCOW2 (zlib / zstd clusters), QED, Apple sparseimage, Android sparse, E01 chunks, AFF pages, raw CD sectors; FAT / ext / Amiga OFS / FFS / D64 trees; uImage, FDT, Intel HEX, S-record, UEFI capsule; OVF via doc.xml) | impl | S5 | 14 |
 | `exec` | Executable | `common` | format, arch, bitness, endianness, kind (exe/dylib/object/core), entry point, sections (name, size, flags, entropy), segments, imports (libraries + symbol counts), exports, linked libraries/rpaths, interpreter, stripped?, debug info (DWARF, build-id, PDB path + GUID), hardening (PIE, NX, RELRO, stack canary, ASLR/DEP/CFG/SafeSEH), code signature (Authenticode signer, Apple team id + entitlements), PE version resources (CompanyName, ProductName, FileVersion, OriginalFilename), toolchain hints (rustc/Go buildinfo/.comment), packer/high-entropy flags | Identity, provenance and risk profile of a binary | impl (ELF, PE / COFF / MZ / NE / LE, Mach-O with universal binaries and code signatures, WebAssembly; a DWARF unit reader; Authenticode and Apple CMS signers through the shared DER reader) | impl | S6 | 22 |
 | `bytecode` | Executable | `common` | target runtime + version (class major/minor, pyc magic -&gt; Python version, .NET metadata version), class/module name, superclass/interfaces, method & field counts, referenced assemblies/modules, source file attribute, timestamps | Identity of compiled artifacts | impl (Java class files, DEX, a bounded Python marshal walk, the ECMA-335 metadata tables of .NET assemblies; Lua / LuaJIT, BEAM, Emacs Lisp, mruby, YARV and OCaml headers) | impl | S6 | 12 |
-| `crypto` | Security | `common` | X.509: subject, issuer, serial, validity, SANs, key algo/size, signature algo, extensions (BC, KU, EKU), self-signed, SHA-256 fingerprint; CSR/CRL fields; PEM bundle: object types + counts; private keys: type + size + encrypted? ONLY (never key material); SSH: type, bits, comment, fingerprint; OpenPGP: key ids, user ids, creation/expiry, algorithms, message encrypted/signed + recipients; PKCS#12/JKS: entry count/types; JWT: header + claims (signature NOT verified flag) | Answers 'what is this key/cert, who issued it, is it expired' safely | x509-parser, pem, der, cms, pgp (rpgp, pure), ssh-key, jsonwebtoken (decode only); impl JKS/BKS headers | mixed | S6 | 20 |
+| `crypto` | Security | `common` | X.509: subject, issuer, serial, validity, SANs, key algo/size, signature algo, extensions (BC, KU, EKU), self-signed, SHA-256 fingerprint; CSR/CRL fields; PEM bundle: object types + counts; private keys: type + size + encrypted? ONLY (never key material); SSH: type, bits, comment, fingerprint; OpenPGP: key ids, user ids, creation/expiry, algorithms, message encrypted/signed + recipients; PKCS#12/JKS: entry count/types; JWT: header + claims (signature NOT verified flag) | Answers 'what is this key/cert, who issued it, is it expired' safely | impl (DER / PEM, X.509 certificates, requests, CRLs, CMS / PKCS#7 and catalogs, PKCS#12, PKCS#8 / PKCS#1 / SEC1 keys; OpenSSH keys, certificates and lists, PuTTY PPK; OpenPGP packets and GnuPG keyboxes; JKS / JCEKS, Kerberos keytabs, KeePass KDBX / KDB headers; JWT / JWK, age, minisign / signify, TLS key logs) | impl | S6 | 20 |
 | `db` | Database | `common` | engine + file format version, page size, encoding, application_id/user_version (detects GeoPackage, MBTiles, browser history, Photos libraries...), schema: tables, columns + types, indexes, views, triggers, approximate row counts; DBF: record count, field descriptors, last update | Schema of an embedded database = what questions it can answer | impl SQLite b-tree reader for sqlite_schema (pure; rusqlite bundles C), impl DBF/MDB(Jet)/DuckDB/LMDB headers; evaluate sqlite-parser | impl | S6 | 21 |
 | `forensic` | Forensics | `forensics` | PCAP/PCAPNG: link type, snaplen, interfaces, packet count, time span, top protocols/endpoints (opt-in); EVTX: channel, providers, event-id histogram, time range, record count; registry hive: root key, last written, key/value counts; LNK: target path, args, working dir, timestamps, volume serial, machine id; minidump: OS, CPU, exception, crashing thread, modules; MFT/prefetch: counts + time range; HAR: entries, hosts, methods, status histogram | Incident-response triage summaries | pcap-file / pcap-parser, evtx, notatin, lnk, minidump, mft; impl prefetch, utmp, HAR mapping | mixed | S6/S8 | 24 |
 | `columnar` | Data | `data` | schema (columns, physical + logical types, nullability), row count, row groups/stripes/batches, compression codecs, created_by/writer, key-value metadata (pandas/arrow/geo schema), column statistics (min/max/null count), partition/table metadata (Delta/Iceberg: version, snapshots, partition spec) | Schema + stats lets an LLM write queries; footer-only read is cheap | parquet + arrow (default-features=false, footer/schema only), orc-rust, apache-avro, lance (heavy, feature-gated), vortex (feature-gated); serde_json for Delta/Iceberg logs | crate | S7 | 19 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **376** of 1004.
-* Formats by family status: crate = 212, mixed = 406, impl = 386.
-* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 81, S6/S8 = 22, S7 = 135, S8 = 225.
+* Formats with an extractor in this build: **392** of 1004.
+* Formats by family status: crate = 212, mixed = 386, impl = 406.
+* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 80, S6/S8 = 22, S7 = 135, S8 = 226.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -254,9 +254,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 113 | Mach-O / universal binary | `(no` `ext)` `dylib` `bundle` `o` | application/x-mach-binary | 1 | `exec` | `common` | `exec.macho` | impl | S6 | fat archs, load commands, LC_BUILD_VERSION, codesign |
 | 114 | WebAssembly module | `wasm` | application/wasm | 1 | `exec` | `common` | `exec.wasm` | impl | S6 | imports/exports, custom sections (name, producers), target features |
 | 115 | Java class | `class` | application/java-vm | 1 | `bytecode` | `common` | `bytecode.java` | impl | S6 | — |
-| 116 | X.509 certificate | `crt` `cer` `der` `pem` | application/pkix-cert | 1 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
-| 117 | PEM bundle / chain | `pem` | application/x-pem-file | 1 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
-| 118 | SSH public / private key | `pub` `id_rsa` `id_ed25519` `ppk` | — | 1 | `crypto` | `common` | — | x509-parser, pem | S6 | OpenSSH + PuTTY PPK |
+| 116 | X.509 certificate | `crt` `cer` `der` `pem` | application/pkix-cert | 1 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
+| 117 | PEM bundle / chain | `pem` | application/x-pem-file | 1 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
+| 118 | SSH public / private key | `pub` `id_rsa` `id_ed25519` `ppk` | — | 1 | `crypto` | `common` | `crypto.ssh` | impl | S6 | OpenSSH + PuTTY PPK |
 | 119 | SQLite database | `sqlite` `sqlite3` `db` `db3` `s3db` | application/vnd.sqlite3 | 1 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S6 | application_id routing (GeoPackage, MBTiles, Core Data...) |
 | 120 | PCAP | `pcap` `cap` `dmp` | application/vnd.tcpdump.pcap | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
 | 121 | Windows shortcut | `lnk` | application/x-ms-shortcut | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
@@ -377,9 +377,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 236 | Android DEX | `dex` | application/vnd.android.dex | 2 | `bytecode` | `common` | `bytecode.dex` | impl | S6 | — |
 | 237 | Python bytecode | `pyc` `pyo` | application/x-python-code | 2 | `bytecode` | `common` | `bytecode.python` | impl | S6 | — |
 | 238 | .NET assembly (CLI) | `exe` `dll` `winmd` | — | 2 | `bytecode` | `common` | `exec.pe` | impl | S6 | CLR header, assembly name/version/culture, references, target framework attribute |
-| 239 | Private key (PKCS#1/#8, SEC1) | `key` `pem` `p8` | application/pkcs8 | 2 | `crypto` | `common` | — | x509-parser, pem | S6 | type + bits + encrypted only |
-| 240 | PKCS#12 / PFX | `p12` `pfx` | application/x-pkcs12 | 2 | `crypto` | `common` | — | x509-parser, pem | S6 | bag types (MAC/encrypted) |
-| 241 | OpenPGP key / message / signature | `asc` `gpg` `pgp` `sig` `kbx` | application/pgp-keys | 2 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
+| 239 | Private key (PKCS#1/#8, SEC1) | `key` `pem` `p8` | application/pkcs8 | 2 | `crypto` | `common` | `crypto.openpgp` | impl | S6 | type + bits + encrypted only |
+| 240 | PKCS#12 / PFX | `p12` `pfx` | application/x-pkcs12 | 2 | `crypto` | `common` | `crypto.pki` | impl | S6 | bag types (MAC/encrypted) |
+| 241 | OpenPGP key / message / signature | `asc` `gpg` `pgp` `sig` `kbx` | application/pgp-keys | 2 | `crypto` | `common` | `crypto.openpgp` | impl | S6 | — |
 | 242 | PCAPNG | `pcapng` | application/x-pcapng | 2 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
 | 243 | macOS app bundle Info.plist | `plist` | — | 2 | `apple` | `common` | — | plist, cms | S6 | — |
 | 244 | Apache Arrow IPC / Feather | `arrow` `feather` `ipc` `arrows` | application/vnd.apache.arrow.file | 2 | `columnar` | `data` | — | parquet + arrow | S7 | — |
@@ -918,20 +918,20 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 777 | OCaml / Haskell interface | `cmi` `cmo` `hi` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
 | 778 | Smalltalk image / Pharo | `image` `changes` | — | 3 | `bytecode` | `common` | — | impl | S8 | — |
 | 779 | Flash ActionScript ABC | `abc` | — | 3 | `bytecode` | `common` | — | impl | S8 | -&gt; web.misc SWF |
-| 780 | PKCS#7 / CMS signed data | `p7b` `p7c` `p7s` `p7m` | application/pkcs7-mime | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | signers, certs |
-| 781 | Certificate signing request | `csr` `req` | application/pkcs10 | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
-| 782 | Certificate revocation list | `crl` | application/pkix-crl | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | issuer, entries, next update |
-| 783 | Java KeyStore / BKS | `jks` `bks` `keystore` | application/x-java-keystore | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | aliases, entry types |
-| 784 | JSON Web Key / JWT / JWS | `jwk` `jwks` `jwt` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S8 | header + claims, sig unverified |
-| 785 | age / minisign / signify | `age` `minisig` `sig` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | recipients/key ids |
-| 786 | KeePass / password vault | `kdbx` `kdb` `1pif` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S8 | header only: cipher, KDF (never decrypt) |
-| 787 | TPM / FIDO / misc keys | `tss` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
-| 788 | Encrypted container (VeraCrypt/LUKS/BitLocker header) | `hc` `luks` `bek` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S8 | header: cipher, version, UUID (LUKS) |
-| 789 | S/MIME email | `p7m` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | -&gt; email |
-| 790 | Apple signed artifacts (.mobileprovision) | `mobileprovision` `provisionprofile` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | -&gt; apple |
-| 791 | Authenticode detached signature / catalog | `cat` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | — |
-| 792 | Kerberos keytab | `keytab` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | principals, enctypes, kvno (no keys) |
-| 793 | TLS key log | `keylog` `sslkeylog` | — | 3 | `crypto` | `common` | — | x509-parser, pem | S6 | line count only (secrets never output) |
+| 780 | PKCS#7 / CMS signed data | `p7b` `p7c` `p7s` `p7m` | application/pkcs7-mime | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | signers, certs |
+| 781 | Certificate signing request | `csr` `req` | application/pkcs10 | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
+| 782 | Certificate revocation list | `crl` | application/pkix-crl | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | issuer, entries, next update |
+| 783 | Java KeyStore / BKS | `jks` `bks` `keystore` | application/x-java-keystore | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | aliases, entry types |
+| 784 | JSON Web Key / JWT / JWS | `jwk` `jwks` `jwt` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | header + claims, sig unverified |
+| 785 | age / minisign / signify | `age` `minisig` `sig` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | recipients/key ids |
+| 786 | KeePass / password vault | `kdbx` `kdb` `1pif` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | header only: cipher, KDF (never decrypt) |
+| 787 | TPM / FIDO / misc keys | `tss` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
+| 788 | Encrypted container (VeraCrypt/LUKS/BitLocker header) | `hc` `luks` `bek` | — | 3 | `crypto` | `common` | — | impl | S8 | header: cipher, version, UUID (LUKS) |
+| 789 | S/MIME email | `p7m` | — | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | -&gt; email |
+| 790 | Apple signed artifacts (.mobileprovision) | `mobileprovision` `provisionprofile` | — | 3 | `crypto` | `common` | — | impl | S8 | -&gt; apple |
+| 791 | Authenticode detached signature / catalog | `cat` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
+| 792 | Kerberos keytab | `keytab` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | principals, enctypes, kvno (no keys) |
+| 793 | TLS key log | `keylog` `sslkeylog` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | line count only (secrets never output) |
 | 794 | SQLite WAL / journal | `db-wal` `db-shm` `db-journal` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | frames, salts |
 | 795 | Microsoft Access | `mdb` `accdb` | application/vnd.ms-access | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | Jet/ACE version, table names (impl) |
 | 796 | dBase / FoxPro DBF | `dbf` | application/dbase | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | — |

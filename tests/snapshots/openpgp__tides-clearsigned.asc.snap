@@ -1,0 +1,132 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-clearsigned.asc",
+    "stem": "tides-clearsigned",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 322
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 322,
+    "entropy": 5.683,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 322,
+      "chars": 322,
+      "words": 26,
+      "lines": 12,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "d46309985d9845e810e2087c02eae345e9defb9a125bb9e8088bda3ff19865ac",
+    "blake3": "9b8500de2e0c0d43172e8c6e920888a106d099f00ee88199cb348a51f2cc1b8c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "cleartext_signed": true,
+      "cleartext_hash": "sha512",
+      "armor": [
+        "signature"
+      ],
+      "kind": "signature",
+      "signatures": [
+        {
+          "type": "text",
+          "key_algorithm": "eddsa",
+          "hash": "sha512",
+          "created": "2025-09-01T12:00:00Z",
+          "issuer": "47A5FF616E719D3824C525BB557D5D66B0191FA0"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

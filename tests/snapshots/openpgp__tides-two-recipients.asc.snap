@@ -1,0 +1,128 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-two-recipients.asc",
+    "stem": "tides-two-recipients",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 882
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 882,
+    "entropy": 6.01,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 882,
+      "chars": 882,
+      "words": 20,
+      "lines": 17,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "bb3a0706df07911be13b296c8a79f8497dc8c74b5668f8d6051ce5af8cd64ca5",
+    "blake3": "f8a2ace1dedbd9def399492379bad363083fbb339c6fdda50cb159901b9f4daf"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "armor": [
+        "message"
+      ],
+      "kind": "message",
+      "recipients": [
+        "246F51AF60B985B9",
+        "9451BBF20D02BD0F"
+      ],
+      "encryption": {
+        "packet": "seipd"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

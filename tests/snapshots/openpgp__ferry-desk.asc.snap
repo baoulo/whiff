@@ -1,0 +1,147 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-desk.asc",
+    "stem": "ferry-desk",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1314
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1314,
+    "entropy": 6.012,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1314,
+      "chars": 1314,
+      "words": 30,
+      "lines": 23,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "6043d0e4ed597b7eb082be12e7361452c752f9df8768b05affeeebb7757da3e6",
+    "blake3": "1c8ab6901bc75b1f63335c3b432334c7f94e433c905a7cf2f9b8834900e9a969"
+  },
+  "content": {
+    "title": "Old Ferry Desk"
+  },
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "armor": [
+        "public_key_block"
+      ],
+      "kind": "public_key",
+      "key_count": 1,
+      "user_id_count": 1,
+      "keys": [
+        {
+          "fingerprint": "77BA4D0F0D92C565DD21C5219451BBF20D02BD0F",
+          "key_id": "9451BBF20D02BD0F",
+          "version": 4,
+          "key_algorithm": "rsa",
+          "key_bits": 3072,
+          "created": "2025-09-01T12:00:00Z",
+          "user_ids": [
+            {
+              "name": "Old Ferry Desk",
+              "domain": "saltmere.example"
+            }
+          ],
+          "expired": true,
+          "expires": "2026-01-01T12:00:00Z",
+          "usage": [
+            "certify",
+            "sign",
+            "encrypt_communications",
+            "encrypt_storage"
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

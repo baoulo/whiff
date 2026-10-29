@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables and bytecode (Stage 6, first two parts).
+Executables, bytecode and crypto (Stage 6, first three parts).
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -78,15 +78,59 @@ Executables and bytecode (Stage 6, first two parts).
     mruby (format, compiler, sections, source files), Ruby YARV (Ruby
     version, byte order, word size) and OCaml compiled files (kind and
     OCaml release).
+- **Crypto** (`common`), all in-house. Key material is never reported:
+  private parts are skipped unread, nothing is decrypted and no signature
+  is verified:
+  - X.509 certificates, as DER or in PEM bundles: subject, issuer, serial,
+    validity and whether it has passed, key algorithm, size and curve,
+    signature algorithm, basic constraints, key usage, extended key usage,
+    alternative names, SHA-256 and SHA-1 fingerprints; certificate
+    requests, revocation lists (issuer, updates, revoked count, CRL
+    number), PKCS#7 / CMS signed and enveloped data (signer, digest, times,
+    chain; recipients, cipher), Microsoft security catalogs (member
+    count), PKCS#12 (MAC, which safes are encrypted and how, bag types,
+    the certificates of unencrypted safes) and keys (PKCS#8, encrypted
+    PKCS#8 with its PBES2 / PBKDF2 / scrypt parameters, PKCS#1, SEC1,
+    `SubjectPublicKeyInfo`, the old `DEK-Info` PEM form): type, size,
+    curve and protection;
+  - SSH: public keys (one per line and RFC 4716), `authorized_keys`
+    (options used), `known_hosts` (hashed and named hosts, markers; host
+    names are not listed), OpenSSH certificates (type, key ID, principals,
+    validity, options, CA key), OpenSSH private keys (cipher, KDF and
+    rounds; the comment when unencrypted) and PuTTY `.ppk` (versions 2 and
+    3, Argon2 parameters), with the fingerprint `ssh-keygen -l` prints;
+  - OpenPGP, binary or armoured, and GnuPG keyboxes: keys with
+    fingerprint, key ID, algorithm, size or curve, creation, expiry and
+    usage from the self-signatures, revocation, user IDs and subkeys,
+    secret-key protection and GnuPG stubs; messages (recipients' key IDs,
+    passphrase encryption, cipher, compression, the literal file name and
+    date, inside zlib / ZIP compression too) and signatures (type, issuer,
+    hash, time; clear-signed text);
+  - key stores: Java JKS / JCEKS (entries with alias, type, date and the
+    certificate), Kerberos keytabs (principals, encryption types, key
+    versions; user principals hidden by strict privacy), KeePass 2 (KDBX
+    3 / 4: cipher, compression, AES-KDF or Argon2 parameters) and KeePass 1
+    headers;
+  - JSON Web Tokens (JWS / JWE header, registered claims with times and
+    expiry, the other claims' names), JSON Web Keys and key sets (type,
+    curve, size, use, ID, whether a private part is present), age files
+    (recipient types, scrypt work factor), minisign and signify keys and
+    signatures (key ID, algorithm, comments, KDF) and TLS key logs (labels
+    and session counts only).
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
-  algorithm and size, signature algorithm, CA, extended key usage,
-  alternative names, SHA-256 fingerprint) and CMS `SignedData` (signer,
+  algorithm, size and curve, signature algorithm, CA and path length, key
+  usage, extended key usage, alternative names, SHA-256 and SHA-1
+  fingerprints) and CMS `SignedData` (signer,
   digests, signing time, RFC 3161 and legacy countersignature timestamps).
   Signatures are described, not verified; key material is never reported.
 - **Risks:** `packed_executable`, `writable_executable_memory`,
-  `tls_callbacks`, `weakened_runtime`, `requests_elevation` and
-  `obfuscated_code`; Mach-O `get-task-allow` reports `debuggable`.
+  `tls_callbacks`, `weakened_runtime`, `requests_elevation`,
+  `obfuscated_code`, `unprotected_key` (a private or secret key stored
+  without a passphrase) and `weak_cryptography` (RSA / DSA under 2048
+  bits, MD5 or SHA-1 signatures, DES or RC4 Kerberos keys, unsigned
+  tokens); Mach-O `get-task-allow` reports `debuggable`. JWTs and TLS key
+  logs report `embedded_secret`.
 - **Developer tools:** `scripts/fixtures/executables.sh` builds the
   executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
   wat2wasm and gdb (in a podman container) and with the macOS toolchain
@@ -98,6 +142,10 @@ Executables and bytecode (Stage 6, first two parts).
   Ruby, ocamlc and the .NET SDK (in podman containers), and
   `bytecode_oracle.py` compares the reports with javap, CPython's
   `marshal` and `dis`, `beam_lib` and dnfile.
+  `scripts/fixtures/crypto.sh` makes the crypto fixtures with openssl,
+  ssh-keygen, puttygen, gpg, keytool, keepassxc-cli, age, minisign and
+  signify (in a podman container), and `crypto_oracle.py` compares the
+  reports with openssl, ssh-keygen, puttygen, gpg, keytool and klist.
 
 ## 0.5.1 — 2026-10-27
 

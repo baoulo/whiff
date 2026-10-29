@@ -179,6 +179,18 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("tls_callbacks", Obf, Low, "PE image runs TLS callbacks, code that starts before the entry point"),
     k("trailing_data", Obf, Low, "Bytes after the end of the image, archive or compressed stream"),
     k(
+        "unprotected_key",
+        Data,
+        Medium,
+        "Private or secret key stored without a passphrase (PEM, OpenSSH, PuTTY, OpenPGP, JWK, keytab, minisign)",
+    ),
+    k(
+        "weak_cryptography",
+        Unsafe,
+        Low,
+        "Weak key or algorithm: RSA / DSA under 2048 bits, MD5 or SHA-1 signatures, DES or RC4 keys, unsigned tokens",
+    ),
+    k(
         "weakened_runtime",
         Unsafe,
         Medium,

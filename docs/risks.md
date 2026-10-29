@@ -101,6 +101,7 @@ Secrets or credentials in the content.
 |---|---|---|
 | `embedded_secret` | high | Credentials or keys found in the content |
 | `secret_in_env` | high | Secret value set in an environment variable of a build file |
+| `unprotected_key` | medium | Private or secret key stored without a passphrase (PEM, OpenSSH, PuTTY, OpenPGP, JWK, keytab, minisign) |
 
 ## Supply chain (`supply_chain`)
 
@@ -126,6 +127,7 @@ Operations that change or destroy state with broad privileges.
 | `writable_executable_memory` | medium | Executable maps memory that is writable and executable (W+X section or segment, executable stack) |
 | `requests_elevation` | low | Program manifest asks to run as administrator (`requireAdministrator`) |
 | `runs_as_root` | low | Container image runs as root |
+| `weak_cryptography` | low | Weak key or algorithm: RSA / DSA under 2048 bits, MD5 or SHA-1 signatures, DES or RC4 keys, unsigned tokens |
 
 ## Provenance (`provenance`)
 

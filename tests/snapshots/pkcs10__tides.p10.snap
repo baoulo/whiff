@@ -1,0 +1,125 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.p10",
+    "stem": "tides",
+    "extension": "p10"
+  },
+  "identification": {
+    "format": "pkcs10",
+    "name": "Certificate signing request (DER)",
+    "mime": "application/pkcs10",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 354
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 354,
+    "entropy": 6.532,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "70b042cfbb95b9f2a1a87153d897c7d30c84f491e5f48d09d246b6032a33a8b2",
+    "blake3": "ea7c39a235800a3c86571af6593eda0c7d8053243a5441ba5b42b76fb1f23c89"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pkcs10": {
+      "encoding": "der",
+      "objects": 1,
+      "object_types": {
+        "certificate_request": 1
+      },
+      "requests": [
+        {
+          "subject": "CN=tides.saltmere.example, OU=Tides, O=Saltmere Harbour, C=GB",
+          "key_algorithm": "ec",
+          "key_bits": 256,
+          "key_curve": "P-256",
+          "signature_algorithm": "sha256_ecdsa",
+          "subject_alt_names": [
+            "tides.saltmere.example",
+            "www.saltmere.example"
+          ],
+          "attributes": [
+            "extension_request"
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

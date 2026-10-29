@@ -1,0 +1,112 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-passphrase.gpg",
+    "stem": "tides-passphrase",
+    "extension": "gpg"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.75,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 118
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 118,
+    "entropy": 6.571,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a8014489f23539015e5948db1d0ac175640a3516ec994e8330ed3bfbfd3910d0",
+    "blake3": "9b93f82628b3e5cd4e4726249d6a300d4012b10bb69f49139ff312e9546f96c4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "kind": "message",
+      "passphrase_encrypted": true,
+      "passphrase_cipher": "aes256",
+      "encryption": {
+        "packet": "seipd"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

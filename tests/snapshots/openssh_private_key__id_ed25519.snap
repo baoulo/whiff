@@ -1,0 +1,124 @@
+---
+source: src/formats/crypto/ssh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "id_ed25519",
+    "stem": "id_ed25519"
+  },
+  "identification": {
+    "format": "openssh_private_key",
+    "name": "OpenSSH private key",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "encoding": "us-ascii",
+    "extractor": "crypto.ssh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 464
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 464,
+    "entropy": 5.73,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 464,
+      "chars": 464,
+      "words": 14,
+      "lines": 8,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c267a4125e2635aa78eedbc43b56845ff111dce252110f75ea10c93bfcdf3a13",
+    "blake3": "885b7be394473b71e691163cdab5aea321b18fcbbd31003c11bd93401b0cda04"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openssh_private_key": {
+      "cipher": "aes256-ctr",
+      "kdf": "bcrypt",
+      "kdf_rounds": 24,
+      "encrypted": true,
+      "keys": 1,
+      "key_type": "ssh-ed25519",
+      "key_algorithm": "ed25519",
+      "key_bits": 256,
+      "fingerprint": "SHA256:U9XOAkf96MFnwp7x2WUD3pZbyEmnMBynKFbbOMAsFQA"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.ssh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

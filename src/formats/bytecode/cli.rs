@@ -15,7 +15,7 @@
 use serde_json::{Map, Value};
 
 use super::{hex, names};
-use crate::plugin::guid;
+use crate::plugin::{der, guid};
 
 /// Table numbers.
 const MODULE: usize = 0x00;
@@ -401,53 +401,8 @@ fn first_argument(sig: &[u8], value: &[u8]) -> Option<Value> {
     }
 }
 
-/// SHA-1, for the public-key token (the last 8 bytes of the key's hash,
-/// reversed).
-fn sha1(data: &[u8]) -> [u8; 20] {
-    let mut h: [u32; 5] = [0x6745_2301, 0xefcd_ab89, 0x98ba_dcfe, 0x1032_5476, 0xc3d2_e1f0];
-    let mut msg = data.to_vec();
-    let bits = (data.len() as u64).wrapping_mul(8);
-    msg.push(0x80);
-    while msg.len() % 64 != 56 {
-        msg.push(0);
-    }
-    msg.extend_from_slice(&bits.to_be_bytes());
-    for block in msg.as_chunks::<64>().0 {
-        let mut w = [0u32; 80];
-        for (i, c) in block.as_chunks::<4>().0.iter().enumerate() {
-            w[i] = u32::from_be_bytes(*c);
-        }
-        for i in 16..80 {
-            w[i] = (w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]).rotate_left(1);
-        }
-        let [mut a, mut b, mut c, mut d, mut e] = h;
-        for (i, wi) in w.iter().enumerate() {
-            let (f, k) = match i {
-                0..20 => ((b & c) | (!b & d), 0x5a82_7999),
-                20..40 => (b ^ c ^ d, 0x6ed9_eba1),
-                40..60 => ((b & c) | (b & d) | (c & d), 0x8f1b_bcdc),
-                _ => (b ^ c ^ d, 0xca62_c1d6),
-            };
-            let t = a.rotate_left(5).wrapping_add(f).wrapping_add(e).wrapping_add(k).wrapping_add(*wi);
-            e = d;
-            d = c;
-            c = b.rotate_left(30);
-            b = a;
-            a = t;
-        }
-        for (x, y) in h.iter_mut().zip([a, b, c, d, e]) {
-            *x = x.wrapping_add(y);
-        }
-    }
-    let mut out = [0u8; 20];
-    for (o, x) in out.as_chunks_mut::<4>().0.iter_mut().zip(h) {
-        o.copy_from_slice(&x.to_be_bytes());
-    }
-    out
-}
-
 fn token(key: &[u8]) -> String {
-    let mut t = sha1(key)[12..].to_vec();
+    let mut t = der::sha1(key)[12..].to_vec();
     t.reverse();
     hex(&t)
 }
@@ -655,7 +610,7 @@ mod tests {
 
     #[test]
     fn sha1_matches_the_reference() {
-        assert_eq!(hex(&sha1(b"abc")), "a9993e364706816aba3e25717850c26c9cd0d89d");
+        assert_eq!(hex(&der::sha1(b"abc")), "a9993e364706816aba3e25717850c26c9cd0d89d");
         // The ECMA standard public key (16 bytes) has the well-known token.
         let ecma = [0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0];
         assert_eq!(token(&ecma), "b77a5c561934e089");

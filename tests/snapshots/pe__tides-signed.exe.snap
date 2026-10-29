@@ -267,7 +267,8 @@ expression: report
           "extended_key_usage": [
             "code_signing"
           ],
-          "sha256": "177d3f3b21e4162ed353c8d58cb1305dd8a703522dcf85eb5da5e918f6d24443"
+          "sha256": "177d3f3b21e4162ed353c8d58cb1305dd8a703522dcf85eb5da5e918f6d24443",
+          "sha1": "f87d5ed5f6b1fb33f5381de7cc3ec64ed680977d"
         },
         "signing_time": "2026-10-27T23:53:40Z",
         "timestamped": false,

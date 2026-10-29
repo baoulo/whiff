@@ -1,0 +1,159 @@
+---
+source: src/formats/crypto/ssh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "id_ed25519-cert.pub",
+    "stem": "id_ed25519-cert",
+    "extension": "pub"
+  },
+  "identification": {
+    "format": "ssh_public_key",
+    "name": "SSH public key",
+    "mime": "application/vnd.openssh.public-key",
+    "family": "crypto",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ssh_public_key",
+        "confidence": 0.9
+      },
+      {
+        "format": "pub",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "crypto.ssh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 677
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 677,
+    "entropy": 5.338,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 677,
+      "chars": 677,
+      "words": 3,
+      "lines": 1,
+      "max_line_length": 676,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e044218ba0982871aa1be6ef22ec12759d8cde7727bb84571e24d3812282edfd",
+    "blake3": "aadb29e521efab6246448d33bb494e763cde4213a186ef9cfb0aed6c66c2a7e0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ssh_public_key": {
+      "keys": 1,
+      "key_types": {
+        "ssh-ed25519-cert-v01@openssh.com": 1
+      },
+      "key_type": "ssh-ed25519-cert-v01@openssh.com",
+      "key_algorithm": "ed25519",
+      "key_bits": 256,
+      "certificate": {
+        "serial": 42,
+        "type": "user",
+        "key_id": "harbour-ops",
+        "principals": [
+          "tides",
+          "ops"
+        ],
+        "valid_after": "2025-09-01T00:00:00Z",
+        "expired": false,
+        "valid_before": "2125-09-01T00:00:00Z",
+        "critical_options": [
+          "source-address"
+        ],
+        "extensions": [
+          "permit-X11-forwarding",
+          "permit-agent-forwarding",
+          "permit-pty",
+          "permit-user-rc"
+        ],
+        "signing_key": {
+          "key_type": "ssh-ed25519",
+          "fingerprint": "SHA256:SnVE6uVC+2XCsNJOhtJ8XMyEHpZdNMnFdFT1JyNz8OE"
+        }
+      },
+      "fingerprint": "SHA256:+L3lE15O9c1aG/PM6heWi2eeux8SxY+VEK38owBi/x8",
+      "comment": "[redacted:email]"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.ssh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

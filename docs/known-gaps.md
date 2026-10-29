@@ -100,3 +100,29 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Not read:** Hermes, V8 snapshots and QuickJS bytecode, Smalltalk /
   Pharo images, Haskell `.hi` interfaces, Flash ActionScript ABC, and
   Guile `.go` files (ELF files, described by the executable extractor).
+
+## Crypto (unreleased)
+
+- **Nothing is verified:** signatures, MACs, checksums and certificate
+  chains are described, never checked; `expired` compares dates with the
+  clock only. Revocation (CRL, OCSP) is not looked up.
+- **Never read:** private key material, encrypted PKCS#12 safes, JKS key
+  entries, KeePass contents, age and OpenPGP payloads: only what is in the
+  clear is reported.
+- **PEM bundles** describe the first 64 objects in full and count the
+  rest; OpenPGP keyrings describe 64 keys, key lists 64 keys.
+- **OpenPGP:** v3 keys give their key ID but no fingerprint; v5 / v6 keys
+  are read from the RFC 9580 / LibrePGP layouts but only checked against
+  the specification; bzip2-compressed messages are not opened.
+  GnuPG reports a few old subkeys' expiry from the primary key's creation;
+  whiff counts it from the subkey's, as RFC 9580 says.
+- **JCEKS:** a secret-key entry is a serialised Java object of unknown
+  length, so entries after the first one are not read.
+- **Not read:** BKS / UBER (Bouncy Castle) key stores, PKCS#11 / TPM key
+  blobs, macOS keychains, 1Password exports, VeraCrypt and BitLocker
+  headers (LUKS is read by the disk extractors), S/MIME messages beyond
+  their CMS part (see e-mail) and `.mobileprovision` (the Apple part of
+  this stage).
+- **Serials:** a negative certificate serial (invalid, but present in a
+  few old roots) is shown as its bytes, as browsers do; openssl prints it
+  with a minus sign.

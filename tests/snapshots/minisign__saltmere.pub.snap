@@ -1,0 +1,134 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.pub",
+    "stem": "saltmere",
+    "extension": "pub"
+  },
+  "identification": {
+    "format": "minisign",
+    "name": "minisign / signify key or signature",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minisign",
+        "confidence": 0.97
+      },
+      {
+        "format": "pub",
+        "confidence": 0.35
+      },
+      {
+        "format": "ssh_public_key",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 113
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 113,
+    "entropy": 5.426,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 113,
+      "chars": 113,
+      "words": 7,
+      "lines": 2,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b84cb7533fa55faab7441955f539ae21d521795835f3f258a15e824221606975",
+    "blake3": "f847f3d95e03949479b89665391103697753049ed098012cea8c19953b9376f2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "minisign": {
+      "tool": "minisign",
+      "untrusted_comment": "minisign public key 6990A878AD4AD23D",
+      "algorithm": "ed25519",
+      "kind": "public_key",
+      "key_id": "6990A878AD4AD23D"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

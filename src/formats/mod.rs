@@ -31,6 +31,8 @@ pub(crate) mod code;
 #[cfg(feature = "common")]
 pub(crate) mod compress;
 #[cfg(feature = "common")]
+pub(crate) mod crypto;
+#[cfg(feature = "common")]
 pub(crate) mod data;
 #[cfg(feature = "forensics")]
 pub(crate) mod disk;

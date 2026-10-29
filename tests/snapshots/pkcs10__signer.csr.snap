@@ -1,0 +1,127 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "signer.csr",
+    "stem": "signer",
+    "extension": "csr"
+  },
+  "identification": {
+    "format": "pkcs10",
+    "name": "Certificate signing request (DER)",
+    "mime": "application/pkcs10",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pkcs10",
+        "confidence": 0.85
+      },
+      {
+        "format": "pem",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 188
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 188,
+    "entropy": 6.431,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "02bfe730f0a0f5419c464f2450d6b9b9971fde1ce115f40e36808506085d5a7e",
+    "blake3": "9f72746a38bf392b8f4c2f9a5f5f144649ba26aa88c26f8c4dbcf9fe1b7a4ef0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pkcs10": {
+      "encoding": "der",
+      "objects": 1,
+      "object_types": {
+        "certificate_request": 1
+      },
+      "requests": [
+        {
+          "subject": "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+          "key_algorithm": "ed25519",
+          "key_bits": 256,
+          "signature_algorithm": "ed25519"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
