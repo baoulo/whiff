@@ -110,7 +110,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `exec` | Executable | `common` | format, arch, bitness, endianness, kind (exe/dylib/object/core), entry point, sections (name, size, flags, entropy), segments, imports (libraries + symbol counts), exports, linked libraries/rpaths, interpreter, stripped?, debug info (DWARF, build-id, PDB path + GUID), hardening (PIE, NX, RELRO, stack canary, ASLR/DEP/CFG/SafeSEH), code signature (Authenticode signer, Apple team id + entitlements), PE version resources (CompanyName, ProductName, FileVersion, OriginalFilename), toolchain hints (rustc/Go buildinfo/.comment), packer/high-entropy flags | Identity, provenance and risk profile of a binary | impl (ELF, PE / COFF / MZ / NE / LE, Mach-O with universal binaries and code signatures, WebAssembly; a DWARF unit reader; Authenticode and Apple CMS signers through the shared DER reader) | impl | S6 | 22 |
 | `bytecode` | Executable | `common` | target runtime + version (class major/minor, pyc magic -&gt; Python version, .NET metadata version), class/module name, superclass/interfaces, method & field counts, referenced assemblies/modules, source file attribute, timestamps | Identity of compiled artifacts | impl (Java class files, DEX, a bounded Python marshal walk, the ECMA-335 metadata tables of .NET assemblies; Lua / LuaJIT, BEAM, Emacs Lisp, mruby, YARV and OCaml headers) | impl | S6 | 12 |
 | `crypto` | Security | `common` | X.509: subject, issuer, serial, validity, SANs, key algo/size, signature algo, extensions (BC, KU, EKU), self-signed, SHA-256 fingerprint; CSR/CRL fields; PEM bundle: object types + counts; private keys: type + size + encrypted? ONLY (never key material); SSH: type, bits, comment, fingerprint; OpenPGP: key ids, user ids, creation/expiry, algorithms, message encrypted/signed + recipients; PKCS#12/JKS: entry count/types; JWT: header + claims (signature NOT verified flag) | Answers 'what is this key/cert, who issued it, is it expired' safely | impl (DER / PEM, X.509 certificates, requests, CRLs, CMS / PKCS#7 and catalogs, PKCS#12, PKCS#8 / PKCS#1 / SEC1 keys; OpenSSH keys, certificates and lists, PuTTY PPK; OpenPGP packets and GnuPG keyboxes; JKS / JCEKS, Kerberos keytabs, KeePass KDBX / KDB headers; JWT / JWK, age, minisign / signify, TLS key logs) | impl | S6 | 20 |
-| `db` | Database | `common` | engine + file format version, page size, encoding, application_id/user_version (detects GeoPackage, MBTiles, browser history, Photos libraries...), schema: tables, columns + types, indexes, views, triggers, approximate row counts; DBF: record count, field descriptors, last update | Schema of an embedded database = what questions it can answer | impl SQLite b-tree reader for sqlite_schema (pure; rusqlite bundles C), impl DBF/MDB(Jet)/DuckDB/LMDB headers; evaluate sqlite-parser | impl | S6 | 21 |
+| `db` | Database | `common` | engine + file format version, page size, encoding, application_id/user_version (detects GeoPackage, MBTiles, browser history, Photos libraries...), schema: tables, columns + types, indexes, views, triggers, approximate row counts; DBF: record count, field descriptors, last update | Schema of an embedded database = what questions it can answer | impl (a read-only SQLite b-tree reader: header, sqlite_schema, columns from the CREATE TABLE SQL, row counts, WAL and journal headers, application detection; DBF; Access Jet / ACE header and MSysObjects catalog; DuckDB, LMDB, Berkeley DB, LevelDB / RocksDB tables, Redis RDB, pg_dump custom archives, MySQL / MariaDB .frm / .ibd / .MYI and H2 headers) | impl | S6 | 21 |
 | `forensic` | Forensics | `forensics` | PCAP/PCAPNG: link type, snaplen, interfaces, packet count, time span, top protocols/endpoints (opt-in); EVTX: channel, providers, event-id histogram, time range, record count; registry hive: root key, last written, key/value counts; LNK: target path, args, working dir, timestamps, volume serial, machine id; minidump: OS, CPU, exception, crashing thread, modules; MFT/prefetch: counts + time range; HAR: entries, hosts, methods, status histogram | Incident-response triage summaries | pcap-file / pcap-parser, evtx, notatin, lnk, minidump, mft; impl prefetch, utmp, HAR mapping | mixed | S6/S8 | 24 |
 | `columnar` | Data | `data` | schema (columns, physical + logical types, nullability), row count, row groups/stripes/batches, compression codecs, created_by/writer, key-value metadata (pandas/arrow/geo schema), column statistics (min/max/null count), partition/table metadata (Delta/Iceberg: version, snapshots, partition spec) | Schema + stats lets an LLM write queries; footer-only read is cheap | parquet + arrow (default-features=false, footer/schema only), orc-rust, apache-avro, lance (heavy, feature-gated), vortex (feature-gated); serde_json for Delta/Iceberg logs | crate | S7 | 19 |
 | `sci` | Scientific | `science` | groups/datasets/variables: names, shapes, dtypes, chunking, compression, attributes (CF conventions: title, institution, source, history, units, standard_name), dimensions, global attributes; FITS: HDUs + header cards (TELESCOP, INSTRUME, OBJECT, DATE-OBS, RA/DEC, EXPTIME, WCS); NPY: dtype, shape, order; GRIB: messages, parameters, levels, reference/forecast times, grid; stats files (SAV/DTA/SAS/RDS): variables + labels, row count, encoding | Variable inventory with units = what the dataset measures | hdf5-reader (pure, read-only), netcdf3, fitsrs, matfile, zarrs, grib / gribberish; impl NPY/NPZ, SAV, DTA, SAS7BDAT, RDS/RData headers | mixed | S7 | 27 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **392** of 1004.
+* Formats with an extractor in this build: **406** of 1004.
 * Formats by family status: crate = 212, mixed = 386, impl = 406.
-* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 80, S6/S8 = 22, S7 = 135, S8 = 226.
+* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 93, S6/S8 = 22, S7 = 135, S8 = 213.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -257,7 +257,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 116 | X.509 certificate | `crt` `cer` `der` `pem` | application/pkix-cert | 1 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
 | 117 | PEM bundle / chain | `pem` | application/x-pem-file | 1 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
 | 118 | SSH public / private key | `pub` `id_rsa` `id_ed25519` `ppk` | — | 1 | `crypto` | `common` | `crypto.ssh` | impl | S6 | OpenSSH + PuTTY PPK |
-| 119 | SQLite database | `sqlite` `sqlite3` `db` `db3` `s3db` | application/vnd.sqlite3 | 1 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S6 | application_id routing (GeoPackage, MBTiles, Core Data...) |
+| 119 | SQLite database | `sqlite` `sqlite3` `db` `db3` `s3db` | application/vnd.sqlite3 | 1 | `db` | `common` | `db.sqlite` | impl | S6 | application_id routing (GeoPackage, MBTiles, Core Data...) |
 | 120 | PCAP | `pcap` `cap` `dmp` | application/vnd.tcpdump.pcap | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
 | 121 | Windows shortcut | `lnk` | application/x-ms-shortcut | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
 | 122 | Apache Parquet | `parquet` `pq` | application/vnd.apache.parquet | 1 | `columnar` | `data` | — | parquet + arrow | S7 | — |
@@ -932,26 +932,26 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 791 | Authenticode detached signature / catalog | `cat` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
 | 792 | Kerberos keytab | `keytab` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | principals, enctypes, kvno (no keys) |
 | 793 | TLS key log | `keylog` `sslkeylog` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | line count only (secrets never output) |
-| 794 | SQLite WAL / journal | `db-wal` `db-shm` `db-journal` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | frames, salts |
-| 795 | Microsoft Access | `mdb` `accdb` | application/vnd.ms-access | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | Jet/ACE version, table names (impl) |
-| 796 | dBase / FoxPro DBF | `dbf` | application/dbase | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | — |
-| 797 | DuckDB database | `duckdb` `ddb` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | header version |
-| 798 | LMDB / Berkeley DB | `mdb` `db` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | page size, entries |
-| 799 | LevelDB / RocksDB SST & logs | `ldb` `sst` `log` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | table properties (RocksDB properties block) |
-| 800 | Realm / Firebird / H2 / HSQLDB | `realm` `fdb` `gdb` `mv.db` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | header |
-| 801 | Microsoft SQL Server backup / MDF | `bak` `mdf` `ldf` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | header: database name, version |
-| 802 | PostgreSQL custom dump | `dump` `backup` | application/octet-stream | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | pg_dump header: db name, version, TOC entries |
-| 803 | MySQL / MariaDB table files | `frm` `ibd` `myd` `myi` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | — |
-| 804 | Browser profile databases (History, Cookies, Places) | `sqlite` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | known schema -&gt; summary (counts, date range; no URLs by default) |
-| 805 | Apple Core Data / Photos library | `sqlite` `photoslibrary` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | — |
-| 806 | Redis RDB / AOF | `rdb` `aof` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | version, key count estimate |
-| 807 | MongoDB dump (BSON dir) | `bson` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | -&gt; data.binser |
-| 808 | Mobile backups (iTunes Manifest.db / Android .ab) | `db` `ab` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | — |
-| 809 | Adobe Lightroom catalog | `lrcat` `lrdata` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | image count, collections, keywords (SQLite) |
-| 810 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | decks, note/card counts |
-| 811 | Windows ESE database | `edb` `dat` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | tables (SRUM, WebCache, Windows Search) -&gt; forensic |
-| 812 | Kafka log segment | `log` `index` `timeindex` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | base offset, record batches |
-| 813 | Prometheus TSDB block | `meta.json` `chunks` | — | 3 | `db` | `common` | — | impl SQLite b-tree reader for sqlite_schema | S8 | time range, series count |
+| 794 | SQLite WAL / journal | `db-wal` `db-shm` `db-journal` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | frames, salts |
+| 795 | Microsoft Access | `mdb` `accdb` | application/vnd.ms-access | 3 | `db` | `common` | `db.access` | impl | S6 | Jet/ACE version, table names (impl) |
+| 796 | dBase / FoxPro DBF | `dbf` | application/dbase | 3 | `db` | `common` | `db.dbf` | impl | S6 | — |
+| 797 | DuckDB database | `duckdb` `ddb` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | header version |
+| 798 | LMDB / Berkeley DB | `mdb` `db` | — | 3 | `db` | `common` | `db.access` | impl | S6 | page size, entries |
+| 799 | LevelDB / RocksDB SST & logs | `ldb` `sst` `log` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | table properties (RocksDB properties block) |
+| 800 | Realm / Firebird / H2 / HSQLDB | `realm` `fdb` `gdb` `mv.db` | — | 3 | `db` | `common` | — | impl | S8 | header |
+| 801 | Microsoft SQL Server backup / MDF | `bak` `mdf` `ldf` | — | 3 | `db` | `common` | — | impl | S8 | header: database name, version |
+| 802 | PostgreSQL custom dump | `dump` `backup` | application/octet-stream | 3 | `db` | `common` | `db.engines` | impl | S6 | pg_dump header: db name, version, TOC entries |
+| 803 | MySQL / MariaDB table files | `frm` `ibd` `myd` `myi` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
+| 804 | Browser profile databases (History, Cookies, Places) | `sqlite` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | known schema -&gt; summary (counts, date range; no URLs by default) |
+| 805 | Apple Core Data / Photos library | `sqlite` `photoslibrary` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | — |
+| 806 | Redis RDB / AOF | `rdb` `aof` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | version, key count estimate |
+| 807 | MongoDB dump (BSON dir) | `bson` | — | 3 | `db` | `common` | — | impl | S8 | -&gt; data.binser |
+| 808 | Mobile backups (iTunes Manifest.db / Android .ab) | `db` `ab` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
+| 809 | Adobe Lightroom catalog | `lrcat` `lrdata` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | image count, collections, keywords (SQLite) |
+| 810 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | — | impl | S8 | decks, note/card counts |
+| 811 | Windows ESE database | `edb` `dat` | — | 3 | `db` | `common` | — | impl | S8 | tables (SRUM, WebCache, Windows Search) -&gt; forensic |
+| 812 | Kafka log segment | `log` `index` `timeindex` | — | 3 | `db` | `common` | — | impl | S8 | base offset, record batches |
+| 813 | Prometheus TSDB block | `meta.json` `chunks` | — | 3 | `db` | `common` | — | impl | S8 | time range, series count |
 | 814 | Windows Event Log | `evtx` `evt` | application/x-ms-evtx | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
 | 815 | Windows Registry hive | `dat` `hiv` `NTUSER.DAT` `SYSTEM` `SOFTWARE` `SAM` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
 | 816 | Windows Prefetch | `pf` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | exe name, run count, last run times |

@@ -1,0 +1,1287 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-buoys.sl3",
+    "stem": "saltmere-buoys",
+    "extension": "sl3"
+  },
+  "identification": {
+    "format": "sqlite",
+    "name": "SQLite database",
+    "mime": "application/vnd.sqlite3",
+    "family": "db",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 237568
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 237568,
+    "entropy": 2.397,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e84e3c85f48ed21a8274635ebec91a4eef8a3f564681ba27add893828945c33c",
+    "blake3": "52f54ed6456b65bea70341ca7e416d3f8efb8f5887965240e5ba5e438fbd75c3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sqlite": {
+      "sqlite_version": "3.46.1",
+      "page_size": 4096,
+      "page_count": 58,
+      "encoding": "utf-8",
+      "journal_mode": "rollback",
+      "schema_format": 4,
+      "user_version": 0,
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 26,
+        "indexes": 4,
+        "views": 5,
+        "triggers": 74
+      },
+      "total_rows": 39,
+      "tables": [
+        {
+          "name": "spatial_ref_sys",
+          "columns": [
+            {
+              "name": "srid",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "auth_name",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "auth_srid",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "ref_sys_name",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "proj4text",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "srtext",
+              "type": "TEXT",
+              "not_null": true
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "spatialite_history",
+          "columns": [
+            {
+              "name": "event_id",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "table_name",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "geometry_column",
+              "type": "TEXT"
+            },
+            {
+              "name": "event",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "timestamp",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "ver_sqlite",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "ver_splite",
+              "type": "TEXT",
+              "not_null": true
+            }
+          ],
+          "rows": 16
+        },
+        {
+          "name": "sqlite_sequence",
+          "columns": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "seq"
+            }
+          ],
+          "rows": 3
+        },
+        {
+          "name": "geometry_columns",
+          "columns": [
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "geometry_type",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "coord_dimension",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "srid",
+              "type": "INTEGER",
+              "not_null": true,
+              "references": "spatial_ref_sys"
+            },
+            {
+              "name": "spatial_index_enabled",
+              "type": "INTEGER",
+              "not_null": true
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "views_geometry_columns",
+          "columns": [
+            {
+              "name": "view_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "view_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "view_rowid",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "read_only",
+              "type": "INTEGER",
+              "not_null": true
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "virts_geometry_columns",
+          "columns": [
+            {
+              "name": "virt_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "virt_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "geometry_type",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "coord_dimension",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "srid",
+              "type": "INTEGER",
+              "not_null": true,
+              "references": "spatial_ref_sys"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "geometry_columns_statistics",
+          "columns": [
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "last_verified",
+              "type": "TIMESTAMP"
+            },
+            {
+              "name": "row_count",
+              "type": "INTEGER"
+            },
+            {
+              "name": "extent_min_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_min_y",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_y",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "views_geometry_columns_statistics",
+          "columns": [
+            {
+              "name": "view_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "view_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "last_verified",
+              "type": "TIMESTAMP"
+            },
+            {
+              "name": "row_count",
+              "type": "INTEGER"
+            },
+            {
+              "name": "extent_min_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_min_y",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_y",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "virts_geometry_columns_statistics",
+          "columns": [
+            {
+              "name": "virt_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "virt_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "last_verified",
+              "type": "TIMESTAMP"
+            },
+            {
+              "name": "row_count",
+              "type": "INTEGER"
+            },
+            {
+              "name": "extent_min_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_min_y",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_x",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "extent_max_y",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "geometry_columns_field_infos",
+          "columns": [
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "ordinal",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "column_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "null_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "integer_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "double_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "text_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "blob_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "max_size",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_min",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_max",
+              "type": "INTEGER"
+            },
+            {
+              "name": "double_min",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "double_max",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "views_geometry_columns_field_infos",
+          "columns": [
+            {
+              "name": "view_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "view_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "ordinal",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "column_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "null_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "integer_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "double_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "text_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "blob_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "max_size",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_min",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_max",
+              "type": "INTEGER"
+            },
+            {
+              "name": "double_min",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "double_max",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "virts_geometry_columns_field_infos",
+          "columns": [
+            {
+              "name": "virt_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "virt_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "ordinal",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "column_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "null_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "integer_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "double_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "text_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "blob_values",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "max_size",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_min",
+              "type": "INTEGER"
+            },
+            {
+              "name": "integer_max",
+              "type": "INTEGER"
+            },
+            {
+              "name": "double_min",
+              "type": "DOUBLE"
+            },
+            {
+              "name": "double_max",
+              "type": "DOUBLE"
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "geometry_columns_time",
+          "columns": [
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "last_insert",
+              "type": "TIMESTAMP",
+              "not_null": true
+            },
+            {
+              "name": "last_update",
+              "type": "TIMESTAMP",
+              "not_null": true
+            },
+            {
+              "name": "last_delete",
+              "type": "TIMESTAMP",
+              "not_null": true
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "geometry_columns_auth",
+          "columns": [
+            {
+              "name": "f_table_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "f_geometry_column",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "geometry_columns"
+            },
+            {
+              "name": "read_only",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "hidden",
+              "type": "INTEGER",
+              "not_null": true
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "views_geometry_columns_auth",
+          "columns": [
+            {
+              "name": "view_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "view_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "views_geometry_columns"
+            },
+            {
+              "name": "hidden",
+              "type": "INTEGER",
+              "not_null": true
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "virts_geometry_columns_auth",
+          "columns": [
+            {
+              "name": "virt_name",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "virt_geometry",
+              "type": "TEXT",
+              "primary_key": true,
+              "not_null": true,
+              "references": "virts_geometry_columns"
+            },
+            {
+              "name": "hidden",
+              "type": "INTEGER",
+              "not_null": true
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "data_licenses",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "name",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "url",
+              "type": "TEXT"
+            }
+          ],
+          "rows": 10
+        },
+        {
+          "name": "sql_statements_log",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "time_start",
+              "type": "TIMESTAMP",
+              "not_null": true
+            },
+            {
+              "name": "time_end",
+              "type": "TIMESTAMP",
+              "not_null": true
+            },
+            {
+              "name": "user_agent",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "sql_statement",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "success",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "error_cause",
+              "type": "TEXT",
+              "not_null": true
+            }
+          ],
+          "rows": 0
+        },
+        {
+          "name": "SpatialIndex",
+          "virtual": "virtualspatialindex"
+        },
+        {
+          "name": "ElementaryGeometries",
+          "virtual": "virtualelementary"
+        },
+        {
+          "name": "KNN2",
+          "virtual": "virtualknn2"
+        },
+        {
+          "name": "buoys",
+          "columns": [
+            {
+              "name": "ogc_fid",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "name",
+              "type": "VARCHAR"
+            },
+            {
+              "name": "depth_m",
+              "type": "FLOAT"
+            },
+            {
+              "name": "GEOMETRY",
+              "type": "POINT"
+            }
+          ],
+          "rows": 2
+        },
+        {
+          "name": "idx_buoys_GEOMETRY",
+          "virtual": "rtree"
+        },
+        {
+          "name": "idx_buoys_GEOMETRY_rowid",
+          "columns": [
+            {
+              "name": "rowid",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "nodeno"
+            }
+          ],
+          "rows": 2
+        },
+        {
+          "name": "idx_buoys_GEOMETRY_node",
+          "columns": [
+            {
+              "name": "nodeno",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "data"
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "idx_buoys_GEOMETRY_parent",
+          "columns": [
+            {
+              "name": "nodeno",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "parentnode"
+            }
+          ],
+          "rows": 0
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_spatial_ref_sys",
+          "table": "spatial_ref_sys"
+        },
+        {
+          "name": "idx_srid_geocols",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "idx_viewsjoin",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "idx_virtssrid",
+          "table": "virts_geometry_columns"
+        }
+      ],
+      "views": [
+        {
+          "name": "geom_cols_ref_sys",
+          "table": "geom_cols_ref_sys"
+        },
+        {
+          "name": "vector_layers",
+          "table": "vector_layers"
+        },
+        {
+          "name": "vector_layers_auth",
+          "table": "vector_layers_auth"
+        },
+        {
+          "name": "vector_layers_statistics",
+          "table": "vector_layers_statistics"
+        },
+        {
+          "name": "vector_layers_field_infos",
+          "table": "vector_layers_field_infos"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "geometry_columns_f_table_name_insert",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_f_table_name_update",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_f_geometry_column_insert",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_f_geometry_column_update",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_geometry_type_insert",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_geometry_type_update",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_coord_dimension_insert",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "geometry_columns_coord_dimension_update",
+          "table": "geometry_columns"
+        },
+        {
+          "name": "vwgc_view_name_insert",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_view_name_update",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_view_geometry_insert",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_view_geometry_update",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_view_rowid_update",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_view_rowid_insert",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_f_table_name_insert",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_f_table_name_update",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_f_geometry_column_insert",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vwgc_f_geometry_column_update",
+          "table": "views_geometry_columns"
+        },
+        {
+          "name": "vtgc_virt_name_insert",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_virt_name_update",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_virt_geometry_insert",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_virt_geometry_update",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_geometry_type_insert",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_geometry_type_update",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_coord_dimension_insert",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "vtgc_coord_dimension_update",
+          "table": "virts_geometry_columns"
+        },
+        {
+          "name": "gcs_f_table_name_insert",
+          "table": "geometry_columns_statistics"
+        },
+        {
+          "name": "gcs_f_table_name_update",
+          "table": "geometry_columns_statistics"
+        },
+        {
+          "name": "gcs_f_geometry_column_insert",
+          "table": "geometry_columns_statistics"
+        },
+        {
+          "name": "gcs_f_geometry_column_update",
+          "table": "geometry_columns_statistics"
+        },
+        {
+          "name": "vwgcs_view_name_insert",
+          "table": "views_geometry_columns_statistics"
+        },
+        {
+          "name": "vwgcs_view_name_update",
+          "table": "views_geometry_columns_statistics"
+        },
+        {
+          "name": "vwgcs_view_geometry_insert",
+          "table": "views_geometry_columns_statistics"
+        },
+        {
+          "name": "vwgcs_view_geometry_update",
+          "table": "views_geometry_columns_statistics"
+        },
+        {
+          "name": "vtgcs_virt_name_insert",
+          "table": "virts_geometry_columns_statistics"
+        },
+        {
+          "name": "vtgcs_virt_name_update",
+          "table": "virts_geometry_columns_statistics"
+        },
+        {
+          "name": "vtgcs_virt_geometry_insert",
+          "table": "virts_geometry_columns_statistics"
+        },
+        {
+          "name": "vtgcs_virt_geometry_update",
+          "table": "virts_geometry_columns_statistics"
+        },
+        {
+          "name": "gcfi_f_table_name_insert",
+          "table": "geometry_columns_field_infos"
+        },
+        {
+          "name": "gcfi_f_table_name_update",
+          "table": "geometry_columns_field_infos"
+        },
+        {
+          "name": "gcfi_f_geometry_column_insert",
+          "table": "geometry_columns_field_infos"
+        },
+        {
+          "name": "gcfi_f_geometry_column_update",
+          "table": "geometry_columns_field_infos"
+        },
+        {
+          "name": "vwgcfi_view_name_insert",
+          "table": "views_geometry_columns_field_infos"
+        },
+        {
+          "name": "vwgcfi_view_name_update",
+          "table": "views_geometry_columns_field_infos"
+        },
+        {
+          "name": "vwgcfi_view_geometry_insert",
+          "table": "views_geometry_columns_field_infos"
+        },
+        {
+          "name": "vwgcfi_view_geometry_update",
+          "table": "views_geometry_columns_field_infos"
+        },
+        {
+          "name": "vtgcfi_virt_name_insert",
+          "table": "virts_geometry_columns_field_infos"
+        },
+        {
+          "name": "vtgcfi_virt_name_update",
+          "table": "virts_geometry_columns_field_infos"
+        },
+        {
+          "name": "vtgcfi_virt_geometry_insert",
+          "table": "virts_geometry_columns_field_infos"
+        },
+        {
+          "name": "vtgcfi_virt_geometry_update",
+          "table": "virts_geometry_columns_field_infos"
+        },
+        {
+          "name": "gctm_f_table_name_insert",
+          "table": "geometry_columns_time"
+        },
+        {
+          "name": "gctm_f_table_name_update",
+          "table": "geometry_columns_time"
+        },
+        {
+          "name": "gctm_f_geometry_column_insert",
+          "table": "geometry_columns_time"
+        },
+        {
+          "name": "gctm_f_geometry_column_update",
+          "table": "geometry_columns_time"
+        },
+        {
+          "name": "gcau_f_table_name_insert",
+          "table": "geometry_columns_auth"
+        },
+        {
+          "name": "gcau_f_table_name_update",
+          "table": "geometry_columns_auth"
+        },
+        {
+          "name": "gcau_f_geometry_column_insert",
+          "table": "geometry_columns_auth"
+        },
+        {
+          "name": "gcau_f_geometry_column_update",
+          "table": "geometry_columns_auth"
+        },
+        {
+          "name": "vwgcau_view_name_insert",
+          "table": "views_geometry_columns_auth"
+        },
+        {
+          "name": "vwgcau_view_name_update",
+          "table": "views_geometry_columns_auth"
+        },
+        {
+          "name": "vwgcau_view_geometry_insert",
+          "table": "views_geometry_columns_auth"
+        },
+        {
+          "name": "vwgcau_view_geometry_update",
+          "table": "views_geometry_columns_auth"
+        },
+        {
+          "name": "vtgcau_virt_name_insert",
+          "table": "virts_geometry_columns_auth"
+        },
+        {
+          "name": "vtgcau_virt_name_update",
+          "table": "virts_geometry_columns_auth"
+        },
+        {
+          "name": "vtgcau_virt_geometry_insert",
+          "table": "virts_geometry_columns_auth"
+        },
+        {
+          "name": "vtgcau_virt_geometry_update",
+          "table": "virts_geometry_columns_auth"
+        },
+        {
+          "name": "ggi_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "ggu_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "tmu_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "tmi_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "tmd_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "gii_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "giu_buoys_GEOMETRY",
+          "table": "buoys"
+        },
+        {
+          "name": "gid_buoys_GEOMETRY",
+          "table": "buoys"
+        }
+      ],
+      "application": {
+        "name": "spatialite",
+        "geometry_columns": 1,
+        "reference_systems": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

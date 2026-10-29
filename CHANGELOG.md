@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables, bytecode and crypto (Stage 6, first three parts).
+Executables, bytecode, crypto and databases (Stage 6, first four parts).
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -117,6 +117,37 @@ Executables, bytecode and crypto (Stage 6, first three parts).
     (recipient types, scrypt work factor), minisign and signify keys and
     signatures (key ID, algorithm, comments, KDF) and TLS key logs (labels
     and session counts only).
+- **Databases** (`common`), all in-house; read without a database engine,
+  nothing executed, no row data beyond the application summaries:
+  - SQLite, through a read-only b-tree reader that loads pages on demand
+    within the parse budget: SQLite version, page size and count, text
+    encoding, journal mode, auto-vacuum, user version, application ID, free
+    pages; tables with their columns (declared type, primary key, NOT NULL,
+    foreign keys), WITHOUT ROWID, STRICT and virtual tables, indexes, views
+    and triggers; row counts (exact within the budget, estimated from the
+    tree's fan-out beyond it); and the application: GeoPackage contents,
+    MBTiles metadata, Chromium and Firefox histories (visit counts and
+    date range, never URLs), cookie and login stores (counts only), Core
+    Data entities, Apple Photos and Messages, Lightroom catalogs, Anki
+    collections, iOS backup manifests, SpatiaLite, Fossil and Android app
+    databases. Also SQLite write-ahead logs (frames, commits, pages) and
+    rollback journals;
+  - dBASE / FoxPro / Visual FoxPro tables: variant, last update, record
+    count and size, code page, memo file, fields and deleted records;
+  - Microsoft Access (Jet 3 to ACE 16): engine and Access version, code
+    page, creation date, encoding, and from the `MSysObjects` catalog the
+    user tables with row counts and columns, linked tables, queries,
+    forms, reports, macros and modules (macros and VBA modules report the
+    `macros` risk);
+  - from their headers: DuckDB (storage and library version, blocks), LMDB
+    (map and page size, entries, depth, transaction), Berkeley DB (access
+    method, version, page size, pages), LevelDB and RocksDB tables (format
+    and RocksDB's properties: entries, sizes, column family, comparator,
+    compression, creation time), Redis RDB snapshots (versions, keys per
+    database), PostgreSQL `pg_dump` custom archives (versions, database,
+    compression, the table of contents by object type, schemas and
+    tables), MySQL / MariaDB `.frm` (engine, server version), InnoDB `.ibd`
+    tablespaces, MyISAM / Aria indexes and H2 MVStore files.
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
   algorithm, size and curve, signature algorithm, CA and path length, key
@@ -146,6 +177,12 @@ Executables, bytecode and crypto (Stage 6, first three parts).
   ssh-keygen, puttygen, gpg, keytool, keepassxc-cli, age, minisign and
   signify (in a podman container), and `crypto_oracle.py` compares the
   reports with openssl, ssh-keygen, puttygen, gpg, keytool and klist.
+  `scripts/fixtures/db.sh` makes the database fixtures with sqlite3, GDAL,
+  the Python dbf package, Jackcess, DuckDB, LMDB, Berkeley DB, RocksDB,
+  LevelDB, Redis, PostgreSQL, MariaDB and H2 (in a podman container), and
+  `db_oracle.py` compares the reports with SQLite itself on 100 generated
+  databases and system files, with ogrinfo, mdbtools and each engine's
+  own tools.
 
 ## 0.5.1 — 2026-10-27
 

@@ -126,3 +126,30 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Serials:** a negative certificate serial (invalid, but present in a
   few old roots) is shown as its bytes, as browsers do; openssl prints it
   with a minus sign.
+
+## Databases (unreleased)
+
+- **SQLite:** pages are read within `max_parse_bytes`; beyond it row counts
+  are estimated from the b-tree's fan-out (`rows_estimated`) and some may be
+  missing. The first 256 tables are described (all are counted), 128
+  columns each. A WAL file next to a database is described on its own: its
+  frames are not applied when reading the database. Encrypted databases
+  (SQLCipher, SEE) look like random data and are not recognised.
+  Application summaries read rows only from small known tables and scan at
+  most 200,000 rows for a date range.
+- **Access:** encoded Jet files (a database key) and password-encrypted
+  ACE files are recognised but their catalog is not read; Jet 3 text is
+  read as Latin-1 whatever the code page. Tables, queries, forms, reports,
+  macros and modules are counted from `MSysObjects`; query SQL, VBA source
+  and table rows are not read. No Access 2007+ fixture fits the size limit:
+  the ACE layout is checked by the oracle against a Jackcess file.
+- **DBF:** memo files (`.dbt`, `.fpt`) are not read, and no `.cpg`
+  sidecar is consulted for the encoding.
+- **Header only:** LevelDB tables give their format but no entry count
+  (that needs the Snappy-compressed blocks); Redis snapshots give the first
+  database's key counts (later ones follow its values); Berkeley DB key
+  counts are only there after `db_stat`; MySQL 8 `.ibd` SDI (the table
+  definition inside the tablespace) is not decoded.
+- **Not read:** SQL Server MDF / LDF and `.bak`, Firebird, Realm, Kafka
+  segments, Prometheus blocks, Windows ESE databases (the forensic part of
+  this stage), LevelDB / RocksDB logs and MANIFEST files, Redis AOF.

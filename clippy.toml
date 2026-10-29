@@ -20,4 +20,6 @@ doc-valid-idents = [
     "CodeView", "SafeSEH", "AppContainer", "UTCTime", "GeneralizedTime", "DriverKit", "BridgeOS",
     "LuaJIT", "CPython", "CRuby", "TypeDef", "TypeRef",
     "GnuPG", "LibrePGP", "PuTTY", "KeePass", "KeyStores", "OpenJDK", "EdDSA",
+    "GeoPackage", "MBTiles", "SpatiaLite", "DuckDB", "LevelDB", "RocksDB", "InnoDB", "MyISAM", "MVStore", "FoxPro",
+    "WebKit", "BlockBasedTable",
 ]

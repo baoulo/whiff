@@ -1,0 +1,105 @@
+---
+source: src/formats/db/engines.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "leveldb-000005.ldb",
+    "stem": "leveldb-000005",
+    "extension": "ldb"
+  },
+  "identification": {
+    "format": "leveldb_table",
+    "name": "LevelDB / RocksDB sorted table",
+    "mime": "application/octet-stream",
+    "family": "db",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "db.engines"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2886
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2886,
+    "entropy": 5.363,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "515760442567b8a124a4828a9be82edf7b6647ca63097fcc41b70ff1b9ceb9b9",
+    "blake3": "7de17a53da35e8164daf36b0179d974d733f5a8bf12cd0602362b7d208fb1408"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "leveldb_table": {
+      "table_format": "leveldb"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.engines",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
