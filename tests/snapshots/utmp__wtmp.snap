@@ -1,0 +1,124 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "wtmp",
+    "stem": "wtmp"
+  },
+  "identification": {
+    "format": "utmp",
+    "name": "Linux utmp / wtmp / btmp",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2000
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:00:00Z",
+        "source": "forensic.logs",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2000,
+    "entropy": 0.707,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d7222016b5c1779b53873fb7dbecedfe8b98620f8714cb7431340ff3ff71a4d7",
+    "blake3": "4c90e9df82d64bc28a91f3129609ea0af455a773996219e5127bcf372a77df34"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "utmp": {
+      "record_size": 400,
+      "records": 5,
+      "record_types": {
+        "user_process": 2,
+        "boot": 1,
+        "dead_process": 1,
+        "run_level": 1
+      },
+      "users": 2,
+      "remote_hosts": 1,
+      "first": "2025-09-01T06:00:00Z",
+      "last": "2025-09-01T09:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

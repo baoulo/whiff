@@ -1,0 +1,161 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "TideClock-2025-09-01-120000.ips",
+    "stem": "TideClock-2025-09-01-120000",
+    "extension": "ips"
+  },
+  "identification": {
+    "format": "ips_crash",
+    "name": "Apple crash report (.ips)",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ips_crash",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1416
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1416,
+    "entropy": 4.787,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1416,
+      "chars": 1416,
+      "words": 116,
+      "lines": 49,
+      "max_line_length": 426,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "de65fb2d4c9598ce7d7de6ec6f3b51567fec02606bac72a40b86ce027b74847a",
+    "blake3": "b00e5ff865656b0d8531aa6488ae00ae59beec2510a1e6d1393691a7d9faeea0"
+  },
+  "content": {
+    "title": "TideClock"
+  },
+  "metadata": {},
+  "format": {
+    "ips_crash": {
+      "app": "TideClock",
+      "app_version": "1.2",
+      "build": "12",
+      "bundle_id": "example.saltmere.TideClock",
+      "bug_type": "309",
+      "os": "macOS 15.6 (24G84)",
+      "timestamp": "2025-09-01 12:00:00.00 +0000",
+      "incident_id": "5A17E7E0-0000-4000-8000-000000000001",
+      "process_path": "/Applications/TideClock.app/Contents/MacOS/TideClock",
+      "exception": {
+        "type": "EXC_BAD_ACCESS",
+        "signal": "SIGSEGV",
+        "codes": "0x0000000000000001, 0x0000000000000000",
+        "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000000"
+      },
+      "termination": {
+        "namespace": "SIGNAL",
+        "code": 11,
+        "indicator": "Segmentation fault: 11"
+      },
+      "images": 2,
+      "crashed_thread": {
+        "index": 0,
+        "frames": [
+          {
+            "symbol": "nextHighWater",
+            "image": "TideClock"
+          },
+          {
+            "symbol": "main",
+            "image": "TideClock"
+          }
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

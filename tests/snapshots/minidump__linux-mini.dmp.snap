@@ -1,0 +1,184 @@
+---
+source: src/formats/forensic/dump.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "linux-mini.dmp",
+    "stem": "linux-mini",
+    "extension": "dmp"
+  },
+  "identification": {
+    "format": "minidump",
+    "name": "Minidump",
+    "mime": "application/x-dmp",
+    "family": "forensic",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.dump"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 27549
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2018-03-26T10:43:52Z",
+        "source": "forensic.dump",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2018-03-26T10:43:52Z",
+    "latest": "2018-03-26T10:43:52Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 27549,
+    "entropy": 4.158,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ec4b64062545eb9874d25037bf0624c96a49098eed20b595344c72d344381576",
+    "blake3": "02a52413f5bedb896d5a7550b1aa498e30494e1b6dbc54ab00f9d8af47aeb869"
+  },
+  "content": {
+    "title": "crash"
+  },
+  "metadata": {},
+  "format": {
+    "minidump": {
+      "created": "2018-03-26T10:43:52Z",
+      "flags": "0x0",
+      "streams": [
+        "thread_list",
+        "module_list",
+        "memory_list",
+        "exception",
+        "system_info",
+        "linux_cpu_info",
+        "linux_proc_status",
+        "linux_lsb_release",
+        "linux_cmd_line",
+        "linux_environ",
+        "linux_auxv",
+        "linux_maps",
+        "linux_dso_debug",
+        "stream_0x4d7a0004"
+      ],
+      "exception": {
+        "thread_id": 1304,
+        "code": "0x0000000b",
+        "address": "0x45",
+        "name": "SIGSEGV"
+      },
+      "threads": 1,
+      "system": {
+        "platform": "linux",
+        "version": "0.0.0",
+        "service_pack": "Linux 4.9.60-linuxkit-aufs #1 SMP Mon Nov 6 16:00:12 UTC 2017 x86_64",
+        "architecture": "x86_64",
+        "processors": 4
+      },
+      "module_count": 8,
+      "main_module": "/work/linux/build/crash",
+      "modules": [
+        {
+          "name": "crash",
+          "size": 106496
+        },
+        {
+          "name": "libm-2.23.so",
+          "size": 1081344
+        },
+        {
+          "name": "libc-2.23.so",
+          "size": 1835008
+        },
+        {
+          "name": "libgcc_s.so.1",
+          "size": 90112
+        },
+        {
+          "name": "libstdc++.so.6.0.21",
+          "size": 1515520
+        },
+        {
+          "name": "libpthread-2.23.so",
+          "size": 98304
+        },
+        {
+          "name": "ld-2.23.so",
+          "size": 155648
+        },
+        {
+          "name": "linux-gate.so",
+          "size": 8192
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.dump",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

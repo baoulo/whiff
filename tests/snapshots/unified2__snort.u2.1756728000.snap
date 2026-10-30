@@ -1,0 +1,131 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "snort.u2.1756728000",
+    "stem": "snort.u2",
+    "extension": "1756728000"
+  },
+  "identification": {
+    "format": "unified2",
+    "name": "Snort unified2 alerts",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.75,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 188
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.logs",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 188,
+    "entropy": 2.235,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "09ab65fe5be6c764794b487360c15ac46c958a854b89c242af41a52c91d9c020",
+    "blake3": "d95812323c2dcf7667eb0a288b56dc80233ccabbc6ef1d0964caadd0fdf0efbf"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unified2": {
+      "records": 3,
+      "record_types": {
+        "event_v2": 2,
+        "packet": 1
+      },
+      "events": 2,
+      "signatures": {
+        "1:1000001:2": 1,
+        "1:2100498:2": 1
+      },
+      "priorities": {
+        "1": 1,
+        "2": 1
+      },
+      "blocked": 2,
+      "first": "2025-09-01T12:00:00Z",
+      "last": "2025-09-01T12:05:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

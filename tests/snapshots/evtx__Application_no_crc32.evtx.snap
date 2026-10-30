@@ -1,0 +1,161 @@
+---
+source: src/formats/forensic/evtx.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Application_no_crc32.evtx",
+    "stem": "Application_no_crc32",
+    "extension": "evtx"
+  },
+  "identification": {
+    "format": "evtx",
+    "name": "Windows XML event log",
+    "mime": "application/x-ms-evtx",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.evtx"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 69632
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2021-03-31T23:51:45Z",
+        "source": "forensic.evtx",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2021-03-31T23:51:45Z",
+    "latest": "2021-03-31T23:51:45Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 69632,
+    "entropy": 3.796,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2b128dc61812123a34ab2808502c6d48a0db6018e6b21bfb4f0be12d6dad2596",
+    "blake3": "25b8b6c615b19cf64cc76f084a4509ccc433785c51977efc884294011f2f8661"
+  },
+  "content": {
+    "title": "Application"
+  },
+  "metadata": {},
+  "format": {
+    "evtx": {
+      "version": "3.2",
+      "dirty": false,
+      "full": false,
+      "next_record_id": 443,
+      "chunks": 1,
+      "records": 17,
+      "first_record_id": 426,
+      "last_record_id": 442,
+      "first_event": "2021-03-31T23:51:45Z",
+      "last_event": "2021-03-31T23:54:34Z",
+      "channels": {
+        "Application": 17
+      },
+      "providers": {
+        "Microsoft-Windows-Security-SPP": 6,
+        "ESENT": 3,
+        "Microsoft-Windows-User Profiles Service": 2,
+        "Microsoft-Windows-WMI": 2,
+        "SecurityCenter": 2,
+        "Microsoft-Windows-Search": 1,
+        "Microsoft-Windows-Winlogon": 1
+      },
+      "event_ids": {
+        "1003": 2,
+        "1": 1,
+        "102": 1,
+        "105": 1,
+        "1066": 1,
+        "15": 1,
+        "1531": 1,
+        "1532": 1,
+        "16388": 1,
+        "16394": 1,
+        "326": 1,
+        "5615": 1,
+        "5617": 1,
+        "6000": 1,
+        "900": 1,
+        "902": 1
+      },
+      "levels": {
+        "information": 16,
+        "log_always": 1
+      },
+      "computers": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.evtx",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

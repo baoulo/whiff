@@ -44,6 +44,8 @@ pub(crate) mod doc;
 pub(crate) mod email;
 #[cfg(feature = "common")]
 pub(crate) mod exec;
+#[cfg(feature = "forensics")]
+pub(crate) mod forensic;
 #[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]

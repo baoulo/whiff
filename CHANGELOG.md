@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables, bytecode, crypto and databases (Stage 6, first four parts).
+Executables, bytecode, crypto, databases and forensic artefacts (Stage 6, first five parts).
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -148,6 +148,35 @@ Executables, bytecode, crypto and databases (Stage 6, first four parts).
     compression, the table of contents by object type, schemas and
     tables), MySQL / MariaDB `.frm` (engine, server version), InnoDB `.ibd`
     tablespaces, MyISAM / Aria indexes and H2 MVStore files.
+- **Forensic artefacts** (feature `forensics`), all in-house; counts, time
+  ranges and identifying facts, never the content (user names in paths are
+  hidden when privacy is strict):
+  - packet captures: pcap (micro- and nanosecond), pcapng (OS, hardware,
+    application, interfaces, block counts, comments, decryption secrets)
+    and btsnoop: packets, bytes, truncation, time range, and with the
+    `full` profile a protocol histogram;
+  - Windows event logs: EVTX (version, chunks, dirty / full, record count
+    and range, time range, and from each record's binary XML template the
+    channels, providers, event IDs, levels and computer count) and EVT;
+  - registry hives: version, dirty, last written, embedded file name, key
+    and value counts, the hive's kind, and for SOFTWARE / SYSTEM / SAM /
+    Amcache the Windows product, build, install date, control set, time
+    zone and account or file counts;
+  - shell artefacts: shortcuts (target, arguments, working folder, the
+    target's times and attributes, volume or share, tracker machine ID and
+    droid time, known folder), jump lists and custom destinations, Recycle
+    Bin `$I` files, and Prefetch for Windows XP to 11 (LZXPRESS Huffman
+    decompression in-house: executable, hash, run count, last run times,
+    volumes, files loaded); shortcuts that start a command interpreter with
+    arguments report the new `script_shortcut` risk;
+  - dumps: minidumps (Windows, Breakpad, Crashpad: system, exception and
+    the module it hit, modules, threads, process), Windows kernel crash
+    dump headers (bug check), LiME images and hibernation files;
+  - `$MFT` files (record counts, deleted records, time ranges, extension
+    histogram), Linux utmp / wtmp / btmp, systemd journals, Snort unified2
+    alerts, Snort / Suricata rule files, HAR archives (credential-carrying
+    requests flagged), Apple `.ips` crash reports, Zeek logs, FSEvents
+    pages and ESE database headers.
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
   algorithm, size and curve, signature algorithm, CA and path length, key
@@ -183,6 +212,12 @@ Executables, bytecode, crypto and databases (Stage 6, first four parts).
   `db_oracle.py` compares the reports with SQLite itself on 100 generated
   databases and system files, with ogrinfo, mdbtools and each engine's
   own tools.
+  `scripts/fixtures/forensic.sh` takes MIT-licensed samples (Eric
+  Zimmerman's test sets, rust-minidump's dumps) and makes the rest with
+  text2pcap, editcap, hivexregedit, pylnk3, ntfs-3g, utmpdump and
+  systemd-journal-remote (in podman containers); `forensic_oracle.py`
+  compares the reports with python-evtx, regipy, LnkParse3,
+  windowsprefetch, minidump, idstools and capinfos.
 
 ## 0.5.1 — 2026-10-27
 

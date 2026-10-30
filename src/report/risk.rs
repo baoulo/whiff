@@ -173,6 +173,12 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("requests_elevation", Unsafe, Low, "Program manifest asks to run as administrator (`requireAdministrator`)"),
     k("runs_as_root", Unsafe, Low, "Container image runs as root"),
     k("script", Act, Medium, "SVG `<script>` or event handlers"),
+    k(
+        "script_shortcut",
+        Act,
+        High,
+        "Shortcut starts a command interpreter (cmd, PowerShell, mshta, wscript …) with arguments",
+    ),
     k("secret_in_env", Data, High, "Secret value set in an environment variable of a build file"),
     k("suspicious_macro", Act, High, "Macro uses shell, download, process or obfuscation calls"),
     k("symlink_escape", Exploit, High, "Archive symbolic link that points outside the archive (absolute or `../`)"),

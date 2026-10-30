@@ -376,7 +376,10 @@ impl Extractor for Pyc {
     fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
         let h = probe.head;
         let magic = u16::from_le_bytes([*h.first()?, *h.get(1)?]);
-        (h.get(2..4) == Some(b"\r\n") && version(magic).is_some()).then_some(Sniff { format: "pyc", confidence: 0.8 })
+        // pcapng's section header (0A 0D 0D 0A) ends in \r\n too.
+        let pcapng = h.starts_with(b"\x0a\x0d\x0d\x0a");
+        (h.get(2..4) == Some(b"\r\n") && !pcapng && version(magic).is_some())
+            .then_some(Sniff { format: "pyc", confidence: 0.8 })
     }
 
     #[allow(clippy::too_many_lines)] // header, then the code objects
@@ -483,6 +486,14 @@ crate::register_extractor!(Pyc);
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn pcapng_is_not_bytecode() {
+        // 0A 0D 0D 0A: bytes 2–3 are \r\n and 0x0D0A is a .pyc magic number.
+        let head = b"\x0a\x0d\x0d\x0a\x1c\x00\x00\x00\x4d\x3c\x2b\x1a";
+        let probe = Probe { head, tail: head, len: 28, name: Some("x.pcapng"), extension: Some("pcapng") };
+        assert_eq!(Pyc.sniff(&probe), None);
+    }
 
     #[test]
     fn magic_numbers_name_releases() {

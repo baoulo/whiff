@@ -20,6 +20,7 @@ Code that can run: macros, scripts, actions, DDE.
 | `dde` | high | DDE field or formula that can launch a program |
 | `executable_attachment` | high | Attached or embedded file is a program or script |
 | `launch_action` | high | PDF action that launches a program or opens a file |
+| `script_shortcut` | high | Shortcut starts a command interpreter (cmd, PowerShell, mshta, wscript …) with arguments |
 | `suspicious_macro` | high | Macro uses shell, download, process or obfuscation calls |
 | `xlm_macros` | high | Excel 4.0 (XLM) macro sheet |
 | `active_content` | medium | SVG `<foreignObject>`: embedded HTML that a browser renders and may script |

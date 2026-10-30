@@ -9,7 +9,6 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 | `boats.json` | Written for whiff's test suite | CC0-1.0 |
 | `settings.jsonc` | Written for whiff's test suite | CC0-1.0 |
 | `harbours.geojson` | Written for whiff's test suite | CC0-1.0 |
-| `session.har` | Written for whiff's test suite | CC0-1.0 |
 | `lint.sarif` | Written for whiff's test suite | CC0-1.0 |
 | `extension-manifest.json` | Written for whiff's test suite | CC0-1.0 |
 | `site.webmanifest` | Written for whiff's test suite | CC0-1.0 |

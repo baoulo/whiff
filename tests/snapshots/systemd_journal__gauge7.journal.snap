@@ -1,0 +1,128 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge7.journal",
+    "stem": "gauge7",
+    "extension": "journal"
+  },
+  "identification": {
+    "format": "systemd_journal",
+    "name": "systemd journal",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 40016
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.logs",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 40016,
+    "entropy": 0.279,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "56de453c0de70adcdd7a27952599197764d5bcdfa94db16551d314ea3a362e21",
+    "blake3": "b12963cb3a7f9e59333398cc134b8daac0e5a613e50c7228aebacb65c728e864"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "systemd_journal": {
+      "state": "offline",
+      "flags": [
+        "keyed_hash",
+        "compressed_zstd",
+        "compact"
+      ],
+      "machine_id": "af96f22d50ac4560b74562717a056c4d",
+      "boot_id": "7e1c4c2a00004000800005a17e7e0001",
+      "entries": 3,
+      "objects": 25,
+      "head_seqnum": 1,
+      "tail_seqnum": 3,
+      "first": "2025-09-01T12:00:00Z",
+      "last": "2025-09-01T12:02:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

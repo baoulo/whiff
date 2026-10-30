@@ -153,3 +153,35 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Not read:** SQL Server MDF / LDF and `.bak`, Firebird, Realm, Kafka
   segments, Prometheus blocks, Windows ESE databases (the forensic part of
   this stage), LevelDB / RocksDB logs and MANIFEST files, Redis AOF.
+
+## Forensic artefacts (unreleased, feature `forensics`)
+
+- **EVTX:** histograms come from the `System` part of each record's
+  template; `EventData` / `UserData` values are not read. Records in
+  chunks past `max_parse_bytes` are counted from the chunk headers and
+  dated from their first and last records only (`records_analysed`). The
+  record count covers every valid chunk, including those a dirty log's
+  header does not count yet (`header_chunks`).
+- **Registry:** transaction logs (`.LOG1`, `.LOG2`) are recognised but not
+  replayed; big-data (`db`) values and deleted cells are not read; value
+  data is reported only for the few Windows facts listed.
+- **Shortcuts and jump lists:** the shell item list gives volumes and
+  file entries only (not control-panel or URI items); jump list
+  `DestList` entries are counted, not decoded, and application IDs are not
+  named.
+- **Prefetch:** referenced files are counted, not listed; Windows 11's
+  version 31 is read with the version 30 layout.
+- **Minidumps:** memory, handles, the environment and command lines are not
+  read; Windows kernel crash dumps give their header's bug check only (no
+  dump type or time, not checked against a real file).
+- **Captures:** the protocol histogram needs the `full` profile and reads
+  128 bytes per packet (Ethernet, Linux cooked, raw IP); no reassembly,
+  no endpoints.
+- **Not read:** ETW `.etl`, macOS unified logs (`tracev3`) and ASL,
+  NetFlow / IPFIX, browser caches, `$UsnJrnl`, `$LogFile`, SRUM and other
+  ESE tables (the header only), Suricata `eve.json` (read as JSON lines),
+  legacy `.crash` text reports and hibernation file contents.
+- **Fixtures:** EVTX, Prefetch, jump lists, a hive, two shortcuts and the
+  minidumps are MIT-licensed samples (see their `SOURCE.md`); `$I`, EVT,
+  ESE, crash dump, LiME, hibernation, unified2 and FSEvents files are
+  built from the published layouts because no Linux tool writes them.

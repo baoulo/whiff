@@ -1,0 +1,111 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "0000000000001003",
+    "stem": "0000000000001003"
+  },
+  "identification": {
+    "format": "fsevents",
+    "name": "macOS FSEvents page",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 132
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 132,
+    "entropy": 4.012,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "09481fec3e189d3b457e1a4f009ea55d3b8fb4e1de5e2a95b62e98f051e7ab06",
+    "blake3": "5f119013f55e07cb7ffbb137e16ff706c0f1e6ed671959182e7920b0f0f957df"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fsevents": {
+      "version": 2,
+      "pages": 1,
+      "records": 3,
+      "event_flags": {
+        "created": 2,
+        "file": 2,
+        "directory": 1,
+        "removed": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,112 @@
+---
+source: src/formats/forensic/mft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.mft",
+    "stem": "saltmere",
+    "extension": "mft"
+  },
+  "identification": {
+    "format": "ntfs_mft",
+    "name": "NTFS master file table",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "forensic.mft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 67584
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 67584,
+    "entropy": 0.655,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "17087e03c2a4d92dd36d1d0a2e9023923b4fcef28695366f8119aea65767e3fa",
+    "blake3": "a5ccb43771575c9ae358ff8835f96f4f439c2c4de7e4020614239fe74fa84465"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ntfs_mft": {
+      "record_size": 1024,
+      "records": 66,
+      "in_use": 0,
+      "directories": 0,
+      "files": 0,
+      "deleted": 0,
+      "extension_records": 0,
+      "bad_records": 66
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.mft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

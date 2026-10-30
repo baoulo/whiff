@@ -111,7 +111,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `bytecode` | Executable | `common` | target runtime + version (class major/minor, pyc magic -&gt; Python version, .NET metadata version), class/module name, superclass/interfaces, method & field counts, referenced assemblies/modules, source file attribute, timestamps | Identity of compiled artifacts | impl (Java class files, DEX, a bounded Python marshal walk, the ECMA-335 metadata tables of .NET assemblies; Lua / LuaJIT, BEAM, Emacs Lisp, mruby, YARV and OCaml headers) | impl | S6 | 12 |
 | `crypto` | Security | `common` | X.509: subject, issuer, serial, validity, SANs, key algo/size, signature algo, extensions (BC, KU, EKU), self-signed, SHA-256 fingerprint; CSR/CRL fields; PEM bundle: object types + counts; private keys: type + size + encrypted? ONLY (never key material); SSH: type, bits, comment, fingerprint; OpenPGP: key ids, user ids, creation/expiry, algorithms, message encrypted/signed + recipients; PKCS#12/JKS: entry count/types; JWT: header + claims (signature NOT verified flag) | Answers 'what is this key/cert, who issued it, is it expired' safely | impl (DER / PEM, X.509 certificates, requests, CRLs, CMS / PKCS#7 and catalogs, PKCS#12, PKCS#8 / PKCS#1 / SEC1 keys; OpenSSH keys, certificates and lists, PuTTY PPK; OpenPGP packets and GnuPG keyboxes; JKS / JCEKS, Kerberos keytabs, KeePass KDBX / KDB headers; JWT / JWK, age, minisign / signify, TLS key logs) | impl | S6 | 20 |
 | `db` | Database | `common` | engine + file format version, page size, encoding, application_id/user_version (detects GeoPackage, MBTiles, browser history, Photos libraries...), schema: tables, columns + types, indexes, views, triggers, approximate row counts; DBF: record count, field descriptors, last update | Schema of an embedded database = what questions it can answer | impl (a read-only SQLite b-tree reader: header, sqlite_schema, columns from the CREATE TABLE SQL, row counts, WAL and journal headers, application detection; DBF; Access Jet / ACE header and MSysObjects catalog; DuckDB, LMDB, Berkeley DB, LevelDB / RocksDB tables, Redis RDB, pg_dump custom archives, MySQL / MariaDB .frm / .ibd / .MYI and H2 headers) | impl | S6 | 21 |
-| `forensic` | Forensics | `forensics` | PCAP/PCAPNG: link type, snaplen, interfaces, packet count, time span, top protocols/endpoints (opt-in); EVTX: channel, providers, event-id histogram, time range, record count; registry hive: root key, last written, key/value counts; LNK: target path, args, working dir, timestamps, volume serial, machine id; minidump: OS, CPU, exception, crashing thread, modules; MFT/prefetch: counts + time range; HAR: entries, hosts, methods, status histogram | Incident-response triage summaries | pcap-file / pcap-parser, evtx, notatin, lnk, minidump, mft; impl prefetch, utmp, HAR mapping | mixed | S6/S8 | 24 |
+| `forensic` | Forensics | `forensics` | PCAP/PCAPNG: link type, snaplen, interfaces, packet count, time span, top protocols/endpoints (opt-in); EVTX: channel, providers, event-id histogram, time range, record count; registry hive: root key, last written, key/value counts; LNK: target path, args, working dir, timestamps, volume serial, machine id; minidump: OS, CPU, exception, crashing thread, modules; MFT/prefetch: counts + time range; HAR: entries, hosts, methods, status histogram | Incident-response triage summaries | impl (pcap / pcapng / btsnoop; EVTX binary XML templates and EVT; registry hives; LNK, jump lists, $I, Prefetch with an LZXPRESS Huffman decoder; minidumps, kernel crash dump headers, LiME, hibernation files; $MFT; utmp, systemd journal, unified2, Snort / Suricata rules, HAR, .ips, Zeek, FSEvents; ESE headers) | impl | S6/S8 | 24 |
 | `columnar` | Data | `data` | schema (columns, physical + logical types, nullability), row count, row groups/stripes/batches, compression codecs, created_by/writer, key-value metadata (pandas/arrow/geo schema), column statistics (min/max/null count), partition/table metadata (Delta/Iceberg: version, snapshots, partition spec) | Schema + stats lets an LLM write queries; footer-only read is cheap | parquet + arrow (default-features=false, footer/schema only), orc-rust, apache-avro, lance (heavy, feature-gated), vortex (feature-gated); serde_json for Delta/Iceberg logs | crate | S7 | 19 |
 | `sci` | Scientific | `science` | groups/datasets/variables: names, shapes, dtypes, chunking, compression, attributes (CF conventions: title, institution, source, history, units, standard_name), dimensions, global attributes; FITS: HDUs + header cards (TELESCOP, INSTRUME, OBJECT, DATE-OBS, RA/DEC, EXPTIME, WCS); NPY: dtype, shape, order; GRIB: messages, parameters, levels, reference/forecast times, grid; stats files (SAV/DTA/SAS/RDS): variables + labels, row count, encoding | Variable inventory with units = what the dataset measures | hdf5-reader (pure, read-only), netcdf3, fitsrs, matfile, zarrs, grib / gribberish; impl NPY/NPZ, SAV, DTA, SAS7BDAT, RDS/RData headers | mixed | S7 | 27 |
 | `medical` | Scientific | `science` | DICOM: SOP class, modality, manufacturer/model, study/series descriptions + UIDs, body part, acquisition dates, rows/cols/frames, pixel spacing, slice thickness, transfer syntax, patient fields REDACTED by default (PHI); NIfTI/Analyze: dims, voxel size, datatype, units, qform/sform codes, descrip, intent | Imaging study summary with PHI protection | dicom-object, nifti | crate | S7 | 6 |
@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **406** of 1004.
-* Formats by family status: crate = 212, mixed = 386, impl = 406.
-* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 93, S6/S8 = 22, S7 = 135, S8 = 213.
+* Formats with an extractor in this build: **426** of 1004.
+* Formats by family status: crate = 212, mixed = 362, impl = 430.
+* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 94, S6/S8 = 17, S7 = 135, S8 = 217.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
 * By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -258,8 +258,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 117 | PEM bundle / chain | `pem` | application/x-pem-file | 1 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
 | 118 | SSH public / private key | `pub` `id_rsa` `id_ed25519` `ppk` | — | 1 | `crypto` | `common` | `crypto.ssh` | impl | S6 | OpenSSH + PuTTY PPK |
 | 119 | SQLite database | `sqlite` `sqlite3` `db` `db3` `s3db` | application/vnd.sqlite3 | 1 | `db` | `common` | `db.sqlite` | impl | S6 | application_id routing (GeoPackage, MBTiles, Core Data...) |
-| 120 | PCAP | `pcap` `cap` `dmp` | application/vnd.tcpdump.pcap | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
-| 121 | Windows shortcut | `lnk` | application/x-ms-shortcut | 1 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6 | — |
+| 120 | PCAP | `pcap` `cap` `dmp` | application/vnd.tcpdump.pcap | 1 | `forensic` | `forensics` | `forensic.capture` | impl | S6 | — |
+| 121 | Windows shortcut | `lnk` | application/x-ms-shortcut | 1 | `forensic` | `forensics` | `forensic.shell` | impl | S6 | — |
 | 122 | Apache Parquet | `parquet` `pq` | application/vnd.apache.parquet | 1 | `columnar` | `data` | — | parquet + arrow | S7 | — |
 | 123 | HDF5 | `h5` `hdf5` `he5` | application/x-hdf5 | 1 | `sci` | `science` | — | hdf5-reader | S7 | — |
 | 124 | MATLAB MAT | `mat` | application/x-matlab-data | 1 | `sci` | `science` | — | hdf5-reader | S7 | v5 header text, v7.3 -&gt; HDF5 |
@@ -380,7 +380,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 239 | Private key (PKCS#1/#8, SEC1) | `key` `pem` `p8` | application/pkcs8 | 2 | `crypto` | `common` | `crypto.openpgp` | impl | S6 | type + bits + encrypted only |
 | 240 | PKCS#12 / PFX | `p12` `pfx` | application/x-pkcs12 | 2 | `crypto` | `common` | `crypto.pki` | impl | S6 | bag types (MAC/encrypted) |
 | 241 | OpenPGP key / message / signature | `asc` `gpg` `pgp` `sig` `kbx` | application/pgp-keys | 2 | `crypto` | `common` | `crypto.openpgp` | impl | S6 | — |
-| 242 | PCAPNG | `pcapng` | application/x-pcapng | 2 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
+| 242 | PCAPNG | `pcapng` | application/x-pcapng | 2 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
 | 243 | macOS app bundle Info.plist | `plist` | — | 2 | `apple` | `common` | — | plist, cms | S6 | — |
 | 244 | Apache Arrow IPC / Feather | `arrow` `feather` `ipc` `arrows` | application/vnd.apache.arrow.file | 2 | `columnar` | `data` | — | parquet + arrow | S7 | — |
 | 245 | NetCDF (3 / 4) | `nc` `nc4` `cdf` | application/x-netcdf | 2 | `sci` | `science` | — | hdf5-reader | S7 | NetCDF4 = HDF5 + CF |
@@ -949,30 +949,30 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 808 | Mobile backups (iTunes Manifest.db / Android .ab) | `db` `ab` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
 | 809 | Adobe Lightroom catalog | `lrcat` `lrdata` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | image count, collections, keywords (SQLite) |
 | 810 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | — | impl | S8 | decks, note/card counts |
-| 811 | Windows ESE database | `edb` `dat` | — | 3 | `db` | `common` | — | impl | S8 | tables (SRUM, WebCache, Windows Search) -&gt; forensic |
+| 811 | Windows ESE database | `edb` `dat` | — | 3 | `db` | `common` | `forensic.ese` | impl | S6 | tables (SRUM, WebCache, Windows Search) -&gt; forensic |
 | 812 | Kafka log segment | `log` `index` `timeindex` | — | 3 | `db` | `common` | — | impl | S8 | base offset, record batches |
 | 813 | Prometheus TSDB block | `meta.json` `chunks` | — | 3 | `db` | `common` | — | impl | S8 | time range, series count |
-| 814 | Windows Event Log | `evtx` `evt` | application/x-ms-evtx | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 815 | Windows Registry hive | `dat` `hiv` `NTUSER.DAT` `SYSTEM` `SOFTWARE` `SAM` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 816 | Windows Prefetch | `pf` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | exe name, run count, last run times |
-| 817 | NTFS $MFT / $UsnJrnl | `mft` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 818 | Windows minidump | `dmp` `mdmp` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 819 | Linux utmp/wtmp/btmp / journal | `wtmp` `btmp` `journal` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 820 | macOS unified log / ASL | `tracev3` `asl` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 821 | Jump lists / recycle bin ($I) | `automaticDestinations-ms` `customDestinations-ms` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 822 | Zeek / Suricata / Whiff logs | `log` `json` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 823 | NetFlow / IPFIX dumps | `nfcapd` `ipfix` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | — |
-| 824 | Syslog / journal export | `log` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | -&gt; text.plain log detector |
-| 825 | Crash reports (.ips, .crash, Breakpad) | `ips` `crash` `dmp` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | app, version, exception, frames |
-| 826 | Snort unified2 alerts | `u2` `unified2` | application/octet-stream | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | alert count, sig ids, time range |
-| 827 | Windows ETW trace | `etl` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | provider GUIDs, events count |
-| 828 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | records, path count |
-| 829 | Memory image (LiME / crash dump / hiberfil) | `lime` `dmp` `hiberfil.sys` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | OS hints, size, profile |
-| 830 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | URLs count, content types |
-| 831 | Windows Timeline / SRUM / Amcache | `db` `hve` `dat` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | -&gt; db / registry |
-| 832 | Kubernetes / cloud audit logs | `jsonl` `log` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | verbs, resources, users count |
-| 833 | Sysmon / auditd logs | `log` `evtx` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | event types histogram |
-| 834 | Wireshark dissector-free: Bluetooth btsnoop / USB pcap | `btsnoop` `log` | — | 3 | `forensic` | `forensics` | — | pcap-file / pcap-parser, evtx | S6/S8 | packet count, time range |
+| 814 | Windows Event Log | `evtx` `evt` | application/x-ms-evtx | 3 | `forensic` | `forensics` | `forensic.evtx` | impl | S6/S8 | — |
+| 815 | Windows Registry hive | `dat` `hiv` `NTUSER.DAT` `SYSTEM` `SOFTWARE` `SAM` | — | 3 | `forensic` | `forensics` | `forensic.registry` | impl | S6/S8 | — |
+| 816 | Windows Prefetch | `pf` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | exe name, run count, last run times |
+| 817 | NTFS $MFT / $UsnJrnl | `mft` | — | 3 | `forensic` | `forensics` | `forensic.mft` | impl | S6/S8 | — |
+| 818 | Windows minidump | `dmp` `mdmp` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
+| 819 | Linux utmp/wtmp/btmp / journal | `wtmp` `btmp` `journal` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | — |
+| 820 | macOS unified log / ASL | `tracev3` `asl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | — |
+| 821 | Jump lists / recycle bin ($I) | `automaticDestinations-ms` `customDestinations-ms` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | — |
+| 822 | Zeek / Suricata / Whiff logs | `log` `json` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
+| 823 | NetFlow / IPFIX dumps | `nfcapd` `ipfix` | — | 3 | `forensic` | `forensics` | — | impl | S8 | — |
+| 824 | Syslog / journal export | `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | -&gt; text.plain log detector |
+| 825 | Crash reports (.ips, .crash, Breakpad) | `ips` `crash` `dmp` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | app, version, exception, frames |
+| 826 | Snort unified2 alerts | `u2` `unified2` | application/octet-stream | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | alert count, sig ids, time range |
+| 827 | Windows ETW trace | `etl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | provider GUIDs, events count |
+| 828 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | — | impl | S8 | records, path count |
+| 829 | Memory image (LiME / crash dump / hiberfil) | `lime` `dmp` `hiberfil.sys` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | OS hints, size, profile |
+| 830 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | — | impl | S8 | URLs count, content types |
+| 831 | Windows Timeline / SRUM / Amcache | `db` `hve` `dat` | — | 3 | `forensic` | `forensics` | `forensic.registry` | impl | S6/S8 | -&gt; db / registry |
+| 832 | Kubernetes / cloud audit logs | `jsonl` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | verbs, resources, users count |
+| 833 | Sysmon / auditd logs | `log` `evtx` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | event types histogram |
+| 834 | Wireshark dissector-free: Bluetooth btsnoop / USB pcap | `btsnoop` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | packet count, time range |
 | 835 | Apple .strings / .stringsdict / .xcstrings | `strings` `stringsdict` `xcstrings` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
 | 836 | .DS_Store | `DS_Store` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
 | 837 | Xcode project / workspace | `pbxproj` `xcworkspacedata` | — | 3 | `apple` | `common` | — | plist, cms | S6 | targets, build settings |
