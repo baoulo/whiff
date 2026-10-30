@@ -1,0 +1,120 @@
+---
+source: src/formats/bytecode/python.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.cpython-314.pyc",
+    "stem": "tides.cpython-314",
+    "extension": "pyc"
+  },
+  "identification": {
+    "format": "pyc",
+    "name": "Python bytecode",
+    "mime": "application/x-python-code",
+    "family": "bytecode",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.python"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1273,
+    "entropy": 5.152,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d37b87e1dac1a7d0cf7bac13e0939abb5892136f3a4a17feafeea6c1e1c992d",
+    "blake3": "d775d1b35ad7153719d04cde78b3c050e86aa30c5c40ca2ecd442d1d1e4563b4"
+  },
+  "content": {
+    "description": "Tide table for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "pyc": {
+      "magic": 3627,
+      "python_version": "3.14",
+      "invalidation": "checked_hash",
+      "source_hash": "4b3830b3e0a63d9a",
+      "source_file": "tides.py",
+      "code_objects": 4,
+      "imports": [
+        "json",
+        "datetime"
+      ],
+      "definitions": [
+        "Tide",
+        "table"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.python",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

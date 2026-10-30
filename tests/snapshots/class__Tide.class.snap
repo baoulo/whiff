@@ -1,0 +1,135 @@
+---
+source: src/formats/bytecode/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tide.class",
+    "stem": "Tide",
+    "extension": "class"
+  },
+  "identification": {
+    "format": "class",
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 332
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 332,
+    "entropy": 4.953,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "9ae7dd1e0a3ec459af1539362ef6fd6c1cab46bf8e2da459d92ae141d89e0268",
+    "blake3": "ebc11449820ce042309e0faa71a859d3c1423036591a5fbc84a33cfc0063d52a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "class": {
+      "version": "65.0",
+      "java_release": "21",
+      "constant_pool_entries": 17,
+      "kind": "interface",
+      "class_name": "org.example.saltmere.tides.Tide",
+      "access": [
+        "public"
+      ],
+      "fields": 0,
+      "methods": 1,
+      "method_names": [
+        "hour"
+      ],
+      "code_bytes": 0,
+      "source_file": "Tide.java",
+      "nest_members": 2,
+      "sealed": true,
+      "permitted_subclasses": [
+        "org.example.saltmere.tides.Tide$High",
+        "org.example.saltmere.tides.Tide$Low"
+      ],
+      "inner_classes": 2,
+      "referenced_classes": 4,
+      "referenced_packages": [
+        "java.lang"
+      ],
+      "debug": {
+        "source_file": true,
+        "line_numbers": false,
+        "local_variables": false
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

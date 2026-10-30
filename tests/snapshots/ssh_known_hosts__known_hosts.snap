@@ -1,0 +1,152 @@
+---
+source: src/formats/crypto/ssh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "known_hosts",
+    "stem": "known_hosts"
+  },
+  "identification": {
+    "format": "ssh_known_hosts",
+    "name": "SSH known_hosts",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "crypto.ssh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1197
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1197,
+    "entropy": 6.007,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1197,
+      "chars": 1197,
+      "words": 13,
+      "lines": 4,
+      "max_line_length": 575,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "170691c92df6204fddd118a671b3c7749ee58f03e65ff17a65a80b5232ab6436",
+    "blake3": "1dadf35606d94e2d8d6ac9afc314d9875df68f126600a153577c69dabc06ddb8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ssh_known_hosts": {
+      "keys": 4,
+      "key_types": {
+        "ecdsa-sha2-nistp384": 2,
+        "ssh-rsa": 1,
+        "ssh-ed25519": 1
+      },
+      "hashed_hosts": 1,
+      "named_hosts": 4,
+      "markers": {
+        "cert-authority": 1
+      },
+      "key_list": [
+        {
+          "key_type": "ecdsa-sha2-nistp384",
+          "key_algorithm": "ecdsa",
+          "key_bits": 384,
+          "key_curve": "P-384",
+          "fingerprint": "SHA256:3I7WRByfdNYSHP9m1rmgPgcWqxMjyu0ep3fq7n0u6Vk"
+        },
+        {
+          "key_type": "ssh-rsa",
+          "key_algorithm": "rsa",
+          "key_bits": 3072,
+          "fingerprint": "SHA256:aeS36KQSsM3ZPHYqIdQlyZWqez6ugzX0EnhC2WqSZnE"
+        },
+        {
+          "key_type": "ssh-ed25519",
+          "key_algorithm": "ed25519",
+          "key_bits": 256,
+          "fingerprint": "SHA256:SnVE6uVC+2XCsNJOhtJ8XMyEHpZdNMnFdFT1JyNz8OE"
+        },
+        {
+          "key_type": "ecdsa-sha2-nistp384",
+          "key_algorithm": "ecdsa",
+          "key_bits": 384,
+          "key_curve": "P-384",
+          "fingerprint": "SHA256:3I7WRByfdNYSHP9m1rmgPgcWqxMjyu0ep3fq7n0u6Vk"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.ssh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

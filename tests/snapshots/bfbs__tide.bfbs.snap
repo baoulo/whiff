@@ -1,0 +1,125 @@
+---
+source: src/formats/data/binser/flatbuffers.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.bfbs",
+    "stem": "tide",
+    "extension": "bfbs"
+  },
+  "identification": {
+    "format": "bfbs",
+    "name": "FlatBuffers schema / binary",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "data.flatbuffers"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1664
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1664,
+    "entropy": 3.278,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1ae5adad8c26f40262cc526841f58aa76ac3115ccd0ef3e56ac5ccb39ace4998",
+    "blake3": "712cdd751b4ba582bf849e6f8e3b3a13ed9666860c33a2cb3ce5ccb2a9184080"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bfbs": {
+      "file_identifier": "TIDE",
+      "file_extension": "tide",
+      "root_table": "Saltmere.Tides.Message",
+      "tables": 3,
+      "structs": 1,
+      "fields": 11,
+      "objects": [
+        "Saltmere.Tides.Gauge",
+        "Saltmere.Tides.Message",
+        "Saltmere.Tides.Position",
+        "Saltmere.Tides.Reading"
+      ],
+      "enums": 1,
+      "unions": 1,
+      "enum_names": [
+        "Saltmere.Tides.Payload",
+        "Saltmere.Tides.Unit"
+      ],
+      "services": [
+        "Saltmere.Tides.Tides"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.flatbuffers",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -506,14 +506,14 @@ expression: report
         "extension": "EC"
       },
       "identification": {
-        "format": "der",
-        "name": "DER Certificate",
-        "mime": "application/x-x509-ca-cert",
-        "family": "data.binser",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "format": "pkcs7",
+        "name": "PKCS#7 / CMS",
+        "mime": "application/pkcs7-mime",
+        "family": "crypto",
+        "confidence": 0.85,
+        "detected_by": "sniff",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "crypto.pki"
       },
       "system": {
         "kind": "memory",
@@ -522,7 +522,9 @@ expression: report
       "temporal": {
         "filesystem": {}
       },
-      "security": {},
+      "security": {
+        "signed": true
+      },
       "rights": {},
       "physical": {
         "size_bytes": 814,
@@ -535,9 +537,75 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "pkcs7": {
+          "encoding": "der",
+          "objects": 2,
+          "object_types": {
+            "cms": 1,
+            "certificate": 1
+          },
+          "certificates": [
+            {
+              "subject": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+              "subject_cn": "Saltmere Harbour",
+              "subject_organization": "Saltmere",
+              "issuer": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+              "serial": "9e39f8f852144279",
+              "version": 3,
+              "not_before": "2026-10-26T17:35:33Z",
+              "not_after": "2036-10-23T17:35:33Z",
+              "key_algorithm": "ec",
+              "key_bits": 256,
+              "key_curve": "P-256",
+              "signature_algorithm": "sha384_ecdsa",
+              "self_signed": true,
+              "sha256": "bcc764d075809a82fb4cab2ab7d6fbe3a6d24276fd795a39e4a007916e93282e",
+              "sha1": "0aa7499bcb2408e3fa64a2e623fcb3163448d659",
+              "expired": false
+            }
+          ],
+          "cms": [
+            {
+              "content_type": "signed_data",
+              "signed_content_type": "data",
+              "detached": true,
+              "digest": "sha384",
+              "signer": {
+                "subject": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+                "subject_cn": "Saltmere Harbour",
+                "subject_organization": "Saltmere",
+                "issuer": "CN=Saltmere Harbour, O=Saltmere, C=GB",
+                "serial": "9e39f8f852144279",
+                "version": 3,
+                "not_before": "2026-10-26T17:35:33Z",
+                "not_after": "2036-10-23T17:35:33Z",
+                "key_algorithm": "ec",
+                "key_bits": 256,
+                "key_curve": "P-256",
+                "signature_algorithm": "sha384_ecdsa",
+                "self_signed": true,
+                "sha256": "bcc764d075809a82fb4cab2ab7d6fbe3a6d24276fd795a39e4a007916e93282e",
+                "sha1": "0aa7499bcb2408e3fa64a2e623fcb3163448d659"
+              },
+              "signing_time": "2026-10-26T17:35:33Z",
+              "timestamped": false,
+              "certificates": [
+                "CN=Saltmere Harbour, O=Saltmere, C=GB"
+              ],
+              "signers": 1
+            }
+          ]
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "crypto.pki",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,
@@ -724,13 +792,13 @@ expression: report
       },
       "identification": {
         "format": "class",
-        "name": "Java Class",
+        "name": "Java class",
         "mime": "application/java-vm",
         "family": "bytecode",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "confidence": 0.95,
+        "detected_by": "sniff",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "bytecode.java"
       },
       "system": {
         "kind": "memory",
@@ -752,9 +820,43 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "class": {
+          "version": "61.0",
+          "java_release": "17",
+          "constant_pool_entries": 28,
+          "kind": "class",
+          "class_name": "org.saltmere.Tides",
+          "access": [
+            "public"
+          ],
+          "fields": 0,
+          "methods": 2,
+          "method_names": [
+            "main"
+          ],
+          "code_bytes": 14,
+          "source_file": "Tides.java",
+          "referenced_classes": 4,
+          "referenced_packages": [
+            "java.io",
+            "java.lang"
+          ],
+          "debug": {
+            "source_file": true,
+            "line_numbers": true,
+            "local_variables": false
+          }
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "bytecode.java",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

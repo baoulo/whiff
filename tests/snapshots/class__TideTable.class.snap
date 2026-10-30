@@ -1,0 +1,137 @@
+---
+source: src/formats/bytecode/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "TideTable.class",
+    "stem": "TideTable",
+    "extension": "class"
+  },
+  "identification": {
+    "format": "class",
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2650
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2650,
+    "entropy": 5.443,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "34bf6d12b60bacbc5e75545da5130f525b1d8e228da9810dade573018b31566f",
+    "blake3": "cfba4e6d3d1f47d4554e8eb2cf78c7d43e43da8ef112b265dcf80c095aff75ba"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "class": {
+      "version": "65.0",
+      "java_release": "21",
+      "constant_pool_entries": 129,
+      "kind": "class",
+      "class_name": "org.example.saltmere.tides.TideTable",
+      "access": [
+        "public",
+        "final"
+      ],
+      "fields": 2,
+      "methods": 5,
+      "method_names": [
+        "add",
+        "main"
+      ],
+      "code_bytes": 128,
+      "source_file": "TideTable.java",
+      "inner_classes": 3,
+      "annotations": [
+        "org.example.saltmere.tides.Gauge"
+      ],
+      "referenced_classes": 13,
+      "referenced_packages": [
+        "java.lang",
+        "java.lang.invoke",
+        "java.util",
+        "java.util.logging"
+      ],
+      "debug": {
+        "source_file": true,
+        "line_numbers": true,
+        "local_variables": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

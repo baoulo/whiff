@@ -1,0 +1,139 @@
+---
+source: src/formats/apple/strings.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Localizable.stringsdict",
+    "stem": "Localizable",
+    "extension": "stringsdict"
+  },
+  "identification": {
+    "format": "stringsdict",
+    "name": "Apple .stringsdict",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "stringsdict",
+        "confidence": 0.99
+      },
+      {
+        "format": "plist",
+        "confidence": 0.9
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "apple.strings"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 627
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 627,
+    "entropy": 5.142,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 627,
+      "chars": 627,
+      "words": 33,
+      "lines": 18,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9fcc6026a9277f2f92195968f58a6f0481c3da23d92c928b8caea4849f66f71a",
+    "blake3": "fbc3c368dcc719395d5c1d8ea1484b8a3353f348fd09f006b104afc8f2bd6ecd"
+  },
+  "content": {
+    "excerpt": "No free berths One free berth %lld free berths"
+  },
+  "metadata": {},
+  "format": {
+    "stringsdict": {
+      "encoding": "xml",
+      "keys": 1,
+      "variables": 1,
+      "plural_categories": [
+        "zero",
+        "one",
+        "other"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.strings",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

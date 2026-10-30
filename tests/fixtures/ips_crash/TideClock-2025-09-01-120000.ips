@@ -1,0 +1,49 @@
+{"app_name": "TideClock", "timestamp": "2025-09-01 12:00:00.00 +0000", "app_version": "1.2", "slice_uuid": "00000000-0000-4000-8000-000000000001", "build_version": "12", "platform": 1, "bundleID": "example.saltmere.TideClock", "share_with_app_devs": 0, "is_first_party": 0, "bug_type": "309", "os_version": "macOS 15.6 (24G84)", "roots_installed": 0, "name": "TideClock", "incident_id": "5A17E7E0-0000-4000-8000-000000000001"}
+{
+  "procName": "TideClock",
+  "procPath": "/Applications/TideClock.app/Contents/MacOS/TideClock",
+  "cpuType": "ARM-64",
+  "exception": {
+    "codes": "0x0000000000000001, 0x0000000000000000",
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGSEGV",
+    "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000000"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 11,
+    "namespace": "SIGNAL",
+    "indicator": "Segmentation fault: 11"
+  },
+  "faultingThread": 0,
+  "threads": [
+    {
+      "triggered": true,
+      "id": 1,
+      "frames": [
+        {
+          "imageOffset": 1234,
+          "symbol": "nextHighWater",
+          "imageIndex": 0
+        },
+        {
+          "imageOffset": 2345,
+          "symbol": "main",
+          "imageIndex": 0
+        }
+      ]
+    }
+  ],
+  "usedImages": [
+    {
+      "name": "TideClock",
+      "base": 4294967296,
+      "size": 16384
+    },
+    {
+      "name": "libsystem_kernel.dylib",
+      "base": 6442450944,
+      "size": 245760
+    }
+  ]
+}

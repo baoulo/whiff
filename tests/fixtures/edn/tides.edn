@@ -1,0 +1,10 @@
+;; Saltmere Harbour tide table
+{:harbour "Saltmere Harbour"
+ :updated #inst "2025-09-01T12:00:00.000-00:00"
+ :id #uuid "5a1e0000-0000-4000-8000-000000000001"
+ :berths [{:id 4 :length-m 12.5 :occupied? false}
+          {:id 7 :length-m 9.0 :occupied? true :vessel "Gull"}]
+ :gauges #{:g7 :g9}
+ #_ :retired #_ true
+ :high-water {:time "06:12" :height-m 4.25}
+ :pilot nil}

@@ -1,0 +1,122 @@
+---
+source: src/formats/apple/appledouble.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.appledouble",
+    "stem": "buoy",
+    "extension": "appledouble"
+  },
+  "identification": {
+    "format": "appledouble",
+    "name": "AppleDouble resource forks / xattr dumps",
+    "mime": "multipart/appledouble",
+    "family": "apple",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "apple.appledouble"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 400
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 400,
+    "entropy": 4.612,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d7624b6eb57c9b39b246f676223181feff5117d9ecf42becb026fb2afa563137",
+    "blake3": "c8e6fe0a5b02e9f30f37b1ec5566b1791db9e971d6925001f2d1527611873760"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "appledouble": {
+      "version": "2",
+      "home_file_system": "Mac OS X",
+      "file_type": "TEXT",
+      "creator": "SLTM",
+      "entries": {
+        "finder_info": 350,
+        "resource_fork": 0
+      },
+      "extended_attributes": {
+        "com.apple.metadata:kMDItemWhereFroms": 81,
+        "com.apple.provenance": 11,
+        "com.apple.quarantine": 24,
+        "org.saltmere.note": 20
+      },
+      "quarantine_agent": "Safari",
+      "where_froms": [
+        "https://example.org/buoys/buoy.txt"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.appledouble",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

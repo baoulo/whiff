@@ -20,6 +20,7 @@ Code that can run: macros, scripts, actions, DDE.
 | `dde` | high | DDE field or formula that can launch a program |
 | `executable_attachment` | high | Attached or embedded file is a program or script |
 | `launch_action` | high | PDF action that launches a program or opens a file |
+| `script_shortcut` | high | Shortcut starts a command interpreter (cmd, PowerShell, mshta, wscript …) with arguments |
 | `suspicious_macro` | high | Macro uses shell, download, process or obfuscation calls |
 | `xlm_macros` | high | Excel 4.0 (XLM) macro sheet |
 | `active_content` | medium | SVG `<foreignObject>`: embedded HTML that a browser renders and may script |
@@ -32,6 +33,7 @@ Code that can run: macros, scripts, actions, DDE.
 | `macro_attachment` | medium | Attachment is a macro-enabled Office document |
 | `macros` | medium | VBA or StarBasic macro project |
 | `script` | medium | SVG `<script>` or event handlers |
+| `shell_action` | medium | Workflow or shortcut has an action that runs a shell script or other code |
 
 ## Phishing (`phishing`)
 
@@ -77,6 +79,7 @@ Constructs tied to known exploitation techniques.
 | `overlapping_entries` | high | ZIP entries share their compressed data (an overlapping-entry zip bomb) |
 | `path_traversal` | high | Archive entry whose path climbs out of the folder it is unpacked into (`../`) |
 | `symlink_escape` | high | Archive symbolic link that points outside the archive (absolute or `../`) |
+| `unsafe_deserialization` | high | Serialized data names code to run when it is loaded (pickle globals such as `os.system`, Java or PHP gadget classes) |
 | `absolute_path` | medium | Archive entry with an absolute path, which an unpacker may write anywhere |
 | `xml_entities` | low | DOCTYPE declares internal entities (entity expansion) |
 
@@ -89,6 +92,7 @@ Content hidden from a casual look.
 | `hidden_iframe` | high | Invisible `<iframe>` |
 | `hidden_macro_sheet` | high | Excel 4.0 macro sheet hidden from the sheet tabs |
 | `packed_executable` | medium | Executable is packed (UPX, or code with the entropy of compressed data): its code cannot be read statically |
+| `obfuscated_code` | low | Compiled code processed by an obfuscator (named in the format section) |
 | `tls_callbacks` | low | PE image runs TLS callbacks, code that starts before the entry point |
 | `trailing_data` | low | Bytes after the end of the image, archive or compressed stream |
 
@@ -100,6 +104,7 @@ Secrets or credentials in the content.
 |---|---|---|
 | `embedded_secret` | high | Credentials or keys found in the content |
 | `secret_in_env` | high | Secret value set in an environment variable of a build file |
+| `unprotected_key` | medium | Private or secret key stored without a passphrase (PEM, OpenSSH, PuTTY, OpenPGP, JWK, keytab, minisign) |
 
 ## Supply chain (`supply_chain`)
 
@@ -110,6 +115,7 @@ Installs, fetches or trusts code from elsewhere.
 | `broad_extension_permissions` | medium | Browser extension asks for all sites, native messaging or similar |
 | `custom_package_index` | medium | Packages are installed from a non-default index |
 | `install_script` | medium | Package runs scripts when it is installed |
+| `installs_root_certificate` | medium | Configuration profile installs a root certificate the device will trust |
 | `remote_add` | low | Dockerfile `ADD` fetches a URL |
 
 ## Unsafe operations (`unsafe_operation`)
@@ -125,6 +131,7 @@ Operations that change or destroy state with broad privileges.
 | `writable_executable_memory` | medium | Executable maps memory that is writable and executable (W+X section or segment, executable stack) |
 | `requests_elevation` | low | Program manifest asks to run as administrator (`requireAdministrator`) |
 | `runs_as_root` | low | Container image runs as root |
+| `weak_cryptography` | low | Weak key or algorithm: RSA / DSA under 2048 bits, MD5 or SHA-1 signatures, DES or RC4 keys, unsigned tokens |
 
 ## Provenance (`provenance`)
 

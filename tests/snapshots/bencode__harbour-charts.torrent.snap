@@ -1,0 +1,253 @@
+---
+source: src/formats/data/binser/selfdesc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-charts.torrent",
+    "stem": "harbour-charts",
+    "extension": "torrent"
+  },
+  "identification": {
+    "format": "bencode",
+    "name": "Bencode",
+    "mime": "application/x-bittorrent",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.binser"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 293
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 293,
+    "entropy": 5.051,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f73767ee71a4418b64870f0fd65b4c85cdc67f2f4d95072f6982fd3f01952f8c",
+    "blake3": "9203c52325e9cadb9f6e3ca26dcc4151575ba280c67405cb3f759ddafec3845c"
+  },
+  "content": {
+    "title": "harbour-charts"
+  },
+  "metadata": {},
+  "format": {
+    "bencode": {
+      "kind": "torrent",
+      "torrent": {
+        "name": "harbour-charts",
+        "files": 2,
+        "total_size": 63,
+        "piece_length": 32768,
+        "private": true,
+        "trackers": 1,
+        "created_by": "mktorrent 1.1",
+        "info_hash": "5e0d4821106df9771000ca66b7d33e1c13c17076"
+      },
+      "top_level": "object",
+      "keys": [
+        "announce",
+        "comment",
+        "created by",
+        "info"
+      ],
+      "key_count": 4,
+      "values": 18,
+      "max_depth": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.announce": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "http://tracker.example.org/announce"
+            ]
+          },
+          "$.comment": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour charts"
+            ]
+          },
+          "$.[\"created by\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "mktorrent 1.1"
+            ]
+          },
+          "$.info": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.info.files": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.info.files[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.info.files[].length": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              27,
+              36
+            ]
+          },
+          "$.info.files[].path": {
+            "types": [
+              "array"
+            ],
+            "count": 2,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.info.files[].path[]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "berths.txt",
+              "tide-table.csv"
+            ]
+          },
+          "$.info.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "harbour-charts"
+            ]
+          },
+          "$.info.[\"piece length\"]": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              32768
+            ]
+          },
+          "$.info.pieces": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "<20 bytes>"
+            ]
+          },
+          "$.info.private": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1
+            ]
+          }
+        },
+        "max_depth": 5
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.binser",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

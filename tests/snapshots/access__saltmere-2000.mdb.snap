@@ -1,0 +1,178 @@
+---
+source: src/formats/db/access.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-2000.mdb",
+    "stem": "saltmere-2000",
+    "extension": "mdb"
+  },
+  "identification": {
+    "format": "access",
+    "name": "Microsoft Access database",
+    "mime": "application/vnd.ms-access",
+    "family": "db",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "db.access"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 135168
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2004-06-05T13:07:00Z",
+        "source": "db.access",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 135168,
+    "entropy": 1.22,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a15652468750d163962b8eeef8fb934e38f9c507923171a50aeabfb5ee8bab21",
+    "blake3": "d116b52d3ce96f699ecbddcc7d82bb1afc8883024259e9553ff272015f7fb274"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "access": {
+      "engine": "Jet 4",
+      "access_version": "Access 2000-2003",
+      "code_page": 1252,
+      "encoded": false,
+      "created": "2004-06-05T13:07:00Z",
+      "pages": 33,
+      "table_count": 2,
+      "tables": [
+        {
+          "name": "Stations",
+          "rows": 3,
+          "columns": [
+            {
+              "name": "ID",
+              "type": "long",
+              "length": 4
+            },
+            {
+              "name": "Name",
+              "type": "text",
+              "length": 80
+            },
+            {
+              "name": "Opened",
+              "type": "datetime",
+              "length": 8
+            },
+            {
+              "name": "Depth",
+              "type": "double",
+              "length": 8
+            }
+          ]
+        },
+        {
+          "name": "Tide Readings",
+          "rows": 120,
+          "columns": [
+            {
+              "name": "Station",
+              "type": "long",
+              "length": 4
+            },
+            {
+              "name": "At",
+              "type": "datetime",
+              "length": 8
+            },
+            {
+              "name": "Height",
+              "type": "double",
+              "length": 8
+            },
+            {
+              "name": "Calm",
+              "type": "boolean",
+              "length": 0
+            },
+            {
+              "name": "Note",
+              "type": "memo",
+              "length": 0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.access",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

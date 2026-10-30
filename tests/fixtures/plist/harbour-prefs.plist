@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Berths</key>
+	<array>
+		<integer>4</integer>
+		<integer>7</integer>
+		<integer>12</integer>
+	</array>
+	<key>ChartTile</key>
+	<data>
+	dGlkZSBjaGFydA==
+	</data>
+	<key>Harbour</key>
+	<string>Saltmere Harbour</string>
+	<key>HighWater</key>
+	<dict>
+		<key>Height</key>
+		<real>4.25</real>
+		<key>Time</key>
+		<string>06:12</string>
+	</dict>
+	<key>Pilots</key>
+	<true/>
+	<key>Updated</key>
+	<date>2025-09-01T12:00:00Z</date>
+</dict>
+</plist>

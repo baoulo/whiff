@@ -1,0 +1,267 @@
+---
+source: src/formats/data/binser/textdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.txtpb",
+    "stem": "tide",
+    "extension": "txtpb"
+  },
+  "identification": {
+    "format": "textproto",
+    "name": "Protobuf text format",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 344
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 344,
+    "entropy": 4.874,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 344,
+      "chars": 344,
+      "words": 51,
+      "lines": 27,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "e51c425cd8066ee60a38f7832ce01dd0c7805b3256e4624bd9d86c7e3f1efee7",
+    "blake3": "037b91ffe5202e6d7e9fdd51d319be490aad1cff30fcc810badfdf515051bd74"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "textproto": {
+      "proto_file": "tide.proto",
+      "proto_message": "saltmere.Tide",
+      "top_level": "object",
+      "keys": [
+        "harbour",
+        "readings",
+        "height_m",
+        "chart",
+        "berths",
+        "ratio"
+      ],
+      "key_count": 6,
+      "values": 20,
+      "max_depth": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.readings": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.readings[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.readings[].gauge": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "G7"
+            ]
+          },
+          "$.readings[].seq": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              1,
+              2
+            ]
+          },
+          "$.readings[].level_cm": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              412,
+              -15
+            ]
+          },
+          "$.readings[].at_ms": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              1756728000000,
+              1756728600000
+            ]
+          },
+          "$.height_m": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              4.25
+            ]
+          },
+          "$.chart": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "211PNG"
+            ]
+          },
+          "$.berths": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.berths[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.berths[].key": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "4",
+              "7"
+            ]
+          },
+          "$.berths[].value": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              1,
+              0
+            ]
+          },
+          "$.ratio": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              0.5
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

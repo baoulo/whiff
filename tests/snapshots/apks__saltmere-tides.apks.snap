@@ -119,13 +119,14 @@ expression: report
         "extension": "pb"
       },
       "identification": {
-        "format": "binary",
-        "name": "Binary data",
-        "mime": "application/octet-stream",
-        "family": "binary.unknown",
-        "confidence": 0.1,
-        "detected_by": "heuristic",
-        "extractor": "binary.unknown"
+        "format": "protobuf_binary",
+        "name": "Protocol Buffers binary",
+        "mime": "application/x-protobuf",
+        "family": "data.binser",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "extractor": "data.protobuf"
       },
       "system": {
         "kind": "memory",
@@ -148,22 +149,22 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "binary": {
-          "bytes_examined": 2,
-          "strings": {
-            "ascii": 0,
-            "utf16le": 0
+        "protobuf_binary": {
+          "encoding": "message",
+          "fields": {
+            "1": {
+              "type": "string",
+              "count": 1
+            }
           },
-          "strings_sample": [],
-          "entropy_profile": {
-            "blocks": 0
-          }
+          "values": 1,
+          "max_depth": 0
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "binary.unknown",
+            "id": "data.protobuf",
             "version": 1,
             "ms": 0.0,
             "status": "ok"

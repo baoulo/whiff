@@ -1,0 +1,108 @@
+---
+source: src/formats/data/binser/godot.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide_curve.res",
+    "stem": "tide_curve",
+    "extension": "res"
+  },
+  "identification": {
+    "format": "godot_binary_resource",
+    "name": "Godot binary resource",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "data.godot"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 114
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 114,
+    "entropy": 0.881,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "80cecc34d03c9247e8049abf09106e3897c3773766b290e28fe42abc957ce616",
+    "blake3": "7abecfa95a60e225f23bf9d14c4618d5dcb07ea2f6d2c528c7afabb2e9ff88c5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "godot_binary_resource": {
+      "byte_order": "little_endian",
+      "engine_version": "4.3",
+      "format_version": 6,
+      "resource_type": "Curve"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.godot",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

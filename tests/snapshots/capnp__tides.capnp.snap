@@ -1,0 +1,154 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.capnp",
+    "stem": "tides",
+    "extension": "capnp"
+  },
+  "identification": {
+    "format": "capnp",
+    "name": "Cap'n Proto schema",
+    "mime": "text/x-capnp",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 345
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 345,
+    "entropy": 4.946,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 345,
+      "chars": 345,
+      "words": 49,
+      "lines": 18,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "944335e6e478c9adf8d0d5884e7897bea37b3e7213b0a57308e68d6d56c5f4e6",
+    "blake3": "39e7b30239c54fbae12b3ed1ce8eb5002710d0da2f40c95cc4f04ea30c92ccd3"
+  },
+  "content": {
+    "description": "Saltmere Harbour tide readings",
+    "excerpt": "Saltmere Harbour tide readings"
+  },
+  "metadata": {},
+  "format": {
+    "capnp": {
+      "language": "Cap'n Proto schema",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 4,
+        "total": 18
+      },
+      "package": "saltmere::tides",
+      "imports": [
+        "/capnp/c++.capnp"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "const": [
+          "highWater"
+        ],
+        "enum": [
+          "Unit"
+        ],
+        "interface": [
+          "Tides"
+        ],
+        "struct": [
+          "Reading"
+        ]
+      },
+      "symbol_counts": {
+        "const": 1,
+        "enum": 1,
+        "interface": 1,
+        "struct": 1
+      },
+      "module_doc": "Saltmere Harbour tide readings",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 48
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

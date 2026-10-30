@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5a1e000harbr"]
+
+[ext_resource type="Script" path="res://harbour/tide_gauge.gd" id="1_g7"]
+[ext_resource type="Texture2D" uid="uid://c5a1e000chart" path="res://charts/harbour.png" id="2_map"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buoy"]
+radius = 16.0
+
+[node name="Harbour" type="Node2D"]
+
+[node name="Chart" type="Sprite2D" parent="."]
+texture = ExtResource("2_map")
+
+[node name="Gauge7" type="Area2D" parent="."]
+position = Vector2(412, 128)
+script = ExtResource("1_g7")
+
+[node name="Shape" type="CollisionShape2D" parent="Gauge7"]
+shape = SubResource("CircleShape2D_buoy")
+
+[connection signal="body_entered" from="Gauge7" to="." method="_on_gauge_body_entered"]

@@ -1,0 +1,27 @@
+# proto-file: tide.proto
+# proto-message: saltmere.Tide
+
+harbour: "Saltmere Harbour"
+readings {
+  gauge: "G7"
+  seq: 1
+  level_cm: 412
+  at_ms: 1756728000000
+}
+readings {
+  gauge: "G7"
+  seq: 2
+  level_cm: -15
+  at_ms: 1756728600000
+}
+height_m: 4.25
+chart: "\211PNG"
+berths {
+  key: "4"
+  value: 1
+}
+berths {
+  key: "7"
+  value: 0
+}
+ratio: 0.5

@@ -1,0 +1,131 @@
+---
+source: src/formats/forensic/shell.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "CMD.EXE-89305D47.pf",
+    "stem": "CMD.EXE-89305D47",
+    "extension": "pf"
+  },
+  "identification": {
+    "format": "prefetch",
+    "name": "Windows Prefetch",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.shell"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6026
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2016-01-16T20:03:15Z",
+        "source": "forensic.shell",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2016-01-16T20:03:15Z",
+    "latest": "2016-01-16T20:03:15Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6026,
+    "entropy": 3.946,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6127d820b031cac7f5fb1e6d45e244aa48cbb7fa62910ad0317eacb71a0edcd0",
+    "blake3": "e138beb5b3ba5d12dd31d0d4ad60b311b1817e394bdd9268d253276062e06b53"
+  },
+  "content": {
+    "title": "CMD.EXE"
+  },
+  "metadata": {},
+  "format": {
+    "prefetch": {
+      "format_version": 23,
+      "windows": "Vista / 7",
+      "executable": "CMD.EXE",
+      "prefetch_hash": "89305D47",
+      "run_count": 3,
+      "last_run": "2016-01-16T20:03:15Z",
+      "files_loaded": 7,
+      "executable_path": "\\DEVICE\\HARDDISKVOLUME1\\WINDOWS\\SYSTEM32\\CMD.EXE",
+      "volumes": [
+        {
+          "device": "\\DEVICE\\HARDDISKVOLUME1",
+          "created": "2016-01-16T20:53:13Z",
+          "serial": "E8EAB8B5"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.shell",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

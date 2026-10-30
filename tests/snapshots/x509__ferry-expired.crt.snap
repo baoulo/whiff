@@ -1,0 +1,170 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-expired.crt",
+    "stem": "ferry-expired",
+    "extension": "crt"
+  },
+  "identification": {
+    "format": "x509",
+    "name": "X.509 certificate (DER)",
+    "mime": "application/pkix-cert",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "x509",
+        "confidence": 0.85
+      },
+      {
+        "format": "pem",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 790
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-01-01T00:00:00Z",
+        "source": "crypto.pki",
+        "tz_known": true
+      },
+      {
+        "field": "expires",
+        "value": "2025-01-01T00:00:00Z",
+        "source": "crypto.pki",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-01-01T00:00:00Z",
+    "latest": "2025-01-01T00:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 790,
+    "entropy": 7.151,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0988e68e3d46b25c01ff7b8e9eb7c0c9dea5f1a6f96cc8f91279eb3a98ad505d",
+    "blake3": "6743414ea836564a445cff7862fcccaacbd41c8daf5739700dd77945afe5c104"
+  },
+  "content": {
+    "title": "ferry.saltmere.example",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "x509": {
+      "encoding": "der",
+      "objects": 1,
+      "object_types": {
+        "certificate": 1
+      },
+      "certificates": [
+        {
+          "subject": "CN=ferry.saltmere.example, O=Saltmere Harbour",
+          "subject_cn": "ferry.saltmere.example",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+          "serial": "2003",
+          "version": 3,
+          "not_before": "2024-01-01T00:00:00Z",
+          "not_after": "2025-01-01T00:00:00Z",
+          "key_algorithm": "rsa",
+          "key_bits": 2048,
+          "signature_algorithm": "sha256_ecdsa",
+          "self_signed": false,
+          "ca": false,
+          "key_usage": [
+            "digital_signature"
+          ],
+          "extended_key_usage": [
+            "server_auth"
+          ],
+          "subject_alt_names": [
+            "tides.saltmere.example",
+            "www.saltmere.example"
+          ],
+          "sha256": "0988e68e3d46b25c01ff7b8e9eb7c0c9dea5f1a6f96cc8f91279eb3a98ad505d",
+          "sha1": "7d6188399bc374e7efaf5a85e4c2e44ff2412089",
+          "expired": true
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,138 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "document.wflow",
+    "stem": "document",
+    "extension": "wflow"
+  },
+  "identification": {
+    "format": "shortcut",
+    "name": "Apple Shortcuts / Automator",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "shortcut",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1447
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1447,
+    "entropy": 4.969,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1447,
+      "chars": 1447,
+      "words": 46,
+      "lines": 27,
+      "max_line_length": 194,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d556898950887a86756ea3305665ebbd4ce2021abd9b0eaef903063ff9bf39b8",
+    "blake3": "64d8e53c9132cee3268595fd3e42729a3b6790143842aa1872256c0b3c7fb64f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "shortcut": {
+      "encoding": "xml",
+      "top_level": "dictionary",
+      "values": 27,
+      "max_depth": 6,
+      "kind": "automator_workflow",
+      "application_build": "523",
+      "application_version": "2.10",
+      "workflow_type": "com.apple.Automator.servicesMenu",
+      "actions": 2,
+      "action_types": {
+        "com.apple.Automator.CopyToClipboard": 1,
+        "com.apple.Automator.Text": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

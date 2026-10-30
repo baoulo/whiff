@@ -1,0 +1,172 @@
+---
+source: src/formats/data/binser/selfdesc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.msgpack",
+    "stem": "readings",
+    "extension": "msgpack"
+  },
+  "identification": {
+    "format": "msgpack",
+    "name": "MessagePack",
+    "mime": "application/vnd.msgpack",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.binser"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 108
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 108,
+    "entropy": 4.833,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "04c524c70e205a5c1a5b2a2a8ea80b39f2ca2e0798aa841ad919da3e233018c9",
+    "blake3": "aebd64fbcd59ff517adc208355e1ac21c889af7b1e9d522340c6846af91c61aa"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "msgpack": {
+      "top_level": "object",
+      "keys": [
+        "gauge",
+        "seq",
+        "level_cm",
+        "at"
+      ],
+      "key_count": 4,
+      "documents": 3,
+      "values": 27,
+      "max_depth": 1,
+      "tags": {
+        "timestamp": 3
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.gauge": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "G7"
+            ]
+          },
+          "$.seq": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              0,
+              1,
+              2
+            ]
+          },
+          "$.level_cm": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              412,
+              415,
+              418
+            ]
+          },
+          "$.at": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "2025-09-01T12:00:00Z",
+              "2025-09-01T12:10:00Z",
+              "2025-09-01T12:20:00Z"
+            ]
+          }
+        },
+        "max_depth": 1,
+        "documents": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.binser",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

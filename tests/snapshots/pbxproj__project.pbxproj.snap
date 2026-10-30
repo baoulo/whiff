@@ -1,0 +1,200 @@
+---
+source: src/formats/apple/xcode.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "project.pbxproj",
+    "stem": "project",
+    "extension": "pbxproj"
+  },
+  "identification": {
+    "format": "pbxproj",
+    "name": "Xcode project / workspace",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "apple.xcode"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12008
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12008,
+    "entropy": 5.182,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 12008,
+      "chars": 12008,
+      "words": 1301,
+      "lines": 335,
+      "max_line_length": 210,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 15
+    }
+  },
+  "integrity": {
+    "sha256": "c9d19204665d1193babf942f59fda9ceb558fed007ddff53f2ecf529438e4c1c",
+    "blake3": "a638b335c7f74c32b883ccae694530b781dbbac52906c06c75323e534c1bc481"
+  },
+  "content": {
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "pbxproj": {
+      "archive_version": "1",
+      "object_version": "60",
+      "objects": 39,
+      "compatibility": "Xcode 15.0",
+      "development_region": "en",
+      "organization": "Saltmere Harbour",
+      "known_regions": [
+        "en",
+        "Base",
+        "fr",
+        "de"
+      ],
+      "targets": [
+        {
+          "name": "Tides",
+          "product_type": "application",
+          "product_name": "Tides"
+        },
+        {
+          "name": "TidesTests",
+          "product_type": "bundle.unit-test",
+          "product_name": "TidesTests"
+        }
+      ],
+      "configurations": [
+        "Debug",
+        "Release"
+      ],
+      "macos_deployment_targets": [
+        "13.0"
+      ],
+      "sdks": [
+        "macosx"
+      ],
+      "swift_versions": [
+        "5.0",
+        "6.0"
+      ],
+      "bundle_identifiers": [
+        "org.saltmere.tidesmac",
+        "org.saltmere.tidesmac.tests"
+      ],
+      "development_teams": [
+        "SALTMERE01"
+      ],
+      "code_sign_styles": [
+        "Automatic"
+      ],
+      "packages": [
+        {
+          "url": "https://github.com/apple/swift-collections",
+          "kind": "upToNextMajorVersion",
+          "minimumVersion": "1.1.0"
+        }
+      ],
+      "script_phases": 1,
+      "object_kinds": {
+        "PBXFileReference": 8,
+        "PBXBuildFile": 6,
+        "XCBuildConfiguration": 6,
+        "PBXGroup": 4,
+        "XCConfigurationList": 3,
+        "PBXNativeTarget": 2,
+        "PBXSourcesBuildPhase": 2,
+        "PBXContainerItemProxy": 1,
+        "PBXFrameworksBuildPhase": 1,
+        "PBXProject": 1,
+        "PBXResourcesBuildPhase": 1,
+        "PBXShellScriptBuildPhase": 1,
+        "PBXTargetDependency": 1,
+        "XCRemoteSwiftPackageReference": 1,
+        "XCSwiftPackageProductDependency": 1
+      },
+      "file_types": {
+        "sourcecode.swift": 3,
+        "folder.assetcatalog": 1,
+        "text.json.xcstrings": 1,
+        "text.plist.xml": 1,
+        "wrapper.application": 1,
+        "wrapper.cfbundle": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.xcode",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,198 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere_Tides_Development.mobileprovision",
+    "stem": "Saltmere_Tides_Development",
+    "extension": "mobileprovision"
+  },
+  "identification": {
+    "format": "mobileprovision",
+    "name": "Apple provisioning profile",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mobileprovision",
+        "confidence": 0.99
+      },
+      {
+        "format": "pkcs7",
+        "confidence": 0.8
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2462
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "apple.plist",
+        "tz_known": true
+      },
+      {
+        "field": "expires",
+        "value": "2026-09-01T12:00:00Z",
+        "source": "apple.plist",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2026-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": true,
+    "risks": [
+      {
+        "kind": "debuggable",
+        "category": "unsafe_operation",
+        "severity": "medium",
+        "detail": "get-task-allow entitlement",
+        "source": "apple.plist"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 2462,
+    "entropy": 6.246,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f9e5e0ea969c878e7e794c5c2793f97c18ee7d21864889adfbd8d52cdaf27131",
+    "blake3": "4e06bec4ac69e0e88541a78e706754f72113ce2c6b57ec7dc72645ec09320c96"
+  },
+  "content": {
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mobileprovision": {
+      "encoding": "xml",
+      "signature": {
+        "digest": "sha256",
+        "signer": {
+          "subject": "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles",
+          "subject_cn": "Saltmere Harbour Profiles",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles",
+          "serial": "245c032c4aa95361b60eb541cfa6d7695dcb55c2",
+          "version": 3,
+          "not_before": "2026-10-30T03:21:15Z",
+          "not_after": "2027-10-30T03:21:15Z",
+          "key_algorithm": "ec",
+          "key_bits": 256,
+          "key_curve": "P-256",
+          "signature_algorithm": "sha256_ecdsa",
+          "self_signed": true,
+          "ca": true,
+          "sha256": "f9e6a18c71b2fac86ab3683b73b11ebe85ecffb68fc90991506a50d28984a5d9",
+          "sha1": "23240c2ae476751bfc6a4262e221dc637298c215"
+        },
+        "signing_time": "2026-10-30T03:21:15Z",
+        "timestamped": false,
+        "certificates": [
+          "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles"
+        ]
+      },
+      "top_level": "dictionary",
+      "values": 27,
+      "max_depth": 3,
+      "kind": "provisioning_profile",
+      "name": "Saltmere Tides Development",
+      "app_id_name": "Saltmere Tides",
+      "team_name": "Saltmere Harbour",
+      "uuid": "5a1e0000-0000-4000-8000-000000000020",
+      "team_id": "SALTMERE01",
+      "platforms": [
+        "iOS",
+        "xrOS"
+      ],
+      "created": "2025-09-01T12:00:00Z",
+      "expires": "2026-09-01T12:00:00Z",
+      "distribution": "development",
+      "provisioned_devices": 2,
+      "developer_certificates": 1,
+      "entitlements": [
+        "application-identifier",
+        "com.apple.developer.team-identifier",
+        "get-task-allow",
+        "keychain-access-groups"
+      ],
+      "application_identifier": "SALTMERE01.org.saltmere.tides"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

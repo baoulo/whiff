@@ -1,0 +1,134 @@
+---
+source: src/formats/apple/xcode.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "contents.xcworkspacedata",
+    "stem": "contents",
+    "extension": "xcworkspacedata"
+  },
+  "identification": {
+    "format": "xcworkspace",
+    "name": "Xcode workspace",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xcworkspace",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "apple.xcode"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 376
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 376,
+    "entropy": 4.625,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 376,
+      "chars": 376,
+      "words": 31,
+      "lines": 17,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "91b400236d3cee893d2f7be0897076bb05949c3247bf622e14f3f0930df1f44d",
+    "blake3": "69b5905e2fe902e58eb5d2488ec5c9df4a17b017b3ddf160f128209a75311e7c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xcworkspace": {
+      "file_refs": 3,
+      "groups": 1,
+      "projects": [
+        "group:Tides.xcodeproj",
+        "group:Pods/Pods.xcodeproj"
+      ],
+      "references": [
+        "group:Charts/tides.csv"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.xcode",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

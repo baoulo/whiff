@@ -1,0 +1,154 @@
+---
+source: src/formats/forensic/shell.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "5afe4de1b92fc382.customDestinations-ms",
+    "stem": "5afe4de1b92fc382",
+    "extension": "customDestinations-ms"
+  },
+  "identification": {
+    "format": "custom_jump_list",
+    "name": "Windows custom jump list",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "forensic.shell"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 17261
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 17261,
+    "entropy": 3.236,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c1c77214698293fcfd9fb4cae296a3faa88191092ff381e97fd947cb62bba217",
+    "blake3": "2f60c9b71dd108f6ddf6d6e7240f04482bd66d5b75808927bcb8fd15dda05c44"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "custom_jump_list": {
+      "version": 2,
+      "categories": 1,
+      "shortcuts": 9,
+      "targets": [
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{A97AF2A4-8EF1-49C1-8B4C-68B8AE925549} http://go.microsoft.com/fwlink/?LinkID=139460",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{6283D460-3C57-4F5A-96AE-30F77FEF3125} %systemroot%\\system32\\control.exe /name Microsoft.Personalization",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{89ECBF03-2033-4BCB-AE4A-665E2B737389} %systemroot%\\System32\\migwiz\\migwiz.exe",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{D36AFB67-9043-4714-B4A3-E9E9481750A1} %systemroot%\\system32\\control.exe /name Microsoft.HomeGroup",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{6819DEE2-366D-4F92-8F73-EC24116674D3} %systemroot%\\system32\\UserAccountControlSettings.exe",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{AEB13B0B-E2A0-47AD-9C5C-D541FB776583} http://go.microsoft.com/fwlink/?LinkId=130744",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{8CA415C2-0F7F-4A7D-8B09-DF76E995775B} %systemroot%\\system32\\control.exe /name Microsoft.BackupAndRestoreCenter",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{100B7438-E8AF-470F-8676-87964C64E890} %systemroot%\\system32\\control.exe /name Microsoft.UserAccounts",
+          "target_modified": "2009-07-14T01:39:11Z"
+        },
+        {
+          "target": "C:\\Windows\\System32\\GettingStarted.exe",
+          "arguments": "{DE3895CB-077B-4C38-B6E3-F3DE1E0D84FC} %systemroot%\\system32\\control.exe /name Microsoft.Display",
+          "target_modified": "2009-07-14T01:39:11Z"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.shell",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

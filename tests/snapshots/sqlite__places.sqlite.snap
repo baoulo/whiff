@@ -1,0 +1,210 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "places.sqlite",
+    "stem": "places",
+    "extension": "sqlite"
+  },
+  "identification": {
+    "format": "sqlite",
+    "name": "SQLite database",
+    "mime": "application/vnd.sqlite3",
+    "family": "db",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 0.958,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "28b6a5b2cbe6e4f2b1e0d6fc1a27faec3d7c2eb7ac768f48c6037b5b66dfeb6e",
+    "blake3": "fa37ac5a3f45a4b61317af78bea1926c8235391b0a54e6dcfaf7a30a8c28b29b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sqlite": {
+      "sqlite_version": "3.46.1",
+      "page_size": 4096,
+      "page_count": 4,
+      "encoding": "utf-8",
+      "journal_mode": "rollback",
+      "schema_format": 4,
+      "user_version": 0,
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 3,
+        "indexes": 0,
+        "views": 0,
+        "triggers": 0
+      },
+      "total_rows": 25,
+      "tables": [
+        {
+          "name": "moz_places",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "url",
+              "type": "LONGVARCHAR"
+            },
+            {
+              "name": "title",
+              "type": "LONGVARCHAR"
+            },
+            {
+              "name": "visit_count",
+              "type": "INTEGER"
+            },
+            {
+              "name": "last_visit_date",
+              "type": "INTEGER"
+            }
+          ],
+          "rows": 12
+        },
+        {
+          "name": "moz_historyvisits",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "from_visit",
+              "type": "INTEGER"
+            },
+            {
+              "name": "place_id",
+              "type": "INTEGER"
+            },
+            {
+              "name": "visit_date",
+              "type": "INTEGER"
+            },
+            {
+              "name": "visit_type",
+              "type": "INTEGER"
+            }
+          ],
+          "rows": 12
+        },
+        {
+          "name": "moz_bookmarks",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "type",
+              "type": "INTEGER"
+            },
+            {
+              "name": "fk",
+              "type": "INTEGER"
+            },
+            {
+              "name": "parent",
+              "type": "INTEGER"
+            },
+            {
+              "name": "title",
+              "type": "LONGVARCHAR"
+            }
+          ],
+          "rows": 1
+        }
+      ],
+      "application": {
+        "name": "firefox_places",
+        "places": 12,
+        "visits": 12,
+        "bookmarks": 1,
+        "first": "2025-09-01T14:00:00Z",
+        "last": "2025-09-02T12:00:00Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

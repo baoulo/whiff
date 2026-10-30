@@ -176,11 +176,54 @@ pub fn oid_name(oid: &str) -> Option<&'static str> {
         "1.2.840.113549.1.7.2" => "signed_data",
         "1.3.6.1.4.1.311.2.1.4" => "authenticode",
         "1.2.840.113549.1.9.16.1.4" => "tst_info",
+        "1.2.840.113549.1.7.3" => "enveloped_data",
+        "1.2.840.113549.1.7.6" => "encrypted_data",
+        "1.3.6.1.4.1.311.10.1" => "certificate_trust_list",
+        "1.2.840.113549.1.12.10.1.1" => "key",
+        "1.2.840.113549.1.12.10.1.2" => "shrouded_key",
+        "1.2.840.113549.1.12.10.1.3" => "certificate",
+        "1.2.840.113549.1.12.10.1.4" => "crl",
+        "1.2.840.113549.1.12.10.1.5" => "secret",
+        "1.2.840.113549.1.12.10.1.6" => "safe_contents",
+        "1.2.840.113549.1.5.13" => "pbes2",
+        "1.2.840.113549.1.5.12" => "pbkdf2",
+        "1.3.6.1.4.1.11591.4.11" => "scrypt",
+        "1.2.840.113549.1.12.1.3" => "pbe_sha1_3des",
+        "1.2.840.113549.1.12.1.6" => "pbe_sha1_rc2_40",
+        "1.2.840.113549.1.5.3" => "pbe_md5_des",
+        "1.2.840.113549.1.5.10" => "pbe_sha1_des",
+        "2.16.840.1.101.3.4.1.2" => "aes128_cbc",
+        "2.16.840.1.101.3.4.1.22" => "aes192_cbc",
+        "2.16.840.1.101.3.4.1.42" => "aes256_cbc",
+        "2.16.840.1.101.3.4.1.6" => "aes128_gcm",
+        "2.16.840.1.101.3.4.1.46" => "aes256_gcm",
+        "1.2.840.113549.3.7" => "des_ede3_cbc",
+        "1.2.840.113549.2.7" => "hmac_sha1",
+        "1.2.840.113549.2.9" => "hmac_sha256",
+        "1.2.840.113549.2.11" => "hmac_sha512",
+        "1.2.840.113549.1.3.1" => "dh",
+        "1.3.101.110" => "x25519",
+        "1.3.101.111" => "x448",
+        "1.3.132.0.10" => "secp256k1",
+        "1.3.36.3.3.2.8.1.1.7" => "brainpoolP256r1",
+        "1.3.36.3.3.2.8.1.1.11" => "brainpoolP384r1",
+        "1.3.36.3.3.2.8.1.1.13" => "brainpoolP512r1",
+        "1.2.840.10040.4.3" => "sha1_dsa",
+        "2.16.840.1.101.3.4.3.2" => "sha256_dsa",
+        "2.16.840.1.101.3.4.3.17" => "ml_dsa_44",
+        "2.16.840.1.101.3.4.3.18" => "ml_dsa_65",
+        "2.16.840.1.101.3.4.3.19" => "ml_dsa_87",
+        "2.16.840.1.101.3.4.4.1" => "ml_kem_512",
+        "2.16.840.1.101.3.4.4.2" => "ml_kem_768",
+        "2.16.840.1.101.3.4.4.3" => "ml_kem_1024",
+        "1.2.840.113549.1.9.14" => "extension_request",
+        "1.2.840.113549.1.9.7" => "challenge_password",
         _ => return None,
     })
 }
 
-fn named(oid_body: &[u8]) -> String {
+/// The name of an OID (its dotted form when it has no name).
+pub fn named(oid_body: &[u8]) -> String {
     let o = oid(oid_body);
     oid_name(&o).map_or(o, str::to_string)
 }
@@ -251,8 +294,54 @@ fn hex(bytes: &[u8]) -> String {
     })
 }
 
+/// SHA-1, for fingerprints and identifiers (.NET public-key tokens,
+/// OpenPGP v4 fingerprints); never for security.
+#[allow(clippy::many_single_char_names)] // a … e, f, k, t as in FIPS 180-4
+pub fn sha1(data: &[u8]) -> [u8; 20] {
+    let mut h: [u32; 5] = [0x6745_2301, 0xefcd_ab89, 0x98ba_dcfe, 0x1032_5476, 0xc3d2_e1f0];
+    let mut msg = data.to_vec();
+    let bits = (data.len() as u64).wrapping_mul(8);
+    msg.push(0x80);
+    while msg.len() % 64 != 56 {
+        msg.push(0);
+    }
+    msg.extend_from_slice(&bits.to_be_bytes());
+    for block in msg.as_chunks::<64>().0 {
+        let mut w = [0u32; 80];
+        for (i, c) in block.as_chunks::<4>().0.iter().enumerate() {
+            w[i] = u32::from_be_bytes(*c);
+        }
+        for i in 16..80 {
+            w[i] = (w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16]).rotate_left(1);
+        }
+        let [mut a, mut b, mut c, mut d, mut e] = h;
+        for (i, wi) in w.iter().enumerate() {
+            let (f, k) = match i {
+                0..20 => ((b & c) | (!b & d), 0x5a82_7999),
+                20..40 => (b ^ c ^ d, 0x6ed9_eba1),
+                40..60 => ((b & c) | (b & d) | (c & d), 0x8f1b_bcdc),
+                _ => (b ^ c ^ d, 0xca62_c1d6),
+            };
+            let t = a.rotate_left(5).wrapping_add(f).wrapping_add(e).wrapping_add(k).wrapping_add(*wi);
+            e = d;
+            d = c;
+            c = b.rotate_left(30);
+            b = a;
+            a = t;
+        }
+        for (x, y) in h.iter_mut().zip([a, b, c, d, e]) {
+            *x = x.wrapping_add(y);
+        }
+    }
+    let mut out = [0u8; 20];
+    for (o, x) in out.as_chunks_mut::<4>().0.iter_mut().zip(h) {
+        o.copy_from_slice(&x.to_be_bytes());
+    }
+    out
+}
+
 /// An INTEGER's value as hex, without the sign padding.
-fn serial(t: Tlv<'_>) -> String {
+pub fn serial(t: Tlv<'_>) -> String {
     let b = t.body;
     let start = b.iter().position(|&x| x != 0).unwrap_or(b.len().saturating_sub(1));
     hex(&b[start..])
@@ -294,11 +383,8 @@ pub fn certificate(der: &[u8]) -> Option<Map<String, Value>> {
     if let Some(t) = validity.child(1).and_then(time) {
         out.insert("not_after".into(), t.into());
     }
-    if let Some((alg, bits)) = public_key(spki) {
-        out.insert("key_algorithm".into(), alg.into());
-        if let Some(bits) = bits {
-            out.insert("key_bits".into(), bits.into());
-        }
+    if let Some(key) = public_key(spki) {
+        key.insert_into(&mut out);
     }
     out.insert("signature_algorithm".into(), named(sig_alg.body).into());
     out.insert("self_signed".into(), (issuer.raw == subject.raw).into());
@@ -310,35 +396,88 @@ pub fn certificate(der: &[u8]) -> Option<Map<String, Value>> {
         }
     }
     out.insert("sha256".into(), hex(&Sha256::digest(cert.raw)).into());
+    out.insert("sha1".into(), hex(&sha1(cert.raw)).into());
     Some(out)
 }
 
-/// The algorithm and size of a `SubjectPublicKeyInfo` (the key itself is
-/// not kept).
-fn public_key(spki: Tlv<'_>) -> Option<(String, Option<u64>)> {
-    let alg = spki.child(0)?;
-    let kind = named(alg.child(0)?.body);
-    let bits = match kind.as_str() {
-        "rsa" => {
-            let key = spki.child(1)?.body.get(1..)?;
-            let modulus = read(key)?.0.child(0)?.body;
-            let m = &modulus[modulus.iter().position(|&b| b != 0).unwrap_or(modulus.len())..];
-            m.first().map(|&top| (m.len() as u64 - 1) * 8 + u64::from(8 - top.leading_zeros()))
-        }
-        "ec" => match alg.child(1).map(|c| named(c.body)).as_deref() {
-            Some("P-256") => Some(256),
-            Some("P-384") => Some(384),
-            Some("P-521") => Some(521),
-            _ => None,
-        },
-        "ed25519" => Some(256),
-        "ed448" => Some(456),
-        _ => None,
-    };
-    Some((kind, bits))
+/// A public key's algorithm, size and curve; the key itself is not kept.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct KeyFacts {
+    /// `rsa`, `ec`, `dsa`, `ed25519`, … (the OID when it has no name).
+    pub algorithm: String,
+    /// Size in bits (the modulus for RSA, the prime for DSA / DH).
+    pub bits: Option<u64>,
+    /// Named curve (`P-256`, `secp256k1`, …).
+    pub curve: Option<String>,
 }
 
-fn extensions(exts: Tlv<'_>, out: &mut Map<String, Value>) {
+impl KeyFacts {
+    /// Add `key_algorithm`, `key_bits` and `key_curve` to `out`.
+    pub fn insert_into(&self, out: &mut Map<String, Value>) {
+        out.insert("key_algorithm".into(), self.algorithm.clone().into());
+        if let Some(bits) = self.bits {
+            out.insert("key_bits".into(), bits.into());
+        }
+        if let Some(c) = &self.curve {
+            out.insert("key_curve".into(), c.clone().into());
+        }
+    }
+}
+
+/// The bit length of an unsigned big-endian integer.
+pub fn bit_length(b: &[u8]) -> Option<u64> {
+    let m = &b[b.iter().position(|&x| x != 0)?..];
+    Some((m.len() as u64 - 1) * 8 + u64::from(8 - m[0].leading_zeros()))
+}
+
+/// The size of an elliptic curve, by name.
+pub fn curve_bits(curve: &str) -> Option<u64> {
+    Some(match curve {
+        "P-256" | "secp256k1" | "brainpoolP256r1" | "x25519" | "ed25519" => 256,
+        "P-384" | "brainpoolP384r1" => 384,
+        "P-521" => 521,
+        "brainpoolP512r1" => 512,
+        "x448" => 448,
+        "ed448" => 456,
+        _ => return None,
+    })
+}
+
+/// The facts of an `AlgorithmIdentifier` plus the key bits: `key` is the
+/// RSA / DSA / DH key's DER (the `SubjectPublicKeyInfo` bit string or the
+/// private key's octet string), read for its size only.
+pub fn key_facts(alg: Tlv<'_>, key: Option<&[u8]>) -> Option<KeyFacts> {
+    let algorithm = named(alg.child(0)?.body);
+    let params = alg.child(1);
+    let mut k = KeyFacts { algorithm, ..KeyFacts::default() };
+    match k.algorithm.as_str() {
+        "rsa" | "rsa_pss" => {
+            // RSAPublicKey and RSAPrivateKey: the modulus is the first
+            // INTEGER after the private key's version.
+            let seq = read(key?)?.0;
+            let modulus = seq.children().find(|c| c.tag == 0x02 && c.body.len() > 1)?;
+            k.bits = bit_length(modulus.body);
+        }
+        "dsa" | "dh" => k.bits = params.and_then(|p| p.child(0)).and_then(|p| bit_length(p.body)),
+        "ec" => {
+            k.curve = params.filter(|p| p.tag == 0x06).map(|p| named(p.body));
+            k.bits = k.curve.as_deref().and_then(curve_bits);
+        }
+        "ed25519" | "ed448" | "x25519" | "x448" => k.bits = curve_bits(&k.algorithm),
+        _ => {}
+    }
+    Some(k)
+}
+
+/// The algorithm and size of a `SubjectPublicKeyInfo`.
+pub fn public_key(spki: Tlv<'_>) -> Option<KeyFacts> {
+    // The BIT STRING's first octet counts the unused bits.
+    key_facts(spki.child(0)?, spki.child(1).and_then(|b| b.body.get(1..)))
+}
+
+/// Read certificate (or request) `Extensions` into `out`: basic
+/// constraints, key usage, extended key usage, subject alternative names.
+pub fn extensions(exts: Tlv<'_>, out: &mut Map<String, Value>) {
     for ext in exts.children() {
         let Some(id) = ext.child(0).map(|o| oid(o.body)) else { continue };
         // `critical BOOLEAN DEFAULT FALSE` may come before the value.
@@ -349,6 +488,15 @@ fn extensions(exts: Tlv<'_>, out: &mut Map<String, Value>) {
             "2.5.29.19" => {
                 let ca = value.child(0).is_some_and(|b| b.tag == 0x01 && b.body.first().is_some_and(|&v| v != 0));
                 out.insert("ca".into(), ca.into());
+                if let Some(n) = value.children().find(|c| c.tag == 0x02 && c.body.len() <= 4) {
+                    out.insert("path_length".into(), n.body.iter().fold(0u64, |a, &b| a << 8 | u64::from(b)).into());
+                }
+            }
+            "2.5.29.15" => {
+                let usages = key_usage(value.body);
+                if !usages.is_empty() {
+                    out.insert("key_usage".into(), json!(usages));
+                }
             }
             "2.5.29.37" => {
                 let usages: Vec<Value> = value.children().map(|o| named(o.body).into()).collect();
@@ -368,6 +516,23 @@ fn extensions(exts: Tlv<'_>, out: &mut Map<String, Value>) {
             _ => {}
         }
     }
+}
+
+/// The names of the bits set in a `KeyUsage` BIT STRING.
+fn key_usage(bits: &[u8]) -> Vec<&'static str> {
+    const NAMES: [&str; 9] = [
+        "digital_signature",
+        "non_repudiation",
+        "key_encipherment",
+        "data_encipherment",
+        "key_agreement",
+        "key_cert_sign",
+        "crl_sign",
+        "encipher_only",
+        "decipher_only",
+    ];
+    let set = |i: usize| bits.get(1 + i / 8).is_some_and(|&b| b & (0x80 >> (i % 8)) != 0);
+    NAMES.iter().enumerate().filter(|&(i, _)| set(i)).map(|(_, n)| *n).collect()
 }
 
 /// What a CMS `SignedData` says about its signature.

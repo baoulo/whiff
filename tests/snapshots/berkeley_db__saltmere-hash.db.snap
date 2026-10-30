@@ -1,0 +1,119 @@
+---
+source: src/formats/db/engines.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-hash.db",
+    "stem": "saltmere-hash",
+    "extension": "db"
+  },
+  "identification": {
+    "format": "berkeley_db",
+    "name": "Berkeley DB database",
+    "mime": "application/x-berkeley-db",
+    "family": "db",
+    "confidence": 0.8,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "berkeley_db",
+        "confidence": 0.8
+      },
+      {
+        "format": "thumbs_db",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "db.engines"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12288
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12288,
+    "entropy": 1.041,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3f41aca912637ca79cf2ed4b28fe19195555362e1259ec280fbe711b22a0d4fb",
+    "blake3": "0592a0a9e39576aec34f2e97f2d95aa2f152015e136f3076051cdaf203f80c93"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "berkeley_db": {
+      "access_method": "hash",
+      "byte_order": "little_endian",
+      "version": 9,
+      "page_size": 4096,
+      "pages": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.engines",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

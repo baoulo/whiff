@@ -5,7 +5,7 @@
 //!
 //! | Feature | Groups |
 //! |---|---|
-//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, compress, archive, package, exec, crypto, db, font, web, apple, binary |
+//! | `common` (default) | text, data, code, doc, email, image, audio, video, subtitle, playlist, score, compress, archive, package, exec, bytecode, crypto, db, font, web, apple, binary |
 //! | `geo` | geo |
 //! | `science` | science |
 //! | `data` | columnar |
@@ -19,17 +19,25 @@
 
 // whiff-dev: group modules below this line
 #[cfg(feature = "common")]
+pub(crate) mod apple;
+#[cfg(feature = "common")]
 pub(crate) mod archive;
 #[cfg(feature = "common")]
 pub(crate) mod audio;
 #[cfg(feature = "common")]
 pub(crate) mod binary;
 #[cfg(feature = "common")]
+pub(crate) mod bytecode;
+#[cfg(feature = "common")]
 pub(crate) mod code;
 #[cfg(feature = "common")]
 pub(crate) mod compress;
 #[cfg(feature = "common")]
+pub(crate) mod crypto;
+#[cfg(feature = "common")]
 pub(crate) mod data;
+#[cfg(feature = "common")]
+pub(crate) mod db;
 #[cfg(feature = "forensics")]
 pub(crate) mod disk;
 #[cfg(feature = "common")]
@@ -38,6 +46,8 @@ pub(crate) mod doc;
 pub(crate) mod email;
 #[cfg(feature = "common")]
 pub(crate) mod exec;
+#[cfg(feature = "forensics")]
+pub(crate) mod forensic;
 #[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "common")]

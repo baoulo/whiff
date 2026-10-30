@@ -1,0 +1,188 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pubring.kbx",
+    "stem": "pubring",
+    "extension": "kbx"
+  },
+  "identification": {
+    "format": "gpg_keybox",
+    "name": "GnuPG keybox",
+    "mime": "application/x-gnupg-keybox",
+    "family": "crypto",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2303
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2303,
+    "entropy": 7.331,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "aad1ecf57a57777786d605fc7d0e2c0ae9be8319f518f2b4004a6469e17c5e9b",
+    "blake3": "045427d1f0c9153d5338ff842827f0d3903f72c442db8184db189641d061db6c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gpg_keybox": {
+      "openpgp_blobs": 2,
+      "x509_blobs": 0,
+      "kind": "public_key",
+      "key_count": 2,
+      "user_id_count": 3,
+      "keys": [
+        {
+          "fingerprint": "E8B653B6F4D44300A7BA11173EF400293B5B0980",
+          "key_id": "3EF400293B5B0980",
+          "version": 4,
+          "key_algorithm": "eddsa",
+          "key_bits": 256,
+          "key_curve": "ed25519",
+          "created": "2025-09-01T12:00:00Z",
+          "user_ids": [
+            {
+              "name": "Saltmere Harbour Office",
+              "domain": "saltmere.example"
+            },
+            {
+              "name": "Saltmere Tide Tables",
+              "domain": "saltmere.example"
+            }
+          ],
+          "usage": [
+            "certify"
+          ],
+          "expired": false,
+          "expires": "2100-09-01T12:00:00Z",
+          "subkeys": [
+            {
+              "fingerprint": "47A5FF616E719D3824C525BB557D5D66B0191FA0",
+              "key_id": "557D5D66B0191FA0",
+              "version": 4,
+              "key_algorithm": "eddsa",
+              "key_bits": 256,
+              "key_curve": "ed25519",
+              "created": "2025-09-01T12:00:00Z",
+              "expired": false,
+              "expires": "2100-09-01T12:00:00Z",
+              "usage": [
+                "sign"
+              ]
+            },
+            {
+              "fingerprint": "A58303617DCA643FA88A98D7246F51AF60B985B9",
+              "key_id": "246F51AF60B985B9",
+              "version": 4,
+              "key_algorithm": "ecdh",
+              "key_bits": 256,
+              "key_curve": "cv25519",
+              "created": "2025-09-01T12:00:00Z",
+              "expired": false,
+              "expires": "2100-09-01T12:00:00Z",
+              "usage": [
+                "encrypt_communications",
+                "encrypt_storage"
+              ]
+            }
+          ]
+        },
+        {
+          "fingerprint": "77BA4D0F0D92C565DD21C5219451BBF20D02BD0F",
+          "key_id": "9451BBF20D02BD0F",
+          "version": 4,
+          "key_algorithm": "rsa",
+          "key_bits": 3072,
+          "created": "2025-09-01T12:00:00Z",
+          "user_ids": [
+            {
+              "name": "Old Ferry Desk",
+              "domain": "saltmere.example"
+            }
+          ],
+          "expired": true,
+          "expires": "2026-01-01T12:00:00Z",
+          "usage": [
+            "certify",
+            "sign",
+            "encrypt_communications",
+            "encrypt_storage"
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

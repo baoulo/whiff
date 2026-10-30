@@ -1,0 +1,166 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-office.gpg",
+    "stem": "saltmere-office",
+    "extension": "gpg"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.75,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 941
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 941,
+    "entropy": 7.286,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f8e7e8119637c3422d36f3c2212f5879bac1592b8550c7041f395b3c3787e184",
+    "blake3": "2ec27efdb079feb6d9ca62995916c0bb20958a43b379016193981a5b7c636284"
+  },
+  "content": {
+    "title": "Saltmere Harbour Office"
+  },
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "kind": "public_key",
+      "key_count": 1,
+      "user_id_count": 2,
+      "keys": [
+        {
+          "fingerprint": "E8B653B6F4D44300A7BA11173EF400293B5B0980",
+          "key_id": "3EF400293B5B0980",
+          "version": 4,
+          "key_algorithm": "eddsa",
+          "key_bits": 256,
+          "key_curve": "ed25519",
+          "created": "2025-09-01T12:00:00Z",
+          "user_ids": [
+            {
+              "name": "Saltmere Harbour Office",
+              "domain": "saltmere.example"
+            },
+            {
+              "name": "Saltmere Tide Tables",
+              "domain": "saltmere.example"
+            }
+          ],
+          "usage": [
+            "certify"
+          ],
+          "expired": false,
+          "expires": "2100-09-01T12:00:00Z",
+          "subkeys": [
+            {
+              "fingerprint": "47A5FF616E719D3824C525BB557D5D66B0191FA0",
+              "key_id": "557D5D66B0191FA0",
+              "version": 4,
+              "key_algorithm": "eddsa",
+              "key_bits": 256,
+              "key_curve": "ed25519",
+              "created": "2025-09-01T12:00:00Z",
+              "expired": false,
+              "expires": "2100-09-01T12:00:00Z",
+              "usage": [
+                "sign"
+              ]
+            },
+            {
+              "fingerprint": "A58303617DCA643FA88A98D7246F51AF60B985B9",
+              "key_id": "246F51AF60B985B9",
+              "version": 4,
+              "key_algorithm": "ecdh",
+              "key_bits": 256,
+              "key_curve": "cv25519",
+              "created": "2025-09-01T12:00:00Z",
+              "expired": false,
+              "expires": "2100-09-01T12:00:00Z",
+              "usage": [
+                "encrypt_communications",
+                "encrypt_storage"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

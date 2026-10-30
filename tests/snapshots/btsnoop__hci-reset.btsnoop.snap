@@ -1,0 +1,122 @@
+---
+source: src/formats/forensic/capture.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "hci-reset.btsnoop",
+    "stem": "hci-reset",
+    "extension": "btsnoop"
+  },
+  "identification": {
+    "format": "btsnoop",
+    "name": "Bluetooth btsnoop log",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.capture"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 83
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.capture",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 83,
+    "entropy": 2.972,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "eb975e1fe84db522ad0a0b10fc43b3fab7c48f842e10056926feb450354e7c7f",
+    "blake3": "18e2b0e7e9b0311d223944f9c46d649f8430ae2aa291fb183caaec6848fabb0b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "btsnoop": {
+      "version": 1,
+      "datalink": "hci_uart",
+      "packets": 2,
+      "captured_bytes": 19,
+      "original_bytes": 19,
+      "first_packet": "2025-09-01T12:00:00Z",
+      "last_packet": "2025-09-01T12:00:01Z",
+      "duration_s": 1.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.capture",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

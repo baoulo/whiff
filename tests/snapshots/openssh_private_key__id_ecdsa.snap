@@ -1,0 +1,125 @@
+---
+source: src/formats/crypto/ssh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "id_ecdsa",
+    "stem": "id_ecdsa"
+  },
+  "identification": {
+    "format": "openssh_private_key",
+    "name": "OpenSSH private key",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "encoding": "us-ascii",
+    "extractor": "crypto.ssh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 537
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 537,
+    "entropy": 5.799,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 537,
+      "chars": 537,
+      "words": 15,
+      "lines": 9,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "73f146d8bcc48f464fa78d09b8fec06d5928d0ab97a3bb8da784359fc925e581",
+    "blake3": "f4a1e7d3cc3ec5321d8094d343fae22b9eb6405b415627a2f564e0204011e53e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openssh_private_key": {
+      "cipher": "aes256-ctr",
+      "kdf": "bcrypt",
+      "kdf_rounds": 24,
+      "encrypted": true,
+      "keys": 1,
+      "key_type": "ecdsa-sha2-nistp256",
+      "key_algorithm": "ecdsa",
+      "key_bits": 256,
+      "key_curve": "P-256",
+      "fingerprint": "SHA256:dth/aK5EZqeCIE2H2Sp5hAzfke3bxxgNXjHzCHp6u4s"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.ssh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

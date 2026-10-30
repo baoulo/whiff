@@ -1,0 +1,12 @@
+// Saltmere Harbour, KDL 2
+harbour "Saltmere Harbour" country="GB" {
+    berth 4 length=12.5 occupied=#false
+    berth 7 length=9.0 occupied=#true {
+        vessel "Gull" (date)arrived="2025-09-01"
+    }
+    /-berth 12 length=20.0
+    gauge "G7" levels=412 note=#"pilot on "channel 12""#
+}
+tides {
+    high "06:12" height=4.25; low "12:30" height=0.8
+}

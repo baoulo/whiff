@@ -1,0 +1,136 @@
+---
+source: src/formats/forensic/shell.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "1b4dd67f29cb1962.automaticDestinations-ms",
+    "stem": "1b4dd67f29cb1962",
+    "extension": "automaticDestinations-ms"
+  },
+  "identification": {
+    "format": "jump_list",
+    "name": "Windows jump list",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "jump_list",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "forensic.shell"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5632
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 5632,
+    "entropy": 3.726,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "efb95b8477f4ed4968fb16c724845a52bcfc0ab671f4769a33ca05a25eef5379",
+    "blake3": "92f3430cac46217a45805e112d9e74ecb9a222e6637a48a2c7baa4e4636fee6f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jump_list": {
+      "destlist_version": 1,
+      "entries": 4,
+      "pinned": 0,
+      "shortcuts": 4,
+      "targets": [
+        {
+          "target": "C:\\Users\\[user]\\AppData\\Roaming\\Microsoft\\Windows\\Libraries\\Documents.library-ms",
+          "target_modified": "2016-01-16T20:23:24Z"
+        },
+        {
+          "target": "C:\\Users\\[user]\\AppData\\Roaming\\Microsoft\\Windows\\Libraries\\Pictures.library-ms",
+          "target_modified": "2016-01-16T20:23:24Z"
+        },
+        {
+          "target": "C:\\Users\\[user]\\AppData\\Roaming\\Microsoft\\Windows\\Libraries\\Music.library-ms",
+          "target_modified": "2016-01-16T20:23:24Z"
+        },
+        {
+          "target": "C:\\Users\\[user]\\AppData\\Roaming\\Microsoft\\Windows\\Libraries\\Videos.library-ms",
+          "target_modified": "2016-01-16T20:23:24Z"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.shell",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -209,6 +209,16 @@ expression: report
         "confidence": 0.35,
         "detected_by": "extension",
         "extension_matches": true,
+        "candidates": [
+          {
+            "format": "pub",
+            "confidence": 0.35
+          },
+          {
+            "format": "ssh_public_key",
+            "confidence": 0.35
+          }
+        ],
         "extractor": "doc.ole"
       },
       "system": {

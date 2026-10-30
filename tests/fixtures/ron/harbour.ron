@@ -1,0 +1,12 @@
+#![enable(implicit_some)]
+// Saltmere Harbour configuration
+Harbour(
+    name: "Saltmere Harbour",
+    berths: [
+        Berth(id: 4, length_m: 12.5, occupied: false, vessel: None),
+        Berth(id: 7, length_m: 9.0, occupied: true, vessel: Some("Gull")),
+    ],
+    high_water: (6, 12),
+    gauges: {"G7": North, "G9": Pier(2)},
+    raw_note: r#"pilot on "channel 12""#,
+)

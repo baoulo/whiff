@@ -1,0 +1,112 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.txt.age",
+    "stem": "tides.txt",
+    "extension": "age"
+  },
+  "identification": {
+    "format": "age",
+    "name": "age encrypted file",
+    "mime": "application/x-age-encryption",
+    "family": "crypto",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 245
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 245,
+    "entropy": 6.574,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7cb881aada2a3d51dc9056ccc8abd46b8d8fab0ea4cc42f1910f0c4905aa1d79",
+    "blake3": "5b70bed70c79febf8a8c1b209d426c495a268975347ee8eaee76214df77db692"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "age": {
+      "version": "v1",
+      "recipients": 1,
+      "recipient_types": {
+        "X25519": 1
+      },
+      "payload_bytes": 122
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

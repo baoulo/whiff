@@ -1,0 +1,156 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.fbs",
+    "stem": "tide",
+    "extension": "fbs"
+  },
+  "identification": {
+    "format": "flatbuffers",
+    "name": "FlatBuffers schema",
+    "mime": "text/x-flatbuffers",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 445
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 445,
+    "entropy": 4.701,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 445,
+      "chars": 445,
+      "words": 66,
+      "lines": 13,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "1702d16a637539a6d451fa47e3827e94db5961e5e425f989752e39606d8707f9",
+    "blake3": "dd11441026b9cce19c9459f81a534e412720679cb5fae800ec57562552a96558"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "flatbuffers": {
+      "language": "FlatBuffers schema",
+      "loc": {
+        "code": 11,
+        "comment": 0,
+        "blank": 2,
+        "total": 13
+      },
+      "package": "Saltmere.Tides",
+      "symbols": {
+        "enum": [
+          "Unit"
+        ],
+        "root_type": [
+          "Message"
+        ],
+        "service": [
+          "Tides"
+        ],
+        "struct": [
+          "Position"
+        ],
+        "table": [
+          "Reading",
+          "Gauge",
+          "Message"
+        ],
+        "union": [
+          "Payload"
+        ]
+      },
+      "symbol_counts": {
+        "enum": 1,
+        "root_type": 1,
+        "service": 1,
+        "struct": 1,
+        "table": 3,
+        "union": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 80
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

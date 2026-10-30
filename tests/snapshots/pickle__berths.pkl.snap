@@ -1,0 +1,128 @@
+---
+source: src/formats/data/binser/pickle.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.pkl",
+    "stem": "berths",
+    "extension": "pkl"
+  },
+  "identification": {
+    "format": "pickle",
+    "name": "Python pickle",
+    "mime": "application/x-python-pickle",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.pickle"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 232
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 232,
+    "entropy": 5.134,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d542c07b1867b7a71f1a326f0f9e451c62a80675c5333b1668bf886ec5d41d66",
+    "blake3": "31d25cdd2578963099bdf79ad3071c7f885b158d4d3d1988741b55414e2f97f9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pickle": {
+      "protocol": 5,
+      "opcodes": 83,
+      "opcode_classes": {
+        "bytes": 2,
+        "call": 4,
+        "dict": 3,
+        "frame": 1,
+        "get": 2,
+        "global": 4,
+        "int": 5,
+        "mark": 3,
+        "other": 2,
+        "proto": 1,
+        "put": 33,
+        "stop": 1,
+        "string": 17,
+        "tuple": 5
+      },
+      "globals": [
+        "collections.OrderedDict",
+        "datetime.datetime",
+        "datetime.timezone",
+        "datetime.timedelta"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.pickle",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

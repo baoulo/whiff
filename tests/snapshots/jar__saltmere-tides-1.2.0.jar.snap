@@ -419,13 +419,13 @@ expression: report
       },
       "identification": {
         "format": "class",
-        "name": "Java Class",
+        "name": "Java class",
         "mime": "application/java-vm",
         "family": "bytecode",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "confidence": 0.95,
+        "detected_by": "sniff",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "bytecode.java"
       },
       "system": {
         "kind": "memory",
@@ -447,9 +447,43 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "class": {
+          "version": "61.0",
+          "java_release": "17",
+          "constant_pool_entries": 28,
+          "kind": "class",
+          "class_name": "org.saltmere.Tides",
+          "access": [
+            "public"
+          ],
+          "fields": 0,
+          "methods": 2,
+          "method_names": [
+            "main"
+          ],
+          "code_bytes": 14,
+          "source_file": "Tides.java",
+          "referenced_classes": 4,
+          "referenced_packages": [
+            "java.io",
+            "java.lang"
+          ],
+          "debug": {
+            "source_file": true,
+            "line_numbers": true,
+            "local_variables": false
+          }
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "bytecode.java",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

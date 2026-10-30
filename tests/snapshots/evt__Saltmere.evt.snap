@@ -1,0 +1,117 @@
+---
+source: src/formats/forensic/evtx.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere.evt",
+    "stem": "Saltmere",
+    "extension": "evt"
+  },
+  "identification": {
+    "format": "evt",
+    "name": "Windows event log (EVT)",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.evtx"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 232
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 232,
+    "entropy": 2.506,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "676e8dd68a5d4ea17da5b18e9de372e839db382cad9733a7164c77be3632b665",
+    "blake3": "8c78b8ff52cd788c55e9eb5657f0ba549794e1ed2a29be58190d07b3451f90c5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "evt": {
+      "version": "1.1",
+      "dirty": false,
+      "wrapped": false,
+      "records": 2,
+      "first_event": "2025-09-01T12:00:00Z",
+      "last_event": "2025-09-01T12:10:00Z",
+      "sources": {
+        "Saltmere": 2
+      },
+      "event_ids": {
+        "100": 1,
+        "101": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.evtx",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

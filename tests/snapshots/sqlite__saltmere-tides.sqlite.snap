@@ -1,0 +1,311 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.sqlite",
+    "stem": "saltmere-tides",
+    "extension": "sqlite"
+  },
+  "identification": {
+    "format": "sqlite",
+    "name": "SQLite database",
+    "mime": "application/vnd.sqlite3",
+    "family": "db",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 164864
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 164864,
+    "entropy": 7.135,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a0cf171387378b16589bbc796fd82b891d6eb72a1fba5557cff85d448f85fd42",
+    "blake3": "c6216aa18bbc417a87494f4f78dcdb92388acd60d31d942e230200c03988bb1f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sqlite": {
+      "sqlite_version": "3.46.1",
+      "page_size": 1024,
+      "page_count": 161,
+      "encoding": "utf-8",
+      "journal_mode": "rollback",
+      "schema_format": 4,
+      "user_version": 7,
+      "application_id": "0x534c7254",
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 10,
+        "indexes": 1,
+        "views": 1,
+        "triggers": 1
+      },
+      "total_rows": 530,
+      "tables": [
+        {
+          "name": "stations",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "name",
+              "type": "TEXT",
+              "not_null": true
+            },
+            {
+              "name": "lat",
+              "type": "REAL"
+            },
+            {
+              "name": "lon",
+              "type": "REAL"
+            },
+            {
+              "name": "opened",
+              "type": "DATE"
+            }
+          ],
+          "rows": 4
+        },
+        {
+          "name": "readings",
+          "without_rowid": true,
+          "columns": [
+            {
+              "name": "station",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true,
+              "references": "stations"
+            },
+            {
+              "name": "at",
+              "type": "INTEGER",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "height_m",
+              "type": "REAL"
+            }
+          ],
+          "rows": 400
+        },
+        {
+          "name": "notes",
+          "strict": true,
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "station",
+              "type": "INTEGER"
+            },
+            {
+              "name": "body",
+              "type": "TEXT"
+            },
+            {
+              "name": "photo",
+              "type": "BLOB"
+            }
+          ],
+          "rows": 40
+        },
+        {
+          "name": "sqlite_sequence",
+          "columns": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "seq"
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "notes_fts",
+          "virtual": "fts5"
+        },
+        {
+          "name": "notes_fts_data",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "block",
+              "type": "BLOB"
+            }
+          ],
+          "rows": 3
+        },
+        {
+          "name": "notes_fts_idx",
+          "without_rowid": true,
+          "columns": [
+            {
+              "name": "segid",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "term",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "pgno"
+            }
+          ],
+          "rows": 1
+        },
+        {
+          "name": "notes_fts_content",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "c0"
+            }
+          ],
+          "rows": 40
+        },
+        {
+          "name": "notes_fts_docsize",
+          "columns": [
+            {
+              "name": "id",
+              "type": "INTEGER",
+              "primary_key": true
+            },
+            {
+              "name": "sz",
+              "type": "BLOB"
+            }
+          ],
+          "rows": 40
+        },
+        {
+          "name": "notes_fts_config",
+          "without_rowid": true,
+          "columns": [
+            {
+              "name": "k",
+              "primary_key": true,
+              "not_null": true
+            },
+            {
+              "name": "v"
+            }
+          ],
+          "rows": 1
+        }
+      ],
+      "indexes": [
+        {
+          "name": "readings_at",
+          "table": "readings"
+        }
+      ],
+      "views": [
+        {
+          "name": "latest",
+          "table": "latest"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "notes_touch",
+          "table": "notes"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

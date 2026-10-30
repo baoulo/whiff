@@ -1,0 +1,140 @@
+---
+source: src/formats/apple/strings.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Localizable.xcstrings",
+    "stem": "Localizable",
+    "extension": "xcstrings"
+  },
+  "identification": {
+    "format": "xcstrings",
+    "name": "Xcode string catalog",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xcstrings",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "apple.strings"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 823
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 823,
+    "entropy": 4.165,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 823,
+      "chars": 822,
+      "words": 128,
+      "lines": 25,
+      "max_line_length": 91,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e4ba949415db15d0b93a54e535f85fbd2521c819a32743ec6136d53e27a1c1a6",
+    "blake3": "1f8473dd53e9c24db44c8aa3ae194c29153ec53e1c77abf70447b03f8994df08"
+  },
+  "content": {
+    "excerpt": "Saltmere Harbour High water at %@ SALTMERE"
+  },
+  "metadata": {},
+  "format": {
+    "xcstrings": {
+      "source_language": "en",
+      "catalog_version": "1.0",
+      "keys": 3,
+      "languages": [
+        "de",
+        "en",
+        "fr"
+      ],
+      "states": {
+        "needs_review": 1,
+        "translated": 4
+      },
+      "not_translated": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.strings",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

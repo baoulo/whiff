@@ -1,0 +1,118 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.p7m",
+    "stem": "tides",
+    "extension": "p7m"
+  },
+  "identification": {
+    "format": "pkcs7",
+    "name": "PKCS#7 / CMS",
+    "mime": "application/pkcs7-mime",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 372
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 372,
+    "entropy": 6.864,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7627cb9dd5556bbebff0da5b608ce14a3863bb33e5e4ea947566eca3690f6c18",
+    "blake3": "0d70b7c3069078a7720232abc20b51d981fd06e989db4bcd8428863fb3c1f545"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pkcs7": {
+      "encoding": "der",
+      "objects": 1,
+      "object_types": {
+        "cms": 1
+      },
+      "cms": [
+        {
+          "content_type": "enveloped_data",
+          "recipients": 1,
+          "content_encryption": "aes256_cbc"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

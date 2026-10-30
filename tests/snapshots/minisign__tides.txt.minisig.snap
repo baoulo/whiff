@@ -1,0 +1,123 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.txt.minisig",
+    "stem": "tides.txt",
+    "extension": "minisig"
+  },
+  "identification": {
+    "format": "minisign",
+    "name": "minisign / signify key or signature",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 281
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 281,
+    "entropy": 5.803,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 281,
+      "chars": 281,
+      "words": 14,
+      "lines": 4,
+      "max_line_length": 100,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "baefd7c9e8fdaa0dd70ff266f125135f3c0d1ddde61aa5c33fe8cdcfed4ceec6",
+    "blake3": "19547b5367570d6a4b2771859b093f5a34f167caf41f26f483953ea078625a61"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "minisign": {
+      "tool": "minisign",
+      "untrusted_comment": "signature from minisign secret key",
+      "algorithm": "ed25519_prehashed",
+      "kind": "signature",
+      "key_id": "6990A878AD4AD23D",
+      "trusted_comment": "Saltmere tide table"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

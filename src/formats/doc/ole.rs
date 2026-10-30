@@ -119,6 +119,9 @@ fn kind_of(names: &[String]) -> Option<&'static str> {
         "hwp"
     } else if has("PROJECT") && has("VBA") {
         "vba_project"
+    } else if has("DestList") {
+        // A Windows jump list (`forensics` feature).
+        "jump_list"
     } else if has("Catalog") {
         "thumbs_db"
     } else if names.iter().any(|n| n.trim() == "114" || n.starts_with("   1")) {

@@ -892,14 +892,14 @@ expression: report
         "extension": "rsa"
       },
       "identification": {
-        "format": "der",
-        "name": "DER Certificate",
-        "mime": "application/x-x509-ca-cert",
-        "family": "data.binser",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "format": "pkcs7",
+        "name": "PKCS#7 / CMS",
+        "mime": "application/pkcs7-mime",
+        "family": "crypto",
+        "confidence": 0.85,
+        "detected_by": "sniff",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "crypto.pki"
       },
       "system": {
         "kind": "memory",
@@ -908,7 +908,9 @@ expression: report
       "temporal": {
         "filesystem": {}
       },
-      "security": {},
+      "security": {
+        "signed": true
+      },
       "rights": {},
       "physical": {
         "size_bytes": 1532,
@@ -921,9 +923,75 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "pkcs7": {
+          "encoding": "der",
+          "objects": 2,
+          "object_types": {
+            "cms": 1,
+            "certificate": 1
+          },
+          "certificates": [
+            {
+              "subject": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+              "subject_cn": "Saltmere Harbour",
+              "subject_organization": "Saltmere",
+              "issuer": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+              "serial": "4f33a1a0663d27abff646e7b08fd09abc68ee6cb",
+              "version": 3,
+              "not_before": "2026-10-26T17:35:48Z",
+              "not_after": "2036-10-23T17:35:48Z",
+              "key_algorithm": "rsa",
+              "key_bits": 2048,
+              "signature_algorithm": "sha256_rsa",
+              "self_signed": true,
+              "ca": true,
+              "sha256": "1206eee9696367818f15b8eb67308785ce9ad14501270025aa5917ab14461c47",
+              "sha1": "0435c80b017a3c8eb3de316b06a5fd430990f4f8",
+              "expired": false
+            }
+          ],
+          "cms": [
+            {
+              "content_type": "signed_data",
+              "signed_content_type": "data",
+              "detached": true,
+              "digest": "sha256",
+              "signer": {
+                "subject": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+                "subject_cn": "Saltmere Harbour",
+                "subject_organization": "Saltmere",
+                "issuer": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+                "serial": "4f33a1a0663d27abff646e7b08fd09abc68ee6cb",
+                "version": 3,
+                "not_before": "2026-10-26T17:35:48Z",
+                "not_after": "2036-10-23T17:35:48Z",
+                "key_algorithm": "rsa",
+                "key_bits": 2048,
+                "signature_algorithm": "sha256_rsa",
+                "self_signed": true,
+                "ca": true,
+                "sha256": "1206eee9696367818f15b8eb67308785ce9ad14501270025aa5917ab14461c47",
+                "sha1": "0435c80b017a3c8eb3de316b06a5fd430990f4f8"
+              },
+              "signing_time": "2026-10-26T17:35:48Z",
+              "timestamped": false,
+              "certificates": [
+                "C=GB, O=Saltmere, CN=Saltmere Harbour"
+              ],
+              "signers": 1
+            }
+          ]
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "crypto.pki",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

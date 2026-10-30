@@ -1,0 +1,126 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-signed.gpg",
+    "stem": "tides-signed",
+    "extension": "gpg"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.75,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 185
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 185,
+    "entropy": 6.729,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "bf4de5a8aeec282ea71a55bfa0078a93386a30abb41f70ec4a0b6f9340d01fc5",
+    "blake3": "6defaaf8280f31749aa4d96d253e54f9abc3174e4409b4fc3b2e6fd4d28d7d74"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "kind": "message",
+      "compression": [
+        "zip"
+      ],
+      "literal": {
+        "format": "b",
+        "file_name": "tides.txt",
+        "date": "2025-09-01T12:00:00Z",
+        "size": 45
+      },
+      "one_pass_signatures": 1,
+      "signatures": [
+        {
+          "type": "binary",
+          "key_algorithm": "eddsa",
+          "hash": "sha512",
+          "created": "2025-09-01T12:00:00Z",
+          "issuer": "47A5FF616E719D3824C525BB557D5D66B0191FA0"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

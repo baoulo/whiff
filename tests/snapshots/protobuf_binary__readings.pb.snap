@@ -1,0 +1,126 @@
+---
+source: src/formats/data/binser/protobuf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.pb",
+    "stem": "readings",
+    "extension": "pb"
+  },
+  "identification": {
+    "format": "protobuf_binary",
+    "name": "Protocol Buffers binary",
+    "mime": "application/x-protobuf",
+    "family": "data.binser",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "data.protobuf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 55
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 55,
+    "entropy": 4.282,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4e234923aff2448a269a12fdb609d209bfead4bbe17ec4d70b23171d1d6f853a",
+    "blake3": "73e6f89b88282209814e8f950d4462fcfac2106a5010590d30c818ee3cb25dc3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "protobuf_binary": {
+      "encoding": "delimited",
+      "messages": 3,
+      "fields": {
+        "1": {
+          "type": "string",
+          "count": 3
+        },
+        "2": {
+          "type": "varint",
+          "count": 2
+        },
+        "3": {
+          "type": "varint",
+          "count": 3
+        },
+        "4": {
+          "type": "fixed64",
+          "count": 3
+        }
+      },
+      "values": 11,
+      "max_depth": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.protobuf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
