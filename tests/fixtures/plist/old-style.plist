@@ -1,0 +1,7 @@
+// Saltmere Harbour berths, old-style (OpenStep) property list
+{
+    Harbour = "Saltmere Harbour";
+    Berths = (4, 7, 12);
+    HighWater = { Time = "06:12"; Height = "4.25"; };
+    ChartTile = <74696465206368617274>;
+}

@@ -33,6 +33,7 @@ Code that can run: macros, scripts, actions, DDE.
 | `macro_attachment` | medium | Attachment is a macro-enabled Office document |
 | `macros` | medium | VBA or StarBasic macro project |
 | `script` | medium | SVG `<script>` or event handlers |
+| `shell_action` | medium | Workflow or shortcut has an action that runs a shell script or other code |
 
 ## Phishing (`phishing`)
 
@@ -78,6 +79,7 @@ Constructs tied to known exploitation techniques.
 | `overlapping_entries` | high | ZIP entries share their compressed data (an overlapping-entry zip bomb) |
 | `path_traversal` | high | Archive entry whose path climbs out of the folder it is unpacked into (`../`) |
 | `symlink_escape` | high | Archive symbolic link that points outside the archive (absolute or `../`) |
+| `unsafe_deserialization` | high | Serialized data names code to run when it is loaded (pickle globals such as `os.system`, Java or PHP gadget classes) |
 | `absolute_path` | medium | Archive entry with an absolute path, which an unpacker may write anywhere |
 | `xml_entities` | low | DOCTYPE declares internal entities (entity expansion) |
 
@@ -113,6 +115,7 @@ Installs, fetches or trusts code from elsewhere.
 | `broad_extension_permissions` | medium | Browser extension asks for all sites, native messaging or similar |
 | `custom_package_index` | medium | Packages are installed from a non-default index |
 | `install_script` | medium | Package runs scripts when it is installed |
+| `installs_root_certificate` | medium | Configuration profile installs a root certificate the device will trust |
 | `remote_add` | low | Dockerfile `ADD` fetches a URL |
 
 ## Unsafe operations (`unsafe_operation`)

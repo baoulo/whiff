@@ -17,5 +17,6 @@ pub mod codec;
 pub mod der;
 pub mod mp4;
 pub mod oleps;
+pub mod proplist;
 pub mod volume;
 pub mod zip;

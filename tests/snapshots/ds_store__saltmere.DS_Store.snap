@@ -1,0 +1,124 @@
+---
+source: src/formats/apple/ds_store.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.DS_Store",
+    "stem": "saltmere",
+    "extension": "DS_Store"
+  },
+  "identification": {
+    "format": "ds_store",
+    "name": ".DS_Store",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "apple.ds_store"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16388
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16388,
+    "entropy": 0.473,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "847517776998726d147a45c5c78a0637fd2b55d055072ffd951c6af8fba5a996",
+    "blake3": "dd2480f20bd5477ba7c666f3aa0c72836447ce80704778463ddcd667d5d46699"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ds_store": {
+      "records": 11,
+      "entries": 4,
+      "names": [
+        "Charts",
+        "berths.pdf",
+        "harbour-map.png",
+        "tides.csv"
+      ],
+      "record_types": {
+        "Iloc": 4,
+        "bwsp": 1,
+        "icvp": 1,
+        "lg1S": 1,
+        "modD": 2,
+        "vSrn": 1,
+        "vstl": 1
+      },
+      "view_style": "icon",
+      "first_modified": "2025-09-01T12:00:00Z",
+      "last_modified": "2025-09-02T12:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.ds_store",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

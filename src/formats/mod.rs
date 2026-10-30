@@ -19,6 +19,8 @@
 
 // whiff-dev: group modules below this line
 #[cfg(feature = "common")]
+pub(crate) mod apple;
+#[cfg(feature = "common")]
 pub(crate) mod archive;
 #[cfg(feature = "common")]
 pub(crate) mod audio;

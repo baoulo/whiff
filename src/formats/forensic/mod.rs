@@ -20,7 +20,8 @@ pub(crate) mod xpress;
 // Helpers shared with the archive and executable extractors.
 pub(crate) use super::archive::unix_time;
 pub(crate) use super::exec::hex;
-use crate::plugin::{Context, Source};
+use crate::plugin::Source;
+pub(crate) use crate::plugin::user_path;
 
 /// Windows FILETIME (100 ns since 1601) as RFC 3339 UTC; `None` for zero
 /// and implausible values.
@@ -60,35 +61,6 @@ pub(crate) fn utf16z(b: &[u8]) -> String {
 /// Latin-1 / ASCII text up to the first NUL.
 pub(crate) fn asciiz(b: &[u8]) -> String {
     b.iter().take_while(|&&c| c != 0).map(|&c| char::from(c)).collect()
-}
-
-/// A path with the user name of a profile folder (`C:\Users\name\…`,
-/// `/Users/name/…`, `/home/name/…`) hidden when privacy is strict.
-pub(crate) fn user_path(cx: &Context<'_>, path: &str) -> String {
-    let path = crate::plugin::truncate_chars(path, 1000);
-    if !cx.privacy_strict() {
-        return path;
-    }
-    let mut out = String::with_capacity(path.len());
-    let mut rest = path.as_str();
-    for marker in ["\\Users\\", "/Users/", "/home/", "\\Documents and Settings\\"] {
-        if let Some(i) = rest.to_ascii_lowercase().find(&marker.to_ascii_lowercase()) {
-            let end = i + marker.len();
-            out.push_str(&rest[..end]);
-            let tail = &rest[end..];
-            let user_end = tail.find(['\\', '/']).unwrap_or(tail.len());
-            let user = &tail[..user_end];
-            if ["public", "default", "all users", "shared"].contains(&user.to_ascii_lowercase().as_str()) {
-                out.push_str(user);
-            } else if !user.is_empty() {
-                out.push_str("[user]");
-            }
-            rest = &tail[user_end..];
-            break;
-        }
-    }
-    out.push_str(rest);
-    out
 }
 
 /// Sequential reads through a window, for walking record headers over a

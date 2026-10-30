@@ -73,8 +73,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `data.ini` | Data | `common` | sections, keys per section, value types; values that look like secrets are redacted (key name kept) | Config structure without leaking secrets | rust-ini, java-properties, dotenvy (parser only) | crate | S1 | 12 |
 | `data.csv` | Data | `common` | dialect (delimiter, quote, escape, header present), column names, inferred column types, row count, null/empty ratio, distinct estimate, numeric min/max/mean, date ranges, 5 sample rows | Column schema + samples is exactly what an LLM needs to analyse a table | csv (+ impl dialect sniffer) | mixed | S1 | 13 |
 | `data.sql` | Data | `common` | dialect guess, statement counts by kind, tables/views created + columns, inserts per table, referenced tables | Turns a dump/migration into a schema summary | sqlparser | crate | S1 | 4 |
-| `data.binser` | Data | `common` | top-level type, inferred schema (as JSON), embedded schema where the format has one (Avro), record count, protobuf wire-format field numbers/types when no schema | Makes opaque binary serialisations inspectable | rmp-serde, ciborium, bson, plist, lava_torrent (bencode), apache-avro; protobuf wire walker = impl | mixed | S6 | 32 |
-| `code.source` | Code | `common` | language (extension + shebang + modeline + content heuristics), LOC code/comment/blank, imports/includes, top-level symbols (functions, types, classes), doc comment of module, SPDX/licence header, TODO/FIXME counts, test file?, generated file?, minified? | Imports + symbols = a cheap 'map' of the codebase for an LLM | tokei (LOC), syn (Rust), oxc_parser (JS/TS), impl regex symbol scanners for the rest (tree-sitter is C) | mixed | S1/S6 | 117 |
+| `data.binser` | Data | `common` | top-level type, inferred schema (as JSON), embedded schema where the format has one (Avro), record count, protobuf wire-format field numbers/types when no schema | Makes opaque binary serialisations inspectable | plist (XML / binary / ASCII plists); impl MessagePack, CBOR, BSON, UBJSON, Smile, Ion (binary and text), bencode with torrent facts, PHP serialize, NBT, pickle opcode walker, Java serialization stream walker, Avro container headers, protobuf wire walker, ASN.1 element tree, FlatBuffers binary schemas, Android binary XML and resources.arsc, Godot resources, Unity YAML, RON, KDL, HOCON, EDN, S-expressions, protobuf text format | mixed | S6 | 28 |
+| `code.source` | Code | `common` | language (extension + shebang + modeline + content heuristics), LOC code/comment/blank, imports/includes, top-level symbols (functions, types, classes), doc comment of module, SPDX/licence header, TODO/FIXME counts, test file?, generated file?, minified? | Imports + symbols = a cheap 'map' of the codebase for an LLM | tokei (LOC), syn (Rust), oxc_parser (JS/TS), impl regex symbol scanners for the rest (tree-sitter is C) | mixed | S1/S6 | 121 |
 | `code.manifest` | Code | `common` | ecosystem, package name, version, description, licence, authors, repository, dependencies (+dev) with versions & counts, scripts/entry points, lockfile: resolved package count | Dependency + licence picture of a project | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | impl | S1 | 33 |
 | `code.notebook` | Code | `common` | kernel + language, nbformat, cell counts by type, markdown headings outline, imports, output types, error outputs, executed?, execution order | Outline + imports + errors summarise an analysis notebook | serde_json | impl | S1 | 4 |
 | `code.infra` | Code | `common` | per dialect: base images/stages/ports/entrypoint (Dockerfile), targets (Makefile), providers/resources/modules (Terraform/HCL), server blocks (nginx), unit/exec (systemd), schedules (crontab) | What does this infra file deploy/run | hcl-rs + impl line scanners | mixed | S8 | 9 |
@@ -120,18 +120,18 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | `cad` | CAD | `cad` | STEP/IFC P21 HEADER: FILE_DESCRIPTION, FILE_NAME (name, time_stamp, author, organization, preprocessor, originating_system, authorization), FILE_SCHEMA (AP203/214/242, IFC2X3/IFC4/IFC4X3), entity-type histogram, IFC project/site/building/storey names; DXF: $ACADVER, $INSUNITS, $EXTMIN/$EXTMAX, layers, blocks, entity histogram, text strings; DWG: version (AC10xx) + summary info; IGES: global section (sender, author, org, units, dates); Gerber/Excellon: layer function, apertures, units | Engineering provenance (who/what tool/when) and model contents | dxf; impl ISO-10303-21 lexer (shared STEP/IFC), IGES, DWG header, Gerber; monstertruck-io (feature-gated B-rep) | mixed | S7 | 17 |
 | `font` | Font | `common` | family, subfamily, full name, PostScript name, version, designer, manufacturer, vendor id, copyright, licence + licence URL, embedding permissions (OS/2 fsType -&gt; rights), glyph count, units per em, weight/width/italic/monospace, variable axes + named instances, unicode coverage -&gt; scripts, colour tables (COLR/CPAL/SVG/sbix/CBDT), OpenType feature tags, collection member count | Font identity and licensing (Security & Rights) | read-fonts / skrifa, allsorts (WOFF/WOFF2 decode); impl Type1/PFB, BDF/PCF headers | crate | S7 | 10 |
 | `web.misc` | Web | `common` | per format: SWF (version, compressed, stage size, fps, frames, AS3); WARC (record count, types, target URIs, dates); torrent (name, files, total size, piece length, trackers, created by/date, private, infohash); shortcuts (.url/.webloc/.desktop target, icon); web manifest (name, start_url, icons); robots.txt / sitemap (rules, URL counts) | Where it points / what it packages | swf, lava_torrent, plist, serde_json; impl WARC, .url/.desktop | mixed | S8 | 16 |
-| `apple` | Platform | `common` | plist: format (XML/binary), top-level keys, CFBundleIdentifier/Version/ExecutableName, minimum OS; .mobileprovision: team, app id, expiry, entitlements, device count; .DS_Store: file names listed; .strings: key count; Info.plist inside bundles | Apple platform artifact identity | plist, cms; impl DS_Store | mixed | S6 | 11 |
+| `apple` | Platform | `common` | plist: format (XML/binary), top-level keys, CFBundleIdentifier/Version/ExecutableName, minimum OS; .mobileprovision: team, app id, expiry, entitlements, device count; .DS_Store: file names listed; .strings: key count; Info.plist inside bundles | Apple platform artifact identity | plist (XML / binary / ASCII); impl Info.plist, launchd, keyed archives, configuration and provisioning profiles (CMS via the shared DER reader), Shortcuts / Automator, iOS backup plists, .strings / .stringsdict / .xcstrings, DS_Store, bookmarks and aliases, AppleDouble / AppleSingle, BOM / CAR asset catalogs, Xcode projects and workspaces | mixed | S6 | 11 |
 | `game` | Game | `games` | engine/format version, title/internal name, asset/lump/entry counts, ROM header (mapper, region, PRG/CHR sizes, game code, checksum), level/map names, NBT root tags | Identifies game assets and ROMs | impl headers (all simple); nbt via impl | impl | S8 | 17 |
 | `binary.unknown` | Fallback | `common` | entropy (global + per-block profile), byte histogram class (text/binary/compressed/encrypted?), printable strings (top N, `strings`-like), embedded signature scan with offsets (binwalk-like), candidate format guesses with confidence | Something useful for any file, even unknown ones | aho-corasick + impl | impl | S1 | 8 |
 
 ## 4. Coverage summary
 
 * **1004 formats** in total: tier 1 = 139, tier 2 = 120, tier 3 = 745.
-* Formats with an extractor in this build: **426** of 1004.
+* Formats with an extractor in this build: **467** of 1004.
 * Formats by family status: crate = 212, mixed = 362, impl = 430.
-* Formats by target stage: S1 = 170, S1/S6 = 97, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 94, S6/S8 = 17, S7 = 135, S8 = 217.
+* Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 135, S8 = 217.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `geo` = 34, `science` = 33, `data` = 19, `games` = 17.
-* By category: Code 163, Data 160, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
+* By category: Code 167, Data 156, Image 95, Media 88, Document 71, Archive 47, Executable 34, Geospatial 34, Scientific 33, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
 ## 5. Format table
 
@@ -247,8 +247,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 106 | Windows Installer | `msi` `msp` `msm` | application/x-msi | 1 | `package` | `common` | `package.msi` | impl | S5 | SummaryInformation + Property table (ProductName, Version, Manufacturer, UpgradeCode) |
 | 107 | macOS disk image | `dmg` | application/x-apple-diskimage | 1 | `package` | `common` | `package.dmg` | impl | S5 | koly trailer, plist, partitions |
 | 108 | ISO 9660 / UDF | `iso` `udf` | application/x-iso9660-image | 1 | `disk` | `forensics` | `disk.iso` | impl | S5 | — |
-| 109 | Apple plist (XML) | `plist` | application/x-plist | 1 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | -&gt; apple |
-| 110 | Apple plist (binary) | `plist` | application/x-bplist | 1 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | -&gt; apple |
+| 109 | Apple plist (XML) | `plist` | application/x-plist | 1 | `data.binser` | `common` | `apple.plist` | plist | S6 | -&gt; apple |
+| 110 | Apple plist (binary) | `plist` | application/x-bplist | 1 | `data.binser` | `common` | `apple.plist` | plist | S6 | -&gt; apple |
 | 111 | Windows PE executable / DLL | `exe` `dll` `sys` `scr` `ocx` `cpl` `efi` | application/vnd.microsoft.portable-executable | 1 | `exec` | `common` | `exec.pe` | impl | S6 | — |
 | 112 | ELF executable / shared object | `elf` `so` `(no` `ext)` `o` `ko` `axf` | application/x-elf | 1 | `exec` | `common` | `exec.elf` | impl | S6 | — |
 | 113 | Mach-O / universal binary | `(no` `ext)` `dylib` `bundle` `o` | application/x-mach-binary | 1 | `exec` | `common` | `exec.macho` | impl | S6 | fat archs, load commands, LC_BUILD_VERSION, codesign |
@@ -301,78 +301,78 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 160 | GitHub Actions workflow | `.github/workflows/*.yml` | — | 2 | `data.yaml` | `common` | — | serde-saphyr | S1 | triggers, jobs, actions used |
 | 161 | Java properties | `properties` | text/x-java-properties | 2 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
 | 162 | dotenv | `env` `.env` | text/plain | 2 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | values redacted |
-| 163 | JSX / TSX | `jsx` `tsx` | text/jsx | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | components exported |
-| 164 | Objective-C / Objective-C++ | `m` `mm` | text/x-objective-c | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | disambiguate from MATLAB |
-| 165 | Scala | `scala` `sc` | text/x-scala | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 166 | R script | `r` `R` | text/x-r | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | library() calls |
-| 167 | Dart | `dart` | application/dart | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 168 | Lua | `lua` | text/x-lua | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 169 | Perl | `pl` `pm` `t` | text/x-perl | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 170 | Visual Basic / VB.NET | `vb` `bas` `cls` `frm` | text/x-vb | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 171 | VBScript | `vbs` `vbe` | text/vbscript | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 172 | Haskell | `hs` `lhs` | text/x-haskell | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 173 | Elixir | `ex` `exs` | text/x-elixir | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 174 | Erlang | `erl` `hrl` | text/x-erlang | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 175 | Clojure | `clj` `cljs` `cljc` `edn` | text/x-clojure | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 176 | F# | `fs` `fsi` `fsx` | text/x-fsharp | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 177 | OCaml | `ml` `mli` | text/x-ocaml | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 178 | Julia | `jl` | text/x-julia | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 179 | MATLAB / Octave script | `m` | text/x-matlab | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 180 | Groovy / Gradle | `groovy` `gradle` `gvy` | text/x-groovy | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 181 | Assembly | `asm` `s` `S` `nasm` | text/x-asm | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 182 | Less / Stylus | `less` `styl` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 183 | Vue single-file component | `vue` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | template/script/style blocks |
-| 184 | Svelte component | `svelte` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 185 | Zig | `zig` | text/x-zig | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 186 | GraphQL | `graphql` `gql` | application/graphql | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | types, queries |
-| 187 | CUDA | `cu` `cuh` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | kernels |
-| 188 | CMake | `cmake` `CMakeLists.txt` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | project(), targets |
-| 189 | Nix | `nix` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 190 | LaTeX source | `tex` `ltx` `sty` `cls` | application/x-tex | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | -&gt; doc.other |
-| 191 | npm/yarn/pnpm lockfile | `package-lock.json` `yarn.lock` `pnpm-lock.yaml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 192 | Cargo manifest / lock | `Cargo.toml` `Cargo.lock` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 193 | Python pyproject | `pyproject.toml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 194 | pip requirements | `requirements.txt` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 195 | Go modules | `go.mod` `go.sum` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 196 | Encrypted / random-looking blob | `enc` `bin` | — | 2 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | high-entropy classification |
-| 197 | JPEG XL | `jxl` | image/jxl | 2 | `image.raster` | `common` | `image.jxl` | imagesize | S2 | jxl-oxide; container boxes Exif/xml/jumb |
-| 198 | JPEG 2000 | `jp2` `j2k` `jpf` `jpx` `jpm` `mj2` | image/jp2 | 2 | `image.raster` | `common` | `image.jp2` | imagesize | S2 | hayro-jpeg2000; boxes, XMP uuid box |
-| 199 | TGA | `tga` `tpic` | image/x-tga | 2 | `image.raster` | `common` | `image.tga` | imagesize | S2 | — |
-| 200 | PCX | `pcx` | image/vnd.zbrush.pcx | 2 | `image.raster` | `common` | `image.pcx` | imagesize | S2 | — |
-| 201 | Netpbm PBM/PGM/PPM/PAM/PFM | `pbm` `pgm` `ppm` `pnm` `pam` `pfm` | image/x-portable-anymap | 2 | `image.raster` | `common` | `image.pnm` | imagesize | S2 | — |
-| 202 | SVG / SVGZ | `svg` `svgz` | image/svg+xml | 2 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | — |
-| 203 | Windows Metafile / Enhanced Metafile | `wmf` `emf` `emz` `wmz` | image/emf | 2 | `image.vector` | `common` | `image.emf` | quick-xml | S2 | — |
-| 204 | DirectDraw Surface | `dds` | image/vnd-ms.dds | 2 | `image.texture` | `common` | `image.dds` | ddsfile, ktx2 | S2 | — |
-| 205 | OpenEXR | `exr` | image/x-exr | 2 | `image.texture` | `common` | `image.exr` | ddsfile, ktx2 | S2 | — |
-| 206 | Word macro-enabled / template | `docm` `dotx` `dotm` | application/vnd.ms-word.document.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | macros flag |
-| 207 | Excel binary workbook | `xlsb` | application/vnd.ms-excel.sheet.binary.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | calamine |
-| 208 | PowerPoint macro-enabled / template / show | `pptm` `potx` `potm` `ppsx` `ppsm` | application/vnd.ms-powerpoint.presentation.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
-| 209 | OpenDocument Spreadsheet | `ods` `ots` | application/vnd.oasis.opendocument.spreadsheet | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
-| 210 | OpenDocument Presentation | `odp` `otp` | application/vnd.oasis.opendocument.presentation | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
-| 211 | Kindle MOBI / AZW / AZW3 | `mobi` `azw` `azw3` `prc` | application/x-mobipocket-ebook | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | EXTH records |
-| 212 | Comic book archive | `cbz` `cbr` `cb7` `cbt` | application/vnd.comicbook+zip | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | page count, ComicInfo.xml |
-| 213 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
-| 214 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
-| 215 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | `subtitle.ass` | impl | S4 | — |
-| 216 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.mp4` | impl | S4 | — |
-| 217 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
-| 218 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
-| 219 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
-| 220 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | `playlist.m3u` | impl | S4 | — |
-| 221 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
-| 222 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | impl | S5 | — |
-| 223 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | `package.rpm` | impl | S5 | — |
-| 224 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | `package.ios` | impl | S5 | Info.plist, provisioning, executable -&gt; exec |
-| 225 | Python sdist / egg | `tar.gz` `egg` | application/gzip | 2 | `package` | `common` | `package.zipped` | impl | S5 | PKG-INFO |
-| 226 | npm package tarball | `tgz` | application/gzip | 2 | `package` | `common` | `package.tarball` | impl | S5 | package/package.json |
-| 227 | macOS installer package | `pkg` `mpkg` | application/vnd.apple.installer+xml | 2 | `package` | `common` | `package.xar` | impl | S5 | xar TOC, Distribution, PackageInfo, signed |
-| 228 | Windows MSIX / APPX | `msix` `appx` `msixbundle` `appxbundle` | application/msix | 2 | `package` | `common` | `package.zipped` | impl | S5 | AppxManifest.xml identity, capabilities |
-| 229 | MessagePack | `msgpack` `mpk` | application/vnd.msgpack | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 230 | CBOR | `cbor` | application/cbor | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 231 | BSON | `bson` | application/bson | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 232 | Protocol Buffers binary | `pb` `bin` `binpb` | application/x-protobuf | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 233 | Protocol Buffers schema | `proto` | text/x-protobuf | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | package, messages, services (impl or protobuf-parse) |
-| 234 | Apache Avro container | `avro` | application/avro | 2 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | writer schema embedded |
+| 163 | Protocol Buffers schema | `proto` | text/x-protobuf | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | package, messages, services (impl or protobuf-parse) |
+| 164 | JSX / TSX | `jsx` `tsx` | text/jsx | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | components exported |
+| 165 | Objective-C / Objective-C++ | `m` `mm` | text/x-objective-c | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | disambiguate from MATLAB |
+| 166 | Scala | `scala` `sc` | text/x-scala | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 167 | R script | `r` `R` | text/x-r | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | library() calls |
+| 168 | Dart | `dart` | application/dart | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 169 | Lua | `lua` | text/x-lua | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 170 | Perl | `pl` `pm` `t` | text/x-perl | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 171 | Visual Basic / VB.NET | `vb` `bas` `cls` `frm` | text/x-vb | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 172 | VBScript | `vbs` `vbe` | text/vbscript | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 173 | Haskell | `hs` `lhs` | text/x-haskell | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 174 | Elixir | `ex` `exs` | text/x-elixir | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 175 | Erlang | `erl` `hrl` | text/x-erlang | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 176 | Clojure | `clj` `cljs` `cljc` `edn` | text/x-clojure | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 177 | F# | `fs` `fsi` `fsx` | text/x-fsharp | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 178 | OCaml | `ml` `mli` | text/x-ocaml | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 179 | Julia | `jl` | text/x-julia | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 180 | MATLAB / Octave script | `m` | text/x-matlab | 2 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 181 | Groovy / Gradle | `groovy` `gradle` `gvy` | text/x-groovy | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 182 | Assembly | `asm` `s` `S` `nasm` | text/x-asm | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 183 | Less / Stylus | `less` `styl` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 184 | Vue single-file component | `vue` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | template/script/style blocks |
+| 185 | Svelte component | `svelte` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 186 | Zig | `zig` | text/x-zig | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 187 | GraphQL | `graphql` `gql` | application/graphql | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | types, queries |
+| 188 | CUDA | `cu` `cuh` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | kernels |
+| 189 | CMake | `cmake` `CMakeLists.txt` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | project(), targets |
+| 190 | Nix | `nix` | — | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 191 | LaTeX source | `tex` `ltx` `sty` `cls` | application/x-tex | 2 | `code.source` | `common` | `code.source` | tokei | S1/S6 | -&gt; doc.other |
+| 192 | npm/yarn/pnpm lockfile | `package-lock.json` `yarn.lock` `pnpm-lock.yaml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 193 | Cargo manifest / lock | `Cargo.toml` `Cargo.lock` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 194 | Python pyproject | `pyproject.toml` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 195 | pip requirements | `requirements.txt` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 196 | Go modules | `go.mod` `go.sum` | — | 2 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 197 | Encrypted / random-looking blob | `enc` `bin` | — | 2 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | high-entropy classification |
+| 198 | JPEG XL | `jxl` | image/jxl | 2 | `image.raster` | `common` | `image.jxl` | imagesize | S2 | jxl-oxide; container boxes Exif/xml/jumb |
+| 199 | JPEG 2000 | `jp2` `j2k` `jpf` `jpx` `jpm` `mj2` | image/jp2 | 2 | `image.raster` | `common` | `image.jp2` | imagesize | S2 | hayro-jpeg2000; boxes, XMP uuid box |
+| 200 | TGA | `tga` `tpic` | image/x-tga | 2 | `image.raster` | `common` | `image.tga` | imagesize | S2 | — |
+| 201 | PCX | `pcx` | image/vnd.zbrush.pcx | 2 | `image.raster` | `common` | `image.pcx` | imagesize | S2 | — |
+| 202 | Netpbm PBM/PGM/PPM/PAM/PFM | `pbm` `pgm` `ppm` `pnm` `pam` `pfm` | image/x-portable-anymap | 2 | `image.raster` | `common` | `image.pnm` | imagesize | S2 | — |
+| 203 | SVG / SVGZ | `svg` `svgz` | image/svg+xml | 2 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | — |
+| 204 | Windows Metafile / Enhanced Metafile | `wmf` `emf` `emz` `wmz` | image/emf | 2 | `image.vector` | `common` | `image.emf` | quick-xml | S2 | — |
+| 205 | DirectDraw Surface | `dds` | image/vnd-ms.dds | 2 | `image.texture` | `common` | `image.dds` | ddsfile, ktx2 | S2 | — |
+| 206 | OpenEXR | `exr` | image/x-exr | 2 | `image.texture` | `common` | `image.exr` | ddsfile, ktx2 | S2 | — |
+| 207 | Word macro-enabled / template | `docm` `dotx` `dotm` | application/vnd.ms-word.document.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | macros flag |
+| 208 | Excel binary workbook | `xlsb` | application/vnd.ms-excel.sheet.binary.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | calamine |
+| 209 | PowerPoint macro-enabled / template / show | `pptm` `potx` `potm` `ppsx` `ppsm` | application/vnd.ms-powerpoint.presentation.macroEnabled.12 | 2 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | — |
+| 210 | OpenDocument Spreadsheet | `ods` `ots` | application/vnd.oasis.opendocument.spreadsheet | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 211 | OpenDocument Presentation | `odp` `otp` | application/vnd.oasis.opendocument.presentation | 2 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 212 | Kindle MOBI / AZW / AZW3 | `mobi` `azw` `azw3` `prc` | application/x-mobipocket-ebook | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | EXTH records |
+| 213 | Comic book archive | `cbz` `cbr` `cb7` `cbt` | application/vnd.comicbook+zip | 2 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | page count, ComicInfo.xml |
+| 214 | BibTeX / BibLaTeX | `bib` | application/x-bibtex | 2 | `doc.other` | `common` | `doc.other` | impl | S3/S8 | — |
+| 215 | WebVTT | `vtt` | text/vtt | 2 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
+| 216 | Advanced SubStation / SSA | `ass` `ssa` | text/x-ssa | 2 | `text.subtitle` | `common` | `subtitle.ass` | impl | S4 | — |
+| 217 | Apple Lossless | `m4a` `caf` | audio/mp4 | 2 | `audio` | `common` | `audio.mp4` | impl | S4 | — |
+| 218 | Core Audio Format | `caf` | audio/x-caf | 2 | `audio` | `common` | `audio.caf` | impl | S4 | — |
+| 219 | WavPack | `wv` `wvc` | audio/wavpack | 2 | `audio` | `common` | `audio.wavpack` | impl | S4 | — |
+| 220 | Monkey's Audio | `ape` | audio/ape | 2 | `audio` | `common` | `audio.monkey` | impl | S4 | — |
+| 221 | M3U / M3U8 (HLS) | `m3u` `m3u8` | application/vnd.apple.mpegurl | 2 | `audio.playlist` | `common` | `playlist.m3u` | impl | S4 | — |
+| 222 | Flash Video | `flv` `f4v` | video/x-flv | 2 | `video` | `common` | `video.flv` | impl | S4 | onMetaData AMF0 (impl) |
+| 223 | tar.bz2 / tar.xz / tar.zst | `tbz2` `txz` `tzst` `tar.bz2` `tar.xz` `tar.zst` | — | 2 | `archive` | `common` | — | impl | S5 | — |
+| 224 | RPM package | `rpm` | application/x-rpm | 2 | `package` | `common` | `package.rpm` | impl | S5 | — |
+| 225 | iOS app archive | `ipa` | application/octet-stream | 2 | `package` | `common` | `package.ios` | impl | S5 | Info.plist, provisioning, executable -&gt; exec |
+| 226 | Python sdist / egg | `tar.gz` `egg` | application/gzip | 2 | `package` | `common` | `package.zipped` | impl | S5 | PKG-INFO |
+| 227 | npm package tarball | `tgz` | application/gzip | 2 | `package` | `common` | `package.tarball` | impl | S5 | package/package.json |
+| 228 | macOS installer package | `pkg` `mpkg` | application/vnd.apple.installer+xml | 2 | `package` | `common` | `package.xar` | impl | S5 | xar TOC, Distribution, PackageInfo, signed |
+| 229 | Windows MSIX / APPX | `msix` `appx` `msixbundle` `appxbundle` | application/msix | 2 | `package` | `common` | `package.zipped` | impl | S5 | AppxManifest.xml identity, capabilities |
+| 230 | MessagePack | `msgpack` `mpk` | application/vnd.msgpack | 2 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 231 | CBOR | `cbor` | application/cbor | 2 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 232 | BSON | `bson` | application/bson | 2 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 233 | Protocol Buffers binary | `pb` `bin` `binpb` | application/x-protobuf | 2 | `data.binser` | `common` | `data.protobuf` | plist | S6 | — |
+| 234 | Apache Avro container | `avro` | application/avro | 2 | `data.binser` | `common` | `data.avro` | plist | S6 | writer schema embedded |
 | 235 | Static library / COFF object | `lib` `a` `obj` `o` | application/x-archive | 2 | `exec` | `common` | `exec.pe` | impl | S6 | members, symbols |
 | 236 | Android DEX | `dex` | application/vnd.android.dex | 2 | `bytecode` | `common` | `bytecode.dex` | impl | S6 | — |
 | 237 | Python bytecode | `pyc` `pyo` | application/x-python-code | 2 | `bytecode` | `common` | `bytecode.python` | impl | S6 | — |
@@ -381,7 +381,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 240 | PKCS#12 / PFX | `p12` `pfx` | application/x-pkcs12 | 2 | `crypto` | `common` | `crypto.pki` | impl | S6 | bag types (MAC/encrypted) |
 | 241 | OpenPGP key / message / signature | `asc` `gpg` `pgp` `sig` `kbx` | application/pgp-keys | 2 | `crypto` | `common` | `crypto.openpgp` | impl | S6 | — |
 | 242 | PCAPNG | `pcapng` | application/x-pcapng | 2 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
-| 243 | macOS app bundle Info.plist | `plist` | — | 2 | `apple` | `common` | — | plist, cms | S6 | — |
+| 243 | macOS app bundle Info.plist | `plist` | — | 2 | `apple` | `common` | `apple.plist` | plist | S6 | — |
 | 244 | Apache Arrow IPC / Feather | `arrow` `feather` `ipc` `arrows` | application/vnd.apache.arrow.file | 2 | `columnar` | `data` | — | parquet + arrow | S7 | — |
 | 245 | NetCDF (3 / 4) | `nc` `nc4` `cdf` | application/x-netcdf | 2 | `sci` | `science` | — | hdf5-reader | S7 | NetCDF4 = HDF5 + CF |
 | 246 | ESRI Shapefile | `shp` `shx` `dbf` `prj` `cpg` | application/vnd.shp | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | sidecar files grouped |
@@ -502,397 +502,397 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 361 | PRQL | `prql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
 | 362 | Cypher / GQL | `cypher` `cql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
 | 363 | Database migration files (Flyway/Liquibase/Alembic) | `sql` `xml` `py` | — | 3 | `data.sql` | `common` | `data.sql` | sqlparser | S1 | version ordering, tables touched |
-| 364 | Astro component | `astro` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 365 | Nim | `nim` `nims` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 366 | Crystal | `cr` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 367 | D | `d` `di` | text/x-d | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 368 | V / Vlang | `v` `vsh` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 369 | Odin | `odin` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 370 | Fortran | `f` `f77` `f90` `f95` `f03` `f08` `for` | text/x-fortran | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 371 | COBOL | `cob` `cbl` `cpy` | text/x-cobol | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 372 | Pascal / Delphi | `pas` `pp` `dpr` `lpr` | text/x-pascal | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 373 | Ada | `adb` `ads` | text/x-ada | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 374 | Common Lisp / Emacs Lisp | `lisp` `lsp` `el` `cl` | text/x-lisp | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 375 | Scheme / Racket | `scm` `ss` `rkt` | text/x-scheme | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 376 | Prolog | `pro` `P` | text/x-prolog | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 377 | Elm | `elm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 378 | PureScript | `purs` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 379 | ReScript / ReasonML | `res` `resi` `re` `rei` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 380 | CoffeeScript | `coffee` `litcoffee` | text/coffeescript | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 381 | Haxe | `hx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 382 | Tcl | `tcl` `tk` | text/x-tcl | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 383 | AWK / sed | `awk` `sed` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 384 | fish shell | `fish` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 385 | Solidity | `sol` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | contract names, pragma version |
-| 386 | Move / Cairo / Vyper | `move` `cairo` `vy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 387 | Verilog / SystemVerilog | `v` `sv` `svh` | text/x-verilog | 3 | `code.source` | `common` | — | tokei | S1/S6 | modules |
-| 388 | VHDL | `vhd` `vhdl` | text/x-vhdl | 3 | `code.source` | `common` | — | tokei | S1/S6 | entities |
-| 389 | OpenCL | `cl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 390 | GLSL shader | `glsl` `vert` `frag` `geom` `comp` `tesc` `tese` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 391 | HLSL shader | `hlsl` `fx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 392 | WGSL shader | `wgsl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 393 | Metal shader | `metal` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 394 | SPIR-V binary | `spv` | — | 3 | `code.source` | `common` | — | tokei | S8 | -&gt; bytecode-like header |
-| 395 | Apex / Salesforce | `cls` `trigger` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 396 | ABAP | `abap` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 397 | Smalltalk | `st` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 398 | Raku | `raku` `rakumod` `p6` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 399 | Hack | `hack` `hh` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 400 | Starlark / Bazel | `bzl` `star` `BUILD` `WORKSPACE` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rules, load() |
-| 401 | Meson / Ninja | `meson.build` `ninja` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 402 | AutoHotkey / AutoIt | `ahk` `au3` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 403 | Jupyter-less IPython script | `ipy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 404 | Gleam / Roc / Unison | `gleam` `roc` `u` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 405 | Mojo | `mojo` `🔥` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 406 | Q# / OpenQASM | `qs` `qasm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 407 | Arduino sketch | `ino` `pde` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 408 | LLVM IR | `ll` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | target triple, functions |
-| 409 | WebAssembly text | `wat` `wast` | text/wasm | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 410 | Regex / grammar files (ANTLR, PEG, Bison/Yacc, Lex) | `g4` `peg` `y` `yy` `l` `lex` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 411 | Puppet / Chef | `pp` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 412 | PL/SQL / T-SQL | `pls` `plsql` `pck` `tsql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 413 | Template: Go/Handlebars/Pug | `tmpl` `gotmpl` `pug` `jade` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 414 | Vim script | `vim` `vimrc` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 415 | Shell rc / profile | `bashrc` `zshrc` `profile` `bash_profile` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | aliases, exports (values redacted) |
-| 416 | Nushell / Elvish | `nu` `elv` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 417 | Rego (OPA) policy | `rego` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | package, rules |
-| 418 | Bicep / ARM templates | `bicep` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | resources |
-| 419 | Jenkinsfile / Earthfile / Tiltfile | `Jenkinsfile` `Earthfile` `Tiltfile` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | stages |
-| 420 | Proof assistants (Lean, Coq, Agda, Idris, Isabelle) | `lean` `v` `agda` `idr` `thy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | theorems/defs count |
-| 421 | Formal specs (TLA+, Alloy) | `tla` `als` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 422 | Ballerina / Pony / Janet / Fennel / Hy | `bal` `pony` `janet` `fnl` `hy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 423 | Forth / APL / J / K / Q | `fth` `4th` `apl` `ijs` `k` `q` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 424 | GDScript (Godot) | `gd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | extends, signals, funcs |
-| 425 | Unity ShaderLab | `shader` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 426 | PLC IEC 61131 Structured Text | `st` `scl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | programs, function blocks |
-| 427 | Max/MSP / Pure Data patches | `maxpat` `pd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | object counts |
-| 428 | YARA rules | `yar` `yara` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule names, tags, meta, strings count |
-| 429 | Snort / Suricata rules | `rules` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule count, actions, protocols, sids, msg list, classtypes |
-| 430 | Smithy / Avro IDL | `smithy` `avdl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | services, shapes |
-| 431 | AppleScript (text) / JXA | `applescript` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 432 | Kotlin Multiplatform / Compose scripts | `main.kts` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 433 | SQL notebooks / dbt models | `sql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | refs, sources (Jinja) |
-| 434 | Pipfile / poetry.lock / uv.lock | `Pipfile` `Pipfile.lock` `poetry.lock` `uv.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 435 | setup.py / setup.cfg | `setup.py` `setup.cfg` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 436 | Gradle build | `build.gradle` `build.gradle.kts` `settings.gradle` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 437 | Ruby Gemfile / lock | `Gemfile` `Gemfile.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 438 | Composer | `composer.json` `composer.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 439 | .NET project | `csproj` `fsproj` `vbproj` `sln` `props` `targets` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | target frameworks, PackageReferences |
-| 440 | NuGet packages.config / Directory.Packages.props | `packages.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 441 | CocoaPods / SwiftPM | `Podfile` `Podfile.lock` `Package.swift` `Package.resolved` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 442 | Dart pubspec | `pubspec.yaml` `pubspec.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 443 | Elixir mix / Hex | `mix.exs` `mix.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 444 | Haskell cabal / stack | `cabal` `stack.yaml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 445 | R DESCRIPTION | `DESCRIPTION` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 446 | Conan / vcpkg | `conanfile.txt` `conanfile.py` `vcpkg.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 447 | Deno config | `deno.json` `deno.jsonc` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 448 | Julia Project.toml / Manifest.toml | `Project.toml` `Manifest.toml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 449 | CITATION.cff | `cff` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | title, authors, DOI |
-| 450 | SBOM (SPDX / CycloneDX) | `spdx` `spdx.json` `cdx.json` `bom.xml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | component count, licences |
-| 451 | Homebrew formula / Brewfile | `rb` `Brewfile` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 452 | Arch PKGBUILD | `PKGBUILD` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | pkgname, pkgver, depends, source URLs |
-| 453 | RPM spec | `spec` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Name, Version, Release, License, Requires |
-| 454 | Debian source control files | `control` `changelog` `copyright` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Source, Maintainer, Build-Depends |
-| 455 | Nix flake | `flake.nix` `flake.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | inputs, outputs |
-| 456 | Bazel MODULE / Terraform lock | `MODULE.bazel` `.terraform.lock.hcl` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 457 | Snapcraft / Flatpak manifests | `snapcraft.yaml` `flatpak.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 458 | opam / CPAN META / rebar.config | `opam` `META.json` `rebar.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 459 | elm.json / gleam.toml / build.zig.zon | `elm.json` `gleam.toml` `build.zig.zon` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 460 | Zeppelin / Databricks notebook | `zpln` `dbc` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 461 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 462 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 463 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | strings + embedded signatures only |
-| 464 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | binwalk-style signature scan |
-| 465 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
-| 466 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
-| 467 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
-| 468 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | -&gt; apple |
-| 469 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
-| 470 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 471 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | — | imagesize | S8 | TIFF-like IFD (impl) |
-| 472 | JPEG-LS / Lossless JPEG | `jls` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 473 | MPO (multi-picture) | `mpo` | image/mpo | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF index, stereo pairs |
-| 474 | Radiance HDR | `hdr` `pic` | image/vnd.radiance | 3 | `image.raster` | `common` | `image.hdr` | imagesize | S2 | — |
-| 475 | SGI / RGB | `sgi` `rgb` `rgba` `bw` | image/sgi | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 476 | Sun Raster / XBM / XPM | `ras` `xbm` `xpm` | image/x-xpixmap | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 477 | WBMP | `wbmp` | image/vnd.wap.wbmp | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 478 | FLIF / BPG | `flif` `bpg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 479 | Apple ICNS | `icns` | image/icns | 3 | `image.raster` | `common` | — | imagesize | S2 | icon sizes |
-| 480 | Windows animated cursor | `ani` | application/x-navi-animation | 3 | `image.raster` | `common` | — | imagesize | S2 | RIFF |
-| 481 | PICT | `pict` `pct` | image/x-pict | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 482 | Amiga IFF ILBM | `iff` `ilbm` `lbm` | image/x-ilbm | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 483 | DCX / multi-page PCX | `dcx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 484 | FITS image | `fits` `fit` `fts` | image/fits | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; sci |
-| 485 | Cineon / DPX film scan | `cin` `dpx` | image/x-dpx | 3 | `image.raster` | `common` | — | imagesize | S8 | film/TV header: timecode, frame, creator |
-| 486 | WebP2 / AVCI / HEJ2 (ISOBMFF variants) | `avci` `hej2` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 487 | Google Ultra HDR / gain-map JPEG | `jpg` | — | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF + XMP hdrgm namespace |
-| 488 | CompuServe RLE / Mac Paint | `rle` `mac` `pntg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 489 | OpenRaster | `ora` | image/openraster | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
-| 490 | Krita / Procreate | `kra` `procreate` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
-| 491 | DjVu single page | `djvu` | image/vnd.djvu | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; doc.other |
-| 492 | Windows Imaging Component (CR in WIC) | `wmp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 493 | BigTIFF | `tif` `tiff` `btf` | image/tiff | 3 | `image.raster` | `common` | `image.tiff` | imagesize | S2 | — |
-| 494 | Kodak Photo CD / FlashPix | `pcd` `fpx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | FPX = OLE property sets |
-| 495 | XISF astronomy image | `xisf` | — | 3 | `image.raster` | `common` | — | imagesize | S8 | XML header: observation keywords |
-| 496 | Thumbnails cache (Windows thumbcache) | `db` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | entry count -&gt; forensic |
-| 497 | Colour LUTs | `cube` `3dl` `lut` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | size, title, domain |
-| 498 | Photoshop assets (actions, brushes, swatches) | `atn` `abr` `aco` `ase` `grd` `pat` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | names list |
-| 499 | Raw editor sidecars | `xmp` `pp3` `dop` `arp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; meta.xmp; develop settings |
-| 500 | Whole-slide images | `svs` `ndpi` `scn` `mrxs` `vms` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | scanner, magnification, levels -&gt; medical |
-| 501 | HEIF image sequence / Live Photo HEIC | `heics` | — | 3 | `image.raster` | `common` | `image.heif` | imagesize | S2 | frame count |
-| 502 | Fujifilm RAF | `raf` | image/x-fuji-raf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 503 | Olympus / OM ORF | `orf` | image/x-olympus-orf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 504 | Panasonic RW2 / RAW | `rw2` `raw` | image/x-panasonic-rw2 | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 505 | Pentax PEF | `pef` | image/x-pentax-pef | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 506 | Samsung SRW | `srw` | image/x-samsung-srw | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 507 | Leica RWL / Hasselblad 3FR/FFF | `rwl` `3fr` `fff` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 508 | Phase One IIQ / Leaf MOS | `iiq` `mos` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 509 | Mamiya MEF / Minolta MRW | `mef` `mrw` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 510 | Sigma X3F | `x3f` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 511 | Kodak DCR/KDC/K25 / Epson ERF | `dcr` `kdc` `k25` `erf` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 512 | GoPro GPR | `gpr` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 513 | Apple ProRAW (DNG) | `dng` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 514 | GIMP XCF | `xcf` | image/x-xcf | 3 | `image.layered` | `common` | `image.xcf` | psd | S2 | — |
-| 515 | Krita | `kra` | application/x-krita | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 516 | OpenRaster | `ora` | image/openraster | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 517 | Procreate | `procreate` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 518 | Affinity Photo/Designer/Publisher | `afphoto` `afdesign` `afpub` | — | 3 | `image.layered` | `common` | — | psd | S8 | header, embedded thumbnail |
-| 519 | Sketch | `sketch` | — | 3 | `image.layered` | `common` | — | psd | S2 | pages, artboards (zip+json) |
-| 520 | Figma export | `fig` | — | 3 | `image.layered` | `common` | — | psd | S8 | header only |
-| 521 | Paint.NET | `pdn` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 522 | Corel Painter / PaintShop Pro | `rif` `pspimage` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 523 | CorelDRAW | `cdr` `cdt` | application/vnd.corel-draw | 3 | `image.vector` | `common` | — | quick-xml | S2 | RIFF chunks, version |
-| 524 | Adobe Illustrator legacy (PS-based) | `ai` | application/postscript | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; doc.other DSC |
-| 525 | Xfig / Graphviz DOT | `fig` `dot` `gv` | text/vnd.graphviz | 3 | `image.vector` | `common` | — | quick-xml | S2 | graph name, node/edge count |
-| 526 | Mermaid / PlantUML | `mmd` `mermaid` `puml` `plantuml` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | diagram type, nodes |
-| 527 | draw.io / diagrams.net | `drawio` `dio` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | pages, labels |
-| 528 | Visio stencil XML | `vdx` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 529 | Inkscape / Sodipodi SVG | `svg` | — | 3 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | inkscape:version, layers |
-| 530 | Lottie / Bodymovin | `json` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; data.json |
-| 531 | Macromedia FreeHand | `fh` `fh11` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 532 | CGM | `cgm` | image/cgm | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 533 | KTX / KTX2 | `ktx` `ktx2` | image/ktx2 | 3 | `image.texture` | `common` | `image.ktx` | ddsfile, ktx2 | S2 | — |
-| 534 | Basis Universal | `basis` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 535 | Valve VTF | `vtf` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 536 | PVR texture | `pvr` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 537 | ASTC | `astc` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 538 | Unreal / Unity textures (raw headers) | `utx` `tex` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 539 | EXIF raw dump | `exif` `exv` | — | 3 | `meta.exif` | `common` | — | kamadak-exif | S2 | exiv2 .exv container |
-| 540 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | — | impl on quick-xml | S8 | — |
-| 541 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | — | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S8 | — |
-| 542 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | — | impl | S8 | — |
-| 543 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
-| 544 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
-| 545 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
-| 546 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
-| 547 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 548 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | Apple Mail plist trailer |
-| 549 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 550 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | — | mail-parser | S8 | attachments (impl) |
-| 551 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
-| 552 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
-| 553 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
-| 554 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | conformance from XMP pdfaid/pdfx/pdfuaid |
-| 555 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | — | impl | S8 | AI private data present, artboards |
-| 556 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | field names/values |
-| 557 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | embedded file list |
-| 558 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | page names, shape text |
-| 559 | Word XML 2003 / Flat OPC | `xml` `fodt` | — | 3 | `doc.ooxml` | `common` | — | impl | S8 | — |
-| 560 | XPS / OpenXPS | `xps` `oxps` | application/oxps | 3 | `doc.ooxml` | `common` | — | impl | S8 | pages, fonts, docProps |
-| 561 | 3D Manufacturing Format (OPC) | `3mf` | model/3mf | 3 | `doc.ooxml` | `common` | — | impl | S8 | -&gt; 3d |
-| 562 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
-| 563 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
-| 564 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
-| 565 | Apple Pages / Numbers / Keynote | `pages` `numbers` `key` | application/vnd.apple.pages | 3 | `doc.odf` | `common` | — | impl | S8 | zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview |
-| 566 | Hancom HWPX | `hwpx` | — | 3 | `doc.odf` | `common` | — | impl | S8 | — |
-| 567 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
-| 568 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
-| 569 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
-| 570 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; email |
-| 571 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | thumbnail count |
-| 572 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
-| 573 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | storage tree |
-| 574 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; cad, summary info |
-| 575 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | impl | S8 | header + prefix packet |
-| 576 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | impl | S8 | — |
-| 577 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | header only; DRM flag |
-| 578 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
-| 579 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
-| 580 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
-| 581 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
-| 582 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 583 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
-| 584 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 585 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | impl | S8 | entry count, titles, DOIs |
-| 586 | Typst | `typ` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 587 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 588 | Microsoft OneNote | `one` `onetoc2` | application/onenote | 3 | `doc.other` | `common` | — | impl | S8 | section/page titles (impl, revision store) |
-| 589 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | — | impl | S8 | note titles, tags, dates |
-| 590 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | — | impl | S8 | nodes, text |
-| 591 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | — | impl | S8 | title page, scene headings |
-| 592 | Lotus 1-2-3 / Quattro | `wk1` `wk3` `wk4` `123` `qpw` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 593 | Apple ClarisWorks / AppleWorks | `cwk` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 594 | PDF-like: Adobe FrameMaker / InDesign | `fm` `mif` `indd` `idml` | — | 3 | `doc.other` | `common` | — | impl | S8 | IDML (zip+xml): stories text |
-| 595 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | — | impl | S8 | -&gt; doc.odf mapping |
-| 596 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 597 | PCL / PJL print job | `pcl` `prn` `pjl` | application/vnd.hp-pcl | 3 | `doc.other` | `common` | — | impl | S8 | PJL JOB NAME, user, page count |
-| 598 | Windows spool files | `spl` `shd` | — | 3 | `doc.other` | `common` | — | impl | S8 | document name, user, printer, submit time |
-| 599 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 600 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 601 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
-| 602 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
-| 603 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
-| 604 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
-| 605 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
-| 606 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | ti/ar/al tags |
-| 607 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | languages, cue count (vobsub) |
-| 608 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | cue count, timings |
-| 609 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | `subtitle.caption` | impl | S4 | — |
-| 610 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
-| 611 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S4 | — |
-| 612 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S4 | — |
-| 613 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
-| 614 | AC-3 / E-AC-3 / DTS / TrueHD raw | `ac3` `ec3` `eac3` `dts` `thd` `mlp` | audio/ac3 | 3 | `audio` | `common` | — | impl | S8 | sync frame header: channels, rate, bitrate |
-| 615 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | — |
-| 616 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
-| 617 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | `audio.dsd` | impl | S4 | — |
-| 618 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
-| 619 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
-| 620 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | impl | S8 | — |
-| 621 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
-| 622 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S4 | bext originator, time reference |
-| 623 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S4 | -&gt; video |
-| 624 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | impl | S8 | — |
-| 625 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
-| 626 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
-| 627 | SoundFont / DLS | `sf2` `sf3` `dls` | audio/x-soundfont | 3 | `audio` | `common` | — | impl | S8 | bank name, presets, samples |
-| 628 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | — | impl | S8 | — |
-| 629 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
-| 630 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | — | impl | S8 | — |
-| 631 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo |
-| 632 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | chapters with titles + URLs |
-| 633 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
-| 634 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
-| 635 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | `score.tracker` | impl | S4 | — |
-| 636 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
-| 637 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
-| 638 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | periods, adaptation sets, codecs |
-| 639 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | — |
-| 640 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S4 | — |
-| 641 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S4 | — |
-| 642 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | impl | S8 | — |
-| 643 | MXF broadcast | `mxf` | application/mxf | 3 | `video` | `common` | — | impl | S8 | partition pack, operational pattern, essence descriptors (impl KLV) |
-| 644 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | codec profile from sample entry |
-| 645 | H.264 / H.265 / AV1 / VVC / MPEG video elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` `m1v` `m2v` | video/h264 | 3 | `video` | `common` | `video.elementary` | impl | S4 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
-| 646 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | `video.mpegts` | impl | S4 | — |
-| 647 | Blackmagic RAW / RED R3D / ARRIRAW | `braw` `r3d` `ari` | — | 3 | `video` | `common` | — | impl | S8 | camera, lens, timecode (header) |
-| 648 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | `video.avi` | impl | S4 | -&gt; AVI |
-| 649 | Nullsoft NSV / Bink / Smacker | `nsv` `bik` `smk` | — | 3 | `video` | `common` | — | impl | S8 | — |
-| 650 | AMV / MTV / FLIC | `amv` `mtv` `flc` `fli` | — | 3 | `video` | `common` | — | impl | S8 | — |
-| 651 | Video project: Premiere / Final Cut / DaVinci / Kdenlive | `prproj` `fcpxml` `drp` `kdenlive` `mlt` | — | 3 | `video` | `common` | — | impl | S8 | clips, timeline length (gzip-xml/xml) |
-| 652 | EDL / AAF / OTIO edit lists | `edl` `aaf` `otio` | — | 3 | `video` | `common` | — | impl | S8 | events, reel names, timecodes |
-| 653 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | paired-asset XMP (GCamera/Container) |
-| 654 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | sv3d/st3d boxes, Spherical XMP |
-| 655 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
-| 656 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | impl | S8 | -&gt; MP4 |
-| 657 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | impl | S8 | width, height, duration, command |
-| 658 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S4 | -&gt; video |
-| 659 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S4 | program title, channel, air date |
-| 660 | 360 camera native (INSV / OSV) | `insv` `osv` | — | 3 | `video` | `common` | — | impl | S8 | camera, GPS |
-| 661 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S4 | WxH, fps, colourspace (Y4M header) |
-| 662 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | track ids, fragments |
-| 663 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | caption presence + language |
-| 664 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
-| 665 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
-| 666 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S5 | newc/odc/bin |
-| 667 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S5 | -&gt; also static libraries (exec members) |
-| 668 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
-| 669 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | impl | S8 | header only |
-| 670 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | impl | S8 | images + XML metadata |
-| 671 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | `package.xar` | impl | S5 | TOC XML |
-| 672 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | impl | S8 | volume detection |
-| 673 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 674 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
-| 675 | Squashfs | `squashfs` `sqsh` `sfs` | application/vnd.squashfs | 3 | `archive` | `common` | `archive.squashfs` | impl | S5 | -&gt; disk |
-| 676 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
-| 677 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 678 | Bundle formats: .app/.framework zipped | `ipa` | — | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
-| 679 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | embedded zip/rar/7z offset, then archive listing |
-| 680 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | installer type, product name, version, files (NSIS/Inno headers) |
-| 681 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | — | impl | S8 | __main__, PEX-INFO |
-| 682 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | — | impl | S8 | module-info |
-| 683 | Android OBB | `obb` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 684 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 685 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 686 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | — | impl | S8 | finder info, resource fork types, xattrs |
-| 687 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | impl | S8 | decoded filename, recurse |
-| 688 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | impl | S8 | repo version, encryption |
-| 689 | Android backup | `ab` | — | 3 | `archive` | `common` | — | impl | S8 | version, compressed, encrypted |
-| 690 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S5 | -&gt; package |
-| 691 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
-| 692 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S5 | — |
-| 693 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
-| 694 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
-| 695 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
-| 696 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
-| 697 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
-| 698 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | `compress.gzip` | miniz_oxide | S5 | — |
-| 699 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
-| 700 | NuGet package | `nupkg` `snupkg` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | .nuspec |
-| 701 | Ruby gem | `gem` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | metadata.gz (YAML) |
-| 702 | Rust crate | `crate` | application/gzip | 3 | `package` | `common` | `package.tarball` | impl | S5 | Cargo.toml inside |
-| 703 | Snap / Flatpak / AppImage | `snap` `flatpak` `flatpakref` `AppImage` | — | 3 | `package` | `common` | `package.linux` | impl | S5 | snap.yaml, flatpak metadata, ELF + squashfs desktop file |
-| 704 | Arch / Alpine packages | `pkg.tar.zst` `apk` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | .PKGINFO |
-| 705 | Conda package | `conda` `tar.bz2` | application/zip | 3 | `package` | `common` | `package.tarball` | impl | S5 | info/index.json |
-| 706 | Chrome / Firefox extension | `crx` `xpi` | application/x-chrome-extension | 3 | `package` | `common` | `package.zipped` | impl | S5 | manifest.json permissions |
-| 707 | VS Code extension / JetBrains plugin | `vsix` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | package.json / plugin.xml |
-| 708 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | Chart.yaml |
-| 709 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | manifest.json, config: layers, env, entrypoint, labels |
-| 710 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | impl | S8 | — |
-| 711 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | — | impl | S8 | — |
-| 712 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
-| 713 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | — | impl | S8 | — |
-| 714 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | impl | S8 | asset paths |
-| 715 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | — | impl | S8 | -&gt; doc.ole |
-| 716 | Electron asar | `asar` | — | 3 | `package` | `common` | `package.asar` | impl | S5 | header JSON file list |
-| 717 | Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW) | `dmg` | — | 3 | `package` | `common` | `package.dmg` | impl | S5 | compression type, partition names |
-| 718 | Raw disk image | `img` `raw` `dd` `bin` | application/octet-stream | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | MBR/GPT |
-| 719 | VirtualBox VDI | `vdi` | application/x-virtualbox-vdi | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
-| 720 | VMware VMDK | `vmdk` | application/x-vmdk | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | descriptor, extents |
-| 721 | Hyper-V VHD / VHDX | `vhd` `vhdx` | application/x-vhd | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
-| 722 | QEMU QCOW2 / QED | `qcow` `qcow2` `qed` | application/x-qemu-disk | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
-| 723 | Apple sparsebundle / sparseimage | `sparseimage` `sparsebundle` | — | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
-| 724 | Expert Witness (E01) / AFF | `e01` `ex01` `aff` | — | 3 | `disk` | `forensics` | `disk.ewf` | impl | S5 | case metadata, acquisition hashes |
-| 725 | CD images BIN/CUE, NRG, MDF, CCD | `bin` `nrg` `mdf` `mds` `ccd` | — | 3 | `disk` | `forensics` | `disk.cd` | impl | S5 | tracks |
-| 726 | Floppy images | `ima` `dsk` `adf` `d64` `st` | — | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | filesystem label |
-| 727 | Filesystem images ext/FAT/NTFS/APFS/HFS+ | `ext4` `fat` `hfs` `apfs` | — | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | superblock |
-| 728 | Android sparse / boot image | `simg` `boot.img` | — | 3 | `disk` | `forensics` | `disk.android` | impl | S5 | kernel cmdline, os version |
-| 729 | Firmware images (UEFI capsule, U-Boot uImage, FIT, Intel HEX, S-record) | `cap` `uimg` `itb` `hex` `srec` `s19` | — | 3 | `disk` | `forensics` | `disk.firmware` | impl | S5 | header fields |
-| 730 | OVA / OVF virtual appliance | `ova` `ovf` | — | 3 | `disk` | `forensics` | `disk.ovf` | impl | S5 | product, vendor, disks |
-| 731 | Protobuf text format | `textproto` `pbtxt` `txtpb` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 732 | Avro schema | `avsc` | application/json | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 733 | Apache Thrift schema | `thrift` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 734 | Cap'n Proto schema | `capnp` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 735 | FlatBuffers schema / binary | `fbs` `bfbs` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 736 | Bencode | `bencode` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 737 | Python pickle | `pkl` `pickle` | application/x-python-pickle | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | opcode walk only (never unpickle!), referenced globals (risk) |
-| 738 | Java serialized object | `ser` | application/x-java-serialized-object | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | class names (gadget risk flag) |
-| 739 | PHP serialized | `phpser` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 740 | Ion (Amazon) | `ion` | application/ion | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 741 | Smile / UBJSON | `sml` `ubj` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 742 | RON | `ron` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 743 | KDL | `kdl` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 744 | HOCON | `conf` `hocon` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 745 | Dhall / Jsonnet / CUE | `dhall` `jsonnet` `libsonnet` `cue` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 746 | EDN | `edn` | application/edn | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 747 | S-expressions data | `sexp` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 748 | ASN.1 BER/DER blob | `der` `ber` | application/octet-stream | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | tag tree (asn1-rs) |
-| 749 | XDR | `xdr` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 750 | NBT (Minecraft) | `nbt` `dat` | application/x-minecraft-nbt | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 751 | Godot resource | `tres` `res` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | — |
-| 752 | Unity YAML asset | `unity` `prefab` `asset` `meta` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | GUIDs, component types |
-| 753 | Java .properties-like binary: Android resources.arsc | `arsc` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | packages, string pool size |
-| 754 | Android binary XML | `xml` `(binary)` | — | 3 | `data.binser` | `common` | — | rmp-serde, ciborium | S6 | decoded via axmldecoder -&gt; text.xml |
+| 364 | Apache Thrift schema | `thrift` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 365 | Cap'n Proto schema | `capnp` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 366 | Dhall / Jsonnet / CUE | `dhall` `jsonnet` `libsonnet` `cue` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 367 | Astro component | `astro` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 368 | Nim | `nim` `nims` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 369 | Crystal | `cr` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 370 | D | `d` `di` | text/x-d | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 371 | V / Vlang | `v` `vsh` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 372 | Odin | `odin` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 373 | Fortran | `f` `f77` `f90` `f95` `f03` `f08` `for` | text/x-fortran | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 374 | COBOL | `cob` `cbl` `cpy` | text/x-cobol | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 375 | Pascal / Delphi | `pas` `pp` `dpr` `lpr` | text/x-pascal | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 376 | Ada | `adb` `ads` | text/x-ada | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 377 | Common Lisp / Emacs Lisp | `lisp` `lsp` `el` `cl` | text/x-lisp | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 378 | Scheme / Racket | `scm` `ss` `rkt` | text/x-scheme | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 379 | Prolog | `pro` `P` | text/x-prolog | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 380 | Elm | `elm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 381 | PureScript | `purs` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 382 | ReScript / ReasonML | `res` `resi` `re` `rei` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 383 | CoffeeScript | `coffee` `litcoffee` | text/coffeescript | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 384 | Haxe | `hx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 385 | Tcl | `tcl` `tk` | text/x-tcl | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 386 | AWK / sed | `awk` `sed` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 387 | fish shell | `fish` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 388 | Solidity | `sol` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | contract names, pragma version |
+| 389 | Move / Cairo / Vyper | `move` `cairo` `vy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 390 | Verilog / SystemVerilog | `v` `sv` `svh` | text/x-verilog | 3 | `code.source` | `common` | — | tokei | S1/S6 | modules |
+| 391 | VHDL | `vhd` `vhdl` | text/x-vhdl | 3 | `code.source` | `common` | — | tokei | S1/S6 | entities |
+| 392 | OpenCL | `cl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 393 | GLSL shader | `glsl` `vert` `frag` `geom` `comp` `tesc` `tese` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 394 | HLSL shader | `hlsl` `fx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 395 | WGSL shader | `wgsl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 396 | Metal shader | `metal` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 397 | SPIR-V binary | `spv` | — | 3 | `code.source` | `common` | — | tokei | S8 | -&gt; bytecode-like header |
+| 398 | Apex / Salesforce | `cls` `trigger` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 399 | ABAP | `abap` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 400 | Smalltalk | `st` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 401 | Raku | `raku` `rakumod` `p6` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 402 | Hack | `hack` `hh` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 403 | Starlark / Bazel | `bzl` `star` `BUILD` `WORKSPACE` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rules, load() |
+| 404 | Meson / Ninja | `meson.build` `ninja` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 405 | AutoHotkey / AutoIt | `ahk` `au3` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 406 | Jupyter-less IPython script | `ipy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 407 | Gleam / Roc / Unison | `gleam` `roc` `u` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 408 | Mojo | `mojo` `🔥` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 409 | Q# / OpenQASM | `qs` `qasm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 410 | Arduino sketch | `ino` `pde` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 411 | LLVM IR | `ll` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | target triple, functions |
+| 412 | WebAssembly text | `wat` `wast` | text/wasm | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 413 | Regex / grammar files (ANTLR, PEG, Bison/Yacc, Lex) | `g4` `peg` `y` `yy` `l` `lex` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 414 | Puppet / Chef | `pp` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 415 | PL/SQL / T-SQL | `pls` `plsql` `pck` `tsql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 416 | Template: Go/Handlebars/Pug | `tmpl` `gotmpl` `pug` `jade` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 417 | Vim script | `vim` `vimrc` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 418 | Shell rc / profile | `bashrc` `zshrc` `profile` `bash_profile` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | aliases, exports (values redacted) |
+| 419 | Nushell / Elvish | `nu` `elv` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 420 | Rego (OPA) policy | `rego` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | package, rules |
+| 421 | Bicep / ARM templates | `bicep` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | resources |
+| 422 | Jenkinsfile / Earthfile / Tiltfile | `Jenkinsfile` `Earthfile` `Tiltfile` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | stages |
+| 423 | Proof assistants (Lean, Coq, Agda, Idris, Isabelle) | `lean` `v` `agda` `idr` `thy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | theorems/defs count |
+| 424 | Formal specs (TLA+, Alloy) | `tla` `als` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 425 | Ballerina / Pony / Janet / Fennel / Hy | `bal` `pony` `janet` `fnl` `hy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 426 | Forth / APL / J / K / Q | `fth` `4th` `apl` `ijs` `k` `q` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 427 | GDScript (Godot) | `gd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | extends, signals, funcs |
+| 428 | Unity ShaderLab | `shader` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 429 | PLC IEC 61131 Structured Text | `st` `scl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | programs, function blocks |
+| 430 | Max/MSP / Pure Data patches | `maxpat` `pd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | object counts |
+| 431 | YARA rules | `yar` `yara` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule names, tags, meta, strings count |
+| 432 | Snort / Suricata rules | `rules` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule count, actions, protocols, sids, msg list, classtypes |
+| 433 | Smithy / Avro IDL | `smithy` `avdl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | services, shapes |
+| 434 | AppleScript (text) / JXA | `applescript` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 435 | Kotlin Multiplatform / Compose scripts | `main.kts` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 436 | SQL notebooks / dbt models | `sql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | refs, sources (Jinja) |
+| 437 | Pipfile / poetry.lock / uv.lock | `Pipfile` `Pipfile.lock` `poetry.lock` `uv.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 438 | setup.py / setup.cfg | `setup.py` `setup.cfg` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 439 | Gradle build | `build.gradle` `build.gradle.kts` `settings.gradle` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 440 | Ruby Gemfile / lock | `Gemfile` `Gemfile.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 441 | Composer | `composer.json` `composer.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 442 | .NET project | `csproj` `fsproj` `vbproj` `sln` `props` `targets` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | target frameworks, PackageReferences |
+| 443 | NuGet packages.config / Directory.Packages.props | `packages.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 444 | CocoaPods / SwiftPM | `Podfile` `Podfile.lock` `Package.swift` `Package.resolved` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 445 | Dart pubspec | `pubspec.yaml` `pubspec.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 446 | Elixir mix / Hex | `mix.exs` `mix.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 447 | Haskell cabal / stack | `cabal` `stack.yaml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 448 | R DESCRIPTION | `DESCRIPTION` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 449 | Conan / vcpkg | `conanfile.txt` `conanfile.py` `vcpkg.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 450 | Deno config | `deno.json` `deno.jsonc` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 451 | Julia Project.toml / Manifest.toml | `Project.toml` `Manifest.toml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 452 | CITATION.cff | `cff` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | title, authors, DOI |
+| 453 | SBOM (SPDX / CycloneDX) | `spdx` `spdx.json` `cdx.json` `bom.xml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | component count, licences |
+| 454 | Homebrew formula / Brewfile | `rb` `Brewfile` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 455 | Arch PKGBUILD | `PKGBUILD` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | pkgname, pkgver, depends, source URLs |
+| 456 | RPM spec | `spec` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Name, Version, Release, License, Requires |
+| 457 | Debian source control files | `control` `changelog` `copyright` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Source, Maintainer, Build-Depends |
+| 458 | Nix flake | `flake.nix` `flake.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | inputs, outputs |
+| 459 | Bazel MODULE / Terraform lock | `MODULE.bazel` `.terraform.lock.hcl` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 460 | Snapcraft / Flatpak manifests | `snapcraft.yaml` `flatpak.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 461 | opam / CPAN META / rebar.config | `opam` `META.json` `rebar.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 462 | elm.json / gleam.toml / build.zig.zon | `elm.json` `gleam.toml` `build.zig.zon` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 463 | Zeppelin / Databricks notebook | `zpln` `dbc` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
+| 464 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
+| 465 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
+| 466 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | strings + embedded signatures only |
+| 467 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | binwalk-style signature scan |
+| 468 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
+| 469 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
+| 470 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
+| 471 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | -&gt; apple |
+| 472 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
+| 473 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 474 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | — | imagesize | S8 | TIFF-like IFD (impl) |
+| 475 | JPEG-LS / Lossless JPEG | `jls` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 476 | MPO (multi-picture) | `mpo` | image/mpo | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF index, stereo pairs |
+| 477 | Radiance HDR | `hdr` `pic` | image/vnd.radiance | 3 | `image.raster` | `common` | `image.hdr` | imagesize | S2 | — |
+| 478 | SGI / RGB | `sgi` `rgb` `rgba` `bw` | image/sgi | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 479 | Sun Raster / XBM / XPM | `ras` `xbm` `xpm` | image/x-xpixmap | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 480 | WBMP | `wbmp` | image/vnd.wap.wbmp | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 481 | FLIF / BPG | `flif` `bpg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 482 | Apple ICNS | `icns` | image/icns | 3 | `image.raster` | `common` | — | imagesize | S2 | icon sizes |
+| 483 | Windows animated cursor | `ani` | application/x-navi-animation | 3 | `image.raster` | `common` | — | imagesize | S2 | RIFF |
+| 484 | PICT | `pict` `pct` | image/x-pict | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 485 | Amiga IFF ILBM | `iff` `ilbm` `lbm` | image/x-ilbm | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 486 | DCX / multi-page PCX | `dcx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 487 | FITS image | `fits` `fit` `fts` | image/fits | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; sci |
+| 488 | Cineon / DPX film scan | `cin` `dpx` | image/x-dpx | 3 | `image.raster` | `common` | — | imagesize | S8 | film/TV header: timecode, frame, creator |
+| 489 | WebP2 / AVCI / HEJ2 (ISOBMFF variants) | `avci` `hej2` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 490 | Google Ultra HDR / gain-map JPEG | `jpg` | — | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF + XMP hdrgm namespace |
+| 491 | CompuServe RLE / Mac Paint | `rle` `mac` `pntg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 492 | OpenRaster | `ora` | image/openraster | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
+| 493 | Krita / Procreate | `kra` `procreate` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
+| 494 | DjVu single page | `djvu` | image/vnd.djvu | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; doc.other |
+| 495 | Windows Imaging Component (CR in WIC) | `wmp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 496 | BigTIFF | `tif` `tiff` `btf` | image/tiff | 3 | `image.raster` | `common` | `image.tiff` | imagesize | S2 | — |
+| 497 | Kodak Photo CD / FlashPix | `pcd` `fpx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | FPX = OLE property sets |
+| 498 | XISF astronomy image | `xisf` | — | 3 | `image.raster` | `common` | — | imagesize | S8 | XML header: observation keywords |
+| 499 | Thumbnails cache (Windows thumbcache) | `db` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | entry count -&gt; forensic |
+| 500 | Colour LUTs | `cube` `3dl` `lut` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | size, title, domain |
+| 501 | Photoshop assets (actions, brushes, swatches) | `atn` `abr` `aco` `ase` `grd` `pat` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | names list |
+| 502 | Raw editor sidecars | `xmp` `pp3` `dop` `arp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; meta.xmp; develop settings |
+| 503 | Whole-slide images | `svs` `ndpi` `scn` `mrxs` `vms` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | scanner, magnification, levels -&gt; medical |
+| 504 | HEIF image sequence / Live Photo HEIC | `heics` | — | 3 | `image.raster` | `common` | `image.heif` | imagesize | S2 | frame count |
+| 505 | Fujifilm RAF | `raf` | image/x-fuji-raf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 506 | Olympus / OM ORF | `orf` | image/x-olympus-orf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 507 | Panasonic RW2 / RAW | `rw2` `raw` | image/x-panasonic-rw2 | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 508 | Pentax PEF | `pef` | image/x-pentax-pef | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 509 | Samsung SRW | `srw` | image/x-samsung-srw | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 510 | Leica RWL / Hasselblad 3FR/FFF | `rwl` `3fr` `fff` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 511 | Phase One IIQ / Leaf MOS | `iiq` `mos` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 512 | Mamiya MEF / Minolta MRW | `mef` `mrw` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 513 | Sigma X3F | `x3f` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 514 | Kodak DCR/KDC/K25 / Epson ERF | `dcr` `kdc` `k25` `erf` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 515 | GoPro GPR | `gpr` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 516 | Apple ProRAW (DNG) | `dng` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 517 | GIMP XCF | `xcf` | image/x-xcf | 3 | `image.layered` | `common` | `image.xcf` | psd | S2 | — |
+| 518 | Krita | `kra` | application/x-krita | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 519 | OpenRaster | `ora` | image/openraster | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 520 | Procreate | `procreate` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 521 | Affinity Photo/Designer/Publisher | `afphoto` `afdesign` `afpub` | — | 3 | `image.layered` | `common` | — | psd | S8 | header, embedded thumbnail |
+| 522 | Sketch | `sketch` | — | 3 | `image.layered` | `common` | — | psd | S2 | pages, artboards (zip+json) |
+| 523 | Figma export | `fig` | — | 3 | `image.layered` | `common` | — | psd | S8 | header only |
+| 524 | Paint.NET | `pdn` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 525 | Corel Painter / PaintShop Pro | `rif` `pspimage` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
+| 526 | CorelDRAW | `cdr` `cdt` | application/vnd.corel-draw | 3 | `image.vector` | `common` | — | quick-xml | S2 | RIFF chunks, version |
+| 527 | Adobe Illustrator legacy (PS-based) | `ai` | application/postscript | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; doc.other DSC |
+| 528 | Xfig / Graphviz DOT | `fig` `dot` `gv` | text/vnd.graphviz | 3 | `image.vector` | `common` | — | quick-xml | S2 | graph name, node/edge count |
+| 529 | Mermaid / PlantUML | `mmd` `mermaid` `puml` `plantuml` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | diagram type, nodes |
+| 530 | draw.io / diagrams.net | `drawio` `dio` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | pages, labels |
+| 531 | Visio stencil XML | `vdx` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
+| 532 | Inkscape / Sodipodi SVG | `svg` | — | 3 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | inkscape:version, layers |
+| 533 | Lottie / Bodymovin | `json` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; data.json |
+| 534 | Macromedia FreeHand | `fh` `fh11` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
+| 535 | CGM | `cgm` | image/cgm | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
+| 536 | KTX / KTX2 | `ktx` `ktx2` | image/ktx2 | 3 | `image.texture` | `common` | `image.ktx` | ddsfile, ktx2 | S2 | — |
+| 537 | Basis Universal | `basis` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 538 | Valve VTF | `vtf` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 539 | PVR texture | `pvr` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 540 | ASTC | `astc` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 541 | Unreal / Unity textures (raw headers) | `utx` `tex` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
+| 542 | EXIF raw dump | `exif` `exv` | — | 3 | `meta.exif` | `common` | — | kamadak-exif | S2 | exiv2 .exv container |
+| 543 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | — | impl on quick-xml | S8 | — |
+| 544 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | — | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S8 | — |
+| 545 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | — | impl | S8 | — |
+| 546 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
+| 547 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
+| 548 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
+| 549 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
+| 550 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 551 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | Apple Mail plist trailer |
+| 552 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 553 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | — | mail-parser | S8 | attachments (impl) |
+| 554 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
+| 555 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
+| 556 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 557 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | conformance from XMP pdfaid/pdfx/pdfuaid |
+| 558 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | — | impl | S8 | AI private data present, artboards |
+| 559 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | field names/values |
+| 560 | PDF portfolio / collection | `pdf` | — | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | embedded file list |
+| 561 | Visio drawing (OOXML) | `vsdx` `vsdm` `vstx` | application/vnd.ms-visio.drawing | 3 | `doc.ooxml` | `common` | `doc.ooxml` | impl | S3 | page names, shape text |
+| 562 | Word XML 2003 / Flat OPC | `xml` `fodt` | — | 3 | `doc.ooxml` | `common` | — | impl | S8 | — |
+| 563 | XPS / OpenXPS | `xps` `oxps` | application/oxps | 3 | `doc.ooxml` | `common` | — | impl | S8 | pages, fonts, docProps |
+| 564 | 3D Manufacturing Format (OPC) | `3mf` | model/3mf | 3 | `doc.ooxml` | `common` | — | impl | S8 | -&gt; 3d |
+| 565 | OpenDocument Drawing / Graphics | `odg` `otg` | application/vnd.oasis.opendocument.graphics | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 566 | OpenDocument Formula / Database / Chart | `odf` `odb` `odc` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 567 | Flat OpenDocument XML | `fodt` `fods` `fodp` `fodg` | — | 3 | `doc.odf` | `common` | `doc.odf` | impl | S3 | — |
+| 568 | Apple Pages / Numbers / Keynote | `pages` `numbers` `key` | application/vnd.apple.pages | 3 | `doc.odf` | `common` | — | impl | S8 | zip + IWA (snappy+protobuf); metadata from Metadata/Properties.plist + preview |
+| 569 | Hancom HWPX | `hwpx` | — | 3 | `doc.odf` | `common` | — | impl | S8 | — |
+| 570 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 571 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 572 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 573 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; email |
+| 574 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | thumbnail count |
+| 575 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
+| 576 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | storage tree |
+| 577 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; cad, summary info |
+| 578 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | impl | S8 | header + prefix packet |
+| 579 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | impl | S8 | — |
+| 580 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | header only; DRM flag |
+| 581 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
+| 582 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 583 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
+| 584 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 585 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 586 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
+| 587 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 588 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | impl | S8 | entry count, titles, DOIs |
+| 589 | Typst | `typ` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 590 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 591 | Microsoft OneNote | `one` `onetoc2` | application/onenote | 3 | `doc.other` | `common` | — | impl | S8 | section/page titles (impl, revision store) |
+| 592 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | — | impl | S8 | note titles, tags, dates |
+| 593 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | — | impl | S8 | nodes, text |
+| 594 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | — | impl | S8 | title page, scene headings |
+| 595 | Lotus 1-2-3 / Quattro | `wk1` `wk3` `wk4` `123` `qpw` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 596 | Apple ClarisWorks / AppleWorks | `cwk` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 597 | PDF-like: Adobe FrameMaker / InDesign | `fm` `mif` `indd` `idml` | — | 3 | `doc.other` | `common` | — | impl | S8 | IDML (zip+xml): stories text |
+| 598 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | — | impl | S8 | -&gt; doc.odf mapping |
+| 599 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 600 | PCL / PJL print job | `pcl` `prn` `pjl` | application/vnd.hp-pcl | 3 | `doc.other` | `common` | — | impl | S8 | PJL JOB NAME, user, page count |
+| 601 | Windows spool files | `spl` `shd` | — | 3 | `doc.other` | `common` | — | impl | S8 | document name, user, printer, submit time |
+| 602 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 603 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 604 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
+| 605 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
+| 606 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 607 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
+| 608 | SAMI | `smi` `sami` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 609 | LRC lyrics | `lrc` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | ti/ar/al tags |
+| 610 | VobSub | `idx` `sub` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | languages, cue count (vobsub) |
+| 611 | PGS Blu-ray subtitles | `sup` | — | 3 | `text.subtitle` | `common` | `subtitle.bitmap` | impl | S4 | cue count, timings |
+| 612 | Scenarist / SCC / STL captions | `scc` `stl` `cap` | — | 3 | `text.subtitle` | `common` | `subtitle.caption` | impl | S4 | — |
+| 613 | YouTube timed text / JSON3 | `srv3` `json3` | — | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
+| 614 | Musepack | `mpc` `mp+` `mpp` | audio/musepack | 3 | `audio` | `common` | `audio.musepack` | impl | S4 | — |
+| 615 | Speex / Ogg FLAC | `spx` | audio/ogg | 3 | `audio` | `common` | `audio.ogg` | impl | S4 | — |
+| 616 | AMR / AMR-WB / 3GA | `amr` `awb` `3ga` | audio/amr | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 617 | AC-3 / E-AC-3 / DTS / TrueHD raw | `ac3` `ec3` `eac3` `dts` `thd` `mlp` | audio/ac3 | 3 | `audio` | `common` | — | impl | S8 | sync frame header: channels, rate, bitrate |
+| 618 | MPEG-1/2 Layer I/II | `mp1` `mp2` `mpa` | audio/mpeg | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | — |
+| 619 | ADTS AAC raw | `aac` `adts` | audio/aac | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 620 | DSD (DSF / DFF) | `dsf` `dff` | audio/dsd | 3 | `audio` | `common` | `audio.dsd` | impl | S4 | — |
+| 621 | TTA / OptimFROG / TAK | `tta` `ofr` `tak` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 622 | AU / SND | `au` `snd` | audio/basic | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 623 | RealAudio | `ra` `ram` | audio/vnd.rn-realaudio | 3 | `audio` | `common` | — | impl | S8 | — |
+| 624 | VOC / 8SVX / IFF audio | `voc` `8svx` | — | 3 | `audio` | `common` | `audio.other` | impl | S4 | — |
+| 625 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S4 | bext originator, time reference |
+| 626 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S4 | -&gt; video |
+| 627 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | — | impl | S8 | — |
+| 628 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
+| 629 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 630 | SoundFont / DLS | `sf2` `sf3` `dls` | audio/x-soundfont | 3 | `audio` | `common` | — | impl | S8 | bank name, presets, samples |
+| 631 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 632 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
+| 633 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | — | impl | S8 | — |
+| 634 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo |
+| 635 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | chapters with titles + URLs |
+| 636 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
+| 637 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
+| 638 | Tracker modules MOD/XM/IT/S3M | `mod` `xm` `it` `s3m` `mptm` | audio/x-mod | 3 | `audio.score` | `common` | `score.tracker` | impl | S4 | — |
+| 639 | PLS / XSPF / ASX / WPL | `pls` `xspf` `asx` `wpl` | audio/x-scpls | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
+| 640 | CUE sheet | `cue` | application/x-cue | 3 | `audio.playlist` | `common` | `playlist.sheet` | impl | S4 | — |
+| 641 | DASH manifest | `mpd` | application/dash+xml | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | periods, adaptation sets, codecs |
+| 642 | Smooth Streaming manifest | `ism` `ismc` | — | 3 | `audio.playlist` | `common` | `playlist.manifest` | impl | S4 | — |
+| 643 | Ogg Theora / OGM | `ogv` `ogm` | video/ogg | 3 | `video` | `common` | `audio.ogg` | impl | S4 | — |
+| 644 | RealMedia | `rm` `rmvb` | application/vnd.rn-realmedia | 3 | `video` | `common` | `video.realmedia` | impl | S4 | — |
+| 645 | DV | `dv` `dif` | video/dv | 3 | `video` | `common` | — | impl | S8 | — |
+| 646 | MXF broadcast | `mxf` | application/mxf | 3 | `video` | `common` | — | impl | S8 | partition pack, operational pattern, essence descriptors (impl KLV) |
+| 647 | Apple ProRes / HEVC in MOV | `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | codec profile from sample entry |
+| 648 | H.264 / H.265 / AV1 / VVC / MPEG video elementary stream | `h264` `264` `h265` `265` `hevc` `obu` `ivf` `vvc` `m1v` `m2v` | video/h264 | 3 | `video` | `common` | `video.elementary` | impl | S4 | SPS/VPS/sequence header: profile, level, size, fps, bit depth |
+| 649 | Motion JPEG / AVCHD / XAVC | `mjpg` `mjpeg` `mts` | — | 3 | `video` | `common` | `video.mpegts` | impl | S4 | — |
+| 650 | Blackmagic RAW / RED R3D / ARRIRAW | `braw` `r3d` `ari` | — | 3 | `video` | `common` | — | impl | S8 | camera, lens, timecode (header) |
+| 651 | DivX / Xvid | `divx` `xvid` | — | 3 | `video` | `common` | `video.avi` | impl | S4 | -&gt; AVI |
+| 652 | Nullsoft NSV / Bink / Smacker | `nsv` `bik` `smk` | — | 3 | `video` | `common` | — | impl | S8 | — |
+| 653 | AMV / MTV / FLIC | `amv` `mtv` `flc` `fli` | — | 3 | `video` | `common` | — | impl | S8 | — |
+| 654 | Video project: Premiere / Final Cut / DaVinci / Kdenlive | `prproj` `fcpxml` `drp` `kdenlive` `mlt` | — | 3 | `video` | `common` | — | impl | S8 | clips, timeline length (gzip-xml/xml) |
+| 655 | EDL / AAF / OTIO edit lists | `edl` `aaf` `otio` | — | 3 | `video` | `common` | — | impl | S8 | events, reel names, timecodes |
+| 656 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | paired-asset XMP (GCamera/Container) |
+| 657 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | sv3d/st3d boxes, Spherical XMP |
+| 658 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
+| 659 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | impl | S8 | -&gt; MP4 |
+| 660 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | impl | S8 | width, height, duration, command |
+| 661 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S4 | -&gt; video |
+| 662 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S4 | program title, channel, air date |
+| 663 | 360 camera native (INSV / OSV) | `insv` `osv` | — | 3 | `video` | `common` | — | impl | S8 | camera, GPS |
+| 664 | Raw video Y4M / YUV | `y4m` `yuv` | — | 3 | `video` | `common` | `video.elementary` | impl | S4 | WxH, fps, colourspace (Y4M header) |
+| 665 | CMAF / fragmented segments | `cmfv` `cmfa` `m4s` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | track ids, fragments |
+| 666 | Video with embedded captions (CEA-608/708 in SEI) | `mp4` `ts` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | caption presence + language |
+| 667 | LHA / LZH | `lzh` `lha` | application/x-lzh-compressed | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
+| 668 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
+| 669 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S5 | newc/odc/bin |
+| 670 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S5 | -&gt; also static libraries (exec members) |
+| 671 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
+| 672 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | impl | S8 | header only |
+| 673 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | impl | S8 | images + XML metadata |
+| 674 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | `package.xar` | impl | S5 | TOC XML |
+| 675 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | impl | S8 | volume detection |
+| 676 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 677 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
+| 678 | Squashfs | `squashfs` `sqsh` `sfs` | application/vnd.squashfs | 3 | `archive` | `common` | `archive.squashfs` | impl | S5 | -&gt; disk |
+| 679 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
+| 680 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 681 | Bundle formats: .app/.framework zipped | `ipa` | — | 3 | `archive` | `common` | — | impl | S8 | -&gt; package |
+| 682 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | embedded zip/rar/7z offset, then archive listing |
+| 683 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | installer type, product name, version, files (NSIS/Inno headers) |
+| 684 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | — | impl | S8 | __main__, PEX-INFO |
+| 685 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | — | impl | S8 | module-info |
+| 686 | Android OBB | `obb` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 687 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 688 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 689 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | — | impl | S8 | finder info, resource fork types, xattrs |
+| 690 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | impl | S8 | decoded filename, recurse |
+| 691 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | impl | S8 | repo version, encryption |
+| 692 | Android backup | `ab` | — | 3 | `archive` | `common` | — | impl | S8 | version, compressed, encrypted |
+| 693 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S5 | -&gt; package |
+| 694 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
+| 695 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S5 | — |
+| 696 | Brotli | `br` | application/x-brotli | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 697 | Unix compress (.Z) | `Z` `taz` | application/x-compress | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 698 | lzip / lzop | `lz` `lzo` | application/x-lzip | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
+| 699 | Snappy framed | `sz` `snappy` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 700 | LZFSE / Apple | `lzfse` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 701 | zlib raw stream | `zz` `zlib` | — | 3 | `compress` | `common` | `compress.gzip` | miniz_oxide | S5 | — |
+| 702 | pack / compact / freeze (legacy) | `z` | — | 3 | `compress` | `common` | `compress.other` | miniz_oxide | S5 | — |
+| 703 | NuGet package | `nupkg` `snupkg` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | .nuspec |
+| 704 | Ruby gem | `gem` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | metadata.gz (YAML) |
+| 705 | Rust crate | `crate` | application/gzip | 3 | `package` | `common` | `package.tarball` | impl | S5 | Cargo.toml inside |
+| 706 | Snap / Flatpak / AppImage | `snap` `flatpak` `flatpakref` `AppImage` | — | 3 | `package` | `common` | `package.linux` | impl | S5 | snap.yaml, flatpak metadata, ELF + squashfs desktop file |
+| 707 | Arch / Alpine packages | `pkg.tar.zst` `apk` | application/x-tar | 3 | `package` | `common` | `package.tarball` | impl | S5 | .PKGINFO |
+| 708 | Conda package | `conda` `tar.bz2` | application/zip | 3 | `package` | `common` | `package.tarball` | impl | S5 | info/index.json |
+| 709 | Chrome / Firefox extension | `crx` `xpi` | application/x-chrome-extension | 3 | `package` | `common` | `package.zipped` | impl | S5 | manifest.json permissions |
+| 710 | VS Code extension / JetBrains plugin | `vsix` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | package.json / plugin.xml |
+| 711 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | Chart.yaml |
+| 712 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | manifest.json, config: layers, env, entrypoint, labels |
+| 713 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 714 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 715 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
+| 716 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 717 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | impl | S8 | asset paths |
+| 718 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | — | impl | S8 | -&gt; doc.ole |
+| 719 | Electron asar | `asar` | — | 3 | `package` | `common` | `package.asar` | impl | S5 | header JSON file list |
+| 720 | Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW) | `dmg` | — | 3 | `package` | `common` | `package.dmg` | impl | S5 | compression type, partition names |
+| 721 | Raw disk image | `img` `raw` `dd` `bin` | application/octet-stream | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | MBR/GPT |
+| 722 | VirtualBox VDI | `vdi` | application/x-virtualbox-vdi | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
+| 723 | VMware VMDK | `vmdk` | application/x-vmdk | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | descriptor, extents |
+| 724 | Hyper-V VHD / VHDX | `vhd` `vhdx` | application/x-vhd | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
+| 725 | QEMU QCOW2 / QED | `qcow` `qcow2` `qed` | application/x-qemu-disk | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
+| 726 | Apple sparsebundle / sparseimage | `sparseimage` `sparsebundle` | — | 3 | `disk` | `forensics` | `disk.vm` | impl | S5 | — |
+| 727 | Expert Witness (E01) / AFF | `e01` `ex01` `aff` | — | 3 | `disk` | `forensics` | `disk.ewf` | impl | S5 | case metadata, acquisition hashes |
+| 728 | CD images BIN/CUE, NRG, MDF, CCD | `bin` `nrg` `mdf` `mds` `ccd` | — | 3 | `disk` | `forensics` | `disk.cd` | impl | S5 | tracks |
+| 729 | Floppy images | `ima` `dsk` `adf` `d64` `st` | — | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | filesystem label |
+| 730 | Filesystem images ext/FAT/NTFS/APFS/HFS+ | `ext4` `fat` `hfs` `apfs` | — | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | superblock |
+| 731 | Android sparse / boot image | `simg` `boot.img` | — | 3 | `disk` | `forensics` | `disk.android` | impl | S5 | kernel cmdline, os version |
+| 732 | Firmware images (UEFI capsule, U-Boot uImage, FIT, Intel HEX, S-record) | `cap` `uimg` `itb` `hex` `srec` `s19` | — | 3 | `disk` | `forensics` | `disk.firmware` | impl | S5 | header fields |
+| 733 | OVA / OVF virtual appliance | `ova` `ovf` | — | 3 | `disk` | `forensics` | `disk.ovf` | impl | S5 | product, vendor, disks |
+| 734 | Protobuf text format | `textproto` `pbtxt` `txtpb` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 735 | Avro schema | `avsc` | application/json | 3 | `data.binser` | `common` | `data.avro` | plist | S6 | — |
+| 736 | FlatBuffers schema / binary | `fbs` `bfbs` | — | 3 | `data.binser` | `common` | `data.flatbuffers` | plist | S6 | — |
+| 737 | Bencode | `bencode` | — | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 738 | Python pickle | `pkl` `pickle` | application/x-python-pickle | 3 | `data.binser` | `common` | `data.pickle` | plist | S6 | opcode walk only (never unpickle!), referenced globals (risk) |
+| 739 | Java serialized object | `ser` | application/x-java-serialized-object | 3 | `data.binser` | `common` | `data.java_serialized` | plist | S6 | class names (gadget risk flag) |
+| 740 | PHP serialized | `phpser` | — | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 741 | Ion (Amazon) | `ion` | application/ion | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 742 | Smile / UBJSON | `sml` `ubj` | — | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 743 | RON | `ron` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 744 | KDL | `kdl` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 745 | HOCON | `conf` `hocon` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 746 | EDN | `edn` | application/edn | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 747 | S-expressions data | `sexp` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
+| 748 | ASN.1 BER/DER blob | `der` `ber` | application/octet-stream | 3 | `data.binser` | `common` | `data.asn1` | plist | S6 | tag tree (asn1-rs) |
+| 749 | XDR | `xdr` | — | 3 | `data.binser` | `common` | — | plist | S6 | — |
+| 750 | NBT (Minecraft) | `nbt` `dat` | application/x-minecraft-nbt | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
+| 751 | Godot resource | `tres` `res` | — | 3 | `data.binser` | `common` | `data.godot` | plist | S6 | — |
+| 752 | Unity YAML asset | `unity` `prefab` `asset` `meta` | — | 3 | `data.binser` | `common` | `data.unity` | plist | S6 | GUIDs, component types |
+| 753 | Java .properties-like binary: Android resources.arsc | `arsc` | — | 3 | `data.binser` | `common` | `data.android` | plist | S6 | packages, string pool size |
+| 754 | Android binary XML | `xml` `(binary)` | — | 3 | `data.binser` | `common` | `data.android` | plist | S6 | decoded via axmldecoder -&gt; text.xml |
 | 755 | ELF core dump | `core` | application/x-coredump | 3 | `exec` | `common` | `exec.elf` | impl | S6 | signal, process name, threads |
 | 756 | Windows minidump | `dmp` `mdmp` | application/x-dmp | 3 | `exec` | `common` | — | impl | S8 | -&gt; forensic |
 | 757 | MS-DOS / NE / LE executables | `com` `exe` | — | 3 | `exec` | `common` | `exec.pe` | impl | S6 | header only |
@@ -973,16 +973,16 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 832 | Kubernetes / cloud audit logs | `jsonl` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | verbs, resources, users count |
 | 833 | Sysmon / auditd logs | `log` `evtx` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | event types histogram |
 | 834 | Wireshark dissector-free: Bluetooth btsnoop / USB pcap | `btsnoop` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | packet count, time range |
-| 835 | Apple .strings / .stringsdict / .xcstrings | `strings` `stringsdict` `xcstrings` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
-| 836 | .DS_Store | `DS_Store` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
-| 837 | Xcode project / workspace | `pbxproj` `xcworkspacedata` | — | 3 | `apple` | `common` | — | plist, cms | S6 | targets, build settings |
-| 838 | Apple asset catalog compiled | `car` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
-| 839 | Apple Shortcuts / Automator | `shortcut` `workflow` | — | 3 | `apple` | `common` | — | plist, cms | S6 | actions |
-| 840 | macOS alias / bookmark data | `alias` | — | 3 | `apple` | `common` | — | plist, cms | S6 | target path |
-| 841 | Apple configuration profile | `mobileconfig` | — | 3 | `apple` | `common` | — | plist, cms | S6 | payload types (CMS-signed) |
-| 842 | Apple Watch face / Siri / misc plists | `watchface` | — | 3 | `apple` | `common` | — | plist, cms | S6 | — |
-| 843 | iOS backup Info.plist / Manifest.plist | `plist` | — | 3 | `apple` | `common` | — | plist, cms | S6 | device, iOS version |
-| 844 | AppleDouble resource forks / xattr dumps | `._*` | — | 3 | `apple` | `common` | — | plist, cms | S6 | -&gt; archive |
+| 835 | Apple .strings / .stringsdict / .xcstrings | `strings` `stringsdict` `xcstrings` | — | 3 | `apple` | `common` | `apple.strings` | plist | S6 | — |
+| 836 | .DS_Store | `DS_Store` | — | 3 | `apple` | `common` | `apple.ds_store` | plist | S6 | — |
+| 837 | Xcode project / workspace | `pbxproj` `xcworkspacedata` | — | 3 | `apple` | `common` | `apple.xcode` | plist | S6 | targets, build settings |
+| 838 | Apple asset catalog compiled | `car` | — | 3 | `apple` | `common` | `apple.car` | plist | S6 | — |
+| 839 | Apple Shortcuts / Automator | `shortcut` `workflow` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | actions |
+| 840 | macOS alias / bookmark data | `alias` | — | 3 | `apple` | `common` | `apple.bookmark` | plist | S6 | target path |
+| 841 | Apple configuration profile | `mobileconfig` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | payload types (CMS-signed) |
+| 842 | Apple Watch face / Siri / misc plists | `watchface` | — | 3 | `apple` | `common` | — | plist | S6 | — |
+| 843 | iOS backup Info.plist / Manifest.plist | `plist` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | device, iOS version |
+| 844 | AppleDouble resource forks / xattr dumps | `._*` | — | 3 | `apple` | `common` | `apple.appledouble` | plist | S6 | -&gt; archive |
 | 845 | Apache ORC | `orc` | application/x-orc | 3 | `columnar` | `data` | — | parquet + arrow | S7 | — |
 | 846 | Lance | `lance` | — | 3 | `columnar` | `data` | — | parquet + arrow | S7 | feature-gated |
 | 847 | Vortex | `vortex` `vtx` | — | 3 | `columnar` | `data` | — | parquet + arrow | S7 | feature-gated |

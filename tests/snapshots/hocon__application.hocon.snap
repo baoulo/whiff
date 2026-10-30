@@ -1,0 +1,248 @@
+---
+source: src/formats/data/binser/textdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "application.hocon",
+    "stem": "application",
+    "extension": "hocon"
+  },
+  "identification": {
+    "format": "hocon",
+    "name": "HOCON",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 298
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 298,
+    "entropy": 4.957,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 298,
+      "chars": 298,
+      "words": 45,
+      "lines": 19,
+      "max_line_length": 35,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "bcaac4c17e790100a9032f472828cd20f9c4cb2b058362f24f013e1cd3913c12",
+    "blake3": "8c3dbe80363c16e3fec93ef5c2e6a0d1fdd7764b35b94e577853ed0ed3b2ec2d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hocon": {
+      "top_level": "object",
+      "keys": [
+        "harbour",
+        "http",
+        "tides",
+        "report"
+      ],
+      "key_count": 4,
+      "values": 14,
+      "max_depth": 3,
+      "tags": {
+        "include": 1,
+        "substitution": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.harbour.berths": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.harbour.berths[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              4,
+              7,
+              12
+            ]
+          },
+          "$.harbour.gauge": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.gauge.id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "G7"
+            ]
+          },
+          "$.harbour.gauge.interval": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "10 minutes"
+            ]
+          },
+          "$.http": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.http.port": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "${…}"
+            ]
+          },
+          "$.http.host": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "0.0.0.0"
+            ]
+          },
+          "$.tides": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.tides.high-water": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "06:12"
+            ]
+          },
+          "$.report": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Daily tide\nreport"
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

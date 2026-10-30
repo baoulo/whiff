@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Saltmere Tides</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Tide table</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>Tides</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.saltmere.tidesmac</string>
+	<key>CFBundleName</key>
+	<string>Tides</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>saltmere-tides</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>12</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTSDKName</key>
+	<string>macosx15.5</string>
+	<key>DTXcode</key>
+	<string>1640</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.weather</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>13.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2025 Saltmere Harbour</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Shows the tides at the nearest harbour.</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.saltmere.tide-table</string>
+		</dict>
+	</array>
+</dict>
+</plist>

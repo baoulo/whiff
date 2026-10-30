@@ -27,6 +27,10 @@ expression: report
         "confidence": 0.85
       },
       {
+        "format": "asn1",
+        "confidence": 0.55
+      },
+      {
         "format": "x509",
         "confidence": 0.35
       }

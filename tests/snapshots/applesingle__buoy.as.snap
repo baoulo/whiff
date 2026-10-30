@@ -1,0 +1,132 @@
+---
+source: src/formats/apple/appledouble.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.as",
+    "stem": "buoy",
+    "extension": "as"
+  },
+  "identification": {
+    "format": "applesingle",
+    "name": "AppleSingle file",
+    "mime": "application/applefile",
+    "family": "apple",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "apple.appledouble"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 154
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "apple.appledouble",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "apple.appledouble",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 154,
+    "entropy": 3.388,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2bdc06af794ae9a047bfd49bc9a9f9948d2042b9decb31a7cf60ae248dac8dd2",
+    "blake3": "d657aab440719624ee4c8e1d0a222e8b15fd09088db1b95776c647163c1c3698"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "applesingle": {
+      "version": "2",
+      "real_name": "buoy.txt",
+      "created": "2025-09-01T12:00:00Z",
+      "modified": "2025-09-01T12:00:00Z",
+      "file_type": "TEXT",
+      "creator": "SLTM",
+      "entries": {
+        "real_name": 8,
+        "file_dates": 16,
+        "finder_info": 32,
+        "data_fork": 24
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.appledouble",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

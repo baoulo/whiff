@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables, bytecode, crypto, databases and forensic artefacts (Stage 6, first five parts).
+Executables, bytecode, crypto, databases, forensic artefacts, Apple formats and binary serialisations: Stage 6 is complete.
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -177,6 +177,65 @@ Executables, bytecode, crypto, databases and forensic artefacts (Stage 6, first 
     alerts, Snort / Suricata rule files, HAR archives (credential-carrying
     requests flagged), Apple `.ips` crash reports, Zeek logs, FSEvents
     pages and ESE database headers.
+- **Apple formats** (`common`; property lists through the `plist` crate
+  after a bounded first pass, the rest in-house):
+  - property lists, XML, binary and old-style: encoding, top-level keys,
+    value count, depth and an inferred schema, and what the common kinds
+    hold: bundle `Info.plist` (identifier, name, version, build,
+    executable, minimum OS, SDK and Xcode, document and exported types, URL
+    schemes, privacy usage keys, App Transport Security, `LSEnvironment`),
+    launchd jobs (label, program, run conditions), `NSKeyedArchiver`
+    archives (objects, root class, class histogram), configuration
+    profiles, signed or not (identifier, organisation, scope, removal
+    date, payload types, signer; root certificates and embedded passwords
+    flagged, never shown), provisioning profiles (team, app ID, platforms,
+    dates, distribution kind, device count, entitlements, signer),
+    Shortcuts and Automator workflows (actions; script actions flagged)
+    and iOS backup `Info.plist` / `Manifest.plist` / `Status.plist`
+    (device model, iOS version, backup date, encryption; device name,
+    serial number and identifiers only with privacy off);
+  - `.strings` (text, UTF-16 or compiled), `.stringsdict` (plural
+    categories) and `.xcstrings` string catalogs (source language,
+    languages, translation states), with the source text as body text;
+  - `.DS_Store` (entry names, record types, view style, cached
+    modification dates), bookmark data and Finder alias files (target
+    path, name, kind and creation date, volume; the stored user name only
+    with privacy off), AppleDouble and AppleSingle files (original name,
+    Finder type and creator, dates, resource fork, extended attributes
+    with the quarantine agent and download URLs);
+  - compiled asset catalogs (`Assets.car`: CoreUI and storage versions,
+    build time, authoring tool, platform, key format, asset names,
+    appearances, rendition types) and Xcode projects and workspaces
+    (targets and product types, configurations, deployment targets, SDKs,
+    Swift versions, bundle identifiers, teams, Swift packages, script
+    phases).
+- **Binary serialisations and data formats** (`common`), all in-house;
+  self-describing formats are decoded to a bounded tree for the same
+  report JSON gets (top-level type and keys, documents in a stream,
+  inferred schema, value count, depth, tags and extension types), and
+  string values go to the secret and privacy scan:
+  - MessagePack, CBOR (indefinite lengths, tags, dates), BSON documents
+    and `mongodump` streams (ObjectId time range), UBJSON, Smile (shared
+    names and values), Amazon Ion binary and text (symbol tables,
+    annotations), bencode with torrent facts (name, files, size, piece
+    length, trackers, private flag, info hash), PHP `serialize()` output,
+    Minecraft NBT (Java and Bedrock byte orders);
+  - Python pickles by an opcode walk that never unpickles (protocol,
+    globals with `STACK_GLOBAL` resolved through the memo, what the
+    globals say it holds: pandas, NumPy, scikit-learn, PyTorch …) and Java
+    serialization streams by their grammar (classes, objects, arrays,
+    strings, enum constants, proxy interfaces); known gadget classes and
+    pickle globals that run code report the new `unsafe_deserialization`
+    risk, as do PHP gadget-chain classes;
+  - Avro containers (writer schema, codec, blocks, records) and schemas,
+    protobuf messages without a schema (field numbers and wire types,
+    nested messages guessed, length-delimited streams), FlatBuffers binary
+    schemas, generic BER / DER (element tree, tags, object identifiers),
+    Android binary XML and `resources.arsc` (also inside APKs), Godot
+    scenes and resources, Unity YAML assets and `.meta` files;
+  - text data formats: RON, KDL, HOCON, EDN, S-expressions, protobuf text
+    format; Thrift, Cap'n Proto, FlatBuffers, Dhall, Jsonnet and CUE are
+    read as source languages (`.edn` moved from Clojure to the EDN reader).
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
   algorithm, size and curve, signature algorithm, CA and path length, key
@@ -189,8 +248,16 @@ Executables, bytecode, crypto, databases and forensic artefacts (Stage 6, first 
   `obfuscated_code`, `unprotected_key` (a private or secret key stored
   without a passphrase) and `weak_cryptography` (RSA / DSA under 2048
   bits, MD5 or SHA-1 signatures, DES or RC4 Kerberos keys, unsigned
-  tokens); Mach-O `get-task-allow` reports `debuggable`. JWTs and TLS key
-  logs report `embedded_secret`.
+  tokens), `installs_root_certificate` (configuration profiles),
+  `shell_action` (Shortcuts and Automator actions that run scripts) and
+  `unsafe_deserialization` (pickle globals that run code, Java and PHP
+  gadget classes); Mach-O and provisioning-profile `get-task-allow`
+  reports `debuggable`. JWTs, TLS key logs and configuration profiles
+  holding passwords report `embedded_secret`.
+- **Plugin API:** `plugin::proplist` parses property lists with limits on
+  depth and on the values shared references expand to (the `plist` crate
+  guards against cycles only); `plugin::user_path` (hide the user name in
+  profile paths) moved from the forensic group.
 - **Developer tools:** `scripts/fixtures/executables.sh` builds the
   executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
   wat2wasm and gdb (in a podman container) and with the macOS toolchain
@@ -218,6 +285,16 @@ Executables, bytecode, crypto, databases and forensic artefacts (Stage 6, first 
   systemd-journal-remote (in podman containers); `forensic_oracle.py`
   compares the reports with python-evtx, regipy, LnkParse3,
   windowsprefetch, minidump, idstools and capinfos.
+  `scripts/fixtures/apple.sh` makes the Apple fixtures with plutil,
+  genstrings, actool, ditto and Swift on macOS (and openssl and ds_store
+  in a podman container); `apple_oracle.py` compares the reports with
+  plistlib, plutil, assetutil, `security cms` and ds_store over system
+  folders and /Applications. `scripts/fixtures/binser.sh` makes the
+  serialisation fixtures with each format's own library or tool
+  (msgpack, cbor2, bson, py-ubjson, amazon.ion, bencode.py, nbtlib,
+  pickle, fastavro, mktorrent, PHP, OpenJDK, Jackson, protoc, flatc,
+  openssl), and `binser_oracle.py` checks generated documents against
+  them.
 
 ## 0.5.1 — 2026-10-27
 

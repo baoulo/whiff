@@ -33,7 +33,7 @@ pub use crate::container::codec::{Codec, End};
 pub use crate::container::zip::{
     Zip, ZipEntry, first_stored as zip_first_stored, method_name as zip_method_name, names as zip_names,
 };
-pub use crate::container::{asf, codec, der, mp4, oleps, volume};
+pub use crate::container::{asf, codec, der, mp4, oleps, proplist, volume};
 pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;
@@ -60,6 +60,36 @@ pub fn redact_sensitive(text: &str) -> std::borrow::Cow<'_, str> {
         std::borrow::Cow::Owned(t) => std::borrow::Cow::Owned(redact(&t, Category::Personal).into_owned()),
     }
 }
+
+/// A path with the user name of a profile folder (`C:\Users\name\…`,
+/// `/Users/name/…`, `/home/name/…`) hidden when privacy is strict.
+pub fn user_path(cx: &Context<'_>, path: &str) -> String {
+    let path = truncate_chars(path, 1000);
+    if !cx.privacy_strict() {
+        return path;
+    }
+    let mut out = String::with_capacity(path.len());
+    let mut rest = path.as_str();
+    for marker in ["\\Users\\", "/Users/", "/home/", "\\Documents and Settings\\"] {
+        if let Some(i) = rest.to_ascii_lowercase().find(&marker.to_ascii_lowercase()) {
+            let end = i + marker.len();
+            out.push_str(&rest[..end]);
+            let tail = &rest[end..];
+            let user_end = tail.find(['\\', '/']).unwrap_or(tail.len());
+            let user = &tail[..user_end];
+            if ["public", "default", "all users", "shared"].contains(&user.to_ascii_lowercase().as_str()) {
+                out.push_str(user);
+            } else if !user.is_empty() {
+                out.push_str("[user]");
+            }
+            rest = &tail[user_end..];
+            break;
+        }
+    }
+    out.push_str(rest);
+    out
+}
+
 pub use crate::error::ExtractError;
 pub use crate::io::{BoundedReader, Budget, ByteReader, BytesSource, Source, SourceError};
 pub use crate::report::{DateField, Map, Report};

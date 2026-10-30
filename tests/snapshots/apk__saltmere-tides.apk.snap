@@ -194,24 +194,24 @@ expression: report
         "extension": "xml"
       },
       "identification": {
-        "format": "axml",
-        "name": "Android Binary XML",
-        "mime": "application/vnd.android.axml",
-        "family": "text.xml",
-        "confidence": 0.5,
+        "format": "android_binary_xml",
+        "name": "Android binary XML",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.76,
         "detected_by": "magic",
         "extension_matches": true,
         "candidates": [
           {
-            "format": "axml",
-            "confidence": 0.5
+            "format": "android_binary_xml",
+            "confidence": 0.76
           },
           {
             "format": "xml",
             "confidence": 0.35
           }
         ],
-        "extractor": null
+        "extractor": "data.android"
       },
       "system": {
         "kind": "memory",
@@ -233,9 +233,45 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "android_binary_xml": {
+          "root": "manifest",
+          "elements": 13,
+          "attributes": 24,
+          "max_depth": 4,
+          "element_types": {
+            "uses-permission": 3,
+            "action": 1,
+            "activity": 1,
+            "application": 1,
+            "category": 1,
+            "intent-filter": 1,
+            "manifest": 1,
+            "receiver": 1,
+            "service": 1,
+            "uses-feature": 1,
+            "uses-sdk": 1
+          },
+          "package": "org.saltmere.tides",
+          "version_name": "1.2.0",
+          "version_code": "12",
+          "min_sdk": "24",
+          "target_sdk": "36",
+          "permissions": [
+            "android.permission.INTERNET",
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.CAMERA"
+          ]
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "data.android",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,
@@ -296,13 +332,13 @@ expression: report
       },
       "identification": {
         "format": "arsc",
-        "name": "Android Resource Storage Container",
-        "mime": "application/vnd.android.arsc",
+        "name": "Java .properties-like binary: Android resources.arsc",
+        "mime": "application/octet-stream",
         "family": "data.binser",
-        "confidence": 0.5,
+        "confidence": 0.81,
         "detected_by": "magic",
         "extension_matches": true,
-        "extractor": null
+        "extractor": "data.android"
       },
       "system": {
         "kind": "memory",
@@ -324,9 +360,32 @@ expression: report
       },
       "content": {},
       "metadata": {},
-      "format": {},
+      "format": {
+        "arsc": {
+          "declared_packages": 1,
+          "strings": 1,
+          "packages": [
+            {
+              "id": "0x7f",
+              "name": "org.saltmere.tides",
+              "types": [
+                "string"
+              ],
+              "keys": 1
+            }
+          ],
+          "configurations": 1,
+          "entries": 1
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "data.android",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,

@@ -22,4 +22,6 @@ doc-valid-idents = [
     "GnuPG", "LibrePGP", "PuTTY", "KeePass", "KeyStores", "OpenJDK", "EdDSA",
     "GeoPackage", "MBTiles", "SpatiaLite", "DuckDB", "LevelDB", "RocksDB", "InnoDB", "MyISAM", "MVStore", "FoxPro",
     "WebKit", "BlockBasedTable",
+    "AppleDouble", "AppleSingle", "CoreUI", "CocoaPods", "FlatBuffer", "FlatBuffers", "MessagePack", "NumPy",
+    "PyTorch", "DataFrame", "ObjectId", "GameObject", "MonoBehaviour",
 ]

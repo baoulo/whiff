@@ -1,0 +1,157 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-guest.mobileconfig",
+    "stem": "saltmere-guest",
+    "extension": "mobileconfig"
+  },
+  "identification": {
+    "format": "mobileconfig",
+    "name": "Apple configuration profile",
+    "mime": "application/x-apple-aspen-config",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mobileconfig",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1743
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "expires",
+        "value": "2026-09-01T12:00:00Z",
+        "source": "apple.plist",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-09-01T12:00:00Z",
+    "latest": "2026-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1743,
+    "entropy": 5.041,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1743,
+      "chars": 1743,
+      "words": 79,
+      "lines": 58,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ed8061b7ec4b90d42462c2d66db2c69fff693cf37e51a0efa4f2e1c52e6e0ce8",
+    "blake3": "dfbb456dfd392886ef74b43a96617b63e3ab7769dc325721ce69625d2c2f7a3f"
+  },
+  "content": {
+    "title": "Saltmere Harbour guest network",
+    "description": "Wi-Fi and DNS settings for visitors to Saltmere Harbour.",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mobileconfig": {
+      "encoding": "xml",
+      "top_level": "dictionary",
+      "values": 26,
+      "max_depth": 4,
+      "kind": "configuration_profile",
+      "identifier": "org.saltmere.guest",
+      "display_name": "Saltmere Harbour guest network",
+      "organization": "Saltmere Harbour",
+      "scope": "User",
+      "uuid": "5A1E0000-0000-4000-8000-000000000010",
+      "removal_date": "2026-09-01T12:00:00Z",
+      "payloads": 2,
+      "payload_types": {
+        "com.apple.dnsSettings.managed": 1,
+        "com.apple.wifi.managed": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

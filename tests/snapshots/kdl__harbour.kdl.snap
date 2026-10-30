@@ -1,0 +1,402 @@
+---
+source: src/formats/data/binser/textdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.kdl",
+    "stem": "harbour",
+    "extension": "kdl"
+  },
+  "identification": {
+    "format": "kdl",
+    "name": "KDL",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 353
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 353,
+    "entropy": 4.877,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 353,
+      "chars": 353,
+      "words": 43,
+      "lines": 12,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7fab6752506142c9d4e4889e0f1a48306d681c406d124fc59f861aa1d4805e59",
+    "blake3": "f04dd54dcec1759538fc46b0c23ffb3c74610cc735417787d8b497daaaa20042"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kdl": {
+      "top_level": "object",
+      "keys": [
+        "harbour",
+        "tides"
+      ],
+      "key_count": 2,
+      "values": 9,
+      "max_depth": 3,
+      "tags": {
+        "node:berth": 2,
+        "node:gauge": 1,
+        "node:harbour": 1,
+        "node:high": 1,
+        "node:low": 1,
+        "node:tides": 1,
+        "node:vessel": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.args": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.harbour.args[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.harbour.country": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "GB"
+            ]
+          },
+          "$.harbour.children": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.children.berth": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.harbour.children.berth[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.harbour.children.berth[].args": {
+            "types": [
+              "array"
+            ],
+            "count": 2,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.harbour.children.berth[].args[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              4,
+              7
+            ]
+          },
+          "$.harbour.children.berth[].length": {
+            "types": [
+              "number"
+            ],
+            "count": 2,
+            "examples": [
+              12.5,
+              9.0
+            ]
+          },
+          "$.harbour.children.berth[].occupied": {
+            "types": [
+              "boolean"
+            ],
+            "count": 2,
+            "examples": [
+              false,
+              true
+            ]
+          },
+          "$.harbour.children.berth[].children": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.children.berth[].children.vessel": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.children.berth[].children.vessel.args": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.harbour.children.berth[].children.vessel.args[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Gull"
+            ]
+          },
+          "$.harbour.children.berth[].children.vessel.arrived": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01"
+            ]
+          },
+          "$.harbour.children.gauge": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.harbour.children.gauge.args": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.harbour.children.gauge.args[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "G7"
+            ]
+          },
+          "$.harbour.children.gauge.levels": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              412
+            ]
+          },
+          "$.harbour.children.gauge.note": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "pilot on \"channel 12\""
+            ]
+          },
+          "$.tides": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.tides.children": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.tides.children.high": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.tides.children.high.args": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.tides.children.high.args[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "06:12"
+            ]
+          },
+          "$.tides.children.high.height": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              4.25
+            ]
+          },
+          "$.tides.children.low": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.tides.children.low.args": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.tides.children.low.args[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "12:30"
+            ]
+          },
+          "$.tides.children.low.height": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              0.8
+            ]
+          }
+        },
+        "max_depth": 8
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

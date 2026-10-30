@@ -185,3 +185,55 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   minidumps are MIT-licensed samples (see their `SOURCE.md`); `$I`, EVT,
   ESE, crash dump, LiME, hibernation, unified2 and FSEvents files are
   built from the published layouts because no Linux tool writes them.
+
+## Apple formats (unreleased)
+
+- **Property lists:** old-style (ASCII) plists with whitespace inside
+  `<…>` data are not read (the `plist` crate's reader rejects them;
+  Apple's accepts them). Keyed archives give their classes and root
+  class, not the object graph. Configuration profile payloads are counted
+  by type; their settings are not described one by one.
+- **Signed profiles and shortcuts:** CMS signatures are described, not
+  verified. Signed shortcuts (Apple Encrypted Archive, `AEA1`) are
+  recognised but not decrypted, so their actions are unknown.
+- **Bookmarks and aliases:** only CFURL bookmark data (macOS 10.6 and
+  later) is read; legacy Alias Manager records (`alis`, in resource forks)
+  are not. Sandbox security-scope data is noted, not decoded.
+- **AppleDouble:** resource forks are sized, not parsed (no `rsrc` map).
+- **Asset catalogs:** renditions are counted by type; image sizes, scales
+  and idioms per asset are not read. Other BOM stores (package receipts)
+  give their variable names only.
+- **Not read:** `.watchface` bundles, Siri and other application plists
+  beyond their generic schema, `.nib` / `.storyboardc`, `.xcuserstate`,
+  `.xcscheme`.
+- **Fixtures:** the alias, bookmark, AppleSingle and Godot binary files are
+  built from the published layouts (real bookmarks record the creating
+  user, a disk image's backing path and the boot volume); Foundation reads
+  the bookmarks back in `apple.sh`.
+
+## Binary serialisations (unreleased)
+
+- **Pickles and Java streams:** walked, never loaded; only known
+  code-running globals and gadget classes are flagged, so an unflagged
+  pickle is not proven safe. Protocol 1 `Externalizable` data in Java
+  streams ends the walk (it is not self-delimiting).
+- **Avro:** records are counted from block headers, not decoded (the
+  writer schema describes them); Avro single-object encoding and
+  Parquet / ORC (Stage 7) are not handled here.
+- **Protobuf:** without a schema, length-delimited fields are guessed as
+  message, string or bytes; packed repeated scalars appear as bytes; groups
+  (wire types 3 and 4) end the walk. Field names come only with a schema
+  (not read).
+- **Ion:** decimals and shared symbol table imports are not resolved
+  (decimals are reported as such, imported symbols as `$n`).
+- **Smile:** big integers and big decimals are skipped, not decoded.
+- **FlatBuffers and Cap'n Proto messages:** only FlatBuffers binary
+  schemas (`.bfbs`) are read; other FlatBuffers and Cap'n Proto messages
+  cannot be read without their schema.
+- **Not read:** XDR (no self-description), Thrift binary and compact
+  protocols, Hessian, Bond, Kryo, .NET `BinaryFormatter` streams, Ruby
+  Marshal, R `.rds` (Stage 7), the contents of compressed Godot resources
+  (`RSCC`), Unity binary asset bundles.
+- **Text formats:** RON, KDL, HOCON, EDN, S-expressions, textproto and Ion
+  text are read by tolerant parsers into a tree; HOCON substitutions and
+  includes are counted, not resolved.

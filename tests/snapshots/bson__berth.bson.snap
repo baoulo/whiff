@@ -1,0 +1,271 @@
+---
+source: src/formats/data/binser/selfdesc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth.bson",
+    "stem": "berth",
+    "extension": "bson"
+  },
+  "identification": {
+    "format": "bson",
+    "name": "BSON",
+    "mime": "application/bson",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.binser"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 265
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 265,
+    "entropy": 4.55,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "91321425d51d48ccb8dc52fbe42b5ff8f345594729cd32d8da1e4381e3d7f431",
+    "blake3": "a3a9d9a93890982f4cc5ab8c6afb14287f5d25b35ff20aa2c833e753a155746b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bson": {
+      "first_object_id_time": "2025-09-01T12:00:00Z",
+      "last_object_id_time": "2025-09-01T12:00:00Z",
+      "top_level": "object",
+      "keys": [
+        "_id",
+        "harbour",
+        "berth",
+        "length_m",
+        "occupied",
+        "vessel",
+        "tags",
+        "high_water",
+        "updated",
+        "chart",
+        "uuid",
+        "visits"
+      ],
+      "key_count": 12,
+      "values": 17,
+      "max_depth": 2,
+      "tags": {
+        "datetime": 1,
+        "object_id": 1,
+        "uuid": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$._id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "ObjectId(68b58ac05a1e5a1e5a1e0001)"
+            ]
+          },
+          "$.harbour": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.berth": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              7
+            ]
+          },
+          "$.length_m": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              12.5
+            ]
+          },
+          "$.occupied": {
+            "types": [
+              "boolean"
+            ],
+            "count": 1,
+            "examples": [
+              true
+            ]
+          },
+          "$.vessel": {
+            "types": [
+              "null"
+            ],
+            "count": 1
+          },
+          "$.tags": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.tags[]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "pontoon",
+              "fuel"
+            ]
+          },
+          "$.high_water": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.high_water.time": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "06:12"
+            ]
+          },
+          "$.high_water.height_m": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              4.25
+            ]
+          },
+          "$.updated": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01T12:00:00Z"
+            ]
+          },
+          "$.chart": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "<4 bytes>"
+            ]
+          },
+          "$.uuid": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "<16 bytes>"
+            ]
+          },
+          "$.visits": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              3000000000
+            ]
+          }
+        },
+        "max_depth": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.binser",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

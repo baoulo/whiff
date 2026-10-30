@@ -148,6 +148,12 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("inline_event_handlers", Act, Medium, "HTML event-handler attributes (`onload=` …)"),
     k("inline_script", Act, Medium, "Raw `<script>` in Markdown"),
     k("install_script", Supply, Medium, "Package runs scripts when it is installed"),
+    k(
+        "installs_root_certificate",
+        Supply,
+        Medium,
+        "Configuration profile installs a root certificate the device will trust",
+    ),
     k("javascript", Act, Medium, "PDF JavaScript"),
     k("javascript_urls", Act, Medium, "`javascript:` links"),
     k("launch_action", Act, High, "PDF action that launches a program or opens a file"),
@@ -180,6 +186,7 @@ pub static RISK_KINDS: &[RiskKind] = &[
         "Shortcut starts a command interpreter (cmd, PowerShell, mshta, wscript …) with arguments",
     ),
     k("secret_in_env", Data, High, "Secret value set in an environment variable of a build file"),
+    k("shell_action", Act, Medium, "Workflow or shortcut has an action that runs a shell script or other code"),
     k("suspicious_macro", Act, High, "Macro uses shell, download, process or obfuscation calls"),
     k("symlink_escape", Exploit, High, "Archive symbolic link that points outside the archive (absolute or `../`)"),
     k("tls_callbacks", Obf, Low, "PE image runs TLS callbacks, code that starts before the entry point"),
@@ -189,6 +196,12 @@ pub static RISK_KINDS: &[RiskKind] = &[
         Data,
         Medium,
         "Private or secret key stored without a passphrase (PEM, OpenSSH, PuTTY, OpenPGP, JWK, keytab, minisign)",
+    ),
+    k(
+        "unsafe_deserialization",
+        Exploit,
+        High,
+        "Serialized data names code to run when it is loaded (pickle globals such as `os.system`, Java or PHP gadget classes)",
     ),
     k(
         "weak_cryptography",

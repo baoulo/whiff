@@ -1,0 +1,201 @@
+---
+source: src/formats/data/binser/selfdesc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.nbt",
+    "stem": "harbour",
+    "extension": "nbt"
+  },
+  "identification": {
+    "format": "nbt",
+    "name": "NBT (Minecraft)",
+    "mime": "application/x-minecraft-nbt",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.binser"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 170
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 170,
+    "entropy": 4.739,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "60839c6b816339fcb6d96878a4c7b7cf92be26c26fcb04d7bb33a79296af296b",
+    "blake3": "a0a386f9480af33dd2c3f6ecf2ab6979c0d69c949c3e9d8576874956ce885be3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nbt": {
+      "top_level": "object",
+      "keys": [
+        "Harbour",
+        "Berths",
+        "Levels",
+        "LastPlayed"
+      ],
+      "key_count": 4,
+      "values": 13,
+      "max_depth": 3,
+      "tags": {
+        "root:Saltmere": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.Harbour": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.Berths": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.Berths[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.Berths[].Id": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              4,
+              7
+            ]
+          },
+          "$.Berths[].Length": {
+            "types": [
+              "number"
+            ],
+            "count": 2,
+            "examples": [
+              12.5,
+              9.0
+            ]
+          },
+          "$.Berths[].Occupied": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              1,
+              0
+            ]
+          },
+          "$.Levels": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "<3 ints>"
+            ]
+          },
+          "$.LastPlayed": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1756728000000
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.binser",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

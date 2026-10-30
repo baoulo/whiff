@@ -1,0 +1,143 @@
+---
+source: src/formats/data/binser/selfdesc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "levels.ubj",
+    "stem": "levels",
+    "extension": "ubj"
+  },
+  "identification": {
+    "format": "ubjson",
+    "name": "Smile / UBJSON",
+    "mime": "application/ubjson",
+    "family": "data.binser",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "data.binser"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 28
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 28,
+    "entropy": 3.723,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c0b621c3adaa40b158d07958eff3e980134a8f43fbdb3d0e4a8f6aa27c6edcce",
+    "blake3": "5e5edc766d21f6f28df7df9ac4f4672bf55901679633c1d8faeed92d5f960b64"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ubjson": {
+      "top_level": "object",
+      "keys": [
+        "levels"
+      ],
+      "key_count": 1,
+      "values": 6,
+      "max_depth": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.levels": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              4,
+              4
+            ]
+          },
+          "$.levels[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 4,
+            "examples": [
+              412,
+              415,
+              418
+            ]
+          }
+        },
+        "max_depth": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.binser",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

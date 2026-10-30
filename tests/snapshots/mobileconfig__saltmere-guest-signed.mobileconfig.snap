@@ -1,0 +1,174 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-guest-signed.mobileconfig",
+    "stem": "saltmere-guest-signed",
+    "extension": "mobileconfig"
+  },
+  "identification": {
+    "format": "mobileconfig",
+    "name": "Apple configuration profile",
+    "mime": "application/x-apple-aspen-config",
+    "family": "apple",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mobileconfig",
+        "confidence": 0.99
+      },
+      {
+        "format": "pkcs7",
+        "confidence": 0.8
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2751
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "expires",
+        "value": "2026-09-01T12:00:00Z",
+        "source": "apple.plist",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-09-01T12:00:00Z",
+    "latest": "2026-09-01T12:00:00Z"
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 2751,
+    "entropy": 6.172,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f9ec38f7fff1ddb09656e3db96f032dfb151a9d5919f9b30a9e043cf8830252f",
+    "blake3": "9c6c821b49121014aaa4683e0c529d2487e949d6a785ff63fd6a413dce60ea5a"
+  },
+  "content": {
+    "title": "Saltmere Harbour guest network",
+    "description": "Wi-Fi and DNS settings for visitors to Saltmere Harbour.",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mobileconfig": {
+      "encoding": "xml",
+      "signature": {
+        "digest": "sha256",
+        "signer": {
+          "subject": "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles",
+          "subject_cn": "Saltmere Harbour Profiles",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles",
+          "serial": "62541fcbf2c0eecbe99c55877aaffa1e848061aa",
+          "version": 3,
+          "not_before": "2026-10-30T03:21:15Z",
+          "not_after": "2027-10-30T03:21:15Z",
+          "key_algorithm": "ec",
+          "key_bits": 256,
+          "key_curve": "P-256",
+          "signature_algorithm": "sha256_ecdsa",
+          "self_signed": true,
+          "ca": true,
+          "sha256": "17da8aed6dc23c0ef8442c638e0727c55d621a5d9262bdbbf4c006636bcb5b70",
+          "sha1": "975eb90051b424f1106025cb12024eb32eb8cf45"
+        },
+        "signing_time": "2026-10-30T03:21:15Z",
+        "timestamped": false,
+        "certificates": [
+          "C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Profiles"
+        ]
+      },
+      "top_level": "dictionary",
+      "values": 26,
+      "max_depth": 4,
+      "kind": "configuration_profile",
+      "identifier": "org.saltmere.guest",
+      "display_name": "Saltmere Harbour guest network",
+      "organization": "Saltmere Harbour",
+      "scope": "User",
+      "uuid": "5A1E0000-0000-4000-8000-000000000010",
+      "removal_date": "2026-09-01T12:00:00Z",
+      "payloads": 2,
+      "payload_types": {
+        "com.apple.dnsSettings.managed": 1,
+        "com.apple.wifi.managed": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

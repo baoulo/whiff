@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.jsonnet",
+    "stem": "harbour",
+    "extension": "jsonnet"
+  },
+  "identification": {
+    "format": "jsonnet",
+    "name": "Jsonnet source",
+    "mime": "text/x-jsonnet",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 266
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 266,
+    "entropy": 4.859,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 266,
+      "chars": 266,
+      "words": 33,
+      "lines": 9,
+      "max_line_length": 55,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "3ae4d0c99c4059b911f5bedc497e3334301770829e07e45baeba5028f11ca990",
+    "blake3": "f618b254a9f490884751e1510334f7b9cb4946d6103fe4dfd16bf8e7dc19a950"
+  },
+  "content": {
+    "description": "Saltmere Harbour configuration",
+    "excerpt": "Saltmere Harbour configuration"
+  },
+  "metadata": {},
+  "format": {
+    "jsonnet": {
+      "language": "Jsonnet",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 1,
+        "total": 9
+      },
+      "imports": [
+        "defaults.libsonnet",
+        "high_water.txt"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "local": [
+          "defaults",
+          "berth"
+        ]
+      },
+      "symbol_counts": {
+        "local": 2
+      },
+      "module_doc": "Saltmere Harbour configuration",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 55
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

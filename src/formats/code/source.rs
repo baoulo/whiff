@@ -243,7 +243,7 @@ languages! {
         symbols: [("function", r"^([a-z]\w*)\(.*\)\s*(?:when\s+.*)?->")],
         package: r"^-module\((\w+)\)"
     }
-    "clojure" "Clojure source" "text/x-clojure" ["clj", "cljs", "cljc", "edn"] {
+    "clojure" "Clojure source" "text/x-clojure" ["clj", "cljs", "cljc"] {
         line: [";"], block: [], quotes: b"\"",
         imports: [r"\[([\w.-]+)\s+:as(?-u:\b)", r"\(:require\s+\[?([\w.-]+)"],
         symbols: [("function", r"^\(defn-?\s+([^\s()\[\]]+)"), ("var", r"^\(def\s+([^\s()\[\]]+)")],
@@ -315,6 +315,42 @@ languages! {
         symbols: [("message", r"^\s*message\s+(\w+)"), ("enum", r"^\s*enum\s+(\w+)"), ("service", r"^\s*service\s+(\w+)"), ("rpc", r"^\s*rpc\s+(\w+)")],
         package: r"^\s*package\s+([\w.]+)\s*;"
     }
+    "thrift" "Apache Thrift schema" "application/x-thrift" ["thrift"] {
+        line: ["//", "#"], block: [("/*", "*/")], quotes: b"\"'",
+        imports: [r#"^\s*include\s+"([^"]+)""#],
+        symbols: [("struct", r"^\s*struct\s+(\w+)"), ("union", r"^\s*union\s+(\w+)"), ("exception", r"^\s*exception\s+(\w+)"), ("enum", r"^\s*enum\s+(\w+)"), ("service", r"^\s*service\s+(\w+)")],
+        package: r"^\s*namespace\s+\S+\s+([\w.]+)"
+    }
+    "capnp" "Cap'n Proto schema" "text/x-capnp" ["capnp"] {
+        line: ["#"], block: [], quotes: b"\"",
+        imports: [r#"import\s+"([^"]+)""#],
+        symbols: [("struct", r"^\s*struct\s+(\w+)"), ("enum", r"^\s*enum\s+(\w+)"), ("interface", r"^\s*interface\s+(\w+)"), ("const", r"^\s*const\s+(\w+)")],
+        package: r#"\$\w+\.namespace\("([^"]+)"\)"#
+    }
+    "flatbuffers" "FlatBuffers schema" "text/x-flatbuffers" ["fbs"] {
+        line: ["//"], block: [("/*", "*/")], quotes: b"\"",
+        imports: [r#"^\s*include\s+"([^"]+)""#],
+        symbols: [("table", r"^\s*table\s+(\w+)"), ("struct", r"^\s*struct\s+(\w+)"), ("enum", r"^\s*enum\s+(\w+)"), ("union", r"^\s*union\s+(\w+)"), ("service", r"^\s*rpc_service\s+(\w+)"), ("root_type", r"^\s*root_type\s+([\w.]+)")],
+        package: r"^\s*namespace\s+([\w.]+)\s*;"
+    }
+    "dhall" "Dhall source" "text/x-dhall" ["dhall"] {
+        line: ["--"], block: [("{-", "-}")], quotes: b"\"",
+        imports: [r"(?:^|[\s(=])((?:https?://|\.{1,2}/|~/)[^\s)]+)"],
+        symbols: [("binding", r"^let\s+([\w-]+)")],
+        package: ""
+    }
+    "jsonnet" "Jsonnet source" "text/x-jsonnet" ["jsonnet", "libsonnet"] {
+        line: ["//", "#"], block: [("/*", "*/")], quotes: b"\"'",
+        imports: [r#"import(?:str|bin)?\s+['"]([^'"]+)['"]"#],
+        symbols: [("local", r"^local\s+(\w+)")],
+        package: ""
+    }
+    "cuelang" "CUE source" "text/x-cue" ["cue"] {
+        line: ["//"], block: [], quotes: b"\"",
+        imports: [r#"^\s*import\s+(?:\w+\s+)?"([^"]+)""#, r#"^\s+(?:\w+\s+)?"([\w.]+/[^"]+)"\s*$"#],
+        symbols: [("definition", r"^(#\w+)\s*:"), ("field", r"^(\w+)\s*:")],
+        package: r"^package\s+(\w+)"
+    }
 }
 
 static META: ExtractorMeta =
@@ -382,6 +418,14 @@ impl Extractor for SourceCode {
         let head = std::str::from_utf8(&probe.head[..probe.head.len().min(1024)])
             .or_else(|e| std::str::from_utf8(&probe.head[..e.valid_up_to()]))
             .ok()?;
+        // `.cue` is also a CUE sheet (which has FILE and TRACK commands).
+        if probe.extension == Some("cue") {
+            let sheet = head.lines().any(|l| {
+                let l = l.trim_start().to_ascii_uppercase();
+                l.starts_with("FILE ") || l.starts_with("TRACK ")
+            });
+            return (!sheet).then_some(Sniff { format: "cuelang", confidence: 0.6 });
+        }
         if let Some(id) = shebang(head).and_then(|i| language_of_interpreter(&i)) {
             return Some(Sniff { format: id, confidence: 0.9 });
         }
@@ -935,6 +979,12 @@ mod tests {
         "cmake",
         "nix",
         "visual_basic",
-        "protobuf"
+        "protobuf",
+        "thrift",
+        "capnp",
+        "flatbuffers",
+        "dhall",
+        "jsonnet",
+        "cuelang"
     );
 }

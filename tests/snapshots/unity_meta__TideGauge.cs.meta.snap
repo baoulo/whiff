@@ -1,0 +1,119 @@
+---
+source: src/formats/data/binser/unity.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "TideGauge.cs.meta",
+    "stem": "TideGauge.cs",
+    "extension": "meta"
+  },
+  "identification": {
+    "format": "unity_meta",
+    "name": "Unity asset metadata",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.unity"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 248
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 248,
+    "entropy": 4.639,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 248,
+      "chars": 248,
+      "words": 20,
+      "lines": 11,
+      "max_line_length": 38,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "26e173974ecc72d8fa3a280b8c189311bab906fb3ca3be3d2fe47824e4ed71f1",
+    "blake3": "674778040db25e5458328acd4d1f8e32ebed98bb7b61030eb7725caaab33ee38"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unity_meta": {
+      "file_format_version": "2",
+      "guid": "5a1e00000000400080000000000000b1",
+      "asset_bundle": "harbour",
+      "importer": "MonoImporter"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.unity",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

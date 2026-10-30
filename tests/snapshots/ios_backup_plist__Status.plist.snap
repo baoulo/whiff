@@ -1,0 +1,138 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Status.plist",
+    "stem": "Status",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "ios_backup_plist",
+    "name": "iOS backup Info.plist / Manifest.plist",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ios_backup_plist",
+        "confidence": 0.98
+      },
+      {
+        "format": "bplist",
+        "confidence": 0.97
+      },
+      {
+        "format": "plist",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 189
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "apple.plist",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 189,
+    "entropy": 5.223,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ffd043076ec6a0b8aa2ee3df2083f060206821dd649843fc5f804602c60a17d1",
+    "blake3": "709cd50e9e7dd161a37af764bd607a92e5058a073170fc8212b889e2634b1957"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ios_backup_plist": {
+      "encoding": "binary",
+      "top_level": "dictionary",
+      "values": 7,
+      "max_depth": 1,
+      "kind": "ios_backup_status",
+      "state": "new",
+      "snapshot_state": "finished",
+      "backup_date": "2025-09-01T12:00:00Z",
+      "full_backup": false,
+      "backup_version": "3.3"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

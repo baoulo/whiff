@@ -1,0 +1,35 @@
+{
+  "type": "record",
+  "name": "Reading",
+  "namespace": "org.saltmere.tides",
+  "doc": "A tide gauge reading",
+  "fields": [
+    {
+      "name": "gauge",
+      "type": "string"
+    },
+    {
+      "name": "seq",
+      "type": "long"
+    },
+    {
+      "name": "level_cm",
+      "type": "int"
+    },
+    {
+      "name": "at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "note",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    }
+  ]
+}

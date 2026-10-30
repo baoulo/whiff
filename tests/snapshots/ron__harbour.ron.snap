@@ -1,0 +1,271 @@
+---
+source: src/formats/data/binser/textdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.ron",
+    "stem": "harbour",
+    "extension": "ron"
+  },
+  "identification": {
+    "format": "ron",
+    "name": "RON",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 375
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 375,
+    "entropy": 4.822,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 375,
+      "chars": 375,
+      "words": 42,
+      "lines": 12,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c40d77603a3b6c3da50fa4d1ae05880ea1a020550bef5b5f900da241bdcb7d5d",
+    "blake3": "53df027fb5ed34a748e1b4539a93899624fb25ff38e88a466bb113d6967a1fdb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ron": {
+      "extensions_enabled": true,
+      "top_level": "object",
+      "keys": [
+        "name",
+        "berths",
+        "high_water",
+        "gauges",
+        "raw_note"
+      ],
+      "key_count": 5,
+      "values": 24,
+      "max_depth": 3,
+      "tags": {
+        "struct:Berth": 2,
+        "struct:Harbour": 1,
+        "struct:Pier": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.berths": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.berths[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.berths[].id": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              4,
+              7
+            ]
+          },
+          "$.berths[].length_m": {
+            "types": [
+              "number"
+            ],
+            "count": 2,
+            "examples": [
+              12.5,
+              9.0
+            ]
+          },
+          "$.berths[].occupied": {
+            "types": [
+              "boolean"
+            ],
+            "count": 2,
+            "examples": [
+              false,
+              true
+            ]
+          },
+          "$.berths[].vessel": {
+            "types": [
+              "null",
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "Gull"
+            ]
+          },
+          "$.high_water": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.high_water[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              6,
+              12
+            ]
+          },
+          "$.gauges": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.gauges.G7": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "North"
+            ]
+          },
+          "$.gauges.G9": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.gauges.G9[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.raw_note": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "pilot on \"channel 12\""
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
