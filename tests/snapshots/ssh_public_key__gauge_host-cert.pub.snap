@@ -1,0 +1,150 @@
+---
+source: src/formats/crypto/ssh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge_host-cert.pub",
+    "stem": "gauge_host-cert",
+    "extension": "pub"
+  },
+  "identification": {
+    "format": "ssh_public_key",
+    "name": "SSH public key",
+    "mime": "application/vnd.openssh.public-key",
+    "family": "crypto",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ssh_public_key",
+        "confidence": 0.9
+      },
+      {
+        "format": "pub",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "crypto.ssh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 610
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 610,
+    "entropy": 5.598,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 610,
+      "chars": 610,
+      "words": 3,
+      "lines": 1,
+      "max_line_length": 609,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8ea4d3e6fc224915c69a85c523c3f3a17faa33aa96f1f6f7a503d50068c239a0",
+    "blake3": "a338cd163030b9cb6436d5c4c7a8f3ea3c2c3301e0ff5a5c3f365d14de2ea826"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ssh_public_key": {
+      "keys": 1,
+      "key_types": {
+        "ecdsa-sha2-nistp384-cert-v01@openssh.com": 1
+      },
+      "key_type": "ecdsa-sha2-nistp384-cert-v01@openssh.com",
+      "key_algorithm": "ecdsa",
+      "key_bits": 384,
+      "key_curve": "P-384",
+      "certificate": {
+        "serial": 7,
+        "type": "host",
+        "key_id": "tides-host",
+        "principals": [
+          "tides.saltmere.example"
+        ],
+        "valid_after": "2025-09-01T00:00:00Z",
+        "expired": false,
+        "valid_before": "2125-09-01T00:00:00Z",
+        "signing_key": {
+          "key_type": "ssh-ed25519",
+          "fingerprint": "SHA256:SnVE6uVC+2XCsNJOhtJ8XMyEHpZdNMnFdFT1JyNz8OE"
+        }
+      },
+      "fingerprint": "SHA256:3I7WRByfdNYSHP9m1rmgPgcWqxMjyu0ep3fq7n0u6Vk",
+      "comment": "gauge-7"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.ssh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

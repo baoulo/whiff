@@ -1,0 +1,141 @@
+---
+source: src/formats/data/binser/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "AndroidManifest.xml",
+    "stem": "AndroidManifest",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "android_binary_xml",
+    "name": "Android binary XML",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "android_binary_xml",
+        "confidence": 0.76
+      },
+      {
+        "format": "xml",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "data.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2864
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2864,
+    "entropy": 3.494,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2d0d8c108c0d5d83cd71837cb36976bcbb9700d03517063d1924a2da1fada6e5",
+    "blake3": "649ed56656e70730be860a0383f36e230f92494de32fc4c976a38996de45c79a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_binary_xml": {
+      "root": "manifest",
+      "elements": 13,
+      "attributes": 24,
+      "max_depth": 4,
+      "element_types": {
+        "uses-permission": 3,
+        "action": 1,
+        "activity": 1,
+        "application": 1,
+        "category": 1,
+        "intent-filter": 1,
+        "manifest": 1,
+        "receiver": 1,
+        "service": 1,
+        "uses-feature": 1,
+        "uses-sdk": 1
+      },
+      "package": "org.saltmere.tides",
+      "version_name": "1.2.0",
+      "version_code": "12",
+      "min_sdk": "24",
+      "target_sdk": "36",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

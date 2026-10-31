@@ -964,6 +964,7 @@ dependencies = [
  "base64",
  "indexmap",
  "quick-xml",
+ "serde",
  "time",
 ]
 

@@ -1,0 +1,346 @@
+---
+source: src/formats/forensic/dump.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "simple-crashpad.dmp",
+    "stem": "simple-crashpad",
+    "extension": "dmp"
+  },
+  "identification": {
+    "format": "minidump",
+    "name": "Minidump",
+    "mime": "application/x-dmp",
+    "family": "forensic",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.dump"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18512
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2020-12-18T19:19:41Z",
+        "source": "forensic.dump",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2020-12-18T19:19:41Z",
+    "latest": "2020-12-18T19:19:41Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18512,
+    "entropy": 4.467,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "eeac82c333080aa59a5815424b09eeb7f3f223f8fe18b7c50a361bd9c9d75148",
+    "blake3": "50fe8972dd3902cb5fc2db444e5ca7832cee7917ef8de4e780d0692b7cee0a4b"
+  },
+  "content": {
+    "title": "crashy"
+  },
+  "metadata": {},
+  "format": {
+    "minidump": {
+      "created": "2020-12-18T19:19:41Z",
+      "flags": "0x0",
+      "streams": [
+        "system_info",
+        "misc_info",
+        "thread_list",
+        "exception",
+        "module_list",
+        "crashpad_info",
+        "memory_list"
+      ],
+      "exception": {
+        "thread_id": 927532,
+        "code": "0x00000000",
+        "address": "0x7fff6f41333a",
+        "module": "libsystem_kernel.dylib",
+        "module_offset": "0x733a"
+      },
+      "system": {
+        "platform": "macos",
+        "version": "10.15.7",
+        "service_pack": "19H114",
+        "architecture": "x86_64",
+        "processors": 12
+      },
+      "process_id": 56685,
+      "process_created": "2020-12-18T19:19:41Z",
+      "threads": 1,
+      "module_count": 40,
+      "main_module": "/Users/[user]/src/crashy",
+      "modules": [
+        {
+          "name": "crashy",
+          "size": 16384
+        },
+        {
+          "name": "libSystem.B.dylib",
+          "size": 8192,
+          "version": "1281.100.1.0"
+        },
+        {
+          "name": "libcache.dylib",
+          "size": 24576,
+          "version": "83.0.0.0"
+        },
+        {
+          "name": "libcommonCrypto.dylib",
+          "size": 49152,
+          "version": "60165.120.1.0"
+        },
+        {
+          "name": "libcompiler_rt.dylib",
+          "size": 32768,
+          "version": "101.2.0.0"
+        },
+        {
+          "name": "libcopyfile.dylib",
+          "size": 40960,
+          "version": "1.0.0.0"
+        },
+        {
+          "name": "libcorecrypto.dylib",
+          "size": 602112,
+          "version": "866.140.1.0"
+        },
+        {
+          "name": "libdispatch.dylib",
+          "size": 266240,
+          "version": "1173.100.2.0"
+        },
+        {
+          "name": "libdyld.dylib",
+          "size": 225280,
+          "version": "750.6.0.0"
+        },
+        {
+          "name": "libkeymgr.dylib",
+          "size": 4096,
+          "version": "30.0.0.0"
+        },
+        {
+          "name": "liblaunch.dylib",
+          "size": 4096,
+          "version": "1738.140.2.0"
+        },
+        {
+          "name": "libmacho.dylib",
+          "size": 24576,
+          "version": "959.0.1.0"
+        },
+        {
+          "name": "libquarantine.dylib",
+          "size": 12288,
+          "version": "110.40.3.0"
+        },
+        {
+          "name": "libremovefile.dylib",
+          "size": 8192,
+          "version": "48.0.0.0"
+        },
+        {
+          "name": "libsystem_asl.dylib",
+          "size": 98304,
+          "version": "377.60.2.0"
+        },
+        {
+          "name": "libsystem_blocks.dylib",
+          "size": 4096,
+          "version": "74.0.0.0"
+        },
+        {
+          "name": "libsystem_c.dylib",
+          "size": 557056,
+          "version": "1353.100.2.0"
+        },
+        {
+          "name": "libsystem_configuration.dylib",
+          "size": 16384,
+          "version": "1061.141.1.0"
+        },
+        {
+          "name": "libsystem_coreservices.dylib",
+          "size": 16384,
+          "version": "114.0.0.0"
+        },
+        {
+          "name": "libsystem_darwin.dylib",
+          "size": 36864,
+          "version": "1.0.0.0"
+        },
+        {
+          "name": "libsystem_dnssd.dylib",
+          "size": 32768,
+          "version": "1096.100.3.0"
+        },
+        {
+          "name": "libsystem_featureflags.dylib",
+          "size": 8192,
+          "version": "17.0.0.0"
+        },
+        {
+          "name": "libsystem_info.dylib",
+          "size": 319488,
+          "version": "1.0.0.0"
+        },
+        {
+          "name": "libsystem_m.dylib",
+          "size": 294912,
+          "version": "3178.0.0.0"
+        },
+        {
+          "name": "libsystem_malloc.dylib",
+          "size": 163840,
+          "version": "283.100.6.0"
+        },
+        {
+          "name": "libsystem_networkextension.dylib",
+          "size": 57344,
+          "version": "1.0.0.0"
+        },
+        {
+          "name": "libsystem_notify.dylib",
+          "size": 40960,
+          "version": "241.100.2.0"
+        },
+        {
+          "name": "libsystem_sandbox.dylib",
+          "size": 20480,
+          "version": "1217.141.2.0"
+        },
+        {
+          "name": "libsystem_secinit.dylib",
+          "size": 12288,
+          "version": "62.100.2.0"
+        },
+        {
+          "name": "libsystem_kernel.dylib",
+          "size": 184320,
+          "version": "6153.141.10.0"
+        },
+        {
+          "name": "libsystem_platform.dylib",
+          "size": 36864,
+          "version": "220.100.1.0"
+        },
+        {
+          "name": "libsystem_pthread.dylib",
+          "size": 45056,
+          "version": "416.100.3.0"
+        },
+        {
+          "name": "libsystem_symptoms.dylib",
+          "size": 32768,
+          "version": "1.0.0.0"
+        },
+        {
+          "name": "libsystem_trace.dylib",
+          "size": 94208,
+          "version": "1147.120.1.0"
+        },
+        {
+          "name": "libunwind.dylib",
+          "size": 24576,
+          "version": "35.4.0.0"
+        },
+        {
+          "name": "libxpc.dylib",
+          "size": 221184,
+          "version": "1738.140.2.0"
+        },
+        {
+          "name": "libobjc.A.dylib",
+          "size": 212992,
+          "version": "228.0.0.0"
+        },
+        {
+          "name": "libc++abi.dylib",
+          "size": 90112,
+          "version": "902.0.0.0"
+        },
+        {
+          "name": "libc++.1.dylib",
+          "size": 339968,
+          "version": "902.1.0.0"
+        },
+        {
+          "name": "dyld",
+          "size": 598016
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.dump",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

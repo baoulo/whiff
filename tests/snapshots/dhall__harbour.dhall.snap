@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.dhall",
+    "stem": "harbour",
+    "extension": "dhall"
+  },
+  "identification": {
+    "format": "dhall",
+    "name": "Dhall source",
+    "mime": "text/x-dhall",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 330
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 330,
+    "entropy": 4.575,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 330,
+      "chars": 330,
+      "words": 63,
+      "lines": 12,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "f8ae60d2c9701763f5d56eee9a0fa88cc765ba5b8a802cad8e971a856d2e393e",
+    "blake3": "b9bf41c4e659dd90f6e63fc0d5ab4953499d2439cc7ddb0730428dd582a6ce53"
+  },
+  "content": {
+    "description": "Saltmere Harbour configuration",
+    "excerpt": "Saltmere Harbour configuration"
+  },
+  "metadata": {},
+  "format": {
+    "dhall": {
+      "language": "Dhall",
+      "loc": {
+        "code": 8,
+        "comment": 1,
+        "blank": 3,
+        "total": 12
+      },
+      "imports": [
+        "./defaults.dhall"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "binding": [
+          "Berth",
+          "defaults",
+          "berths"
+        ]
+      },
+      "symbol_counts": {
+        "binding": 3
+      },
+      "module_doc": "Saltmere Harbour configuration",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 63
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

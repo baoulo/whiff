@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>EncryptionType</key>
+			<string>None</string>
+			<key>PayloadIdentifier</key>
+			<string>org.saltmere.guest.wifi</string>
+			<key>PayloadType</key>
+			<string>com.apple.wifi.managed</string>
+			<key>PayloadUUID</key>
+			<string>5A1E0000-0000-4000-8000-000000000011</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>SSID_STR</key>
+			<string>SaltmereGuest</string>
+		</dict>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>HTTPS</string>
+				<key>ServerURL</key>
+				<string>https://dns.example.org/dns-query</string>
+			</dict>
+			<key>PayloadIdentifier</key>
+			<string>org.saltmere.guest.dns</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>5A1E0000-0000-4000-8000-000000000012</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Wi-Fi and DNS settings for visitors to Saltmere Harbour.</string>
+	<key>PayloadDisplayName</key>
+	<string>Saltmere Harbour guest network</string>
+	<key>PayloadIdentifier</key>
+	<string>org.saltmere.guest</string>
+	<key>PayloadOrganization</key>
+	<string>Saltmere Harbour</string>
+	<key>PayloadScope</key>
+	<string>User</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>5A1E0000-0000-4000-8000-000000000010</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>RemovalDate</key>
+	<date>2026-09-01T12:00:00Z</date>
+</dict>
+</plist>

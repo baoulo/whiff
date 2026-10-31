@@ -1,0 +1,151 @@
+---
+source: src/formats/forensic/logs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "conn.log",
+    "stem": "conn",
+    "extension": "log"
+  },
+  "identification": {
+    "format": "zeek_log",
+    "name": "Zeek log",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "zeek_log",
+        "confidence": 0.97
+      },
+      {
+        "format": "log",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "forensic.logs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 447
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.logs",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 447,
+    "entropy": 4.846,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 447,
+      "chars": 447,
+      "words": 56,
+      "lines": 12,
+      "max_line_length": 103,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "4233e47564d903f12400ebeb0db660045a404049bd0fc98fcb1d0c65d10c8fa2",
+    "blake3": "00d54ffdd9e4b06089e565c3eb336094f480ab000dbc1f7181fde080ae8b39e9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zeek_log": {
+      "log_type": "conn",
+      "opened": "2025-09-01-12-00-00",
+      "closed": "2025-09-01-12-05-00",
+      "fields": [
+        "ts",
+        "uid",
+        "id.orig_h",
+        "id.orig_p",
+        "id.resp_h",
+        "id.resp_p",
+        "proto",
+        "service"
+      ],
+      "records": 3,
+      "first": "2025-09-01T12:00:00Z",
+      "last": "2025-09-01T12:00:14Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.logs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

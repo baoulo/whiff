@@ -1,0 +1,125 @@
+---
+source: src/formats/forensic/capture.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.pcap",
+    "stem": "saltmere-harbour",
+    "extension": "pcap"
+  },
+  "identification": {
+    "format": "pcap",
+    "name": "pcap packet capture",
+    "mime": "application/vnd.tcpdump.pcap",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.capture"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 559
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.capture",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 559,
+    "entropy": 3.715,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4effb47c76a62d43ee07a4501d1fb6c5f4c7fb1b7573677ec52b8a896e7caa47",
+    "blake3": "a04e37ff769a6d15adbfe4d05f9b6554ac7c72b7885d2509e8d0f3708712d74b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pcap": {
+      "version": "2.4",
+      "byte_order": "little_endian",
+      "timestamp_resolution": "microsecond",
+      "snap_length": 262144,
+      "link_type": "ethernet",
+      "packets": 6,
+      "captured_bytes": 439,
+      "original_bytes": 439,
+      "first_packet": "2025-09-01T12:00:00Z",
+      "last_packet": "2025-09-01T12:00:35Z",
+      "duration_s": 35.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.capture",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

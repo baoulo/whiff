@@ -1,0 +1,125 @@
+---
+source: src/formats/db/engines.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "rocksdb-000001.sst",
+    "stem": "rocksdb-000001",
+    "extension": "sst"
+  },
+  "identification": {
+    "format": "leveldb_table",
+    "name": "LevelDB / RocksDB sorted table",
+    "mime": "application/octet-stream",
+    "family": "db",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "db.engines"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1518
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1518,
+    "entropy": 5.782,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8437ddb97b3ec6b610567692e8a238e54c08fdeedc3b55944cd5ca4a608153fc",
+    "blake3": "b5a234b102b81c6df04a972a9b94245a7499363aeff6b21904e13c1e8f748aae"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "leveldb_table": {
+      "table_format": "rocksdb_block_based",
+      "format_version": 6,
+      "properties": {
+        "column_family_id": 0,
+        "column_family_name": "default",
+        "comparator": "leveldb.BytewiseComparator",
+        "compression": "Snappy",
+        "creating_db_identity": "8cf0899a-46eb-47d6-93d9-ea0348fa3ce7",
+        "creating_host_identity": "0b10507cee9f",
+        "creation_time": "2026-10-29T16:19:04Z",
+        "data_size": 430,
+        "file_creation_time": "2026-10-29T16:19:04Z",
+        "filter_size": 0,
+        "index_size": 27,
+        "merge_operator": "StringAppendOperator",
+        "num_data_blocks": 1,
+        "num_entries": 60,
+        "prefix_extractor_name": "nullptr",
+        "raw_key_size": 1071,
+        "raw_value_size": 471
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.engines",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

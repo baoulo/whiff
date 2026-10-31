@@ -1,0 +1,135 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-session.keylog",
+    "stem": "tides-session",
+    "extension": "keylog"
+  },
+  "identification": {
+    "format": "tls_keylog",
+    "name": "TLS key log",
+    "mime": "application/octet-stream",
+    "family": "crypto",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 987
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "tls_key_log",
+        "source": "crypto.token"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 987,
+    "entropy": 4.717,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 987,
+      "chars": 987,
+      "words": 23,
+      "lines": 6,
+      "max_line_length": 193,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d2a6ac218d6efa5dbda8ca1222f4df45b2913f3b87a94b91dbf91faddc8fe683",
+    "blake3": "eebaafe859fb525acd00a7b302b8148c5b0817b236ac05bce1da826a3bddb9b4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tls_keylog": {
+      "lines": 5,
+      "labels": {
+        "SERVER_HANDSHAKE_TRAFFIC_SECRET": 1,
+        "EXPORTER_SECRET": 1,
+        "SERVER_TRAFFIC_SECRET_0": 1,
+        "CLIENT_HANDSHAKE_TRAFFIC_SECRET": 1,
+        "CLIENT_TRAFFIC_SECRET_0": 1
+      },
+      "sessions": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

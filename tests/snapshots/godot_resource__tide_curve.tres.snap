@@ -1,0 +1,121 @@
+---
+source: src/formats/data/binser/godot.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide_curve.tres",
+    "stem": "tide_curve",
+    "extension": "tres"
+  },
+  "identification": {
+    "format": "godot_resource",
+    "name": "Godot resource",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.godot"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 215
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 215,
+    "entropy": 4.877,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 215,
+      "chars": 215,
+      "words": 29,
+      "lines": 7,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "f7ccc872483c776dd1229effa6f5699682694534614fff2130822f33ca00cdbc",
+    "blake3": "cc8d6c03901d786dcb83b0186769d78f0cf0fff6503bce7d0db3b070db0e3a28"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "godot_resource": {
+      "kind": "resource",
+      "resource_type": "Curve",
+      "format_version": "3",
+      "uid": "uid://d5a1e000curve",
+      "external_resources": 0,
+      "sub_resources": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.godot",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

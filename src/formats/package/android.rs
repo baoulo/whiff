@@ -134,7 +134,7 @@ fn attr_name(id: u32) -> Option<&'static str> {
 
 /// An attribute value.
 #[derive(Debug, Clone, PartialEq)]
-enum Attr {
+pub(crate) enum Attr {
     Str(String),
     Int(i64),
     Bool(bool),
@@ -143,7 +143,7 @@ enum Attr {
 }
 
 impl Attr {
-    fn text(&self) -> String {
+    pub(crate) fn text(&self) -> String {
         match self {
             Self::Str(s) => s.clone(),
             Self::Int(n) => n.to_string(),
@@ -164,10 +164,10 @@ impl Attr {
 
 /// One element: depth, local name, attributes by local name.
 #[derive(Debug, Default)]
-struct Element {
-    depth: usize,
-    name: String,
-    attrs: Vec<(String, Attr)>,
+pub(crate) struct Element {
+    pub(crate) depth: usize,
+    pub(crate) name: String,
+    pub(crate) attrs: Vec<(String, Attr)>,
 }
 
 impl Element {
@@ -175,13 +175,13 @@ impl Element {
         self.attrs.iter().find(|(k, _)| k == name).map(|(_, v)| v)
     }
 
-    fn str(&self, name: &str) -> Option<String> {
+    pub(crate) fn str(&self, name: &str) -> Option<String> {
         self.get(name).map(Attr::text)
     }
 }
 
 /// A string pool chunk (`ResStringPool_header` at `chunk`).
-fn string_pool(chunk: &[u8]) -> Vec<String> {
+pub(crate) fn string_pool(chunk: &[u8]) -> Vec<String> {
     let le32 = |at: usize| chunk.get(at..at + 4).map(|b| u32::from_le_bytes([b[0], b[1], b[2], b[3]]) as usize);
     let (Some(count), Some(flags), Some(start)) = (le32(8), le32(16), le32(20)) else { return Vec::new() };
     let utf8 = flags & 0x100 != 0;
@@ -234,7 +234,7 @@ fn typed(ty: u8, data: u32, strings: &[String]) -> Attr {
 }
 
 /// Elements of a binary XML (`AXML`) document.
-fn binary_xml(data: &[u8]) -> Result<Vec<Element>, ExtractError> {
+pub(crate) fn binary_xml(data: &[u8]) -> Result<Vec<Element>, ExtractError> {
     let mut doc = ByteReader::new(data);
     if doc.le_u16()? != 0x0003 {
         return Err(ExtractError::malformed("not a binary XML document"));

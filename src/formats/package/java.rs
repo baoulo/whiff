@@ -82,7 +82,7 @@ fn kind(names: &[String], ext: Option<&str>) -> Option<(&'static str, f64)> {
 }
 
 /// The Java release a class-file major version targets (45 = 1.1 … 52 = 8).
-fn java_release(major: u16) -> Option<String> {
+pub(crate) fn java_release(major: u16) -> Option<String> {
     match major {
         45..=48 => Some(format!("1.{}", major - 44)),
         49..=99 => Some((major - 44).to_string()),

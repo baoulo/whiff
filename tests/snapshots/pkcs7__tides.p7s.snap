@@ -1,0 +1,209 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.p7s",
+    "stem": "tides",
+    "extension": "p7s"
+  },
+  "identification": {
+    "format": "pkcs7",
+    "name": "PKCS#7 / CMS",
+    "mime": "application/pkcs7-mime",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1856
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1856,
+    "entropy": 7.118,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c70edb3bb2e55c7a70bbf1d0fd98775109a4bcbc7432c2eb4ca59785868b5503",
+    "blake3": "ac57317dff60da3511cb2a4a904b4f4bc4752e434f9504a5df8d32bc5d0d53b4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pkcs7": {
+      "encoding": "der",
+      "objects": 3,
+      "object_types": {
+        "cms": 1,
+        "certificate": 2
+      },
+      "certificates": [
+        {
+          "subject": "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+          "subject_cn": "Saltmere Tide Signer",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+          "serial": "2002",
+          "version": 3,
+          "not_before": "2025-09-01T00:00:00Z",
+          "not_after": "2125-09-01T00:00:00Z",
+          "key_algorithm": "ed25519",
+          "key_bits": 256,
+          "signature_algorithm": "sha256_ecdsa",
+          "self_signed": false,
+          "ca": false,
+          "key_usage": [
+            "digital_signature",
+            "key_encipherment"
+          ],
+          "extended_key_usage": [
+            "email_protection",
+            "code_signing"
+          ],
+          "sha256": "5ac747f19091c2408489463ce8d19ec47e2877ae54399d0addd06614c0c72d76",
+          "sha1": "25b60f719bd88f233c248a264d6a4cf6f45714c0",
+          "expired": false
+        },
+        {
+          "subject": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+          "subject_cn": "Saltmere Harbour Issuing CA",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "CN=Saltmere Harbour Root CA, O=Saltmere Harbour, C=GB",
+          "serial": "1001",
+          "version": 3,
+          "not_before": "2025-09-01T00:00:00Z",
+          "not_after": "2125-09-01T00:00:00Z",
+          "key_algorithm": "ec",
+          "key_bits": 384,
+          "key_curve": "P-384",
+          "signature_algorithm": "sha384_rsa",
+          "self_signed": false,
+          "ca": true,
+          "path_length": 0,
+          "key_usage": [
+            "key_cert_sign",
+            "crl_sign"
+          ],
+          "extended_key_usage": [
+            "server_auth",
+            "client_auth",
+            "code_signing"
+          ],
+          "sha256": "8f451509d899548a17b3d1a2bb3d1339bfac5adb3b1023e995e422e1f685ae18",
+          "sha1": "fc8b2c85947ce4eb0cd3e743d7ca42a9c438a5fa",
+          "expired": false
+        }
+      ],
+      "cms": [
+        {
+          "content_type": "signed_data",
+          "signed_content_type": "data",
+          "detached": true,
+          "digest": "sha256",
+          "signer": {
+            "subject": "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+            "subject_cn": "Saltmere Tide Signer",
+            "subject_organization": "Saltmere Harbour",
+            "issuer": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+            "serial": "2002",
+            "version": 3,
+            "not_before": "2025-09-01T00:00:00Z",
+            "not_after": "2125-09-01T00:00:00Z",
+            "key_algorithm": "ed25519",
+            "key_bits": 256,
+            "signature_algorithm": "sha256_ecdsa",
+            "self_signed": false,
+            "ca": false,
+            "key_usage": [
+              "digital_signature",
+              "key_encipherment"
+            ],
+            "extended_key_usage": [
+              "email_protection",
+              "code_signing"
+            ],
+            "sha256": "5ac747f19091c2408489463ce8d19ec47e2877ae54399d0addd06614c0c72d76",
+            "sha1": "25b60f719bd88f233c248a264d6a4cf6f45714c0"
+          },
+          "signing_time": "2026-10-28T22:26:46Z",
+          "timestamped": false,
+          "certificates": [
+            "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+            "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB"
+          ],
+          "signers": 1
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

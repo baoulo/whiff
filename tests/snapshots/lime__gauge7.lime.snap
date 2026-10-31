@@ -1,0 +1,109 @@
+---
+source: src/formats/forensic/dump.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge7.lime",
+    "stem": "gauge7",
+    "extension": "lime"
+  },
+  "identification": {
+    "format": "lime",
+    "name": "LiME memory image",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.dump"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12352
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12352,
+    "entropy": 0.019,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "03be8a844c5fdc1267391352b35a0c98d0208aa528ca268347f263e0f5953bd1",
+    "blake3": "746bbe1356fbaafcf094a43922c673b3dededccc63755c513ec6b4495321fe6d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lime": {
+      "version": 1,
+      "ranges": 2,
+      "memory_bytes": 12288,
+      "lowest_address": "0x1000",
+      "highest_address": "0x100fff"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.dump",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

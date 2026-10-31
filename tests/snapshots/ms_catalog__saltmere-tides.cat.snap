@@ -1,0 +1,179 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.cat",
+    "stem": "saltmere-tides",
+    "extension": "cat"
+  },
+  "identification": {
+    "format": "ms_catalog",
+    "name": "Microsoft security catalog",
+    "mime": "application/vnd.ms-pki.seccat",
+    "family": "crypto",
+    "confidence": 0.8,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1273,
+    "entropy": 6.337,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "38a223d4baa3df5490ecf0cff2e2965f7d2d351212240fc242465d1138b47c6a",
+    "blake3": "2045f89ca3d3c3fae2bb5232f18d3641abad3dfb5884e9d1e1edcb9f850ef72d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ms_catalog": {
+      "encoding": "der",
+      "objects": 2,
+      "object_types": {
+        "cms": 1,
+        "certificate": 1
+      },
+      "certificates": [
+        {
+          "subject": "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+          "subject_cn": "Saltmere Tide Signer",
+          "subject_organization": "Saltmere Harbour",
+          "issuer": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+          "serial": "2002",
+          "version": 3,
+          "not_before": "2025-09-01T00:00:00Z",
+          "not_after": "2125-09-01T00:00:00Z",
+          "key_algorithm": "ed25519",
+          "key_bits": 256,
+          "signature_algorithm": "sha256_ecdsa",
+          "self_signed": false,
+          "ca": false,
+          "key_usage": [
+            "digital_signature",
+            "key_encipherment"
+          ],
+          "extended_key_usage": [
+            "email_protection",
+            "code_signing"
+          ],
+          "sha256": "5ac747f19091c2408489463ce8d19ec47e2877ae54399d0addd06614c0c72d76",
+          "sha1": "25b60f719bd88f233c248a264d6a4cf6f45714c0",
+          "expired": false
+        }
+      ],
+      "cms": [
+        {
+          "content_type": "signed_data",
+          "signed_content_type": "certificate_trust_list",
+          "detached": false,
+          "digest": "sha256",
+          "signer": {
+            "subject": "CN=Saltmere Tide Signer, O=Saltmere Harbour",
+            "subject_cn": "Saltmere Tide Signer",
+            "subject_organization": "Saltmere Harbour",
+            "issuer": "CN=Saltmere Harbour Issuing CA, O=Saltmere Harbour, C=GB",
+            "serial": "2002",
+            "version": 3,
+            "not_before": "2025-09-01T00:00:00Z",
+            "not_after": "2125-09-01T00:00:00Z",
+            "key_algorithm": "ed25519",
+            "key_bits": 256,
+            "signature_algorithm": "sha256_ecdsa",
+            "self_signed": false,
+            "ca": false,
+            "key_usage": [
+              "digital_signature",
+              "key_encipherment"
+            ],
+            "extended_key_usage": [
+              "email_protection",
+              "code_signing"
+            ],
+            "sha256": "5ac747f19091c2408489463ce8d19ec47e2877ae54399d0addd06614c0c72d76",
+            "sha1": "25b60f719bd88f233c248a264d6a4cf6f45714c0"
+          },
+          "timestamped": false,
+          "certificates": [
+            "CN=Saltmere Tide Signer, O=Saltmere Harbour"
+          ],
+          "signers": 1,
+          "catalog_members": 2
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "harbour.title" : {
+      "comment" : "Window title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Saltmere Harbour" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Port de Saltmere" } },
+        "de" : { "stringUnit" : { "state" : "needs_review", "value" : "Hafen Saltmere" } }
+      }
+    },
+    "tide.high %@" : {
+      "comment" : "Next high water",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "High water at %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Pleine mer à %@" } }
+      }
+    },
+    "SALTMERE" : {
+      "shouldTranslate" : false
+    }
+  },
+  "version" : "1.0"
+}

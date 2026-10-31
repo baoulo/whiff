@@ -1,0 +1,13 @@
+namespace Saltmere.Tides;
+
+enum Unit : byte { Centimetre, Foot }
+struct Position { lat: double; lon: double; }
+table Reading { gauge: string; seq: uint; level: int; unit: Unit = Centimetre; }
+table Gauge { name: string; position: Position; readings: [Reading]; }
+union Payload { Reading, Gauge }
+table Message { payload: Payload; }
+rpc_service Tides { Latest(Gauge): Reading; }
+
+root_type Message;
+file_identifier "TIDE";
+file_extension "tide";

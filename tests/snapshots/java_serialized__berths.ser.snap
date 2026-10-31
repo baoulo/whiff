@@ -1,0 +1,128 @@
+---
+source: src/formats/data/binser/javaser.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.ser",
+    "stem": "berths",
+    "extension": "ser"
+  },
+  "identification": {
+    "format": "java_serialized",
+    "name": "Java serialized object",
+    "mime": "application/x-java-serialized-object",
+    "family": "data.binser",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "data.java_serialized"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 603
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 603,
+    "entropy": 5.555,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7a4901d3c24954d1b1f8184d411c7ee6b6c7c477baa8a18ee000ea756ffeacbb",
+    "blake3": "6953eea71d0a0d0e2299d9e6c4522b3919f38a554408c9f34f05d961feb9a23b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "java_serialized": {
+      "contents": 1,
+      "top_level": [
+        "java.util.LinkedHashMap"
+      ],
+      "objects": 7,
+      "arrays": 2,
+      "strings": 11,
+      "class_count": 11,
+      "classes": [
+        "java.util.LinkedHashMap",
+        "java.util.HashMap",
+        "java.util.ArrayList",
+        "java.lang.Integer",
+        "java.lang.Number",
+        "java.time.DayOfWeek",
+        "java.lang.Enum",
+        "java.time.Ser",
+        "[I",
+        "[Ljava.lang.String;",
+        "java.util.Date"
+      ],
+      "enum_constants": {
+        "java.time.DayOfWeek.MONDAY": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.java_serialized",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

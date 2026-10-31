@@ -1,0 +1,145 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-gauge.jwt",
+    "stem": "tide-gauge",
+    "extension": "jwt"
+  },
+  "identification": {
+    "format": "jwt",
+    "name": "JSON Web Token",
+    "mime": "application/jwt",
+    "family": "crypto",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 284
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true,
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "jwt",
+        "source": "crypto.token"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 284,
+    "entropy": 5.511,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 284,
+      "chars": 284,
+      "words": 1,
+      "lines": 1,
+      "max_line_length": 283,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f4704410f39936ecfbd51e63c8fa53cfd3a1f7674dd6783967717ab9e9810d24",
+    "blake3": "060beaa1fcb48c2cbee03d8b8b1054ca44e2d5d2acc11e81db4f9be6f2240719"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jwt": {
+      "header": {
+        "alg": "HS256",
+        "typ": "JWT",
+        "kid": "tides-2000"
+      },
+      "kind": "jws",
+      "signature_verified": false,
+      "claims": {
+        "iss": "https://tides.saltmere.example",
+        "aud": "tides-api",
+        "sub": "tide-gauge-7",
+        "issued_at": "1999-12-31T23:00:00Z",
+        "expired": true,
+        "expires": "2000-01-01T00:00:00Z",
+        "other_claims": [
+          "scope"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

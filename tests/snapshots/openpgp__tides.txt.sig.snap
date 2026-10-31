@@ -1,0 +1,116 @@
+---
+source: src/formats/crypto/pgp.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.txt.sig",
+    "stem": "tides.txt",
+    "extension": "sig"
+  },
+  "identification": {
+    "format": "openpgp",
+    "name": "OpenPGP data",
+    "mime": "application/pgp-keys",
+    "family": "crypto",
+    "confidence": 0.75,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.openpgp"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 119
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 119,
+    "entropy": 6.274,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "16676c4fb9264b4b3f6300ae7e23e1de9180532018a8c1bdb79164ca9dc0c3df",
+    "blake3": "84c915d6bafd3d5d056db12688bc57eba71315a705d7acc531e7301275c09eb7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openpgp": {
+      "kind": "signature",
+      "signatures": [
+        {
+          "type": "binary",
+          "key_algorithm": "eddsa",
+          "hash": "sha512",
+          "created": "2025-09-01T12:00:00Z",
+          "issuer": "47A5FF616E719D3824C525BB557D5D66B0191FA0"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.openpgp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

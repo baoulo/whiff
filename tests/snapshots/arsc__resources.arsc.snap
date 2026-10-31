@@ -1,0 +1,118 @@
+---
+source: src/formats/data/binser/android.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "resources.arsc",
+    "stem": "resources",
+    "extension": "arsc"
+  },
+  "identification": {
+    "format": "arsc",
+    "name": "Java .properties-like binary: Android resources.arsc",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "data.android"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 568
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 568,
+    "entropy": 1.504,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b6ac2da7142f56b089e59e5839b737f6dd65a0aadb665ba9f146cfae6da8ada5",
+    "blake3": "cd0c7b79cb47090abec1b3f390bc8c05f7c3c20b30493c7b5ea5c377d4097c6d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "arsc": {
+      "declared_packages": 1,
+      "strings": 1,
+      "packages": [
+        {
+          "id": "0x7f",
+          "name": "org.saltmere.tides",
+          "types": [
+            "string"
+          ],
+          "keys": 1
+        }
+      ],
+      "configurations": 1,
+      "entries": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.android",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

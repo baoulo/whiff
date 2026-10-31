@@ -1,0 +1,129 @@
+---
+source: src/formats/crypto/store.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.keytab",
+    "stem": "tides",
+    "extension": "keytab"
+  },
+  "identification": {
+    "format": "keytab",
+    "name": "Kerberos keytab",
+    "mime": "application/x-kerberos-keytab",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "crypto.store"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 296
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "unprotected_key",
+        "category": "data_exposure",
+        "severity": "medium",
+        "detail": "keytab",
+        "source": "crypto.store"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 296,
+    "entropy": 3.921,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "325281169f02c2c1d17d7285df9bded383359190664e9b6c93bc6b8f196a4d29",
+    "blake3": "eab2e62f25b29cdf66a7adfad71000c404933a6f3750fdeef4c4422a362efcfe"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "keytab": {
+      "version": 2,
+      "entries": 3,
+      "principals": [
+        "HTTP/tides.saltmere.example@SALTMERE.EXAMPLE",
+        "host/gauge7.saltmere.example@SALTMERE.EXAMPLE"
+      ],
+      "encryption_types": {
+        "aes256-cts-hmac-sha1-96": 1,
+        "aes128-cts-hmac-sha1-96": 1,
+        "aes256-cts-hmac-sha384-192": 1
+      },
+      "max_kvno": 3,
+      "oldest_entry": "2025-09-01T12:00:00Z",
+      "newest_entry": "2025-09-01T12:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.store",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

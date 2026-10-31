@@ -1,0 +1,131 @@
+---
+source: src/formats/crypto/pki.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-root-public.der",
+    "stem": "saltmere-root-public",
+    "extension": "der"
+  },
+  "identification": {
+    "format": "der_key",
+    "name": "Key (DER: PKCS#8, PKCS#1, SEC1, SubjectPublicKeyInfo)",
+    "mime": "application/pkcs8",
+    "family": "crypto",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "der_key",
+        "confidence": 0.85
+      },
+      {
+        "format": "asn1",
+        "confidence": 0.55
+      },
+      {
+        "format": "x509",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "crypto.pki"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 422
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 422,
+    "entropy": 7.443,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b0eaf56066daf3fad7b462d9e31c4884bce1e11329a9f0126d138ab42a85d246",
+    "blake3": "0f66fc7f02132171c47410252ee0706ab45fd3a3d169f1934f16f7c1860f02b7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "der_key": {
+      "encoding": "der",
+      "objects": 1,
+      "object_types": {
+        "public_key": 1
+      },
+      "public_keys": [
+        {
+          "format": "spki",
+          "key_algorithm": "rsa",
+          "key_bits": 3072,
+          "sha256": "b0eaf56066daf3fad7b462d9e31c4884bce1e11329a9f0126d138ab42a85d246"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.pki",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

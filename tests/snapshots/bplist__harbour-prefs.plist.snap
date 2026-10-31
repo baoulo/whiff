@@ -1,0 +1,224 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-prefs.plist",
+    "stem": "harbour-prefs",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "bplist",
+    "name": "Apple plist (binary)",
+    "mime": "application/x-bplist",
+    "family": "data.binser",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "bplist",
+        "confidence": 0.97
+      },
+      {
+        "format": "plist",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 205
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 205,
+    "entropy": 5.474,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c698d4b0b765115eaf43a9f2157fd78def7fe32af139a1ef1aab8645202a16e9",
+    "blake3": "ec07b7a2f5548898f1e5d5dd4a6ae1d4bc5d0f63c3a2d83083eb6f8ab32e9c61"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bplist": {
+      "encoding": "binary",
+      "top_level": "dictionary",
+      "values": 12,
+      "max_depth": 2,
+      "keys": [
+        "Berths",
+        "Harbour",
+        "HighWater",
+        "Pilots",
+        "Updated",
+        "ChartTile"
+      ],
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.Berths": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.Berths[]": {
+            "types": [
+              "integer"
+            ],
+            "count": 3,
+            "examples": [
+              4,
+              7,
+              12
+            ]
+          },
+          "$.Harbour": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere Harbour"
+            ]
+          },
+          "$.HighWater": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.HighWater.Height": {
+            "types": [
+              "number"
+            ],
+            "count": 1,
+            "examples": [
+              4.25
+            ]
+          },
+          "$.HighWater.Time": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "06:12"
+            ]
+          },
+          "$.Pilots": {
+            "types": [
+              "boolean"
+            ],
+            "count": 1,
+            "examples": [
+              true
+            ]
+          },
+          "$.Updated": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01T12:00:00Z"
+            ]
+          },
+          "$.ChartTile": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.ChartTile.bytes": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              10
+            ]
+          }
+        },
+        "max_depth": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

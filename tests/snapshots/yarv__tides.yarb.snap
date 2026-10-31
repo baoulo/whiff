@@ -1,0 +1,108 @@
+---
+source: src/formats/bytecode/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.yarb",
+    "stem": "tides",
+    "extension": "yarb"
+  },
+  "identification": {
+    "format": "yarv",
+    "name": "Ruby YARV instruction sequence",
+    "mime": "application/octet-stream",
+    "family": "bytecode",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 772
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 772,
+    "entropy": 5.053,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e59baf4ea9223b857c6e95625c514cfed4d3a6eee343ff55b872f88bb3293684",
+    "blake3": "bc2b46ff679e17422090d9c7cfd46a37f4b79a7be32040ce0b741c208fac399a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yarv": {
+      "ruby_version": "3.3",
+      "instruction_sequences": 3,
+      "byte_order": "little_endian",
+      "word_size": 8
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

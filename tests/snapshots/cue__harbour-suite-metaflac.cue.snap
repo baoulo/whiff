@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.95,
     "detected_by": "sniff",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "cue",
+        "confidence": 0.95
+      },
+      {
+        "format": "cuelang",
+        "confidence": 0.35
+      }
+    ],
     "encoding": "us-ascii",
     "extractor": "playlist.sheet"
   },

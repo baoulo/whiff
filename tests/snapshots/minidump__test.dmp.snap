@@ -1,0 +1,214 @@
+---
+source: src/formats/forensic/dump.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "test.dmp",
+    "stem": "test",
+    "extension": "dmp"
+  },
+  "identification": {
+    "format": "minidump",
+    "name": "Minidump",
+    "mime": "application/x-dmp",
+    "family": "forensic",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.dump"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11317
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2007-02-14T19:13:55Z",
+        "source": "forensic.dump",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2007-02-14T19:13:55Z",
+    "latest": "2007-02-14T19:13:55Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 11317,
+    "entropy": 4.356,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "24b0ea7794b2d2523c46c9aea72c03ccbb0ab88ad76d8258d3752c7b71d233ff",
+    "blake3": "523adf8a9b7e5e89430c5c35d6e9ebb61e02073271a0b93ba19f5bd916642d5b"
+  },
+  "content": {
+    "title": "test_app.exe"
+  },
+  "metadata": {},
+  "format": {
+    "minidump": {
+      "created": "2007-02-14T19:13:55Z",
+      "flags": "0x0",
+      "streams": [
+        "thread_list",
+        "module_list",
+        "memory_list",
+        "exception",
+        "system_info",
+        "misc_info",
+        "breakpad_info"
+      ],
+      "exception": {
+        "thread_id": 3060,
+        "code": "0xc0000005",
+        "address": "0x40429e",
+        "name": "access_violation",
+        "module": "test_app.exe",
+        "module_offset": "0x429e"
+      },
+      "threads": 2,
+      "process_created": "2007-02-14T19:13:55Z",
+      "process_id": 3932,
+      "system": {
+        "platform": "windows",
+        "version": "5.1.2600",
+        "service_pack": "Service Pack 2",
+        "architecture": "x86",
+        "processors": 1,
+        "product_type": "workstation"
+      },
+      "module_count": 13,
+      "main_module": "c:\\test_app.exe",
+      "modules": [
+        {
+          "name": "test_app.exe",
+          "size": 184320
+        },
+        {
+          "name": "ntdll.dll",
+          "size": 720896,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "kernel32.dll",
+          "size": 999424,
+          "version": "5.1.2600.2945"
+        },
+        {
+          "name": "ole32.dll",
+          "size": 1298432,
+          "version": "5.1.2600.2726"
+        },
+        {
+          "name": "advapi32.dll",
+          "size": 634880,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "rpcrt4.dll",
+          "size": 593920,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "gdi32.dll",
+          "size": 290816,
+          "version": "5.1.2600.2818"
+        },
+        {
+          "name": "user32.dll",
+          "size": 589824,
+          "version": "5.1.2600.2622"
+        },
+        {
+          "name": "msvcrt.dll",
+          "size": 360448,
+          "version": "7.0.2600.2180"
+        },
+        {
+          "name": "imm32.dll",
+          "size": 118784,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "dbghelp.dll",
+          "size": 659456,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "version.dll",
+          "size": 32768,
+          "version": "5.1.2600.2180"
+        },
+        {
+          "name": "psapi.dll",
+          "size": 45056,
+          "version": "5.1.2600.2180"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.dump",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

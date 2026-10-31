@@ -1,0 +1,8 @@
+/* Window title */
+"harbour.title" = "Port de Saltmere";
+
+/* Next high water */
+"tide.high" = "Pleine mer à %@";
+
+// Next low water
+"tide.low" = "Basse mer à %@ (%lld cm)";

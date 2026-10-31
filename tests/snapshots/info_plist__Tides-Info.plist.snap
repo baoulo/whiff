@@ -1,0 +1,150 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides-Info.plist",
+    "stem": "Tides-Info",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "info_plist",
+    "name": "macOS app bundle Info.plist",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "info_plist",
+        "confidence": 0.98
+      },
+      {
+        "format": "bplist",
+        "confidence": 0.97
+      },
+      {
+        "format": "plist",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 898
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "© 2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 898,
+    "entropy": 5.851,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f00860b7fa9928f12b3e26656a54bb17c1fc61bb850ff6c4a9c33b35b6794cfc",
+    "blake3": "e1565ec10a4187e00039c0d64e574bfedf30310c36daeda54655b3e6116e5e80"
+  },
+  "content": {
+    "title": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "info_plist": {
+      "encoding": "binary",
+      "top_level": "dictionary",
+      "values": 26,
+      "max_depth": 4,
+      "kind": "app_info",
+      "bundle_id": "org.saltmere.tidesmac",
+      "name": "Tides",
+      "display_name": "Saltmere Tides",
+      "version": "1.2.0",
+      "build": "12",
+      "executable": "Tides",
+      "package_type": "APPL",
+      "development_region": "en",
+      "minimum_macos": "13.0",
+      "platform": "macosx",
+      "sdk": "macosx15.5",
+      "xcode": "1640",
+      "category": "public.app-category.weather",
+      "url_schemes": [
+        "saltmere-tides"
+      ],
+      "document_types": 1,
+      "exported_types": [
+        "org.saltmere.tide-table"
+      ],
+      "privacy_usage": [
+        "NSLocationUsageDescription"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

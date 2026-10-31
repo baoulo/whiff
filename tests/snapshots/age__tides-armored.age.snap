@@ -1,0 +1,125 @@
+---
+source: src/formats/crypto/token.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-armored.age",
+    "stem": "tides-armored",
+    "extension": "age"
+  },
+  "identification": {
+    "format": "age",
+    "name": "age encrypted file",
+    "mime": "application/x-age-encryption",
+    "family": "crypto",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.token"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 552
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 552,
+    "entropy": 5.803,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 552,
+      "chars": 552,
+      "words": 16,
+      "lines": 10,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "772efbf6f06e68980e9d8797ec09d1114956b99b9a3bd934798af956b3c56295",
+    "blake3": "431c4849421ae0c153236cad1b6bee804079710ea23061e2a94daadcf819b101"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "age": {
+      "armored": true,
+      "version": "v1",
+      "recipients": 2,
+      "recipient_types": {
+        "X25519": 1,
+        "ssh-ed25519": 1
+      },
+      "payload_bytes": 122
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.token",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

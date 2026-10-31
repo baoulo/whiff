@@ -1,0 +1,147 @@
+---
+source: src/formats/forensic/capture.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.pcapng",
+    "stem": "saltmere-harbour",
+    "extension": "pcapng"
+  },
+  "identification": {
+    "format": "pcapng",
+    "name": "pcapng packet capture",
+    "mime": "application/x-pcapng",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.capture"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 956
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "forensic.capture",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "pcapng decryption secrets",
+        "source": "forensic.capture"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 956,
+    "entropy": 4.279,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c2a65395d9d8f12205588368e0e1dd74e1d1453b2aa9ff605fa4f6694129b438",
+    "blake3": "65852a4ffe915c37bafb0df2abb4904070586d66f741ca477e4bd9442d055656"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pcapng": {
+      "version": "1.0",
+      "byte_order": "little_endian",
+      "application": "Editcap (Wireshark) 4.4.19",
+      "sections": 1,
+      "interfaces": [
+        {
+          "link_type": "ethernet",
+          "snap_length": 262144
+        }
+      ],
+      "blocks": {
+        "decryption_secrets": 1,
+        "enhanced_packet": 6,
+        "interface_description": 1,
+        "section_header": 1
+      },
+      "packets": 6,
+      "captured_bytes": 439,
+      "original_bytes": 439,
+      "first_packet": "2025-09-01T12:00:00Z",
+      "last_packet": "2025-09-01T12:00:35Z",
+      "duration_s": 35.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.capture",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

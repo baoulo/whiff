@@ -1,0 +1,113 @@
+---
+source: src/formats/bytecode/vm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.elc",
+    "stem": "tides",
+    "extension": "elc"
+  },
+  "identification": {
+    "format": "elc",
+    "name": "Emacs Lisp byte code",
+    "mime": "application/x-elc",
+    "family": "bytecode",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.vm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 459
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 459,
+    "entropy": 5.328,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "db310a9dcf479328b5b15275cad433fe958cdcd322648744ee1b28a3a01ce6a3",
+    "blake3": "e72d607fbcb902216490eb8e4fbdcc37a615830c9a32767bc20ff33c81138006"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elc": {
+      "bytecode_version": 30,
+      "emacs_version": "30.1",
+      "functions": [
+        "tides-metres",
+        "tides-table"
+      ],
+      "provides": [
+        "tides"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.vm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

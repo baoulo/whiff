@@ -1,0 +1,114 @@
+---
+source: src/formats/crypto/store.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-vault.kdb",
+    "stem": "harbour-vault",
+    "extension": "kdb"
+  },
+  "identification": {
+    "format": "kdb",
+    "name": "KeePass 1 database",
+    "mime": "application/x-keepass",
+    "family": "crypto",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "crypto.store"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 396
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 396,
+    "entropy": 7.337,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f711527c17843e70b4610f5d6302aba7a3d7752a1fbfcb856f7a50fcb30aa1d9",
+    "blake3": "987ed8a5919d709f4e1a52406856b9c3ddedfee6228940767753625db742d954"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kdb": {
+      "version": "3.2",
+      "cipher": "aes256",
+      "kdf": {
+        "algorithm": "aes_kdf",
+        "rounds": 50000
+      },
+      "groups": 1,
+      "entries": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.store",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

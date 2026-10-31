@@ -6,7 +6,7 @@ keep the schema version.
 
 ## Unreleased
 
-Executables (Stage 6, first part).
+Executables, bytecode, crypto, databases, forensic artefacts, Apple formats and binary serialisations: Stage 6 is complete.
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -45,21 +45,256 @@ Executables (Stage 6, first part).
     exports, memory limits, the start function, module name, `producers`,
     target features, source maps, relocatable objects and dynamic
     libraries.
+- **Bytecode** (`common`), all in-house; nothing is run, unmarshalled into
+  live objects or decompiled:
+  - Java class files: class-file version and Java release (preview
+    features), kind (class, interface, enum, record, annotation, module),
+    name, superclass, interfaces, access flags, field and method counts
+    with the method names, source file, record components, permitted
+    subclasses of sealed types, nest and inner classes, annotations (and
+    from them Kotlin, Scala or Groovy as the source language), referenced
+    packages, debug information, and a module's requires, exports, opens,
+    uses, provides and main class;
+  - Android DEX: version and minimum Android API level, the verified
+    checksum and SHA-1 signature, counts of strings, types, prototypes,
+    fields, methods and classes, the classes defined with their packages
+    and source files, referenced packages, the D8 / R8 marker (tool,
+    version, mode, minimum API) and Kotlin;
+  - Python `.pyc` (2.0 to 3.15): the Python version from the magic number
+    (development builds too), timestamp or hash-based invalidation with the
+    source time, size or hash, and from a bounded `marshal` walk the source
+    file, module docstring, imported modules and top-level definitions;
+  - .NET assemblies, through the ECMA-335 metadata tables: assembly name,
+    version, culture and public-key token, module and MVID, referenced
+    assemblies, native modules and P/Invoke imports, counts of types,
+    methods, fields, properties, events and resources, namespaces and
+    public types, the entry point, the target framework and the assembly
+    attributes (title, company, product, copyright, versions,
+    `InternalsVisibleTo`), ReadyToRun images, and known obfuscators;
+  - Lua 5.1 to 5.4 and LuaJIT (version, source name, stripped, number
+    sizes), Erlang BEAM (module, Elixir, exports, imported modules, `vsn`,
+    behaviours, compiler version, options and source, debug information),
+    Emacs Lisp `.elc` (Emacs version, functions, variables, features),
+    mruby (format, compiler, sections, source files), Ruby YARV (Ruby
+    version, byte order, word size) and OCaml compiled files (kind and
+    OCaml release).
+- **Crypto** (`common`), all in-house. Key material is never reported:
+  private parts are skipped unread, nothing is decrypted and no signature
+  is verified:
+  - X.509 certificates, as DER or in PEM bundles: subject, issuer, serial,
+    validity and whether it has passed, key algorithm, size and curve,
+    signature algorithm, basic constraints, key usage, extended key usage,
+    alternative names, SHA-256 and SHA-1 fingerprints; certificate
+    requests, revocation lists (issuer, updates, revoked count, CRL
+    number), PKCS#7 / CMS signed and enveloped data (signer, digest, times,
+    chain; recipients, cipher), Microsoft security catalogs (member
+    count), PKCS#12 (MAC, which safes are encrypted and how, bag types,
+    the certificates of unencrypted safes) and keys (PKCS#8, encrypted
+    PKCS#8 with its PBES2 / PBKDF2 / scrypt parameters, PKCS#1, SEC1,
+    `SubjectPublicKeyInfo`, the old `DEK-Info` PEM form): type, size,
+    curve and protection;
+  - SSH: public keys (one per line and RFC 4716), `authorized_keys`
+    (options used), `known_hosts` (hashed and named hosts, markers; host
+    names are not listed), OpenSSH certificates (type, key ID, principals,
+    validity, options, CA key), OpenSSH private keys (cipher, KDF and
+    rounds; the comment when unencrypted) and PuTTY `.ppk` (versions 2 and
+    3, Argon2 parameters), with the fingerprint `ssh-keygen -l` prints;
+  - OpenPGP, binary or armoured, and GnuPG keyboxes: keys with
+    fingerprint, key ID, algorithm, size or curve, creation, expiry and
+    usage from the self-signatures, revocation, user IDs and subkeys,
+    secret-key protection and GnuPG stubs; messages (recipients' key IDs,
+    passphrase encryption, cipher, compression, the literal file name and
+    date, inside zlib / ZIP compression too) and signatures (type, issuer,
+    hash, time; clear-signed text);
+  - key stores: Java JKS / JCEKS (entries with alias, type, date and the
+    certificate), Kerberos keytabs (principals, encryption types, key
+    versions; user principals hidden by strict privacy), KeePass 2 (KDBX
+    3 / 4: cipher, compression, AES-KDF or Argon2 parameters) and KeePass 1
+    headers;
+  - JSON Web Tokens (JWS / JWE header, registered claims with times and
+    expiry, the other claims' names), JSON Web Keys and key sets (type,
+    curve, size, use, ID, whether a private part is present), age files
+    (recipient types, scrypt work factor), minisign and signify keys and
+    signatures (key ID, algorithm, comments, KDF) and TLS key logs (labels
+    and session counts only).
+- **Databases** (`common`), all in-house; read without a database engine,
+  nothing executed, no row data beyond the application summaries:
+  - SQLite, through a read-only b-tree reader that loads pages on demand
+    within the parse budget: SQLite version, page size and count, text
+    encoding, journal mode, auto-vacuum, user version, application ID, free
+    pages; tables with their columns (declared type, primary key, NOT NULL,
+    foreign keys), WITHOUT ROWID, STRICT and virtual tables, indexes, views
+    and triggers; row counts (exact within the budget, estimated from the
+    tree's fan-out beyond it); and the application: GeoPackage contents,
+    MBTiles metadata, Chromium and Firefox histories (visit counts and
+    date range, never URLs), cookie and login stores (counts only), Core
+    Data entities, Apple Photos and Messages, Lightroom catalogs, Anki
+    collections, iOS backup manifests, SpatiaLite, Fossil and Android app
+    databases. Also SQLite write-ahead logs (frames, commits, pages) and
+    rollback journals;
+  - dBASE / FoxPro / Visual FoxPro tables: variant, last update, record
+    count and size, code page, memo file, fields and deleted records;
+  - Microsoft Access (Jet 3 to ACE 16): engine and Access version, code
+    page, creation date, encoding, and from the `MSysObjects` catalog the
+    user tables with row counts and columns, linked tables, queries,
+    forms, reports, macros and modules (macros and VBA modules report the
+    `macros` risk);
+  - from their headers: DuckDB (storage and library version, blocks), LMDB
+    (map and page size, entries, depth, transaction), Berkeley DB (access
+    method, version, page size, pages), LevelDB and RocksDB tables (format
+    and RocksDB's properties: entries, sizes, column family, comparator,
+    compression, creation time), Redis RDB snapshots (versions, keys per
+    database), PostgreSQL `pg_dump` custom archives (versions, database,
+    compression, the table of contents by object type, schemas and
+    tables), MySQL / MariaDB `.frm` (engine, server version), InnoDB `.ibd`
+    tablespaces, MyISAM / Aria indexes and H2 MVStore files.
+- **Forensic artefacts** (feature `forensics`), all in-house; counts, time
+  ranges and identifying facts, never the content (user names in paths are
+  hidden when privacy is strict):
+  - packet captures: pcap (micro- and nanosecond), pcapng (OS, hardware,
+    application, interfaces, block counts, comments, decryption secrets)
+    and btsnoop: packets, bytes, truncation, time range, and with the
+    `full` profile a protocol histogram;
+  - Windows event logs: EVTX (version, chunks, dirty / full, record count
+    and range, time range, and from each record's binary XML template the
+    channels, providers, event IDs, levels and computer count) and EVT;
+  - registry hives: version, dirty, last written, embedded file name, key
+    and value counts, the hive's kind, and for SOFTWARE / SYSTEM / SAM /
+    Amcache the Windows product, build, install date, control set, time
+    zone and account or file counts;
+  - shell artefacts: shortcuts (target, arguments, working folder, the
+    target's times and attributes, volume or share, tracker machine ID and
+    droid time, known folder), jump lists and custom destinations, Recycle
+    Bin `$I` files, and Prefetch for Windows XP to 11 (LZXPRESS Huffman
+    decompression in-house: executable, hash, run count, last run times,
+    volumes, files loaded); shortcuts that start a command interpreter with
+    arguments report the new `script_shortcut` risk;
+  - dumps: minidumps (Windows, Breakpad, Crashpad: system, exception and
+    the module it hit, modules, threads, process), Windows kernel crash
+    dump headers (bug check), LiME images and hibernation files;
+  - `$MFT` files (record counts, deleted records, time ranges, extension
+    histogram), Linux utmp / wtmp / btmp, systemd journals, Snort unified2
+    alerts, Snort / Suricata rule files, HAR archives (credential-carrying
+    requests flagged), Apple `.ips` crash reports, Zeek logs, FSEvents
+    pages and ESE database headers.
+- **Apple formats** (`common`; property lists through the `plist` crate
+  after a bounded first pass, the rest in-house):
+  - property lists, XML, binary and old-style: encoding, top-level keys,
+    value count, depth and an inferred schema, and what the common kinds
+    hold: bundle `Info.plist` (identifier, name, version, build,
+    executable, minimum OS, SDK and Xcode, document and exported types, URL
+    schemes, privacy usage keys, App Transport Security, `LSEnvironment`),
+    launchd jobs (label, program, run conditions), `NSKeyedArchiver`
+    archives (objects, root class, class histogram), configuration
+    profiles, signed or not (identifier, organisation, scope, removal
+    date, payload types, signer; root certificates and embedded passwords
+    flagged, never shown), provisioning profiles (team, app ID, platforms,
+    dates, distribution kind, device count, entitlements, signer),
+    Shortcuts and Automator workflows (actions; script actions flagged)
+    and iOS backup `Info.plist` / `Manifest.plist` / `Status.plist`
+    (device model, iOS version, backup date, encryption; device name,
+    serial number and identifiers only with privacy off);
+  - `.strings` (text, UTF-16 or compiled), `.stringsdict` (plural
+    categories) and `.xcstrings` string catalogs (source language,
+    languages, translation states), with the source text as body text;
+  - `.DS_Store` (entry names, record types, view style, cached
+    modification dates), bookmark data and Finder alias files (target
+    path, name, kind and creation date, volume; the stored user name only
+    with privacy off), AppleDouble and AppleSingle files (original name,
+    Finder type and creator, dates, resource fork, extended attributes
+    with the quarantine agent and download URLs);
+  - compiled asset catalogs (`Assets.car`: CoreUI and storage versions,
+    build time, authoring tool, platform, key format, asset names,
+    appearances, rendition types) and Xcode projects and workspaces
+    (targets and product types, configurations, deployment targets, SDKs,
+    Swift versions, bundle identifiers, teams, Swift packages, script
+    phases).
+- **Binary serialisations and data formats** (`common`), all in-house;
+  self-describing formats are decoded to a bounded tree for the same
+  report JSON gets (top-level type and keys, documents in a stream,
+  inferred schema, value count, depth, tags and extension types), and
+  string values go to the secret and privacy scan:
+  - MessagePack, CBOR (indefinite lengths, tags, dates), BSON documents
+    and `mongodump` streams (ObjectId time range), UBJSON, Smile (shared
+    names and values), Amazon Ion binary and text (symbol tables,
+    annotations), bencode with torrent facts (name, files, size, piece
+    length, trackers, private flag, info hash), PHP `serialize()` output,
+    Minecraft NBT (Java and Bedrock byte orders);
+  - Python pickles by an opcode walk that never unpickles (protocol,
+    globals with `STACK_GLOBAL` resolved through the memo, what the
+    globals say it holds: pandas, NumPy, scikit-learn, PyTorch …) and Java
+    serialization streams by their grammar (classes, objects, arrays,
+    strings, enum constants, proxy interfaces); known gadget classes and
+    pickle globals that run code report the new `unsafe_deserialization`
+    risk, as do PHP gadget-chain classes;
+  - Avro containers (writer schema, codec, blocks, records) and schemas,
+    protobuf messages without a schema (field numbers and wire types,
+    nested messages guessed, length-delimited streams), FlatBuffers binary
+    schemas, generic BER / DER (element tree, tags, object identifiers),
+    Android binary XML and `resources.arsc` (also inside APKs), Godot
+    scenes and resources, Unity YAML assets and `.meta` files;
+  - text data formats: RON, KDL, HOCON, EDN, S-expressions, protobuf text
+    format; Thrift, Cap'n Proto, FlatBuffers, Dhall, Jsonnet and CUE are
+    read as source languages (`.edn` moved from Clojure to the EDN reader).
 - **Signatures:** a shared reader for DER (and the BER indefinite lengths
   Apple uses), X.509 certificates (subject, issuer, serial, validity, key
-  algorithm and size, signature algorithm, CA, extended key usage,
-  alternative names, SHA-256 fingerprint) and CMS `SignedData` (signer,
+  algorithm, size and curve, signature algorithm, CA and path length, key
+  usage, extended key usage, alternative names, SHA-256 and SHA-1
+  fingerprints) and CMS `SignedData` (signer,
   digests, signing time, RFC 3161 and legacy countersignature timestamps).
   Signatures are described, not verified; key material is never reported.
 - **Risks:** `packed_executable`, `writable_executable_memory`,
-  `tls_callbacks`, `weakened_runtime` and `requests_elevation`; Mach-O
-  `get-task-allow` reports `debuggable`.
+  `tls_callbacks`, `weakened_runtime`, `requests_elevation`,
+  `obfuscated_code`, `unprotected_key` (a private or secret key stored
+  without a passphrase) and `weak_cryptography` (RSA / DSA under 2048
+  bits, MD5 or SHA-1 signatures, DES or RC4 Kerberos keys, unsigned
+  tokens), `installs_root_certificate` (configuration profiles),
+  `shell_action` (Shortcuts and Automator actions that run scripts) and
+  `unsafe_deserialization` (pickle globals that run code, Java and PHP
+  gadget classes); Mach-O and provisioning-profile `get-task-allow`
+  reports `debuggable`. JWTs, TLS key logs and configuration profiles
+  holding passwords report `embedded_secret`.
+- **Plugin API:** `plugin::proplist` parses property lists with limits on
+  depth and on the values shared references expand to (the `plist` crate
+  guards against cycles only); `plugin::user_path` (hide the user name in
+  profile paths) moved from the forensic group.
 - **Developer tools:** `scripts/fixtures/executables.sh` builds the
   executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
   wat2wasm and gdb (in a podman container) and with the macOS toolchain
   and codesign; `craft_executables.py` writes the MS-DOS, NE, LE and .NET
   headers. `exec_oracle.py` compares the reports with readelf,
   llvm-readobj, osslsigncode, wasm-objdump, lipo, otool and codesign.
+  `scripts/fixtures/bytecode.sh` builds the bytecode fixtures with javac,
+  d8, CPython 3.8 to 3.14, luac 5.1 to 5.4, LuaJIT, erlc, Emacs, mrbc,
+  Ruby, ocamlc and the .NET SDK (in podman containers), and
+  `bytecode_oracle.py` compares the reports with javap, CPython's
+  `marshal` and `dis`, `beam_lib` and dnfile.
+  `scripts/fixtures/crypto.sh` makes the crypto fixtures with openssl,
+  ssh-keygen, puttygen, gpg, keytool, keepassxc-cli, age, minisign and
+  signify (in a podman container), and `crypto_oracle.py` compares the
+  reports with openssl, ssh-keygen, puttygen, gpg, keytool and klist.
+  `scripts/fixtures/db.sh` makes the database fixtures with sqlite3, GDAL,
+  the Python dbf package, Jackcess, DuckDB, LMDB, Berkeley DB, RocksDB,
+  LevelDB, Redis, PostgreSQL, MariaDB and H2 (in a podman container), and
+  `db_oracle.py` compares the reports with SQLite itself on 100 generated
+  databases and system files, with ogrinfo, mdbtools and each engine's
+  own tools.
+  `scripts/fixtures/forensic.sh` takes MIT-licensed samples (Eric
+  Zimmerman's test sets, rust-minidump's dumps) and makes the rest with
+  text2pcap, editcap, hivexregedit, pylnk3, ntfs-3g, utmpdump and
+  systemd-journal-remote (in podman containers); `forensic_oracle.py`
+  compares the reports with python-evtx, regipy, LnkParse3,
+  windowsprefetch, minidump, idstools and capinfos.
+  `scripts/fixtures/apple.sh` makes the Apple fixtures with plutil,
+  genstrings, actool, ditto and Swift on macOS (and openssl and ds_store
+  in a podman container); `apple_oracle.py` compares the reports with
+  plistlib, plutil, assetutil, `security cms` and ds_store over system
+  folders and /Applications. `scripts/fixtures/binser.sh` makes the
+  serialisation fixtures with each format's own library or tool
+  (msgpack, cbor2, bson, py-ubjson, amazon.ion, bencode.py, nbtlib,
+  pickle, fastavro, mktorrent, PHP, OpenJDK, Jackson, protoc, flatc,
+  openssl), and `binser_oracle.py` checks generated documents against
+  them.
 
 ## 0.5.1 — 2026-10-27
 

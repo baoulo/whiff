@@ -1,0 +1,19 @@
+# Saltmere Harbour service settings
+include "defaults.conf"
+
+harbour {
+  name = "Saltmere Harbour"
+  berths = [4, 7, 12]
+  gauge.id = G7
+  gauge.interval = 10 minutes
+}
+
+http {
+  port = 8080
+  port = ${?HARBOUR_PORT}
+  host: "0.0.0.0"
+}
+
+tides.high-water = "06:12"
+report = """Daily tide
+report"""

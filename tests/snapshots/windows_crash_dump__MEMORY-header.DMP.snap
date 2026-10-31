@@ -1,0 +1,118 @@
+---
+source: src/formats/forensic/dump.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "MEMORY-header.DMP",
+    "stem": "MEMORY-header",
+    "extension": "DMP"
+  },
+  "identification": {
+    "format": "windows_crash_dump",
+    "name": "Windows kernel crash dump",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.dump"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.046,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "98d7beb321e4f80784b80af3b004a4283a2982597df145b1673e445c120005e1",
+    "blake3": "cbd3f4107387e44bf63ee2492dbab483694f84b91f431a31fe2849fd0874c7bf"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "windows_crash_dump": {
+      "bits": 64,
+      "build": 26100,
+      "checked_build": false,
+      "machine": "x86_64",
+      "processors": 4,
+      "bug_check": {
+        "code": "0x00000050",
+        "parameters": [
+          "0xffffd30a00000000",
+          "0x0",
+          "0xfffff8063a2b1c00",
+          "0x2"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.dump",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

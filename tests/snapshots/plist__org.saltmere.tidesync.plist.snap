@@ -1,0 +1,136 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "org.saltmere.tidesync.plist",
+    "stem": "org.saltmere.tidesync",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "plist",
+    "name": "Apple plist (XML)",
+    "mime": "application/x-plist",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "plist",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 554
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 554,
+    "entropy": 5.123,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 554,
+      "chars": 554,
+      "words": 32,
+      "lines": 23,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b678ac424d84602a1dbdf69aafafd3d3f3197dac8d3f6778177f285d29eb62a6",
+    "blake3": "f75a47ff06cb6ce119a932782a0e1ab0c33235b416a2f9e670a32fcd2efef1d4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "plist": {
+      "encoding": "xml",
+      "top_level": "dictionary",
+      "values": 10,
+      "max_depth": 2,
+      "kind": "launchd_job",
+      "label": "org.saltmere.tidesync",
+      "program": "/usr/local/bin/tidesync",
+      "arguments": 3,
+      "run_at_load": true,
+      "keep_alive": "conditional",
+      "start_interval_s": 3600
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

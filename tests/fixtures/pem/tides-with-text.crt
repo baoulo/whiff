@@ -1,0 +1,38 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 8193 (0x2001)
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C=GB, O=Saltmere Harbour, CN=Saltmere Harbour Issuing CA
+        Validity
+            Not Before: Sep  1 00:00:00 2025 GMT
+            Not After : Sep  1 00:00:00 2125 GMT
+        Subject: C=GB, O=Saltmere Harbour, OU=Tides, CN=tides.saltmere.example
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Key Usage: critical
+                Digital Signature
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Subject Alternative Name: 
+                DNS:tides.saltmere.example, DNS:www.saltmere.example
+            X509v3 Subject Key Identifier: 
+                C8:6A:CB:42:E3:A4:64:88:28:45:BD:4B:2E:82:EF:62:22:4B:B8:1B
+            X509v3 Authority Key Identifier: 
+                88:67:8D:45:9B:C3:F4:3D:61:4A:73:BC:57:6F:05:92:D1:FB:2F:07
+-----BEGIN CERTIFICATE-----
+MIICZjCCAeygAwIBAgICIAEwCgYIKoZIzj0EAwIwTjELMAkGA1UEBhMCR0IxGTAX
+BgNVBAoMEFNhbHRtZXJlIEhhcmJvdXIxJDAiBgNVBAMMG1NhbHRtZXJlIEhhcmJv
+dXIgSXNzdWluZyBDQTAgFw0yNTA5MDEwMDAwMDBaGA8yMTI1MDkwMTAwMDAwMFow
+WTELMAkGA1UEBhMCR0IxGTAXBgNVBAoMEFNhbHRtZXJlIEhhcmJvdXIxDjAMBgNV
+BAsMBVRpZGVzMR8wHQYDVQQDDBZ0aWRlcy5zYWx0bWVyZS5leGFtcGxlMFkwEwYH
+KoZIzj0CAQYIKoZIzj0DAQcDQgAENRJtSFbeFMIa5DYwhfWBe2A5oqBw25FnWz1p
+Y+t7answrZkTVAl35R10bqKX9gOleHNZmu7H2YFcSkhoor9O8qOBrDCBqTAJBgNV
+HRMEAjAAMA4GA1UdDwEB/wQEAwIHgDATBgNVHSUEDDAKBggrBgEFBQcDATA3BgNV
+HREEMDAughZ0aWRlcy5zYWx0bWVyZS5leGFtcGxlghR3d3cuc2FsdG1lcmUuZXhh
+bXBsZTAdBgNVHQ4EFgQUyGrLQuOkZIgoRb1LLoLvYiJLuBswHwYDVR0jBBgwFoAU
+iGeNRZvD9D1hSnO8V28FktH7LwcwCgYIKoZIzj0EAwIDaAAwZQIxAIWeMwE3R8mv
+vbo2PMgLyROOW3JgB08SFTVPxgUl54muQYdnyWf/8TrOJbMHO0SfNwIwK+uzmJsC
+IXZHbkNXCYd/bLt4bLWXuLInEn/pmSKWKq9qI6BlJGDlhXQKFc0yMYmQ
+-----END CERTIFICATE-----

@@ -231,13 +231,28 @@ expression: report
         "extension": "plist"
       },
       "identification": {
-        "format": "binary",
-        "name": "Binary data",
+        "format": "info_plist",
+        "name": "macOS app bundle Info.plist",
         "mime": "application/octet-stream",
-        "family": "binary.unknown",
-        "confidence": 0.1,
-        "detected_by": "heuristic",
-        "extractor": "binary.unknown"
+        "family": "apple",
+        "confidence": 0.98,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "info_plist",
+            "confidence": 0.98
+          },
+          {
+            "format": "bplist",
+            "confidence": 0.97
+          },
+          {
+            "format": "plist",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "apple.plist"
       },
       "system": {
         "kind": "memory",
@@ -257,54 +272,41 @@ expression: report
         "sha256": "36c66c4a663bdbaf6f392caa04c8569519e63c723b93d51405ebece968438470",
         "blake3": "34e2a1a9e5e6dfaf139923a38418a4955a1d7ced55adca680cef9b2c5a6d85e0"
       },
-      "content": {},
+      "content": {
+        "title": "Saltmere Tides"
+      },
       "metadata": {},
       "format": {
-        "binary": {
-          "bytes_examined": 812,
-          "strings": {
-            "ascii": 23,
-            "utf16le": 0
-          },
-          "strings_sample": [
-            "bplist00",
-            "CFBundleDisplayName_",
-            "CFBundleExecutable_",
-            "CFBundleIdentifier\\CFBundleName_",
-            "CFBundlePackageType_",
-            "CFBundleShortVersionString_",
-            "CFBundleURLTypes_",
-            "CFBundleVersion^DTPlatformNameYDTSDKNameWDTXcode_",
-            "MinimumOSVersion_",
-            "NSAppTransportSecurity_",
-            "NSCameraUsageDescription_",
-            "#NSLocationWhenInUseUsageDescription_",
-            "UIBackgroundModes^UIDeviceFamily_",
-            "UIRequiredDeviceCapabilities^Saltmere Tides]SaltmereTides_",
-            "org.saltmere.tidesUTidesTAPPLU1.2.0",
-            "CFBundleURLSchemes",
-            "^saltmere-tidesR12Xiphoneos\\iphoneos18.0T1600T16.0",
-            "NSAllowsArbitraryLoads",
-            "Scans berth QR codes._",
-            "'Shows the tides at the nearest harbour.",
-            ")Xlocation",
-            ".Uarm64"
+        "info_plist": {
+          "encoding": "binary",
+          "top_level": "dictionary",
+          "values": 27,
+          "max_depth": 4,
+          "kind": "app_info",
+          "bundle_id": "org.saltmere.tides",
+          "name": "Tides",
+          "display_name": "Saltmere Tides",
+          "version": "1.2.0",
+          "build": "12",
+          "executable": "SaltmereTides",
+          "package_type": "APPL",
+          "minimum_os": "16.0",
+          "platform": "iphoneos",
+          "sdk": "iphoneos18.0",
+          "xcode": "1600",
+          "url_schemes": [
+            "saltmere-tides"
           ],
-          "entropy_profile": {
-            "block_bytes": 65536,
-            "blocks": 1,
-            "min": 5.948,
-            "max": 5.948,
-            "mean": 5.948,
-            "high_entropy_blocks": 0,
-            "likely_compressed_or_encrypted": false
-          }
+          "privacy_usage": [
+            "NSCameraUsageDescription",
+            "NSLocationWhenInUseUsageDescription"
+          ]
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "binary.unknown",
+            "id": "apple.plist",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -474,23 +476,51 @@ expression: report
         "extension": "mobileprovision"
       },
       "identification": {
-        "format": "der",
-        "name": "DER Certificate",
-        "mime": "application/x-x509-ca-cert",
-        "family": "data.binser",
-        "confidence": 0.5,
-        "detected_by": "magic",
+        "format": "mobileprovision",
+        "name": "Apple provisioning profile",
+        "mime": "application/octet-stream",
+        "family": "apple",
+        "confidence": 0.99,
+        "detected_by": "sniff",
         "extension_matches": true,
-        "extractor": null
+        "candidates": [
+          {
+            "format": "mobileprovision",
+            "confidence": 0.99
+          },
+          {
+            "format": "pkcs7",
+            "confidence": 0.8
+          }
+        ],
+        "extractor": "apple.plist"
       },
       "system": {
         "kind": "memory",
         "size_bytes": 2458
       },
       "temporal": {
-        "filesystem": {}
+        "filesystem": {},
+        "content": [
+          {
+            "field": "created",
+            "value": "2025-09-01T12:00:00Z",
+            "source": "apple.plist",
+            "tz_known": true
+          },
+          {
+            "field": "expires",
+            "value": "2026-09-01T12:00:00Z",
+            "source": "apple.plist",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2025-09-01T12:00:00Z",
+        "latest": "2026-09-01T12:00:00Z"
       },
-      "security": {},
+      "security": {
+        "signed": true
+      },
       "rights": {},
       "physical": {
         "size_bytes": 2458,
@@ -501,11 +531,69 @@ expression: report
         "sha256": "581193a400990f3554e604be80f1444c45ed594ebc28af28691472e27c9ebcf8",
         "blake3": "15374ce8240574d05862fdd4c3fbab52a0624d8ed942bd24de7755d36543018b"
       },
-      "content": {},
+      "content": {
+        "authors": [
+          "Saltmere Harbour"
+        ]
+      },
       "metadata": {},
-      "format": {},
+      "format": {
+        "mobileprovision": {
+          "encoding": "xml",
+          "signature": {
+            "digest": "sha256",
+            "signer": {
+              "subject": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+              "subject_cn": "Saltmere Harbour",
+              "subject_organization": "Saltmere",
+              "issuer": "C=GB, O=Saltmere, CN=Saltmere Harbour",
+              "serial": "4f33a1a0663d27abff646e7b08fd09abc68ee6cb",
+              "version": 3,
+              "not_before": "2026-10-26T17:35:48Z",
+              "not_after": "2036-10-23T17:35:48Z",
+              "key_algorithm": "rsa",
+              "key_bits": 2048,
+              "signature_algorithm": "sha256_rsa",
+              "self_signed": true,
+              "ca": true,
+              "sha256": "1206eee9696367818f15b8eb67308785ce9ad14501270025aa5917ab14461c47",
+              "sha1": "0435c80b017a3c8eb3de316b06a5fd430990f4f8"
+            },
+            "signing_time": "2026-10-26T17:35:48Z",
+            "timestamped": false,
+            "certificates": [
+              "C=GB, O=Saltmere, CN=Saltmere Harbour"
+            ]
+          },
+          "top_level": "dictionary",
+          "values": 15,
+          "max_depth": 2,
+          "kind": "provisioning_profile",
+          "name": "Saltmere Tides Ad Hoc",
+          "app_id_name": "Saltmere Tides",
+          "team_name": "Saltmere Harbour",
+          "team_id": "SALTMERE01",
+          "created": "2025-09-01T12:00:00Z",
+          "expires": "2026-09-01T12:00:00Z",
+          "distribution": "ad_hoc",
+          "provisioned_devices": 1,
+          "entitlements": [
+            "application-identifier",
+            "aps-environment",
+            "get-task-allow"
+          ],
+          "application_identifier": "SALTMERE01.org.saltmere.tides",
+          "push": "production"
+        }
+      },
       "diagnostics": {
         "extractors": [
+          {
+            "id": "apple.plist",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
           {
             "id": "meta.mwg",
             "version": 1,
@@ -564,14 +652,24 @@ expression: report
         "stem": "CodeResources"
       },
       "identification": {
-        "format": "xml",
-        "name": "XML document",
-        "mime": "application/xml",
-        "family": "text.xml",
-        "confidence": 0.6,
+        "format": "plist",
+        "name": "Apple plist (XML)",
+        "mime": "application/x-plist",
+        "family": "data.binser",
+        "confidence": 0.9,
         "detected_by": "sniff",
+        "candidates": [
+          {
+            "format": "plist",
+            "confidence": 0.9
+          },
+          {
+            "format": "xml",
+            "confidence": 0.6
+          }
+        ],
         "encoding": "us-ascii",
-        "extractor": "text.xml"
+        "extractor": "apple.plist"
       },
       "system": {
         "kind": "memory",
@@ -604,38 +702,67 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "xml": {
-          "declaration": {
-            "version": "1.0",
-            "encoding": "UTF-8"
-          },
-          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
-          "root": "plist",
-          "root_attributes": {
-            "version": "1.0"
-          },
-          "vocabulary": {
-            "id": "plist",
-            "name": "Property list"
-          },
-          "well_formed": true,
-          "elements": 8,
-          "attributes": 1,
-          "max_depth": 4,
-          "distinct_elements": 4,
-          "top_elements": {
-            "key": 3,
-            "data": 2,
-            "dict": 2,
-            "plist": 1
-          },
-          "text_bytes": 116
+        "plist": {
+          "encoding": "xml",
+          "top_level": "dictionary",
+          "values": 4,
+          "max_depth": 2,
+          "keys": [
+            "files"
+          ],
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.files": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.files.[\"Info.plist\"]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.files.[\"Info.plist\"].bytes": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  20
+                ]
+              },
+              "$.files.[\"tides.csv\"]": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.files.[\"tides.csv\"].bytes": {
+                "types": [
+                  "integer"
+                ],
+                "count": 1,
+                "examples": [
+                  20
+                ]
+              }
+            },
+            "max_depth": 3
+          }
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.xml",
+            "id": "apple.plist",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -853,15 +980,29 @@ expression: report
         "extension": "plist"
       },
       "identification": {
-        "format": "xml",
-        "name": "XML document",
-        "mime": "application/xml",
-        "family": "text.xml",
-        "confidence": 0.6,
+        "format": "info_plist",
+        "name": "macOS app bundle Info.plist",
+        "mime": "application/octet-stream",
+        "family": "apple",
+        "confidence": 0.98,
         "detected_by": "sniff",
-        "extension_matches": false,
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "info_plist",
+            "confidence": 0.98
+          },
+          {
+            "format": "xml",
+            "confidence": 0.6
+          },
+          {
+            "format": "plist",
+            "confidence": 0.35
+          }
+        ],
         "encoding": "us-ascii",
-        "extractor": "text.xml"
+        "extractor": "apple.plist"
       },
       "system": {
         "kind": "memory",
@@ -894,38 +1035,19 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "xml": {
-          "declaration": {
-            "version": "1.0",
-            "encoding": "UTF-8"
-          },
-          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
-          "root": "plist",
-          "root_attributes": {
-            "version": "1.0"
-          },
-          "vocabulary": {
-            "id": "plist",
-            "name": "Property list"
-          },
-          "well_formed": true,
-          "elements": 4,
-          "attributes": 1,
-          "max_depth": 3,
-          "distinct_elements": 4,
-          "top_elements": {
-            "dict": 1,
-            "key": 1,
-            "plist": 1,
-            "string": 1
-          },
-          "text_bytes": 48
+        "info_plist": {
+          "encoding": "xml",
+          "top_level": "dictionary",
+          "values": 2,
+          "max_depth": 1,
+          "kind": "app_info",
+          "bundle_id": "org.saltmere.tidekit"
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.xml",
+            "id": "apple.plist",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -989,15 +1111,29 @@ expression: report
         "extension": "plist"
       },
       "identification": {
-        "format": "xml",
-        "name": "XML document",
-        "mime": "application/xml",
-        "family": "text.xml",
-        "confidence": 0.6,
+        "format": "info_plist",
+        "name": "macOS app bundle Info.plist",
+        "mime": "application/octet-stream",
+        "family": "apple",
+        "confidence": 0.98,
         "detected_by": "sniff",
-        "extension_matches": false,
+        "extension_matches": true,
+        "candidates": [
+          {
+            "format": "info_plist",
+            "confidence": 0.98
+          },
+          {
+            "format": "xml",
+            "confidence": 0.6
+          },
+          {
+            "format": "plist",
+            "confidence": 0.35
+          }
+        ],
         "encoding": "us-ascii",
-        "extractor": "text.xml"
+        "extractor": "apple.plist"
       },
       "system": {
         "kind": "memory",
@@ -1030,38 +1166,19 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "xml": {
-          "declaration": {
-            "version": "1.0",
-            "encoding": "UTF-8"
-          },
-          "doctype": "plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"",
-          "root": "plist",
-          "root_attributes": {
-            "version": "1.0"
-          },
-          "vocabulary": {
-            "id": "plist",
-            "name": "Property list"
-          },
-          "well_formed": true,
-          "elements": 4,
-          "attributes": 1,
-          "max_depth": 3,
-          "distinct_elements": 4,
-          "top_elements": {
-            "dict": 1,
-            "key": 1,
-            "plist": 1,
-            "string": 1
-          },
-          "text_bytes": 53
+        "info_plist": {
+          "encoding": "xml",
+          "top_level": "dictionary",
+          "values": 2,
+          "max_depth": 1,
+          "kind": "app_info",
+          "bundle_id": "org.saltmere.tides.widget"
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.xml",
+            "id": "apple.plist",
             "version": 1,
             "ms": 0.0,
             "status": "ok"

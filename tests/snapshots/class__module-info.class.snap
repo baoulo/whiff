@@ -1,0 +1,127 @@
+---
+source: src/formats/bytecode/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "module-info.class",
+    "stem": "module-info",
+    "extension": "class"
+  },
+  "identification": {
+    "format": "class",
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 231
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 231,
+    "entropy": 4.69,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "52094c9c3a85ed081810bb0c49ee676b9237ddd4fc1d7b01d87b930af185e546",
+    "blake3": "790f1de2d64a36435aecac677552e4d9cd5f89903163566405adc2e98cd3eb3c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "class": {
+      "version": "65.0",
+      "java_release": "21",
+      "constant_pool_entries": 14,
+      "kind": "module",
+      "fields": 0,
+      "methods": 0,
+      "code_bytes": 0,
+      "source_file": "module-info.java",
+      "module": {
+        "name": "org.example.saltmere",
+        "requires": [
+          "java.logging"
+        ],
+        "exports": [
+          "org.example.saltmere.tides"
+        ]
+      },
+      "referenced_classes": 1,
+      "debug": {
+        "source_file": true,
+        "line_numbers": false,
+        "local_variables": false
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

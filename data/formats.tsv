@@ -100,12 +100,12 @@
 2	data.binser	CBOR	cbor	application/cbor	
 2	data.binser	BSON	bson	application/bson	
 2	data.binser	Protocol Buffers binary	pb bin binpb	application/x-protobuf	
-2	data.binser	Protocol Buffers schema	proto	text/x-protobuf	package, messages, services (impl or protobuf-parse)
+2	code.source	Protocol Buffers schema	proto	text/x-protobuf	package, messages, services (impl or protobuf-parse)
 3	data.binser	Protobuf text format	textproto pbtxt txtpb		
 2	data.binser	Apache Avro container	avro	application/avro	writer schema embedded
 3	data.binser	Avro schema	avsc	application/json	
-3	data.binser	Apache Thrift schema	thrift		
-3	data.binser	Cap'n Proto schema	capnp		
+3	code.source	Apache Thrift schema	thrift		
+3	code.source	Cap'n Proto schema	capnp		
 3	data.binser	FlatBuffers schema / binary	fbs bfbs		
 3	data.binser	Bencode	bencode		
 3	data.binser	Python pickle	pkl pickle	application/x-python-pickle	opcode walk only (never unpickle!), referenced globals (risk)
@@ -116,7 +116,7 @@
 3	data.binser	RON	ron		
 3	data.binser	KDL	kdl		
 3	data.binser	HOCON	conf hocon		
-3	data.binser	Dhall / Jsonnet / CUE	dhall jsonnet libsonnet cue		
+3	code.source	Dhall / Jsonnet / CUE	dhall jsonnet libsonnet cue		
 3	data.binser	EDN	edn	application/edn	
 3	data.binser	S-expressions data	sexp		
 3	data.binser	ASN.1 BER/DER blob	der ber	application/octet-stream	tag tree (asn1-rs)

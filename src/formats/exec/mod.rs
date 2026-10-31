@@ -17,8 +17,9 @@ pub(crate) mod wasm;
 use aho_corasick::AhoCorasick;
 use serde_json::{Map, Value, json};
 
-// Readers shared with the archive extractors.
+// Readers shared with the archive and bytecode extractors.
 pub(crate) use super::archive::unix_time;
+pub(crate) use super::bytecode::cli;
 use crate::plugin::{Context, ExtractError, Source, redact_secrets};
 
 /// Sections listed in the report (the counts cover all of them).

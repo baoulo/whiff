@@ -1,0 +1,135 @@
+---
+source: src/formats/forensic/shell.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ez-winxp.lnk",
+    "stem": "ez-winxp",
+    "extension": "lnk"
+  },
+  "identification": {
+    "format": "lnk",
+    "name": "Windows shortcut",
+    "mime": "application/x-ms-shortcut",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.shell"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1527
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2008-04-14T12:00:00Z",
+        "source": "forensic.shell",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2008-04-14T12:00:00Z",
+    "latest": "2008-04-14T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1527,
+    "entropy": 4.528,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "47c24071eb0e272ac81523fa410d6c9847e0e80f0210837693026d89524234a3",
+    "blake3": "05794450842ac45d85409853b128f47020c69ebe1c967e6ff374246ce736ff6e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lnk": {
+      "target_attributes": [
+        "archive"
+      ],
+      "target_created": "2008-04-14T12:00:00Z",
+      "target_accessed": "2016-01-13T11:22:44Z",
+      "target_modified": "2008-04-14T12:00:00Z",
+      "target_size": 347136,
+      "show_command": "normal",
+      "volume": {
+        "drive_type": "fixed",
+        "serial": "E0F7E847"
+      },
+      "description": "@%SystemRoot%\\system32\\tourstart.exe,-2",
+      "relative_path": "..\\..\\..\\..\\..\\WINDOWS\\system32\\tourstart.exe",
+      "working_directory": "%HOMEDRIVE%%HOMEPATH%",
+      "environment_target": "%SystemRoot%\\system32\\tourstart.exe",
+      "tracker": {
+        "machine_id": "xppro",
+        "file_droid_created": "2016-01-13T11:23:16Z"
+      },
+      "target": "C:\\WINDOWS\\system32\\tourstart.exe"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.shell",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

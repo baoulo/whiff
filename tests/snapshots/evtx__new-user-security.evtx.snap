@@ -1,0 +1,141 @@
+---
+source: src/formats/forensic/evtx.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "new-user-security.evtx",
+    "stem": "new-user-security",
+    "extension": "evtx"
+  },
+  "identification": {
+    "format": "evtx",
+    "name": "Windows XML event log",
+    "mime": "application/x-ms-evtx",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.evtx"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 69632
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2013-10-23T16:22:39Z",
+        "source": "forensic.evtx",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2013-10-23T16:22:39Z",
+    "latest": "2013-10-23T16:22:39Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 69632,
+    "entropy": 2.661,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6f9fe51d0a5dec63dc68f819e23bc14da5db0b75db4a68dfdf6b39f02868a379",
+    "blake3": "1d9c428594de7fe4c0367bf4b4a186c2b053dfbf4b65256c9862c173afabb0ee"
+  },
+  "content": {
+    "title": "Security"
+  },
+  "metadata": {},
+  "format": {
+    "evtx": {
+      "version": "3.1",
+      "dirty": false,
+      "full": false,
+      "next_record_id": 5,
+      "chunks": 1,
+      "records": 4,
+      "first_record_id": 1,
+      "last_record_id": 4,
+      "first_event": "2013-10-23T16:22:39Z",
+      "last_event": "2013-10-23T16:22:40Z",
+      "channels": {
+        "Security": 4
+      },
+      "providers": {
+        "Microsoft-Windows-Security-Auditing": 4
+      },
+      "event_ids": {
+        "4732": 2,
+        "4720": 1,
+        "4728": 1
+      },
+      "levels": {
+        "log_always": 4
+      },
+      "computers": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.evtx",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

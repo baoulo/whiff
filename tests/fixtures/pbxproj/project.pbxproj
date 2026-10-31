@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A1E00000000000000000101 /* TidesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E00000000000000000201 /* TidesApp.swift */; };
+		5A1E00000000000000000102 /* TideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E00000000000000000202 /* TideTable.swift */; };
+		5A1E00000000000000000103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E00000000000000000203 /* Assets.xcassets */; };
+		5A1E00000000000000000104 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5A1E00000000000000000204 /* Localizable.xcstrings */; };
+		5A1E00000000000000000105 /* TideTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E00000000000000000205 /* TideTableTests.swift */; };
+		5A1E00000000000000000106 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1E00000000000000000901 /* Collections */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A1E00000000000000000301 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A1E00000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A1E00000000000000000601;
+			remoteInfo = Tides;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5A1E00000000000000000201 /* TidesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TidesApp.swift; sourceTree = "<group>"; };
+		5A1E00000000000000000202 /* TideTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TideTable.swift; sourceTree = "<group>"; };
+		5A1E00000000000000000203 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A1E00000000000000000204 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5A1E00000000000000000205 /* TideTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TideTableTests.swift; sourceTree = "<group>"; };
+		5A1E00000000000000000206 /* Tides.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tides.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1E00000000000000000207 /* TidesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TidesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1E00000000000000000208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A1E00000000000000000401 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1E00000000000000000106 /* Collections in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A1E00000000000000000501 = {
+			isa = PBXGroup;
+			children = (
+				5A1E00000000000000000502 /* Tides */,
+				5A1E00000000000000000503 /* TidesTests */,
+				5A1E00000000000000000504 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A1E00000000000000000502 /* Tides */ = {
+			isa = PBXGroup;
+			children = (
+				5A1E00000000000000000201 /* TidesApp.swift */,
+				5A1E00000000000000000202 /* TideTable.swift */,
+				5A1E00000000000000000203 /* Assets.xcassets */,
+				5A1E00000000000000000204 /* Localizable.xcstrings */,
+				5A1E00000000000000000208 /* Info.plist */,
+			);
+			path = Tides;
+			sourceTree = "<group>";
+		};
+		5A1E00000000000000000503 /* TidesTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A1E00000000000000000205 /* TideTableTests.swift */,
+			);
+			path = TidesTests;
+			sourceTree = "<group>";
+		};
+		5A1E00000000000000000504 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A1E00000000000000000206 /* Tides.app */,
+				5A1E00000000000000000207 /* TidesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A1E00000000000000000601 /* Tides */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A1E00000000000000000801 /* Build configuration list for PBXNativeTarget "Tides" */;
+			buildPhases = (
+				5A1E00000000000000000701 /* Sources */,
+				5A1E00000000000000000401 /* Frameworks */,
+				5A1E00000000000000000702 /* Resources */,
+				5A1E00000000000000000704 /* Check tide data */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tides;
+			packageProductDependencies = (
+				5A1E00000000000000000901 /* Collections */,
+			);
+			productName = Tides;
+			productReference = 5A1E00000000000000000206 /* Tides.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A1E00000000000000000602 /* TidesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A1E00000000000000000802 /* Build configuration list for PBXNativeTarget "TidesTests" */;
+			buildPhases = (
+				5A1E00000000000000000703 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A1E00000000000000000303 /* PBXTargetDependency */,
+			);
+			name = TidesTests;
+			productName = TidesTests;
+			productReference = 5A1E00000000000000000207 /* TidesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A1E00000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				ORGANIZATIONNAME = "Saltmere Harbour";
+			};
+			buildConfigurationList = 5A1E00000000000000000803 /* Build configuration list for PBXProject "Tides" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+				de,
+			);
+			mainGroup = 5A1E00000000000000000501;
+			packageReferences = (
+				5A1E00000000000000000902 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
+			productRefGroup = 5A1E00000000000000000504 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A1E00000000000000000601 /* Tides */,
+				5A1E00000000000000000602 /* TidesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A1E00000000000000000702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1E00000000000000000103 /* Assets.xcassets in Resources */,
+				5A1E00000000000000000104 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A1E00000000000000000704 /* Check tide data */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check tide data";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "test -s \"$SRCROOT/Tides/tides.csv\" || echo \"warning: no tide table\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A1E00000000000000000701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1E00000000000000000101 /* TidesApp.swift in Sources */,
+				5A1E00000000000000000102 /* TideTable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A1E00000000000000000703 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A1E00000000000000000105 /* TideTableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A1E00000000000000000303 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A1E00000000000000000601 /* Tides */;
+			targetProxy = 5A1E00000000000000000301 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5A1E00000000000000000811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5A1E00000000000000000812 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5A1E00000000000000000813 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SALTMERE01;
+				INFOPLIST_FILE = Tides/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.saltmere.tidesmac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		5A1E00000000000000000814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SALTMERE01;
+				INFOPLIST_FILE = Tides/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = org.saltmere.tidesmac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		5A1E00000000000000000815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = org.saltmere.tidesmac.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tides.app/Contents/MacOS/Tides";
+			};
+			name = Debug;
+		};
+		5A1E00000000000000000816 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = org.saltmere.tidesmac.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tides.app/Contents/MacOS/Tides";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A1E00000000000000000801 /* Build configuration list for PBXNativeTarget "Tides" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A1E00000000000000000813 /* Debug */,
+				5A1E00000000000000000814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A1E00000000000000000802 /* Build configuration list for PBXNativeTarget "TidesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A1E00000000000000000815 /* Debug */,
+				5A1E00000000000000000816 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A1E00000000000000000803 /* Build configuration list for PBXProject "Tides" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A1E00000000000000000811 /* Debug */,
+				5A1E00000000000000000812 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A1E00000000000000000902 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A1E00000000000000000901 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1E00000000000000000902 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5A1E00000000000000000001 /* Project object */;
+}

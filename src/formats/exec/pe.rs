@@ -21,7 +21,7 @@
 
 use serde_json::{Map, Value, json};
 
-use super::{Section, addr, hex, names, report_overlay, report_sections, scan_toolchain, unix_time};
+use super::{Section, addr, cli, hex, names, report_overlay, report_sections, scan_toolchain, unix_time};
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, der,
 };
@@ -832,13 +832,29 @@ fn dotnet(src: &mut dyn Source, cx: &mut Context<'_>, img: &Image, rva: u32) {
         d.insert("prefers_32bit".into(), true.into());
     }
     d.insert("strong_name_signed".into(), (flags & 8 != 0).into());
-    if let Some(md) = le32(&h, 8).and_then(|r| img.read(src, r, 256))
+    // A ReadyToRun image carries precompiled native code beside the IL.
+    if le32(&h, 64).is_some_and(|r| r != 0) && le32(&h, 68).is_some_and(|s| s != 0) {
+        d.insert("ready_to_run".into(), true.into());
+    }
+    let size = le32(&h, 12).unwrap_or(0) as usize;
+    if size > cx.parse_limit() {
+        cx.warn("the .NET metadata is larger than the parse limit; names past it are not read");
+    }
+    if let Some(md) = le32(&h, 8).and_then(|r| img.read(src, r, size.min(cx.parse_limit())))
         && le32(&md, 0) == Some(0x424a_5342)
     {
         let n = le32(&md, 12).unwrap_or(0) as usize;
         if let Some(v) = md.get(16..16 + n.min(240)) {
             let v = String::from_utf8_lossy(&v[..v.iter().position(|&c| c == 0).unwrap_or(v.len())]).into_owned();
             d.insert("metadata_version".into(), v.into());
+        }
+        match cli::Metadata::parse(&md) {
+            Some(m) => {
+                if let Some(o) = cli::report(&m, le32(&h, 20).unwrap_or(0), &mut d) {
+                    cx.security().risk("obfuscated_code", Some(format!("processed by {o}")));
+                }
+            }
+            None => cx.warn("the .NET metadata tables could not be read"),
         }
     }
     cx.format_set("dotnet", Value::Object(d));

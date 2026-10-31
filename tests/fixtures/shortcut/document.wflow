@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key><string>523</string>
+	<key>AMApplicationVersion</key><string>2.10</string>
+	<key>AMDocumentVersion</key><string>2</string>
+	<key>actions</key>
+	<array>
+		<dict><key>action</key><dict>
+			<key>AMAccepts</key><dict><key>Container</key><string>List</string><key>Optional</key><true/><key>Types</key><array><string>com.apple.cocoa.string</string></array></dict>
+			<key>AMActionVersion</key><string>1.0</string>
+			<key>ActionBundlePath</key><string>/System/Library/Automator/Get Specified Text.action</string>
+			<key>ActionName</key><string>Get Specified Text</string>
+			<key>ActionParameters</key><dict><key>emptyText</key><false/><key>text</key><string>High water 06:12</string></dict>
+			<key>BundleIdentifier</key><string>com.apple.Automator.Text</string>
+		</dict></dict>
+		<dict><key>action</key><dict>
+			<key>ActionBundlePath</key><string>/System/Library/Automator/Copy to Clipboard.action</string>
+			<key>ActionName</key><string>Copy to Clipboard</string>
+			<key>BundleIdentifier</key><string>com.apple.Automator.CopyToClipboard</string>
+		</dict></dict>
+	</array>
+	<key>connectors</key><dict/>
+	<key>workflowMetaData</key><dict><key>workflowTypeIdentifier</key><string>com.apple.Automator.servicesMenu</string></dict>
+</dict>
+</plist>

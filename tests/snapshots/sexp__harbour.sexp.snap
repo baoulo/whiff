@@ -1,0 +1,190 @@
+---
+source: src/formats/data/binser/textdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.sexp",
+    "stem": "harbour",
+    "extension": "sexp"
+  },
+  "identification": {
+    "format": "sexp",
+    "name": "S-expressions data",
+    "mime": "application/octet-stream",
+    "family": "data.binser",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 228
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 228,
+    "entropy": 4.728,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 228,
+      "chars": 228,
+      "words": 30,
+      "lines": 6,
+      "max_line_length": 61,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b3e0ba42ee8689da2de327ba9b19dcfc927c9ca5d0232de67d066c2c3d67aaa9",
+    "blake3": "709f091106ac6fdec2df6ca91c1f9593cefb9aaa01b0f2d32b2a0213ba395063"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sexp": {
+      "top_level": "array",
+      "length": 5,
+      "values": 38,
+      "max_depth": 3,
+      "tags": {
+        "head:berth": 2,
+        "head:harbour": 1,
+        "head:height": 1,
+        "head:high-water": 1,
+        "head:id": 2,
+        "head:length": 2,
+        "head:name": 1,
+        "head:occupied": 2,
+        "head:time": 1,
+        "head:vessel": 1
+      },
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              5,
+              5
+            ]
+          },
+          "$[]": {
+            "types": [
+              "array",
+              "string"
+            ],
+            "count": 5,
+            "items": [
+              2,
+              5
+            ],
+            "examples": [
+              "harbour"
+            ]
+          },
+          "$[][]": {
+            "types": [
+              "array",
+              "string"
+            ],
+            "count": 14,
+            "items": [
+              2,
+              2
+            ],
+            "examples": [
+              "name",
+              "Saltmere Harbour",
+              "berth"
+            ]
+          },
+          "$[][][]": {
+            "types": [
+              "boolean",
+              "integer",
+              "number",
+              "string"
+            ],
+            "count": 18,
+            "examples": [
+              "id",
+              4,
+              "length"
+            ]
+          }
+        },
+        "max_depth": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

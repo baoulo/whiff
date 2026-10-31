@@ -1,0 +1,129 @@
+---
+source: src/formats/bytecode/java.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides-java8.class",
+    "stem": "Tides-java8",
+    "extension": "class"
+  },
+  "identification": {
+    "format": "class",
+    "name": "Java class",
+    "mime": "application/java-vm",
+    "family": "bytecode",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.java"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 702
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 702,
+    "entropy": 5.366,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e614b1961f9b46ca56937b4bd900a57c4bdaff133f8fa16ddb8d846515cb50f5",
+    "blake3": "9c96edb6ca66b5d2a6fc79af3523aaa94c6bf1c1c3674babb2411a970a99ccbd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "class": {
+      "version": "52.0",
+      "java_release": "8",
+      "constant_pool_entries": 48,
+      "kind": "class",
+      "class_name": "Tides",
+      "access": [
+        "public"
+      ],
+      "fields": 0,
+      "methods": 3,
+      "method_names": [
+        "metres",
+        "main"
+      ],
+      "code_bytes": 77,
+      "referenced_classes": 5,
+      "referenced_packages": [
+        "java.io",
+        "java.lang"
+      ],
+      "debug": {
+        "source_file": false,
+        "line_numbers": false,
+        "local_variables": false
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.java",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

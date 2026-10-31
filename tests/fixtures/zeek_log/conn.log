@@ -1,0 +1,12 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	conn
+#open	2025-09-01-12-00-00
+#fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	proto	service
+#types	time	string	addr	port	addr	port	enum	string
+1756728000.120000	CaBcD1	192.0.2.10	53000	192.0.2.53	53	udp	dns
+1756728007.250000	CaBcD2	192.0.2.10	50000	192.0.2.53	80	tcp	http
+1756728014.375000	CaBcD3	192.0.2.10	50001	192.0.2.53	443	tcp	ssl
+#close	2025-09-01-12-05-00

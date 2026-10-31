@@ -1,0 +1,137 @@
+---
+source: src/formats/apple/car.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Assets.car",
+    "stem": "Assets",
+    "extension": "car"
+  },
+  "identification": {
+    "format": "car",
+    "name": "Apple asset catalog compiled",
+    "mime": "application/octet-stream",
+    "family": "apple",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "apple.car"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18920
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18920,
+    "entropy": 0.552,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1858dab4639baa3faf9709ed2ee8757bcf10964f6e4aa09b9509296da6e9744c",
+    "blake3": "96ca5b352f0f36b55b8ca879b24c24f16da20a6ef13aa6c116cd9b74b6d4d2fc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "car": {
+      "kind": "asset_catalog",
+      "coreui_version": 972,
+      "storage_version": 17,
+      "renditions": 3,
+      "main_version": "@(#)PROGRAM:CoreUI  PROJECT:CoreUI-972.1 [LAR]",
+      "asset_storage_version": "Xcode 26.2 (17C52) via AssetCatalogAgent-AssetRuntime",
+      "schema_version": 2,
+      "platform_version": "13.0",
+      "platform": "macosx",
+      "authoring_tool": "@(#)PROGRAM:CoreThemeDefinition  PROJECT:CoreThemeDefinition-653.3 [LAR] [IIO-2784.2.5][LAR] AppleJPEG[1][32]  CMPhoto[1][174]]",
+      "key_format": [
+        "appearance",
+        "localization",
+        "element",
+        "part",
+        "size",
+        "identifier",
+        "layer",
+        "scale"
+      ],
+      "appearances": [
+        "NSAppearanceNameDarkAqua",
+        "NSAppearanceNameSystem"
+      ],
+      "assets": 2,
+      "names": [
+        "Note",
+        "Tide"
+      ],
+      "rendition_types": {
+        "color": 2,
+        "data": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.car",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

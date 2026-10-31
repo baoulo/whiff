@@ -1,0 +1,150 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-utf16.db",
+    "stem": "saltmere-utf16",
+    "extension": "db"
+  },
+  "identification": {
+    "format": "sqlite",
+    "name": "SQLite database",
+    "mime": "application/vnd.sqlite3",
+    "family": "db",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sqlite",
+        "confidence": 0.97
+      },
+      {
+        "format": "thumbs_db",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12288
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12288,
+    "entropy": 0.203,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a35dc48630bde557980d7243d6a2eef7f19eb96294ac1b2e0de1c2965bb3b9b4",
+    "blake3": "b017d0070d3a90abeec2d9ed7fc47abbd99e3554fc9ea42b99fc8c32f71fffee"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sqlite": {
+      "sqlite_version": "3.46.1",
+      "page_size": 4096,
+      "page_count": 3,
+      "encoding": "utf-16le",
+      "journal_mode": "rollback",
+      "auto_vacuum": "incremental",
+      "schema_format": 4,
+      "user_version": 0,
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 1,
+        "indexes": 0,
+        "views": 0,
+        "triggers": 0
+      },
+      "total_rows": 1,
+      "tables": [
+        {
+          "name": "tide tables",
+          "columns": [
+            {
+              "name": "Station name",
+              "type": "TEXT"
+            },
+            {
+              "name": "high water",
+              "type": "TEXT"
+            },
+            {
+              "name": "low water",
+              "type": "TEXT"
+            }
+          ],
+          "rows": 1
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

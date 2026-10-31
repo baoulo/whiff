@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>berths.free</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key><string>%#@berths@</string>
+		<key>berths</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key><string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key><string>lld</string>
+			<key>zero</key><string>No free berths</string>
+			<key>one</key><string>One free berth</string>
+			<key>other</key><string>%lld free berths</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
