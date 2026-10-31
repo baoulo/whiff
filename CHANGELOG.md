@@ -4,9 +4,11 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased
+## 0.6.0 — 2026-10-31
 
-Executables, bytecode, crypto, databases, forensic artefacts, Apple formats and binary serialisations: Stage 6 is complete.
+Executables, bytecode, crypto, databases, forensic artefacts, Apple formats
+and binary serialisations: Stage 6 is complete. What was deliberately set
+aside is listed in [`docs/known-gaps.md`](docs/known-gaps.md).
 
 - **Executables** (`common`), all in-house: every binary reports its kind
   (executable, shared library, object, core dump, driver, EFI image),
@@ -258,6 +260,9 @@ Executables, bytecode, crypto, databases, forensic artefacts, Apple formats and 
   depth and on the values shared references expand to (the `plist` crate
   guards against cycles only); `plugin::user_path` (hide the user name in
   profile paths) moved from the forensic group.
+- **Fixes:** the DBF reader no longer reads past a header shorter than
+  32 bytes or underflows on a dBASE 7 header shorter than 68 bytes (found
+  by the fuzz smoke job).
 - **Developer tools:** `scripts/fixtures/executables.sh` builds the
   executable fixtures with gcc, clang, mingw-w64, osslsigncode, makensis,
   wat2wasm and gdb (in a podman container) and with the macOS toolchain
