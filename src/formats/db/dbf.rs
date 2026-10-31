@@ -118,7 +118,10 @@ struct Header {
 fn header(b: &[u8], file_len: u64) -> Option<Header> {
     let version = *b.first()?;
     variant(version)?;
-    let (yy, mm, dd) = (u32::from(*b.get(1)?), u32::from(b[2]), u32::from(b[3]));
+    if b.len() < 32 {
+        return None;
+    }
+    let (yy, mm, dd) = (u32::from(b[1]), u32::from(b[2]), u32::from(b[3]));
     let records = u32::from_le_bytes(b.get(4..8)?.try_into().ok()?);
     let header_len = usize::from(u16::from_le_bytes([b[8], b[9]]));
     let record_len = usize::from(u16::from_le_bytes([b[10], b[11]]));
@@ -131,12 +134,14 @@ fn header(b: &[u8], file_len: u64) -> Option<Header> {
     if body < want || body > want + 1 + 512 {
         return None;
     }
-    let level7 = version & 0x07 == 4 && b.get(32..36).is_some() && (header_len - 68).is_multiple_of(48);
+    let level7 = version & 0x07 == 4
+        && b.get(32..36).is_some()
+        && header_len.checked_sub(68).is_some_and(|n| n.is_multiple_of(48));
     // dBASE counts years since 1900 (2025 is 125); FoxPro writers often
     // keep two digits (25).
     let year = if yy < 70 { 2000 + yy } else { 1900 + yy };
     let date = (mm >= 1 && dd >= 1).then(|| format!("{year:04}-{mm:02}-{dd:02}"));
-    Some(Header { version, date, records, header_len, record_len, level7: level7 && header_len >= 68 })
+    Some(Header { version, date, records, header_len, record_len, level7 })
 }
 
 impl Extractor for Dbf {
@@ -244,5 +249,16 @@ crate::register_extractor!(Dbf);
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
+    #[test]
+    fn short_header() {
+        // Found by the fuzzer: a valid version byte and nothing else.
+        assert!(header(&[0xeb, 2, 0x6c, 0x40], 4).is_none());
+        let mut b = vec![0x04, 125, 1, 1, 0, 0, 0, 0, 33, 0, 1, 0];
+        b.resize(36, 0);
+        assert!(header(&b, 33).is_some_and(|h| !h.level7));
+    }
+
     crate::fixture_tests!("dbf");
 }
