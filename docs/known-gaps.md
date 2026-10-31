@@ -54,7 +54,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   QED) whose blocks live in a parent image reads those blocks as zeros;
   the parent's name is reported.
 
-## Executables (unreleased)
+## Executables (0.6.0)
 
 - **Signatures are described, not verified:** Authenticode and Apple code
   signatures report the signer, chain and times; the image hash and the
@@ -78,7 +78,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   AppleScript, Windows script hosts, device trees, FPGA bitstreams, and
   the WebAssembly component model beyond its header.
 
-## Bytecode (unreleased)
+## Bytecode (0.6.0)
 
 - **Nothing is decompiled:** method bodies are measured (Java code
   bytes) or scanned for one instruction (Python's `IMPORT_NAME`); no
@@ -101,7 +101,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   Pharo images, Haskell `.hi` interfaces, Flash ActionScript ABC, and
   Guile `.go` files (ELF files, described by the executable extractor).
 
-## Crypto (unreleased)
+## Crypto (0.6.0)
 
 - **Nothing is verified:** signatures, MACs, checksums and certificate
   chains are described, never checked; `expired` compares dates with the
@@ -127,7 +127,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   few old roots) is shown as its bytes, as browsers do; openssl prints it
   with a minus sign.
 
-## Databases (unreleased)
+## Databases (0.6.0)
 
 - **SQLite:** pages are read within `max_parse_bytes`; beyond it row counts
   are estimated from the b-tree's fan-out (`rows_estimated`) and some may be
@@ -154,7 +154,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   segments, Prometheus blocks, Windows ESE databases (the forensic part of
   this stage), LevelDB / RocksDB logs and MANIFEST files, Redis AOF.
 
-## Forensic artefacts (unreleased, feature `forensics`)
+## Forensic artefacts (0.6.0, feature `forensics`)
 
 - **EVTX:** histograms come from the `System` part of each record's
   template; `EventData` / `UserData` values are not read. Records in
@@ -186,7 +186,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   ESE, crash dump, LiME, hibernation, unified2 and FSEvents files are
   built from the published layouts because no Linux tool writes them.
 
-## Apple formats (unreleased)
+## Apple formats (0.6.0)
 
 - **Property lists:** old-style (ASCII) plists with whitespace inside
   `<…>` data are not read (the `plist` crate's reader rejects them;
@@ -211,7 +211,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   user, a disk image's backing path and the boot volume); Foundation reads
   the bookmarks back in `apple.sh`.
 
-## Binary serialisations (unreleased)
+## Binary serialisations (0.6.0)
 
 - **Pickles and Java streams:** walked, never loaded; only known
   code-running globals and gadget classes are flagged, so an unflagged
