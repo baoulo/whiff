@@ -4,6 +4,88 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased
+
+Fonts, columnar data and machine-learning models (Stage 7, first two parts).
+
+- **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
+  decoder; no read-fonts / skrifa / allsorts):
+  - TrueType and OpenType fonts, collections (`.ttc`, `.otc`), WOFF,
+    WOFF2 (collections too), Embedded OpenType (header, root URLs, the
+    font inside when it is not MicroType Express compressed) and Mac
+    `dfont` resource files, each described from its sfnt tables: family,
+    subfamily, typographic names, full and PostScript names, version,
+    unique ID, manufacturer, designer, URLs, copyright, licence and
+    licence URL (SIL OFL recognised), revision, units per em, creation
+    and modification dates, glyph count, vendor ID, weight and width
+    class, italic / bold / oblique, monospace, italic angle, x-height and
+    cap height, the `fsType` embedding permission (into
+    `rights.embedding`), Unicode coverage (code points and their scripts),
+    variable axes and named instances, colour and bitmap glyph formats
+    (COLR, CPAL palettes, SVG, sbix, CBDT), OpenType features and scripts,
+    hinting and digital signatures; collections list their members. Fonts
+    larger than the parse limit are read table by table;
+  - PostScript Type 1 (PFB, PFA): the font dictionary and, from the
+    decrypted `eexec` part, the glyph and subroutine counts; AFM metrics;
+    PFM (Windows printer metrics);
+  - bitmap fonts: BDF and PCF (XLFD name and properties, glyph and
+    encoded character counts), Windows FNT and FON libraries (every
+    face's size, weight and character set), PC Screen Font 1 and 2 (glyph
+    count, cell size, Unicode table);
+  - font sources: FontForge `.sfd`, Glyphs 2 and 3, UFO `fontinfo.plist`
+    and Metafont `.mf` (names, version, designer, licence, embedding,
+    dates, masters, instances, axes, glyph count, features).
+- **Columnar data and models** (feature `data`, which now includes
+  `common`), all in-house (no parquet / arrow / orc-rust / apache-avro
+  crates); files are read from their footers and headers through the
+  source, never loaded whole:
+  - Apache Parquet (a Thrift compact reader): writer, rows, row groups, the
+    schema as a type tree, codecs, encodings, sizes, column statistics
+    (min, max and nulls across row groups; strings redacted like other
+    sample values), key-value metadata (pandas index, Spark, Arrow) and
+    encrypted footers; GeoParquet files also give their geometry columns
+    (encoding, geometry types, CRS, bounding box);
+  - Apache Arrow IPC files (Feather 2) and streams, Feather 1: schema,
+    dictionaries, record batches, rows, body compression; ORC: version,
+    writer, compression (zlib, Snappy, LZ4, Zstandard footers), stripes,
+    rows, schema, column statistics, user metadata; Lance v2 data files
+    (schema, rows), Vortex (version), F3 (version, checksums, Arrow schema,
+    rows, row groups, embedded WebAssembly decoders);
+  - Delta Lake commits (operation, engine, protocol, schema, partitions,
+    files and rows added) and Iceberg table metadata (schema, partitioning,
+    properties, snapshots); TFRecord (records, `tf.train.Example`
+    features); R `fst` tables (columns, types, rows) and `qs` / `qs2`
+    headers; pandas DataFrame pickles;
+  - models, never their weights: safetensors (tensors, dtypes, parameters,
+    metadata), GGUF (architecture, name, licence, context length,
+    quantisation, hyper-parameters, vocabulary, tensor types), ONNX
+    (producer, opsets, operator histogram, inputs and outputs, parameters;
+    walked through the source, so inline weights are skipped), PyTorch
+    checkpoints (ZIP and legacy: storages, storage types, TorchScript, the
+    pickle's globals with `unsafe_deserialization` as for pickles), Keras
+    archives, TensorFlow Lite (operators, tensors, signatures, runtime
+    version), SavedModel (tags, TensorFlow version, signatures, graph ops)
+    and Core ML (model type, typed inputs and outputs, author, licence,
+    layers).
+- **Plugin API:** `plugin::flatbuf` (FlatBuffers tables without a schema)
+  and `plugin::protowire` (protobuf fields without a schema), shared by the
+  columnar readers and the `.bfbs` extractor; raw Snappy and LZ4 block
+  codecs (`Codec::SnappyBlock`, `Codec::Lz4Block`).
+- **Licences:** the SIL Open Font License (1.0 and 1.1) and the Ubuntu
+  Font Licence are recognised in licence texts.
+- **Developer tools:** `scripts/fixtures/fonts.sh` makes the font fixtures
+  in a podman container (fontTools FontBuilder, ufoLib2 and glyphsLib,
+  FontForge, bdftopcf, bdf2psf, mkeot); `font_oracle.py` compares the
+  reports with fontTools, pcf2bdf, psfgettable, wrestool and FontForge
+  over macOS system and application fonts and Debian font packages.
+  `scripts/fixtures/columnar.sh` makes the columnar and model fixtures
+  with each format's own library (pyarrow, geopandas, pylance,
+  vortex-data, deltalake, pyiceberg, tfrecord, safetensors, gguf, onnx,
+  torch, Keras / TensorFlow, coremltools; R fst, qs and qs2), and
+  `columnar_oracle.py` compares reports with those libraries over
+  generated files and the models found in /Applications and Homebrew.
+  `scripts/fixtures/f3.sh` builds F3's reference writer for its fixtures.
+
 ## 0.6.0 — 2026-10-31
 
 Executables, bytecode, crypto, databases, forensic artefacts, Apple formats

@@ -47,7 +47,7 @@ common = [
 ]
 geo = []
 science = []
-data = []
+data = ["common"]
 cad = []
 forensics = ["common"]
 games = []

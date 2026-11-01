@@ -15,6 +15,8 @@ doc-valid-idents = [
     "ZipCrypto", "WinZip", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
     "WebExtension", "WebExtensions", "OpenPGP", "RubyGems", "PyPA", "NuGet", "OSGi", "JScript", "VBScript",
     "PackageInfo",
+    "GeoParquet", "RoPE", "SavedModel", "TensorFlow", "TorchScript", "TFRecord", "FileMetaData", "KeyValue",
+    "FontForge", "MicroType", "METAFONTbook", "TrueType", "OpenType", "PostScript",
     "BitLocker", "ReFS", "SquashFS", "CloneCD", "EnCase", "AmigaDOS", "VirtualBox", "VMware", "AppImage",
     "AppImages", "AppStream",
     "CodeView", "SafeSEH", "AppContainer", "UTCTime", "GeneralizedTime", "DriverKit", "BridgeOS",

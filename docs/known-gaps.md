@@ -237,3 +237,49 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Text formats:** RON, KDL, HOCON, EDN, S-expressions, textproto and Ion
   text are read by tolerant parsers into a tree; HOCON substitutions and
   includes are counted, not resolved.
+
+## Fonts (unreleased)
+
+- **Not decoded:** glyph outlines, hinting programs and kerning values
+  (only the feature tags), `CFF` / `CFF2` dictionaries (names come from
+  the `name` table), WOFF2 transformed `glyf` / `loca` / `hmtx` tables
+  (listed, not reconstructed), MicroType Express compressed EOT fonts
+  (header facts only), the Unicode variation sequences of `cmap` format
+  14, `STAT` axis values beyond what `fvar` names, `meta` and `ltag`.
+- **Signatures:** `DSIG` signatures are counted, not verified.
+- **Type 1:** multiple-master and CID-keyed fonts are described from
+  their cleartext only; Type 3 and Type 42 PostScript fonts are not read.
+- **Bitmap fonts:** strikes inside sfnt fonts (`EBLC`, `bloc`) are noted,
+  not listed; Mac `NFNT` / `FONT` resources, suitcases without a data fork
+  (the resource fork alone), Amiga and Atari fonts are not read.
+- **Sources:** UFO is read through `fontinfo.plist` only (the other files
+  of a `.ufo` folder are plain plists and glyph XML); zipped `.ufoz`,
+  designspace documents, `.vfc` / `.vfj` (FontLab), `.fea` feature files
+  and TeX font metrics (`.tfm`, `.vf`) are not read.
+
+## Columnar data and models (unreleased, feature `data`)
+
+- **Not read:** Apache Hudi, Kudu and CarbonData tables, Hadoop
+  SequenceFile and RCFile, MXNet RecordIO, legacy GGML / GGMF / GGJT
+  containers, Core ML packages (`.mlpackage` folders: their
+  `model.mlmodel` is read) and ML Program weights, LanceDB / Chroma
+  stores as such (Chroma is a SQLite database; Lance data files are read).
+- **Partly read:** Vortex files report their version only (the layout and
+  type FlatBuffers are not decoded); Lance 0.x files their version only;
+  R `qs` / `qs2` files their header (the serialised object is not
+  decoded); fst column names stored compressed are not decoded.
+- **Statistics:** Parquet statistics are combined as written (deprecated
+  `min` / `max` used when the newer fields are absent, so signed /
+  unsigned ordering follows the writer); INT96 timestamps and binary
+  columns other than strings give no min / max; ORC decimal, binary and
+  bucket statistics are not reported.
+- **Models:** parameter counts come from tensor shapes (quantised GGUF and
+  TFLite tensors count elements, not bytes); ONNX external data files are
+  noted, not opened; Keras `.h5` weights (HDF5) are read by the science
+  extractors, not here; SavedModel variables are not read.
+- **Pickled data:** pandas pickles of timezone-aware columns import
+  `builtins.getattr` and so report `unsafe_deserialization`, as any pickle
+  importing it does.
+- **F3:** the committed fixture is built from the published layout
+  (`File.fbs`) until `scripts/fixtures/f3.sh` replaces it with the
+  reference writer's files.

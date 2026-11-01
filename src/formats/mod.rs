@@ -30,6 +30,8 @@ pub(crate) mod binary;
 pub(crate) mod bytecode;
 #[cfg(feature = "common")]
 pub(crate) mod code;
+#[cfg(feature = "data")]
+pub(crate) mod columnar;
 #[cfg(feature = "common")]
 pub(crate) mod compress;
 #[cfg(feature = "common")]
@@ -46,6 +48,8 @@ pub(crate) mod doc;
 pub(crate) mod email;
 #[cfg(feature = "common")]
 pub(crate) mod exec;
+#[cfg(feature = "common")]
+pub(crate) mod font;
 #[cfg(feature = "forensics")]
 pub(crate) mod forensic;
 #[cfg(feature = "common")]
