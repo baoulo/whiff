@@ -420,3 +420,96 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Privacy:** Steam account lists are counted (names never shown);
   `LastOwner` Steam IDs appear only with privacy off; user folders in
   Steam paths are hidden unless privacy is off.
+
+## Long tail (unreleased)
+
+The first long-tail batch reads each format line by line or from its
+header; it never evaluates, expands or follows anything.
+
+- **Lightweight markup:** inline markup is stripped, not parsed. reST
+  roles and substitutions, AsciiDoc conditionals and attribute references,
+  MediaWiki templates and parser functions, Texinfo macros and roff
+  preprocessors (`tbl`, `eqn`, `pic`) are not expanded; included files are
+  listed, not read. Nested lists and tables are counted from their first
+  line. A text sitemap (one URL per line) is not recognised.
+- **Configuration:** HCL expressions are not evaluated and Terraform's
+  JSON syntax (`.tf.json`) is read as JSON; `.tfvars` give their variable
+  names, not the values. `Include` in SSH, nginx and Apache files is
+  listed, not followed. Whether a `.conf` file is nginx or Apache is
+  guessed from its first directives.
+- **Shockwave Flash:** ActionScript is counted and named, never
+  decompiled; `DefineBinaryData` payloads, sounds and bitmaps are not
+  extracted. The readers were tested on ffmpeg's SWF output and on files
+  written from the specification; no Flash authoring tool was available.
+- **AutoCAD DWG:** only the file header. The drawing (compressed from
+  R13, encrypted page by page from R2004) is not decoded, so there is no
+  title, author, layer or entity information; DXF exports carry it. The
+  fixtures are headers written from the ODA specification, checked against
+  libmagic.
+- **WARC:** records are summarised, their payloads are not analysed as
+  embedded files; `.warc.gz` goes through the gzip reader.
+- **Vim swap files:** the header only; the edited text is not recovered.
+- **Privacy:** cookie and bookmark hosts, `.netrc` machine names and SSH
+  client host names are listed only with `--privacy off`; cookie values
+  and passwords are never read into the report.
+- **Programming languages (second batch):** like the first ~40, each
+  language is a row of patterns: symbols are top-level definitions the
+  patterns find, not a parse, and string syntax beyond simple quotes
+  (heredocs, raw and nested strings) can misplace a comment marker.
+  Fixed-form Fortran comments (`C` in column 1) are counted as code; use
+  `!`. K and Q (`.k`, `.q`) and Unison's rarely used extensions are not
+  recognised; `.d` Makefile dependency files read as D and `.pro` qmake
+  projects as Prolog. Max patches list their object classes, not the
+  objects' text. Line counts are checked against Pygments where it has a
+  lexer; Astro, Odin, Move, Cairo, Metal, Apex, Ninja, Gleam, Roc, Unison,
+  OpenQASM, Yacc, Lex, PL/SQL, Go templates, Nushell, Rego, TLA+,
+  ShaderLab, Structured Text and Avro IDL have no reference lexer there.
+- **SPIR-V:** the header and the instructions that describe the module;
+  types, decorations and code are counted, not listed. spirv-dis reads
+  big-endian modules' strings wrongly, so the big-endian fixture is
+  checked against its little-endian twin.
+- **Package manifests:** build scripts (`setup.py`, Gradle, `mix.exs`,
+  `Package.swift`, `conanfile.py`, `flake.nix`, Podfiles, Homebrew
+  formulae) are read as text with patterns, so values computed at build
+  time (variables, version catalogues, loops) are missed or kept as
+  written. PKGBUILD variables and RPM macros are expanded only for simple
+  `%{name}` references; `%if` blocks are not evaluated. Gradle version
+  catalogues (`libs.versions.toml`) are named, not resolved. Podfile,
+  `Package.swift`, Homebrew, Gradle, Cabal, Mix, opam, `MODULE.bazel`,
+  `flake.nix`, `build.zig.zon` and `.sln` readers have no reference
+  parser in the oracle and are covered by their fixtures only. Nested
+  CycloneDX components are counted with their parents.
+
+- **Images (third batch):** headers and structure only, never pixels.
+  - *Undocumented formats:* Affinity files are recognised by extension
+    and report only their embedded thumbnail; FreeHand reports the
+    version implied by its `AGD` signature; Figma reports the canvas
+    version, not the document tree (its Kiwi schema is not decoded);
+    Procreate's keyed archive is read for the canvas, DPI and layer names
+    only. Corel Painter `.rif` and Unity `.tex` files are not recognised,
+    nor `.lut` files (too many unrelated formats share the extension).
+  - *Compressed layers not decoded:* DjVu's `ANTz`, `TXTz` and `NAVM`
+    chunks use the BZZ coder, so compressed metadata, the hidden text
+    layer and bookmarks are reported as present, not read (uncompressed
+    `ANTa` metadata is). CorelDRAW X4+ packages give the version and the
+    parts; their RIFF data is not walked for pages. Paint.NET layer names
+    are in a .NET BinaryFormatter body that is not read.
+  - *Text diagrams:* Mermaid and PlantUML are read line by line with
+    patterns (diagram type, arrows, labels); nodes are approximate for
+    diagram types other than flowcharts and sequences. Graphviz DOT is
+    parsed (nodes, edges, subgraphs) but attributes other than `label`
+    are skipped.
+  - *Camera raw:* the new Kodak, Epson, Mamiya, Leaf, Phase One and GoPro
+    files are read as TIFF structures (make, model, sensor, previews,
+    EXIF); vendor maker notes (Phase One's IIQ directory, Leaf's `PKTS`)
+    are not decoded. Older non-TIFF KDC files are not recognised.
+  - *Whole-slide images:* the TIFF-based SVS, NDPI and SCN are read from
+    the IFDs and descriptions; MIRAX (`.mrxs`, a folder of data files)
+    and Ventana BIF are not recognised.
+  - *Fixtures:* formats no available tool writes (ASTC, Basis, PVR, VTF,
+    CDR, CGM, FreeHand, Photoshop presets, PDN, Procreate, Sketch, Figma,
+    thumbcache, Photo CD, MRW, X3F) are built from their specifications;
+    `media_oracle.py` checks 172 facts over 66 fixtures with independent
+    readers (exiftool, ImageMagick, Pillow, olefile, ffprobe, djvudump,
+    Graphviz, fig2dev, psd-tools, libmagic), and the rest are covered by
+    their fixtures only.

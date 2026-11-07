@@ -6,7 +6,10 @@ keep the schema version.
 
 ## Unreleased
 
-Games (Stage 8, part 1).
+Games (Stage 8, part 1) and three batches of the long tail (parts 2 to
+4): every tier 1 and tier 2 catalogue format now has an extractor, and so
+does every programming language, package manifest, image and metadata
+format in the catalogue.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -52,14 +55,225 @@ Games (Stage 8, part 1).
     story inside, resources, the iFiction record);
   - emulator saves: RetroArch states (`RASTATE`, RZIP), Mednafen states,
     battery saves (`.srm`).
+- **Lightweight markup** (`common`, new `text.lightmarkup`, in-house, line
+  by line): reStructuredText (title and subtitle, bibliographic fields,
+  directives, `meta`), AsciiDoc (header, author and revision lines,
+  attributes, admonitions, delimited blocks), Org (keywords, TODO states
+  with custom sequences, priorities, tags, planning lines, timestamps,
+  drawers, checkboxes), Textile, MediaWiki (templates, categories, language
+  links, references, redirects, magic words; the page name is the title),
+  Perl POD (`NAME`, `VERSION`, `AUTHOR`), roff man pages (`man`, `mdoc`,
+  `ms`, `me`: name, section, date, source, manual, `NAME` description;
+  numbered extensions such as `.1` or `.3p` sniffed), Texinfo (title,
+  nodes, `@set` flags, directory category), Creole, DokuWiki, Djot and
+  Gemtext: outline, links and hosts, images, code blocks by language,
+  tables, included files, and the prose.
+- **Configuration files** (`common`, new `code.config`): Terraform / HCL
+  (blocks, resources and data sources by type, providers with sources and
+  versions, modules, backend, required version, variables and outputs,
+  `.tfvars`), ignore files (`.gitignore`, `.dockerignore`, `.helmignore`
+  …), crontabs (system and user, `@reboot`, every-minute jobs, commands),
+  `ssh_config` / `sshd_config` (security settings; host names only with
+  privacy off), nginx, Apache and `.htaccess` (server blocks, names,
+  ports, TLS, proxies, rewrites, modules), Procfiles, Justfiles,
+  Vagrantfiles, Caddyfiles and HAProxy configurations.
+- **Plain-text files with a layout** (`common`, new `text.special`): NFO,
+  DIZ and ANSI art (code page 437, the SAUCE record: title, author, group,
+  date, size, font), hosts files (entries, blocked names), `CODEOWNERS`
+  (rules, owners by kind; teams listed, people counted), Vim swap files
+  (the file being edited, unsaved changes; user and host only with privacy
+  off), Kindle `My Clippings.txt` and GNU info files. Extensionless
+  `README`, `LICENSE`, `COPYING`, `AUTHORS`, `CHANGELOG`, `NEWS` …
+  files are recognised by name and get `document_kind`; change logs also
+  their versions and dates.
+- **Web files** (`common`, new `web.swf` and `web.misc`): Shockwave Flash
+  (`FWS`, `CWS`, `ZWS`: version, stage size, frame rate and count, file
+  attributes, background, XMP, compiler and compile time, main class,
+  symbols, exports, imports, scenes, ActionScript blocks), `robots.txt`
+  (groups, rules, sitemaps, crawl delay, which AI crawlers are blocked),
+  `security.txt` and `humans.txt`, proxy auto-config files, Metalink 3 and
+  4, Adblock filter lists, Netscape cookie jars (counted, never the
+  values), browser bookmarks (Netscape HTML, Chrome, Firefox), `.netrc`,
+  `.curlrc` and `.wgetrc` (passwords flagged as `embedded_secret`, never
+  copied), and WARC archives.
+- **AutoCAD DWG** (`cad`, in `cad.drawing`): the file header (release,
+  maintenance version, code page, thumbnail, summary information, R2004+
+  security flags and VBA project).
+- **MATLAB / Octave** `.m` scripts (functions, classes, imports); `.m`
+  files that read as Objective-C stay Objective-C.
+- **Programming languages** (`common`, `code.source`): 90 more, read by
+  the same table-driven line classifier (lines of code, comments and
+  blanks, imports, top-level symbols, package, module documentation,
+  licence, TODO counts): Astro, Nim, Crystal, D, V, Odin, Fortran, COBOL
+  (fixed-form comments in column 7 too), Pascal / Delphi, Ada, Common Lisp
+  and Emacs Lisp, Scheme / Racket, Prolog, Elm, PureScript, ReScript /
+  ReasonML, CoffeeScript, Haxe, Tcl, AWK, sed, Solidity, Move, Cairo,
+  Vyper, Verilog / SystemVerilog, VHDL, OpenCL, GLSL, HLSL, WGSL, Metal,
+  Apex, ABAP, Smalltalk, Raku, Starlark / Bazel, Meson, Ninja, AutoHotkey,
+  AutoIt, Gleam, Roc, Unison, Mojo, Q#, OpenQASM, Arduino, LLVM IR,
+  WebAssembly text, ANTLR, PEG, Yacc / Bison, Lex / Flex, Puppet, PL/SQL /
+  T-SQL, Go templates, Handlebars / Mustache, Pug, Vim script, Nushell,
+  Elvish, Rego, Bicep, Lean, Coq / Rocq, Agda, Idris, Isabelle, TLA+,
+  Alloy, Ballerina, Pony, Janet, Fennel, Hy, Forth, APL, J, GDScript, Unity
+  ShaderLab, IEC 61131-3 Structured Text, Max and Pure Data patches, YARA
+  rules, Smithy, Avro IDL and AppleScript; `.ipy` and shell profiles too.
+  Extensions several languages share are told apart from the first lines:
+  `.v` (Verilog, Coq, V), `.cl` (Lisp, OpenCL), `.pp` (Pascal, Puppet),
+  `.st` (Smalltalk, Structured Text), `.cls` (Apex, LaTeX class, VB class
+  module), and text `.pls`, `.pck`, `.res`, `.qs` and `.vhd` files, whose
+  extensions binary formats own. Binary forced through as source has its
+  lines counted but skips the import and symbol patterns.
+- **SPIR-V** (`common`, new `code.spirv`): both byte orders; version,
+  generator, ID bound, capabilities, extensions, instruction-set imports,
+  addressing and memory model, entry points with their workgroup size,
+  source language, function and instruction counts (debug strings, which
+  hold source paths, are counted, never listed).
+- **Package manifests and lockfiles** (`common`, `code.manifest`, now a
+  module per ecosystem): Pipfile and Pipfile.lock, poetry.lock, uv.lock,
+  `setup.py` and `setup.cfg`; Gradle (Groovy and Kotlin DSL, settings
+  files), MSBuild projects (`.csproj`, `.fsproj`, `.vbproj`, `.vcxproj`,
+  `Directory.*.props`), NuGet `packages.config`, Visual Studio solutions;
+  Gemfile and Gemfile.lock, Podfile and Podfile.lock, `Package.swift` and
+  `Package.resolved`, Homebrew formulae, casks and Brewfiles; Composer,
+  pub, Mix (`mix.exs`, `mix.lock`), Cabal and Stack, R `DESCRIPTION`,
+  Conan, vcpkg, Deno, Julia, Elm, Gleam, `build.zig.zon`, opam, CPAN
+  `META.json`, rebar3, Nix flakes and `flake.lock`, `MODULE.bazel`,
+  Terraform dependency locks, Snapcraft and Flatpak manifests,
+  `CITATION.cff`; Debian `control`, `changelog` and `copyright`, Arch
+  `PKGBUILD` and RPM `.spec` files; SPDX (tag-value and JSON) and
+  CycloneDX (JSON and XML) bills of materials (tools, components by
+  type, licences, ecosystems from package URLs, relationships,
+  vulnerabilities). Build scripts are read as text, never run. Install
+  hooks are flagged as `install_script` (`setup.py` `cmdclass`, Podfile
+  `post_install`, RPM scriptlets, PKGBUILD `install=`), and package
+  sources other than the default registry as `custom_package_index`
+  (Pipfile, Gemfile, Podfile, Gradle, Composer). People are reported by
+  name, never by e-mail address.
+- **dbt models** (`common`, `data.sql`): `ref()` models, `source()`
+  tables, macros called and the `config()` materialisation.
+- **Legacy and minor raster images** (`common`, new `image.retro`):
+  Amiga IFF ILBM / PBM and ANIM (size, planes, masking, compression,
+  aspect, palette, HAM / EHB display modes, the `NAME`, `AUTH`, `(c) ` and
+  `ANNO` chunks), MacPaint (bare or MacBinary), CompuServe and Utah RLE,
+  Sun Raster, SGI (with its image name), XBM, XPM, WBMP, farbfeld, Apple
+  PICT (versions 1, 2 and extended 2 with resolution), DCX multi-page PCX,
+  Apple ICNS (every icon element with its size and encoding) and Windows
+  animated cursors (frames, steps, rate, title, artist).
+- **Film, grading and astronomy images** (`common`, new `image.film`):
+  Kodak Cineon and SMPTE DPX (creation time, creator, project, copyright,
+  original file name, image elements, input device, the film header:
+  format, frame, frame rate, slate, and the TV header: SMPTE time code,
+  frame rate), `.cube` and `.3dl` colour look-up tables (title, kind,
+  size, domain, bit depths) and PixInsight XISF (images, FITS keywords such
+  as the object and telescope, XISF properties).
+- **Photoshop presets** (`common`, new `image.assets`): actions (sets,
+  actions and their commands), brushes, `.aco` and Adobe Swatch Exchange
+  swatches (colour names, groups, models), gradients and patterns (names,
+  sizes, modes); Photoshop action descriptors are walked for the names.
+- **Image codecs** (`common`): FLIF and BPG (size, depth, channels,
+  animation, and their EXIF / ICC / XMP metadata), JPEG XR / HD Photo
+  (pixel format, resolution, descriptive tags, XMP / ICC / IPTC blocks),
+  JPEG-LS (a format of its own in the JPEG reader), Kodak Photo CD image
+  packs (orientation, highest resolution, scan time, film medium, scanner,
+  photofinisher), FlashPix (in the OLE reader: size, resolutions, summary
+  information) and HEIF with H.264 (AVCI) or JPEG 2000 (HEJ2) images.
+- **GPU textures** (`common`, new `image.textures`): ASTC, Basis
+  Universal, PowerVR (versions 2 and 3, metadata keys) and Valve VTF
+  (formats of both images, flags, reflectivity, resources); Unreal Engine
+  1–3 packages (`.utx`, `.upk`: versions, flags, table sizes) in the
+  Unreal reader (`games`).
+- **Camera raw** (`common`, `image.raw`): Kodak DCR and KDC, Epson ERF,
+  Mamiya MEF, Leaf MOS, Phase One IIQ, GoPro GPR (TIFF based), Minolta MRW
+  (picture dimensions, CFA, ISO, the EXIF block) and Sigma X3F (camera
+  properties, images, capture time; the serial number is counted, never
+  shown).
+- **Diagrams and vector drawings** (`common`, new `image.diagram`): CGM
+  (binary and clear text: description, fonts, pictures, VDC extent, text),
+  CorelDRAW (RIFF and zip: version, pages, thumbnail), draw.io (pages,
+  vertices, edges, labels, compressed pages inflated), FreeHand (version),
+  Mermaid and PlantUML (diagram type, title, nodes or participants, edges,
+  labels), Visio 2003 XML (document properties, pages, masters, shapes,
+  connections, text), Xfig (settings, objects, text) and Graphviz DOT
+  (kind, name, nodes, edges with strict graphs deduplicated, subgraphs,
+  labels); PostScript-based Adobe Illustrator files in the PostScript
+  reader (Illustrator version and file format).
+- **Layered documents** (`common`, new `image.layered`): Krita and
+  OpenRaster (canvas, resolution, colour space, the layer tree with
+  kinds and visibility; Krita's document information), Paint Shop Pro
+  (attributes, layers, the creator block), Paint.NET, Procreate (canvas,
+  DPI, layers, tracked time, from the keyed archive), Sketch (pages,
+  artboards, fonts), Figma (raw canvas or the zip export) and Affinity
+  files (by extension, as the format is undocumented: the embedded
+  thumbnail).
+- **Metadata files** (`common`, new `image.sidecar`): XMP sidecars (with
+  the Camera Raw develop settings counted), ICC profiles, exiv2 `.exv`
+  containers, raw EXIF dumps, VRA Core 4 records (every work, image and
+  collection with its element sets, into `metadata.vra`) and RawTherapee
+  `.pp3` profiles, all through the shared `whiff::meta` decoders.
+- **Other formats:** DjVu documents (`common`, new `doc.djvu`: kind, pages,
+  size, resolution, text and annotation layers, `ANTa` metadata), Windows
+  thumbcache databases (`forensics`: Windows version, size class, entries
+  and their image types) and whole-slide microscopy images (`common`, new
+  `image.slide`: Aperio SVS, Hamamatsu NDPI and VMS, Leica SCN:
+  magnification, microns per pixel, scanner, pyramid levels, label and
+  macro images).
+- **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
+  generic XML reader to the manifest reader; `build.gradle` is a Gradle
+  manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
+  models also start with `$version`), and the ROOT signature is `root`
+  plus a zero byte (`settings.gradle.kts` starts with `rootProject`).
+  A GDSII stream must start with HEADER and BGNLIB (Photoshop 6.2 brushes
+  start with the same four bytes), Aseprite declares its `0xA5E0` magic (so
+  `.ase` swatch files are not offered as sprites), and VRA Core records
+  moved from the generic XML reader to `vra`. PostScript DSC values with
+  several parts (`(5/1/24) (7:42 PM)`) are joined.
+- **Catalogue:** `data/coverage.tsv` credits rows that another family's
+  extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
+  known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
+  or format there is an error. 606 → 674 → 767 → 824 of 1008 formats have
+  an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
+  The code page 437 decoder moved from the ZIP reader to
+  the text decoders and is part of the plugin API (`decode_cp437`).
 - **Developer tools:** `scripts/fixtures/games.sh` makes the games
   fixtures in a podman container (cc65, Inform 6, Tiled, omgifol, vgio,
   vpk, nbtlib, vdf; the rest written from their specifications);
   `games_oracle.py` compares the reports over a generated corpus with
   libmagic, libgme (through ffprobe), omgifol, vgio, vpk, nbtlib, pytmx,
   vdf, UnityPy and unrpa.
+  `scripts/fixtures/longtail.sh` makes the long-tail
+  fixtures in a podman container (makeinfo, Vim, ffmpeg, warcio, Python's
+  `http.cookiejar`; the rest written by hand or from the specifications);
+  `longtail_oracle.py` compares the reports over the fixtures and a
+  generated corpus with pandoc, asciidoctor, docutils, lexgrog, Perl's
+  `Pod::Simple`, makeinfo, python-hcl2, libmagic, ffprobe, warcio,
+  `http.cookiejar` and `urllib.robotparser`.
+  `scripts/fixtures/code.sh` makes the language, SPIR-V and manifest
+  fixtures in a podman container (glslang for SPIR-V; the sources and
+  manifests written by hand); `code_oracle.py` compares the reports with
+  Pygments (language, code / comment / blank lines), spirv-dis, rpmspec,
+  dpkg-parsechangelog, python-debian, bash, Bundler, Erlang, spdx-tools,
+  cyclonedx-python-lib, cffconvert, python-hcl2 and the TOML, JSON5 and
+  YAML parsers.
+  `scripts/fixtures/media.sh` makes the image fixtures in a podman
+  container (netpbm, ImageMagick, ffmpeg, exiftool, jxrlib, djvulibre,
+  Pillow; the rest written from the specifications); `media_oracle.py`
+  compares the reports with exiftool, ImageMagick, Pillow, olefile,
+  ffprobe, djvudump, Graphviz `gc`, fig2dev, psd-tools, libmagic and the
+  Python standard library.
+- **Speed:** detection no longer guesses the character set of every
+  file several times. The text sniffers (playlists, cue sheets, subtitles,
+  text scores) read UTF-8 and binary heads directly and run the guess only
+  for text in a legacy encoding, and the last guess is reused while the
+  input is the same. With the `minimal` profile, one core describes about
+  2,700 test fixtures a second, up from 1,300 (the plan's target is 2,000).
+- **Benchmarks:** `cargo bench --features full --bench families` times
+  extraction per format family over the test fixtures in memory, for the
+  `minimal` and `standard` profiles (criterion, a development dependency
+  only). `whiff-dev throughput [PATHS] --profile minimal --threads N
+  --min 2000` reports files per second per core over a corpus on disk and
+  the slowest formats.
 
 ## 0.7.0 — 2026-11-03
 
